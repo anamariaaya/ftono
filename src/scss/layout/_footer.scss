@@ -1,0 +1,93 @@
+@use "sass:math";
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.footer{
+    background-color: v.$darkGray;
+    padding: v.$separate 1rem;
+    place-items: center;
+    margin-top: 2rem;
+    @include m.grid(1, v.$separate);
+
+    @include m.tablet{
+        @include m.grid(3, v.$separate);
+    }
+
+    .social-footer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-bottom: 2rem;
+
+        .logo-footer{
+            width: 20rem;            
+        }
+
+        @include m.phone{
+            .logo-footer{
+                width: 24rem;            
+            }
+        }
+        @include m.tablet{
+            .logo-footer{
+                width: 30rem;
+            }
+        }
+
+        .copyright{
+            color: v.$yellow;
+        }
+    }
+
+    .contact-footer{
+        display: none;
+    }
+
+    .terms-footer{
+        display: none;
+    }
+
+    @include m.tablet{
+        .social-footer{
+            padding-bottom: 0;
+        }
+        
+        .contact-footer{
+            display: block;
+            text-align: center;
+    
+            h3, p{
+                color: v.$yellow;
+            }
+    
+            h3{
+                font-weight: v.$bold;
+            }
+        }
+    
+        .terms-footer{
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            font-size: 1.7rem;
+    
+            a{
+                color: v.$yellow;
+            }
+        }
+    }
+}
+
+.networks{
+    margin-top: math.div(v.$separate, 2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: math.div(v.$separate, 2);
+
+    & i{
+        font-size: 3.2rem;
+        color: v.$yellow;
+    }
+}

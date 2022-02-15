@@ -1,0 +1,36 @@
+
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
+
+// Fuentes
+$mainFont: 'Roboto', sans-serif;
+$secFont: 'Lato', sans-serif;
+
+// Tamaño de Media Queries
+$phone: 480px;
+$tablet: 950px;
+$desktop: 1024px;
+
+// Colores
+$black: #000000;
+$white: #FFFFFF;
+$gray: #323246;
+$lightGray: #505070;
+$softGray: #7E7B99;
+$darkGray: #292B3F;
+$yellow: #FD9526;
+$lightYellow: #FCEB54;
+$green: #36DE8C;
+$blue: #29CBFC;
+$pink: #DC1064;
+$red: #CF2020;
+
+// Medidas
+$separate: 5rem;
+
+// Fuentes
+
+$thin: 300;
+$regular : 400;
+$bold: 700;
+$ultrabold: 900

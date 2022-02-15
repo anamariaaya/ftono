@@ -1,0 +1,30 @@
+@use "sass:math";
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.cat-filter{
+    @include m.grid(3, 2rem);
+    grid-auto-flow: column;
+    overflow-x: hidden;
+}
+
+.categories{
+    @include m.grid(2,1rem);
+    grid-auto-flow: dense;
+
+    .cat-info{
+        border-radius: 1rem;
+        border: 2px solid v.$softGray;
+        padding: 1.5rem;
+        display: grid;
+        place-items: center;
+        background-image: linear-gradient(45deg, #08a162, #f84d55);
+        
+        & p{
+            color:v.$white;
+            font-weight: v.$bold;
+            text-transform: capitalize;
+            text-align: center;
+        }
+    }
+}
