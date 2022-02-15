@@ -59,6 +59,15 @@ function mainSlide(){
 };
 
 function pruebaNueva(){
-    const songs = document.querySelector('.ft-songs');
-    console.log(songs);
+    const wrapper = document.querySelector('.cat-wrapper');
+    const songs = document.querySelector('.cat-container');
+    const ancho = songs.clientWidth+'px';
+    const next = document.querySelector('.cat-next');
+    const prev = document.querySelector('.cat-prev');
+
+    next.addEventListener('click', function(){
+        wrapper.style.transform = "translateX(-350px)";
+    })
+
+    console.log(ancho);
 }
