@@ -14,7 +14,7 @@ body {
     font-family: v.$mainFont;
     font-size: 1.6rem;
     line-height: 1.8;
-    background-color: v.$darkGray;
+    background-image: linear-gradient(v.$darkGray 65%, v.$gray);
 }
 
 p {
