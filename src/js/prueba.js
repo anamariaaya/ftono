@@ -108,16 +108,6 @@ function pruebaNueva(){
 			// $(this).remove();
 		});
 
-		$("#activate-step-4").on("click", function (e) {
-			$("ul.setup-panel li:eq(3)").removeClass("disabled");
-			$('ul.setup-panel li a[href="#step-4"]').trigger("click");
-			// $(this).remove();
-		});
-		$("#activate-step-5").on("click", function (e) {
-			$("ul.setup-panel li:eq(4)").removeClass("disabled");
-			$('ul.setup-panel li a[href="#step-5"]').trigger("click");
-			// $(this).remove();
-		});
 	});
 })(jQuery);
 

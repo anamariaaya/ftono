@@ -1,4 +1,6 @@
-@use "base/variables" as v;
+@use "sass:math";
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
 
 .menu-btn{
     filter:sepia(100%) grayscale(1) brightness(1);    
@@ -19,4 +21,15 @@
     margin-top: 4rem;
     padding: 2rem;
     border-radius: 2rem;
+}
+
+.botones{
+    @include m.boton(v.$yellow, block);
+    border-radius: 1rem;
+}
+.btn-signup{
+    @include m.boton(v.$darkGray, inline-block);
+    &:hover{
+        background-color: v.$yellow;
+    }
 }
