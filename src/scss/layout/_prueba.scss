@@ -1,0 +1,112 @@
+$white: #fff;
+$black: #000;
+$gray: #55595c;
+$gray-dark: #373a3c;
+$gray-light: #b3b3b3;
+$gray-lighter: #dbdbdb;
+$gray-lightest: #f4f4f4;
+$red:  #ff0;
+$green: #00e964;
+.setup-panel {
+    margin:0px;
+    li {
+        border: 1px solid $gray-dark;
+        border-left: 0;
+        &:first-child {
+            border-left: 1px solid $gray-dark;
+        }
+        & a {
+            & span {
+                font-size: 18px;
+                font-weight: 700;
+                position: absolute;
+                margin-left: -15px;
+                margin-top: -2px;
+            }
+            &:hover {
+                background: none;
+            }
+        }
+        &.active {
+            border-bottom: 5px solid $gray-light;
+            background: $gray-lightest;
+        }
+    }
+}
+.setup-content {
+    fieldset {
+        border: none;
+        margin:0px;
+        padding:0px;
+
+    }
+    .content {
+        background: $gray-lightest;
+        padding: 20px;
+    }
+    & .edit_controls {
+        & .glyphicon {
+            font-size: 18px;
+            margin: 0 0 0 10px;
+            cursor: pointer;
+        }
+    }
+}
+.time_slot {
+    margin: 0;
+    padding: 0;
+    .before {
+        height: 15px;
+        width: 15px;
+        content: ' ';
+        position: absolute;
+        left: 0;
+        border: 1px solid #ccc;
+    }
+    .color_available {
+        background: $white;
+    }
+    .color_na {
+        background: red;
+    }
+    .color_sel {
+        background: green;
+    }
+    li {
+        display: inline-block;
+        padding-left: 20px;
+        list-style: none;
+        position: relative;
+    }
+    & .color {
+        &--available {
+            &:before {
+                @extend .before;
+                @extend .color_available;
+            }
+        }
+        &--na {
+            &:before {
+                @extend .before;
+                @extend .color_na;
+            }
+        }
+        &--sel {
+            &:before {
+                @extend .before;
+                @extend .color_sel;
+            }
+        }
+    }
+}
+.color {
+	&--available {
+		background:#fff;
+	}
+	&--na {
+		background:#f00;
+	}
+	&--selected {
+		background: #1d9908;	
+	}
+}

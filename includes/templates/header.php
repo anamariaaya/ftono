@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filmtono</title>
 
-    <link rel="stylesheet" href="build/css/app.css">
+    s<<link rel="stylesheet" href="build/css/app.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/39b0748f0d.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" type="text/javascript"></script>
 
 </head>
 <body>
