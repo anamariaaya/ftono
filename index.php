@@ -304,26 +304,26 @@
                 <div class="artista">
                     <div id="player0" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="uV0r4a2QVkQ">
                     </div>
-                    <h3>C-Tangana</h3>
+                    <h3>C-Tangana<span>&rightarrow;</span></h3>
                 </div>
             </a>
 
             <div class="artista">
                 <div id="player1" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="sGIm0-dQd8M">
                 </div>
-                <h3>Daddy Yankee</h3>
+                <h3>Daddy Yankee<span>&rightarrow;</span></h3>
             </div>
 
             <div class="artista">
                 <div id="player2" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="I9t4XTOwtEo">
                 </div>
-                <h3>Systema Solar</h3>
+                <h3>Systema Solar<span>&rightarrow;</span></h3>
             </div>
         
             <div class="artista">
                 <div id="player3" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="ozXIAg7zp9I">
                 </div>
-                <h3>Rawayana</h3>
+                <h3>Rawayana<span>&rightarrow;</span></h3>
             </div>  
 
         </div>
