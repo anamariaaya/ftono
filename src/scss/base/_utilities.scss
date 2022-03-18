@@ -33,3 +33,67 @@
         background-color: v.$yellow;
     }
 }
+
+.slider-main{
+    margin-top: 4rem;
+    position: relative;
+    &::after{
+        clear: both;
+        display: table;
+        content: "";
+    }
+}
+
+
+.wrapper{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    overflow-x: hidden;
+
+    .main-container{
+        background-color: v.$gray;
+        padding: 2rem;
+        border-radius: 2rem;
+    }
+}
+
+.buttons{
+    position: absolute;
+    width: 100%;
+    top: 45%;
+    left: 0;
+    z-index: 1;
+    display: flex;
+
+    .slider-next{
+        box-shadow: -2px -2px 5px #202020;
+        margin-right: -3.5rem;
+        z-index: 1;
+        right: 0;
+    }
+    .slider-prev{
+        box-shadow: 2px 2px 5px #202020;
+        margin-left: -3.5rem;
+        z-index: 1;
+        left: 0;
+    }
+
+    .slider-next, .slider-prev{
+        border: none;
+        background-color: rgba($color: v.$white, $alpha: 0.3);        
+        color: v.$darkGray;
+        font-size: 3rem;
+        font-weight: v.$bold;
+        padding: 2.5rem;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        position: absolute;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+

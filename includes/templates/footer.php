@@ -24,7 +24,10 @@
     </footer>
 
     <!-- <script src="build/js/app.js"></script> -->
-     <script src="build/js/prueba.js"></script>
+     <script src="build/js/app.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <!-- Youtube player API -->
+    <script src="//www.youtube.com/player_api"></script>
 
 </body>
 </html>

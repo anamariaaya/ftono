@@ -18,71 +18,69 @@ function menuDropdown(){
 const slider = document.querySelector('.slider');
 const punto = document.querySelectorAll('.punto');
 
-function mainSlide(){
-    const imgArray = [
-        '../build/img/1.jpg',
-        '../build/img/2.jpg',
-        '../build/img/3.jpg',
-        '../build/img/4.jpg',
-        '../build/img/5.jpg',
-        '../build/img/6.jpg',
-        '../build/img/7.jpg'
-    ];
-
-    const img = document.querySelector('#mainImg');
-    const rightImg = document.querySelector('#rightImg');
-    const leftImg = document.querySelector('#leftImg');
-    
-
-    let i = 0;
-    img.src = imgArray[i];
-    rightImg.src = imgArray[i+1];
-    leftImg.src = imgArray[i = imgArray.length -1];
-
-    // function slider(){
-    //     img.src = imgArray[i];
-    //     i = ( i < imgArray.length -1) ? i+1 : 0;
-    // }
-    // setInterval(slider, 2000);
-
-    const buttonNext = document.querySelector('.next');
-    const buttonPrev = document.querySelector('.prev');
-
-    buttonNext.addEventListener('click', function(){
-        img.src = imgArray[i];
-        i = ( i < imgArray.length -1) ? i+1 : 0;
-    });
-        
-    //  buttonNext.onclick = slideShowNext = () => {
-    //     img.src = imgArray[i];
-    //      i = ( i < imgArray.length -1) ? i+1 : 0;
-    //  }
-
-    buttonPrev.onclick = slideShowPrev = () => {
-        img.src = imgArray[i];
-        i = ( i <= 0 ) ? imgArray.length -1 : i-1;
-    }
-};
-
 // function mainSlide(){
-//     let i = 0;
-//     const slider = document.querySelector('.slider');
 //     const imgArray = [
 //         '../build/img/1.jpg',
 //         '../build/img/2.jpg',
-//         '../build/img/3.jpg'
-//     ]
-//     const buttonNext = document.querySelector('.next');
+//         '../build/img/3.jpg',
+//         '../build/img/4.jpg',
+//         '../build/img/5.jpg',
+//         '../build/img/6.jpg',
+//         '../build/img/7.jpg'
+//     ];
 
-//     imgArray.forEach(img => {
-//         const imagen = document.createElement('IMG');
-//         imagen.src = `${imgArray[i++]}`;
-//         imagen.dataset.imagenId=i;
-//         slider.appendChild(imagen);
-//     });
-
+//     const img = document.querySelector('#mainImg');
+//     const rightImg = document.querySelector('#rightImg');
+//     const leftImg = document.querySelector('#leftImg');
     
+
+//     let i = 0;
+//     img.src = imgArray[i];
+//     rightImg.src = imgArray[i+1];
+//     leftImg.src = imgArray[i = imgArray.length -1];
+
+//     // function slider(){
+//     //     img.src = imgArray[i];
+//     //     i = ( i < imgArray.length -1) ? i+1 : 0;
+//     // }
+//     // setInterval(slider, 2000);
+
+//     const buttonNext = document.querySelector('.slider-next');
+//     const buttonPrev = document.querySelector('.slider-prev');
+
+//     buttonNext.addEventListener('click', function(){
+//         img.src = imgArray[i];
+//         i = ( i < imgArray.length -1) ? i+1 : 0;
+//     });
+        
+//     //  buttonNext.onclick = slideShowNext = () => {
+//     //     img.src = imgArray[i];
+//     //      i = ( i < imgArray.length -1) ? i+1 : 0;
+//     //  }
+
+//     buttonPrev.onclick = slideShowPrev = () => {
+//         img.src = imgArray[i];
+//         i = ( i <= 0 ) ? imgArray.length -1 : i-1;
+//     }
 // };
+
+function mainSlide(){
+    let i = 0;
+    const slider = document.querySelector('.slider');
+    const imgArray = [
+        '../build/img/1.jpg',
+        '../build/img/2.jpg',
+        '../build/img/3.jpg'
+    ]
+    const buttonNext = document.querySelector('.next');
+
+    imgArray.forEach(img => {
+        const imagen = document.createElement('IMG');
+        imagen.src = `${imgArray[i++]}`;
+        imagen.dataset.imagenId=i;
+        slider.appendChild(imagen);
+    });
+};
 
 // const slider = document.querySelector('.slider');
 // const puntos = document.querySelector('.puntos');
@@ -179,3 +177,30 @@ function mainSlide(){
 
 }(jQuery));
 
+//Función para que reproudzca el video on hover
+// $(document).ready(function(){
+//     var nowPlaying = "none";
+//         $('div').hover(function(){
+//             nowPlaying = $(this).find('iframe').attr('src');
+//             $(this).find('iframe').attr('src',nowPlaying+'&autoplay=1');
+//         }, function(){
+//             $(this).find('iframe').attr('src',nowPlaying);
+//         });
+// });
+
+function onYouTubeIframeAPIReady() {
+    $('div[name="vp"]').each(function(){
+    let vid =$(this).attr('videoId');
+    let player = new YT.Player(this, {
+    videoId: vid
+    });
+    })
+}
+    Mouseover = (el) => {
+    let yt_object = YT.get(el.id)
+    yt_object.playVideo();
+    }
+    Mouseout = (el) => {
+    let yt_object = YT.get(el.id)
+    yt_object.pauseVideo();
+    }

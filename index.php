@@ -3,16 +3,23 @@
     includeTemplate('header', $inicio = true);
 ?>
 
-<main class="container">
-    <div class="carousel">
+<main class="container slider-main">
+    <div class="wrapper">
         <div class="slider">
 
             <!-- <img class="leftImg" src="" alt="imagen galería">
             <img class="mainImg" src="" alt="imagen galería">
             <img class="rightImg"src="" alt="imagen galería"> -->
 
-            <button class="prev">Prev</button>
-            <button class="next">Next</button>
+        </div>
+
+        <div class="buttons">
+            <button class="slider-next">
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <button class="slider-prev">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
         </div>
         <!-- <ul class="puntos">
                 <li class="punto"></li>
@@ -23,7 +30,7 @@
 </main>
 
 <!--sección de playlist inicial-->
-<div class="container">
+<div class="container slider-main">
     <?php
     $playlist=[
         'Canción número 1' => 'LALUQNpm4zk',
@@ -42,32 +49,63 @@
     ?>
     
     <div class="light-bg">
-        <h2 class="playlist-title">Top</h2>
-        <div class="ft-playlist">   
+        <div class="wrapper">
+            <h2 class="playlist-title">Top</h2>
 
-            <div class="ft-songs">            
-                <?php foreach($playlist as $nombre => $id):?>
+            <div class="ft-playlist">   
+
+                <div class="ft-songs">            
+                    <?php foreach($playlist as $nombre => $id):?>
+                    
+                    <form method="POST">
+                        <input type="hidden" name="id" value="<?php echo $id;?> ">
+                        <button type="submit" class="playlist-btn">
+                            <img src="build/img/play-btn.svg"/>
+                        <?php echo $nombre; ?>
+                        </button>
+                    </form>
+                    <?php endforeach;?>
+                </div>
                 
-                <form method="POST">
-                    <input type="hidden" name="id" value="<?php echo $id;?> ">
-                    <button type="submit" class="playlist-btn">
-                        <img src="build/img/play-btn.svg"/>
-                    <?php echo $nombre; ?>
-                    </button>
-                </form>
-                <?php endforeach;?>
-            </div>
-            
-            <iframe class="ft-player" width="560" height="315" src='https://www.youtube.com/embed/<?php echo empty($_POST['id']) ? $playlist['Canción número 1'] : $_POST['id'] ;?>' title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe class="ft-player" width="560" height="315" src='https://www.youtube.com/embed/<?php echo empty($_POST['id']) ? $playlist['Canción número 1'] :$_POST['id'].'?autoplay=1&mute=1'?>' title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" autoplay muted="muted" allowfullscreen></iframe>
 
+            </div>
+
+            <div class="ft-playlist">   
+
+                <div class="ft-songs">            
+                    <?php foreach($playlist as $nombre => $id):?>
+                    
+                    <form method="POST">
+                        <input type="hidden" name="id" value="<?php echo $id;?> ">
+                        <button type="submit" class="playlist-btn">
+                            <img src="build/img/play-btn.svg"/>
+                        <?php echo $nombre; ?>
+                        </button>
+                    </form>
+                    <?php endforeach;?>
+                </div>
+                
+                <iframe class="ft-player" width="560" height="315" src='https://www.youtube.com/embed/<?php echo empty($_POST['id']) ? $playlist['Canción número 1'] : $_POST['id'] ;?>' title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+            </div>
         </div>
-    </div>
+
+        <div class="buttons">
+            <button class="slider-next">
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <button class="slider-prev">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+        </div>
+    </div>   
 </div>
 
 <!--Sección de categorías-->
-<div class="container cat-main">
-    <div class="cat-wrapper">
-        <div class="cat-container">
+<div class="container slider-main">
+    <div class="wrapper">
+        <div class="main-container">
             <h2>Categorias</h2>
             <div class="categories">
                 <div class="cat-info">
@@ -91,7 +129,7 @@
             </div>
         </div>
 
-        <div class="cat-container">
+        <div class="main-container">
             <h2>Instrumentos</h2>
             <div class="categories">
                 <div class="cat-info">
@@ -115,7 +153,7 @@
             </div>
         </div>
 
-        <div class="cat-container">
+        <div class="main-container">
             <h2>Sensaciones</h2>
             <div class="categories">
                 <div class="cat-info">
@@ -139,7 +177,7 @@
             </div>
         </div>
 
-        <div class="cat-container">
+        <div class="main-container">
             <h2>Categorias</h2>
             <div class="categories">
                 <div class="cat-info">
@@ -163,7 +201,7 @@
             </div>
         </div>
 
-        <div class="cat-container">
+        <div class="main-container">
             <h2>Instrumentos</h2>
             <div class="categories">
                 <div class="cat-info">
@@ -187,7 +225,7 @@
             </div>
         </div>
 
-        <div class="cat-container">
+        <div class="main-container">
             <h2>Sensaciones</h2>
             <div class="categories">
                 <div class="cat-info">
@@ -213,14 +251,81 @@
     </div>
 
     <div class="buttons">
-        <button class="cat-next">
+        <button class="slider-next">
             <i class="fa-solid fa-arrow-right"></i>
         </button>
-        <button class="cat-prev">
+        <button class="slider-prev">
             <i class="fa-solid fa-arrow-left"></i>
         </button>
     </div>
 </div>
+
+<!-- <section class="container slider-main">
+    <div class="wrapper">-->
+        <!-- <div class="main-container artista">
+            <video width="320" height="240" loop autoplay muted controls>
+                <source src="/build/videos/guitar_string3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h2>C-tangana</h2>
+        </div> -->
+        <!-- <div class="main-container artista">
+            <h2>C-Tangana</h2>
+        </div>
+        <div class="main-container artista">
+            <h2>C-Tangana</h2>
+        </div>
+        <div class="main-container artista">
+            <h2>C-Tangana</h2>
+        </div>
+        <div class="main-container artista">
+            <h2>C-Tangana</h2>
+        </div>
+        <div class="main-container artista">
+            <h2>C-Tangana</h2>
+        </div>
+    </div>
+    <div class="buttons">
+        <button class="slider-next">
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+        <button class="slider-prev">
+            <i class="fa-solid fa-arrow-left"></i>
+        </button>
+    </div>
+</section> -->
+
+<section class="container slider-main">
+    <div class="wrapper">
+    
+        <div class="main-container light-bg" id="player0" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="uV0r4a2QVkQ">
+            <h2>C-Tangana</h2>
+        </div>
+        <div class="main-container light-bg" id="player1" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="sGIm0-dQd8M">
+            <!-- <iframe width="373" height="210" src="https://www.youtube.com/embed/sGIm0-dQd8M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+            <h2>Daddy Yankee</h2>
+        </div>
+        <div class="main-container  light-bg" id="player2" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="I9t4XTOwtEo">
+            <!-- <iframe width="373" height="210" src="https://www.youtube.com/embed/I9t4XTOwtEo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+            <h2>Systema Solar</h2>
+        </div>
+        
+    </div>
+    <div class="buttons">
+        <button class="slider-next">
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+        <button class="slider-prev">
+            <i class="fa-solid fa-arrow-left"></i>
+        </button>
+    </div>
+</section>
+
+
+<script src="//www.youtube.com/player_api"></script>
+<!-- <div class="container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/pOv9oHD4TDA?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div> -->
 
 <?php
     includeTemplate('footer');

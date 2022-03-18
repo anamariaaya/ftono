@@ -3,11 +3,10 @@
 @use "base/mixins" as m;
 
 .slider{
-     display: grid;
-     place-items: center;
-     position: relative;
-     grid-template-columns: repeat(3, 1fr);
+     display: flex;
      height: 55rem;
+     align-items: center;
+     justify-content: center;
     // margin: 10rem auto;
     // display: flex;
     // flex-wrap: row nowrap;
@@ -24,7 +23,6 @@
         border: 2px solid v.$softGray;
         height: 40rem;
         width: auto;
-        position: absolute;
         z-index: 1;
     }
 

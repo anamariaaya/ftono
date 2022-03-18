@@ -1,0 +1,38 @@
+@use "sass:math";
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.artista{
+    height: 35rem;
+    width: auto;
+    display: grid;
+    align-content: flex-end;
+    & iframe{
+        height: 32rem !important;
+        width: 25rem;
+    }
+
+    h2{
+        text-align: center;
+        text-shadow: 2px 2px 3px v.$darkGray; 
+        padding: 0;
+        font-weight: v.$bold;
+        // z-index: 1;
+    }
+}
+
+
+// .artista{
+//     position: relative;
+    
+//     & video{
+//         width: 25rem;
+//     }
+
+//     & h2{
+//         position: absolute;
+//         top: 30%;
+//         left: 25%;
+//         text-align: center;
+//     }
+// }
