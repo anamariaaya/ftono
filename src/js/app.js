@@ -188,16 +188,20 @@ function mainSlide(){
 //         });
 // });
 
+
 function onYouTubeIframeAPIReady() {
     $('div[name="vp"]').each(function(){
     let vid =$(this).attr('videoId');
-    let player = new YT.Player(this, {
-    videoId: vid
-    });
-    })
+        let player = new YT.Player(this, {
+        videoId: vid,
+        playerVars:{'mute':1}
+        });
+    })    
 }
+
+
     Mouseover = (el) => {
-    let yt_object = YT.get(el.id)
+    let yt_object = YT.get(el.id);
     yt_object.playVideo();
     }
     Mouseout = (el) => {

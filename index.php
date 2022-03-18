@@ -296,21 +296,37 @@
 </section> -->
 
 <section class="container slider-main">
+    <h1>Artistas</h1>
     <div class="wrapper">
     
-        <div class="main-container light-bg" id="player0" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="uV0r4a2QVkQ">
-            <h2>C-Tangana</h2>
+        <a href="artista.php">
+            <div class="artista light-bg">
+                <div id="player0" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="uV0r4a2QVkQ">
+                </div>
+                <h3>C-Tangana</h3>
+            </div>
+        </a>
+
+        <div class="artista light-bg">
+            <div id="player1" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="sGIm0-dQd8M">
+            </div>
+            <h3>Daddy Yankee</h3>
         </div>
-        <div class="main-container light-bg" id="player1" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="sGIm0-dQd8M">
-            <!-- <iframe width="373" height="210" src="https://www.youtube.com/embed/sGIm0-dQd8M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-            <h2>Daddy Yankee</h2>
-        </div>
-        <div class="main-container  light-bg" id="player2" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="I9t4XTOwtEo">
-            <!-- <iframe width="373" height="210" src="https://www.youtube.com/embed/I9t4XTOwtEo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-            <h2>Systema Solar</h2>
+
+        <div class="artista light-bg">
+            <div id="player2" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="I9t4XTOwtEo">
+            </div>
+            <h3>Systema Solar</h3>
         </div>
         
+        <div class="artista light-bg">
+            <div id="player3" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="ozXIAg7zp9I">
+            </div>
+            <h3>Rawayana</h3>
+        </div>  
+    
     </div>
+
     <div class="buttons">
         <button class="slider-next">
             <i class="fa-solid fa-arrow-right"></i>

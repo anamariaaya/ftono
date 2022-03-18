@@ -10,11 +10,13 @@
 
     .cat-info{
         border-radius: 1rem;
-        border: 2px solid v.$softGray;
+        border: 0.2rem solid v.$softGray;
         padding: 1.5rem 3rem;
         display: grid;
         place-items: center;
         background-image: url('/build/img/categories.webp');
+        background-size: cover;
+        background-repeat: no-repeat;
         
         & p{
             color:v.$white;
