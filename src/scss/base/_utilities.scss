@@ -23,6 +23,16 @@
     border-radius: 2rem;
 }
 
+.div-bg{
+    background-color: v.$gray;
+    margin-top: 4rem;
+    padding: 2rem;
+}
+
+.text-left{
+    text-align: left;
+}
+
 .botones{
     @include m.boton(v.$yellow, block);
     border-radius: 1rem;

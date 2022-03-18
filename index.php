@@ -295,45 +295,47 @@
     </div>
 </section> -->
 
-<section class="container slider-main">
-    <h1>Artistas</h1>
-    <div class="wrapper">
-    
-        <a href="artista.php">
-            <div class="artista light-bg">
-                <div id="player0" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="uV0r4a2QVkQ">
-                </div>
-                <h3>C-Tangana</h3>
-            </div>
-        </a>
-
-        <div class="artista light-bg">
-            <div id="player1" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="sGIm0-dQd8M">
-            </div>
-            <h3>Daddy Yankee</h3>
-        </div>
-
-        <div class="artista light-bg">
-            <div id="player2" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="I9t4XTOwtEo">
-            </div>
-            <h3>Systema Solar</h3>
-        </div>
+<section class="div-bg">
+    <div class="container slider-main">
+    <h1 class="text-left">Artistas</h1>
+        <div class="wrapper">
         
-        <div class="artista light-bg">
-            <div id="player3" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="ozXIAg7zp9I">
-            </div>
-            <h3>Rawayana</h3>
-        </div>  
-    
-    </div>
+            <a href="artista.php">
+                <div class="artista">
+                    <div id="player0" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="uV0r4a2QVkQ">
+                    </div>
+                    <h3>C-Tangana</h3>
+                </div>
+            </a>
 
-    <div class="buttons">
-        <button class="slider-next">
-            <i class="fa-solid fa-arrow-right"></i>
-        </button>
-        <button class="slider-prev">
-            <i class="fa-solid fa-arrow-left"></i>
-        </button>
+            <div class="artista">
+                <div id="player1" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="sGIm0-dQd8M">
+                </div>
+                <h3>Daddy Yankee</h3>
+            </div>
+
+            <div class="artista">
+                <div id="player2" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="I9t4XTOwtEo">
+                </div>
+                <h3>Systema Solar</h3>
+            </div>
+        
+            <div class="artista">
+                <div id="player3" name="vp" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)" videoId="ozXIAg7zp9I">
+                </div>
+                <h3>Rawayana</h3>
+            </div>  
+
+        </div>
+
+        <div class="buttons">
+            <button class="slider-next">
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <button class="slider-prev">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+        </div>
     </div>
 </section>
 
