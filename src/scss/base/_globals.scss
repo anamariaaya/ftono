@@ -46,7 +46,10 @@ h1, h2, h3 {
 }
 
 h1 {
-
+    background-color: v.$lightGray;
+    width: 75%;
+    border-radius: 2rem;
+    margin: auto;
     font-size: 2.8rem;
     @include m.tablet{
         font-size: 3.8rem;

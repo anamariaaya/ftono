@@ -19,7 +19,7 @@
 
     li {
         width: 100%;
-        background-color: v.$softGray;
+        background-color: v.$lightGray;
         border-bottom: 1rem solid v.$darkGray;
 
         &:first-of-type{
@@ -46,7 +46,7 @@
 
         &.active {
             border-bottom: 1rem solid v.$yellow;
-            background: v.$lightGray;
+            background: v.$gray;
             & a{
                 color: v.$yellow;
             }
@@ -98,7 +98,7 @@
     }
 
     .signup-content {
-        background: v.$softGray;
+        background: v.$gray;
         padding: 2rem;
         border-radius: 0 0 1rem 1rem;
         height: auto;

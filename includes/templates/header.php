@@ -17,7 +17,7 @@
        <div class="topbar">
         <div class="header-left">
             <a href="/">
-                <img class="logo" src="build/img/logo.svg">
+                <img class="logo" src="build/img/logo.svg" alt="Logo Filmtono">
             </a>
             <a href="javascript: history.go(-1)">
                 <i class="fas fa-arrow-left go-back <?php echo $inicio ? 'no-display' : '' ;?>"></i>
@@ -41,7 +41,7 @@
             <a href="/search.php">
                 <img class="menu-btn" src="build/img/search.svg">
             </a>
-            <a href="">
+            <a href="/cart.php">
                 <img class="menu-btn" src="build/img/cart.svg">
             </a>
             <a href="">

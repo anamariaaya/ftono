@@ -31,6 +31,9 @@
 
 .text-left{
     text-align: left;
+    background-color: transparent;
+    margin: 0;
+    margin-bottom: 4rem;
 }
 
 .botones{
@@ -42,6 +45,11 @@
     &:hover{
         background-color: v.$yellow;
     }
+}
+
+.btn-compra{
+    @include m.boton(v.$green, block);
+    border-radius: 1rem;
 }
 
 .slider-main{
@@ -104,6 +112,134 @@
         &:hover{
             cursor: pointer;
         }
+    }
+}
+
+.recuadro{
+    width: 70%;
+    margin: 5rem auto;
+    display: grid;
+    place-items: center;
+    background-color: v.$gray;
+    padding: v.$separate;
+    border-radius: 1rem;
+    & form{
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+
+        .campos{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2rem;
+        }
+
+        & label{
+            color: v.$white;
+            font-size: 2.4rem;
+        }
+
+        & input, textarea{
+            background-color: v.$softGray;
+            border: none;
+            border-radius: 1rem;
+            padding: 1rem 1.5rem;
+            color: v.$white;
+            &:focus{
+                border: none;
+                color: v.$white;
+                outline: none !important;
+            }
+        }
+
+        & textarea{
+            height: 12rem;
+        }
+
+        .radio{
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 1rem;
+            background-color: v.$lightGray;
+
+
+            & label{
+                margin-right: 3rem;
+            }
+
+            .label {
+                display: block;
+                position: relative;
+                cursor: pointer;
+                font-size: 22px;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                
+                & input[type=radio]{
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+                }
+                .checkmark {
+                    position: absolute;
+                    top: 15%;
+                    right: 0;
+                    height: 25px;
+                    width: 25px;
+                    background-color: #eee;
+                }
+                & input[type=radio]:checked ~ .checkmark {
+                    background-color: v.$yellow;
+                }
+                
+                .checkmark:after {
+                    content: "";
+                    position: absolute;
+                    display: none;
+                }
+
+                /* Show the indicator (dot/circle) when checked */
+                & input[type=radio]:checked ~ .checkmark:after {
+                    display: block;
+                }
+
+                .checkmark:after {
+                    top: 9px;
+                    left: 9px;
+                    width: 8px;
+                    height: 8px;
+                    background: white;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        .rememberMe{
+            display: flex;
+            font-size: 2rem;
+            & span{
+                margin-left: 1rem;
+            }
+        }
+        .forgot{
+            display: flex;
+            flex-direction: column;
+
+            & a{
+                margin-bottom: 2rem;
+            }
+        }
+    }
+}
+
+.bloque-btn{
+    display: flex;
+    flex-direction: column;
+
+    & a{
+        margin-bottom: 2rem;
     }
 }
 
