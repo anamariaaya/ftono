@@ -1,0 +1,38 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.btn-search{
+    position: absolute;
+    top: 50%;
+    right: -100%;        
+    transform: translate(-50%, -50%);
+    width: 1.7rem;
+    @include m.tablet{
+        width: 3rem;       
+        right: 25%;        
+    }
+    @include m.desktop{
+        right: 40%;
+    }
+}
+
+.btn-menu{
+    filter:sepia(100%) grayscale(1) brightness(1);    
+    &.active{
+        filter:none;
+    }
+    &:hover{
+        filter: none;
+    }
+}
+
+.btn-dropdown{
+    cursor: pointer;
+}
+
+.btn-submit{
+    @include m.boton(v.$yellow, block);
+    width: fit-content;
+    border-radius: 1rem;
+    color: v.$gray-dark;
+}

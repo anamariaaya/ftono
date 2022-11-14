@@ -12,7 +12,6 @@ const sourcemaps = require('gulp-sourcemaps');
 const cache = require('gulp-cache');
 const imagemin = require('gulp-imagemin');
 const webp = require('gulp-webp');
-const avif = require('gulp-avif');
 const svg = require('gulp-svgmin');
 
 // Javascript
@@ -20,10 +19,8 @@ const terser = require('gulp-terser-js');
 
 const path = {
     scss: 'src/scss/**/*.scss',
-    css: 'build/css/app.css',
     js: 'src/js/**/*.js',
     img: 'src/img/**/*.{jpg,png}',
-    imgmin: 'build/img/**/*.{jpg,png}',
     svg: 'src/img/**/*.svg'
 }
 
@@ -34,7 +31,7 @@ function css( done ) {
         .pipe( sass() ) // Compilarlo
         .pipe( postcss([ autoprefixer(), cssnano() ]) )
         .pipe(sourcemaps.write('.'))
-        .pipe( dest('build/css') ) // Almacenarla en el disco duro
+        .pipe(  dest('public/build/css') );
     done();
 }
 
@@ -42,9 +39,9 @@ function imagenes(done) {
     const opciones = {
         optimizationLevel: 3
     }
-    src('src/img/**/*.{png,jpg}')
+    src(path.img)
         .pipe( cache( imagemin(opciones) ) )
-        .pipe( dest('build/img') )
+        .pipe( dest('public/build/img') )
     done();
 }
 
@@ -52,19 +49,9 @@ function versionWebp( done ) {
     const opciones = {
         quality: 50
     };
-    src('src/img/**/*.{png,jpg}')
+    src(path.img)
         .pipe( webp(opciones) )
-        .pipe( dest('build/img') )
-    done();
-}
-
-function versionAvif( done ) {
-    const opciones = {
-        quality: 50
-    };
-    src('src/img/**/*.{png,jpg}')
-        .pipe( avif(opciones) )
-        .pipe( dest('build/img') )
+        .pipe( dest('public/build/img') )
     done();
 }
 
@@ -73,7 +60,7 @@ function javascript( done ) {
         .pipe(sourcemaps.init())
         .pipe( terser() )
         .pipe(sourcemaps.write('.'))
-        .pipe(dest('build/js'));
+        .pipe(dest('public/build/js'));
 
     done();
 }
@@ -81,7 +68,7 @@ function javascript( done ) {
 function imgSvg(){
     return src(path.svg)
         .pipe(svg())
-        .pipe(dest('build/img'));
+        .pipe(dest('public/build/img'));
 }
 
 function dev( done ) {
@@ -95,6 +82,5 @@ exports.css = css;
 exports.js = javascript;
 exports.imagenes = imagenes;
 exports.versionWebp = versionWebp;
-exports.versionAvif = versionAvif;
 exports.imgSvg = imgSvg;
-exports.dev = parallel( imagenes, versionWebp, versionAvif, javascript, imgSvg, dev);
+exports.dev = parallel( css, imagenes, versionWebp, javascript, imgSvg, dev);

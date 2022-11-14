@@ -1,0 +1,237 @@
+@use "sass:math";
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+
+.no-display{
+    display: none !important;
+}
+
+.light-bg{
+    background-color: v.$gray;
+    margin-top: 4rem;
+    padding: 2rem;
+    border-radius: 2rem;
+}
+
+.div-bg{
+    background-color: v.$gray;
+    margin-top: 4rem;
+    padding: 2rem;
+}
+
+.text-left{
+    text-align: left;
+    background-color: transparent;
+    margin: 0;
+    margin-bottom: 4rem;
+}
+
+.botones{
+    @include m.boton(v.$yellow, block);
+    border-radius: 1rem;
+}
+
+.btn-signup{
+    @include m.boton(v.$gray-dark, inline-block);
+    &:hover{
+        background-color: v.$yellow;
+    }
+}
+
+.btn-compra{
+    @include m.boton(v.$green, block);
+    border-radius: 1rem;
+}
+
+.slider-main{
+    margin-top: 4rem;
+    position: relative;
+    &::after{
+        clear: both;
+        display: table;
+        content: "";
+    }
+}
+
+
+.wrapper{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    overflow-x: hidden;
+
+    .main-container{
+        background-color: v.$gray;
+        padding: 2rem;
+        border-radius: 2rem;
+    }
+}
+
+.buttons{
+    position: absolute;
+    width: 100%;
+    top: 45%;
+    left: 0;
+    z-index: 1;
+    display: flex;
+
+    .slider-next{
+        box-shadow: -2px -2px 5px #202020;
+        margin-right: -3.5rem;
+        z-index: 1;
+        right: 0;
+    }
+    .slider-prev{
+        box-shadow: 2px 2px 5px #202020;
+        margin-left: -3.5rem;
+        z-index: 1;
+        left: 0;
+    }
+
+    .slider-next, .slider-prev{
+        border: none;
+        background-color: rgba($color: v.$white, $alpha: 0.3);        
+        color: v.$gray-dark;
+        font-size: 3rem;
+        font-weight: v.$bold;
+        padding: 2.5rem;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        position: absolute;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+
+.recuadro{
+    width: 70%;
+    margin: 5rem auto;
+    display: grid;
+    place-items: center;
+    background-color: v.$gray;
+    padding: v.$separate;
+    border-radius: 1rem;
+    & form{
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+
+        .campos{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2rem;
+        }
+
+        & label{
+            color: v.$white;
+            font-size: 2.4rem;
+        }
+
+        & input, textarea{
+            background-color: v.$gray-soft;
+            border: none;
+            border-radius: 1rem;
+            padding: 1rem 1.5rem;
+            color: v.$white;
+            &:focus{
+                border: none;
+                color: v.$white;
+                outline: none !important;
+            }
+        }
+
+        & textarea{
+            height: 12rem;
+        }
+
+        .radio{
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 1rem;
+            background-color: v.$gray-light;
+
+
+            & label{
+                margin-right: 3rem;
+            }
+
+            .label {
+                display: block;
+                position: relative;
+                cursor: pointer;
+                font-size: 22px;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                
+                & input[type=radio]{
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+                }
+                .checkmark {
+                    position: absolute;
+                    top: 15%;
+                    right: 0;
+                    height: 25px;
+                    width: 25px;
+                    background-color: #eee;
+                }
+                & input[type=radio]:checked ~ .checkmark {
+                    background-color: v.$yellow;
+                }
+                
+                .checkmark:after {
+                    content: "";
+                    position: absolute;
+                    display: none;
+                }
+
+                /* Show the indicator (dot/circle) when checked */
+                & input[type=radio]:checked ~ .checkmark:after {
+                    display: block;
+                }
+
+                .checkmark:after {
+                    top: 9px;
+                    left: 9px;
+                    width: 8px;
+                    height: 8px;
+                    background: white;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        .rememberMe{
+            display: flex;
+            font-size: 2rem;
+            & span{
+                margin-left: 1rem;
+            }
+        }
+        .forgot{
+            display: flex;
+            flex-direction: column;
+
+            & a{
+                margin-bottom: 2rem;
+            }
+        }
+    }
+}
+
+.bloque-btn{
+    display: flex;
+    flex-direction: column;
+
+    & a{
+        margin-bottom: 2rem;
+    }
+}
+

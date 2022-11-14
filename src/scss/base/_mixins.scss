@@ -1,4 +1,5 @@
 /** Media Queries **/
+@use 'sass:math';
 @use 'variables' as v;
 
 @mixin phone {
@@ -12,12 +13,31 @@
         @content;
     }
 }
+
+@mixin laptop{
+    @media (min-width: #{v.$laptop}) {
+        @content;
+    }
+}
   
 @mixin desktop {
     @media (min-width: #{v.$desktop}) {
         @content;
     }
 }
+
+@mixin desktop-large {
+    @media (min-width: #{v.$desktop-large}) {
+        @content;
+    }
+}
+
+@mixin ultra-wide {
+    @media (min-width: #{v.$ultra-wide}) {
+        @content;
+    }
+}
+
 @mixin grid($columns, $spacing) {
     display: grid;
     gap: $spacing;
@@ -31,12 +51,14 @@
     text-decoration: none;
     padding: 1rem 3rem;
     text-align: center;
-    margin-top: v.$separate / 2;
+    margin-top: math.div(v.$separate , 2);
     display: $display;
     border: none;
 
     &:hover{
         background-color: darken($bgColor, 7);
+        transform: scale(1.03);
+        transition: transform 0.2s;
         cursor: pointer;
     }
 }

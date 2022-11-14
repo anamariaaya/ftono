@@ -3,23 +3,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
 
 // Fuentes
-$mainFont: 'Roboto', sans-serif;
-$secFont: 'Lato', sans-serif;
+$font-primary: 'Roboto', sans-serif;
+$font-secondary: 'Lato', sans-serif;
 
 // Tamaño de Media Queries
-$phone: 480px;
+$phone: 380px;
 $tablet: 950px;
-$desktop: 1024px;
+$laptop: 1024px;
+$desktop: 1250px;
+$desktop-large: 1440px;
+$ultra-wide: 2000px;
 
 // Colores
 $black: #000000;
 $white: #FFFFFF;
 $gray: #323246;
-$lightGray: #505070;
-$softGray: #7E7B99;
-$darkGray: #292B3F;
+$gray-light: #505070;
+$gray-soft: #7E7B99;
+$gray-dark: #292B3F;
 $yellow: #FD9526;
-$lightYellow: #FCEB54;
+$yellow-light: #FCEB54;
 $green: #36DE8C;
 $blue: #29CBFC;
 $pink: #DC1064;

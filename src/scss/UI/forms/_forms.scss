@@ -1,0 +1,65 @@
+@use "sass:math";
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.form-div{
+    width: 100%;
+    margin: 3rem  auto;
+    @include m.tablet{
+        width: 65%;
+    }
+}
+
+.form{
+    background-color: v.$gray;
+    padding: 3rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+
+    &__group{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    
+        &__label{
+            color: v.$white;
+            font-size: 2rem;
+        }
+        &__input, &__select{
+            padding: 1.5rem;
+            width: 100%;
+            margin: auto;
+            background-color: v.$gray-light;
+            border-radius: 1rem;
+            cursor: pointer;
+            color: v.$white;
+            border: none;
+            &:focus{
+                outline: 2px solid v.$yellow;
+                caret-color: v.$yellow;
+            }
+        }
+    }
+}
+
+.acciones{
+    width: 100%;
+    margin: auto;
+    margin-top:3rem;
+    display: flex;
+    justify-content: space-around;
+    @include m.tablet{
+        width: 65%;
+    }
+
+    &__enlace{
+        color: v.$white;
+        font-size: 1.4rem;
+        font-weight: v.$regular;
+        &:hover{
+            color: v.$yellow;
+        }
+    }
+}

@@ -1,0 +1,144 @@
+@use "sass:math";
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.header{
+    &__bar{
+    margin: 1.2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+        @include m.phone{
+            margin: math.div(v.$separate, 2);
+        }
+        @include m.tablet{
+            margin: math.div(v.$separate, 2) v.$separate;
+            grid-template-columns: 3fr 1fr;
+            align-items: center;
+        }
+    }    
+    
+    &__left{
+        display: flex;
+        flex-direction: column;
+        row-gap: 1rem;
+        align-items: flex-start;
+        @include m.tablet{
+            flex-direction: row;
+            align-items: center;
+            row-gap: 0;
+            column-gap: 2rem;
+        }
+        &--logo{
+            width: 12rem;
+            margin-top: 2rem;
+            @include m.phone{
+                width: 16rem;
+            } 
+            @include m.tablet{
+                width: 20rem;
+                margin-right: 3rem;
+                margin-top: 0;
+            }
+        }
+
+        &--arrow{
+            color: v.$gray-light;
+            font-size: 4rem;
+        }
+    
+        &__search-bar{
+            background-color: v.$gray-light;
+            width: 200%;
+            padding: 0.7rem;
+            border-radius: 2rem;
+            display: flex;
+            align-items: center;
+            border: none;
+            font-size: 1.4rem;
+            @include m.tablet{
+                width: 75%;
+                padding: 1.2rem;
+                font-size: 1.6rem;
+            }
+            @include m.desktop{
+                width: 60%;
+            }
+
+            &:focus{
+                outline: 2px solid v.$yellow;
+                caret-color: v.$yellow;
+            }
+        }
+        &__label{
+            width: 100%;
+            position: relative;
+            margin-top: 3rem;
+            @include m.tablet{
+                margin-top: 0;
+            }
+        }
+    }
+}
+
+.header__login{
+    display: flex;
+    margin: 0;
+    align-items: flex-end;
+    justify-content: flex-start;
+    height: 100%;
+    margin: .5rem 0;
+    flex-direction: column;
+    gap: 1rem;
+
+    @include m.phone{
+        gap: 2rem;
+    }
+
+    @include m.tablet{
+        width: 100%;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-end;
+        align-items: center;
+        margin: auto;
+        gap: 0;
+    }
+
+    &__btn{
+        color: v.$white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 1rem;
+        font-family: v.$font-secondary;
+        font-weight: v.$bold;
+        font-size: 1.4rem;
+        line-height: 1.2;
+        width: 75%;
+
+        @include m.phone{
+            font-size: 1.7rem;
+            padding: 0.3rem 2rem;
+        }
+
+        @include m.tablet{
+            width: auto;
+            padding: 0.5rem 3rem;
+        }    
+
+        &--login{
+            @extend .header__login__btn;
+            background-color: v.$gray-light;
+            text-decoration: underline;       
+        }
+        &--signup{
+            @extend .header__login__btn;
+            background-color: v.$yellow;
+            margin-left: -0.5rem;
+
+            @include m.phone{
+                margin-left: -1rem;
+            }
+        }
+    }
+}
+

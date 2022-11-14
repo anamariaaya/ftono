@@ -1,0 +1,82 @@
+@use "sass:math";
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.footer{
+    background-color: v.$gray-dark;
+    padding: v.$separate 1rem;
+    place-items: center;
+    margin-top: 2rem;
+    @include m.grid(1, v.$separate);
+
+    @include m.tablet{
+        @include m.grid(3, v.$separate);
+    }
+
+    &__social{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-bottom: 2rem;
+        @include m.tablet{
+            padding-bottom: 0;
+        }
+
+        &--logo{
+            width: 20rem;
+            @include m.phone{
+                width: 24rem;            
+            }
+            @include m.tablet{
+                width: 30rem;
+            }      
+        }       
+
+        &__links{
+            margin-top: math.div(v.$separate, 2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            column-gap: math.div(v.$separate, 2);
+        
+            & i{
+                font-size: 3.2rem;
+                color: v.$yellow;
+            }
+        }
+
+        &--copyright{
+            color: v.$yellow;
+        }
+    }
+
+    &__contact{
+        display: none;
+        @include m.tablet{
+            display: block;
+            text-align: center;
+            h3, p{
+                color: v.$yellow;
+            }
+    
+            h3{
+                font-weight: v.$bold;
+            }
+        }
+    }
+
+    .footer__terms{
+        display: none;
+        @include m.tablet{
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            font-size: 1.7rem;
+            a{
+                color: v.$yellow;
+            }
+        }
+    }
+}
+

@@ -1,4 +1,16 @@
 <?php
 
-define('TEMPLATES_URL', __DIR__. '/templates');
-define('FUNCTIONS_URL', __DIR__. 'functions.php');
+use Dotenv\Dotenv;
+use Model\ActiveRecord;
+require __DIR__.'/../vendor/autoload.php';
+
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->safeLoad();
+
+require 'funciones.php';
+require 'database.php';
+
+
+//Conectarnos a la BD
+ ActiveRecord::setDB($db);
+
