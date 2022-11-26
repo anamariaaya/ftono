@@ -19,7 +19,8 @@ class Router
 
     public function comprobarRutas()
     {
-
+        session_start();
+        
         $url_actual = $_SERVER['PATH_INFO'] ?? '/';
         $method = $_SERVER['REQUEST_METHOD'];
 
@@ -51,10 +52,12 @@ class Router
         //Utilizar el layout de acuerdo a la URL
         $url_actual = $_SERVER['PATH_INFO'] ?? '/';
 
-        if(str_contains($url_actual, '/admin')) {
+        if(str_contains($url_actual, '/filmtono')) {
             include_once __DIR__ . "/views/layouts/admin-layout.php";
-        } elseif(str_contains($url_actual, '/portal/')) {
-            include_once __DIR__ . "/views/layouts/usuario-layout.php";
+        } elseif(str_contains($url_actual, '/compras')) {
+            include_once __DIR__ . "/views/layouts/compras-layout.php";
+        } elseif(str_contains($url_actual, '/musica')) {
+            include_once __DIR__ . "/views/layouts/musica-layout.php";
         } else {
             include_once __DIR__ . "/views/layouts/main-layout.php";
         }

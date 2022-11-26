@@ -4,7 +4,7 @@ namespace Model;
 
 class Usuario extends ActiveRecord {
     protected static $tabla = 'usuarios';
-    protected static $columnasDB = ['id', 'nombre', 'apellido', 'email', 'password', 'confirmado', 'token', 'nivel', 'tipo'];
+    protected static $columnasDB = ['id', 'nombre', 'apellido', 'email', 'password', 'confirmado', 'token'];
     
     public function __construct($args = [])
     {
@@ -16,8 +16,6 @@ class Usuario extends ActiveRecord {
         $this->password2 = $args['password2'] ?? '';
         $this->confirmado = $args['confirmado'] ?? 0;
         $this->token = $args['token'] ?? '';
-        $this->nivel = $args['nivel'] ?? '';
-        $this->tipo = $args['tipo'] ?? '';
     }
 
     // Validar el Login de Usuarios
@@ -54,9 +52,6 @@ class Usuario extends ActiveRecord {
         }
         if($this->password !== $this->password2) {
             self::$alertas['error'][] = 'Los password son diferentes';
-        }
-        if(!$this->tipo){
-            self::$alertas['error'][] = 'El tipo de usuario es obligatorio';
         }
         return self::$alertas;
     }

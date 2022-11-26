@@ -2,8 +2,8 @@
 
 namespace Model;
 
-class Editorial extends ActiveRecord{
-    protected static $tabla = 'editorial';
+class Empresa extends ActiveRecord{
+    protected static $tabla = 'empresa';
     protected static $columnasDB = ['id', 'empresa', 'id_fiscal', 'direccion', 'ciudad', 'pais', 'instagram', 'nombre_comercial', 'apellido_comercial', 'email_comercial', 'tel_comercial', 'nombre_contable', 'apellido_contable', 'email_contable', 'tel_contable'];
 
     public function __construct($args = [])

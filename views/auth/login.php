@@ -23,6 +23,6 @@
     </div>
 
     <div class="acciones">
-        <a href="/register" class="acciones__enlace">¿No tienes cuenta? Regístrate</a><a href="/olvide-password" class="acciones__enlace">¿Olvidaste tu contraseña?</a>
+        <a href="/register" class="acciones__enlace">¿No tienes cuenta? Regístrate</a><a href="/forgot-password" class="acciones__enlace">¿Olvidaste tu contraseña?</a>
     </div>
 </main>

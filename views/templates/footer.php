@@ -1,6 +1,6 @@
 <footer class="footer">
     <div class="footer__social">
-        <img class="footer__social--logo" src="build/img/logo.svg" alt="logo">
+        <img class="footer__social--logo" src="/build/img/logo.svg" alt="logo">
         <div class="footer__social__links">
             <i class="fab fa-youtube"></i>
             <i class="fab fa-instagram"></i>
@@ -16,6 +16,7 @@
     </div>
 
     <div class="footer__terms">
+        <a href="/register-music">Regístrate y sube tu catálogo</a>
         <a href="">Privacy Policy</a>
         <a href="">Terms of Service</a>
         <a href="">Cookie Policy</a>

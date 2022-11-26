@@ -33,15 +33,31 @@ function isAuth() : void {
 }
 
 function isAdmin() : void {
-    if(!isset($_SESSION['admin'])){
+    if(!isset($_SESSION['nivel_admin'])){
         header('Location: /');
     }
 }
 
-function sesionActiva($var){
-    if(!isset($_SESSION['admin'])){
-        echo '/portal/compradores';
+function isComprador() : void {
+    if(!isset($_SESSION['nivel_compra'])){
+        header('Location: /');
+    }
+}
+
+function isMusico() : void {
+    if(!isset($_SESSION['nivel_musica'])){
+        header('Location: /');
+    }
+}
+
+function sesionActiva() : void {
+    if(isset($_SESSION['nivel_admin'])){
+        echo '/filmtono/dashboard';
+    } elseif(isset($_SESSION['nivel_compra'])){
+        echo '/compras/dashboard';
+    } elseif(isset($_SESSION['nivel_musica'])){
+        echo '/musica/dashboard';
     } else{
-        echo '/admin/dashboard';
+        echo '/';
     }
 }

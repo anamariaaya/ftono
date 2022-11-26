@@ -1,0 +1,20 @@
+// {
+//     "categories":[{
+//         "es":"Categoría"
+//     }]
+// }
+
+{
+    "de_DE": {
+      "SALE": "Verkauf",
+      "ADDRESS": "Adresse"
+    },
+    "en_US": {
+      "SALE": "Sale",
+      "ADDRESS": "Address"
+    },
+    "pl_PL": {
+      "SALE": "Sprzedaż",
+      "ADDRESS": "Adres"
+    }
+  }

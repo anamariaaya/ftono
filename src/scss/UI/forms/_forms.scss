@@ -33,13 +33,18 @@
             margin: auto;
             background-color: v.$gray-light;
             border-radius: 1rem;
-            cursor: pointer;
             color: v.$white;
             border: none;
+            display: block;
             &:focus{
                 outline: 2px solid v.$yellow;
                 caret-color: v.$yellow;
             }
+        }
+        &__select option{
+            cursor: pointer;
+            background-color: v.$gray-dark;
+            text-transform: capitalize;
         }
     }
 }

@@ -114,6 +114,9 @@
         font-size: 1.4rem;
         line-height: 1.2;
         width: 75%;
+        &:hover{
+            transform: scale(1.05);
+        }
 
         @include m.phone{
             font-size: 1.7rem;
@@ -128,7 +131,9 @@
         &--login{
             @extend .header__login__btn;
             background-color: v.$gray-light;
-            text-decoration: underline;       
+            text-decoration: underline;
+            border: none;
+            cursor: pointer;
         }
         &--signup{
             @extend .header__login__btn;

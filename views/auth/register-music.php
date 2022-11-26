@@ -6,14 +6,12 @@
     ?>
 
     <div class="form-div">
-        <form class="form" method="POST" action="/register">
+        <form class="form" method="POST" action="/register-music">
             <div class="form__group">
-                <input type="hidden" name="id_nivel" value="4">
-
-                <label class="form__group__label" for="tipo">¿Para qué deseas usar la música?</label>
-                <select class="form__group__select" name="id_compra" id="tipo">
+                <label class="form__group__label" for="tipo">¿Qué tipo de usuario eres?</label>
+                <select class="form__group__select" name="id_musica" id="tipo">
                     <option selected disabled>--Selecciona</option>
-                    <?php foreach($comprador as $tipo): ?>
+                    <?php foreach($musico as $tipo): ?>
                         <option value="<?php echo $tipo->id; ?>"><?php echo $tipo->tipo; ?></option>
                     <?php endforeach; ?>
                 </select>
@@ -49,6 +47,6 @@
     </div>
 
     <div class="acciones">
-        <a href="/login" class="acciones__enlace">¿Ya tienes cuenta? Inicia Sesión</a><a href="/forgot-password" class="acciones__enlace">¿Olvidaste tu contraseña?</a>
+        <a href="/login" class="acciones__enlace">¿Ya tienes cuenta? Inicia Sesión</a><a href="/olvide-password" class="acciones__enlace">¿Olvidaste tu contraseña?</a>
     </div>
 </div>
