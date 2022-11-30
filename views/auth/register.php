@@ -1,6 +1,15 @@
 <div class="container">
     <h1><?php echo $titulo; ?></h1>
 
+    <?php if(isset($_SESSION['id'])): ?>
+        
+        <p class="auth__text">Ya estás registrado</p>
+        <div class="auth">
+            <i class="auth__icon--fail fa-regular fa-circle-xmark"></i>
+            <a class="btn-submit" href="<?php sesionActiva()?>">Volver al Admin</a>
+        </div>
+    <?php else: ?>
+
     <?php
         require_once __DIR__ . '/../templates/alertas.php';
     ?>
@@ -51,4 +60,6 @@
     <div class="acciones">
         <a href="/login" class="acciones__enlace">¿Ya tienes cuenta? Inicia Sesión</a><a href="/forgot-password" class="acciones__enlace">¿Olvidaste tu contraseña?</a>
     </div>
+    
+    <?php endif; ?>
 </div>

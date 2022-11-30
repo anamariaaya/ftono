@@ -20,7 +20,17 @@ class Router
     public function comprobarRutas()
     {
         session_start();
-        
+
+        if(!isset($_SESSION['lang'])){
+            $_SESSION['lang'] = 'en';
+        } else if(isset($_GET['lang']) && $_SESSION['lang'] != $_GET['lang'] && !empty($_GET['lang'])){
+            if($_GET['lang'] == 'en'){
+                $_SESSION['lang'] = 'en';
+            } else if($_GET['lang'] == 'es'){
+                $_SESSION['lang'] = 'es';
+            }
+        }        
+
         $url_actual = $_SERVER['PATH_INFO'] ?? '/';
         $method = $_SERVER['REQUEST_METHOD'];
 

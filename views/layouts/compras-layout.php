@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="admin-html">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,13 +12,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
-<body>
-    <?php 
-        include_once __DIR__ .'/../templates/header.php';
-        include_once __DIR__ .'/../templates/main-sidebar.php';
-        echo $contenido;
-        include_once __DIR__ .'/../templates/footer.php'; 
+<body class="dashboard">
+<?php 
+        include_once __DIR__ .'/../templates/header-dashboard.php';
     ?>
+        <div class="dashboard__grid">
+            <?php
+                include_once __DIR__ .'/../templates/compras-sidebar.php';  
+            ?>
+
+            <main class="dashboard__contenido">
+                <?php 
+                    echo $contenido; 
+                ?> 
+            </main>
+        </div>
 
   <script type="text/javascript" src="/build/js/app.js"></script>
 

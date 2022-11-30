@@ -120,7 +120,7 @@ class AuthController {
                     
 
                     if($resultado) {
-                        header('Location: /mensaje');
+                        header('Location: /message');
                     }
                 }
             }
@@ -184,7 +184,7 @@ class AuthController {
                     
 
                     if($resultado) {
-                        header('Location: /mensaje');
+                        header('Location: /message');
                     }
                 }
             }
@@ -237,7 +237,7 @@ class AuthController {
 
         // Muestra la vista
         $router->render('auth/forgot', [
-            'titulo' => 'Olvide mi Password',
+            'titulo' => 'Olvidé mi Password',
             'alertas' => $alertas
         ]);
     }

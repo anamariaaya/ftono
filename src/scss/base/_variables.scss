@@ -17,6 +17,7 @@ $ultra-wide: 2000px;
 // Colores
 $black: #000000;
 $white: #FFFFFF;
+$back-white: #f3f3f7;
 $gray: #323246;
 $gray-light: #505070;
 $gray-soft: #7E7B99;
@@ -27,6 +28,10 @@ $green: #36DE8C;
 $blue: #29CBFC;
 $pink: #DC1064;
 $red: #CF2020;
+
+//Sombra Neomorphic
+$shadow: rgb(0 0 0 / 19%) 0px 0px 4px, rgb(0 0 0 / 20%) 0px 2px 4px;
+$shadow-inner:rgb(157, 167, 176) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.321) -3px -3px 6px 1px inset;
 
 // Medidas
 $separate: 5rem;
