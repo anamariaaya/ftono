@@ -37,4 +37,14 @@ class ProfileController{
             'alertas' => Usuario::getAlertas()
         ]);
     }
+
+    public static function delete(){
+        isAdmin();
+        $usuario = Usuario::find($_SESSION['id']);
+        $_SESSION = [];  
+        $usuario->eliminar();
+        //$_SESSION = [];        
+        
+        header('Location: /');
+    }
 }

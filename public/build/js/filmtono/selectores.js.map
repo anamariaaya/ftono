@@ -1,0 +1,1 @@
+{"version":3,"sources":["filmtono/selectores.js"],"names":["btnEliminar","document","querySelector","container"],"mappings":"OAAO,MAAMA,YAAcC,SAASC,cAAc,2BAC3C,MAAMC,UAAYF,SAASC,cAAc","file":"selectores.js","sourcesContent":["export const btnEliminar = document.querySelector('#eliminar-cuenta');\r\nexport const container = document.querySelector('.dashboard__contenido');\r\n"]}

@@ -11,7 +11,3 @@ export const num = /^[0-9]+$/;
 export const ig= /(?:(?:http|https):\/\/)?(?:www.)?(?:instagram.com|instagr.am|instagr.com)\/(\w+)/;
 
 export const empresa = new Empresa();
-
-
-
-

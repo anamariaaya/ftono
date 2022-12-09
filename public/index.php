@@ -62,6 +62,7 @@ $router->get('/filmtono/dashboard', [DashboardController::class, 'index']);
 //Filmtono Profile
 $router->get('/filmtono/profile', [ProfileController::class, 'profile']);
 $router->post('/filmtono/profile', [ProfileController::class, 'profile']);
+$router->post('/filmtono/profile/delete', [ProfileController::class, 'delete']);
 
 //Filmtono Promos
 $router->get('/filmtono/promos', [PromosController::class, 'index']);

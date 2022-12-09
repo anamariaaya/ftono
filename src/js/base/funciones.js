@@ -1,4 +1,5 @@
 import {er, num, ig} from '../admin/selectores.js';
+import {container} from '../filmtono/selectores.js';
 export function imprimirAlerta(message, type, container, sibling) {
     // Crea el div
     const divMensaje = document.createElement('div');
@@ -82,5 +83,70 @@ export function llenarDatos() {
 export function limpiarHTML(element){
     while(element.firstChild) {
         element.removeChild(element.firstChild);
+    }
+}
+
+export function crearAlerta(accion, id){
+    const alertaContenedor = document.createElement('div');
+    alertaContenedor.classList.add('modal-alerta--activo');
+    // alertaContenedor.onclick = cerrarAlerta;
+
+    const alertaDiv = document.createElement('DIV');
+    alertaDiv.classList.add('modal-alerta');
+
+    const alertaIcono = document.createElement('I');
+    alertaIcono.classList.add('fa-solid', 'fa-circle-exclamation', 'modal-alerta__icono');
+
+    const alertaTitulo = document.createElement('H3');
+    alertaTitulo.classList.add('modal-alerta__titulo');
+    alertaTitulo.textContent = '¿Estás seguro?';
+
+    const alertaParrafo = document.createElement('P');
+    alertaParrafo.classList.add('modal-alerta__parrafo');
+    alertaParrafo.textContent = 'Esta acción no se puede deshacer';
+
+    const alertaBotones = document.createElement('DIV');
+    alertaBotones.classList.add('modal-alerta__botones');
+
+    const alertaBotonCancelar = document.createElement('BUTTON');
+    alertaBotonCancelar.classList.add('modal-alerta__boton', 'modal-alerta__boton--cancelar');
+    alertaBotonCancelar.textContent = 'Cancelar';
+    alertaBotonCancelar.onclick = cerrarAlerta;
+
+    const alertaBotonEliminar = document.createElement('FORM');
+    alertaBotonEliminar.setAttribute('action', accion);
+    alertaBotonEliminar.setAttribute('method', 'POST');
+
+    const alertaInput = document.createElement('INPUT');
+    alertaInput.setAttribute('type', 'hidden');
+    alertaInput.setAttribute('name', 'id');
+    alertaInput.setAttribute('value', id);
+
+    const alertaInputSubmit = document.createElement('INPUT');
+    alertaInputSubmit.setAttribute('type', 'submit');
+    alertaInputSubmit.setAttribute('value', 'Eliminar');
+    alertaInputSubmit.classList.add('modal-alerta__boton');
+
+    alertaBotonEliminar.appendChild(alertaInput);
+    alertaBotonEliminar.appendChild(alertaInputSubmit);
+
+    //Agregar botones al div de botones
+    alertaBotones.appendChild(alertaBotonCancelar);
+    alertaBotones.appendChild(alertaBotonEliminar);
+
+    //Agregar elementos en el DIV alerta
+    alertaDiv.appendChild(alertaIcono);
+    alertaDiv.appendChild(alertaTitulo);
+    alertaDiv.appendChild(alertaParrafo);
+    alertaDiv.appendChild(alertaBotones);
+
+    alertaContenedor.appendChild(alertaDiv);
+    container.appendChild(alertaContenedor);    
+}
+
+export function cerrarAlerta(){
+    const alerta = document.querySelector('.modal-alerta--activo');
+    if(alerta){
+        alerta.remove();
     }
 }

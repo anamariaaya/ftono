@@ -28,7 +28,7 @@
             </main>
         </div>
 
-    <script type="module" src="/build/js/admin.js"></script>
+    <script type="module" src="/build/js/filmtono.js"></script>
 
     <?php
         echo $script ?? '';
