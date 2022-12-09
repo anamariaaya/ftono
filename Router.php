@@ -39,12 +39,12 @@ class Router
         } else {
             $fn = $this->postRoutes[$url_actual] ?? null;
         }
-
         if ( $fn ) {
             call_user_func($fn, $this);
         } else {
             echo "Página No Encontrada o Ruta no válida";
         }
+        
     }
 
     public function render($view, $datos = [])

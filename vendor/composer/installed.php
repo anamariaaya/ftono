@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '41be0edeca01e10f6331bb0336d1b76aca51f6f6',
+    'reference' => 'b0cfe108f2a7b20dc074d099f0f929847ec230b6',
     'name' => 'anitanashdev/filmtono',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '41be0edeca01e10f6331bb0336d1b76aca51f6f6',
+      'reference' => 'b0cfe108f2a7b20dc074d099f0f929847ec230b6',
     ),
     'graham-campbell/result-type' => 
     array (
@@ -49,12 +49,12 @@
     ),
     'phpmailer/phpmailer' => 
     array (
-      'pretty_version' => 'v6.6.5',
-      'version' => '6.6.5.0',
+      'pretty_version' => 'v6.7.1',
+      'version' => '6.7.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8b6386d7417526d1ea4da9edb70b8352f7543627',
+      'reference' => '49cd7ea3d2563f028d7811f06864a53b1f15ff55',
     ),
     'phpoption/phpoption' => 
     array (

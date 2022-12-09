@@ -20,7 +20,7 @@
         include_once __DIR__ .'/../templates/footer.php'; 
     ?>
 
-  <script type="text/javascript" src="/build/js/app.js"></script>
+  <script type="module" src="/build/js/app.js"></script>
 
     <?php
         echo $script ?? '';

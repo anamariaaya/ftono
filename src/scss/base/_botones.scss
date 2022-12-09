@@ -36,3 +36,10 @@
     border-radius: 1rem;
     color: v.$gray-dark;
 }
+
+.btn-delete{
+    @include m.boton(v.$red, block);
+    width: fit-content;
+    border-radius: 1rem;
+    color: v.$white;
+}

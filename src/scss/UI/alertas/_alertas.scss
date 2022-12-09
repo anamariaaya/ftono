@@ -4,17 +4,18 @@
     padding: 1.5rem 1.5rem 1.5rem 3rem;
     text-transform: uppercase;
     margin: 1rem 0;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: v.$bold;
+    border-radius: 1rem;
     &__error{
         background-color: lighten(v.$red, 60);
-        border-left: .5rem solid v.$red;
+        border-left: 1rem solid v.$red;
         color: v.$red;
     }
 
     &__exito{
         background-color: lighten(v.$green, 40);
-        border-left: .5rem solid v.$green;
+        border-left: 1rem solid v.$green;
         color: darken(v.$green, 25);
     }
 }

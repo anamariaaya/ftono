@@ -3,29 +3,29 @@
 namespace Controllers;
 
 use MVC\Router;
+use Model\Empresa;
+use Model\Usuario;
 
 class DashboardController{
-    public static function index(Router $router){ 
-        isAdmin();
-        $titulo = 'Dashboard';
-        $router->render('/admin/dashboard',[
-            'titulo' => $titulo
-        ]);
-    }
-
     public static function compras(Router $router){        
         isComprador();
+        $usuario = Usuario::find($_SESSION['id']);
+
         $titulo = 'Dashboard';
         $router->render('compras/dashboard',[
-            'titulo' => $titulo
+            'titulo' => $titulo,
+            'usuario' => $usuario
         ]);
     }
 
     public static function musica(Router $router){
-        isMusico();        
+        isMusico();
+        $usuario = Usuario::find($_SESSION['id']);
+
         $titulo = 'Dashboard';
-        $router->render('musica/dashboard',[
-            'titulo' => $titulo
+        $router->render('music/dashboard',[
+            'titulo' => $titulo,
+            'usuario' => $usuario
         ]);
     }
 }

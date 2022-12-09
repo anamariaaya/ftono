@@ -1,2 +1,2 @@
-function menuDropdown(){const e=document.querySelector(".dropdown-btn"),o=document.querySelector(".menu-dropdown"),n=document.querySelector("#menu-btn");e.onclick=function(){o.classList.toggle("no-display"),n.classList.toggle("active")}}function onYouTubeIframeAPIReady(){$('div[name="vp"]').each((function(){let e=$(this).attr("videoId");new YT.Player(this,{videoId:e,playerVars:{mute:1}})}))}document.addEventListener("DOMContentLoaded",(function(){menuDropdown()})),Mouseover=e=>{YT.get(e.id).playVideo()},Mouseout=e=>{YT.get(e.id).pauseVideo()};
+import App from"./UI/App.js";const app=new App;
 //# sourceMappingURL=app.js.map

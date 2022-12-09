@@ -11,17 +11,17 @@
             </span>
         </a>
         
-        <a href="/admin/ofertas" class="dashboard__enlace <?php pagina_admin('ofertas');?>">
-            <i class="fa-solid fa-briefcase dashboard__icono"></i>
+        <a href="/music/profile" class="dashboard__enlace <?php pagina_admin('profile');?>">
+            <i class="fa-solid fa-user dashboard__icono"></i>
             <span class="dashboard__menu-texto">
-                álbumes
+                Perfil
             </span>
         </a>
 
-        <a href="/admin/inbox" class="dashboard__enlace <?php pagina_admin('registrados');?>">
-            <i class="fa-solid fa-comments dashboard__icono"></i>
+        <a href="/music/labels" class="dashboard__enlace <?php pagina_admin('labels');?>">
+            <i class="fa-solid fa-certificate dashboard__icono"></i>
             <span class="dashboard__menu-texto">
-                Sellos
+                labels
             </span>
         </a>
 

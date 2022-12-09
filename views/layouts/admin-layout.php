@@ -28,7 +28,7 @@
             </main>
         </div>
 
-  <script type="text/javascript" src="/build/js/app.js"></script>
+    <script type="module" src="/build/js/admin.js"></script>
 
     <?php
         echo $script ?? '';

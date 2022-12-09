@@ -11,10 +11,10 @@
             </span>
         </a>
         
-        <a href="/admin/ofertas" class="dashboard__enlace <?php pagina_admin('ofertas');?>">
-            <i class="fa-solid fa-briefcase dashboard__icono"></i>
+        <a href="/compras/profile" class="dashboard__enlace <?php pagina_admin('profile');?>">
+            <i class="fa-solid fa-user dashboard__icono"></i>
             <span class="dashboard__menu-texto">
-                Licencias
+                Perfil
             </span>
         </a>
 

@@ -22,13 +22,22 @@
             ?>
 
             <main class="dashboard__contenido">
-                <?php 
-                    echo $contenido; 
-                ?> 
+            <?php if($usuario->perfil === '0'):?>
+
+            <p class="auth__text">Completa tu registro para usar la plataforma de Filmtono</p>
+            <div class="auth">
+            <button id="btn-registro" class="btn-submit" href="">Completar registro</button>
+            </div>
+
+            <?php else: 
+                echo $contenido; 
+            
+            endif; ?>
             </main>
         </div>
 
-  <script type="text/javascript" src="/build/js/app.js"></script>
+    <script type="module" src="/build/js/admin.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
 
     <?php
         echo $script ?? '';
