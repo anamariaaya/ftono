@@ -1,5 +1,7 @@
-import { btnEliminar } from "./selectores.js";
+import { btnEliminarCuenta, btnEliminarUsuario } from "./selectores.js";
 import { eliminarCuenta } from "./profile.js";
+import { eliminarUsuario } from "./users.js";
+import { consultaUsuarios } from "./APIUsuarios.js";
 
 class App{
     constructor(){
@@ -7,9 +9,13 @@ class App{
     }
 
     initApp(){
-        if(btnEliminar){
+        if(btnEliminarCuenta){
             eliminarCuenta();
         }
+        // if(btnEliminarUsuario){
+        //     eliminarUsuario();
+        // }
+        consultaUsuarios();
     }
 }
 

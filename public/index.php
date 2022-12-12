@@ -3,21 +3,24 @@
 require_once __DIR__ . '/../includes/app.php';
 
 use MVC\Router;
-use Controllers\APIController;
 use Controllers\AuthController;
 use Controllers\PublicController;
+use Controllers\APIProfileController;
 
-use Controllers\Filmtono\DashboardController;
-use Controllers\Filmtono\ProfileController;
-use Controllers\Filmtono\PromosController;
 use Controllers\Filmtono\UsersController;
-use Controllers\Filmtono\LabelsController;
-use Controllers\Filmtono\CategoriesController;
 use Controllers\Filmtono\AlbumsController;
+use Controllers\Filmtono\LabelsController;
+use Controllers\Filmtono\PromosController;
 use Controllers\Filmtono\ArtistsController;
+use Controllers\Filmtono\ProfileController;
+use Controllers\Filmtono\APIUsersController;
 use Controllers\Filmtono\KeywordsController;
 use Controllers\Filmtono\PaymentsController;
 use Controllers\Filmtono\ContractsController;
+use Controllers\Filmtono\DashboardController;
+use Controllers\Filmtono\CategoriesController;
+
+
 
 
 $router = new Router();
@@ -59,6 +62,9 @@ $router->get('/compras/profile', [DashboardController::class, 'profile']);
 //Dashboard Filmtono
 $router->get('/filmtono/dashboard', [DashboardController::class, 'index']);
 
+//Filmtono APIs
+$router->get('/api/filmtono/users', [APIUsersController::class, 'index']);
+
 //Filmtono Profile
 $router->get('/filmtono/profile', [ProfileController::class, 'profile']);
 $router->post('/filmtono/profile', [ProfileController::class, 'profile']);
@@ -92,9 +98,9 @@ $router->get('/filmtono/payments', [PaymentsController::class, 'index']);
 $router->get('/filmtono/contracts', [ContractsController::class, 'index']);
 
 //API Controllers
-$router->post('/api/profile', [APIController::class, 'profile']);
-$router->post('/api/profile/status', [APIController::class, 'profileStatus']);
-$router->post('/api/profile/sellos', [APIController::class, 'profileSellos']);
+$router->post('/api/profile', [APIProfileController::class, 'profile']);
+$router->post('/api/profile/status', [APIProfileController::class, 'profileStatus']);
+$router->post('/api/profile/sellos', [APIProfileController::class, 'profileSellos']);
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();

@@ -1,0 +1,79 @@
+@use "sass:math";
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.grid{
+    margin-top: 3rem;
+    display: grid;
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: v.$separate;
+    @include m.desktop{
+        grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+        gap: v.$separate * 2;
+    }
+    @include m.ultra-wide{
+        grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    }
+}
+
+.card{
+    border-radius: 0.5rem;
+    background-color: v.$gray-light;
+    box-shadow: v.$shadow;
+    padding: 1rem 1.5rem;
+    border-bottom: 3px solid v.$yellow;
+    display: flex;
+    flex-direction: column;
+    &__title{
+        font-size: 1.2rem;
+        text-align: right;
+        background-color: v.$gray-dark;
+        padding: 0.5rem;
+        line-height: 1.2;
+        margin: 1rem 0;
+        font-weight: v.$bold;
+        @include m.desktop{
+            font-size: 1.4rem;
+        }
+    }
+    &__info{
+        font-size: 1.6rem;
+        line-height: 1.2;
+        margin: 0;
+        padding: .5rem 0;
+        font-weight: v.$regular;
+        flex: 1;
+        @include m.desktop{
+            font-size: 1.8rem;
+        }
+        &--title{
+            @extend .card__info;
+            font-weight: v.$bold;
+            font-size: 1.8rem;
+            @include m.desktop{
+                font-size: 2rem;
+            }
+        }
+        &--span{
+            @extend .card__info;
+            text-align: right;
+            font-size: 1.2rem;
+            @include m.desktop{
+                font-size: 1.4rem;
+            }
+        }
+    }
+
+    &__acciones{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;            
+        flex: 1;
+        @include m.desktop{
+            padding: .5rem;
+            flex-direction: row;
+        }
+    }
+}

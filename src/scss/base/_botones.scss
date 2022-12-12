@@ -37,9 +37,27 @@
     color: v.$gray-dark;
 }
 
+.btn-view{
+    @include m.boton(v.$yellow, flex);
+    margin-top: 1rem;
+    border-radius: 1rem;
+    color: v.$gray-dark;
+    align-items: center;
+    justify-content: center;
+    gap:1rem;
+}
+
 .btn-delete{
     @include m.boton(v.$red, block);
+    margin-top: 1rem;
     width: fit-content;
+    border-radius: 1rem;
+    color: v.$white;
+}
+
+.btn-update{
+    @include m.boton(darken(v.$green, 17%), flex);
+    margin-top: 1rem;
     border-radius: 1rem;
     color: v.$white;
 }

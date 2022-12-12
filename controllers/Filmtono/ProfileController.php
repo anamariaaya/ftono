@@ -42,8 +42,7 @@ class ProfileController{
         isAdmin();
         $usuario = Usuario::find($_SESSION['id']);
         $_SESSION = [];  
-        $usuario->eliminar();
-        //$_SESSION = [];        
+        $usuario->eliminar();  
         
         header('Location: /');
     }

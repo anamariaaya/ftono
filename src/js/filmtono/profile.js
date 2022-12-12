@@ -1,9 +1,9 @@
-import { btnEliminar } from './selectores.js';
+import { btnEliminarCuenta } from './selectores.js';
 import { crearAlerta } from '../base/funciones.js';
 
 export function eliminarCuenta(){
 
-    btnEliminar.addEventListener('click', function(e){
+    btnEliminarCuenta.addEventListener('click', function(e){
             e.preventDefault();
 
             const id = e.target.value;

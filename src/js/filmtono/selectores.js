@@ -1,2 +1,5 @@
-export const btnEliminar = document.querySelector('#eliminar-cuenta');
+//Selectores de la sección de usuarios
+export const btnEliminarCuenta = document.querySelector('#eliminar-cuenta');
+export const btnEliminarUsuario= document.querySelector('#eliminar-usuario');
 export const container = document.querySelector('.dashboard__contenido');
+export const gridUsuarios = document.querySelector('#grid-usuarios');
