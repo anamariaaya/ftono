@@ -11,7 +11,7 @@
             </span>
         </a>
         
-        <a href="/compras/profile" class="dashboard__enlace <?php pagina_admin('profile');?>">
+        <a href="/clients/profile" class="dashboard__enlace <?php pagina_admin('profile');?>">
             <i class="fa-solid fa-user dashboard__icono"></i>
             <span class="dashboard__menu-texto">
                 Perfil

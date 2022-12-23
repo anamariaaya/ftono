@@ -40,14 +40,15 @@ class AuthController {
                         $_SESSION['nombre'] = $usuario->nombre;
                         $_SESSION['apellido'] = $usuario->apellido;
                         $_SESSION['email'] = $usuario->email;
+                        $_SESSION['perfil'] = $usuario->perfil;
 
                         // Verificar el nivel de acceso y redireccionar
                         if($nivel_compra) {
                             $_SESSION['nivel_compra'] = $nivel_compra->id_nivel;
-                            header('Location: /compras/dashboard');
+                            header('Location: /clients/dashboard');
                         }elseif($nivel_musica) {
                             $_SESSION['nivel_musica'] = $nivel_musica->id_nivel;
-                            header('Location: /musica/dashboard');
+                            header('Location: /music/dashboard');
                         }elseif($nivel_admin) {
                             $_SESSION['nivel_admin'] = $nivel_admin->id_nivel;
                             header('Location: /filmtono/dashboard');

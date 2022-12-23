@@ -29,7 +29,7 @@ class Router
             } else if($_GET['lang'] == 'es'){
                 $_SESSION['lang'] = 'es';
             }
-        }        
+        }
 
         $url_actual = $_SERVER['PATH_INFO'] ?? '/';
         $method = $_SERVER['REQUEST_METHOD'];
@@ -64,9 +64,9 @@ class Router
 
         if(str_contains($url_actual, '/filmtono')) {
             include_once __DIR__ . "/views/layouts/admin-layout.php";
-        } elseif(str_contains($url_actual, '/compras')) {
+        } elseif(str_contains($url_actual, '/clients')) {
             include_once __DIR__ . "/views/layouts/compras-layout.php";
-        } elseif(str_contains($url_actual, '/musica')) {
+        } elseif(str_contains($url_actual, '/music')) {
             include_once __DIR__ . "/views/layouts/musica-layout.php";
         } else {
             include_once __DIR__ . "/views/layouts/main-layout.php";

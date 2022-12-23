@@ -22,17 +22,7 @@
             ?>
 
             <main class="dashboard__contenido">
-            <?php if($usuario->perfil === '0'):?>
-
-            <p class="auth__text">Completa tu registro para usar la plataforma de Filmtono</p>
-            <div class="auth">
-            <button id="btn-registro" class="btn-submit" href="">Completar registro</button>
-            </div>
-
-            <?php else: 
-                echo $contenido; 
-            
-            endif; ?>
+                <?php isRegistered('Debes completar el registro para poder cargar tu catálogo y navegar la plataforma', $contenido); ?>
             </main>
         </div>
 

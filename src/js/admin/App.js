@@ -1,3 +1,4 @@
+import { consultaPaises } from "./APIPaises.js";
 import {bloquearBotones} from "./perfiles.js";
 
 class App{
@@ -6,6 +7,7 @@ class App{
     }
 
     initApp(){
+        consultaPaises();
         bloquearBotones();
     }
 }

@@ -4,7 +4,9 @@ require_once __DIR__ . '/../includes/app.php';
 
 use MVC\Router;
 use Controllers\AuthController;
+use Controllers\MusicController;
 use Controllers\PublicController;
+use Controllers\DashboardController;
 use Controllers\APIProfileController;
 
 use Controllers\Filmtono\UsersController;
@@ -17,8 +19,11 @@ use Controllers\Filmtono\APIUsersController;
 use Controllers\Filmtono\KeywordsController;
 use Controllers\Filmtono\PaymentsController;
 use Controllers\Filmtono\ContractsController;
-use Controllers\Filmtono\DashboardController;
 use Controllers\Filmtono\CategoriesController;
+
+use Controllers\Clients\ClientProfileController;
+
+use Controllers\Music\MusicProfileController;
 
 
 
@@ -35,7 +40,6 @@ $router->get('/faq', [PublicController::class, 'faq']);
 $router->get('/artists', [PublicController::class, 'artists']);
 
 //Auth Usuarios
-
 $router->get('/login', [AuthController::class, 'login']);
 $router->post('/login', [AuthController::class, 'login']);
 $router->get('/register', [AuthController::class, 'register']);
@@ -51,16 +55,16 @@ $router->post('/reset-password', [AuthController::class, 'reset']);
 $router->post('/logout', [AuthController::class, 'logout']);
 
 //Dashboard Editoriales/Publishers
-$router->get('/music/dashboard', [DashboardController::class, 'musica']);
-$router->get('/music/profile', [DashboardController::class, 'profile']);
-$router->get('/music/labels', [DashboardController::class, 'profile']);
+$router->get('/music/dashboard', [DashboardController::class, 'music']);
+$router->get('/music/profile', [MusicProfileController::class, 'profile']);
+$router->get('/music/labels', [MusicController::class, 'profile']);
 
-//Dashboard Compradores/Buyers
-$router->get('/compras/dashboard', [DashboardController::class, 'compras']);
-$router->get('/compras/profile', [DashboardController::class, 'profile']);
+//Dashboard Compradores/Clients
+$router->get('/clients/dashboard', [DashboardController::class, 'clients']);
+$router->get('/clients/profile', [ClientProfileController::class, 'profile']);
 
 //Dashboard Filmtono
-$router->get('/filmtono/dashboard', [DashboardController::class, 'index']);
+$router->get('/filmtono/dashboard', [DashboardController::class, 'admin']);
 
 //Filmtono APIs
 $router->get('/api/filmtono/users', [APIUsersController::class, 'index']);

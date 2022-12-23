@@ -35,7 +35,13 @@
     width: fit-content;
     border-radius: 1rem;
     color: v.$gray-dark;
+    &--extra{
+        @extend .btn-submit;
+        margin: 2.5rem auto 0;
+        font-size: 1.6rem;
+    }
 }
+
 
 .btn-view{
     @include m.boton(v.$yellow, flex);

@@ -3,6 +3,7 @@
 define('CARPETA_IMAGENES', $_SERVER['DOCUMENT_ROOT'].'/images/');
 define('CARPETA_DOCS', $_SERVER['DOCUMENT_ROOT'].'/docs/');
 
+//Función para imprimir el código a probar y detener la ejecución del código siguiente
 function debugging($variable) : string {
     echo "<pre>";
     var_dump($variable);
@@ -40,6 +41,7 @@ function isAuth() : void {
     }
 }
 
+//Funciones para revisar el nivel de usuario
 function isAdmin() : void {
     if(!isset($_SESSION['nivel_admin'])){
         header('Location: /');
@@ -58,14 +60,33 @@ function isMusico() : void {
     }
 }
 
+//Compueba si el usuario está logueado y redirige a su dashboard
 function sesionActiva() : void {
     if(isset($_SESSION['nivel_admin'])){
         echo '/filmtono/dashboard';
     } elseif(isset($_SESSION['nivel_compra'])){
-        echo '/compras/dashboard';
+        echo '/clients/dashboard';
     } elseif(isset($_SESSION['nivel_musica'])){
-        echo '/musica/dashboard';
+        echo '/music/dashboard';
     } else{
         echo '/';
     }
+}
+
+//Comprueba si el usuario está registrado completando su perfil y verifica si es comprador para no restringir la navegación.
+function isRegistered($mensaje, $contenido){
+    if($_SESSION['perfil'] === '1'):?>
+
+        <p class="auth__text">
+            <?php echo $mensaje; ?>
+            <button id="btn-registro" class="btn-submit--extra" href="">Completar registro</button>
+        </p>
+
+        <?php if(isset($_SESSION['nivel_compra'])){
+            echo $contenido;
+        } ?>
+
+    <?php else:
+        echo $contenido;        
+    endif;
 }
