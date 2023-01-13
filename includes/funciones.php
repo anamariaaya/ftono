@@ -90,3 +90,36 @@ function isRegistered($mensaje, $contenido){
         echo $contenido;        
     endif;
 }
+
+
+
+function chooseLanguage() {    
+    if(isset($_GET['lang'])) {
+        $_SESSION['lang'] = s($_GET['lang']);
+        setcookie("lang_cookie", s($_GET['lang']), time() + 86400, "/");   
+    }else if(isset($_COOKIE['lang_cookie'])) {
+        $_SESSION['lang'] = $_COOKIE['lang_cookie'];
+    }else {
+        $_SESSION['lang'] = DEFAULT_LANGUAGE;
+    }
+    return $_SESSION['lang'];
+}
+
+//Función para leer e imprimir cada valor del array de idiomas
+function t($key) {
+    $translations = json_decode(file_get_contents('../lang.json'), true);
+    $language = chooseLanguage();
+    if ($language == 'en') {
+        $strings = $translations['en'];
+    
+    } else{
+        $strings = $translations['es'];
+    }
+    
+    if(empty($strings[$key])){
+        echo 'CORREGIR TEXTO en: ' . $key;
+        //return;
+    }else{
+        echo $strings[$key];
+    }
+}

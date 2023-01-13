@@ -30,6 +30,18 @@
     cursor: pointer;
 }
 
+.btn-lang{
+    all:unset;            
+    padding: 0.5rem 2rem;
+    color: v.$white;
+    border-radius: 0.5rem;
+    font-size: 1.4rem;            
+    &:hover{
+        cursor: pointer;
+        background-color: v.$yellow;
+    }
+}
+
 .btn-submit{
     @include m.boton(v.$yellow, block);
     width: fit-content;

@@ -1,36 +1,14 @@
-<h1><?php echo $titulo; ?></h1>
 
-<?php
-// Leer el archivo JSON
-// $content = file_get_contents('../lang.json');
+<h1><?php echo t($titulo);?></h1>
 
-// // Decodificar el JSON
-// $json = json_decode($content, true);
+  <h2><?php echo t('welcome_message');?></h2>
+  <h2><?php echo t('about_us'); ?></h2>
+  <h2><?php echo t('products'); ?></h2>
+  <h2><?php echo t('contact_us'); ?></h2>
+  <h2><?php echo t('learn_more'); ?></h2>
 
-// //debuguear($json['language']);
-// ?>
-<!-- // <select name="lang" id="lang">
-//     <?php
-//       foreach($json['language'] as $key => $value){
-//           echo '<option value="$key">$key</option>';
-//       }
-//     ?>
-// </select> -->
-<?php
+  <div class="container">
+    <h1 id="prueba"><?php echo t("welcome"); ?></h1>
+  <p><?php echo t("products"); ?></p>
 
-
-
-// $es = $json['language']['es'];
-// $en = $json['language']['en'];
-// $lang = $json['language'][$_SESSION['lang']];
-
-// //convertir $en en un objeto
-// $lang = (object) $lang;
-// echo $lang->SALE; 
-
-//debuguear($_SESSION['lang']);
-
-
-
-
-
+  </div>

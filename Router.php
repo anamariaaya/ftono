@@ -20,16 +20,8 @@ class Router
     public function comprobarRutas()
     {
         session_start();
-
-        if(!isset($_SESSION['lang'])){
-            $_SESSION['lang'] = 'en';
-        } else if(isset($_GET['lang']) && $_SESSION['lang'] != $_GET['lang'] && !empty($_GET['lang'])){
-            if($_GET['lang'] == 'en'){
-                $_SESSION['lang'] = 'en';
-            } else if($_GET['lang'] == 'es'){
-                $_SESSION['lang'] = 'es';
-            }
-        }
+        define('DEFAULT_LANGUAGE', 'en');
+        chooseLanguage();        
 
         $url_actual = $_SERVER['PATH_INFO'] ?? '/';
         $method = $_SERVER['REQUEST_METHOD'];
@@ -43,8 +35,7 @@ class Router
             call_user_func($fn, $this);
         } else {
             echo "Página No Encontrada o Ruta no válida";
-        }
-        
+        }        
     }
 
     public function render($view, $datos = [])
@@ -52,8 +43,17 @@ class Router
         foreach ($datos as $key => $value) {
             $$key = $value; 
         }
+        $file = __DIR__.'/views'.$view.'.php';
+        $string = file_get_contents($file);
+        $trans = array(
+            '{{' => '<?php echo t("',
+            '}}' => '"); ?>'
+        );
+        $string = strtr($string, $trans);
 
-        ob_start(); 
+        file_put_contents($file, $string);
+
+        ob_start();         
 
         include_once __DIR__ . "/views/$view.php";
 

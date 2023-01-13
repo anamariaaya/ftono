@@ -26,8 +26,6 @@ use Controllers\Clients\ClientProfileController;
 use Controllers\Music\MusicProfileController;
 
 
-
-
 $router = new Router();
 
 // Iniciar Sesión
@@ -106,6 +104,10 @@ $router->post('/api/profile', [APIProfileController::class, 'profile']);
 $router->post('/api/profile/status', [APIProfileController::class, 'profileStatus']);
 $router->post('/api/profile/sellos', [APIProfileController::class, 'profileSellos']);
 
+//debugging($router);
+
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();
+
+
 

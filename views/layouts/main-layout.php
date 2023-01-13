@@ -16,7 +16,9 @@
     <?php 
         include_once __DIR__ .'/../templates/header.php';
         include_once __DIR__ .'/../templates/main-sidebar.php';
+
         echo $contenido;
+        
         include_once __DIR__ .'/../templates/footer.php'; 
     ?>
 

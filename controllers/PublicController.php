@@ -5,13 +5,14 @@ namespace Controllers;
 use MVC\Router;
 
 class PublicController{
+
     public static function index(Router $router){
         $inicio = true;
-        $titulo = 'Inicio';
-        
+        $titulo = 'index';
+
         $router->render('/paginas/index',[
             'inicio' => $inicio,
-            'titulo' => $titulo
+            'titulo' => $titulo,
         ]);
     }
 

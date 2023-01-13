@@ -14,6 +14,21 @@
             </label>
         </div>
 
+        <!-- <div class="header__lang">
+            <select class="header__select" id="language">
+                <option selected disabled></option>
+                <option value="en">English</option>
+                <option value="es">Español</option>
+            </select>
+        </div> -->
+
+        <div class="header__lang">
+            <div class="header__select no-display" id="language">
+                <button class="btn-lang" value="en">English</button>
+                <button class="btn-lang" value="es">Español</button>
+            </div>
+        </div>
+
         <div class="header__login">
             <?php if(isset($_SESSION['id'])): ?>
                 <form class="dashboard__form" action="/logout" method="POST">
@@ -24,7 +39,6 @@
             <a class="header__login__btn--login" href="/login">Log in</a>
             <a class="header__login__btn--signup" href="/register">Sign up</a>
             <?php endif; ?>
-            
         </div>
     </div>
 </header>

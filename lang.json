@@ -1,16 +1,22 @@
 {
-    "language":{
-        "de": {
-            "SALE": "Verkauf",
-            "ADDRESS": "Adresse"
-        },
-        "en": {
-            "SALE": "Sale",
-            "ADDRESS": "Address"
-        },
-        "es": {
-            "SALE": "Oferta",
-            "ADDRESS": "Dirección"
-        }
+    "en": {
+      "index": "Home",
+      "welcome_message": "Welcome to our website!",
+      "about_us": "About Us",
+      "products": "Products",
+      "contact_us": "Contact Us",
+      "learn_more": "Learn More",
+      "header": "Multilingual Website",
+      "footer": "Copyright 2021"
+    },
+    "es": {
+      "index": "Inicio",
+      "welcome_message": "Beinvenido a nuestro sitio web!",
+      "about_us": "Sobre nosotros",
+      "products": "Productos",
+      "contact_us": "Contactenos",
+      "learn_more": "Saber más",
+      "header": "Sitio web multilingüe",
+      "footer": "Copyright 2021"
     }
 }
