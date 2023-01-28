@@ -52,6 +52,12 @@
         margin: 2.5rem auto 0;
         font-size: 1.6rem;
     }
+    &--post{
+        @extend .btn-submit;
+        padding: 0.5rem 3rem;
+        font-size: 1.5rem;
+        margin: 1.5rem auto 0;
+    }
 }
 
 
@@ -78,4 +84,15 @@
     margin-top: 1rem;
     border-radius: 1rem;
     color: v.$white;
+}
+
+.btn-tabs{
+    @include m.boton(v.$yellow, block);
+    margin: 1rem auto;
+    border-radius: 1rem;
+    color: v.$gray-dark;
+    width: fit-content;
+    &:hover{
+        cursor: pointer;
+    }
 }

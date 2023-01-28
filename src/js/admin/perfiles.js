@@ -1,19 +1,110 @@
-import {btnRegistro, btnMenu} from './selectores.js';
-import {form} from './form.js';
-import { datosEmpresa } from './Empresa.js';
-import { llenarDatos } from '../base/funciones.js';
-import { sellos } from './sellos.js';
+import {botones, pagAnterior, pagSiguiente, afterNav, btnContrato} from './selectores.js';
+// import {form} from './form.js';
+// import { datosEmpresa } from './Empresa.js';
+// import { llenarDatos } from '../base/funciones.js';
+// import { sellos } from './sellos.js';
 
-export function bloquearBotones(){  
-    if(btnRegistro){
-        btnMenu.forEach(btn => {
-            btn.classList.add('disabled');
+let paso = 1;
+
+export function tabs() {   
+    botones.forEach(tab => {
+        tab.addEventListener('click', function(e) {
+            paso = e.target.dataset.paso;
+            cambiarSeccion(e);
+            botonesPaginador();
         });
-        btnRegistro.addEventListener('click', modalRegistro);
+    });
+}
+const secciones = document.querySelectorAll('.tabs__section');
+function cambiarSeccion(e) {
+    
+    
+    const tabActivo = document.querySelector(`#paso-${paso}`);
+    tabActivo.classList.add('mostrar');
+    e.target.classList.add('active');
+
+    // Remueve la clase active de los botones
+    if(tabActivo.id === 'paso-1'){
+        botones[0].classList.add('active');
+        botones[1].classList.remove('active');
+        botones[2].classList.remove('active');
+        secciones[0].classList.add('mostrar');
+        secciones[1].classList.remove('mostrar');
+        secciones[2].classList.remove('mostrar');
+    } else if(tabActivo.id === 'paso-2'){
+        botones[1].classList.add('active');
+        botones[2].classList.remove('active');
+        secciones[1].classList.add('mostrar');
+        secciones[2].classList.remove('mostrar');
+        secciones[0].classList.remove('mostrar');
+    } else{
+        botones[1].classList.add('active');
+        botones[2].classList.add('active');
+        secciones[2].classList.add('mostrar');
+        secciones[0].classList.remove('mostrar');
+        secciones[1].classList.remove('mostrar');
+    }
+    // secciones.forEach(seccion => {
+    //     if (seccion.id !== tabActivo.id) {
+    //         seccion.classList.remove('mostrar');
+    //     }
+    // });      
+}
+function botonesPaginador(){ 
+    switch(paso) {
+        case '1':
+            pagAnterior.classList.add('ocultar');
+            pagSiguiente.classList.remove('ocultar');
+            afterNav.classList.remove('step2');
+            afterNav.classList.remove('step3');
+            break;
+        case '2':
+            pagAnterior.classList.remove('ocultar');
+            pagSiguiente.classList.remove('ocultar');
+            afterNav.classList.add('step2');
+            afterNav.classList.remove('step3');
+            break;
+        case '3':
+            pagAnterior.classList.remove('ocultar');
+            pagSiguiente.textContent = 'Registrarse';
+            pagSiguiente.onclick = setType;
+            afterNav.classList.add('step3');
+            afterNav.classList.remove('step2');
+            if(btnContrato){
+                btnContrato.onclick = modalContrato;
+            };
+            break;
+        default:
+            break;
     }
 }
 
-function modalRegistro(e){
+export function paginador(){
+    pagAnterior.addEventListener('click', paginaAnterior);
+    pagSiguiente.addEventListener('click',paginaSiguiente);
+}
+
+function paginaSiguiente(){
+    if(!botones[1].classList.contains('active')){
+        botones[1].click();
+    } else if(!botones[2].classList.contains('active')){
+        botones[2].click();
+    }
+}
+
+function paginaAnterior(e){
+    if(botones[2].classList.contains('active')){
+        botones[1].click();
+    } else if(botones[1].classList.contains('active')){
+        botones[0].click();
+    }
+}
+
+function setType(e){
+    e.target.type = 'submit';
+}
+
+function modalContrato(e){
     e.preventDefault();
     const body = document.querySelector('body');
     body.classList.add('overlay');
@@ -29,138 +120,94 @@ function modalRegistro(e){
     btnCerrar.innerHTML = '<i class="fas fa-times"></i>';
     btnCerrar.onclick = cerrarModal;
 
-    const titulo = document.createElement('h3');
-    titulo.classList.add('register__titulo');
-    titulo.textContent = 'Completa tu registro';
+    const canvas = document.createElement('canvas');
+    canvas.id = 'canvas';
+    canvas.width = 600;
+    canvas.height = 200;
+    canvas.style.border = '1px solid black';
+    canvas.style.backgroundColor = 'white';
+    canvas.style.margin = '0 auto';
+    canvas.style.display = 'block';
 
-    const submit = document.createElement('button');
-    submit.classList.add('btn-submit');
-    submit.onclick = sincronizarDatos;
-    submit.textContent = 'Registrarse';
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "white";
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 2;
+    ctx.lineCap = "round";
 
-    //Agregar formulario y boton al modal
+    let isDrawing = false;
+    let x = 0;
+    let y = 0;
+
+    canvas.addEventListener("mousedown", startDrawing);
+    canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("mouseup", stopDrawing);
+    canvas.addEventListener("touchstart", startDrawing);
+    canvas.addEventListener("touchmove", draw);
+    canvas.addEventListener("touchend", stopDrawing);
+
+    // function startDrawing(e) {
+    //     isDrawing = true;
+    //     [x, y] = [e.clientX, e.clientY];
+    // }
+    function startDrawing(e) {
+    isDrawing = true;
+        if (e.touches) {
+            [x, y] = [e.touches[0].pageX - e.target.offsetLeft, e.touches[0].pageY - e.target.offsetTop];
+        } else {
+            [x, y] = [e.offsetX, e.offsetY];
+        }
+    }
+    
+    // function draw(e) {
+    //     if (!isDrawing) return;
+    //         ctx.beginPath();
+    //     if (e.touches) {
+    //         ctx.moveTo(x, y);
+    //         ctx.lineTo(e.touches[0].clientX, e.touches[0].clientY);
+    //         [x, y] = [e.touches[0].clientX, e.touches[0].clientY];
+    //     } else {
+    //         ctx.moveTo(x , y);
+    //         ctx.lineTo(e.clientX, e.clientY);
+    //         [x, y] = [e.clientX, e.clientY];
+    //     }
+    //      ctx.stroke();
+    // }
+
+    function draw(e) {
+        if (!isDrawing) return;
+        ctx.beginPath();
+        if (e.touches) {
+            ctx.moveTo(x, y);
+            ctx.lineTo(e.touches[0].pageX - e.target.offsetLeft, e.touches[0].pageY - e.target.offsetTop);
+            [x, y] = [e.touches[0].pageX - e.target.offsetLeft, e.touches[0].pageY - e.target.offsetTop];
+        } else {
+            ctx.moveTo(x, y);
+            ctx.lineTo(e.offsetX, e.offsetY);
+            [x, y] = [e.offsetX, e.offsetY];
+        }
+        ctx.stroke();
+    }
+    
+    function stopDrawing() {
+        isDrawing = false;
+        ctx.beginPath();
+    }      
+
+    function limpiar(){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    const clearbtn = document.createElement('button');
+    clearbtn.classList.add('btn-tabs');
+    clearbtn.textContent = 'Limpiar';
+    clearbtn.onclick = limpiar;
+
     modal.appendChild(btnCerrar);
-    modal.appendChild(titulo);
-    modal.appendChild(form);
-    modal.appendChild(submit);
+    modal.appendChild(canvas);
+    modal.appendChild(clearbtn);
     divModal.appendChild(modal);
     body.appendChild(divModal);
-}
-
-function sincronizarDatos(){
-    const datos = llenarDatos();    
-   //sincronizar datos con datosEmpresa
-    datosEmpresa.empresa = datos.empresa;
-    datosEmpresa.id_fiscal = datos.id_fiscal;
-    datosEmpresa.direccion = datos.direccion;
-    datosEmpresa.ciudad = datos.ciudad;
-    datosEmpresa.pais = datos.pais;
-    datosEmpresa.instagram = datos.instagram;
-    datosEmpresa.nombre_comercial = datos.nombre_comercial;
-    datosEmpresa.apellido_comercial = datos.apellido_comercial;
-    datosEmpresa.email_comercial = datos.email_comercial;
-    datosEmpresa.tel_comercial = datos.tel_comercial;
-    datosEmpresa.nombre_contable = datos.nombre_contable;
-    datosEmpresa.apellido_contable = datos.apellido_contable;
-    datosEmpresa.email_contable = datos.email_contable;
-    datosEmpresa.tel_contable = datos.tel_contable;  
-    apiRegistro();    
-}
-
-async function apiRegistro(){
-    const data = new FormData();
-    data.append('empresa', datosEmpresa.empresa);
-    data.append('id_fiscal', datosEmpresa.id_fiscal);
-    data.append('direccion', datosEmpresa.direccion);
-    data.append('ciudad', datosEmpresa.ciudad);
-    data.append('pais', datosEmpresa.pais);
-    data.append('instagram', datosEmpresa.instagram);
-    data.append('nombre_comercial', datosEmpresa.nombre_comercial);
-    data.append('apellido_comercial', datosEmpresa.apellido_comercial);
-    data.append('email_comercial', datosEmpresa.email_comercial);
-    data.append('tel_comercial', datosEmpresa.tel_comercial);
-    data.append('nombre_contable', datosEmpresa.nombre_contable);
-    data.append('apellido_contable', datosEmpresa.apellido_contable);
-    data.append('email_contable', datosEmpresa.email_contable);
-    data.append('tel_contable', datosEmpresa.tel_contable);
-
-    try{
-        const url = 'http://localhost:3000/api/profile';
-        
-        const respuesta = await fetch(url, {
-            method: 'POST',
-            body: data
-        });
-
-        const resultado = await respuesta.json();
-
-        if(resultado.resultado){
-            statusPerfil();
-            selloPerfil();
-            Swal.fire({
-                title: 'Registro exitoso',
-                text: 'Ya puedes utilizar la plataforma',
-                icon: 'success'
-            }).then( () => {
-                window.location.reload();
-            });
-        };
-    }catch(error){
-        console.log(error);
-        Swal.fire({
-            title: 'Error',
-            text: 'Mensaje no enviado. Intenta de nuevo',
-            icon: 'error'
-        }).then( () => {
-            window.location.reload();
-        });
-    }
-}
-
-async function statusPerfil(){
-    const data = new FormData();
-    data.append('perfil', '1');
-
-    try{
-        const url = 'http://localhost:3000/api/profile/status';
-        
-        const respuesta = await fetch(url, {
-            method: 'POST',
-            body: data
-        });
-
-        const resultado = await respuesta.json();
-        if(resultado.resultado){
-            console.log('status actualizado');
-        }
-    }catch(error){
-        console.log(error);
-    }
-}
-
-
-async function selloPerfil(){
-    sellos.nombre = datosEmpresa.empresa;
-
-    const data = new FormData();
-    data.append('nombre', sellos.nombre);
-
-    try{
-        const url = 'http://localhost:3000/api/profile/sellos';
-        
-        const respuesta = await fetch(url, {
-            method: 'POST',
-            body: data
-        });
-
-        const resultado = await respuesta.json();
-
-        if(resultado.resultado){
-            console.log('sello agregado');
-        }
-    }catch(error){
-        console.log(error);
-    }
 }
 
 function cerrarModal(){
@@ -169,4 +216,3 @@ function cerrarModal(){
     body.classList.remove('overlay');
     modal.remove();
 }
-

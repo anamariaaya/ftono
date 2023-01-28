@@ -18,14 +18,14 @@
             </span>
         </a>
 
-        <a href="/admin/inbox" class="dashboard__enlace <?php pagina_admin('registrados');?>">
+        <a href="/admin/inbox" class="dashboard__enlace <?php pagina_admin('registrados'); regBtn();?>">
             <i class="fa-solid fa-comments dashboard__icono"></i>
             <span class="dashboard__menu-texto">
                 Compras
             </span>
         </a>
 
-        <a href="/admin/ciudades" class="dashboard__enlace <?php pagina_admin('ciudades');?>">
+        <a href="/admin/ciudades" class="dashboard__enlace <?php pagina_admin('ciudades'); regBtn();?>">
             <i class="fa-solid fa-location-dot dashboard__icono"></i>
             <span class="dashboard__menu-texto">
                 Contratos

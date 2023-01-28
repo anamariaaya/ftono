@@ -27,6 +27,7 @@ use Controllers\Music\MusicProfileController;
 
 
 $router = new Router();
+session_start();
 
 // Iniciar Sesión
 $router->get('/', [PublicController::class, 'index']);
@@ -51,6 +52,8 @@ $router->post('/forgot-password', [AuthController::class, 'forgot']);
 $router->get('/reset-password', [AuthController::class, 'reset']);
 $router->post('/reset-password', [AuthController::class, 'reset']);
 $router->post('/logout', [AuthController::class, 'logout']);
+$router->get('/complete-register', [AuthController::class, 'CompleteRegister']);
+$router->post('/complete-register', [AuthController::class, 'CompleteRegister']);
 
 //Dashboard Editoriales/Publishers
 $router->get('/music/dashboard', [DashboardController::class, 'music']);
@@ -66,6 +69,7 @@ $router->get('/filmtono/dashboard', [DashboardController::class, 'admin']);
 
 //Filmtono APIs
 $router->get('/api/filmtono/users', [APIUsersController::class, 'index']);
+$router->get('/api/filmtono/lenguaje', [APIProfileController::class, 'lenguaje']);
 
 //Filmtono Profile
 $router->get('/filmtono/profile', [ProfileController::class, 'profile']);

@@ -332,4 +332,22 @@ class AuthController {
             'alertas' => Usuario::getAlertas()
         ]);
     }
+
+    public static function CompleteRegister(Router $router){
+        $usuario = Usuario::find($_SESSION['id']);
+        $titulo = 'Completar registro';
+
+        // $mpdf = new \Mpdf\Mpdf();
+        // $mpdf->WriteHTML('Hola Andy');
+        // $mpdf->OutputFile(__DIR__ . '/file.pdf');
+        
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+           //debugging($_POST);
+        }
+        $router->render('auth/complete-register', [
+            'titulo' => $titulo,
+            'usuario' => $usuario
+        ]);
+    }
 }

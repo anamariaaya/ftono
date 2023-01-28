@@ -22,7 +22,7 @@
             ?>
 
             <main class="dashboard__contenido">
-                <?php isRegistered('Debes completar el registro para poder cargar tu catálogo y navegar la plataforma', $contenido); ?>
+                <?php isRegistered('Debes completar el registro para poder cargar tu catálogo musical y acceder a todas las funciones de tu dashboard', $contenido); ?>
             </main>
         </div>
 

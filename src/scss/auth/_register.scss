@@ -16,6 +16,7 @@
         border-radius: 1rem;
         width: 90%;
         position: relative;
+        z-index: 11;
         @include m.tablet{
             width: 60%;
         }

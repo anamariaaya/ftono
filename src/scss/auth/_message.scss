@@ -28,4 +28,10 @@
         border-radius: 1rem;
         color: v.$yellow;
     }
+    &__text--post{
+        @extend .auth__text;
+        padding: 2rem;
+        font-size: 1.8rem;
+        margin-bottom: 3rem;
+    }
 }

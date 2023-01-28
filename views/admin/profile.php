@@ -20,7 +20,7 @@
 
         <div class="form__group">
             <label class="form__group__label" for="email">Email</label>
-            <input class="form__group__input" type="email" name="email" id="email" value="<?php echo $usuario->email?>" placeholder="Tu email">
+            <input disabled class="form__group__input" type="email" name="email" id="email" value="<?php echo $usuario->email?>" placeholder="Tu email">
         </div>
 
         <legend class="form__legend">Cambia tu password</legend>

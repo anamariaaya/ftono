@@ -1,2 +1,2 @@
-import{consultaPaises}from"./APIPaises.js";import{bloquearBotones}from"./perfiles.js";class App{constructor(){this.initApp()}initApp(){consultaPaises(),bloquearBotones()}}export default App;
+import{consultaPaises,paisElegido}from"./APIPaises.js";import{tabs,paginador}from"./perfiles.js";import{selectPais,afterNav}from"./selectores.js";class App{constructor(){this.initApp()}initApp(){selectPais&&(consultaPaises(),paisElegido()),afterNav&&(tabs(),paginador())}}export default App;
 //# sourceMappingURL=App.js.map

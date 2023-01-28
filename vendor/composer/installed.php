@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'b0cfe108f2a7b20dc074d099f0f929847ec230b6',
+    'reference' => '402daf9bf24157821eddec713852e0df09bf804f',
     'name' => 'anitanashdev/filmtono',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'b0cfe108f2a7b20dc074d099f0f929847ec230b6',
+      'reference' => '402daf9bf24157821eddec713852e0df09bf804f',
     ),
     'graham-campbell/result-type' => 
     array (
@@ -46,6 +46,42 @@
       array (
       ),
       'reference' => '04be355f8d6734c826045d02a1079ad658322dad',
+    ),
+    'mpdf/mpdf' => 
+    array (
+      'pretty_version' => 'v8.1.4',
+      'version' => '8.1.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'add590e93b7502efafd9839a68cff99f3497b318',
+    ),
+    'myclabs/deep-copy' => 
+    array (
+      'pretty_version' => '1.11.0',
+      'version' => '1.11.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '14daed4296fae74d9e3201d2c4925d1acb7aa614',
+    ),
+    'paragonie/random_compat' => 
+    array (
+      'pretty_version' => 'v9.99.100',
+      'version' => '9.99.100.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '996434e5492cb4c3edcb9168db6fbb1359ef965a',
+    ),
+    'php-http/message-factory' => 
+    array (
+      'pretty_version' => 'v1.0.2',
+      'version' => '1.0.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a478cb11f66a6ac48d8954216cfed9aa06a501a1',
     ),
     'phpmailer/phpmailer' => 
     array (
@@ -97,6 +133,15 @@
         0 => '1.0',
       ),
     ),
+    'psr/log' => 
+    array (
+      'pretty_version' => '2.0.0',
+      'version' => '2.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'ef29f6d262798707a9edd554e2b82517ef3a9376',
+    ),
     'ralouphie/getallheaders' => 
     array (
       'pretty_version' => '3.0.3',
@@ -105,6 +150,15 @@
       array (
       ),
       'reference' => '120b605dfeb996808c31b6477290a714d356e822',
+    ),
+    'setasign/fpdi' => 
+    array (
+      'pretty_version' => 'v2.3.6',
+      'version' => '2.3.6.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '6231e315f73e4f62d72b73f3d6d78ff0eed93c31',
     ),
     'symfony/polyfill-ctype' => 
     array (

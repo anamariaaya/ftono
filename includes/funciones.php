@@ -73,13 +73,20 @@ function sesionActiva() : void {
     }
 }
 
+//bloquea ciertos botondes del dashboard si el usuario no está registrado por completo
+function regBtn(){
+    if($_SESSION['perfil'] === '0'){
+        echo 'dashboard__enlace--disabled';
+    }
+}
+
 //Comprueba si el usuario está registrado completando su perfil y verifica si es comprador para no restringir la navegación.
 function isRegistered($mensaje, $contenido){
-    if($_SESSION['perfil'] === '1'):?>
-
-        <p class="auth__text">
+    $url = $_SERVER['REQUEST_URI'];
+    if($_SESSION['perfil'] === '0' && $url !== '/complete-register'):?>
+        <p class="auth__text--post">
             <?php echo $mensaje; ?>
-            <button id="btn-registro" class="btn-submit--extra" href="">Completar registro</button>
+            <a href="/complete-register" class="btn-submit--post" href="">Completar registro</a>
         </p>
 
         <?php if(isset($_SESSION['nivel_compra'])){
@@ -96,12 +103,13 @@ function isRegistered($mensaje, $contenido){
 function chooseLanguage() {    
     if(isset($_GET['lang'])) {
         $_SESSION['lang'] = s($_GET['lang']);
-        setcookie("lang_cookie", s($_GET['lang']), time() + 86400, "/");   
+        setcookie("lang_cookie", s($_GET['lang']), time() + 31536000, "/");   
     }else if(isset($_COOKIE['lang_cookie'])) {
         $_SESSION['lang'] = $_COOKIE['lang_cookie'];
     }else {
         $_SESSION['lang'] = DEFAULT_LANGUAGE;
     }
+    
     return $_SESSION['lang'];
 }
 
@@ -109,17 +117,17 @@ function chooseLanguage() {
 function t($key) {
     $translations = json_decode(file_get_contents('../lang.json'), true);
     $language = chooseLanguage();
-    if ($language == 'en') {
-        $strings = $translations['en'];
-    
-    } else{
-        $strings = $translations['es'];
-    }
-    
-    if(empty($strings[$key])){
-        echo 'CORREGIR TEXTO en: ' . $key;
+    $keys = array_keys($translations);
+
+    if(!in_array($key, $keys)){
+        echo 'CORREGIR LLAVE en: ' . $key;
         //return;
-    }else{
-        echo $strings[$key];
+    } else{
+        if ($language == 'en') {
+            $strings = $translations[$key]['en'];    
+        } else{
+            $strings = $translations[$key]['es'];
+        }
+        echo $strings;
     }
 }

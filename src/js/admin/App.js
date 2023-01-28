@@ -1,14 +1,21 @@
-import { consultaPaises } from "./APIPaises.js";
-import {bloquearBotones} from "./perfiles.js";
+import { consultaPaises, paisElegido } from "./APIPaises.js";
+import {tabs, paginador} from "./perfiles.js";
+import { selectPais, afterNav } from "./selectores.js";
 
 class App{
     constructor(){
         this.initApp();
     }
 
-    initApp(){
-        consultaPaises();
-        bloquearBotones();
+    initApp(){        
+        if(selectPais){
+            consultaPaises();
+            paisElegido();
+        }
+        if(afterNav){
+            tabs();
+            paginador();
+        }
     }
 }
 

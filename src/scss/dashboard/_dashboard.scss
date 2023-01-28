@@ -70,7 +70,7 @@
             }
         }
         &-icono{
-            width: 4rem;
+            width: 3.2rem;
             &:hover{
                 cursor: pointer;
                 transform: scale(1.1);
@@ -172,6 +172,13 @@
         &--actual{
             background-color: v.$yellow;
             color: v.$white !important;
+            border-radius: 1rem;
+        }
+
+        &--disabled{
+            opacity: .5;
+            pointer-events: none;
+            background-color: v.$gray-dark;
             border-radius: 1rem;
         }
     }

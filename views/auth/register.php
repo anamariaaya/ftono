@@ -1,5 +1,5 @@
 <div class="container">
-    <h1><?php echo $titulo; ?></h1>
+    <h1 class="heading-yellow"><?php echo $titulo; ?></h1>
 
     <?php if(isset($_SESSION['id'])): ?>
         

@@ -11,6 +11,7 @@ class Router
     {
         $this->getRoutes[$url] = $fn;
     }
+    
 
     public function post($url, $fn)
     {
@@ -19,7 +20,7 @@ class Router
 
     public function comprobarRutas()
     {
-        session_start();
+        //session_start();
         define('DEFAULT_LANGUAGE', 'en');
         chooseLanguage();        
 
@@ -35,7 +36,7 @@ class Router
             call_user_func($fn, $this);
         } else {
             echo "Página No Encontrada o Ruta no válida";
-        }        
+        }
     }
 
     public function render($view, $datos = [])
@@ -43,7 +44,7 @@ class Router
         foreach ($datos as $key => $value) {
             $$key = $value; 
         }
-        $file = __DIR__.'/views'.$view.'.php';
+        $file = __DIR__.'/views/'.$view.'.php';
         $string = file_get_contents($file);
         $trans = array(
             '{{' => '<?php echo t("',
@@ -61,12 +62,13 @@ class Router
 
         //Utilizar el layout de acuerdo a la URL
         $url_actual = $_SERVER['PATH_INFO'] ?? '/';
+        //debugging($_SESSION);
 
         if(str_contains($url_actual, '/filmtono')) {
             include_once __DIR__ . "/views/layouts/admin-layout.php";
-        } elseif(str_contains($url_actual, '/clients')) {
+        } elseif(str_contains($url_actual, '/clients') || (isset($_SESSION['nivel_compra']) && str_contains($url_actual, '/complete-register'))) {
             include_once __DIR__ . "/views/layouts/compras-layout.php";
-        } elseif(str_contains($url_actual, '/music')) {
+        } elseif(str_contains($url_actual, '/music') || (isset($_SESSION['nivel_musica'])&& str_contains($url_actual, '/complete-register'))) {
             include_once __DIR__ . "/views/layouts/musica-layout.php";
         } else {
             include_once __DIR__ . "/views/layouts/main-layout.php";

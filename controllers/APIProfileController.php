@@ -8,11 +8,17 @@ use Model\Usuario;
 use Model\NTMusica;
 
 
-class APIController{
+class APIProfileController{
+
+    public static function lenguaje(){
+        echo json_encode($_SESSION['lang']);
+    }
+
     public static function profile(){        
         $registro = new Empresa($_POST);
         $usuario = Usuario::find($_SESSION['id']);
         $registro->id_usuario = $usuario->id;
+        //Agregar los id al perfil_usuario (IMPORTANTE)
         
         $resultado = $registro->guardar();
     

@@ -1,22 +1,34 @@
 {
-    "en": {
-      "index": "Home",
-      "welcome_message": "Welcome to our website!",
-      "about_us": "About Us",
-      "products": "Products",
-      "contact_us": "Contact Us",
-      "learn_more": "Learn More",
-      "header": "Multilingual Website",
-      "footer": "Copyright 2021"
+    "index":{
+      "en": "Home",
+      "es": "Inicio"
     },
-    "es": {
-      "index": "Inicio",
-      "welcome_message": "Beinvenido a nuestro sitio web!",
-      "about_us": "Sobre nosotros",
-      "products": "Productos",
-      "contact_us": "Contactenos",
-      "learn_more": "Saber más",
-      "header": "Sitio web multilingüe",
-      "footer": "Copyright 2021"
+    "welcome_message":{
+      "en": "Welcome to our website!",
+      "es": "Beinvenido a nuestro sitio web!"
+    },
+    "about_us":{
+      "en": "About Us",
+      "es": "Sobre nosotros"
+    },
+    "products":{
+      "en": "Products",
+      "es": "Productos"
+    },
+    "contact_us":{
+      "en": "Contact Us",
+      "es": "Contactenos"
+    },
+    "learn_more":{
+      "en": "Learn More",
+      "es": "Saber más"
+    },
+    "header":{
+      "en": "Multilingual Website",
+      "es": "Sitio web multilingüe"
+    },
+    "footer":{
+      "en": "Copyright 2021",
+      "es": "Copyright 2021"
     }
 }
