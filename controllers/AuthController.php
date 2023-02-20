@@ -3,13 +3,20 @@
 namespace Controllers;
 
 use MVC\Router;
+use Model\Terms;
+use Model\Sellos;
 use Classes\Email;
+use Model\Empresa;
 use Model\NTAdmin;
+use Model\Privacy;
 use Model\Usuario;
 use Model\NTCompra;
 use Model\NTMusica;
 use Model\TipoMusica;
+use Model\Comunicados;
+use Model\PerfilUsuario;
 use Model\TipoComprador;
+use Model\UsuarioSellos;
 
 class AuthController {
     public static function login(Router $router) {
@@ -336,15 +343,76 @@ class AuthController {
     public static function CompleteRegister(Router $router){
         $usuario = Usuario::find($_SESSION['id']);
         $titulo = 'Completar registro';
+        $empresa = new Empresa();
+        $terms = new Terms();
+        $privacy = new Privacy();
+        $comunicados = new Comunicados();
+        $perfilUsuario = new PerfilUsuario();
 
         // $mpdf = new \Mpdf\Mpdf();
         // $mpdf->WriteHTML('Hola Andy');
-        // $mpdf->OutputFile(__DIR__ . '/file.pdf');
-        
+        // $mpdf->OutputFile(__DIR__ . '/file.pdf');   
+        //debugging($_SESSION);
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-           //debugging($_POST);
+            $empresa->sincronizar($_POST);
+            $terms->sincronizar($_POST);
+            $privacy->sincronizar($_POST);
+            $comunicados->sincronizar($_POST);
+
+            //Asignar el id del usuario a cada tabla
+            $terms->id_usuario = $usuario->id;
+            //Asignar la version de los terminos y condiciones
+            $terms->version = '1.0';
+            $terms->guardar();
+
+            $privacy->id_usuario = $usuario->id;
+            //Asignar la versión de la politica de privacidad
+            $privacy->version = '1.0';
+            $privacy->guardar();
+
+            $comunicados->id_usuario = $usuario->id;
+            $comunicados->guardar();
+
+            //guardar los datos en la base de datos
+            $empresa->guardar();
+
+            //Revisar si el usuario es un sello
+            if(isset($_SESSION['nivel_musica'])){
+                $sello = new Sellos();
+                if($_SESSION['nivel_musica'] == 3){
+                    $sello->nombre = $empresa->empresa;
+                    $sello->guardar();
+
+                    //Asignar el sello al usuario
+                    $sello = Sellos::where('nombre',$sello->nombre);
+                    $usuarioSellos = new UsuarioSellos();
+                    $usuarioSellos->id_usuario = $usuario->id;
+                    $usuarioSellos->id_sellos = $sello->id;
+                    $usuarioSellos->guardar();
+                }
+            }
+
+            //Leer el id de la empresa que se acaba de crear
+            $empresa = Empresa::where('empresa',$empresa->empresa);
+
+            //Asignar usuario y empresa a la tabla perfil_usuario
+            $perfilUsuario->id_usuario = $usuario->id;
+            $perfilUsuario->id_empresa = $empresa->id;
+            $perfilUsuario->guardar();
+
+            //Cambiar el estado del perfil del usuario y Redireccionar al usuario a la pagina de inicio
+            $usuario->perfil = '1';
+            $usuario->guardar();
+            $_SESSION['perfil'] = $usuario->perfil;
+
+            if(isset($_SESSION['nivel_musica'])){
+                header('Location: /music/dashboard');
+            } else{
+                header('Location: /clients/dashboard');
+            }
         }
+
         $router->render('auth/complete-register', [
             'titulo' => $titulo,
             'usuario' => $usuario

@@ -2,6 +2,7 @@
 @use "base/variables" as v;
 @use "base/mixins" as m;
 
+
 .header{
     &__bar{
     margin: 1.2rem;
@@ -18,34 +19,6 @@
         }
     }
 
-    // &__lang{
-    //     display: flex;
-    //     justify-content: flex-end;
-    // }
-
-    // &__select{
-    //     all:unset;
-    //     background: url('../img/lang.svg');
-    //     background-repeat: no-repeat;
-    //     background-position: center;
-    //     display: flex;
-    //     width: auto;
-    //     height: auto;
-    //     &:hover{
-    //         cursor: pointer;
-    //     }
-    //     & option{
-    //         all:unset;
-    //         background-color: v.$gray-light;
-    //         color: v.$black;
-    //         padding: 5rem 5rem;
-    //         border-radius: 0.5rem;
-    //         font-size: 1.4rem;
-    //         font-weight: v.$bold;
-    //         cursor: pointer;
-    //     }
-    // }
-
     &__lang{
         background: url('../img/lang.svg');
         background-repeat: no-repeat;
@@ -54,7 +27,9 @@
         display: flex;
         justify-content: center;
         position: relative;
+        min-width: 5rem;
         height: 3rem;
+        z-index: 11;
         &:hover{
             cursor: pointer;
         }
@@ -199,4 +174,3 @@
         }
     }
 }
-

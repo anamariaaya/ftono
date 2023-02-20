@@ -51,13 +51,13 @@
                     >
                 </div>
                 <div class="form--registro_group">
-                    <label class="form--registro__group__label" for="tel">
+                    <label class="form--registro__group__label" for="tel_contacto">
                         <i class="fa-solid fa-mobile-screen form--registro__group__icon"></i>
                         Teléfono*
                     </label>
-                    <input class="form--registro__group__input" type="text"
-                            name="tel"
-                            id="tel"
+                    <input class="form--registro__group__input" type="tel"
+                            name="tel_contacto"
+                            id="tel_contacto"
                             placeholder="Tu teléfono"
                             value=""
                     >
@@ -69,10 +69,10 @@
             <h3>2. Sobre la empresa</h3>
             <p>Datos de la empresa</p>
             <div class="form--registro">
-                <div class="form--registro__group">                
+                <div class="form--registro__group">             
                     <label class="form--registro__group__label" for="empresa">
                         <i class="fa-regular fa-building form--registro__group__icon"></i>
-                        Nombre de la Empresa
+                        Nombre de la Empresa *
                     </label>
                     <input class="form--registro__group__input" type="text"
                             name="empresa"
@@ -85,7 +85,7 @@
                 <div class="form--registro__group">
                     <label class="form--registro__group__label" for="id_fiscal">
                         <i class="fa-solid fa-landmark form--registro__group__icon"></i>
-                        Identificación Fiscal
+                        Identificación Fiscal *
                     </label>
                     <input class="form--registro__group__input" type="text"
                             name="id_fiscal"
@@ -96,9 +96,9 @@
                 </div>
 
                 <div class="form--registro__group">
-                    <label class="form--registro__group__label" for="país">
+                    <label class="form--registro__group__label" for="pais">
                         <i class="fa-solid fa-earth-americas form--registro__group__icon"></i>
-                        País
+                        País *
                     </label>
                     <select class="form--registro__group__select" name="pais" id="pais">
                         <option selected disabled value="0">Selecciona un país</option>
@@ -108,7 +108,7 @@
                 <div class="form--registro__group">
                     <label class="form--registro__group__label" for="direccion">
                         <i class="fa-solid fa-location-dot form--registro__group__icon"></i>
-                        Dirección
+                        Dirección *
                     </label>
                     <input class="form--registro__group__input" type="text"
                             name="direccion"
@@ -122,49 +122,49 @@
             <p>Datos del contacto de compras</p>
             <div class="form--registro">            
                 <div class="form--registro_group">
-                    <label class="form--registro__group__label" for="compras-nombre">
+                    <label class="form--registro__group__label" for="nombre_compras">
                         <i class="fa-solid fa-user-plus form--registro__group__icon"></i>
                         Nombre
                     </label>
                     <input class="form--registro__group__input" type="text"
-                            name="compras-nombre"
-                            id="compras-nombre"
+                            name="nombre_compras"
+                            id="nombre_compras"
                             placeholder="Nombre"
                             value=""
                     >
                 </div>
                 <div class="form--registro_group">
-                    <label class="form--registro__group__label" for="compras-apellido">
+                    <label class="form--registro__group__label" for="apellido_compras">
                         <i class="fa-solid fa-user-plus form--registro__group__icon"></i>
                         Apellido
                     </label>
                     <input class="form--registro__group__input" type="text"
-                            name="compras-apellido"
-                            id="compras-apellido"
+                            name="apellido_compras"
+                            id="apellido_compras"
                             placeholder="Apellido"
                             value=""
                     >
                 </div>
                 <div class="form--registro_group">
-                    <label class="form--registro__group__label" for="compras-email">
+                    <label class="form--registro__group__label" for="email_compras">
                         <i class="fa-solid fa-at form--registro__group__icon"></i>
                         Email de compras
                     </label>
                     <input class="form--registro__group__input" type="text"
-                            name="compras-email"
-                            id="compras-email"
+                            name="email_compras"
+                            id="email_compras"
                             placeholder="Email de compras"
                             value=""
                     >
                 </div>
                 <div class="form--registro_group">
-                    <label class="form--registro__group__label" for="compras-tel">
+                    <label class="form--registro__group__label" for="tel_compras">
                         <i class="fa-solid fa-mobile-screen form--registro__group__icon"></i>
                         Teléfono de compras
                     </label>
                     <input class="form--registro__group__input" type="text"
-                            name="compras-tel"
-                            id="compras-tel"
+                            name="tel_compras"
+                            id="tel_compras"
                             placeholder="Teléfono de compras"
                             value=""
                     >
@@ -177,43 +177,49 @@
                 <h3>3. Autorizaciones</h3>
                 <?php elseif(isset($_SESSION['nivel_musica'])): ?>
                 <h3>3. Firmas y autorizaciones</h3>
-                <p>Firma el contrato de uso de la plataforma</p>
-                <button type="button" class="btn-tabs" id="btn-contrato">Leer y Firmar el contrato</button>
+                <div class="tabs__auth">
+                    <div class="tabs__auth__bloque">
+                        <p>Firma el contrato de proveedor musical *</p>
+                        <button type="button" class="btn-tabs btn-contrato" id="contrato-musical">Leer y Firmar</button>
+                    </div>
+                    <div class="tabs__auth__bloque">
+                        <p>Firma el contrato de proveedor artístico</p>
+                        <button type="button" class="btn-tabs btn-contrato" id="contrato-artisitico">Leer y Firmar</button>
+                    </div>
+                </div>
             <?php endif; ?>            
             
             <p>Aceptación de términos, privacidad y confirmación de comunicaciones</p>
-            <div class="form">
+            <div class="form" id="div-check">
                 <div class="form--registro__checkbox">
-                    
                     <input class="form--registro__checkbox__input" type="checkbox"
-                            name="terminos"
-                            id="terminos"
+                            name="terms"
+                            id="terms"
                             value="1"
                     >
-                    <label class="form--registro__checkbox__label" for="terminos">
+                    <label class="form--registro__checkbox__label" for="terms">
                         <i class="fa-regular fa-file-lines form--registro__group__icon"></i>
                         Acepto los <a href="/terms-conditions">términos y condiciones *</a>
                     </label>
                 </div>
                 <div class="form--registro__checkbox">
                     <input class="form--registro__checkbox__input" type="checkbox"
-                            name="privacidad"
-                            id="privacidad"
+                            name="privacy"
+                            id="privacy"
                             value="1"
                     >
-                    <label class="form--registro__checkbox__label" for="privacidad">
+                    <label class="form--registro__checkbox__label" for="privacy">
                         <i class="fa-regular fa-file-lines form--registro__group__icon"></i>
                         Acepto la <a href="/privacy-policy">Política de privacidad *</a>
                     </label>
                 </div>
                 <div class="form--registro__checkbox">
-                    
                     <input class="form--registro__checkbox__input" type="checkbox"
-                            name="comunicaciones"
-                            id="comunicaciones"
+                            name="comunicados"
+                            id="comunicados"
                             value="1"
                     >
-                    <label class="form--registro__checkbox__label" for="comunicaciones">
+                    <label class="form--registro__checkbox__label" for="comunicados">
                         <i class="fa-regular fa-file-lines form--registro__group__icon"></i>
                         Acepto recibir comunicaciones por parte de Filmtono
                     </label>
@@ -222,8 +228,8 @@
         </div>
 
         <div class="tabs__pags">
-            <button type="button" id="anterior" class="btn-tabs ocultar">&laquo; Anterior</button>
-            <button type="button" id="siguiente" class="btn-tabs">Siguiente &raquo;</button>
+            <button type="button" id="anterior" class="btn-tabs ocultar">&#129044; Anterior</button>
+            <button type="button" id="siguiente" class="btn-tabs">Siguiente &#10143;</button>
         </div>
     </form>
 </div>

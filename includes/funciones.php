@@ -131,3 +131,21 @@ function t($key) {
         echo $strings;
     }
 }
+
+function ct($key) {
+    $translations = json_decode(file_get_contents('../contracts.json'), true);
+    $language = chooseLanguage();
+    $keys = array_keys($translations);
+
+    if(!in_array($key, $keys)){
+        echo 'CORREGIR LLAVE en: ' . $key;
+        //return;
+    } else{
+        if ($language == 'en') {
+            $strings = $translations[$key]['en'];    
+        } else{
+            $strings = $translations[$key]['es'];
+        }
+        return $strings;
+    }
+}

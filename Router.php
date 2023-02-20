@@ -39,8 +39,7 @@ class Router
         }
     }
 
-    public function render($view, $datos = [])
-    {
+    public function render($view, $datos = []){
         foreach ($datos as $key => $value) {
             $$key = $value; 
         }
@@ -50,6 +49,7 @@ class Router
             '{{' => '<?php echo t("',
             '}}' => '"); ?>'
         );
+        
         $string = strtr($string, $trans);
 
         file_put_contents($file, $string);

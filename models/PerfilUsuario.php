@@ -3,7 +3,7 @@
 namespace Model;
 
 class PerfilUsuario extends ActiveRecord{
-    protected static $tabla = 'n_t_admin';
+    protected static $tabla = 'perfil_usuario';
     protected static $columnasDB = ['id', 'id_usuario', 'id_empresa'];
 
     public function __construct($args = [])

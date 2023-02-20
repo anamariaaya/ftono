@@ -14,14 +14,6 @@
             </label>
         </div>
 
-        <!-- <div class="header__lang">
-            <select class="header__select" id="language">
-                <option selected disabled></option>
-                <option value="en">English</option>
-                <option value="es">Español</option>
-            </select>
-        </div> -->
-
         <div class="header__lang">
             <div class="header__select no-display" id="language">
                 <button class="btn-lang" value="en">English</button>

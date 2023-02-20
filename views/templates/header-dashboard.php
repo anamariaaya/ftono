@@ -9,9 +9,16 @@
         </div>
 
         <nav class="dashboard__nav">
-           <?php
-            if(isset($_SESSION['nivel_compra'])):?>
-                 <a href="/cart">
+            <div class="header__lang">
+                <div class="header__select no-display" id="language">
+                    <button class="btn-lang" value="en">English</button>
+                    <button class="btn-lang" value="es">Español</button>
+                </div>
+            </div>
+            <?php
+                if(isset($_SESSION['nivel_compra'])):
+            ?>
+                <a href="/cart">
                 <img class="dashboard__nav-icono" src="/build/img/cart.svg" loading="lazy" alt="icono carrito">
                 <!-- <span class="dashboard__nav-numero"><?php echo $total; ?></span> -->
                 </a>

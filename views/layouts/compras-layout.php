@@ -22,7 +22,7 @@
             ?>
 
             <main class="dashboard__contenido">
-                <?php isRegistered('No olvides completar tu registro para poder comprar, acceder a todas las funciones de tu dashboard y agregar elementos a tu lista de deseos', $contenido); ?>
+                <?php isRegistered('No olvides completar tu registro para poder comprar y agregar elementos a tu lista de deseos', $contenido); ?>
             </main>
         </div>
 

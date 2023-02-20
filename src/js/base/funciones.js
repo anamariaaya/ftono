@@ -1,9 +1,30 @@
-import {er, num, ig} from '../admin/selectores.js';
+import {er, num} from '../admin/selectores.js';
 import {container} from '../filmtono/selectores.js';
-export function imprimirAlerta(message, type, container, sibling) {
+
+export async function readLang(){
+    try{
+        const resultado = await fetch('http://localhost:3000/api/filmtono/lenguaje');
+        const data = await resultado.json();
+        return data;
+    }catch(error){
+        console.log(error);
+    }
+}
+
+//Leer el lang.json
+export async function readJSON(){
+    try{
+        const resultado = await fetch('http://localhost:3000/api/filmtono/alerts');
+        const data = await resultado.json();
+        return data;
+    }catch(error){
+        console.log(error);
+    }
+}
+
+export async function imprimirAlerta(message, type, container, sibling) {
     // Crea el div
     const divMensaje = document.createElement('div');
-    divMensaje.classList.add('text-center', 'alert', 'd-block', 'col-12');
     
     // Si es de tipo error agrega una clase
     if(type === 'error') {
@@ -17,8 +38,11 @@ export function imprimirAlerta(message, type, container, sibling) {
         error.remove();
     }
 
-    // Mensaje de error
-    divMensaje.textContent = message;
+    const lang = await readLang();
+    const alerts = await readJSON();
+    divMensaje.textContent = alerts[message][lang];
+
+    //divMensaje.textContent = message;
 
     // Insertar en el DOM
     container.insertBefore(divMensaje, sibling);
@@ -26,7 +50,7 @@ export function imprimirAlerta(message, type, container, sibling) {
     // Quitar el alert despues de 3 segundos
     setTimeout( () => {
         divMensaje.remove();
-    }, 3000);
+    }, 5000);
 }
 
 export function validarFormulario(e) {
@@ -41,33 +65,39 @@ export function validarFormulario(e) {
        
     } else {
         //console.log('No hay nada');
-        imprimirAlerta('Todos los campos son obligatorios', 'error', form, e.target);
+        imprimirAlerta('input', 'error', form, e.target);
     }
 
     if(e.target.type === 'email'){
         if(er.test(e.target.value) === false){
-            imprimirAlerta('Email no valido', 'error', form, e.target);
+            imprimirAlerta('email', 'error', form, e.target);
         } 
+    }
+
+    //verificar que se alla elegido una opción de un select
+    if(e.target.type === 'select-one'){
+        if(e.target.value === '0' || e.target.value === ''){
+            imprimirAlerta('select', 'error', form, e.target);
+        }
     }
 
     if(e.target.type === 'tel'){
         if(num.test(e.target.value) === false || e.target.value.length < 9){
-            imprimirAlerta('Teléfono no valido', 'error', form, e.target);
+            imprimirAlerta('phone', 'error', form, e.target);
         } 
     }
 
-    if(e.target.id === 'instagram'){
-        if(ig.test(e.target.value) === false){
-            imprimirAlerta('Instagram no valido', 'error', form, e.target);
-        } 
-    }
-    //comprobar que todos los campos esten llenos
-    const inputs = document.querySelectorAll('input');
-    //comprobar que todos los inputs tengan un valor
-    const arrayInputs = Array.from(inputs);
-    if(arrayInputs.every( input => input.value !== '')){
-        llenarDatos();
-    }
+    //construir un array con algunos inputs que traemos del formulario
+    
+
+    // const inputs = [cargo, telContacto, empresa, idFiscal, pais, direccion, terms, privacy];
+
+    // //comprobar que todos los inputs tengan un valor
+    // const arrayInputs = Array.from(inputs);
+    // console.log(arrayInputs);
+    // if(arrayInputs.every( input => input.value !== '')){
+    //     llenarDatos();
+    // }
 }
 
 export function llenarDatos() {

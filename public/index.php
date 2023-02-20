@@ -70,6 +70,10 @@ $router->get('/filmtono/dashboard', [DashboardController::class, 'admin']);
 //Filmtono APIs
 $router->get('/api/filmtono/users', [APIUsersController::class, 'index']);
 $router->get('/api/filmtono/lenguaje', [APIProfileController::class, 'lenguaje']);
+$router->get('/api/filmtono/alerts', [APIProfileController::class, 'alerts']);
+$router->get('/api/filmtono/contracts', [APIProfileController::class, 'contracts']);
+$router->get('/api/filmtono/c-musical', [APIProfileController::class, 'contratoMusical']);
+$router->get('/api/filmtono/c-artistico', [APIProfileController::class, 'contratoArtistico']);
 
 //Filmtono Profile
 $router->get('/filmtono/profile', [ProfileController::class, 'profile']);

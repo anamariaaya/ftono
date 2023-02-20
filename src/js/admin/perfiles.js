@@ -1,8 +1,15 @@
-import {botones, pagAnterior, pagSiguiente, afterNav, btnContrato} from './selectores.js';
+import {botones, pagAnterior, pagSiguiente, afterNav, btnContrato, cargo, telContacto, empresa, idFiscal, direccion, terms, privacy, divCheck} from './selectores.js';
 // import {form} from './form.js';
-// import { datosEmpresa } from './Empresa.js';
-// import { llenarDatos } from '../base/funciones.js';
+import { validarFormulario, readLang, readJSON } from '../base/funciones.js';
 // import { sellos } from './sellos.js';
+
+export function formularioReg(){
+    cargo.addEventListener('blur', validarFormulario);
+    telContacto.addEventListener('blur', validarFormulario);
+    empresa.addEventListener('blur', validarFormulario);
+    idFiscal.addEventListener('blur', validarFormulario);
+    direccion.addEventListener('blur', validarFormulario);
+}
 
 let paso = 1;
 
@@ -57,21 +64,28 @@ function botonesPaginador(){
             pagSiguiente.classList.remove('ocultar');
             afterNav.classList.remove('step2');
             afterNav.classList.remove('step3');
+            pagSiguiente.textContent = 'Siguiente \u279f';
+            pagSiguiente.classList.remove('btn-tabs--disabled');
             break;
         case '2':
             pagAnterior.classList.remove('ocultar');
             pagSiguiente.classList.remove('ocultar');
             afterNav.classList.add('step2');
             afterNav.classList.remove('step3');
+            pagSiguiente.classList.remove('btn-tabs--disabled');
+            pagSiguiente.textContent = 'Siguiente \u279f';
             break;
         case '3':
             pagAnterior.classList.remove('ocultar');
-            pagSiguiente.textContent = 'Registrarse';
+            pagSiguiente.textContent = 'Registrarse \u2713';
             pagSiguiente.onclick = setType;
+            pagSiguiente.onclick = validarCheck;
             afterNav.classList.add('step3');
             afterNav.classList.remove('step2');
             if(btnContrato){
-                btnContrato.onclick = modalContrato;
+                btnContrato.forEach(btn => {
+                    btn.onclick = modalContrato;
+                });
             };
             break;
         default:
@@ -82,6 +96,49 @@ function botonesPaginador(){
 export function paginador(){
     pagAnterior.addEventListener('click', paginaAnterior);
     pagSiguiente.addEventListener('click',paginaSiguiente);
+}
+
+function validarCheck(e){
+    e.preventDefault();
+    if(!terms.checked){
+        alertaCheck('terms');
+    } else if(!privacy.checked){
+        alertaCheck('privacy');
+    } else{
+        //comprobar que todos los inputs tengan un valor
+        const inputs = [cargo, telContacto, empresa, idFiscal, pais, direccion];
+        const arrayInputs = Array.from(inputs);
+
+        if(arrayInputs.every( input => input.value !== '')){
+            console.log('todo ok');
+        } else{
+            alertaCheck('inputs');
+        }
+        //e.target.type = 'submit';
+    }
+}
+
+async function alertaCheck(message){
+    // Crea el div
+    const divMensaje = document.createElement('div');
+    divMensaje.classList.add('alerta__error');
+
+    const error = document.querySelector('.alerta__error');
+    if(error){
+        error.remove();
+    }
+    // Mensaje de error
+    const lang = await readLang();
+    const alerts = await readJSON();
+    divMensaje.textContent = alerts[message][lang];
+
+    // Insertar en el DOM
+    divCheck.appendChild(divMensaje);
+
+    // Quitar el alert despues de 3 segundos
+    setTimeout( () => {
+        divMensaje.remove();
+    }, 100000);
 }
 
 function paginaSiguiente(){
@@ -104,8 +161,19 @@ function setType(e){
     e.target.type = 'submit';
 }
 
-function modalContrato(e){
+async function getContrato(url){
+    try{
+        const res = await fetch(url);
+        const data = await res.json();
+        return data;        
+    }catch(err){
+        console.log(err);
+    }
+}
+
+async function modalContrato(e){
     e.preventDefault();
+
     const body = document.querySelector('body');
     body.classList.add('overlay');
 
@@ -119,6 +187,29 @@ function modalContrato(e){
     btnCerrar.classList.add('register__btn-cerrar');
     btnCerrar.innerHTML = '<i class="fas fa-times"></i>';
     btnCerrar.onclick = cerrarModal;
+
+    const lang = await readLang();
+    const alerts = await readJSON();
+
+    let url;
+    if(e.target.id === 'contrato-musical'){
+        url = 'http://localhost:3000/api/filmtono/c-musical';
+    }else{
+        url = 'http://localhost:3000/api/filmtono/c-artistico';
+    }
+
+    const divContrato = document.createElement('div');
+
+    const contrato = await getContrato(url);
+    divContrato.innerHTML = contrato;    
+
+    const firmaTitulo = document.createElement('P');
+    firmaTitulo.textContent = alerts.signature[lang];
+    firmaTitulo.classList.add('firma');
+
+    const firmaInfo = document.createElement('P');
+    firmaInfo.textContent = alerts.signatureInfo[lang];
+    firmaInfo.classList.add('firma__info');
 
     const canvas = document.createElement('canvas');
     canvas.id = 'canvas';
@@ -204,10 +295,19 @@ function modalContrato(e){
     clearbtn.onclick = limpiar;
 
     modal.appendChild(btnCerrar);
+    modal.appendChild(divContrato);
+    modal.appendChild(firmaTitulo);
+    modal.appendChild(firmaInfo);
     modal.appendChild(canvas);
     modal.appendChild(clearbtn);
     divModal.appendChild(modal);
     body.appendChild(divModal);
+
+    datosContrato();
+}
+
+async function datosContrato(){
+    console.log('datos contrato');
 }
 
 function cerrarModal(){

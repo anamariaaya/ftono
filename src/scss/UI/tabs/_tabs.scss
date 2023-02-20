@@ -70,6 +70,14 @@
         }
     }
 
+    &__auth{
+        @include m.tablet{
+            display: flex;
+            justify-content: space-around;
+            gap: 3.5rem;
+        }
+    }
+
     &__pags{
         padding: v.$separate 0;
     
@@ -152,6 +160,10 @@
         &__label{
             @extend .form--registro__group__label;
             width: 75%;
+            a{
+                color: v.$yellow;
+                text-decoration: underline;
+            }
         }
     }
 }

@@ -1,13 +1,8 @@
+import { validarFormulario } from "../base/funciones.js";
 import { selectPais } from "./selectores.js";
-async function readLang(){
-    try{
-        const resultado = await fetch('http://localhost:3000/api/filmtono/lenguaje');
-        const data = await resultado.json();
-        return data;
-    }catch(error){
-        console.log(error);
-    }
-}
+import  {readLang} from "../base/funciones.js";
+//import { validarFormulario } from '../base/funciones.js';
+
 
 export async function consultaPaises(){
     try{
@@ -59,7 +54,7 @@ function mostrarPaises(datos){
 
                     //crear option con el nombre del pais
                     const option = document.createElement('option');
-                    option.value = pais.name.common;
+                    option.value = pais.cca2;
                     option.textContent = pais.name.common;
                     selectPais.appendChild(option);  
                 });
@@ -69,9 +64,6 @@ function mostrarPaises(datos){
 }
 
 export function paisElegido(){
-    selectPais.addEventListener('change', e => {
-        const pais = e.target.value;
-        console.log(pais);
-    });
+    selectPais.addEventListener('blur', validarFormulario);
 }
 
