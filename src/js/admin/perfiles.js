@@ -1,4 +1,4 @@
-import {botones, pagAnterior, pagSiguiente, afterNav, btnContrato, cargo, telContacto, empresa, idFiscal, direccion, terms, privacy, divCheck} from './selectores.js';
+import {botones, pagAnterior, pagSiguiente, afterNav, btnContrato, cargo, telContacto, empresa, idFiscal, direccion, terms, privacy, divCheck, btnSubmit} from './selectores.js';
 // import {form} from './form.js';
 import { validarFormulario, readLang, readJSON } from '../base/funciones.js';
 // import { sellos } from './sellos.js';
@@ -78,7 +78,6 @@ function botonesPaginador(){
         case '3':
             pagAnterior.classList.remove('ocultar');
             pagSiguiente.textContent = 'Registrarse \u2713';
-            pagSiguiente.onclick = setType;
             pagSiguiente.onclick = validarCheck;
             afterNav.classList.add('step3');
             afterNav.classList.remove('step2');
@@ -106,11 +105,11 @@ function validarCheck(e){
         alertaCheck('privacy');
     } else{
         //comprobar que todos los inputs tengan un valor
-        const inputs = [cargo, telContacto, empresa, idFiscal, pais, direccion];
+        const inputs = [cargo, telContacto, empresa, idFiscal,  direccion];
         const arrayInputs = Array.from(inputs);
 
         if(arrayInputs.every( input => input.value !== '')){
-            console.log('todo ok');
+            btnSubmit.click();
         } else{
             alertaCheck('inputs');
         }
@@ -155,10 +154,6 @@ function paginaAnterior(e){
     } else if(botones[1].classList.contains('active')){
         botones[0].click();
     }
-}
-
-function setType(e){
-    e.target.type = 'submit';
 }
 
 async function getContrato(url){

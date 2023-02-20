@@ -355,6 +355,7 @@ class AuthController {
         //debugging($_SESSION);
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            
             $empresa->sincronizar($_POST);
             $terms->sincronizar($_POST);
             $privacy->sincronizar($_POST);
@@ -374,6 +375,9 @@ class AuthController {
             $comunicados->id_usuario = $usuario->id;
             $comunicados->guardar();
 
+            //Organizar el teléfono de contacto
+            $empresa->tel_contacto = $_POST['tel-index'].$_POST['tel_contacto'];
+            debugging($empresa);
             //guardar los datos en la base de datos
             $empresa->guardar();
 

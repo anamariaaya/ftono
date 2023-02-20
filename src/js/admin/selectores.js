@@ -6,10 +6,13 @@ export const num = /^[0-9]+$/;
 
 //export const empresa = new Empresa();
 
+export const paisContacto = document.querySelector('#pais_contacto');
+export const indicativo = document.querySelector('.tel-index');
 export const selectPais = document.querySelector('#pais');
 export const botones = document.querySelectorAll('.tab__button');
 export const pagAnterior = document.querySelector('#anterior');
 export const pagSiguiente = document.querySelector('#siguiente');
+export const btnSubmit = document.querySelector('#btn-submit');
 export const afterNav = document.querySelector('.tabs__nav__line');
 export const btnContrato = document.querySelectorAll('.btn-contrato');
 

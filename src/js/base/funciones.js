@@ -1,4 +1,4 @@
-import {er, num} from '../admin/selectores.js';
+import {er, num, indicativo} from '../admin/selectores.js';
 import {container} from '../filmtono/selectores.js';
 
 export async function readLang(){
@@ -25,6 +25,7 @@ export async function readJSON(){
 export async function imprimirAlerta(message, type, container, sibling) {
     // Crea el div
     const divMensaje = document.createElement('div');
+    divMensaje.style.gridColumn = '1 / 3';
     
     // Si es de tipo error agrega una clase
     if(type === 'error') {
@@ -42,15 +43,13 @@ export async function imprimirAlerta(message, type, container, sibling) {
     const alerts = await readJSON();
     divMensaje.textContent = alerts[message][lang];
 
-    //divMensaje.textContent = message;
-
     // Insertar en el DOM
     container.insertBefore(divMensaje, sibling);
 
     // Quitar el alert despues de 3 segundos
     setTimeout( () => {
         divMensaje.remove();
-    }, 5000);
+    }, 3000);
 }
 
 export function validarFormulario(e) {
@@ -86,18 +85,6 @@ export function validarFormulario(e) {
             imprimirAlerta('phone', 'error', form, e.target);
         } 
     }
-
-    //construir un array con algunos inputs que traemos del formulario
-    
-
-    // const inputs = [cargo, telContacto, empresa, idFiscal, pais, direccion, terms, privacy];
-
-    // //comprobar que todos los inputs tengan un valor
-    // const arrayInputs = Array.from(inputs);
-    // console.log(arrayInputs);
-    // if(arrayInputs.every( input => input.value !== '')){
-    //     llenarDatos();
-    // }
 }
 
 export function llenarDatos() {

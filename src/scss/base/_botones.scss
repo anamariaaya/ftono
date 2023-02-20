@@ -106,3 +106,14 @@
         }
     }
 }
+
+.btn-contrato{
+    &--optional{
+        background-color: transparent;
+        border: .2rem solid v.$yellow;
+        color: v.$yellow;
+        &:hover{
+            background-color: transparent;
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import { validarFormulario } from "../base/funciones.js";
-import { selectPais } from "./selectores.js";
+import { selectPais, paisContacto, indicativo } from "./selectores.js";
 import  {readLang} from "../base/funciones.js";
 //import { validarFormulario } from '../base/funciones.js';
 
@@ -35,9 +35,10 @@ function mostrarPaises(datos){
                     });
                     //crear option con el nombre del pais
                     const option = document.createElement('option');
-                    option.value = pais.translations.spa.common;
+                    option.value = pais.cca2;
                     option.textContent = pais.translations.spa.common;
                     selectPais.appendChild(option);
+                    paisContacto.appendChild(option.cloneNode(true));
                 });
             } else{
                 datos.forEach(pais => {
@@ -57,6 +58,7 @@ function mostrarPaises(datos){
                     option.value = pais.cca2;
                     option.textContent = pais.name.common;
                     selectPais.appendChild(option);  
+                    paisContacto.appendChild(option.cloneNode(true));
                 });
             }
         }
@@ -65,5 +67,30 @@ function mostrarPaises(datos){
 
 export function paisElegido(){
     selectPais.addEventListener('blur', validarFormulario);
+    paisContacto.addEventListener('blur', validarFormulario);
+}
+
+export function indicativoTel(){
+    paisContacto.addEventListener('change', function(e){
+        if(e.target.value !== ''){
+            //consultar API para obtener el indicativo
+            const url = `https://restcountries.com/v3.1/alpha/${e.target.value}`;
+            fetch(url)
+                .then(respuesta => respuesta.json())
+                .then(datos => {      
+                    //leer longitud de un array
+                    console.log();              
+                    if(Object.keys(datos[0].idd).length === 0){
+                        indicativo.value = '0-';
+                    } else{
+                        const root = datos[0].idd.root;
+                        const suffix = datos[0].idd.suffixes[0];
+                        indicativo.value = `${root}${suffix}`;
+                        indicativo.setAttribute('readonly', 'readonly');
+                        indicativo.setAttribute('value', `${root}${suffix}`);
+                    }
+                });
+        }
+    });
 }
 

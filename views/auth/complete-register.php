@@ -16,7 +16,7 @@
             <h3>1. Datos personales</h3>
             <p>Completa tus datos</p>
             <div class="form--registro">
-                <div class="form--registro_group">
+                <div class="form--registro__group">
                     <label class="form--registro__group__label" for="nombre">
                         <i class="fa-solid fa-user-check form--registro__group__icon"></i>
                         Nombre
@@ -27,7 +27,7 @@
                             disabled
                     >
                 </div>
-                <div class="form--registro_group">
+                <div class="form--registro__group">
                     <label class="form--registro__group__label" for="email">
                         <i class="fa-solid fa-envelope-circle-check form--registro__group__icon"></i>
                         Email
@@ -38,7 +38,7 @@
                             disabled
                     >
                 </div>
-                <div class="form--registro_group">
+                <div class="form--registro__group">
                     <label class="form--registro__group__label" for="cargo">
                         <i class="fa-solid fa-briefcase form--registro__group__icon"></i>
                         Cargo*
@@ -50,18 +50,30 @@
                             value=""
                     >
                 </div>
-                <div class="form--registro_group">
-                    <label class="form--registro__group__label" for="tel_contacto">
+                <div class="form--registro__group">
+                    <label class="form--registro__group__label" for="pais_contacto">
+                        <i class="fa-solid fa-earth-americas form--registro__group__icon"></i>
+                        Tu País*
+                    </label>
+                    <select class="form--registro__group__select" name="pais_contacto" id="pais_contacto">
+                        <option selected disabled value="0">Selecciona un país</option>
+                    </select>
+                </div>
+                <div class="form--registro__group">
+                    <label class="form--registro__group__label" for="tel_contacto">                        
                         <i class="fa-solid fa-mobile-screen form--registro__group__icon"></i>
                         Teléfono*
                     </label>
-                    <input class="form--registro__group__input" type="tel"
-                            name="tel_contacto"
-                            id="tel_contacto"
-                            placeholder="Tu teléfono"
-                            value=""
-                    >
-                </div>
+                    <div class="tel-form">                        
+                        <input class="form--registro__group__input tel-input" type="tel"
+                                name="tel_contacto"
+                                id="tel_contacto"
+                                placeholder="Tu teléfono"
+                                value=""
+                        >
+                        <input type="text" name="tel-index" id="tel-index" class="tel-index" placeholder="+" value="" readonly>
+                    </div>
+                </div>                
             </div>
         </div>
 
@@ -184,7 +196,7 @@
                     </div>
                     <div class="tabs__auth__bloque">
                         <p>Firma el contrato de proveedor artístico</p>
-                        <button type="button" class="btn-tabs btn-contrato" id="contrato-artisitico">Leer y Firmar</button>
+                        <button type="button" class="btn-tabs btn-contrato btn-contrato--optional" id="contrato-artisitico">Leer y Firmar</button>
                     </div>
                 </div>
             <?php endif; ?>            
@@ -199,7 +211,7 @@
                     >
                     <label class="form--registro__checkbox__label" for="terms">
                         <i class="fa-regular fa-file-lines form--registro__group__icon"></i>
-                        Acepto los <a href="/terms-conditions">términos y condiciones *</a>
+                        Acepto los <a href="/terms-conditions" target="_blank">Términos y condiciones *</a>
                     </label>
                 </div>
                 <div class="form--registro__checkbox">
@@ -210,7 +222,7 @@
                     >
                     <label class="form--registro__checkbox__label" for="privacy">
                         <i class="fa-regular fa-file-lines form--registro__group__icon"></i>
-                        Acepto la <a href="/privacy-policy">Política de privacidad *</a>
+                        Acepto la <a href="/privacy-policy" target="_blank">Política de privacidad *</a>
                     </label>
                 </div>
                 <div class="form--registro__checkbox">
@@ -230,6 +242,7 @@
         <div class="tabs__pags">
             <button type="button" id="anterior" class="btn-tabs ocultar">&#129044; Anterior</button>
             <button type="button" id="siguiente" class="btn-tabs">Siguiente &#10143;</button>
+            <input type="submit" id="btn-submit" class="btn-tabs no-display" value="Registrarse ✓">
         </div>
     </form>
 </div>

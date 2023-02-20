@@ -1,6 +1,6 @@
-import { consultaPaises, paisElegido } from "./APIPaises.js";
+import { consultaPaises, indicativoTel, paisElegido } from "./APIPaises.js";
 import {tabs, paginador, formularioReg} from "./perfiles.js";
-import { selectPais, afterNav } from "./selectores.js";
+import { selectPais, afterNav, paisContacto } from "./selectores.js";
 import { chooseLang } from "../UI/language.js";
 
 class App{
@@ -12,6 +12,9 @@ class App{
         if(selectPais){
             consultaPaises();
             paisElegido();
+        }
+        if(paisContacto){
+            indicativoTel();
         }
         if(afterNav){
             formularioReg();

@@ -105,3 +105,27 @@
 .heading-yellow{
     color: v.$yellow;
 }
+
+.tel-form{
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 85%;
+    gap: .5rem;
+    grid-auto-flow: column;
+}
+
+.tel-input{
+    grid-column: 2 / 3;
+}
+
+.tel-index{
+    all: unset;
+    font-size: 1.6rem;
+    padding: 1rem;
+    background-color: v.$gray-dark;
+    color: v.$yellow;
+    grid-column: 1 / 2;
+    border-radius: 1rem;
+    max-width: 5rem;
+    cursor: not-allowed;
+}
