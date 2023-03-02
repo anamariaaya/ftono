@@ -34,5 +34,13 @@
     "signatureInfo":{
       "en": "Please sign below using your mouse or finger:",
       "es": "Por favor firma debajo usando tu ratón o dedo:"
+    },
+    "clear":{
+      "en": "Clear",
+      "es": "Borrar"
+    },
+    "sign":{
+      "en": "Add Signature",
+      "es": "Agregar Firma"
     }
 }

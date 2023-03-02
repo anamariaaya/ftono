@@ -47,6 +47,45 @@ class APIProfileController{
         echo json_encode($archivo);
     }
 
+    public static function firma(){
+        //Leer el primer valor del array
+        $img = array_shift($_POST);
+
+        //get the image data from POST
+        $data = base64_decode($img);
+        
+        //debugging($data);
+
+        //save the image in a temporary folder
+        //$resultado = file_put_contents('prueba'.'.png', $data);
+
+        //save the file in the server
+        // $resultado = file_put_contents(__DIR__.'/../views/contracts/firmas/'.$_SESSION['id'].'.png', $data);
+
+
+        
+        echo json_encode(['resultado' => $resultado]);
+        //debugging($data);
+        
+        //generate the filename
+        // $filename = 'my-cool-image.' . $type;
+        
+        // //save the image data to the server
+        // file_put_contents($filename, $data);
+        
+        // //return the filename
+        // echo $filename;
+
+        // debugging($_POST);
+        // $data = base64_decode($_POST['img']);
+
+        // $resultado = $data;
+        // // $resultado = file_put_contents(__DIR__.'/../views/contracts/firmas/'.$_SESSION['id'].'.png', $data);
+        // echo json_encode(['resultado' => $resultado]);
+
+        // debugging($data);
+    }
+
     public static function profile(){        
         $registro = new Empresa($_POST);
         $usuario = Usuario::find($_SESSION['id']);

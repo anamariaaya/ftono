@@ -37,6 +37,7 @@ function mostrarPaises(datos){
                     const option = document.createElement('option');
                     option.value = pais.cca2;
                     option.textContent = pais.translations.spa.common;
+                    option.setAttribute('data-name', pais.translations.spa.common);
                     selectPais.appendChild(option);
                     paisContacto.appendChild(option.cloneNode(true));
                 });
@@ -57,6 +58,7 @@ function mostrarPaises(datos){
                     const option = document.createElement('option');
                     option.value = pais.cca2;
                     option.textContent = pais.name.common;
+                    option.setAttribute('data-name', pais.name.common);
                     selectPais.appendChild(option);  
                     paisContacto.appendChild(option.cloneNode(true));
                 });
@@ -93,4 +95,3 @@ export function indicativoTel(){
         }
     });
 }
-

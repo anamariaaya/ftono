@@ -1,7 +1,9 @@
-import {botones, pagAnterior, pagSiguiente, afterNav, btnContrato, cargo, telContacto, empresa, idFiscal, direccion, terms, privacy, divCheck, btnSubmit} from './selectores.js';
+import {botones, pagAnterior, pagSiguiente, afterNav, btnContrato, nombre, email, cargo, telContacto, empresa, idFiscal, direccion, terms, privacy, divCheck, btnSubmit, paisContacto} from './selectores.js';
 // import {form} from './form.js';
-import { validarFormulario, readLang, readJSON } from '../base/funciones.js';
+import { validarFormulario } from '../base/funciones.js';
+import {readLang, readJSON} from '../base/funciones.js';
 // import { sellos } from './sellos.js';
+
 
 export function formularioReg(){
     cargo.addEventListener('blur', validarFormulario);
@@ -129,6 +131,7 @@ async function alertaCheck(message){
     // Mensaje de error
     const lang = await readLang();
     const alerts = await readJSON();
+
     divMensaje.textContent = alerts[message][lang];
 
     // Insertar en el DOM
@@ -169,6 +172,9 @@ async function getContrato(url){
 async function modalContrato(e){
     e.preventDefault();
 
+    const lang = await readLang();
+    const alerts = await readJSON();
+
     const body = document.querySelector('body');
     body.classList.add('overlay');
 
@@ -182,9 +188,6 @@ async function modalContrato(e){
     btnCerrar.classList.add('register__btn-cerrar');
     btnCerrar.innerHTML = '<i class="fas fa-times"></i>';
     btnCerrar.onclick = cerrarModal;
-
-    const lang = await readLang();
-    const alerts = await readJSON();
 
     let url;
     if(e.target.id === 'contrato-musical'){
@@ -206,8 +209,10 @@ async function modalContrato(e){
     firmaInfo.textContent = alerts.signatureInfo[lang];
     firmaInfo.classList.add('firma__info');
 
+    const formCanvas = document.createElement('form');
+
     const canvas = document.createElement('canvas');
-    canvas.id = 'canvas';
+    canvas.id = 'canvasSignature';
     canvas.width = 600;
     canvas.height = 200;
     canvas.style.border = '1px solid black';
@@ -244,21 +249,6 @@ async function modalContrato(e){
             [x, y] = [e.offsetX, e.offsetY];
         }
     }
-    
-    // function draw(e) {
-    //     if (!isDrawing) return;
-    //         ctx.beginPath();
-    //     if (e.touches) {
-    //         ctx.moveTo(x, y);
-    //         ctx.lineTo(e.touches[0].clientX, e.touches[0].clientY);
-    //         [x, y] = [e.touches[0].clientX, e.touches[0].clientY];
-    //     } else {
-    //         ctx.moveTo(x , y);
-    //         ctx.lineTo(e.clientX, e.clientY);
-    //         [x, y] = [e.clientX, e.clientY];
-    //     }
-    //      ctx.stroke();
-    // }
 
     function draw(e) {
         if (!isDrawing) return;
@@ -284,26 +274,118 @@ async function modalContrato(e){
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
-    const clearbtn = document.createElement('button');
-    clearbtn.classList.add('btn-tabs');
-    clearbtn.textContent = 'Limpiar';
-    clearbtn.onclick = limpiar;
+    const clearBtn = document.createElement('button');
+    clearBtn.classList.add('btn-contrato--optional');
+    clearBtn.textContent = alerts['clear'][lang];
+    clearBtn.onclick = limpiar;
+
+    const hiddenInput = document.createElement('input');
+    hiddenInput.type = 'hidden';
+    hiddenInput.name = 'signature';
+    hiddenInput.id = 'signature';
+    hiddenInput.value = canvas.toDataURL();
+
+    const addSignature = document.createElement('input');
+    addSignature.type = 'submit';
+    addSignature.value = alerts['sign'][lang];
+    addSignature.classList.add('btn-contrato--optional');
+
+    const sendBtn = document.createElement('button');
+    sendBtn.classList.add('btn-tabs');
+    sendBtn.textContent = 'Guardar';
+    // sendBtn.onclick = canvasImage;
+    formCanvas.appendChild(canvas);
+    formCanvas.appendChild(hiddenInput);
+    formCanvas.appendChild(addSignature);
 
     modal.appendChild(btnCerrar);
     modal.appendChild(divContrato);
     modal.appendChild(firmaTitulo);
     modal.appendChild(firmaInfo);
-    modal.appendChild(canvas);
-    modal.appendChild(clearbtn);
+    modal.appendChild(formCanvas);
+    modal.appendChild(clearBtn);
+    modal.appendChild(sendBtn);
+
     divModal.appendChild(modal);
     body.appendChild(divModal);
 
-    datosContrato();
+    datosContrato(canvas);
 }
 
-async function datosContrato(){
-    console.log('datos contrato');
+async function datosContrato(canvas){
+    const contEmpresa = document.querySelector('#contract-empresa');
+    contEmpresa.textContent = empresa.value;
+
+    const contNombre = document.querySelector('#contract-nombre');
+    contNombre.textContent = nombre.value;
+
+    const contIdFiscal = document.querySelector('#contract-id-fiscal');
+    contIdFiscal.textContent = idFiscal.value;
+
+    const contDireccion = document.querySelector('#contract-direccion');
+    contDireccion.textContent = direccion.value;
+
+    const contPais = document.querySelector('#contract-pais');
+    contPais.textContent = paisContacto.getAttribute('data-name');
+
+    // const contTelefono = document.querySelector('#contract-telefono');
+    // contTelefono.textContent = telefono.value;
+
+    const contEmail = document.querySelector('#contract-email');
+    contEmail.textContent = email.value;
+
+    const signature = document.getElementById('signature-img');
+    canvas.addEventListener('click', () => {
+        console.log(canvas.toDataURL());        
+        signature.src = canvas.toDataURL();
+        signature.classList.remove('no-display');
+        console.log(signature);
+    });
 }
+
+// async function canvasImage(){
+//     // Get the canvas element
+//     const canvas = document.getElementById("canvasSignature");
+   
+//     //const img = new Image();
+
+// // Set the source of the image object to the data URL of the canvas
+//     //img.src = canvas.toDataURL();
+//     // Get the data URL of the canvas
+//     //const dataURL = canvas.toDataURL();
+//     const dataURL = canvas.toDataURL('image/png');
+//     // Create an image object
+//     //const img = new Image();
+//     console.log(dataURL);
+
+//     // Set the source of the image object to the data URL of the canvas
+//     //img.src = dataURL;
+//     //Split the base64 string in data
+//     const block = encodeURIComponent(dataURL);
+
+//     //const block = dataURL.split(",");
+
+//     // Send the data URL to the server using fetch
+//     try{
+//         const url = 'http://localhost:3000/api/filmtono/signature';
+
+//         const respuesta = await fetch(url, {
+//             method: 'POST',
+//             body: {
+//                 data: block
+//             }
+//         });
+
+//         console.log(respuesta);
+
+//         const resultado = await respuesta.json();
+//         if(resultado.resultado){
+//             console.log(resultado);
+//         };
+//     } catch(error) {
+//         console.log(error);
+//     }
+// }
 
 function cerrarModal(){
     const body = document.querySelector('body');

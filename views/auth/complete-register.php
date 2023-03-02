@@ -21,10 +21,11 @@
                         <i class="fa-solid fa-user-check form--registro__group__icon"></i>
                         Nombre
                     </label>
-                    <input class="form--registro__group__input" type="text"
-                            name="nombre"
-                            value="<?php echo $usuario->nombre.' '.$usuario->apellido; ?>"
-                            disabled
+                    <input class="form--registro__group__input"            type="text"
+                        id ="nombre"
+                        name="nombre"
+                        value="<?php echo $usuario->nombre.' '.$usuario->apellido; ?>"
+                        disabled
                     >
                 </div>
                 <div class="form--registro__group">
@@ -33,9 +34,10 @@
                         Email
                     </label>
                     <input class="form--registro__group__input" type="email"
-                            name="email"
-                            value="<?php echo $usuario->email; ?>"
-                            disabled
+                        id="email"
+                        name="email"
+                        value="<?php echo $usuario->email; ?>"
+                        disabled
                     >
                 </div>
                 <div class="form--registro__group">
@@ -191,11 +193,15 @@
                 <h3>3. Firmas y autorizaciones</h3>
                 <div class="tabs__auth">
                     <div class="tabs__auth__bloque">
+                        <i class="tabs__help fa-solid fa-circle-info"></i>
                         <p>Firma el contrato de proveedor musical *</p>
+                        <p class="tabs__help--info">Este es el contrato para que puedas subir tu música y ofrecerla a través de FILMTONO.</p>
                         <button type="button" class="btn-tabs btn-contrato" id="contrato-musical">Leer y Firmar</button>
                     </div>
                     <div class="tabs__auth__bloque">
-                        <p>Firma el contrato de proveedor artístico</p>
+                        <i class="tabs__help fa-solid fa-circle-info"></i>
+                        <p> Firma el contrato de proveedor artístico</p>
+                        <p class="tabs__help--info">Este es contrato es OPCIONAL para quienes deseen ofrecer los cameos del artista través de FILMTONO.</p>
                         <button type="button" class="btn-tabs btn-contrato btn-contrato--optional" id="contrato-artisitico">Leer y Firmar</button>
                     </div>
                 </div>

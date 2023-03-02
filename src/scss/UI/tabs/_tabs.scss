@@ -76,6 +76,12 @@
             justify-content: space-around;
             gap: 3.5rem;
         }
+        &__bloque{
+            position: relative;
+            p{
+                margin-top: 0;
+            }
+        }
     }
 
     &__pags{
@@ -87,6 +93,25 @@
         }
         button{
             margin: 0.5rem;
+        }
+    }
+
+    &__help{
+        color: v.$yellow;
+        cursor: help;
+        font-size: 2rem;
+        &:hover ~ .tabs__help--info {
+            display: block;
+        }
+        &--info{
+            font-size: 1.4rem;
+            position: absolute;
+            border: 0.2rem solid v.$yellow;
+            padding: 1.5rem 0.5rem;
+            top: 25%;
+            color: v.$white;
+            background-color: darken(v.$gray-dark, 1);
+            display: none;
         }
     }
 }
