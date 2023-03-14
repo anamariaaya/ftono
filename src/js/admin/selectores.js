@@ -5,6 +5,7 @@ export const num = /^[0-9]+$/;
 
 //export const empresa = new Empresa();
 
+//Selectores del registro de empresa
 export const paisContacto = document.querySelector('#pais_contacto');
 export const indicativo = document.querySelector('.tel-index');
 export const selectPais = document.querySelector('#pais');
@@ -14,15 +15,17 @@ export const pagSiguiente = document.querySelector('#siguiente');
 export const btnSubmit = document.querySelector('#btn-submit');
 export const afterNav = document.querySelector('.tabs__nav__line');
 export const btnContrato = document.querySelectorAll('.btn-contrato');
-
 export const nombre = document.querySelector('#nombre');
 export const cargo = document.querySelector('#cargo');
 export const telContacto = document.querySelector('#tel_contacto');
+export const telIndex = document.querySelector('#tel-index');
 export const empresa = document.querySelector('#empresa');
 export const idFiscal = document.querySelector('#id_fiscal');
 export const direccion = document.querySelector('#direccion');
 export const email = document.querySelector('#email');
+
 export const terms = document.querySelector('#terms');
 export const privacy = document.querySelector('#privacy');
 
 export const divCheck = document.querySelector('#div-check');
+export const hiddenInput = document.querySelector('#signatureInput');

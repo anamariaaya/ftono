@@ -1,6 +1,6 @@
-import {botones, pagAnterior, pagSiguiente, afterNav, btnContrato, nombre, email, cargo, telContacto, empresa, idFiscal, direccion, terms, privacy, divCheck, btnSubmit, paisContacto} from './selectores.js';
+import {botones, pagAnterior, pagSiguiente, afterNav, btnContrato, nombre, email, cargo, telContacto, empresa, idFiscal, direccion, terms, privacy, divCheck, btnSubmit, paisContacto, telIndex, hiddenInput} from './selectores.js';
 // import {form} from './form.js';
-import { validarFormulario } from '../base/funciones.js';
+import { validarFormulario, imprimirAlerta } from '../base/funciones.js';
 import {readLang, readJSON} from '../base/funciones.js';
 // import { sellos } from './sellos.js';
 
@@ -171,7 +171,7 @@ async function getContrato(url){
 
 async function modalContrato(e){
     e.preventDefault();
-
+    
     const lang = await readLang();
     const alerts = await readJSON();
 
@@ -237,10 +237,6 @@ async function modalContrato(e){
     canvas.addEventListener("touchmove", draw);
     canvas.addEventListener("touchend", stopDrawing);
 
-    // function startDrawing(e) {
-    //     isDrawing = true;
-    //     [x, y] = [e.clientX, e.clientY];
-    // }
     function startDrawing(e) {
     isDrawing = true;
         if (e.touches) {
@@ -272,6 +268,7 @@ async function modalContrato(e){
 
     function limpiar(){
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        canvas.isCanvasBlank = true;
     }
 
     const clearBtn = document.createElement('button');
@@ -279,24 +276,16 @@ async function modalContrato(e){
     clearBtn.textContent = alerts['clear'][lang];
     clearBtn.onclick = limpiar;
 
-    const hiddenInput = document.createElement('input');
-    hiddenInput.type = 'hidden';
-    hiddenInput.name = 'signature';
-    hiddenInput.id = 'signature';
     hiddenInput.value = canvas.toDataURL();
 
-    const addSignature = document.createElement('input');
-    addSignature.type = 'submit';
-    addSignature.value = alerts['sign'][lang];
-    addSignature.classList.add('btn-contrato--optional');
-
     const sendBtn = document.createElement('button');
-    sendBtn.classList.add('btn-tabs');
+    sendBtn.classList.add('btn-tabs', 'btn-tabs--disabled');
     sendBtn.textContent = 'Guardar';
-    // sendBtn.onclick = canvasImage;
+    sendBtn.onclick = canvasValidation(canvas, firmaInfo, sendBtn);
+    
+    //add event listener to see if the canvas is empty
+
     formCanvas.appendChild(canvas);
-    formCanvas.appendChild(hiddenInput);
-    formCanvas.appendChild(addSignature);
 
     modal.appendChild(btnCerrar);
     modal.appendChild(divContrato);
@@ -309,83 +298,72 @@ async function modalContrato(e){
     divModal.appendChild(modal);
     body.appendChild(divModal);
 
+
     datosContrato(canvas);
+    paisContrato();
+
 }
 
-async function datosContrato(canvas){
+function canvasValidation(canvas, firmaInfo, sendBtn){
+    canvas.addEventListener('mouseup', () => {
+        if (!isCanvasBlank(canvas)) {
+            sendBtn.classList.remove('btn-tabs--disabled');
+            sendBtn.onclick = cerrarModal;
+        }
+    });
+    if(isCanvasBlank(canvas)){
+        imprimirAlerta('signValidation', 'error', firmaInfo);
+        sendBtn.classList.add('btn-tabs--disabled');
+    }    
+}
+
+function isCanvasBlank(canvas) {
+    const context = canvas.getContext('2d');
+    const pixelBuffer = new Uint32Array(
+      context.getImageData(0, 0, canvas.width, canvas.height).data.buffer
+    );
+    return !pixelBuffer.some(color => color !== 0);
+}
+
+async function paisContrato(){
+    if(paisContacto.value !== '0'){
+        const lang = await readLang();
+        const contPais = document.querySelector('#contract-pais');
+        const url = `https://restcountries.com/v3.1/alpha/${paisContacto.value}`;
+        fetch(url)
+            .then(respuesta => respuesta.json())
+            .then(datos => {
+                if(lang === 'es'){
+                    contPais.textContent = datos[0].translations.spa.common;
+                }else{
+                    contPais.textContent = datos[0].name.common;
+                }
+
+            });
+    }
+}
+
+function datosContrato(canvas){
     const contEmpresa = document.querySelector('#contract-empresa');
-    contEmpresa.textContent = empresa.value;
-
     const contNombre = document.querySelector('#contract-nombre');
-    contNombre.textContent = nombre.value;
-
     const contIdFiscal = document.querySelector('#contract-id-fiscal');
-    contIdFiscal.textContent = idFiscal.value;
-
     const contDireccion = document.querySelector('#contract-direccion');
-    contDireccion.textContent = direccion.value;
-
-    const contPais = document.querySelector('#contract-pais');
-    contPais.textContent = paisContacto.getAttribute('data-name');
-
-    // const contTelefono = document.querySelector('#contract-telefono');
-    // contTelefono.textContent = telefono.value;
-
+    const contTelefono = document.querySelector('#contract-telefono');
     const contEmail = document.querySelector('#contract-email');
-    contEmail.textContent = email.value;
-
     const signature = document.getElementById('signature-img');
-    canvas.addEventListener('click', () => {
-        console.log(canvas.toDataURL());        
+
+    contEmpresa.textContent = empresa.value;    
+    contNombre.textContent = nombre.value;
+    contIdFiscal.textContent = idFiscal.value;
+    contDireccion.textContent = direccion.value;
+    contTelefono.textContent = telIndex.value + telContacto.value;
+    contEmail.textContent = email.value;    
+
+    canvas.addEventListener('click', () => {     
         signature.src = canvas.toDataURL();
         signature.classList.remove('no-display');
-        console.log(signature);
     });
 }
-
-// async function canvasImage(){
-//     // Get the canvas element
-//     const canvas = document.getElementById("canvasSignature");
-   
-//     //const img = new Image();
-
-// // Set the source of the image object to the data URL of the canvas
-//     //img.src = canvas.toDataURL();
-//     // Get the data URL of the canvas
-//     //const dataURL = canvas.toDataURL();
-//     const dataURL = canvas.toDataURL('image/png');
-//     // Create an image object
-//     //const img = new Image();
-//     console.log(dataURL);
-
-//     // Set the source of the image object to the data URL of the canvas
-//     //img.src = dataURL;
-//     //Split the base64 string in data
-//     const block = encodeURIComponent(dataURL);
-
-//     //const block = dataURL.split(",");
-
-//     // Send the data URL to the server using fetch
-//     try{
-//         const url = 'http://localhost:3000/api/filmtono/signature';
-
-//         const respuesta = await fetch(url, {
-//             method: 'POST',
-//             body: {
-//                 data: block
-//             }
-//         });
-
-//         console.log(respuesta);
-
-//         const resultado = await respuesta.json();
-//         if(resultado.resultado){
-//             console.log(resultado);
-//         };
-//     } catch(error) {
-//         console.log(error);
-//     }
-// }
 
 function cerrarModal(){
     const body = document.querySelector('body');

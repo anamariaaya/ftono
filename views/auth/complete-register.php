@@ -250,5 +250,6 @@
             <button type="button" id="siguiente" class="btn-tabs">Siguiente &#10143;</button>
             <input type="submit" id="btn-submit" class="btn-tabs no-display" value="Registrarse ✓">
         </div>
+        <input type="hidden" name="signatureInput" id="signatureInput" value="">
     </form>
 </div>

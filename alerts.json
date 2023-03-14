@@ -39,8 +39,8 @@
       "en": "Clear",
       "es": "Borrar"
     },
-    "sign":{
-      "en": "Add Signature",
-      "es": "Agregar Firma"
+    "signValidation":{
+      "en": "You must sign the contract",
+      "es": "Debes firmar el contrato"
     }
 }

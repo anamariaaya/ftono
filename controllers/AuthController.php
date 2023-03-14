@@ -355,7 +355,7 @@ class AuthController {
         //debugging($_SESSION);
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            
+            debugging($_POST);
             $empresa->sincronizar($_POST);
             $terms->sincronizar($_POST);
             $privacy->sincronizar($_POST);
