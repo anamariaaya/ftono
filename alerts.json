@@ -50,5 +50,9 @@
     "confirm":{
       "en": "Contract saved successfully!",
       "es": "¡Contrato guardado correctamente!"
+    },
+    "register":{
+      "en": "Register",
+      "es": "Registrarse"
     }
 }

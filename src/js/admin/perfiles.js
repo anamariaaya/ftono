@@ -59,7 +59,10 @@ function cambiarSeccion(e) {
     //     }
     // });      
 }
-function botonesPaginador(){ 
+async function botonesPaginador(){ 
+    const lang = await readLang();
+    const alerts = await readJSON();
+
     switch(paso) {
         case '1':
             pagAnterior.classList.add('ocultar');
@@ -79,7 +82,7 @@ function botonesPaginador(){
             break;
         case '3':
             pagAnterior.classList.remove('ocultar');
-            pagSiguiente.textContent = 'Registrarse \u2713';
+            pagSiguiente.textContent = alerts['register'][lang]+' \u2713';
             pagSiguiente.onclick = validarCheck;
             afterNav.classList.add('step3');
             afterNav.classList.remove('step2');

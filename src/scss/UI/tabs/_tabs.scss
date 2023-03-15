@@ -68,6 +68,12 @@
             font-weight: v.$thin;
             text-align: center;
         }
+        h4{
+            font-weight: 500;
+            color: v.$green;
+            text-align: center;
+            font-size: 2rem;
+        }
     }
 
     &__auth{
