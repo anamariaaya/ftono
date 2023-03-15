@@ -30,5 +30,21 @@
     "footer":{
       "en": "Copyright 2021",
       "es": "Copyright 2021"
+    },
+    "login":{
+      "en": "Login",
+      "es": "Iniciar sesión"
+    },
+    "register":{
+      "en": "Register",
+      "es": "Registrarse"
+    },
+    "complete_register":{
+      "en": "Complete Registration",
+      "es": "Completar Registro"
+    },
+    "complete_register_musicians":{
+      "en": "You must complete the registration to be able to upload your musical catalog and access all the functions of your dashboard.",
+      "es": "Debes completar el registro para poder cargar tu catálogo musical y acceder a todas las funciones de tu dashboard."
     }
 }

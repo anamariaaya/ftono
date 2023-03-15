@@ -113,6 +113,16 @@
             background-color: darken(v.$gray-dark, 1);
             display: none;
         }
+        &--confirm{
+            font-size: 1.8rem;
+            padding: 1rem 0.5rem;
+            color: v.$yellow;
+            border-radius: 1rem;
+            background-color: darken(v.$gray-dark, 1);
+            border: 2px solid darken(v.$gray-dark, 5);
+            font-weight: v.$bold;
+            display: none;
+        }
     }
 }
 

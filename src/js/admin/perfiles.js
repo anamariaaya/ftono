@@ -1,9 +1,9 @@
-import {botones, pagAnterior, pagSiguiente, afterNav, btnContrato, nombre, email, cargo, telContacto, empresa, idFiscal, direccion, terms, privacy, divCheck, btnSubmit, paisContacto, telIndex, hiddenInput} from './selectores.js';
+import {botones, pagAnterior, pagSiguiente, afterNav, btnContrato, nombre, email, cargo, telContacto, empresa, idFiscal, direccion, terms, privacy, divCheck, btnSubmit, paisContacto, telIndex, hiddenInput, contratoMusical, confirmContrato} from './selectores.js';
 // import {form} from './form.js';
 import { validarFormulario, imprimirAlerta } from '../base/funciones.js';
 import {readLang, readJSON} from '../base/funciones.js';
 // import { sellos } from './sellos.js';
-
+let checkMusical = false;
 
 export function formularioReg(){
     cargo.addEventListener('blur', validarFormulario);
@@ -105,7 +105,10 @@ function validarCheck(e){
         alertaCheck('terms');
     } else if(!privacy.checked){
         alertaCheck('privacy');
-    } else{
+    } else if(checkMusical === false){
+        alertaCheck('contract');
+    }
+    else{
         //comprobar que todos los inputs tengan un valor
         const inputs = [cargo, telContacto, empresa, idFiscal,  direccion];
         const arrayInputs = Array.from(inputs);
@@ -140,7 +143,7 @@ async function alertaCheck(message){
     // Quitar el alert despues de 3 segundos
     setTimeout( () => {
         divMensaje.remove();
-    }, 100000);
+    }, 4000);
 }
 
 function paginaSiguiente(){
@@ -269,6 +272,9 @@ async function modalContrato(e){
     function limpiar(){
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         canvas.isCanvasBlank = true;
+        imprimirAlerta('signValidation', 'error', firmaInfo);
+        sendBtn.classList.add('btn-tabs--disabled');
+     
     }
 
     const clearBtn = document.createElement('button');
@@ -304,17 +310,21 @@ async function modalContrato(e){
 
 }
 
-function canvasValidation(canvas, firmaInfo, sendBtn){
+async function canvasValidation(canvas, firmaInfo, sendBtn){
+    const lang = await readLang();
+    const alerts = await readJSON();
+
     canvas.addEventListener('mouseup', () => {
         if (!isCanvasBlank(canvas)) {
             sendBtn.classList.remove('btn-tabs--disabled');
             sendBtn.onclick = cerrarModal;
+            contratoMusical.style.display = 'none';
+            contratoMusical.remove();
+            confirmContrato.style.display = 'block';
+            confirmContrato.textContent = alerts['confirm'][lang];
+            checkMusical = true;
         }
     });
-    if(isCanvasBlank(canvas)){
-        imprimirAlerta('signValidation', 'error', firmaInfo);
-        sendBtn.classList.add('btn-tabs--disabled');
-    }    
 }
 
 function isCanvasBlank(canvas) {

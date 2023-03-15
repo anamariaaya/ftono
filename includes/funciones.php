@@ -85,8 +85,10 @@ function isRegistered($mensaje, $contenido){
     $url = $_SERVER['REQUEST_URI'];
     if($_SESSION['perfil'] === '0' && $url !== '/complete-register'):?>
         <p class="auth__text--post">
-            <?php echo $mensaje; ?>
-            <a href="/complete-register" class="btn-submit--post" href="">Completar registro</a>
+            <?php t($mensaje); ?>
+            <a href="/complete-register" class="btn-submit--post" href="">
+                <?php echo t('complete_register')?>
+            </a>
         </p>
 
         <?php if(isset($_SESSION['nivel_compra'])){
@@ -129,23 +131,5 @@ function t($key) {
             $strings = $translations[$key]['es'];
         }
         echo $strings;
-    }
-}
-
-function ct($key) {
-    $translations = json_decode(file_get_contents('../contracts.json'), true);
-    $language = chooseLanguage();
-    $keys = array_keys($translations);
-
-    if(!in_array($key, $keys)){
-        echo 'CORREGIR LLAVE en: ' . $key;
-        //return;
-    } else{
-        if ($language == 'en') {
-            $strings = $translations[$key]['en'];    
-        } else{
-            $strings = $translations[$key]['es'];
-        }
-        return $strings;
     }
 }

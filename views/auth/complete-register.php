@@ -197,6 +197,7 @@
                         <p>Firma el contrato de proveedor musical *</p>
                         <p class="tabs__help--info">Este es el contrato para que puedas subir tu música y ofrecerla a través de FILMTONO.</p>
                         <button type="button" class="btn-tabs btn-contrato" id="contrato-musical">Leer y Firmar</button>
+                        <p class="tabs__help--confirm" id="confirm-contrato"></p>
                     </div>
                     <div class="tabs__auth__bloque">
                         <i class="tabs__help fa-solid fa-circle-info"></i>

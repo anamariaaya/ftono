@@ -42,5 +42,13 @@
     "signValidation":{
       "en": "You must sign the contract",
       "es": "Debes firmar el contrato"
+    },
+    "contract":{
+      "en": "You must sign the contract",
+      "es": "Debes firmar el contrato"
+    },
+    "confirm":{
+      "en": "Contract saved successfully!",
+      "es": "¡Contrato guardado correctamente!"
     }
 }
