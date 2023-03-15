@@ -118,35 +118,35 @@
     <div class="grid-firmas">
         <div class="grid-firmas__campo">
             <p class="grid-firmas__campo--span">Proveedor Musical</p>
-            <p></p>
+            <p id="contract-empresa"></p>
         </div>
         <div class="grid-firmas__campo">
             <p class="grid-firmas__campo--span">Contacto Principal</p>
-            <p></p>
+            <p id="contract-nombre"></p>
         </div>
         <div class="grid-firmas__campo">
             <p class="grid-firmas__campo--span">Id fiscal</p>
-            <p></p>
+            <p id="contract-id-fiscal"></p>
         </div>
         <div class="grid-firmas__campo">
             <p class="grid-firmas__campo--span">Dirección</p>
-            <p></p>
+            <p id="contract-direccion"></p>
         </div>
         <div class="grid-firmas__campo">
             <p class="grid-firmas__campo--span">Firma</p>
-            <img src=""/>
+            <img id="signature-img" class="no-display" src="" alt="signature">
         </div>
         <div class="grid-firmas__campo">
             <p class="grid-firmas__campo--span">País</p>
-            <p></p>
+            <p id="contract-pais"></p>
         </div>
         <div class="grid-firmas__campo">
             <p class="grid-firmas__campo--span">Teléfono</p>
-            <p></p>
+            <p id="contract-telefono"></p>
         </div>
         <div class="grid-firmas__campo">
             <p class="grid-firmas__campo--span">Email</p>
-            <p></p>
+            <p id="contract-email"></p>
         </div>
     </div>
 </div>
