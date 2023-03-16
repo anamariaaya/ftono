@@ -9,139 +9,139 @@
 
     <h3>All in One</h3>
 
-    <p>Filmtono realiza un filtro previo e investigación exhaustiva de cada una de las canciones dispuestas en su plataforma, con el fin de que ningún propietario legalmente registrado como tal, sea un autor o un propietario de master quede por fuera de una licencia. En la curaduría se da prioridad a las canciones que son de un mismo autor, productor y propietario “all in one” puesto que estas ayudarán a cumplir nuestra promesa de valor de licenciamiento ágil.</p>
+    <p>Filmtono performs a prior filtering and exhaustive research of each of the songs placed on its platform, in order to ensure that no owner legally registered as such, be it an author or a master owner, is left out of a license. In curating, priority is given to songs that are from the same author, producer and owner “all in one” as these will help fulfill our promise of agile licensing value.</p>
 
-    <h3>Función de Filmtono</h3>
+    <h3>Filmtono Function</h3>
 
-    <p>Filmtono exhibe las canciones y perfil de artista en su sitio a personas o empresas que necesitan solicitar el permiso de uso para sincronización de una canción, en nombre propio o para un tercero para:</p>
+    <p>Filmtono displays the songs and artist profile on its site to individuals or companies who need to apply for permission to use a song to sync, either on their own behalf or for a third party to:</p>
 
     <ul>
-        <li>Producciones audiovisuales</li>
-        <li>Cine</li>
-        <li>Videojuegos</li>
-        <li>Videocomerciales</li>
+        <li>Audiovisual productions</li>
+        <li>Cinema</li>
+        <li>Video games</li>
+        <li>Video commercials</li>
         <li>Podcasts</li>
-        <li>Canales de Youtube</li>
-        <li>Y más.</li>
+        <li>Youtube channels</li>
+        <li>and more.</li>
     </ul>
 
-    <p>Filmtono actúa como vendedor intermediario, ayudando en la negociación del precio de la licencia en base al estándar de mercado y el presupuesto del comprador. Pero también, el proveedor musical puede asignar un precio base por artista, o por canción a partir del cual se hace el cálculo del precio de una licencia, para finalizar la compra es el proveedor musical quien firma y aprueba la venta si está de acuerdo, generándose una comisión a la plataforma.</p>
+    <p>Filmtono acts as an intermediary seller, helping to negotiate the license price based on the market standard and the buyer&#39;s budget. But also, the music provider can assign a base price per artist, or per song from which the price of a license is calculated, to finalize the purchase it is the music provider who signs and approves the sale if it agrees, generating a commission to the platform.</p>
 
-    <h3>Servicios Adicionales</h3>
+    <h3>Additional Services</h3>
 
-    <p>Los servicios de seguimiento personalizado de una venta, consultoría sobre el funcionamiento de licenciamientos, el uso de la plataforma o cargue masivo y mejora de la exhibición tienen un precio adicional.</p>
+    <p>The services of personalized follow-up of a sale, consulting on the operation of licensing, the use of the platform or mass loading and enhancement of the display have an additional price.</p>
 
-    <h2>Objeto</h2>
-    <p>El proveedor Musical desea poner su catálogo musical en el sitio web de FILMTONO para vender sincronizaciones.</p>
+    <h2>Purpose</h2>
+    <p>The Music provider wants to put their music catalogue on the FILMTONO website to sell synchronizations.</p>
 
-    <p>Filmtono exhibe canciones “one-stop-shop” y conecta con el proveedor musical para realizar una curaduría previa de canciones con las que se puedan realizar licencias ágiles facilitando el tiempo de compra, para esto necesitamos contar con la aprobación del 100% de los propietarios/administradores del copyright y 100% de los propietarios/administradores de publishing, asegurando que todos los propietarios legalmente registrados como tal, sean reconocidos.</p>
+    <p>Filmtono exhibits “one-stop-shop” songs and connects with the music provider to carry out a pre-curator of songs with which you can make agile licenses easier to purchase, for this we need to have the approval of 100% of the copyright owners/administrators and 100% of the publishing owners/administrators, ensuring that all legally registered owners are recognized as such.</p>
 
-    <p>Inicialmente se puede registrar un propietario administrador, certificando que tiene aprobación de los propietarios. En el momento que se llegue a solicitar una licencia, es obligatorio certificar la firma y aprobación de todos los propietarios.</p>
+    <p>Initially you can register a landlord manager, certifying that you have the approval of the landlords. At the time of applying for a license, it is mandatory to certify the signature and approval of all owners.</p>
 
-    <p>La plataforma también comercializa el cameo del artista, para esto se firma un anexo a este contrato por parte del artista o representante de este, si desea activar este servicio adicional.</p>
+    <p>The platform also markets the artist's cameo, for this purpose an annex to this contract is signed by the artist or his representative, if you wish to activate this additional service.</p>
 
-    <h3>Licencias</h3>
+    <h3>Licences</h3>
 
-    <p>El Proveedor Musical garantiza que puede otorgar licencias de uso de una canción y gestionar el 100% o parte de los derechos de copyrigth y publishing, otorgar licencias no-exclusivas, transferible (únicamente para el propósito de la licencia), sub-licenciable (únicamente para el propósito de la licencia). A perpetuidad o el período especificado en la licencia, en territorio Universal o el especificado en la licencia y licencia para ejecución pública y sincronizar la canción, únicamente para el objetivo de la orden a través del sitio. En caso de tener solo una parte de los derechos, se hace responsable de que el resto de propietarios firmen al 100% para poder licenciar.</p>
+    <p>The Music Provider warrants that it may grant licenses to use a song and manage 100% or part of the copyright and publishing rights, grant non-exclusive, transferable (for the purpose of the license only), sub-licensable (for the purpose of the license only). To perpetuity or the period specified in the license, in Universal Territory or that specified in the license and license to perform publicly and synchronize the song, solely for the purpose of ordering through the site. If you have only a part of the rights, you are responsible for ensuring that the remaining owners sign 100% in order to be able to license.</p>
 
-    <h2>Derechos</h2>
+    <h2>Rights</h2>
 
-    <p>Se otorga derecho de sincronización que incluye el 100% de pago del derecho autoral y el 100% del pago de derechos sobre el track de audio o máster y derecho de ejecución pública únicamente para la producción para la que se solicita la licencia.</p>
+    <p>A synchronization right is granted which includes 100% payment of the copyright and 100% payment of the rights on the audio or master track and public performance right only for the production for which the license is requested.</p>
 
-    <h3>Derechos reservados</h3>
+    <h3>Reserved Rights</h3>
 
-    <p>El proveedor musical se reserva todos los derechos sobre la canción que no se hayan otorgado expresamente mediante una licencia.</p>
+    <p>The music provider reserves all rights to the song that have not been expressly licensed.</p>
 
-    <p>Filmtono provee un formato estándar de licencia que ha sido revisado legalmente, ha sido testeado y aprobado por varios usuarios, por lo tanto, no se responsabiliza por los ajustes adicionales o modificaciones que se hagan a este documento durante la negociación con el comprador.</p>
+    <p>Filmtono provides a standard license format that has been legally reviewed, tested and approved by several users, therefore it is not responsible for any further adjustments or modifications made to this document during negotiations with the purchaser.</p>
 
-    <h2>Administración del catálogo</h2>
+    <h2>Catalogue Management</h2>
 
-    <p>El sitio permitirá subir la metadata de sus canciones para que los usuarios puedan encontrarlas y solicitar información acerca de su propiedad y permisos para licenciar.</p>
+    <p>The site will allow you to upload metadata of your songs so that users can find them and request information about their ownership and licensing permissions.</p>
 
-    <p>El sitio permitirá subir tracks de audio y sus stems, a cambio de una suscripción anual. Para esto debe proveer audios de alta calidad Admos o WAV o formatos de alta calidad para cine.</p>
+    <p>The site will allow you to upload audio tracks and their stems, in exchange for an annual subscription. For this you must provide high-quality Admos or WAV audio or high-quality film formats.</p>
 
-    <p>Podrá ver notificaciones de ofertas de compradores, los términos de la licencia y aprobar solicitudes.</p>
+    <p>You will be able to view notices of buyers&#39; offers, license terms, and approve applications.</p>
 
-    <p>Crear o Aprobar la creación de perfiles de sello y artistas que también podrán ver sus solicitudes y aprobarlas.</p>
+    <p>Create or Approve the creation of label and artist profiles that will also be able to view your applications and approve them.</p>
 
-    <p>Podrá eliminar del sitio una canción en cualquier momento si lo desea, pero sujeto a si tiene una orden de compra en proceso. En caso de que se elimine la canción dentro de los primeros 30 días de exhibición y ha recibido una orden en ese período, esta canción deberá permanecer en exhibición durante 6 meses a partir de la fecha de la orden y no se podrá eliminar hasta que venza el plazo para el comprador, además estará disponible para recibir otras ofertas normalmente.</p>
+    <p>You can remove a song from the site at any time if you want, but subject to if you have a pending purchase order. In the event that the song is removed within the first 30 days of display and you have received an order within that period, this song must remain on display for 6 months from the date of the order and may not be removed until the expiration of the term for the buyer, in addition it will be available to receive other offers normally.</p>
 
     <h3>Metadata</h3>
-    <p>Filmtono trabaja con estándares DDEX con el fin de mantener una metadata limpia y que facilite la comunicación, por esto se solicita hacer la ingestión de datos bajo este mismo estándar.</p>
+    <p>Filmtono works with DDEX standards in order to maintain a clean metadata and to facilitate communication, so it is requested to do the data ingestion under this same standard.</p>
 
-    <p>El proveedor musical podrá insertar y administrar la METADATA del artista y por canción, datos como ISRC, ISWC, Género música, modos, velocidad, créditos de autores/compositores, información de propiedad de máster, precio base para las licencias de un artista o nivel de artista y nivel de canción.</p>
+    <p>Filmtono works with DDEX standards in order to maintain a clean metadata and to facilitate communication, so it is requested to do the data ingestion under this same standard.</p>
 
-    <p>Debe proporcionar todos los detalles completos sobre el nombre del autor, compositor, editor, propietario principal, los porcentajes de propiedad y control,afiliaciones PRO'S.</p>
+    <p>Filmtono works with DDEX standards in order to maintain a clean metadata and to facilitate communication, so it is requested to do the data ingestion under this same standard.</p>
 
-    <h3>Órdenes de Pedido</h3>
+    <h3>Purchase Orders</h3>
 
-    <p>Cuando el proveedor musical pone a disposición las canciones en el sitio debe poder otorgar y gestionar la autorización directa para:</p>
+    <p>Filmtono works with DDEX standards in order to maintain a clean metadata and to facilitate communication, so it is requested to do the data ingestion under this same standard.</p>
 
     <ol>
-        <li>El permiso del 100% de los autores o creadores de la letra, compositores de la música y todos quienes ostenten propiedad en “Derechos de autor” de esta obra.</li>
-        <li>El permiso del 100% propietarios de master de audio, productor ejecutivo, productor musical, intérpretes, artista o agrupación musical, músicos ejecutantes que intervinieron en la grabación del audio y a quienes se reconoce un % de propiedad en este legalmente.</li>
-        <li>Permiso sobre versiones adicionales de la canción que incluyen instrumentales, mezclas, remezclas y stems.</li>
+        <li>The permission of 100% of the authors or creators of the lyrics, composers of the music and all those who hold ownership in “Copyright” of this work.</li>
+        <li>Permission of 100% audio master owners, executive producer, music producer, performers, artist or music group, performing musicians who were involved in the recording of the audio and who are recognized a % ownership in this legally.</li>
+        <li>Permission on additional versions of the song including instrumental, mixes,remixes and stems.</li>
     </ol>
 
-    <p>En caso de que para una canción administre solo el punto 1 o 2, el proveedor musical debe gestionar para registrar a la otra parte en el sitio Filmtono para poder ofertar el 100% de la canción, tanto los derechos autorales como del master y cumplir con la oferta de valor “all in one”.</p>
+    <p>In the event that you manage only point 1 or 2 for a song, the music provider must manage to register the other party on the Filmtono site in order to be able to offer 100% of the song, both the copyright and the master rights and fulfill the “all in one” value offer.</p>
 
-    <h2>Cálculo de licencias</h2>
+    <h2>Calculation of licence</h2>
 
-    <p>El proveedor musical adopta el sistema de cálculo de licencias fijado por FILMTONO en base a precios estándar de mercado y en base a una tabla con precios mínimos por tipo de artista.</p>
+    <p>The music provider adopts the licensing system set by FILMTONO on the basis of standard market prices and on the basis of a table of minimum prices per type of artist.</p>
 
-    <p>El proveedor musical podrá controlar para subir el cálculo del precio de la licencia, modificando el precio base del artista y el tipo de canción, a través de la configuración en el sitio en caso de necesitarlo.</p>
+    <p>The music provider will be able to control to increase the calculation of the license price, by modifying the base price of the artist and the type of song, through the settings on the site if needed.</p>
 
-    <p>Para evitar dudas FILMTONO hará todo lo posible para negociar el valor mas alto posible y cualquier oferta por debajo de los estándares del sitio no se trabajan sin aprobación previa del proveedor musical.</p>
+    <p>For the avoidance of doubt FILMTONO will make every effort to negotiate the highest possible value and any offers below site standards will not be worked without prior approval of the music provider.</p>
 
     <h2>Fees</h2>
 
-    <p>Filmtono deduce automáticamente las tarifas, impuestos y costos de transacción u otros costos de procesamiento, asociados a la cuenta del proveedor musical y por la suscripción al sitio, los movimientos de cada licencia pagada o movimientos por retiro que se hagan a través de tarjeta de crédito, Paypal, banca online o cualquier entidad con la que Filmtono tenga asocio en el futuro y deducir el 50% de la licencia como pago por el servicio.</p>
+    <p>Filmtono automatically deducts fees, taxes and transaction costs or other processing costs associated with the music provider's account and for the subscription to the site, the movements of each paid license or withdrawal movements that are made through credit card, Paypal, online banking or any entity with which Filmtono is associated in the future and deduct 50% of the license as payment for the service.</p>
 
-    <p>Filmtono se reserva el derecho de actualizar ajustes o cambios en los estándares de tarifas de acuerdo al mercado o ajustes en sus cálculos sin previo aviso.</p>
+    <p>Filmtono reserves the right to update adjustments or changes to the rate standards in accordance with the market or adjustments to its calculations without prior notice.</p>
 
-    <p>Después del pago de la orden de pedido de la licencia, Filmtono deducirá su comisión desde la cuenta del proveedor musical y este a su vez podrá reclamar su pago a partir de los 7 días después de la recepción del pago, a través de cualquier método de pago que haya configurado en el sitio para su retiro.</p>
+    <p>After payment of the license order, Filmtono will deduct your commission from the account of the music provider and the provider will be able to claim your payment from 7 days after receipt of the payment, via any payment method you have set up on the site for your pick-up.</p>
 
-    <h3>Otros derechos</h3>
+    <h3>Other Rights</h3>
 
-    <p>Filmtono puede usar la marca o el nombre del socio comercial, el nombre de los artistas y canciones con el fin de promocionar la plataforma en redes sociales, sitios web o exhibiciones comerciales.</p>
+    <p>Filmtono may use the brand or name of the business partner, the name of the artists and songs in order to promote the platform on social networks, websites or commercial exhibitions.</p>
 
-    <h3>Duración y término</h3>
+    <h3>Duration and Termination</h3>
 
-    <p>Será un contrato a dos años, con renovación automática por la misma duración a no ser que la otra parte notifique la terminación con 6 meses de anticipación y no haya una orden en proceso.</p>
+    <p>It will be a two-year contract, with automatic renewal for the same duration unless the other party gives notice of termination 6 months in advance and there is no order pending.</p>
 
-    <p>Al término de este acuerdo el proveedor musical podrá borrar del sitio sus canciones y Filmtono prestará soporte para la eliminación masiva.</p>
+    <p>Upon termination of this agreement, the music provider will be able to delete their songs from the site and Filmtono will support mass deletion.</p>
 
-    <h3>No exclusividad</h3>
+    <h3>Non-Exclusivity </h3>
 
-    <p>Este acuerdo no impedirá que el proveedor musical busque sus propias oportunidades de negocio por su propia cuenta, siempre y cuando, no entren en conflicto con términos y condiciones de este acuerdo o con una orden de pedido ya realizada a través de Filmtono.</p>
+    <p>This agreement shall not prevent the music provider from pursuing its own business opportunities on its own account, so long as they do not conflict with the terms and conditions of this agreement or with a purchase order already made through Filmtono.</p>
 
     <div class="grid-firmas">
         <div class="grid-firmas__campo">
-            <p class="grid-firmas__campo--span">Proveedor Musical</p>
+            <p class="grid-firmas__campo--span">Music Provider</p>
             <p id="contract-empresa"></p>
         </div>
         <div class="grid-firmas__campo">
-            <p class="grid-firmas__campo--span">Contacto Principal</p>
+            <p class="grid-firmas__campo--span">Main Contact</p>
             <p id="contract-nombre"></p>
         </div>
         <div class="grid-firmas__campo">
-            <p class="grid-firmas__campo--span">Id fiscal</p>
+            <p class="grid-firmas__campo--span">Tax ID</p>
             <p id="contract-id-fiscal"></p>
         </div>
         <div class="grid-firmas__campo">
-            <p class="grid-firmas__campo--span">Dirección</p>
+            <p class="grid-firmas__campo--span">Address</p>
             <p id="contract-direccion"></p>
         </div>
         <div class="grid-firmas__campo">
-            <p class="grid-firmas__campo--span">Firma</p>
+            <p class="grid-firmas__campo--span">Signature</p>
             <img id="signature-img" class="no-display" src="" alt="signature">
         </div>
         <div class="grid-firmas__campo">
-            <p class="grid-firmas__campo--span">País</p>
+            <p class="grid-firmas__campo--span">Country</p>
             <p id="contract-pais"></p>
         </div>
         <div class="grid-firmas__campo">
-            <p class="grid-firmas__campo--span">Teléfono</p>
+            <p class="grid-firmas__campo--span">Phone</p>
             <p id="contract-telefono"></p>
         </div>
         <div class="grid-firmas__campo">

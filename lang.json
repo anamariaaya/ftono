@@ -44,7 +44,7 @@
       "en": "Last Name"
     },
     "i-email":{
-      "es": "Correo Electrónico",
+      "es": "Email",
       "en": "Email"
     },
     "i-password":{
@@ -89,7 +89,7 @@
     },
     "i-fiscal_id":{
       "es": "Identificación Fiscal",
-      "en": "Fiscal ID"
+      "en": "Tax ID"
     },
     "i-address":{
       "es": "Dirección",

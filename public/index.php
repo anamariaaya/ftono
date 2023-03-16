@@ -74,7 +74,7 @@ $router->get('/api/filmtono/alerts', [APIProfileController::class, 'alerts']);
 $router->get('/api/filmtono/contracts', [APIProfileController::class, 'contracts']);
 $router->get('/api/filmtono/c-musical', [APIProfileController::class, 'contratoMusical']);
 $router->get('/api/filmtono/c-artistico', [APIProfileController::class, 'contratoArtistico']);
-$router->post('/c-musical', [APIProfileController::class, 'contratoMusical']);
+
 
 //Filmtono Profile
 $router->get('/filmtono/profile', [ProfileController::class, 'profile']);
