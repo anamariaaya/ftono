@@ -11,10 +11,10 @@
             <i class="auth__icon fa-regular fa-circle-check"></i>
         <?php } else{
             if(isset($alertas['error'])){ ?>
-            <i class="auth__icon--fail fa-regular fa-circle-xmark"></i>
-            <p class="auth__text">Ha ocurrido un error al confirmar tu cuenta. Por favor, contacta con nosotros.</p>
+                <i class="auth__icon--fail fa-regular fa-circle-xmark"></i>
+                <p class="auth__text">Ha ocurrido un error al confirmar tu cuenta. Por favor, contacta con nosotros.</p>
             <?php 
-        }} ?> 
+        } }?> 
         
         <?php
             if(isset($alertas['exito'])){ ?>

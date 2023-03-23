@@ -54,6 +54,7 @@ $router->post('/reset-password', [AuthController::class, 'reset']);
 $router->post('/logout', [AuthController::class, 'logout']);
 $router->get('/complete-register', [AuthController::class, 'CompleteRegister']);
 $router->post('/complete-register', [AuthController::class, 'CompleteRegister']);
+$router->post('/prueba', [AuthController::class, 'pruebaFirma']);
 
 //Dashboard Editoriales/Publishers
 $router->get('/music/dashboard', [DashboardController::class, 'music']);

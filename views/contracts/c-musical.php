@@ -120,7 +120,7 @@
 
     <p>Este acuerdo no impedirá que el proveedor musical busque sus propias oportunidades de negocio por su propia cuenta, siempre y cuando, no entren en conflicto con términos y condiciones de este acuerdo o con una orden de pedido ya realizada a través de Filmtono.</p>
 
-    <div class="grid-firmas">
+    <div class="grid-firmas no-display">
         <div class="grid-firmas__campo">
             <p class="grid-firmas__campo--span">Proveedor Musical</p>
             <p id="contract-empresa"></p>

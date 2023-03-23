@@ -60,6 +60,7 @@
                     <select class="form--registro__group__select" name="pais_contacto" id="pais_contacto">
                         <option selected disabled value="0"><?php echo t("i-select_country"); ?> *</option>
                     </select>
+                    <input type="hidden" name="pais_contacto_name" id="pais_contacto_name" value="">
                 </div>
                 <div class="form--registro__group">
                     <label class="form--registro__group__label" for="tel_contacto">                        

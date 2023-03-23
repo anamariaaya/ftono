@@ -58,7 +58,6 @@ function mostrarPaises(datos){
                     const option = document.createElement('option');
                     option.value = pais.cca2;
                     option.textContent = pais.name.common;
-                    option.setAttribute('data-pais', pais.name.common);
                     selectPais.appendChild(option);  
                     paisContacto.appendChild(option.cloneNode(true));
                 });

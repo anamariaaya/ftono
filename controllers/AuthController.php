@@ -17,6 +17,7 @@ use Model\Comunicados;
 use Model\PerfilUsuario;
 use Model\TipoComprador;
 use Model\UsuarioSellos;
+use Classes\MusicalContract;
 
 class AuthController {
     public static function login(Router $router) {
@@ -347,20 +348,24 @@ class AuthController {
         $terms = new Terms();
         $privacy = new Privacy();
         $comunicados = new Comunicados();
-        $perfilUsuario = new PerfilUsuario();
-
-        // $mpdf = new \Mpdf\Mpdf();
-        // $mpdf->WriteHTML('Hola Andy');
-        // $mpdf->OutputFile(__DIR__ . '/file.pdf');   
-        //debugging($_SESSION);
+        $perfilUsuario = new PerfilUsuario();        
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            debugging($_POST);
             $empresa->sincronizar($_POST);
             $terms->sincronizar($_POST);
             $privacy->sincronizar($_POST);
             $comunicados->sincronizar($_POST);
+            $firma = $_POST['signatureInput'];
 
+            $contractPDF = new MusicalContract($usuario->id, $empresa->empresa, $usuario->nombre.' '.$usuario->apellido, $empresa->id_fiscal, $empresa->direccion, $firma, $_POST['pais_contacto_name'], $empresa->tel_contacto, $usuario->email, date('d-m-y'));
+            
+            //debugging($_POST);
+
+            $contractPDF->guardarContrato();
+            //mover el archivo a la carpeta de contratos
+    
+
+            debugging($usuario);
             //Asignar el id del usuario a cada tabla
             $terms->id_usuario = $usuario->id;
             //Asignar la version de los terminos y condiciones
@@ -377,7 +382,6 @@ class AuthController {
 
             //Organizar el teléfono de contacto
             $empresa->tel_contacto = $_POST['tel-index'].$_POST['tel_contacto'];
-            debugging($empresa);
             //guardar los datos en la base de datos
             $empresa->guardar();
 
@@ -421,5 +425,31 @@ class AuthController {
             'titulo' => $titulo,
             'usuario' => $usuario
         ]);
+    }
+
+    public static function pruebaFirma(){
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $firma = $_POST['signatureInput'];
+            //$imagenFirma = '<img src="'.$firma.'">';
+        $data = base64_decode($firma);
+        // $data = imagecreatefromstring($data);
+
+        $im = imagecreatefromstring($firma);
+
+// Set the appropriate header for displaying the image
+        header('Content-Type: image/jpeg');
+
+        // Output the image to the browser
+        imagejpeg($im);
+
+        debugging($_POST);
+        //debugging($data);
+        // Generate a unique filename for the image
+        $filename = uniqid() . '.png';
+
+        $filepath = '../public/contracts/' . $filename;
+        // Save the decoded data as an image file on your server
+        imagepng($filepath, $data);
+        }
     }
 }

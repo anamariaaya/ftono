@@ -1,4 +1,4 @@
-import {botones, pagAnterior, pagSiguiente, afterNav, btnContrato, nombre, email, cargo, telContacto, empresa, idFiscal, direccion, terms, privacy, divCheck, btnSubmit, paisContacto, telIndex, hiddenInput, contratoMusical, confirmContrato} from './selectores.js';
+import { botones, pagAnterior, pagSiguiente, afterNav, btnContrato, nombre, email, cargo, telContacto, empresa, idFiscal, direccion, terms, privacy, divCheck, btnSubmit, paisContacto, telIndex, hiddenInput, contratoMusical, confirmContrato} from './selectores.js';
 // import {form} from './form.js';
 import { validarFormulario, imprimirAlerta } from '../base/funciones.js';
 import {readLang, readJSON} from '../base/funciones.js';
@@ -177,7 +177,7 @@ async function getContrato(url){
 
 async function modalContrato(e){
     e.preventDefault();
-    
+        
     const lang = await readLang();
     const alerts = await readJSON();
 
@@ -285,7 +285,6 @@ async function modalContrato(e){
     clearBtn.textContent = alerts['clear'][lang];
     clearBtn.onclick = limpiar;
 
-    hiddenInput.value = canvas.toDataURL();
 
     const sendBtn = document.createElement('button');
     sendBtn.classList.add('btn-tabs', 'btn-tabs--disabled');
@@ -315,17 +314,18 @@ async function modalContrato(e){
 
 async function canvasValidation(canvas, firmaInfo, sendBtn){
     const lang = await readLang();
-    const alerts = await readJSON();
+    const alerts = await readJSON();    
 
     canvas.addEventListener('mouseup', () => {
         if (!isCanvasBlank(canvas)) {
             sendBtn.classList.remove('btn-tabs--disabled');
             sendBtn.onclick = cerrarModal;
             contratoMusical.style.display = 'none';
-            contratoMusical.remove();
+            //contratoMusical.remove();
             confirmContrato.style.display = 'block';
             confirmContrato.textContent = alerts['confirm'][lang];
             checkMusical = true;
+            hiddenInput.value = canvas.toDataURL();
         }
     });
 }
@@ -340,6 +340,7 @@ function isCanvasBlank(canvas) {
 
 async function paisContrato(){
     if(paisContacto.value !== '0'){
+        const paisFirmas = document.querySelector('#pais_contacto_name');
         const lang = await readLang();
         const contPais = document.querySelector('#contract-pais');
         const url = `https://restcountries.com/v3.1/alpha/${paisContacto.value}`;
@@ -348,8 +349,10 @@ async function paisContrato(){
             .then(datos => {
                 if(lang === 'es'){
                     contPais.textContent = datos[0].translations.spa.common;
+                    paisFirmas.value = datos[0].translations.spa.common;
                 }else{
                     contPais.textContent = datos[0].name.common;
+                    paisFirmas.value = datos[0].name.common;
                 }
 
             });
@@ -357,6 +360,9 @@ async function paisContrato(){
 }
 
 function datosContrato(canvas){
+    const gridFirmas = document.querySelector('.grid-firmas');
+    gridFirmas.classList.remove('no-display');
+
     const contEmpresa = document.querySelector('#contract-empresa');
     const contNombre = document.querySelector('#contract-nombre');
     const contIdFiscal = document.querySelector('#contract-id-fiscal');

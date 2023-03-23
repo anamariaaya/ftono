@@ -115,7 +115,7 @@
 
     <p>This agreement shall not prevent the music provider from pursuing its own business opportunities on its own account, so long as they do not conflict with the terms and conditions of this agreement or with a purchase order already made through Filmtono.</p>
 
-    <div class="grid-firmas">
+    <div class="grid-firmas no-display">
         <div class="grid-firmas__campo">
             <p class="grid-firmas__campo--span">Music Provider</p>
             <p id="contract-empresa"></p>
@@ -149,4 +149,5 @@
             <p id="contract-email"></p>
         </div>
     </div>
+
 </div>

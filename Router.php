@@ -46,10 +46,10 @@ class Router
         $file = __DIR__.'/views/'.$view.'.php';
         $string = file_get_contents($file);
         $trans = array(
-            '{{' => '<?php echo t("',
-            '}}' => '"); ?>'
+            '{{_' => '<?php echo t("',
+            '_}}' => '"); ?>'
         );
-        
+         
         $string = strtr($string, $trans);
 
         file_put_contents($file, $string);
