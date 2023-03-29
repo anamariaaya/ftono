@@ -4,8 +4,6 @@ export const er = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))
 export const num = /^[0-9]+$/;
 
 //export const empresa = new Empresa();
-//Selector de grid de firmas de contrato
-//export const gridFirmas = document.querySelector('.grid-firmas');
 
 //Selectores del registro de empresa
 export const paisContacto = document.querySelector('#pais_contacto');

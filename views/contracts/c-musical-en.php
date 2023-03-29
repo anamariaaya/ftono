@@ -149,5 +149,4 @@
             <p id="contract-email"></p>
         </div>
     </div>
-
 </div>

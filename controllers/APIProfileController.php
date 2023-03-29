@@ -42,8 +42,12 @@ class APIProfileController{
     }
 
     public static function ContratoArtistico(){
-        $archivo = file_get_contents(__DIR__.'/../views/contracts/c-artistico.php');
 
+        if($_SESSION['lang'] == 'en'){
+            $archivo = file_get_contents(__DIR__.'/../views/contracts/c-artistico-en.php');
+        }else{
+            $archivo = file_get_contents(__DIR__.'/../views/contracts/c-artistico.php');
+        }
         echo json_encode($archivo);
     }
 

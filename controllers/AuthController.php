@@ -341,7 +341,7 @@ class AuthController {
         ]);
     }
 
-    public static function CompleteRegister(Router $router){
+    public static function completeRegister(Router $router){
         $usuario = Usuario::find($_SESSION['id']);
         $titulo = 'Completar registro';
         $empresa = new Empresa();
@@ -358,13 +358,10 @@ class AuthController {
             $firma = $_POST['signatureInput'];
 
             $contractPDF = new MusicalContract($usuario->id, $empresa->empresa, $usuario->nombre.' '.$usuario->apellido, $empresa->id_fiscal, $empresa->direccion, $firma, $_POST['pais_contacto_name'], $empresa->tel_contacto, $usuario->email, date('d-m-y'));
-            
-            //debugging($_POST);
 
             $contractPDF->guardarContrato();
             //mover el archivo a la carpeta de contratos
     
-
             debugging($usuario);
             //Asignar el id del usuario a cada tabla
             $terms->id_usuario = $usuario->id;
@@ -425,31 +422,5 @@ class AuthController {
             'titulo' => $titulo,
             'usuario' => $usuario
         ]);
-    }
-
-    public static function pruebaFirma(){
-        if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $firma = $_POST['signatureInput'];
-            //$imagenFirma = '<img src="'.$firma.'">';
-        $data = base64_decode($firma);
-        // $data = imagecreatefromstring($data);
-
-        $im = imagecreatefromstring($firma);
-
-// Set the appropriate header for displaying the image
-        header('Content-Type: image/jpeg');
-
-        // Output the image to the browser
-        imagejpeg($im);
-
-        debugging($_POST);
-        //debugging($data);
-        // Generate a unique filename for the image
-        $filename = uniqid() . '.png';
-
-        $filepath = '../public/contracts/' . $filename;
-        // Save the decoded data as an image file on your server
-        imagepng($filepath, $data);
-        }
     }
 }

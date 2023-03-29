@@ -1,19 +1,14 @@
+//Módulos importados
 import { botones, pagAnterior, pagSiguiente, afterNav, btnContrato, nombre, email, cargo, telContacto, empresa, idFiscal, direccion, terms, privacy, divCheck, btnSubmit, paisContacto, telIndex, hiddenInput, contratoMusical, confirmContrato} from './selectores.js';
-// import {form} from './form.js';
 import { validarFormulario, imprimirAlerta } from '../base/funciones.js';
 import {readLang, readJSON} from '../base/funciones.js';
-// import { sellos } from './sellos.js';
+
+//Variables globales
 let checkMusical = false;
-
-export function formularioReg(){
-    cargo.addEventListener('blur', validarFormulario);
-    telContacto.addEventListener('blur', validarFormulario);
-    empresa.addEventListener('blur', validarFormulario);
-    idFiscal.addEventListener('blur', validarFormulario);
-    direccion.addEventListener('blur', validarFormulario);
-}
-
 let paso = 1;
+
+//Funciones para el registro de empresa
+//*Paginador y tabs
 
 export function tabs() {   
     botones.forEach(tab => {
@@ -102,6 +97,31 @@ export function paginador(){
     pagSiguiente.addEventListener('click',paginaSiguiente);
 }
 
+function paginaSiguiente(){
+    if(!botones[1].classList.contains('active')){
+        botones[1].click();
+    } else if(!botones[2].classList.contains('active')){
+        botones[2].click();
+    }
+}
+
+function paginaAnterior(e){
+    if(botones[2].classList.contains('active')){
+        botones[1].click();
+    } else if(botones[1].classList.contains('active')){
+        botones[0].click();
+    }
+}
+
+//Validación de formulario de registro de empresa
+export function formularioReg(){
+    cargo.addEventListener('blur', validarFormulario);
+    telContacto.addEventListener('blur', validarFormulario);
+    empresa.addEventListener('blur', validarFormulario);
+    idFiscal.addEventListener('blur', validarFormulario);
+    direccion.addEventListener('blur', validarFormulario);
+}
+
 function validarCheck(e){
     e.preventDefault();
     if(!terms.checked){
@@ -149,22 +169,7 @@ async function alertaCheck(message){
     }, 4000);
 }
 
-function paginaSiguiente(){
-    if(!botones[1].classList.contains('active')){
-        botones[1].click();
-    } else if(!botones[2].classList.contains('active')){
-        botones[2].click();
-    }
-}
-
-function paginaAnterior(e){
-    if(botones[2].classList.contains('active')){
-        botones[1].click();
-    } else if(botones[1].classList.contains('active')){
-        botones[0].click();
-    }
-}
-
+//Contrato para modal
 async function getContrato(url){
     try{
         const res = await fetch(url);
@@ -205,7 +210,7 @@ async function modalContrato(e){
     const divContrato = document.createElement('div');
 
     const contrato = await getContrato(url);
-    divContrato.innerHTML = contrato;    
+    divContrato.innerHTML = contrato;   
 
     const firmaTitulo = document.createElement('P');
     firmaTitulo.textContent = alerts.signature[lang];
@@ -312,7 +317,7 @@ async function modalContrato(e){
 
 }
 
-async function canvasValidation(canvas, firmaInfo, sendBtn){
+async function canvasValidation(canvas, sendBtn){
     const lang = await readLang();
     const alerts = await readJSON();    
 

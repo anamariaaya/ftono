@@ -17,9 +17,9 @@ class App{
             indicativoTel();
         }
         if(afterNav){
-            formularioReg();
             tabs();
             paginador();
+            formularioReg();
         }
         if(chooseLang){
             chooseLang();

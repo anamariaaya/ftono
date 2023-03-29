@@ -52,9 +52,8 @@ $router->post('/forgot-password', [AuthController::class, 'forgot']);
 $router->get('/reset-password', [AuthController::class, 'reset']);
 $router->post('/reset-password', [AuthController::class, 'reset']);
 $router->post('/logout', [AuthController::class, 'logout']);
-$router->get('/complete-register', [AuthController::class, 'CompleteRegister']);
-$router->post('/complete-register', [AuthController::class, 'CompleteRegister']);
-$router->post('/prueba', [AuthController::class, 'pruebaFirma']);
+$router->get('/complete-register', [AuthController::class, 'completeRegister']);
+$router->post('/complete-register', [AuthController::class, 'completeRegister']);
 
 //Dashboard Editoriales/Publishers
 $router->get('/music/dashboard', [DashboardController::class, 'music']);
