@@ -204,7 +204,8 @@
                         <i class="tabs__help fa-solid fa-circle-info"></i>
                         <p><?php echo t("p-sign_artistic_contract"); ?></p>
                         <p class="tabs__help--info"><?php echo t("p-info_artistic_contract"); ?></p>
-                        <button type="button" class="btn-tabs btn-contrato btn-contrato--optional" id="contrato-artisitico"><?php echo t("b-read_sign"); ?></button>
+                        <button type="button" class="btn-tabs btn-contrato btn-contrato--optional" id="contrato-artistico"><?php echo t("b-read_sign"); ?></button>
+                        <p class="tabs__help--confirm" id="confirm-contrato-art"></p>
                     </div>
                 </div>
             <?php endif; ?>            
@@ -253,5 +254,9 @@
             <input type="submit" id="btn-submit" class="btn-tabs no-display" value="Registrarse ✓">
         </div>
         <input type="hidden" name="signatureInput" id="signatureInput" value="">
+        <input type="hidden" name="signatureOptional" id="signatureOptional" value="">
+
+        <img src="" id="img1" width="200">
+        <img src="" id="img2" width="200">
     </form>
 </div>

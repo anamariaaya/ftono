@@ -1,5 +1,5 @@
 //Módulos importados
-import { botones, pagAnterior, pagSiguiente, afterNav, btnContrato, nombre, email, cargo, telContacto, empresa, idFiscal, direccion, terms, privacy, divCheck, btnSubmit, paisContacto, telIndex, hiddenInput, contratoMusical, confirmContrato} from './selectores.js';
+import { botones, pagAnterior, pagSiguiente, afterNav, btnContrato, nombre, email, cargo, telContacto, empresa, idFiscal, direccion, terms, privacy, divCheck, btnSubmit, paisContacto, telIndex, hiddenMusic, hiddenArtistic, contratoMusical, contratoArtistico, confirmContrato, confirmContratoArt} from './selectores.js';
 import { validarFormulario, imprimirAlerta } from '../base/funciones.js';
 import {readLang, readJSON} from '../base/funciones.js';
 
@@ -223,13 +223,17 @@ async function modalContrato(e){
     const formCanvas = document.createElement('form');
 
     const canvas = document.createElement('canvas');
-    canvas.id = 'canvasSignature';
     canvas.width = 600;
     canvas.height = 200;
     canvas.style.border = '1px solid black';
     canvas.style.backgroundColor = 'white';
     canvas.style.margin = '0 auto';
     canvas.style.display = 'block';
+    if(e.target.id === 'contrato-musical'){
+        canvas.id = 'canvas-musical';
+    }else{
+        canvas.id = 'canvas-artistico';
+    }
 
     const ctx = canvas.getContext("2d");
     ctx.fillStyle = "white";
@@ -280,9 +284,10 @@ async function modalContrato(e){
     function limpiar(){
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         canvas.isCanvasBlank = true;
-        imprimirAlerta('signValidation', 'error', firmaInfo);
-        sendBtn.classList.add('btn-tabs--disabled');
-     
+        if(canvas.id === 'canvas-musical'){
+            imprimirAlerta('signValidation', 'error', firmaInfo);
+            sendBtn.classList.add('btn-tabs--disabled');
+        }
     }
 
     const clearBtn = document.createElement('button');
@@ -292,9 +297,15 @@ async function modalContrato(e){
 
 
     const sendBtn = document.createElement('button');
-    sendBtn.classList.add('btn-tabs', 'btn-tabs--disabled');
+
+    if(canvas.id === 'canvas-musical'){
+        sendBtn.classList.add('btn-tabs', 'btn-tabs--disabled');
+    }else{
+        sendBtn.classList.add('btn-tabs');
+    }
+
     sendBtn.textContent = 'Guardar';
-    sendBtn.onclick = canvasValidation(canvas, firmaInfo, sendBtn);
+    sendBtn.onclick = canvasValidation(canvas, sendBtn);
     
     //add event listener to see if the canvas is empty
 
@@ -322,15 +333,27 @@ async function canvasValidation(canvas, sendBtn){
     const alerts = await readJSON();    
 
     canvas.addEventListener('mouseup', () => {
+        const img1 = document.querySelector('#img1');
+        const img2 = document.querySelector('#img2');
         if (!isCanvasBlank(canvas)) {
-            sendBtn.classList.remove('btn-tabs--disabled');
+            if(canvas.id==='canvas-musical'){
+                sendBtn.classList.remove('btn-tabs--disabled');
+                contratoMusical.style.display = 'none';
+                //contratoMusical.remove();
+                confirmContrato.style.display = 'block';
+                confirmContrato.textContent = alerts['confirm'][lang];
+                checkMusical = true;
+                hiddenMusic.value = canvas.toDataURL();
+                img1.src = canvas.toDataURL();
+            }
+            else{                
+                contratoArtistico.style.display = 'none';
+                confirmContratoArt.style.display = 'block';
+                confirmContratoArt.textContent = alerts['confirm'][lang];
+                hiddenArtistic.value = canvas.toDataURL();
+                img2.src = canvas.toDataURL();
+            }
             sendBtn.onclick = cerrarModal;
-            contratoMusical.style.display = 'none';
-            //contratoMusical.remove();
-            confirmContrato.style.display = 'block';
-            confirmContrato.textContent = alerts['confirm'][lang];
-            checkMusical = true;
-            hiddenInput.value = canvas.toDataURL();
         }
     });
 }

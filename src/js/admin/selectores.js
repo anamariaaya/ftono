@@ -16,7 +16,9 @@ export const btnSubmit = document.querySelector('#btn-submit');
 export const afterNav = document.querySelector('.tabs__nav__line');
 export const btnContrato = document.querySelectorAll('.btn-contrato');
 export const contratoMusical = document.querySelector('#contrato-musical');
+export const contratoArtistico = document.querySelector('#contrato-artistico');
 export const confirmContrato = document.querySelector('#confirm-contrato');
+export const confirmContratoArt = document.querySelector('#confirm-contrato-art');
 export const nombre = document.querySelector('#nombre');
 export const cargo = document.querySelector('#cargo');
 export const telContacto = document.querySelector('#tel_contacto');
@@ -30,4 +32,5 @@ export const terms = document.querySelector('#terms');
 export const privacy = document.querySelector('#privacy');
 
 export const divCheck = document.querySelector('#div-check');
-export const hiddenInput = document.querySelector('#signatureInput');
+export const hiddenMusic = document.querySelector('#signatureInput');
+export const hiddenArtistic = document.querySelector('#signatureOptional');

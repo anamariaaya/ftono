@@ -18,6 +18,7 @@ use Model\PerfilUsuario;
 use Model\TipoComprador;
 use Model\UsuarioSellos;
 use Classes\MusicalContract;
+use Classes\ArtisticContract;
 
 class AuthController {
     public static function login(Router $router) {
@@ -356,10 +357,18 @@ class AuthController {
             $privacy->sincronizar($_POST);
             $comunicados->sincronizar($_POST);
             $firma = $_POST['signatureInput'];
+            $firmaOpt= $_POST['signatureOptional'];
+
+            //debugging($_POST);
 
             $contractPDF = new MusicalContract($usuario->id, $empresa->empresa, $usuario->nombre.' '.$usuario->apellido, $empresa->id_fiscal, $empresa->direccion, $firma, $_POST['pais_contacto_name'], $empresa->tel_contacto, $usuario->email, date('d-m-y'));
 
             $contractPDF->guardarContrato();
+            if($firmaOpt != ''){
+                $contractPDF = new ArtisticContract($usuario->id, $empresa->empresa, $usuario->nombre.' '.$usuario->apellido, $empresa->id_fiscal, $firmaOpt, $_POST['pais_contacto_name'], $empresa->tel_contacto, $usuario->email, date('d-m-y'));
+
+            $contractPDF->guardarContrato();
+            }
             //mover el archivo a la carpeta de contratos
     
             debugging($usuario);
