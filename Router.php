@@ -40,29 +40,33 @@ class Router
     }
 
     public function render($view, $datos = []){
+        $lang_file = __DIR__ . "/lang.json";
+
+        if (file_exists($lang_file)) {
+            $lang_json = file_get_contents($lang_file);
+            $lang_array = json_decode($lang_json, true);
+            if (is_array($lang_array)) {
+                $datos = array_merge($datos, $lang_array);
+            }
+        }
+
         foreach ($datos as $key => $value) {
             $$key = $value; 
         }
-        $file = __DIR__.'/views/'.$view.'.php';
-        $string = file_get_contents($file);
-        $trans = array(
-            '{{_' => '<?php echo t("',
-            '_}}' => '"); ?>'
-        );
-         
-        $string = strtr($string, $trans);
 
-        file_put_contents($file, $string);
-
-        ob_start();         
+        ob_start();
 
         include_once __DIR__ . "/views/$view.php";
+        $contenido = ob_get_clean(); 
 
-        $contenido = ob_get_clean(); // Limpia el Buffer
+        $pattern = '/\{%\s*([\w-]+)\s*%\}/';
+        $contenido = preg_replace_callback($pattern, function($matches) use ($datos) {
+            $lang = chooseLanguage();
+            $variable_name = $matches[1];
+            return isset($datos[$variable_name][$lang]) ? $datos[$variable_name][$lang] : 'Corregir llave en: ' . $variable_name . '';
+        }, $contenido);
 
-        //Utilizar el layout de acuerdo a la URL
         $url_actual = $_SERVER['PATH_INFO'] ?? '/';
-        //debugging($_SESSION);
 
         if(str_contains($url_actual, '/filmtono')) {
             include_once __DIR__ . "/views/layouts/admin-layout.php";
