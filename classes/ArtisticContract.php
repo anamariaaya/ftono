@@ -59,6 +59,7 @@ class ArtisticContract{
                 .grid-firmas__campo p{
                     break-inside: avoid;
                     padding: 5px;
+                    margin: 0;
                 }
                 .grid-firmas__campo--span{
                     break-inside: avoid;
@@ -71,11 +72,7 @@ class ArtisticContract{
         </head>
         </body>';
 
-        if($_SESSION['lang'] == 'en'){
-            $contract .= file_get_contents(__DIR__.'/../views/contracts/c-artistico-en.php');
-        }else{
-            $contract .= file_get_contents(__DIR__.'/../views/contracts/c-artistico.php');
-        }
+        $contract .= file_get_contents(__DIR__.'/../views/contracts/c-artistico-'.$_SESSION['lang'].'.php');
 
         $contract .= '<div class="grid-firmas">
                         <div class="grid-firmas__campo">

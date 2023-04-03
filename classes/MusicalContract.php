@@ -61,6 +61,7 @@ class MusicalContract{
                 .grid-firmas__campo p{
                     break-inside: avoid;
                     padding: 5px;
+                    margin: 0;
                 }
                 .grid-firmas__campo--span{
                     break-inside: avoid;
@@ -73,11 +74,7 @@ class MusicalContract{
         </head>
         </body>';
 
-        if($_SESSION['lang'] == 'en'){
-            $contract .= file_get_contents(__DIR__.'/../views/contracts/c-musical-en.php');
-        }else{
-            $contract .= file_get_contents(__DIR__.'/../views/contracts/c-musical.php');
-        }
+        $contract .= file_get_contents(__DIR__.'/../views/contracts/c-musical-'.$_SESSION['lang'].'.php');
 
         $contract .= '<div class="grid-firmas">
                         <div class="grid-firmas__campo">

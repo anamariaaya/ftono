@@ -33,21 +33,14 @@ class APIProfileController{
     }
 
     public static function ContratoMusical(){
-        if($_SESSION['lang'] == 'en'){
-            $archivo = file_get_contents(__DIR__.'/../views/contracts/c-musical-en.php');
-        }else{
-            $archivo = file_get_contents(__DIR__.'/../views/contracts/c-musical.php');
-        }
+        $archivo = file_get_contents(__DIR__.'/../views/contracts/c-musical-'.$_SESSION['lang'].'.php');
+
         echo json_encode($archivo);
     }
 
     public static function ContratoArtistico(){
+        $archivo = file_get_contents(__DIR__.'/../views/contracts/c-artistico-'.$_SESSION['lang'].'.php');
 
-        if($_SESSION['lang'] == 'en'){
-            $archivo = file_get_contents(__DIR__.'/../views/contracts/c-artistico-en.php');
-        }else{
-            $archivo = file_get_contents(__DIR__.'/../views/contracts/c-artistico.php');
-        }
         echo json_encode($archivo);
     }
 

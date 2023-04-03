@@ -255,8 +255,5 @@
         </div>
         <input type="hidden" name="signatureInput" id="signatureInput" value="">
         <input type="hidden" name="signatureOptional" id="signatureOptional" value="">
-
-        <img src="" id="img1" width="200">
-        <img src="" id="img2" width="200">
     </form>
 </div>

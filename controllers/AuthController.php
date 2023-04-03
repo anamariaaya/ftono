@@ -12,8 +12,10 @@ use Model\Privacy;
 use Model\Usuario;
 use Model\NTCompra;
 use Model\NTMusica;
+use Model\CTRMusical;
 use Model\TipoMusica;
 use Model\Comunicados;
+use Model\CTRArtistico;
 use Model\PerfilUsuario;
 use Model\TipoComprador;
 use Model\UsuarioSellos;
@@ -346,6 +348,8 @@ class AuthController {
         $usuario = Usuario::find($_SESSION['id']);
         $titulo = 'Completar registro';
         $empresa = new Empresa();
+        $ctr_music = new CTRMusical();
+        $ctr_artistic = new CTRArtistico();
         $terms = new Terms();
         $privacy = new Privacy();
         $comunicados = new Comunicados();
@@ -359,19 +363,27 @@ class AuthController {
             $firma = $_POST['signatureInput'];
             $firmaOpt= $_POST['signatureOptional'];
 
+
             //debugging($_POST);
 
             $contractPDF = new MusicalContract($usuario->id, $empresa->empresa, $usuario->nombre.' '.$usuario->apellido, $empresa->id_fiscal, $empresa->direccion, $firma, $_POST['pais_contacto_name'], $empresa->tel_contacto, $usuario->email, date('d-m-y'));
 
             $contractPDF->guardarContrato();
+            
+            $ctr_music->id_usuario = $usuario->id;
+            $ctr_music->nombre_doc = $ctr_music->id_usuario.'-music-'.date('d-m-y').'.pdf';
+            $ctr_music->guardar();
+
             if($firmaOpt != ''){
                 $contractPDF = new ArtisticContract($usuario->id, $empresa->empresa, $usuario->nombre.' '.$usuario->apellido, $empresa->id_fiscal, $firmaOpt, $_POST['pais_contacto_name'], $empresa->tel_contacto, $usuario->email, date('d-m-y'));
 
-            $contractPDF->guardarContrato();
+                $contractPDF->guardarContrato();
+                $ctr_artistic->id_usuario = $usuario->id;
+                $ctr_artistic->nombre_doc = $ctr_artistic->id_usuario.'-music-'.date('d-m-y').'.pdf';
+                $ctr_artistic->guardar();
             }
             //mover el archivo a la carpeta de contratos
     
-            debugging($usuario);
             //Asignar el id del usuario a cada tabla
             $terms->id_usuario = $usuario->id;
             //Asignar la version de los terminos y condiciones
