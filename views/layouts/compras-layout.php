@@ -22,7 +22,7 @@
             ?>
 
             <main class="dashboard__contenido">
-                <?php isRegistered('No olvides completar tu registro para poder comprar y agregar elementos a tu lista de deseos', $contenido); ?>
+                <?php isRegistered('layout_complete_register_buyers', $contenido); ?>
             </main>
         </div>
 

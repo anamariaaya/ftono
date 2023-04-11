@@ -83,11 +83,11 @@ function regBtn(){
 //Comprueba si el usuario está registrado completando su perfil y verifica si es comprador para no restringir la navegación.
 function isRegistered($mensaje, $contenido){
     $url = $_SERVER['REQUEST_URI'];
-    if($_SESSION['perfil'] === '0' && $url !== '/complete-register'):?>
+    if($_SESSION['perfil'] === '0' && !(strpos($url, '/complete-register') !== false && strpos($url, '/complete-register?'.$_SESSION['lang']) === false)):?>
         <p class="auth__text--post">
-            <?php t($mensaje); ?>
+            <?php echo tt($mensaje); ?>
             <a href="/complete-register" class="btn-submit--post" href="">
-                <?php echo t('complete_register')?>
+                <?php echo tt('complete_register')?>
             </a>
         </p>
 
@@ -102,10 +102,10 @@ function isRegistered($mensaje, $contenido){
 
 
 
-function chooseLanguage() {    
+function chooseLanguage() {
     if(isset($_GET['lang'])) {
         $_SESSION['lang'] = s($_GET['lang']);
-        setcookie("lang_cookie", s($_GET['lang']), time() + 31536000, "/");   
+        setcookie("lang_cookie", s($_GET['lang']), time() + 31536000, "/");
     }else if(isset($_COOKIE['lang_cookie'])) {
         $_SESSION['lang'] = $_COOKIE['lang_cookie'];
     }else {
@@ -116,20 +116,21 @@ function chooseLanguage() {
 }
 
 //Función para leer e imprimir cada valor del array de idiomas
-function t($key) {
-    $translations = json_decode(file_get_contents('../lang.json'), true);
+function tt($key) {
+    ob_start();
     $language = chooseLanguage();
+    $translations = json_decode(file_get_contents('../lang.json'), true);
     $keys = array_keys($translations);
 
     if(!in_array($key, $keys)){
-        echo 'CORREGIR LLAVE en: ' . $key;
-        //return;
+        return 'CORREGIR LLAVE en: ' . $key;
     } else{
         if ($language == 'en') {
             $strings = $translations[$key]['en'];    
         } else{
             $strings = $translations[$key]['es'];
         }
-        echo $strings;
+        return $strings;
     }
+    ob_clean();
 }

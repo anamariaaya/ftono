@@ -21,9 +21,10 @@ use Controllers\Filmtono\PaymentsController;
 use Controllers\Filmtono\ContractsController;
 use Controllers\Filmtono\CategoriesController;
 
-use Controllers\Clients\ClientProfileController;
-
+use Controllers\Music\MusicLabelsController;
 use Controllers\Music\MusicProfileController;
+
+use Controllers\Clients\ClientProfileController;
 
 
 $router = new Router();
@@ -57,8 +58,8 @@ $router->post('/complete-register', [AuthController::class, 'completeRegister'])
 
 //Dashboard Editoriales/Publishers
 $router->get('/music/dashboard', [DashboardController::class, 'music']);
-$router->get('/music/profile', [MusicProfileController::class, 'profile']);
-$router->get('/music/labels', [MusicController::class, 'profile']);
+$router->get('/music/profile', [MusicProfileController::class, 'index']);
+$router->get('/music/labels', [MusicLabelsController::class, 'index']);
 
 //Dashboard Compradores/Clients
 $router->get('/clients/dashboard', [DashboardController::class, 'clients']);

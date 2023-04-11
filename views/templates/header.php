@@ -24,12 +24,12 @@
         <div class="header__login">
             <?php if(isset($_SESSION['id'])): ?>
                 <form class="dashboard__form" action="/logout" method="POST">
-                    <input class="header__login__btn--login"type="submit" value="Cerrar Sesión">
+                    <input class="header__login__btn--login"type="submit" value="<?php echo tt('nav_logout'); ?>">
                 </form>
-                <a class="header__login__btn--signup" href="<?php sesionActiva()?>">Admin</a>
+                <a class="header__login__btn--signup" href="<?php sesionActiva()?>"><?php echo tt('nav_admin'); ?></a>
             <?php else: ?>
-            <a class="header__login__btn--login" href="/login">Log in</a>
-            <a class="header__login__btn--signup" href="/register">Sign up</a>
+            <a class="header__login__btn--login" href="/login"><?php echo tt('nav_login'); ?></a>
+            <a class="header__login__btn--signup" href="/register"><?php echo tt('nav_signup'); ?></a>
             <?php endif; ?>
         </div>
     </div>

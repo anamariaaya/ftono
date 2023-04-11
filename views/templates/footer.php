@@ -7,19 +7,19 @@
             <i class="fab fa-facebook"></i>
             <i class="fab fa-twitter"></i>
         </div>
-        <p class="footer__social--copyright">All rights reserved &#174; Filmtono <?php echo date('Y'); ?></p>
+        <p class="footer__social--copyright"><?php echo tt('footer_rights'); ?> &#174; Filmtono <?php echo date('Y'); ?></p>
     </div>
 
     <div class="footer__contact">
-        <h3>Contact Us</h3>
+        <h3><?php echo tt('footer_contact_us'); ?></h3>
         <p>email@filmtono.com</p>
     </div>
 
     <div class="footer__terms">
-        <a href="/register-music">Regístrate y sube tu catálogo</a>
-        <a href="">Privacy Policy</a>
-        <a href="">Terms of Service</a>
-        <a href="">Cookie Policy</a>
-        <a href="">Cookie Preference</a>
+        <a href="/register-music"><?php echo tt('footer_register_music'); ?></a>
+        <a href=""><?php echo tt('footer_privacy_policy'); ?></a>
+        <a href=""><?php echo tt('footer_terms_conditions'); ?></a>
+        <a href=""><?php echo tt('footer_cookies'); ?></a>
+        <a href=""><?php echo tt('footer_cookies_preference'); ?></a>
     </div>
 </footer>

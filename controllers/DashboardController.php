@@ -29,7 +29,7 @@ class DashboardController{
         isMusico();
         $usuario = Usuario::find($_SESSION['id']);
 
-        $titulo = 'Dashboard';
+        $titulo = tt('dashboard');
         $router->render('music/dashboard',[
             'titulo' => $titulo,
             'usuario' => $usuario

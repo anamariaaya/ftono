@@ -8,7 +8,10 @@ class App{
         this.initApp();
     }
 
-    initApp(){        
+    initApp(){ 
+        if(chooseLang){
+            chooseLang();
+        }       
         if(selectPais){
             consultaPaises();
             paisElegido();
@@ -20,9 +23,6 @@ class App{
             tabs();
             paginador();
             formularioReg();
-        }
-        if(chooseLang){
-            chooseLang();
         }
     }
 }

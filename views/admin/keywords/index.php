@@ -1,1 +1,1 @@
-<h1><?php echo $titulo; ?> Compras</h1>
+<h1><?php echo $titulo; ?></h1>

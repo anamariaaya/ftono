@@ -22,7 +22,7 @@
             ?>
 
             <main class="dashboard__contenido">
-                 <?php isRegistered('complete_register_musicians', $contenido); ?>
+                 <?php isRegistered('layout_complete_register_musicians', $contenido); ?>
             </main>
         </div>
 

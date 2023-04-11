@@ -346,7 +346,7 @@ class AuthController {
 
     public static function completeRegister(Router $router){
         $usuario = Usuario::find($_SESSION['id']);
-        $titulo = 'Completar registro';
+        $titulo = tt('complete_register');
         $empresa = new Empresa();
         $ctr_music = new CTRMusical();
         $ctr_artistic = new CTRArtistico();

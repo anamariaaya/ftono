@@ -1,162 +1,294 @@
 {
-    "index":{
-      "es": "Inicio",
-      "en": "Home"
-    },
-    "header":{
-      "es": "Sitio web multilingüe",
-      "en": "Multilingual Website"      
-    },
-    "login":{
-      "es": "Iniciar sesión",
-      "en": "Login"
-    },
-    "register":{
-      "es": "Registrarse",
-      "en": "Register"      
-    },
-    "complete_register":{
-      "es": "Completar Registro",
-      "en": "Complete Registration"      
-    },
-    "complete_register_musicians":{
-      "es": "Debes completar el registro para poder cargar tu catálogo musical y acceder a todas las funciones de tu dashboard.",
-      "en": "You must complete the registration to be able to upload your musical catalog and access all the functions of your dashboard."      
-    },
-    "p-required_fields":{
-      "es": "Los campos marcados con (*) son obligatorios",
-      "en": "The fields marked with (*) are required"
-    },
-    "t-personal_data":{
-      "es": "Datos Personales",
-      "en": "Personal Data"
-    },
-    "t-complete_your_data":{
-      "es": "Completa tus datos",
-      "en": "Complete your data"
-    },
-    "i-name":{
-      "es": "Nombre",
-      "en": "Name"
-    },
-    "i-last_name":{
-      "es": "Apellido",
-      "en": "Last Name"
-    },
-    "i-email":{
-      "es": "Email",
-      "en": "Email"
-    },
-    "i-password":{
-      "es": "Contraseña",
-      "en": "Password"
-    },
-    "i-password_confirmation":{
-      "es": "Confirmar Contraseña",
-      "en": "Confirm Password"
-    },
-    "i-your_country":{
-      "es": "Tu País",
-      "en": "Your Country"
-    },
-    "i-country":{
-      "es": "País",
-      "en": "Country"
-    },
-    "i-select_country":{
-      "es": "Selecciona un país",
-      "en": "Select a country"
-    },
-    "i-phone":{
-      "es": "Teléfono",
-      "en": "Phone"
-    },
-    "i-position":{
-      "es": "Cargo",
-      "en": "Position"
-    },
-    "t-about_company":{
-      "es": "Sobre la Empresa",
-      "en": "About the Company"
-    },
-    "t-company_data":{
-      "es": "Datos de la Empresa",
-      "en": "Company Data"
-    },
-    "i-company_name":{
-      "es": "Nombre de la Empresa",
-      "en": "Company Name"
-    },
-    "i-fiscal_id":{
-      "es": "Identificación Fiscal",
-      "en": "Tax ID"
-    },
-    "i-address":{
-      "es": "Dirección",
-      "en": "Address"
-    },
-    "t-purchase_contact":{
-      "es": "Datos de Contacto para Compras",
-      "en": "Purchases Contact Data"
-    },
-    "t-authorizations":{
-      "es": "Autorizaciones",
-      "en": "Authorizations"
-    },
-    "t-signs_authorizations":{
-      "es": "Firmas y Autorizaciones",
-      "en": "Signs and Authorizations"
-    },
-    "p-sign_music_contract":{
-      "es": "Firma el contrato de proveedor musical",
-      "en": "Sign the music supplier contract"
-    },
-    "p-info_music_contract":{
-      "es": "Este es el contrato para que puedas subir tu música y ofrecerla a través de FILMTONO.",
-      "en": "This is the contract so that you can upload your music and offer it through FILMTONO."
-    },
-    "b-read_sign":{
-      "es": "Leer y Firmar",
-      "en": "Read and Sign"
-    },
-    "p-sign_artistic_contract":{
-      "es": "Firma el contrato de proveedor artístico",
-      "en": "Sign the artistic supplier contract"
-    },
-    "p-info_artistic_contract":{
-      "es": "Este contrato es OPCIONAL para quienes deseen ofrecer los cameos del artista través de FILMTONO.",
-      "en": "This contract is OPTIONAL for those who wish to offer the artist's cameos through FILMTONO."
-    },
-    "t-terms_acceptance":{
-      "es": "Aceptación de términos, privacidad y confirmación de comunicaciones",
-      "en": "Acceptance of terms, privacy and confirmation of communications"
-    },
-    "l-i_accept_terms":{
-      "es": "Acepto los",
-      "en": "I accept the"
-    },
-    "l-terms_conditions":{
-      "es": "Términos y Condiciones",
-      "en": "Terms and Conditions"
-    },
-    "l-i_accept_privacy":{
-      "es": "Acepto la",
-      "en": "I accept the"
-    },
-    "l-privacy_policy":{
-      "es": "Política de Privacidad",
-      "en": "Privacy Policy"
-    },
-    "l-accept_communications":{
-      "es": "Acepto recibir comunicaciones de FILMTONO",
-      "en": "I accept to receive communications from FILMTONO"
-    },
-    "b-previous":{
-      "es": "Anterior",
-      "en": "Previous"
-    },
-    "b-next":{
-      "es": "Siguiente",
-      "en": "Next"
-    }
+  "nav_hello":{
+    "es": "¡Hola",
+    "en": "Hello"      
+  },
+  "nav_admin":{
+    "es": "Admin",
+    "en": "Admin"      
+  },
+  "nav_login":{
+    "es": "Iniciar sesión",
+    "en": "Login"
+  },
+  "nav_logout":{
+    "es": "Cerrar sesión",
+    "en": "Logout"
+  },
+  "nav_signup":{
+    "es": "Registrarse",
+    "en": "Sign Up"
+  },
+  "nav_explore_music":{
+    "es": "Explora Música",
+    "en": "Explore Music"      
+  },
+  "sidebar_help":{
+    "es": "Ayuda",
+    "en": "Help"      
+  },
+  "sidebar_faq":{
+    "es": "FAQ",
+    "en": "FAQ"      
+  },
+  "sidebar_index":{
+    "es": "Inicio",
+    "en": "Home"
+  },
+  "sidebar_profile":{
+    "es": "Perfil",
+    "en": "Profile"
+  },
+  "sidebar_promos":{
+    "es": "Promos",
+    "en": "Promos"
+  },
+  "sidebar_users":{
+    "es": "Usuarios",
+    "en": "Users"
+  },
+  "sidebar_labels":{
+    "es": "Sellos",
+    "en": "Labels"      
+  },
+  "sidebar_categories":{
+    "es": "Categorías",
+    "en": "Categories"      
+  },
+  "sidebar_albums":{
+    "es": "Álbumes",
+    "en": "Albums"      
+  },
+  "sidebar_artists":{
+    "es": "Artistas",
+    "en": "Artists"      
+  },
+  "sidebar_genres":{
+    "es": "Géneros",
+    "en": "Genres"      
+  },
+  "sidebar_keywords":{
+    "es": "Palabras Clave",
+    "en": "Keywords"      
+  },
+  "sidebar_licenses":{
+    "es": "Licencias",
+    "en": "Licenses"      
+  },
+  "sidebar_payments":{
+    "es": "Pagos",
+    "en": "Payments"      
+  },
+  "sidebar_contracts":{
+    "es": "Contratos",
+    "en": "Contracts"      
+  },
+  "footer_rights":{
+    "es": "Todos los derechos reservados",
+    "en": "All rights reserved"      
+  },
+  "footer_contact_us":{
+    "es": "Contáctanos",
+    "en": "Contact Us"      
+  },
+  "footer_register_music":{
+    "es": "Regístrate y sube tu catálogo",
+    "en": "Register and upload your catalog"      
+  },
+  "footer_privacy_policy":{
+    "es": "Política de Privacidad",
+    "en": "Privacy Policy"
+  },
+  "footer_terms_conditions":{
+    "es": "Términos y Condiciones",
+    "en": "Terms and Conditions"
+  },
+  "footer_cookies":{
+    "es": "Política de Cookies",
+    "en": "Cookies Policy"
+  },
+  "footer_cookies_preference":{
+    "es": "Preferencia de Cookies",
+    "en": "Cookies Preference"
+  },
+  "complete_register":{
+    "es": "Completar Registro",
+    "en": "Complete Registration"      
+  },
+  "layout_complete_register_musicians":{
+    "es": "Debes completar el registro para poder cargar tu catálogo musical y acceder a todas las funciones de tu dashboard.",
+    "en": "You must complete the registration to be able to upload your musical catalog and access all the functions of your dashboard."      
+  },
+  "layout_complete_register_buyers":{
+    "es": "Debes completar el registro para poder acceder a todas las funciones de tu dashboard.",
+    "en": "You must complete the registration to be able to access all the functions of your dashboard."      
+  },
+  "dashboard":{
+    "es": "Dashboard",
+    "en": "Dashboard"      
+  },
+  "register":{
+    "es": "Registrarse",
+    "en": "Register"      
+  },
+  "p-required_fields":{
+    "es": "Los campos marcados con (*) son obligatorios",
+    "en": "The fields marked with (*) are required"
+  },
+  "t-personal_data":{
+    "es": "Datos Personales",
+    "en": "Personal Data"
+  },
+  "t-complete_your_data":{
+    "es": "Completa tus datos",
+    "en": "Complete your data"
+  },
+  "i-name":{
+    "es": "Nombre",
+    "en": "Name"
+  },
+  "i-last_name":{
+    "es": "Apellido",
+    "en": "Last Name"
+  },
+  "i-email":{
+    "es": "Email",
+    "en": "Email"
+  },
+  "i-password":{
+    "es": "Contraseña",
+    "en": "Password"
+  },
+  "i-password_confirmation":{
+    "es": "Confirmar Contraseña",
+    "en": "Confirm Password"
+  },
+  "i-your_country":{
+    "es": "Tu País",
+    "en": "Your Country"
+  },
+  "i-country":{
+    "es": "País",
+    "en": "Country"
+  },
+  "i-select_country":{
+    "es": "Selecciona un país",
+    "en": "Select a country"
+  },
+  "i-phone":{
+    "es": "Teléfono",
+    "en": "Phone"
+  },
+  "i-position":{
+    "es": "Cargo",
+    "en": "Position"
+  },
+  "t-about_company":{
+    "es": "Sobre la Empresa",
+    "en": "About the Company"
+  },
+  "t-company_data":{
+    "es": "Datos de la Empresa",
+    "en": "Company Data"
+  },
+  "i-company_name":{
+    "es": "Nombre de la Empresa",
+    "en": "Company Name"
+  },
+  "i-fiscal_id":{
+    "es": "Identificación Fiscal",
+    "en": "Tax ID"
+  },
+  "i-address":{
+    "es": "Dirección",
+    "en": "Address"
+  },
+  "t-purchase_contact":{
+    "es": "Datos de Contacto para Compras",
+    "en": "Purchases Contact Data"
+  },
+  "t-authorizations":{
+    "es": "Autorizaciones",
+    "en": "Authorizations"
+  },
+  "t-signs_authorizations":{
+    "es": "Firmas y Autorizaciones",
+    "en": "Signs and Authorizations"
+  },
+  "p-sign_music_contract":{
+    "es": "Firma el contrato de proveedor musical",
+    "en": "Sign the music supplier contract"
+  },
+  "p-info_music_contract":{
+    "es": "Este es el contrato para que puedas subir tu música y ofrecerla a través de FILMTONO.",
+    "en": "This is the contract so that you can upload your music and offer it through FILMTONO."
+  },
+  "b-read_sign":{
+    "es": "Leer y Firmar",
+    "en": "Read and Sign"
+  },
+  "p-sign_artistic_contract":{
+    "es": "Firma el contrato de proveedor artístico",
+    "en": "Sign the artistic supplier contract"
+  },
+  "p-info_artistic_contract":{
+    "es": "Este contrato es OPCIONAL para quienes deseen ofrecer los cameos del artista través de FILMTONO.",
+    "en": "This contract is OPTIONAL for those who wish to offer the artist's cameos through FILMTONO."
+  },
+  "t-terms_acceptance":{
+    "es": "Aceptación de términos, privacidad y confirmación de comunicaciones",
+    "en": "Acceptance of terms, privacy and confirmation of communications"
+  },
+  "l-i_accept_terms":{
+    "es": "Acepto los",
+    "en": "I accept the"
+  },
+  "l-terms_conditions":{
+    "es": "Términos y Condiciones",
+    "en": "Terms and Conditions"
+  },
+  "l-i_accept_privacy":{
+    "es": "Acepto la",
+    "en": "I accept the"
+  },
+  "l-privacy_policy":{
+    "es": "Política de Privacidad",
+    "en": "Privacy Policy"
+  },
+  "l-accept_communications":{
+    "es": "Acepto recibir comunicaciones de FILMTONO",
+    "en": "I accept to receive communications from FILMTONO"
+  },
+  "b-previous":{
+    "es": "Anterior",
+    "en": "Previous"
+  },
+  "b-next":{
+    "es": "Siguiente",
+    "en": "Next"
+  },
+  "t-profile":{
+    "es": "Perfil",
+    "en": "Profile"
+  },
+  "t-labels":{
+    "es": "Sellos Discográficos",
+    "en": "Record Labels"
+  },
+  "t-labels_info":{
+    "es": "Agrega los sellos discográficos con los que trabajas",
+    "en": "Add the record labels with which you work"
+  },
+  "ph-search__labels":{
+    "es": "Buscar sellos discográficos por nombre",
+    "en": "Search record labels by name"
+  },
+  "p-total_labels":{
+    "es": "Total de sellos discográficos",
+    "en": "Total record labels"
+  },
+  "b-add_label":{
+    "es": "Agregar Sello Discográfico",
+    "en": "Add Record Label"
+  }
 }

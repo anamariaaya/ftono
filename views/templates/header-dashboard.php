@@ -5,7 +5,7 @@
                 <img class="dashboard__logo" src="/build/img/logo.svg" loading="lazy" alt="logotipo Asignar">
             </a>
 
-            <h3 class="dashboard__titulo">Hola, <?php echo $_SESSION['nombre']; ?></h3>
+            <h3 class="dashboard__titulo"><?php echo tt('nav_hello').' '.$_SESSION['nombre'].'!'; ?></h3>
         </div>
 
         <nav class="dashboard__nav">
@@ -22,11 +22,13 @@
                 <img class="dashboard__nav-icono" src="/build/img/cart.svg" loading="lazy" alt="icono carrito">
                 <!-- <span class="dashboard__nav-numero"><?php echo $total; ?></span> -->
                 </a>
-                <a href="/categories" class="dashboard__nav-enlace">Explorar Música</a>
+                <a href="/categories" class="dashboard__nav-enlace">
+                    <?php echo tt('nav_explore_music'); ?>
+                </a>
             <?php endif; ?>
 
             <form class="dashboard__form" action="/logout" method="POST">
-                <input class="dashboard__submit--logout" type="submit" value="Cerrar Sesión"/>
+                <input class="dashboard__submit--logout" type="submit" value="<?php echo tt('nav_logout'); ?>"/>
             </form>
         </nav>
     </div>
