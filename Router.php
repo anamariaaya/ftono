@@ -66,6 +66,7 @@ class Router
             return isset($datos[$variable_name][$lang]) ? $datos[$variable_name][$lang] : 'Corregir llave en: ' . $variable_name . '';
         }, $contenido);
 
+        
         $url_actual = $_SERVER['PATH_INFO'] ?? '/';
 
         if(str_contains($url_actual, '/filmtono')) {

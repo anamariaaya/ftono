@@ -125,11 +125,8 @@ function tt($key) {
     if(!in_array($key, $keys)){
         return 'CORREGIR LLAVE en: ' . $key;
     } else{
-        if ($language == 'en') {
-            $strings = $translations[$key]['en'];    
-        } else{
-            $strings = $translations[$key]['es'];
-        }
+        $strings = $translations[$key][$language];   
+
         return $strings;
     }
     ob_clean();

@@ -1,8 +1,8 @@
 <div class="container">
     <h1 class="heading-yellow"><?php echo $titulo; ?></h1>
+    <p>Selecciona canciones en las que administres el copyright y el publishing para dar respuesta rápida a los compradores<p>
 
-    <?php if(isset($_SESSION['id'])): ?>
-        
+    <?php if(isset($_SESSION['id'])): ?>        
         <p class="auth__text">Ya estás registrado</p>
         <div class="auth">
             <i class="auth__icon--fail fa-regular fa-circle-xmark"></i>

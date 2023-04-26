@@ -79,6 +79,10 @@
     "es": "Pagos",
     "en": "Payments"      
   },
+  "sidebar_purchases":{
+    "es": "Compras",
+    "en": "Purchases"      
+  },
   "sidebar_contracts":{
     "es": "Contratos",
     "en": "Contracts"      
@@ -122,6 +126,86 @@
   "layout_complete_register_buyers":{
     "es": "Debes completar el registro para poder acceder a todas las funciones de tu dashboard.",
     "en": "You must complete the registration to be able to access all the functions of your dashboard."      
+  },
+  "auth_login_title":{
+    "es": "Ingresa a tu cuenta",
+    "en": "Login to your account"
+  },
+  "auth_already_logged":{
+    "es": "Ya inciaste sesión",
+    "en": "You are already logged in"      
+  },
+  "auth_back_admin_btn":{
+    "es": "Volver al Admin",
+    "en": "Back to Admin"      
+  },
+  "auth_login_email_label":{
+    "es": "Email",
+    "en": "Email"
+  },
+  "auth_login_password_label":{
+    "es": "Contraseña",
+    "en": "Password"      
+  },
+  "auth_login_btn":{
+    "es": "Iniciar Sesión",
+    "en": "Login"      
+  },
+  "auth_login_not_account":{
+    "es": "¿No tienes cuenta? Regístrate",
+    "en": "Don't have an account? Sign Up"      
+  },
+  "auth_login_forgot_password":{
+    "es": "¿Olvidaste tu contraseña?",
+    "en": "Forgot your password?"      
+  },
+  "auth_register_title":{
+    "es": "Crea tu cuenta y encuentra la mejor música para tus proyectos",
+    "en": "Create your account and find the best music for your projects"      
+  },
+  "auth_already_registered":{
+    "es": "Ya estás registrado",
+    "en": "You are already registered"      
+  },
+  "auth_register_music_purpose_label":{
+    "es": "¿Para qué quieres usar la música?",
+    "en": "What do you want to use the music for?"      
+  },
+  "auth_register_select_default":{
+    "es": "Selecciona una opción",
+    "en": "Select an option"      
+  },
+  "auth_register_name_label":{
+    "es": "Nombre",
+    "en": "Name"      
+  },
+  "auth_register_lastname_label":{
+    "es": "Apellido",
+    "en": "Last Name"      
+  },
+  "auth_register_email_label":{
+    "es": "Email",
+    "en": "Email"      
+  },
+  "auth_register_password_label":{
+    "es": "Contraseña",
+    "en": "Password"      
+  },
+  "auth_register_password_confirmation_label":{
+    "es": "Confirmar Contraseña",
+    "en": "Confirm Password"      
+  },
+  "auth_register_btn":{
+    "es": "Crear Cuenta",
+    "en": "Create Account"      
+  },
+  "auth_register_already_account":{
+    "es": "¿Ya tienes cuenta? Inicia Sesión",
+    "en": "Already have an account? Login"      
+  },
+  "auth_register_forgot_password":{
+    "es": "¿Olvidaste tu contraseña?",
+    "en": "Forgot your password?"      
   },
   "dashboard":{
     "es": "Dashboard",

@@ -18,7 +18,7 @@
     ?>
         <div class="dashboard__grid">
             <?php
-                include_once __DIR__ .'/../templates/admin-sidebar.php';  
+                include_once __DIR__ .'/../templates/admin-sidebar.php'; 
             ?>
 
             <main class="dashboard__contenido">

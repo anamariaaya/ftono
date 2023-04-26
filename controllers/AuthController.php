@@ -78,7 +78,7 @@ class AuthController {
         
         // Render a la vista 
         $router->render('auth/login', [
-            'titulo' => 'Iniciar Sesión',
+            'titulo' => 'auth_login_title',
             'alertas' => $alertas
         ]);
     }
@@ -92,8 +92,9 @@ class AuthController {
     }
 
     public static function register(Router $router) {
+        $lang = $_SESSION['lang'] ?? 'en';
         $alertas = [];
-        $comprador = TipoComprador::allOrderBy('tipo');
+        $comprador = TipoComprador::allOrderBy('tipo_'.$lang);
         $usuario = new Usuario;
         $tipoComprador = new NTCompra;
 
@@ -140,7 +141,8 @@ class AuthController {
 
         // Render a la vista
         $router->render('auth/register', [
-            'titulo' => 'Crea tu cuenta y encuentra la mejor música para tus proyectos',
+            'titulo' => 'auth_register_title',
+            'lang' => $lang,
             'comprador' => $comprador,
             'usuario' => $usuario, 
             'alertas' => $alertas

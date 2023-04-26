@@ -1,7 +1,5 @@
 <aside class="dashboard__sidebar">
     <nav class="dashboard__menu">
-
-
         <a href="<?php
             sesionActiva();
         ?>" class="dashboard__enlace <?php pagina_admin('dashboard');?>">
