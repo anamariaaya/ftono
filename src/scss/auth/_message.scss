@@ -26,7 +26,7 @@
         background-color: v.$gray;
         padding: v.$separate;
         border-radius: 1rem;
-        color: v.$yellow;
+        color: v.$white;
     }
     &__text--post{
         @extend .auth__text;

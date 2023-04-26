@@ -207,6 +207,118 @@
     "es": "¿Olvidaste tu contraseña?",
     "en": "Forgot your password?"      
   },
+  "auth_register-music_title":{
+    "es": "Crea tu cuenta y sube tu catálogo músical de fácil licenciamiento",
+    "en": "Create your account and upload your easy licensing musical catalog"      
+  },
+  "auth_register-music_paragraph":{
+    "es": "Debes tener en cuenta que tu catálogo sea de canciones en las que administres completamente el copyright y publishing para dar respuesta rápida a los compradores",
+    "en": "You must keep in mind that your catalog is made up of songs in which you completely manage the copyright and publishing to give a quick response to buyers"      
+  },
+  "auth_register-music_user_type_label":{
+    "es": "¿Qué tipo de usuario eres?",
+    "en": "What type of user are you?"      
+  },
+  "auth_register-music_name_label":{
+    "es": "Nombre",
+    "en": "Name"      
+  },
+  "auth_register-music_lastname_label":{
+    "es": "Apellido",
+    "en": "Last Name"      
+  },
+  "auth_register-music_email_label":{
+    "es": "Email",
+    "en": "Email"      
+  },
+  "auth_register-music_password_label":{
+    "es": "Contraseña",
+    "en": "Password"      
+  },
+  "auth_register-music_password_confirmation_label":{
+    "es": "Confirmar Contraseña",
+    "en": "Confirm Password"      
+  },
+  "auth_register-music_btn":{
+    "es": "Crear Cuenta",
+    "en": "Create Account"      
+  },
+  "auth_message_title":{
+    "es": "Ya has creado tu cuenta en Filmtono",
+    "en": "You have already created your account in Filmtono"
+  },
+  "auth_message_paragraph":{
+    "es": "Te hemos enviado un correo ¡Revisa tu bandeja de entrada para confirmar tu cuenta!",
+    "en": "We have sent you an email. Check your inbox to confirm your account!"
+  },
+  "auth_forgot-password_title":{
+    "es": "¿Olvidaste tu contraseña?",
+    "en": "Forgot your password?"
+  },
+  "auth_forgot-password_paragraph":{
+    "es": "No te preocupes, te enviaremos un correo para que puedas recuperarla.",
+    "en": "Don't worry, we'll send you an email so you can recover it."
+  },
+  "auth_forgot-password_email_label":{
+    "es": "Tu Email",
+    "en": "Your Email"
+  },
+  "auth_forgot-password_btn":{
+    "es": "Enviar Instrucciones",
+    "en": "Send Instructions"
+  },
+  "auth_forgot-password_alert-error":{
+    "es": "El email que has escrito no existe o no esta confirmado",
+    "en": "The email you wrote does not exist or is not confirmed"
+  },
+  "auth_forgot-password_alert-success":{
+    "es": "Hemos enviado las instrucciones a tu email",
+    "en": "We have sent the instructions to your email"
+  },
+  "auth_confirm_title":{
+    "es": "Verificación de la cuenta",
+    "en": "Account verification"
+  },
+  "auth_confirm_alert-success":{
+    "es": "Tu cuenta ha sido verificada. Ya puedes iniciar sesión",
+    "en": "Your account has been verified. You can now log in"
+  },
+  "auth_confirm_alert-error":{
+    "es": "La cuenta no se verificó.",
+    "en": "The account was not verified."
+  },
+  "auth_confirm_login_btn":{
+    "es": "Iniciar Sesión",
+    "en": "Login"
+  },
+  "auth_confirm_paragraph_error":{
+    "es":"Posiblemente tu cuenta no se verificó. Intenta iniciar sesión. Si no logras ingresar, por favor, contacta con soporte de Filmtono.",
+    "en":"Possibly your account was not verified. Try to log in. If you can't, please contact Filmtono support."
+  },
+  "auth_reset-password_title":{
+    "es": "Cambia tu contraseña",
+    "en": "Change your password"
+  },
+  "auth_reset-password_paragraph":{
+    "es": "Por favor escribe tu nueva contraseña. Debe tener al menos 6 caracteres, con al menos una mayúscula y un número",
+    "en": "Please enter your new password. It must be at least 6 characters long, with at least one uppercase and one number"
+  },
+  "auth_reset-password_password_label":{
+    "es": "Nueva Contraseña",
+    "en": "New Password"
+  },
+  "auth_reset-password_password_confirmation_label":{
+    "es": "Confirmar Nueva Contraseña",
+    "en": "Confirm New Password"
+  },
+  "auth_reset-password_btn":{
+    "es": "Cambiar Contraseña",
+    "en": "Change Password"
+  },
+  "auth_reset-password_alert-error":{
+    "es": "Este link ya no es válido. Solicita uno nuevo haciendo click en ¿Olvidaste tu contraseña? en la pantalla de inicio de sesión",
+    "en": "This link is no longer valid. Request a new one by clicking on Forgot your password? on the login screen"
+  },
   "dashboard":{
     "es": "Dashboard",
     "en": "Dashboard"      

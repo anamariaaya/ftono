@@ -1,6 +1,6 @@
 <div class="container">
-    <h1 class="heading-yellow"><?php echo $titulo; ?></h1>
-    <p>Selecciona canciones en las que administres el copyright y el publishing para dar respuesta rápida a los compradores<p>
+    <h1 class="heading-yellow">{% <?php echo $titulo; ?> %}</h1>
+    <p>{%auth_register-music_paragraph%}<p>
 
     <?php if(isset($_SESSION['id'])): ?>        
         <p class="auth__text">Ya estás registrado</p>
@@ -17,46 +17,48 @@
     <div class="form-div">
         <form class="form" method="POST" action="/register-music">
             <div class="form__group">
-                <label class="form__group__label" for="tipo">¿Qué tipo de usuario eres?</label>
+                <label class="form__group__label" for="tipo">{%auth_register-music_user_type_label%}</label>
                 <select class="form__group__select" name="id_musica" id="tipo">
-                    <option selected disabled>--Selecciona</option>
+                    <option selected disabled>
+                        {%auth_register_select_default%}
+                    </option>
                     <?php foreach($musico as $tipo): ?>
-                        <option value="<?php echo $tipo->id; ?>"><?php echo $tipo->tipo; ?></option>
+                        <option value="<?php echo $tipo->id; ?>"><?php echo $lang =='en' ? $tipo->tipo_en : $tipo->tipo_es ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
 
             <div class="form__group">
-                <label class="form__group__label" for="nombre">Nombre</label>
-                <input class="form__group__input" type="text" name="nombre" id="nombre" placeholder="Tu nombre">
+                <label class="form__group__label" for="nombre">{%auth_register-music_name_label%}</label>
+                <input class="form__group__input" type="text" name="nombre" id="nombre" placeholder="{%auth_register-music_name_label%}">
             </div>
 
             <div class="form__group">
-                <label class="form__group__label" for="nombre">Apellido</label>
-                <input class="form__group__input" type="text" name="apellido" id="apellido" placeholder="Tu apellido">
+                <label class="form__group__label" for="nombre">{%auth_register-music_lastname_label%}</label>
+                <input class="form__group__input" type="text" name="apellido" id="apellido" placeholder="{%auth_register-music_lastname_label%}">
             </div>
 
             <div class="form__group">
-                <label class="form__group__label" for="email">Email</label>
-                <input class="form__group__input" type="email" name="email" id="email" placeholder="Tu email">
+                <label class="form__group__label" for="email">{%auth_register-music_email_label%}</label>
+                <input class="form__group__input" type="email" name="email" id="email" placeholder="{%auth_register-music_email_label%}">
             </div>
 
             <div class="form__group">
-                <label class="form__group__label" for="password">Password</label>
-                <input class="form__group__input" type="password" name="password" id="password" placeholder="Tu password">
+                <label class="form__group__label" for="password">{%auth_register-music_password_label%}</label>
+                <input class="form__group__input" type="password" name="password" id="password" placeholder="{%auth_register-music_password_label%}">
             </div>
 
             <div class="form__group">
-                <label class="form__group__label" for="password2">Repetir Password</label>
-                <input class="form__group__input" type="password" name="password2" id="password2" placeholder="Repite tu password">
+                <label class="form__group__label" for="password2">{%auth_register-music_password_confirmation_label%}</label>
+                <input class="form__group__input" type="password" name="password2" id="password2" placeholder="{%auth_register-music_password_confirmation_label%}">
             </div>
 
-            <input class="btn-submit" type="submit" value="Crear cuenta">
+            <input class="btn-submit" type="submit" value="{%auth_register-music_btn%}">
         </form>
     </div>
 
     <div class="acciones">
-        <a href="/login" class="acciones__enlace">¿Ya tienes cuenta? Inicia Sesión</a><a href="/olvide-password" class="acciones__enlace">¿Olvidaste tu contraseña?</a>
+        <a href="/login" class="acciones__enlace">{%auth_register_already_account%}</a><a href="/forgot-password" class="acciones__enlace">{%auth_register_forgot_password%}</a>
     </div>
 
     <?php endif; ?>

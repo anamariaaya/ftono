@@ -10,7 +10,5 @@ $dotenv->safeLoad();
 require 'funciones.php';
 require 'database.php';
 
-
 //Conectarnos a la BD
  ActiveRecord::setDB($db);
-

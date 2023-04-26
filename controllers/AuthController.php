@@ -150,8 +150,9 @@ class AuthController {
     }
 
     public static function registerMusic(Router $router){
+        $lang = $_SESSION['lang'] ?? 'en';
         $alertas = [];
-        $musico = TipoMusica::allOrderBy('tipo');
+        $musico = TipoMusica::allOrderBy('tipo_'.$lang);
         $tipoMusico = new NTMusica;
         $usuario = new Usuario;
 
@@ -205,9 +206,10 @@ class AuthController {
 
         }
         $router->render('auth/register-music', [
-            'titulo' => 'Crea tu cuenta y sube tu catálogo músical',
+            'titulo' => 'auth_register-music_title',
             'alertas' => $alertas,
-            'musico' => $musico
+            'musico' => $musico,
+            'lang' => $lang
         ]);
     }
 
@@ -239,19 +241,19 @@ class AuthController {
                     // Imprimir la alerta
                     // Usuario::setAlerta('exito', 'Hemos enviado las instrucciones a tu email');
 
-                    $alertas['exito'][] = 'Hemos enviado las instrucciones a tu email';
+                    $alertas['exito'][] = 'auth_forgot-password_alert-success';
                 } else {
                  
                     // Usuario::setAlerta('error', 'El Usuario no existe o no esta confirmado');
 
-                    $alertas['error'][] = 'El Usuario no existe o no esta confirmado';
+                    $alertas['error'][] = 'auth_forgot-password_alert-error';
                 }
             }
         }
 
         // Muestra la vista
         $router->render('auth/forgot', [
-            'titulo' => 'Olvidé mi Password',
+            'titulo' => 'auth_forgot-password_title',
             'alertas' => $alertas
         ]);
     }
@@ -268,7 +270,7 @@ class AuthController {
         $usuario = Usuario::where('token', $token);
 
         if(empty($usuario)) {
-            Usuario::setAlerta('error', 'Token No Válido, intenta de nuevo');
+            Usuario::setAlerta('error', 'auth_reset-password_alert-error');
             $token_valido = false;
         }
 
@@ -301,7 +303,7 @@ class AuthController {
         
         // Muestra la vista
         $router->render('auth/reset', [
-            'titulo' => 'Restablecer Password',
+            'titulo' => 'auth_reset-password_title',
             'alertas' => $alertas,
             'token_valido' => $token_valido
         ]);
@@ -310,7 +312,7 @@ class AuthController {
     public static function message(Router $router) {
 
         $router->render('auth/message', [
-            'titulo' => 'Cuenta Creada Exitosamente'
+            'titulo' => 'auth_message_title'
         ]);
     }
 
@@ -325,7 +327,7 @@ class AuthController {
 
         if(empty($usuario)) {
             // No se encontró un usuario con ese token
-            Usuario::setAlerta('error', 'Token No Válido. La cuenta no se confirmó');
+            Usuario::setAlerta('error', 'auth_confirm_alert-error');
         } else {
             // Confirmar la cuenta
             $usuario->confirmado = 1;
@@ -335,13 +337,13 @@ class AuthController {
             // Guardar en la BD
             $usuario->guardar();
 
-            Usuario::setAlerta('exito', 'Cuenta Comprobada exitosamente');
+            Usuario::setAlerta('exito', 'auth_confirm_alert-success');
         }
 
      
 
         $router->render('auth/confirm', [
-            'titulo' => 'Confirma tu cuenta',
+            'titulo' => 'auth_confirm_title',
             'alertas' => Usuario::getAlertas()
         ]);
     }

@@ -52,7 +52,7 @@
         </a>
 
         <a href="/filmtono/artists" class="dashboard__enlace <?php pagina_admin('artists');?>">
-            <i class="fa-solid fa-microphone-lines dashboard__icono"></i>
+            <i class="fa-solid fa-face-grin-stars dashboard__icono"></i>
             <span class="dashboard__menu-texto">
                 <?php echo tt('sidebar_artists');?>
             </span>
@@ -73,7 +73,7 @@
         </a>
 
         <a href="/filmtono/licenses" class="dashboard__enlace <?php pagina_admin('licenses');?>">
-            <i class="fa-solid fa-font dashboard__icono"></i>
+            <i class="fa-solid fa-handshake dashboard__icono"></i>
             <span class="dashboard__menu-texto">
                 <?php echo tt('sidebar_licenses');?>
             </span>

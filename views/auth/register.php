@@ -23,7 +23,9 @@
 
                 <label class="form__group__label" for="tipo">{%auth_register_music_purpose_label%}</label>
                 <select class="form__group__select" name="id_compra" id="tipo">
-                    <option selected disabled>{%auth_register_select_default%}</option>
+                    <option selected disabled>
+                        {%auth_register_select_default%}
+                    </option>
                     <?php foreach($comprador as $tipo): ?>
                         <option value="<?php echo $tipo->id;?>"><?php echo $lang =='en' ? $tipo->tipo_en : $tipo->tipo_es ?></option>
                     <?php endforeach; ?>
