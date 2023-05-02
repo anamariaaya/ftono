@@ -52,7 +52,7 @@ class Usuario extends ActiveRecord {
             self::$alertas['error'][] = 'El password debe contener al menos 6 caracteres';
         }
         if($this->password !== $this->password2) {
-            self::$alertas['error'][] = 'Los password son diferentes';
+            self::$alertas['error'][] = 'auth_alert_password-different';
         }
         return self::$alertas;
     }
@@ -75,6 +75,15 @@ class Usuario extends ActiveRecord {
         }
         if(strlen($this->password) < 6) {
             self::$alertas['error'][] = 'El password debe contener al menos 6 caracteres';
+        }
+        if($this->password !== $this->password2) {
+            self::$alertas['error'][] = 'auth_alert_password-different';
+        }
+        //comprobar que el password tenga al menos una mayúscula y un número
+        $mayusculas = preg_match('@[A-Z]@', $this->password);
+        $numero = preg_match('@[0-9]@', $this->password);
+        if(!$mayusculas || !$numero) {
+            self::$alertas['error'][] = 'El password debe contener al menos una mayúscula y un número';
         }
         return self::$alertas;
     }

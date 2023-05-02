@@ -283,6 +283,8 @@ class AuthController {
             $alertas = $usuario->validarPassword();
 
             if(empty($alertas)) {
+                
+                unset($usuario->password2);
                 // Hashear el nuevo password
                 $usuario->hashPassword();
 

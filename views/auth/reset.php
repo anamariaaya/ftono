@@ -1,12 +1,13 @@
 <main class="auth">
     <h1 class="auth__heading">{%<?php echo $titulo; ?>%}</h1>
-    <p>{%auth_reset-password_paragraph%}</p>
+    
 
     <?php
         require_once __DIR__ . '/../templates/alertas.php';
     ?>
 
     <?php if($token_valido){ ?>
+        <p>{%auth_reset-password_paragraph%}</p>
         <form method="POST" class="form--max">
             <div class="form__group">
                 <label for="password" class="form__group__label">{%auth_reset-password_password_label%}</label>
@@ -19,7 +20,7 @@
                 />
                 <label for="password2" class="form__group__label">{%auth_reset-password_password_confirmation_label%}</label>
                 <input
-                    type="password2"
+                    type="password"
                     name="password2"
                     id="password2"
                     class="form__group__input"

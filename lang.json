@@ -87,33 +87,125 @@
     "es": "Contratos",
     "en": "Contracts"      
   },
+  "footer_description":{
+    "es": "Consigue la canción de tu artista favorito y utilízala en tu película, podcast o video. Logramos todos los permisos que necesitas de la forma más rápida, conectando directamente con los propietarios.",
+    "en": "Find the song of your favorite artist and use it in your film, podcast or video. We get all the permissions you need in the fastest way, connecting directly with the owners."
+  },
+  "footer_services":{
+    "es": "Servicios",
+    "en": "Services"      
+  },
+  "footer_services-1":{
+    "es": "Licenciamiento de canciones",
+    "en": "Song licensing"
+  },
+  "footer_services-2":{
+    "es": "Cameo de personalidades",
+    "en": "Cameo of personalities"
+  },
+  "footer_services-3":{
+    "es": "Diseño de música a la medida",
+    "en": "Custom music design"
+  },
+  "footer_services-4":{
+    "es": "precios",
+    "en": "prices"
+  },
+  "footer_music_ind":{
+    "es": "Industria musical",
+    "en": "Music industry"
+  },
+  "footer_music_ind-1":{
+    "es": "Soy Artista",
+    "en": "I'm an Artist"
+  },
+  "footer_music_ind-2":{
+    "es": "Soy Sello Discográfico",
+    "en": "I'm a Record Label"
+  },
+  "footer_music_ind-3":{
+    "es": "Soy Agregador Musical",
+    "en": "I'm a Music Aggregator"
+  },
+  "footer_music_ind-4":{
+    "es": "Soy Productor Musical",
+    "en": "I'm a Music Producer"
+  },
+  "footer_aud_ind":{
+    "es": "Industria Audiovisual",
+    "en": "Audiovisual industry"
+  },
+  "footer_aud_ind-1":{
+    "es": "Supervisor musical",
+    "en": "Music supervisor"
+  },
+  "footer_aud_ind-2":{
+    "es": "Productor de video",
+    "en": "Video producer"
+  },
+  "footer_aud_ind-3":{
+    "es": "Agencia publicitaria",
+    "en": "Advertising agency"
+  },
+  "footer_aud_ind-4":{
+    "es": "Medio de comunicación",
+    "en": "Broadcasting and TV"
+  },
+  "footer_aud_ind-5":{
+    "es": "Desarrollador digital",
+    "en": "Digital developer"
+  },
+  "footer_aud_ind-6":{
+    "es": "Influencer",
+    "en": "Influencer"
+  },
+  "footer_aud_ind-7":{
+    "es": "Podcaster",
+    "en": "Podcaster"
+  },
+  "footer_resources":{
+    "es": "Recursos",
+    "en": "Resources"      
+  },
+  "footer_resources-1":{
+    "es": "Noticias y Blog",
+    "en": "News and Blog"
+  },
+  "footer_resources-2":{
+    "es": "Preguntas frecuentes",
+    "en": "FAQ"
+  },
+  "footer_resources-3":{
+    "es": "Contáctanos",
+    "en": "Contact Us"
+  },
+  "footer_legal":{
+    "es": "Licencias y términos",
+    "en": "Licenses and terms"   
+  },
+  "footer_legal-1":{
+    "es": "Términos y condiciones",
+    "en": "Terms and conditions"
+  },
+  "footer_legal-2":{
+    "es": "Política de privacidad",
+    "en": "Privacy policy"
+  },
+  "footer_legal-3":{
+    "es": "Propiedad intelectual",
+    "en": "Intellectual property"
+  },
+  "footer_legal-4":{
+    "es": "Política de cookies",
+    "en": "Cookies policy"
+  },
   "footer_rights":{
     "es": "Todos los derechos reservados",
     "en": "All rights reserved"      
   },
-  "footer_contact_us":{
-    "es": "Contáctanos",
-    "en": "Contact Us"      
-  },
   "footer_register_music":{
     "es": "Regístrate y sube tu catálogo",
     "en": "Register and upload your catalog"      
-  },
-  "footer_privacy_policy":{
-    "es": "Política de Privacidad",
-    "en": "Privacy Policy"
-  },
-  "footer_terms_conditions":{
-    "es": "Términos y Condiciones",
-    "en": "Terms and Conditions"
-  },
-  "footer_cookies":{
-    "es": "Política de Cookies",
-    "en": "Cookies Policy"
-  },
-  "footer_cookies_preference":{
-    "es": "Preferencia de Cookies",
-    "en": "Cookies Preference"
   },
   "complete_register":{
     "es": "Completar Registro",
@@ -300,8 +392,8 @@
     "en": "Change your password"
   },
   "auth_reset-password_paragraph":{
-    "es": "Por favor escribe tu nueva contraseña. Debe tener al menos 6 caracteres, con al menos una mayúscula y un número",
-    "en": "Please enter your new password. It must be at least 6 characters long, with at least one uppercase and one number"
+    "es": "Por favor escribe tu nueva contraseña. Debe tener al menos 6 caracteres, una mayúscula y un número",
+    "en": "Please enter your new password. It must be at least 6 characters long, one uppercase and one number"
   },
   "auth_reset-password_password_label":{
     "es": "Nueva Contraseña",
@@ -318,6 +410,10 @@
   "auth_reset-password_alert-error":{
     "es": "Este link ya no es válido. Solicita uno nuevo haciendo click en ¿Olvidaste tu contraseña? en la pantalla de inicio de sesión",
     "en": "This link is no longer valid. Request a new one by clicking on Forgot your password? on the login screen"
+  },
+  "auth_alert_password-different":{
+    "es": "Las contraseñas no coinciden",
+    "en": "Passwords do not match"
   },
   "dashboard":{
     "es": "Dashboard",

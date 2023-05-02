@@ -7,19 +7,16 @@
     font-size: 1.4rem;
     font-weight: v.$bold;
     border-radius: 1rem;
-    background-color: lighten(v.$gray-soft, 28%);
     &__error{
         @extend .alerta;
-        //background-color: lighten(v.$red, 60);
-        border-left: 1rem solid v.$red;
-        color: v.$red;
+        border: 0.2rem solid lighten(v.$red, 5);
+        color: lighten(v.$red, 5);
     }
 
     &__exito{
         @extend .alerta;
-        //background-color: lighten(v.$green, 40);
-        border-left: 1rem solid v.$green;
-        color: darken(v.$green, 25);
+        border: 0.2rem solid lighten(v.$green, 10);
+        color: lighten(v.$green, 10);
     }
 }
 
