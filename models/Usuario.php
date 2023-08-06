@@ -22,13 +22,13 @@ class Usuario extends ActiveRecord {
     // Validar el Login de Usuarios
     public function validarLogin() {
         if(!$this->email) {
-            self::$alertas['error'][] = 'El Email del Usuario es Obligatorio';
+            self::$alertas['error'][] = 'auth_alert_email-required';
         }
         if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            self::$alertas['error'][] = 'Email no válido';
+            self::$alertas['error'][] = 'auth_alert_email-invalid';
         }
         if(!$this->password) {
-            self::$alertas['error'][] = 'El Password no puede ir vacio';
+            self::$alertas['error'][] = 'auth_alert_password-required';
         }
         return self::$alertas;
 
@@ -37,19 +37,19 @@ class Usuario extends ActiveRecord {
     // Validación para cuentas nuevas
     public function validar_cuenta() {
         if(!$this->nombre) {
-            self::$alertas['error'][] = 'El Nombre es Obligatorio';
+            self::$alertas['error'][] = 'auth_alert_name-required';
         }
         if(!$this->apellido) {
-            self::$alertas['error'][] = 'El Apellido es Obligatorio';
+            self::$alertas['error'][] = 'auth_alert_last_name-required';
         }
         if(!$this->email) {
-            self::$alertas['error'][] = 'El Email es Obligatorio';
+            self::$alertas['error'][] = 'auth_alert_email-required';
         }
         if(!$this->password) {
-            self::$alertas['error'][] = 'El Password no puede ir vacio';
+            self::$alertas['error'][] = 'auth_alert_password-required';
         }
         if(strlen($this->password) < 6) {
-            self::$alertas['error'][] = 'El password debe contener al menos 6 caracteres';
+            self::$alertas['error'][] = 'auth_alert_password-minlength';
         }
         if($this->password !== $this->password2) {
             self::$alertas['error'][] = 'auth_alert_password-different';
@@ -60,10 +60,10 @@ class Usuario extends ActiveRecord {
     // Valida un email
     public function validarEmail() {
         if(!$this->email) {
-            self::$alertas['error'][] = 'El Email es Obligatorio';
+            self::$alertas['error'][] = 'auth_alert_email-required';
         }
         if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            self::$alertas['error'][] = 'Email no válido';
+            self::$alertas['error'][] = 'auth_alert_email-invalid';
         }
         return self::$alertas;
     }
@@ -71,10 +71,10 @@ class Usuario extends ActiveRecord {
     // Valida el Password 
     public function validarPassword() {
         if(!$this->password) {
-            self::$alertas['error'][] = 'El Password no puede ir vacio';
+            self::$alertas['error'][] = 'auth_alert_password-required';
         }
         if(strlen($this->password) < 6) {
-            self::$alertas['error'][] = 'El password debe contener al menos 6 caracteres';
+            self::$alertas['error'][] = 'auth_alert_password-minlength';
         }
         if($this->password !== $this->password2) {
             self::$alertas['error'][] = 'auth_alert_password-different';
@@ -83,20 +83,20 @@ class Usuario extends ActiveRecord {
         $mayusculas = preg_match('@[A-Z]@', $this->password);
         $numero = preg_match('@[0-9]@', $this->password);
         if(!$mayusculas || !$numero) {
-            self::$alertas['error'][] = 'El password debe contener al menos una mayúscula y un número';
+            self::$alertas['error'][] = 'auth_alert_password-weak';
         }
         return self::$alertas;
     }
 
     public function nuevo_password() : array {
         if(!$this->password_actual) {
-            self::$alertas['error'][] = 'El Password Actual no puede ir vacio';
+            self::$alertas['error'][] = 'auth_alert_password_old-required';
         }
         if(!$this->password_nuevo) {
-            self::$alertas['error'][] = 'El Password Nuevo no puede ir vacio';
+            self::$alertas['error'][] = 'auth_alert_password_confirmation-required';
         }
         if(strlen($this->password_nuevo) < 6) {
-            self::$alertas['error'][] = 'El Password debe contener al menos 6 caracteres';
+            self::$alertas['error'][] = 'auth_alert_password-minlength';
         }
         return self::$alertas;
     }

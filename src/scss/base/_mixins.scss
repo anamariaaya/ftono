@@ -62,3 +62,13 @@
         cursor: pointer;
     }
 }
+
+@mixin card {
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    background-color: v.$back-white;
+    border-left: 1.5rem solid v.$yellow;
+    &:hover{
+        background-color: darken(v.$back-white, 9);
+        border-left: 1.5rem solid darken(v.$yellow, 9);
+    } 
+}

@@ -43,6 +43,15 @@
         width: 65%;
     }
 
+    &__legend{
+        color: v.$green;
+        font-size: 2.2rem;
+    }
+
+    &__fieldset{
+        border: none;
+    }
+
     &__group{
         display: flex;
         flex-direction: column;

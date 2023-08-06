@@ -4,7 +4,6 @@ require_once __DIR__ . '/../includes/app.php';
 
 use MVC\Router;
 use Controllers\AuthController;
-use Controllers\MusicController;
 use Controllers\PublicController;
 use Controllers\DashboardController;
 use Controllers\APIProfileController;
@@ -23,6 +22,7 @@ use Controllers\Filmtono\CategoriesController;
 
 use Controllers\Music\MusicLabelsController;
 use Controllers\Music\MusicProfileController;
+use Controllers\Music\MusicAlbumsController;
 
 use Controllers\Clients\ClientProfileController;
 
@@ -59,7 +59,15 @@ $router->post('/complete-register', [AuthController::class, 'completeRegister'])
 //Dashboard Editoriales/Publishers
 $router->get('/music/dashboard', [DashboardController::class, 'music']);
 $router->get('/music/profile', [MusicProfileController::class, 'index']);
+$router->post('/music/profile', [MusicProfileController::class, 'index']);
 $router->get('/music/labels', [MusicLabelsController::class, 'index']);
+$router->get('/music/labels/new', [MusicLabelsController::class, 'new']);
+$router->post('/music/labels/new', [MusicLabelsController::class, 'new']);
+$router->get('/music/labels/update', [MusicLabelsController::class, 'update']);
+$router->post('/music/labels/update', [MusicLabelsController::class, 'update']);
+$router->post('/music/labels/delete', [MusicLabelsController::class, 'delete']);
+$router->get('/music/albums', [MusicAlbumsController::class, 'index']);
+$router->get('/music/albums/current', [MusicAlbumsController::class, 'current']);
 
 //Dashboard Compradores/Clients
 $router->get('/clients/dashboard', [DashboardController::class, 'clients']);

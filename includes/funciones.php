@@ -17,6 +17,18 @@ function s($html) : string {
     return $s;
 }
 
+function redireccionar(string $url){
+    $id = $_GET['id'];
+    //Validar la URL por ID válido
+    $id = filter_var($id, FILTER_VALIDATE_INT);
+
+    if(!$id){
+        header("Location:${url}");
+    }
+
+    return $id;
+}
+
 //Revisa la página actual para resaltar el ícono del menú
 function pagina_actual($path){
     if(str_contains($_SERVER['REQUEST_URI'], $path) === true){

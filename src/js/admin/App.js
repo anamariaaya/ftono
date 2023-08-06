@@ -1,7 +1,8 @@
 import { consultaPaises, indicativoTel, paisElegido } from "./APIPaises.js";
 import {tabs, paginador, formularioReg} from "./perfiles.js";
-import { selectPais, afterNav, paisContacto } from "./selectores.js";
+import { selectPais, afterNav, paisContacto, albumsBlock, singlesBlock } from "./selectores.js";
 import { chooseLang } from "../UI/language.js";
+import { musicTabs } from "./MusicTabs.js";
 
 class App{
     constructor(){
@@ -23,6 +24,9 @@ class App{
             tabs();
             paginador();
             formularioReg();
+        }
+        if(albumsBlock && singlesBlock){
+            musicTabs();
         }
     }
 }

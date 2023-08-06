@@ -37,7 +37,7 @@ class AuthController {
                 $usuario = Usuario::where('email', $usuario->email);
 
                 if(!$usuario || !$usuario->confirmado ) {
-                    Usuario::setAlerta('error', 'El Usuario No Existe o no esta confirmado');
+                    Usuario::setAlerta('error', 'auth_alert_user-not-exist');
                 } else {
                     // El Usuario existe
                     if( password_verify($_POST['password'], $usuario->password) ) {
@@ -68,7 +68,7 @@ class AuthController {
                         }
                         
                     } else {
-                        Usuario::setAlerta('error', 'Password Incorrecto');
+                        Usuario::setAlerta('error', 'auth_alert_password-wrong');
                     }
                 }
             }

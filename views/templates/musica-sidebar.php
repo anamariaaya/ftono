@@ -25,24 +25,31 @@
             </span>
         </a>
 
-        <a href="/filmtono/albums" class="dashboard__enlace <?php pagina_admin('albums');?>">
+        <a href="/music/albums" class="dashboard__enlace <?php pagina_admin('albums');?>">
             <i class="fa-solid fa-compact-disc dashboard__icono"></i>
             <span class="dashboard__menu-texto">
-                <?php echo tt('sidebar_albums');?>
+                <?php echo tt('sidebar_music');?>
             </span>
         </a>
 
-        <a href="/filmtono/artists" class="dashboard__enlace <?php pagina_admin('artists');?>">
+        <a href="/music/artists" class="dashboard__enlace <?php pagina_admin('artists');?>">
             <i class="fa-solid fa-microphone-lines dashboard__icono"></i>
             <span class="dashboard__menu-texto">
                 <?php echo tt('sidebar_artists');?>
             </span>
         </a>
 
-        <a href="/admin/ciudades" class="dashboard__enlace <?php pagina_admin('ciudades'); regBtn();?>">
-            <i class="fa-solid fa-location-dot dashboard__icono"></i>
+        <a href="/music/licenses" class="dashboard__enlace <?php pagina_admin('licenses'); regBtn();?>">
+            <i class="fa-solid fa-file-contract dashboard__icono"></i>
             <span class="dashboard__menu-texto">
                 <?php echo tt('sidebar_licenses'); ?>
+            </span>
+        </a>
+
+        <a href="/music/company" class="dashboard__enlace <?php pagina_admin('company'); regBtn();?>">
+            <i class="fa-solid fa-location-dot dashboard__icono"></i>
+            <span class="dashboard__menu-texto">
+                <?php echo tt('sidebar_company'); ?>
             </span>
         </a>
     </nav>

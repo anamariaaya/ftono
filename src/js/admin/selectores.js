@@ -34,3 +34,10 @@ export const privacy = document.querySelector('#privacy');
 export const divCheck = document.querySelector('#div-check');
 export const hiddenMusic = document.querySelector('#signatureInput');
 export const hiddenArtistic = document.querySelector('#signatureOptional');
+
+//Albums admin block
+export const albumsBlock = document.querySelector('.tabs__music--albums');
+export const singlesBlock = document.querySelector('.tabs__music--singles');
+export const albumsBtn = document.querySelector('#btn-albums');
+export const singlesBtn = document.querySelector('#btn-singles');
+export const musicBtn = document.querySelectorAll('.tabs__music__buttons--btn');

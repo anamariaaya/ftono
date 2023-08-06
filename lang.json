@@ -59,6 +59,10 @@
     "es": "Álbumes",
     "en": "Albums"      
   },
+  "sidebar_music":{
+    "es": "Música",
+    "en": "Music"      
+  },
   "sidebar_artists":{
     "es": "Artistas",
     "en": "Artists"      
@@ -86,6 +90,18 @@
   "sidebar_contracts":{
     "es": "Contratos",
     "en": "Contracts"      
+  },
+  "sidebar_songs":{
+    "es": "Canciones",
+    "en": "Songs"      
+  },
+  "sidebar_playlists":{
+    "es": "Playlists",
+    "en": "Playlists"      
+  },
+  "sidebar_company":{
+    "es": "Empresa",
+    "en": "Company"      
   },
   "footer_description":{
     "es": "Consigue la canción de tu artista favorito y utilízala en tu película, podcast o video. Logramos todos los permisos que necesitas de la forma más rápida, conectando directamente con los propietarios.",
@@ -411,9 +427,257 @@
     "es": "Este link ya no es válido. Solicita uno nuevo haciendo click en ¿Olvidaste tu contraseña? en la pantalla de inicio de sesión",
     "en": "This link is no longer valid. Request a new one by clicking on Forgot your password? on the login screen"
   },
+  "auth_alert_user-not-exist":{
+    "es": "El usuario no existe o no está confirmado",
+    "en": "The user does not exist or is not confirmed"
+  },
+  "auth_alert_password-wrong":{
+    "es": "La contraseña es incorrecta",
+    "en": "The password is wrong"
+  },
+  "auth_alert_email-required":{
+    "es": "El email es obligatorio",
+    "en": "The email is required"
+  },
+  "auth_alert_email-invalid":{
+    "es": "El email no es válido",
+    "en": "The email is not valid"
+  },
+  "auth_alert_password-required":{
+    "es": "La contraseña es obligatoria",
+    "en": "The password is required"
+  },
+  "auth_alert_password-minlength":{
+    "es": "La contraseña debe tener al menos 6 caracteres",
+    "en": "The password must be at least 6 characters"
+  },
   "auth_alert_password-different":{
     "es": "Las contraseñas no coinciden",
     "en": "Passwords do not match"
+  },
+  "auth_alert_password-weak":{
+    "es": "La contraseña debe tener al menos una mayúscula y un número",
+    "en": "The password must be at least one uppercase and one number"
+  },
+  "auth_alert_password_old-required":{
+    "es": "La contraseña actual es obligatoria",
+    "en": "The current password is required"
+  },
+  "auth_alert_password_confirmation-required":{
+    "es": "La confirmación de la contraseña es obligatoria",
+    "en": "Password confirmation is required"
+  },
+  "auth_alert_name-required":{
+    "es": "El nombre es obligatorio",
+    "en": "The name is required"
+  },
+  "auth_alert_last_name-required":{
+    "es": "El apellido es obligatorio",
+    "en": "The last name is required"
+  },
+  "profile_alert-profile-updated":{
+    "es": "Tu perfil ha sido actualizado",
+    "en": "Your profile has been updated"
+  },
+  "profile_form_edit-profile":{
+    "es": "Editar tu perfil",
+    "en": "Edit your profile"
+  },
+  "profile_form_name_label":{
+    "es": "Nombre",
+    "en": "Name"
+  },
+  "profile_form_name_placeholder":{
+    "es": "Escribe tu nombre",
+    "en": "Write your name"
+  },
+  "profile_form_last_name_label":{
+    "es": "Apellido",
+    "en": "Last Name"
+  },
+  "profile_form_last_name_placeholder":{
+    "es": "Escribe tu apellido",
+    "en": "Write your last name"
+  },
+  "profile_form_email_label":{
+    "es": "Email",
+    "en": "Email"
+  },
+  "profile_form_email_placeholder":{
+    "es": "Escribe tu email",
+    "en": "Write your email"
+  },
+  "profile_form_edit-password":{
+    "es": "Cambiar tu contraseña",
+    "en": "Change your password"
+  },
+  "profile_form_new-password_label":{
+    "es": "Nueva contraseña",
+    "en": "New password"
+  },
+  "profile_form_new-password_placeholder":{
+    "es": "Escribe tu nueva contraseña",
+    "en": "Write your new password"
+  },
+  "profile_form_new-password_confirmation_label":{
+    "es": "Confirmar nueva contraseña",
+    "en": "Confirm new password"
+  },
+  "profile_form_new-password_confirmation_placeholder":{
+    "es": "Escribe tu nueva contraseña",
+    "en": "Write your new password"
+  },
+  "profile_form_save-btn":{
+    "es": "Actualizar perfil",
+    "en": "Update profile"
+  },
+  "profile_form_delete-btn":{
+    "es": "Eliminar cuenta",
+    "en": "Delete account"
+  },
+  "profile_form_delete-confirm":{
+    "es": "¿Estás seguro que quieres eliminar tu cuenta? Esta acción no se puede deshacer",
+    "en": "Are you sure you want to delete your account? This action cannot be undone"
+  },
+  "profile_form_delete-btn_confirm_yes":{
+    "es": "Sí, eliminar mi cuenta",
+    "en": "Yes, delete my account"
+  },
+  "profile_form_delete-btn_confirm_no":{
+    "es": "No, cancelar",
+    "en": "No, cancel"
+  },
+  "music_dashboard-subtitle":{
+    "es": "Bienvenido a tu panel de control",
+    "en": "Welcome to your control panel"
+  },
+  "music_profile-title":{
+    "es": "Perfil",
+    "en": "Profile"
+  },
+  "music_labels-title":{
+    "es": "Tus Sellos Discográficos",
+    "en": "Your Record Labels"
+  },
+  "music_labels-subtitle":{
+    "es": "Agrega los sellos discográficos con los que trabajas",
+    "en": "Add the record labels you work with"
+  },
+  "music_labels-total":{
+    "es": "Total de Sellos Discográficos",
+    "en": "Total Record Labels"
+  },
+  "music_labels_search-placeholder":{
+    "es": "Buscar sellos discográficos por nombre",
+    "en": "Search record labels by name"
+  },
+  "music_labels_add-btn":{
+    "es": "Añadir Sello Discográfico",
+    "en": "Add Record Label"
+  },
+  "music_labels_card_label-name":{
+    "es": "Sello",
+    "en": "Label"
+  },
+  "music_labels_card_label-date":{
+    "es": "Creado en",
+    "en": "Created at"
+  },
+  "music_labels_new-title":{
+    "es": "Nuevo Sello Discográfico",
+    "en": "New Record Label"
+  },
+  "music_labels_new-submit_btn":{
+    "es": "Crear Sello Discográfico",
+    "en": "Create Record Label"
+  },
+  "music_labels_edit-title":{
+    "es": "Editar Sello Discográfico",
+    "en": "Edit Record Label"
+  },
+  "music_labels_edit-submit_btn":{
+    "es": "Actualizar Sello Discográfico",
+    "en": "Update Record Label"
+  },
+  "music_labels-back_btn":{
+    "es": "Volver a Sellos Discográficos",
+    "en": "Back to Record Labels"
+  },
+  "music_labels_form-name_label":{
+    "es": "Nombre del Sello Discográfico",
+    "en": "Record Label Name"
+  },
+  "music_labels_form-name_placeholder":{
+    "es": "Ejemplo: Sony Music",
+    "en": "Example: Sony Music"
+  },
+  "music_labels_new-legend":{
+    "es": "Aquí puedes crear un nuevo sello discográfico",
+    "en": "Here you can create a new record label"
+  },
+  "music_labels_edit-legend":{
+    "es": "Aquí puedes editar el sello discográfico",
+    "en": "Here you can edit the record label"
+  },
+  "music_main_title":{
+    "es": "Tu música",
+    "en": "Your music"
+  },
+  "music_tab_albums":{
+    "es": "Álbumes",
+    "en": "Albums"
+  },
+  "music_tab_singles":{
+    "es": "Sencillos",
+    "en": "Singles"
+  },
+  "music_albums-title":{
+    "es": "Tus álbumes",
+    "en": "Your albums"
+  },
+  "music_albums-subtitle":{
+    "es": "Agrega los álbumes que has lanzado",
+    "en": "Add the albums you have released"
+  },
+  "music_albums-total":{
+    "es": "Total de Álbumes",
+    "en": "Total Albums"
+  },
+  "music_albums_search-placeholder":{
+    "es": "Buscar álbumes por nombre",
+    "en": "Search albums by name"
+  },
+  "music_albums_add-btn":{
+    "es": "Añadir Álbum",
+    "en": "Add Album"
+  },
+  "music_albums-back_btn":{
+    "es": "Volver a los álbumes",
+    "en": "Back to albums"
+  },
+  "music_singles-title":{
+    "es": "Tus sencillos",
+    "en": "Your Singles"
+  },
+  "music_singles-subtitle":{
+    "es": "Agrega los sencillos que has lanzado",
+    "en": "Add the singles you have released"
+  },
+  "music_singles-total":{
+    "es": "Total de sencillos",
+    "en": "Total Singles"
+  },
+  "music_singles_search-placeholder":{
+    "es": "Buscar sencillos por nombre",
+    "en": "Search singles by name"
+  },
+  "music_singles_add-btn":{
+    "es": "Añadir sencillo",
+    "en": "Add single"
+  },
+  "music_singles-back_btn":{
+    "es": "Volver a los sencillos",
+    "en": "Back to singles"
   },
   "dashboard":{
     "es": "Dashboard",
@@ -566,21 +830,5 @@
   "t-labels":{
     "es": "Sellos Discográficos",
     "en": "Record Labels"
-  },
-  "t-labels_info":{
-    "es": "Agrega los sellos discográficos con los que trabajas",
-    "en": "Add the record labels with which you work"
-  },
-  "ph-search__labels":{
-    "es": "Buscar sellos discográficos por nombre",
-    "en": "Search record labels by name"
-  },
-  "p-total_labels":{
-    "es": "Total de sellos discográficos",
-    "en": "Total record labels"
-  },
-  "b-add_label":{
-    "es": "Agregar Sello Discográfico",
-    "en": "Add Record Label"
   }
 }

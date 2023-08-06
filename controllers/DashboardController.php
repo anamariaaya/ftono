@@ -8,7 +8,7 @@ use Model\Usuario;
 class DashboardController{
     public static function admin(Router $router){
         isAdmin();
-        $titulo = 'Dashboard';
+        $titulo = tt('dashboard');
         $router->render('/admin/dashboard',[
             'titulo' => $titulo
         ]);
@@ -18,7 +18,7 @@ class DashboardController{
         isComprador();
         $usuario = Usuario::find($_SESSION['id']);
 
-        $titulo = 'Dashboard';
+        $titulo = tt('dashboard');
         $router->render('clients/dashboard',[
             'titulo' => $titulo,
             'usuario' => $usuario

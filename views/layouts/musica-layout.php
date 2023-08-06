@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filmtono - <?php echo $titulo; ?></title>
+    <title>Filmtono - <?php echo tt($titulo); ?></title>
 
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="/build/css/app.css"/>

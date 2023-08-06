@@ -117,3 +117,14 @@
         }
     }
 }
+
+.btn-back{
+    @include m.boton(v.$green, block);
+    margin: 1rem 0;
+    border-radius: 1rem;
+    color: v.$gray-dark;
+    width: fit-content;
+    &:hover{
+        cursor: pointer;
+    }
+}
