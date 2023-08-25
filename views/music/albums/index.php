@@ -54,7 +54,7 @@
             <p><span>{% music_singles-total %}: </span> </p>    
 
             <div class="dashboard__search">
-                <input class="dashboard__total__type-search" type="text" id="usuario-search" placeholder="{% music_albums_search-placeholder %}"/>
+                <input class="dashboard__total__type-search" type="text" id="usuario-search" placeholder="{% music_singles_search-placeholder %}"/>
             </div>
         </div>
 

@@ -10,17 +10,21 @@
         margin: calc(v.$separate / 2) auto calc(v.$separate * 2) auto;
         &--btn{
             width: 100%;
-            border: none;
             border-radius: 0.5rem;
             padding: 2rem;
+            background-color: v.$gray-light;
+            border: none;
+            color: v.$white;
+            font-size: 2rem;
             &:hover{
                 cursor: pointer;
-                background-color: v.$yellow;
+                background-color: v.$green;
+                color: v.$black;
             }
 
             &--active{
-                @extend .tabs__music__buttons--btn;
-                background-color: v.$yellow;
+                background-color: v.$green;
+                color: v.$black;
             }
         }
     }
