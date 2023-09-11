@@ -655,9 +655,13 @@
     "es": "Volver a los álbumes",
     "en": "Back to albums"
   },
+  "music_album-back_btn":{
+    "es": "Volver al álbum",
+    "en": "Back to album"
+  },
   "music_singles-title":{
     "es": "Tus sencillos",
-    "en": "Your Singles"
+    "en": "Your singles"
   },
   "music_singles-subtitle":{
     "es": "Agrega los sencillos que has lanzado",
@@ -678,6 +682,150 @@
   "music_singles-back_btn":{
     "es": "Volver a los sencillos",
     "en": "Back to singles"
+  },
+  "music_songs_add-title":{
+    "es": "Añadir nueva canción",
+    "en": "Add new song"
+  },
+  "music_songs_add-btn":{
+    "es": "Añadir canción",
+    "en": "Add song"
+  },
+  "music_songs_new-btn":{
+    "es": "Agregar canción",
+    "en": "Add song"
+  },
+  "music_songs_edit-title":{
+    "es": "Editar canción",
+    "en": "Edit song"
+  },
+  "music_songs_edit-btn":{
+    "es": "Actualizar canción",
+    "en": "Update song"
+  },
+  "music_songs_form-title_label":{
+    "es": "Título de la canción",
+    "en": "Song title"
+  },
+  "music_songs_form-album_label":{
+    "es": "Álbum",
+    "en": "Album"
+  },
+  "music_songs_form-title_placeholder":{
+    "es": "Ejemplo: La canción de mi vida",
+    "en": "Example: The song of my life"
+  },
+  "music_songs_form-version_label":{
+    "es": "Versión",
+    "en": "Version"
+  },
+  "music_songs_form-version_placeholder":{
+    "es": "Ejemplo: Versión Acústica",
+    "en": "Example: Acoustic Version"
+  },
+  "music_songs_form-genre_label":{
+    "es": "Género principal",
+    "en": "Main genre"
+  },
+  "music_songs_form-genre_placeholder":{
+    "es": "Selecciona el género principal",
+    "en": "Select the main genre"
+  },
+  "music_songs_form-subgenre_label":{
+    "es": "Subgénero",
+    "en": "Subgenre"
+  },
+  "music_songs_form-subgenre_placeholder":{
+    "es": "Selecciona los subgéneros",
+    "en": "Select the subgenres"
+  },
+  "music_songs_form-category_label":{
+    "es": "Categoría",
+    "en": "Category"
+  },
+  "music_songs_form-category_placeholder":{
+    "es": "Ejemplo: Canción",
+    "en": "Example: Song"
+  },
+  "music_song_form-colaborators_label":{
+    "es": "Colaboradores",
+    "en": "Collaborators"
+  },
+  "music_song_form-colaborators_placeholder":{
+    "es": "Ejemplo: John Doe, Jane Doe",
+    "en": "Example: John Doe, Jane Doe"
+  },
+  "music_songs_form-writers_label":{
+    "es": "Compositores",
+    "en": "Writers"
+  },
+  "music_songs_form-writers_placeholder":{
+    "es": "Ejemplo: John Doe, Jane Doe",
+    "en": "Example: John Doe, Jane Doe"
+  },
+  "music_songs-form-writers-percent_label":{
+    "es": "Porcentaje de propiedad del compositor",
+    "en": "Composer ownership percentage"
+  },
+  "music_songs-form-writers-percent_placeholder":{
+    "es": "Ejemplo: 50%",
+    "en": "Example: 50%"
+  },
+  "music_songs-form-fonogram-percent_label":{
+    "es": "Porcentaje del fonograma",
+    "en": "Fonogram percentage"
+  },
+  "music_songs-form-fonogram_placeholder":{
+    "es": "Ejemplo: 100%",
+    "en": "Ejemplo: 100%"
+  },
+  "music_songs-form-language_label":{
+    "es": "Idioma",
+    "en": "Language"
+  },
+  "music_songs-form-language_placeholder":{
+    "es": "Selecciona un idioma",
+    "en": "Select a language"
+  },
+  "music_songs-form-lyrics_label":{
+    "es": "Letra",
+    "en": "Lyrics"
+  },
+  "music_songs-form-lyrics_placeholder":{
+    "es": "Letra de la canción",
+    "en": "Song lyrics"
+  },
+  "music_songs_form-isrc_label":{
+    "es": "ISRC",
+    "en": "ISRC"
+  },
+  "music_songs_form-isrc_placeholder":{
+    "es": "Ejemplo: US-AT2-99-00001",
+    "en": "Example: US-AT2-99-00001"
+  },
+  "music_songs_form-youtube_label":{
+    "es": "Link de YouTube",
+    "en": "YouTube link"
+  },
+  "music_songs_form-youtube_placeholder":{
+    "es": "Ejemplo: https://www.youtube.com/watch?v=6JCLY0Rlx6Q",
+    "en": "Example: https://www.youtube.com/watch?v=6JCLY0Rlx6Q"
+  },
+  "music_songs_form-keywords_label":{
+    "es": "Palabras clave",
+    "en": "Keywords"
+  },
+  "music_songs_form-keywords_placeholder":{
+    "es": "Selecciona las palabras clave que describan tu canción",
+    "en": "Select the keywords that describe your song"
+  },
+  "music_songs_form-song-level_label":{
+    "es": "Nivel de la canción",
+    "en": "Song level"
+  },
+  "music_songs_form-song-level_placeholder":{
+    "es": "Selecciona un nivel",
+    "en": "Select a level"
   },
   "dashboard":{
     "es": "Dashboard",

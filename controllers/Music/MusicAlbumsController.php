@@ -44,4 +44,18 @@ class MusicAlbumsController{
             'titulo' => $titulo
         ]);
     }
+
+    public static function newSong(Router $router){
+        isMusico();
+        $titulo = tt('music_songs_new');
+        $albumId = redireccionar('/music/albums');
+        $album = Albums::find($albumId);
+        if(!$album){
+            header('Location: /music/albums');
+        }
+        $router->render('music/albums/song/new',[
+            'titulo' => $titulo,
+            'album' => $album
+        ]);
+    }
 }

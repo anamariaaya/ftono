@@ -68,6 +68,7 @@ $router->post('/music/labels/update', [MusicLabelsController::class, 'update']);
 $router->post('/music/labels/delete', [MusicLabelsController::class, 'delete']);
 $router->get('/music/albums', [MusicAlbumsController::class, 'index']);
 $router->get('/music/albums/current', [MusicAlbumsController::class, 'current']);
+$router->get('/music/albums/song/new', [MusicAlbumsController::class, 'newSong']);
 
 //Dashboard Compradores/Clients
 $router->get('/clients/dashboard', [DashboardController::class, 'clients']);
