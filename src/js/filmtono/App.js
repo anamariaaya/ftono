@@ -1,6 +1,7 @@
-import { btnEliminarCuenta, btnEliminarUsuario } from "./selectores.js";
+import { artistaSecundario, artistasInput, btnAgregar, btnEliminarCuenta, btnEliminarUsuario, portada } from "./selectores.js";
 import { eliminarCuenta } from "./profile.js";
 import { chooseLang } from "../UI/language.js";
+import { styleDatalist, styleFileInput, artistasSecundarios, addArtist } from "./artistas.js";
 // import { eliminarUsuario } from "./users.js";
 //import { consultaUsuarios } from "./APIUsuarios.js";
 
@@ -16,10 +17,25 @@ class App{
         if(btnEliminarCuenta){
             eliminarCuenta();
         }
+        if(artistasInput){
+            styleDatalist();
+        }
+
+        if(portada){
+            styleFileInput();
+        }
+
+        if(artistaSecundario){
+            artistasSecundarios();
+        }
+        if(btnAgregar){
+            addArtist();
+        }
         // if(btnEliminarUsuario){
         //     eliminarUsuario();
         // }
         //consultaUsuarios();
+        
     }
 }
 

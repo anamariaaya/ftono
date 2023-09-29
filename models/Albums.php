@@ -4,7 +4,7 @@ namespace Model;
 
 class Albums extends ActiveRecord{
     protected static $tabla = 'albums';
-    protected static $columnasDB = ['id', 'titulo', 'portada', 'upc', 'publisher', 'fecha_rec', 'id_usuario'];
+    protected static $columnasDB = ['id', 'titulo', 'portada', 'upc', 'publisher', 'fecha_rec', 'id_usuario', 'id_sellos'];
 
     public function __construct($args = [])
     {
@@ -15,6 +15,7 @@ class Albums extends ActiveRecord{
         $this->publisher = $args['publisher'] ?? '';
         $this->fecha_rec = $args['fecha_rec'] ?? '';
         $this->id_usuario = $args['id_usuario'] ?? '';
+        $this->id_sellos = $args['id_sellos'] ?? '';
     }
 
     public function validarAlbum(){
@@ -32,6 +33,9 @@ class Albums extends ActiveRecord{
         }
         if(!$this->fecha_rec) {
             self::$alertas['error'][] = 'La Fecha de grabación del Álbum es Obligatoria';
+        }
+        if(!$this->id_sellos) {
+            self::$alertas['error'][] = 'El Sello del Álbum es Obligatorio';
         }
         return self::$alertas;
     }

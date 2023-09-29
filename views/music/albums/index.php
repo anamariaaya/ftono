@@ -7,7 +7,7 @@
     <div class="tabs__music--albums">
         <h1>{% music_albums-title %}</h1>
         <div class="dashboard__total">
-            <p><span>{% music_albums-total %}: </span> </p>    
+            <p><span>{% music_albums-total %}: <?php echo count($albums) ?></span> </p>    
 
             <div class="dashboard__search">
                 <input class="dashboard__total__type-search" type="text" id="usuario-search" placeholder="{% music_albums_search-placeholder %}"/>
@@ -16,7 +16,7 @@
 
         <p>{%music_albums-subtitle%}</p>
 
-        <a href="/music/labels/new" class="btn-submit">
+        <a href="/music/albums/new" class="btn-submit">
             <i class="fa-solid fa-plus"></i>
             {% music_albums_add-btn %}
         </a>
@@ -60,7 +60,7 @@
 
         <p>{%music_singles-subtitle%}</p>
 
-        <a href="/music/labels/new" class="btn-submit">
+        <a href="/music/singles/new" class="btn-submit">
             <i class="fa-solid fa-plus"></i>
             {% music_singles_add-btn %}
         </a>

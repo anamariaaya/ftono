@@ -54,5 +54,25 @@
     "register":{
       "en": "Register",
       "es": "Registrarse"
+    },
+    "name":{
+      "en": "Name",
+      "es": "Nombre"
+    },
+    "addArtist":{
+      "en": "Add Artist",
+      "es": "Agregar Artista"
+    },
+    "add":{
+      "en": "Add",
+      "es": "Agregar"
+    },
+    "artistSuccess":{
+      "en": "Artist added successfully!",
+      "es": "¡Artista agregado correctamente!"
+    },
+    "artistError":{
+      "en": "Error adding artist. Try again later.",
+      "es": "Error al agregar artista. Inténtalo de nuevo más tarde."
     }
 }

@@ -202,9 +202,9 @@ async function modalContrato(e){
 
     let url;
     if(e.target.id === 'contrato-musical'){
-        url = 'http://localhost:3000/api/filmtono/c-musical';
+        url = window.location.origin+'/api/filmtono/c-musical';
     }else{
-        url = 'http://localhost:3000/api/filmtono/c-artistico';
+        url = window.location.origin+'/api/filmtono/c-artistico';
     }
 
     const divContrato = document.createElement('div');
@@ -333,8 +333,6 @@ async function canvasValidation(canvas, sendBtn){
     const alerts = await readJSON();    
 
     canvas.addEventListener('mouseup', () => {
-        const img1 = document.querySelector('#img1');
-        const img2 = document.querySelector('#img2');
         if (!isCanvasBlank(canvas)) {
             if(canvas.id==='canvas-musical'){
                 sendBtn.classList.remove('btn-tabs--disabled');
@@ -344,14 +342,12 @@ async function canvasValidation(canvas, sendBtn){
                 confirmContrato.textContent = alerts['confirm'][lang];
                 checkMusical = true;
                 hiddenMusic.value = canvas.toDataURL();
-                img1.src = canvas.toDataURL();
             }
             else{                
                 contratoArtistico.style.display = 'none';
                 confirmContratoArt.style.display = 'block';
                 confirmContratoArt.textContent = alerts['confirm'][lang];
                 hiddenArtistic.value = canvas.toDataURL();
-                img2.src = canvas.toDataURL();
             }
             sendBtn.onclick = cerrarModal;
         }

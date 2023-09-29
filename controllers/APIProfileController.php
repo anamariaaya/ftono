@@ -34,7 +34,7 @@ class APIProfileController{
 
     public static function ContratoMusical(){
         $archivo = file_get_contents(__DIR__.'/../views/contracts/c-musical-'.$_SESSION['lang'].'.php');
-
+        
         echo json_encode($archivo);
     }
 

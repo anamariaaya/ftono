@@ -10,6 +10,7 @@ use Controllers\APIProfileController;
 
 use Controllers\Filmtono\UsersController;
 use Controllers\Filmtono\AlbumsController;
+use Controllers\Filmtono\GenresController;
 use Controllers\Filmtono\LabelsController;
 use Controllers\Filmtono\PromosController;
 use Controllers\Filmtono\ArtistsController;
@@ -20,9 +21,12 @@ use Controllers\Filmtono\PaymentsController;
 use Controllers\Filmtono\ContractsController;
 use Controllers\Filmtono\CategoriesController;
 
-use Controllers\Music\MusicLabelsController;
-use Controllers\Music\MusicProfileController;
+
 use Controllers\Music\MusicAlbumsController;
+use Controllers\Music\MusicLabelsController;
+use Controllers\Music\APIArtistController;
+use Controllers\Music\MusicProfileController;
+
 
 use Controllers\Clients\ClientProfileController;
 
@@ -68,6 +72,9 @@ $router->post('/music/labels/update', [MusicLabelsController::class, 'update']);
 $router->post('/music/labels/delete', [MusicLabelsController::class, 'delete']);
 $router->get('/music/albums', [MusicAlbumsController::class, 'index']);
 $router->get('/music/albums/current', [MusicAlbumsController::class, 'current']);
+$router->get('/music/albums/new', [MusicAlbumsController::class, 'new']);
+$router->post('/music/albums/new', [MusicAlbumsController::class, 'new']);
+$router->post('/music/albums/edit', [MusicAlbumsController::class, 'update']);
 $router->get('/music/albums/song/new', [MusicAlbumsController::class, 'newSong']);
 
 //Dashboard Compradores/Clients
@@ -84,6 +91,7 @@ $router->get('/api/filmtono/alerts', [APIProfileController::class, 'alerts']);
 $router->get('/api/filmtono/contracts', [APIProfileController::class, 'contracts']);
 $router->get('/api/filmtono/c-musical', [APIProfileController::class, 'contratoMusical']);
 $router->get('/api/filmtono/c-artistico', [APIProfileController::class, 'contratoArtistico']);
+$router->post('/api/albums/artistasNew', [APIArtistController::class, 'artistaNuevo']);
 
 
 //Filmtono Profile
@@ -109,6 +117,14 @@ $router->get('/filmtono/albums', [AlbumsController::class, 'index']);
 
 //Filmtono Artists
 $router->get('/filmtono/artists', [ArtistsController::class, 'index']);
+
+//Filmtono Genres
+$router->get('/filmtono/genres', [GenresController::class, 'index']);
+$router->get('/filmtono/genres/new', [GenresController::class, 'new']);
+$router->post('/filmtono/genres/new', [GenresController::class, 'new']);
+$router->get('/filmtono/genres/edit', [GenresController::class, 'edit']);
+$router->post('/filmtono/genres/edit', [GenresController::class, 'edit']);
+$router->post('/filmtono/genres/delete', [GenresController::class, 'delete']);
 
 //Filmtono Keywords
 $router->get('/filmtono/keywords', [KeywordsController::class, 'index']);

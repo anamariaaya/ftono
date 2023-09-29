@@ -22,7 +22,7 @@
     ?>
 
   <script type="module" src="/build/js/app.js"></script>
-
+ 
     <?php
         echo $script ?? '';
     ?>

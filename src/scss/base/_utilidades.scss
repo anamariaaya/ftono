@@ -133,3 +133,17 @@
 .mTop-5{
     margin-top: 5rem;
 }
+
+.option{
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: v.$gray-dark;
+    color: v.$white;
+    border: 0.1rem solid v.$yellow;
+    &:hover{
+        background-color: v.$yellow;
+        color: v.$gray-dark;
+        font-weight: v.$bold;
+    }
+}

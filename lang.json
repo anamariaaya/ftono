@@ -647,6 +647,10 @@
     "es": "Buscar álbumes por nombre",
     "en": "Search albums by name"
   },
+  "music_albums_add-title":{
+    "es": "Añadir nuevo álbum",
+    "en": "Add new album"
+  },
   "music_albums_add-btn":{
     "es": "Añadir álbum",
     "en": "Add album"
@@ -658,6 +662,46 @@
   "music_album-back_btn":{
     "es": "Volver al álbum",
     "en": "Back to album"
+  },
+  "music_albums_cover_label":{
+    "es": "Portada del álbum",
+    "en": "Album cover"
+  },
+  "music_albums_cover_placeholder":{
+    "es": "Selecciona una imagen",
+    "en": "Select an image"
+  },
+  "music_albums_title_label":{
+    "es": "Título del álbum",
+    "en": "Album title"
+  },
+  "music_albums_title_placeholder":{
+    "es": "Ejemplo: El álbum de mi vida",
+    "en": "Example: The album of my life"
+  },
+  "music_albums_artist_label":{
+    "es": "Artista Principal",
+    "en": "Main Artist"
+  },
+  "music_albums_artist_placeholder":{
+    "es": "Selecciona el artista",
+    "en": "Select the artist"
+  },
+  "music_albums_artist-secondary_label":{
+    "es": "Artistas Secundarios",
+    "en": "Secondary Artists"
+  },
+  "music_albums_artist-secondary_placeholder":{
+    "es": "Selecciona los artistas secundarios",
+    "en": "Select the secondary artists"
+  },
+  "music_albums_upc_label":{
+    "es": "UPC",
+    "en": "UPC"
+  },
+  "music_albums_upc_placeholder":{
+    "es": "Ejemplo: 123456789012",
+    "en": "Example: 123456789012"
   },
   "music_singles-title":{
     "es": "Tus sencillos",
@@ -826,6 +870,66 @@
   "music_songs_form-song-level_placeholder":{
     "es": "Selecciona un nivel",
     "en": "Select a level"
+  },
+  "music_genres-title":{
+    "es": "Géneros",
+    "en": "Genres"
+  },
+  "music_genres_form-new_label-english":{
+    "es": "Nuevo Género en inglés",
+    "en": "New Genre in english"
+  },
+  "music_genres_form-new_placeholder-english":{
+    "es": "Escribe un nuevo género en inglés",
+    "en": "Write a new genre in English"
+  },
+  "music_genres_form-new_label-spanish":{
+    "es": "Nuevo Género en español",
+    "en": "New Genre in spanish"
+  },
+  "music_genres_form-new_placeholder-spanish":{
+    "es": "Escribe un nuevo género en español",
+    "en": "Write a new genre in Spanish"
+  },
+  "admin_genres_title":{
+    "es": "Géneros",
+    "en": "Genres"
+  },
+  "admin_genres_new-title":{
+    "es": "Nuevo Género",
+    "en": "New Genre"
+  },
+  "admin_genres_new-btn":{
+    "es": "Crear Género",
+    "en": "Create Genre"
+  },
+  "admin_genres_edit-title":{
+    "es": "Editar Género",
+    "en": "Edit Genre"
+  },
+  "admin_genres_edit-btn":{
+    "es": "Actualizar Género",
+    "en": "Update Genre"
+  },
+  "admin_genres_form-name_spanish_label":{
+    "es": "Nombre del Género",
+    "en": "Genre Name"
+  },
+  "admin_genres_form-name_spanish_placeholder":{
+    "es": "Ejemplo: Rock",
+    "en": "Example: Rock"
+  },
+  "admin_genres_form-name_english_label":{
+    "es": "Nombre del Género en inglés",
+    "en": "Genre Name in english"
+  },
+  "admin_genres_form-name_english_placeholder":{
+    "es": "Ejemplo: Rock",
+    "en": "Example: Rock"
+  },
+  "admin_genres_back-btn":{
+    "es": "Volver a Géneros",
+    "en": "Back to Genres"
   },
   "dashboard":{
     "es": "Dashboard",

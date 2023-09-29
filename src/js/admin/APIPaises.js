@@ -1,8 +1,6 @@
 import { validarFormulario } from "../base/funciones.js";
 import { selectPais, paisContacto, indicativo } from "./selectores.js";
 import  {readLang} from "../base/funciones.js";
-//import { validarFormulario } from '../base/funciones.js';
-
 
 export async function consultaPaises(){
     try{

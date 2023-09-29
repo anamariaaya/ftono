@@ -12,6 +12,10 @@ html {
     box-sizing: inherit;
 }
 
+*::first-letter{
+    text-transform: uppercase;
+}
+
 body {
     font-family: v.$font-primary;
     font-size: 1.6rem;

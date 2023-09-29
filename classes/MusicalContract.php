@@ -107,9 +107,9 @@ class MusicalContract{
                         </div>
                         <div class="grid-firmas__campo">
                             <p class="grid-firmas__campo--span">Email</p>
-                            <p id="contract-email">'.$this->email.`</p>
+                            <p id="contract-email">'.$this->email.'</p>
                         </div>
-                    </div>`;
+                    </div>';
         $contract .= '</body>
         </html>';
         

@@ -301,4 +301,12 @@ class ActiveRecord{
 
         return $resultado;
     }
+
+    public static function allOrderAsc($orden){
+        $query = "SELECT * FROM " . static::$tabla. " ORDER BY $orden ASC";
+        
+        $resultado = self::consultarSQL($query);
+
+        return $resultado;
+    }
 }
