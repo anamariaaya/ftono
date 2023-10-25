@@ -16,7 +16,7 @@ class NTMusica extends ActiveRecord{
 
     public function validar_tipo() {
         if(!$this->id_musica) {
-            self::$alertas['error'][] = 'Debes seleccionar un tipo de usuario';
+            self::$alertas['error'][] = 'auth_alert_must_select_type_musician';
         }
         return self::$alertas;
     }

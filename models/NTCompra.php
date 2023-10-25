@@ -16,7 +16,7 @@ class NTCompra extends ActiveRecord{
 
     public function validar_tipo() {
         if(!$this->id_compra) {
-            self::$alertas['error'][] = 'Debes seleccionar un tipo de compra';
+            self::$alertas['error'][] = 'auth_alert_must_select_type_client';
         }
         return self::$alertas;
     }

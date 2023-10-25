@@ -479,6 +479,14 @@
     "es": "El apellido es obligatorio",
     "en": "The last name is required"
   },
+  "auth_alert_must_select_type_client":{
+    "es": "Debes seleccionar un tipo de compra",
+    "en": "You must select a type of purchase"
+  },
+  "auth_alert_must_select_type_musician":{
+    "es": "Debes seleccionar un tipo de usuario",
+    "en": "You must select a type of user"
+  },
   "profile_alert-profile-updated":{
     "es": "Tu perfil ha sido actualizado",
     "en": "Your profile has been updated"
