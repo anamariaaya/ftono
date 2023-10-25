@@ -223,6 +223,7 @@ class AuthController {
 
     public static function forgot(Router $router) {
         $alertas = [];
+        $lang = $_SESSION['lang'] ?? 'en';
         
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $usuario = new Usuario($_POST);
@@ -243,7 +244,11 @@ class AuthController {
 
                     // Enviar el email
                     $email = new Email( $usuario->email, $usuario->nombre, $usuario->token );
-                    $email->enviarInstrucciones();
+                    if($lang == 'en'){
+                        $email->enviarInstrucciones();
+                    } else{
+                        $email->enviarInstruccionesEs();
+                    }
 
 
                     // Imprimir la alerta
@@ -262,7 +267,8 @@ class AuthController {
         // Muestra la vista
         $router->render('auth/forgot', [
             'titulo' => 'auth_forgot-password_title',
-            'alertas' => $alertas
+            'alertas' => $alertas,
+            'lang' => $lang
         ]);
     }
 
@@ -283,7 +289,6 @@ class AuthController {
         }
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             // Añadir el nuevo password
             $usuario->sincronizar($_POST);
 

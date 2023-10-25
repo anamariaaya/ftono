@@ -230,9 +230,171 @@ class Email {
         $mail->CharSet = 'UTF-8';
 
         $contenido = '<html>';
-        $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> Has solicitado restablecer tu password, sigue el siguiente enlace para hacerlo.</p>";
-        $contenido .= "<p>Presiona aquí: <a href='https://filmtono.com/reset-password?token=" . $this->token . "'>Reestablecer Password</a>";        
-        $contenido .= "<p>Si tu no solicitaste este cambio, puedes ignorar el mensaje</p>";
+        $contenido .= "<style>
+                        body{
+                            font-family: 'Roboto', sans-serif;
+                            line-height: 1.2;
+                        }
+                        img{
+                            width: 100%;
+                            height: auto;
+                        }
+                        .center{
+                            max-width: 400px;
+                            margin: auto;
+                            display: flex;
+                            flex-direction: column;
+                        }
+                        .background{
+                            background-color: #dedede;
+                            padding: 20px 20px 10px 20px;
+                        }
+                        .content{
+                            background-color: #fff;
+                            padding: 20px;
+                            transform: translateY(-10%);
+                        }
+                        h1{
+                            color: #FD9526;
+                            font-weight: 900;
+                            text-align: center;
+                            margin-top: 5px;
+                        }
+                        a{
+                            background-color: #FD9526;
+                            color: #292B3F;
+                            padding: 10px 20px;
+                            border-radius: 10px;
+                            margin: 10px auto;
+                            text-decoration: none;
+                            font-weight: bold;
+                            display: block;
+                            width: fit-content;
+                        }
+                        .footer{
+                            margin-top: -30px;
+                        }
+                        p span{
+                            font-weight: bold;
+                            display: block;
+                            margin-top: 25px;
+                        }
+                    </style>";
+        $contenido .= "<body>";
+        $contenido .= "<div class='center'>";
+        $contenido .= "<img src='https://www.filmtono.com/build/img/reset-password.webp' alt='reset password' />";
+        $contenido .= "<div class='background'>";
+        $contenido .= "<div class='content'>";
+        $contenido .= "<h1>Reset your password!</h1>";
+        $contenido .= "<h2>Hi " . $this->nombre .  "</h2>";
+        $contenido .= "<p>You have requested to reset your password</p>";
+        $contenido .= "<p>To do so, click here:";
+        $contenido .= "<a href='https://filmtono.com/reset-password?token=" . $this->token . "'>Reset Password</a>";
+        $contenido .= "</div>";
+        $contenido .= "<div class='footer'>";
+        $contenido .= "<p>If you did not request this change; you can ignore the message</p>";
+        $contenido .= "<p>Regards,</p>";
+        $contenido .= "<p><span>Filmtono Team<span><p>";
+        $contenido .= "</div>";
+        $contenido .= "</div>";
+        $contenido .= "</div>";
+        $contenido .= "</body>";
+        $contenido .= '</html>';
+        $mail->Body = $contenido;
+
+        //Enviar el mail
+        $mail->send();
+    }
+
+    public function enviarInstruccionesEs() {
+
+        // create a new object
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->Host = $_ENV['EMAIL_HOST'];
+        $mail->SMTPAuth = true;
+        $mail->Port = $_ENV['EMAIL_PORT'];
+        $mail->Username = $_ENV['EMAIL_USER'];
+        $mail->Password = $_ENV['EMAIL_PASS'];
+    
+        $mail->setFrom('no-reply@filmtono.com');
+        $mail->addAddress($this->email, $this->nombre);
+        $mail->Subject = 'Restablece tu contraseña';
+
+        // Set HTML
+        $mail->isHTML(TRUE);
+        $mail->CharSet = 'UTF-8';
+
+        $contenido = '<html>';
+        $contenido .= "<style>
+                        body{
+                            font-family: 'Roboto', sans-serif;
+                            line-height: 1.2;
+                        }
+                        img{
+                            width: 100%;
+                            height: auto;
+                        }
+                        .center{
+                            max-width: 400px;
+                            margin: auto;
+                            display: flex;
+                            flex-direction: column;
+                        }
+                        .background{
+                            background-color: #dedede;
+                            padding: 20px 20px 10px 20px;
+                        }
+                        .content{
+                            background-color: #fff;
+                            padding: 20px;
+                            transform: translateY(-10%);
+                        }
+                        h1{
+                            color: #FD9526;
+                            font-weight: 900;
+                            text-align: center;
+                            margin-top: 5px;
+                        }
+                        a{
+                            background-color: #FD9526;
+                            color: #292B3F;
+                            padding: 10px 20px;
+                            border-radius: 10px;
+                            margin: 10px auto;
+                            text-decoration: none;
+                            font-weight: bold;
+                            display: block;
+                            width: fit-content;
+                        }
+                        .footer{
+                            margin-top: -30px;
+                        }
+                        p span{
+                            font-weight: bold;
+                            display: block;
+                            margin-top: 25px;
+                        }
+                    </style>";
+        $contenido .= "<body>";
+        $contenido .= "<div class='center'>";
+        $contenido .= "<img src='https://www.filmtono.com/build/img/reset-password.webp' alt='reset password' />";
+        $contenido .= "<div class='background'>";
+        $contenido .= "<div class='content'>";
+        $contenido .= "<h1>¡Reestablece tu contraseña!</h1>";
+        $contenido .= "<h2>Hola " . $this->nombre .  "</h2>";
+        $contenido .= "<p>Has solicitado restablecer tu contraseña</p>";
+        $contenido .= "<p>Para hacerlo, haz click aquí:";
+        $contenido .= "<a href='https://filmtono.com/reset-password?lang=es&token=" . $this->token . "'>Reestablecer Contraseña</a>";
+        $contenido .= "</div>";
+        $contenido .= "<div class='footer'>";
+        $contenido .= "<p>Si tú no solicitaste este cambio; puedes ignorar el mensaje</p>";
+        $contenido .= "<p>Saludos,</p>";
+        $contenido .= "<p><span>El equipo de Filmtono<span><p>";
+        $contenido .= "</div>";
+        $contenido .= "</div>";
+        $contenido .= "</div>";
+        $contenido .= "</body>";
         $contenido .= '</html>';
         $mail->Body = $contenido;
 
