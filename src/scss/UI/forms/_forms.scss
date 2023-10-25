@@ -22,7 +22,7 @@
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
 
     &__info{
         font-weight: v.$thin;
@@ -56,6 +56,7 @@
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
+        position: relative;
         &:not(last-child){
             margin-bottom: 1rem;
         }
@@ -109,6 +110,22 @@
             user-select: none;
             cursor: pointer;
           }
+    }
+}
+
+.texto--password{
+    margin: 0;
+    font-size: 1.4rem;
+    color: v.$green;
+}
+
+.passview{
+    position: absolute;
+    right: 2.5%;
+    top: 60%;
+    font-size: 2.2rem;
+    &:hover{
+        cursor: pointer;
     }
 }
 

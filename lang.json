@@ -388,8 +388,8 @@
     "en": "Account verification"
   },
   "auth_confirm_alert-success":{
-    "es": "Tu cuenta ha sido verificada. Ya puedes iniciar sesión",
-    "en": "Your account has been verified. You can now log in"
+    "es": "Tu cuenta ha sido verificada. Ya puedes iniciar sesión para acceder a tu experiencia musical",
+    "en": "Your account has been verified. You can now log in to access your musical experience"
   },
   "auth_confirm_alert-error":{
     "es": "La cuenta no se verificó.",
@@ -428,8 +428,12 @@
     "en": "This link is no longer valid. Request a new one by clicking on Forgot your password? on the login screen"
   },
   "auth_alert_user-not-exist":{
-    "es": "El usuario no existe o no está confirmado",
-    "en": "The user does not exist or is not confirmed"
+    "es": "El usuario no existe o no está confirmado. Por favor, regístrate o confirma tu cuenta",
+    "en": "The user does not exist or is not confirmed. Please register or confirm your account"
+  },
+  "auth_alert_user-already-exist":{
+    "es": "El usuario ya está registrado",
+    "en": "The user is already registered"
   },
   "auth_alert_password-wrong":{
     "es": "La contraseña es incorrecta",

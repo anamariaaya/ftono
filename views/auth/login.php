@@ -25,6 +25,7 @@
             <div class="form__group">
                 <label class="form__group__label" for="password">{%auth_login_password_label%}</label>
                 <input class="form__group__input" type="password" name="password" id="password" placeholder="Tu password">
+                <i class="fa fa-eye passview"></i>
             </div>
 
             <input class="btn-submit" type="submit" value="{%auth_login_btn%}">

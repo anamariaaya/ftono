@@ -47,14 +47,18 @@
                 <input class="form__group__input" type="email" name="email" id="email" placeholder="{%auth_register_email_label%}">
             </div>
 
+            <p class="texto--password">{%auth_alert_password-weak%}</p>
+
             <div class="form__group">
                 <label class="form__group__label" for="password">{%auth_register_password_label%}</label>
                 <input class="form__group__input" type="password" name="password" id="password" placeholder="{%auth_register_password_label%}">
+                <i class="fa fa-eye passview"></i>
             </div>
 
             <div class="form__group">
                 <label class="form__group__label" for="password2">{%auth_register_password_confirmation_label%}</label>
                 <input class="form__group__input" type="password" name="password2" id="password2" placeholder="{%auth_register_password_confirmation_label%}">
+                <i class="fa fa-eye passview"></i>
             </div>
 
             <input class="btn-submit" type="submit" value="{%auth_register_btn%}">

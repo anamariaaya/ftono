@@ -3,7 +3,7 @@
     <p>{%auth_register-music_paragraph%}<p>
 
     <?php if(isset($_SESSION['id'])): ?>        
-        <p class="auth__text">Ya estás registrado</p>
+        <p class="auth__text">{%auth_alert_user-already-exist%}</p>
         <div class="auth">
             <i class="auth__icon--fail fa-regular fa-circle-xmark"></i>
             <a class="btn-submit" href="<?php sesionActiva()?>">Volver al Admin</a>
@@ -43,14 +43,18 @@
                 <input class="form__group__input" type="email" name="email" id="email" placeholder="{%auth_register-music_email_label%}">
             </div>
 
+            <p class="texto--password">{%auth_alert_password-weak%}</p>
+
             <div class="form__group">
                 <label class="form__group__label" for="password">{%auth_register-music_password_label%}</label>
-                <input class="form__group__input" type="password" name="password" id="password" placeholder="{%auth_register-music_password_label%}">
+                <input class="form__group__input" type="password" name="password" class="password" placeholder="{%auth_register-music_password_label%}">
+                <i class="fa fa-eye passview"></i>
             </div>
 
             <div class="form__group">
                 <label class="form__group__label" for="password2">{%auth_register-music_password_confirmation_label%}</label>
                 <input class="form__group__input" type="password" name="password2" id="password2" placeholder="{%auth_register-music_password_confirmation_label%}">
+                <i class="fa fa-eye passview"></i>
             </div>
 
             <input class="btn-submit" type="submit" value="{%auth_register-music_btn%}">

@@ -109,7 +109,7 @@ class AuthController {
                 $existeUsuario = Usuario::where('email', $usuario->email);
 
                 if($existeUsuario) {
-                    Usuario::setAlerta('error', 'El Usuario ya esta registrado');
+                    Usuario::setAlerta('error', 'auth_alert_user-already-exist');
                     $alertas = Usuario::getAlertas();
                 } else {
                     // Hashear el password
@@ -129,7 +129,11 @@ class AuthController {
 
                     // Enviar email
                     $email = new Email($usuario->email, $usuario->nombre, $usuario->token);
-                    $email->enviarConfirmacion();
+                    if($lang == 'en'){
+                        $email->enviarConfirmacion();
+                    } else{
+                        $email->enviarConfirmacionEs();
+                    }
                     
 
                     if($resultado) {
@@ -175,7 +179,7 @@ class AuthController {
                 $existeUsuario = Usuario::where('email', $usuario->email);
 
                 if($existeUsuario) {
-                    Usuario::setAlerta('error', 'El Usuario ya esta registrado');
+                    Usuario::setAlerta('error', 'auth_alert_user-already-exist');
                     $alertas = Usuario::getAlertas();
                 } else {
                     // Hashear el password
@@ -195,7 +199,11 @@ class AuthController {
 
                     // Enviar email
                     $email = new Email($usuario->email, $usuario->nombre, $usuario->token);
-                    $email->enviarConfirmacion();
+                    if($lang == 'en'){
+                        $email->enviarConfirmacion();
+                    } else{
+                        $email->enviarConfirmacionEs();
+                    }
                     
 
                     if($resultado) {
