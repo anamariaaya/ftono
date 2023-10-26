@@ -1,10 +1,10 @@
 <header class="header">
     <div class="header__bar">
         <div class="header__left">
-            <a href="/">
+            <a class="header__link--logo" href="/">
                 <img class="header__left--logo" src="/build/img/logo.svg" alt="Logo Filmtono">
             </a>
-            <a href="javascript: history.go(-1)">
+            <a class="header__link--back" href="javascript: history.go(-1)">
                 <i class="fas fa-arrow-left header__left--arrow <?php echo $inicio ? 'no-display' : '' ;?>"></i>
             </a>
         
