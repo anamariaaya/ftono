@@ -47,6 +47,10 @@
     width: fit-content;
     border-radius: 1rem;
     color: v.$gray-dark;
+    font-size: 1.4rem;    
+    @include m.desktop{
+        font-size: 1.8rem;
+    }
     &--extra{
         @extend .btn-submit;
         margin: 2.5rem auto 0;

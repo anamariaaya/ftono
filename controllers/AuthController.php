@@ -217,7 +217,8 @@ class AuthController {
             'titulo' => 'auth_register-music_title',
             'alertas' => $alertas,
             'musico' => $musico,
-            'lang' => $lang
+            'lang' => $lang,
+            'usuario' => $usuario
         ]);
     }
 

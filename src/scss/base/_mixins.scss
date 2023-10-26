@@ -96,7 +96,6 @@
     margin-top: math.div(v.$separate , 2);
     display: $display;
     border: none;
-
     &:hover{
         background-color: darken($bgColor, 7);
         transform: scale(1.03);

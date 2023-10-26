@@ -67,47 +67,75 @@ h1 {
     width: 75%;
     border-radius: 2rem;
     margin: auto;
-    font-size: 2.8rem;
+    font-size: 1.8rem;
     line-height: 1.2;
     color: #fd9526;
-    @include m.tablet{
-        font-size: 3.6rem;
+    @include m.phone{
+        font-size: 2.2rem;
     }
-    @include m.desktop-large{
-        font-size: 3.8rem;
-    }
-}
-h2 {
-    font-size: 2.6rem;
     @include m.tablet{
-        font-size: 3.2rem;
+        font-size: 2.6rem;
+    }
+    @include m.desktop{
+        font-size: 3rem;
     }
     @include m.desktop-large{
         font-size: 3.4rem;
     }
-}
-h3 {
-    font-size: 2rem;
-    @include m.tablet{
-        font-size: 2.8rem;
-    }
-    @include m.desktop-large{
-        font-size: 3rem;
+    @include m.ultra-wide{
+        font-size: 3.8rem;
     }
 }
-h4 {
-    font-size: 1.8rem;
+h2, h3 {
+    font-size: 1.6rem;
+    @include m.phone{
+        font-size: 2rem;
+    }
     @include m.tablet{
         font-size: 2.4rem;
     }
+    @include m.desktop{
+        font-size: 2.8rem;
+    }
     @include m.desktop-large{
-        font-size: 2.6rem;
+        font-size: 3.2rem;
+    }
+    @include m.ultra-wide{
+        font-size: 3.4rem;
     }
 }
 
-p{
-    font-size: 1.6rem;
+h4 {
+    font-size: 1.4rem;
+    @include m.phone{
+        font-size: 1.6rem;
+    }
     @include m.tablet{
+        font-size: 1.8rem;
+    }
+    @include m.desktop{
         font-size: 2rem;
+    }
+    @include m.desktop-large{
+        font-size: 2.2rem;
+    }
+    @include m.ultra-wide{
+        font-size: 2.4rem;
+    }    
+}
+
+p{
+    font-size: 1.4rem;
+    @include m.tablet{
+        font-size: 1.6rem;
+    }
+    @include m.desktop{
+        font-size: 1.8rem;
+    }
+    @include m.desktop-large{
+        font-size: 2rem;
+    }
+    @include m.ultra-wide{
+        font-size: 2.2rem;
     }
 }

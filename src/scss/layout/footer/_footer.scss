@@ -35,18 +35,14 @@
     }
 
     &__content{
-        grid-row: 1/3;
-        margin-right: v.$separate;
-        padding: 1rem 2rem;
+        grid-row: 1/3;        
+        @include m.tablet{
+            margin-right: v.$separate;
+            padding: 1rem 2rem;
+        }
         p{
-            font-size: 2.4rem;
             line-height: 1.4;
             color: v.$white;
-            // color: transparent;
-            // background: linear-gradient(to left, v.$yellow 50%, v.$white);
-            // font-weight: v.$ultrabold;
-            // -webkit-background-clip: text;
-            // background-clip: text;
         }
     }
 
@@ -111,7 +107,17 @@
             column-gap: math.div(v.$separate, 2);
         
             & i{
-                font-size: 3.2rem;
+                font-size: 2.2rem;
+                @include m.tablet{
+                    font-size: 2.6rem;
+                }
+                @include m.desktop{
+                    font-size: 3rem;
+                }
+                @include m.desktop-large{
+                    font-size: 3.2rem;
+                }
+
                 color: v.$yellow;
                 &:hover{
                     color: darken(v.$green, 10);
