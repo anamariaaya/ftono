@@ -221,7 +221,7 @@
   },
   "footer_register_music":{
     "es": "Regístrate y sube tu catálogo",
-    "en": "Register and upload your catalog"      
+    "en": "Register and upload your catalogue"      
   },
   "complete_register":{
     "es": "Completar Registro",
@@ -229,7 +229,7 @@
   },
   "layout_complete_register_musicians":{
     "es": "Debes completar el registro para poder cargar tu catálogo musical y acceder a todas las funciones de tu dashboard.",
-    "en": "You must complete the registration to be able to upload your musical catalog and access all the functions of your dashboard."      
+    "en": "You must complete the registration to be able to upload your musical catalogue and access all the functions of your dashboard."      
   },
   "layout_complete_register_buyers":{
     "es": "Debes completar el registro para poder acceder a todas las funciones de tu dashboard.",
@@ -317,11 +317,11 @@
   },
   "auth_register-music_title":{
     "es": "Crea tu cuenta y sube tu catálogo músical de fácil licenciamiento",
-    "en": "Create your account and upload your easy licensing musical catalog"      
+    "en": "Create your account and upload your easy licensing musical catalogue"      
   },
   "auth_register-music_paragraph":{
     "es": "Debes tener en cuenta que tu catálogo sea de canciones en las que administres completamente el copyright y publishing para dar respuesta rápida a los compradores",
-    "en": "You must keep in mind that your catalog is made up of songs in which you completely manage the copyright and publishing to give a quick response to buyers"      
+    "en": "You must keep in mind that your catalogue is made up of songs in which you completely manage the copyright and publishing to give a quick response to buyers"      
   },
   "auth_register-music_user_type_label":{
     "es": "¿Qué tipo de usuario eres?",
