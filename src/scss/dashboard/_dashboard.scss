@@ -83,6 +83,10 @@
         margin: auto;
         margin-top: 2rem;
         border-radius: 1rem;
+        @include m.maxtablet{
+            min-width: 15rem;
+            justify-content: center;
+        }
         @include m.tablet{
             margin-right: 5rem;
             margin-top: 0;
@@ -228,7 +232,7 @@
     }
 
     &__contenido{
-        padding: 2rem;
+        padding: 2rem 1rem;
         width: 100%;
         overflow-y: auto;
         position: relative;

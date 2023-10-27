@@ -4,9 +4,12 @@
 .tabs{
     margin: 0 auto;
     width: 90%;
-    padding: 1rem 3rem;
+    padding: 1rem;
     background-color: v.$gray;
     border-radius: 1rem;
+    @include m.tablet{
+        padding: 1rem 3rem;
+    }
     @include m.desktop{
         width: 65%;
     }
@@ -91,11 +94,14 @@
     }
 
     &__pags{
-        padding: v.$separate 0;
+        padding: calc(v.$separate / 3) 0;
     
         @include m.phone{
             display: flex;
             justify-content: space-between;
+        }
+        @include m.tablet{
+            padding: v.$separate 0;
         }
         button{
             margin: 0.5rem;
@@ -134,13 +140,14 @@
 
 .form--registro{
     background-color: v.$gray;
-    padding: 3rem;
+    padding: 0.5rem;
     border-radius: 1rem;
     display: grid;
     grid-template-columns: 1fr;
     gap: 2.5rem 6rem;
     @include m.tablet{
         grid-template-columns: 1fr 1fr;
+        padding: 3rem;
     }
     @include m.desktop-large{
         gap: 2.5rem 8rem;
@@ -160,7 +167,7 @@
             font-size: 2rem;
         }
         &__input, &__select{
-            padding: 1.5rem;
+            padding: 1rem;
             width: 100%;
             margin: auto;
             background-color: v.$gray-light;
@@ -168,6 +175,9 @@
             color: v.$white;
             border: none;
             display: block;
+            @include m.tablet{
+                padding: 1.5rem;
+            }
             &:focus{
                 outline: 2px solid v.$yellow;
                 caret-color: v.$yellow;
@@ -206,6 +216,15 @@
                 text-decoration: underline;
             }
         }
+    }
+}
+
+canvas{
+    width:60rem !important;
+    height: 20rem !important;
+    @include m.maxtablet{
+        width: 30rem !important;
+        height: 15rem !important;
     }
 }
 

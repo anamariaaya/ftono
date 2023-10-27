@@ -96,6 +96,9 @@
     border-radius: 1rem;
     color: v.$gray-dark;
     width: fit-content;
+    @include m.maxtablet{
+        padding: 1rem;
+    }
     &:hover{
         cursor: pointer;
     }

@@ -109,9 +109,12 @@
 .tel-form{
     width: 100%;
     display: grid;
-    grid-template-columns: auto 85%;
+    grid-template-columns: auto auto;
     gap: .5rem;
     grid-auto-flow: column;
+    @include m.tablet{
+        grid-template-columns: auto 85%;
+    }
 }
 
 .tel-input{
@@ -126,8 +129,11 @@
     color: v.$yellow;
     grid-column: 1 / 2;
     border-radius: 1rem;
-    max-width: 5rem;
+    max-width: 3rem;
     cursor: not-allowed;
+    @include m.tablet{
+        max-width: 5rem;
+    }
 }
 
 .mTop-5{
