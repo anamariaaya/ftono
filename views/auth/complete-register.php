@@ -251,7 +251,7 @@
         <div class="tabs__pags">
             <button type="button" id="anterior" class="btn-tabs ocultar">&#129044; {%b-previous%}</button>
             <button type="button" id="siguiente" class="btn-tabs">{%b-next%} &#10143;</button>
-            <input type="submit" id="btn-submit" class="btn-tabs no-display" value="Registrarse ✓">
+            <input type="submit" id="btn-submit" class="btn-tabs no-display" value="{%b-register%} &#10143;">
         </div>
         <input type="hidden" name="signatureInput" id="signatureInput" value="">
         <input type="hidden" name="signatureOptional" id="signatureOptional" value="">

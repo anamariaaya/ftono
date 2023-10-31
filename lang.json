@@ -1087,6 +1087,10 @@
     "es": "Siguiente",
     "en": "Next"
   },
+  "b-register":{
+    "es": "Registrarse",
+    "en": "Register"
+  },
   "t-profile":{
     "es": "Perfil",
     "en": "Profile"

@@ -74,5 +74,9 @@
     "artistError":{
       "en": "Error adding artist. Try again later.",
       "es": "Error al agregar artista. Inténtalo de nuevo más tarde."
+    },
+    "next":{
+      "en": "Next",
+      "es": "Siguiente"
     }
 }

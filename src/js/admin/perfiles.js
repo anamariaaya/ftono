@@ -64,7 +64,6 @@ async function botonesPaginador(){
             pagSiguiente.classList.remove('ocultar');
             afterNav.classList.remove('step2');
             afterNav.classList.remove('step3');
-            pagSiguiente.textContent = 'Siguiente \u279f';
             pagSiguiente.classList.remove('btn-tabs--disabled');
             break;
         case '2':
@@ -73,7 +72,6 @@ async function botonesPaginador(){
             afterNav.classList.add('step2');
             afterNav.classList.remove('step3');
             pagSiguiente.classList.remove('btn-tabs--disabled');
-            pagSiguiente.textContent = 'Siguiente \u279f';
             break;
         case '3':
             pagAnterior.classList.remove('ocultar');

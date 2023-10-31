@@ -3,7 +3,7 @@ import {container} from '../filmtono/selectores.js';
 
 export async function readLang(){
     try{
-        const resultado = await fetch('https://www.filmtono.com/api/filmtono/lenguaje');
+        const resultado = await fetch(window.location.origin+'/api/filmtono/lenguaje');
         const data = await resultado.json();
         return data;
     }catch(error){
@@ -14,7 +14,7 @@ export async function readLang(){
 //Leer el lang.json
 export async function readJSON(){
     try{
-        const resultado = await fetch('https://www.filmtono.com/api/filmtono/alerts', {mode: 'cors'});
+        const resultado = await fetch(window.location.origin+'/api/filmtono/alerts', {mode: 'cors'});
         const data = await resultado.json();
         return data;
     }catch(error){
