@@ -1,6 +1,7 @@
 <div class="loadingScreen" id="loadingScreen" style="display:none;">
         <div class="loader">
         <span class="loader--span"></span>
+        <span class="loader--span__back"></span>
             <h1 class="loader__wrapper--text">
                 <p class="let1">F</p> 
                 <p class="let2">i</p> 
