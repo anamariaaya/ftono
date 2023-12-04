@@ -27,6 +27,27 @@
     }
 }
 
+.dashboard .alerta{
+    margin: 0;
+    padding: 0.5em 1rem;
+    font-size: 1.2rem;
+    @include m.desktop{
+        max-width: 100%;
+    }
+    &__error{
+        @extend .alerta;
+        border: 0.2rem solid lighten(v.$red, 5);
+        color: lighten(v.$red, 5);
+    }
+
+    &__exito{
+        @extend .alerta;
+        border: 0.2rem solid lighten(v.$green, 10);
+        color: lighten(v.$green, 10);
+    }
+
+}
+
 .modal-alerta{
     background-color: v.$gray;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;

@@ -211,7 +211,7 @@
             <?php endif; ?>            
             
             <h4>{%t-terms_acceptance%}</h4>
-            <div class="form-div" id="div-check">
+            <div class="form--registro__checkbox--div" id="div-check">
                 <div class="form--registro__checkbox">
                     <input class="form--registro__checkbox__input" type="checkbox"
                             name="terms"

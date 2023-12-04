@@ -49,7 +49,7 @@ export async function imprimirAlerta(message, type, container, sibling) {
     // Quitar el alert despues de 3 segundos
     setTimeout( () => {
         divMensaje.remove();
-    }, 3000);
+    }, 100000);
 }
 
 export function validarFormulario(e) {
