@@ -62,6 +62,7 @@ async function botonesPaginador(){
         case '1':
             pagAnterior.classList.add('ocultar');
             pagSiguiente.classList.remove('ocultar');
+            pagSiguiente.textContent = alerts['next'][lang]+' \u2713';
             afterNav.classList.remove('step2');
             afterNav.classList.remove('step3');
             pagSiguiente.classList.remove('btn-tabs--disabled');
