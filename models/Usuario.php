@@ -80,11 +80,14 @@ class Usuario extends ActiveRecord {
             self::$alertas['error'][] = 'auth_alert_password-different';
         }
         //comprobar que el password tenga al menos una mayúscula y un número
-        $mayusculas = preg_match('@[A-Z]@', $this->password);
-        $numero = preg_match('@[0-9]@', $this->password);
-        if(!$mayusculas || !$numero) {
+        $uppercase = preg_match('@[A-Z]@', $this->password);
+        $lowercase = preg_match('@[a-z]@', $this->password);
+        $number    = preg_match('@[0-9]@', $this->password);
+        
+        if(!$uppercase || !$lowercase || !$number) {
             self::$alertas['error'][] = 'auth_alert_password-weak';
         }
+
         return self::$alertas;
     }
 

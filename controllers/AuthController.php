@@ -104,6 +104,7 @@ class AuthController {
             
             $alertas = $usuario->validar_cuenta();
             $alertas = $tipoComprador->validar_tipo();
+            $alertas = $usuario->validarPassword();
 
             if(empty($alertas)) {
                 $existeUsuario = Usuario::where('email', $usuario->email);
@@ -167,6 +168,8 @@ class AuthController {
             
             $alertas = $usuario->validar_cuenta();
             $alertas = $tipoMusico->validar_tipo();
+            $alertas = $usuario->validarPassword();
+
             //debuguear($tipoMusico);
 
             if($tipoMusico->id_musica === '1' || $tipoMusico->id_musica === '2'){

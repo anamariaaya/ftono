@@ -464,8 +464,8 @@
     "en": "Passwords do not match"
   },
   "auth_alert_password-weak":{
-    "es": "La contraseña debe tener al menos una mayúscula y un número",
-    "en": "The password must be at least one uppercase and one number"
+    "es": "La contraseña debe tener al menos una mayúscula, una minúscula y un número",
+    "en": "The password must be at least one uppercase, one lowercase, and one number"
   },
   "auth_alert_password_old-required":{
     "es": "La contraseña actual es obligatoria",
