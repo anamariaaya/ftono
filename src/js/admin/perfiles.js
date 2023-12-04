@@ -221,8 +221,16 @@ async function modalContrato(e){
     const formCanvas = document.createElement('form');
 
     const canvas = document.createElement('canvas');
-    canvas.width = 600;
-    canvas.height = 200;
+    //find the screen width
+    const width = window.innerWidth;
+    //set the canvas width and height
+    if(width < 600){
+        canvas.width = 300;
+        canvas.height = 150;
+        }else{
+        canvas.width = 600;
+        canvas.height = 200;
+    }
     canvas.style.border = '1px solid black';
     canvas.style.backgroundColor = 'white';
     canvas.style.margin = '0 auto';
@@ -253,12 +261,15 @@ async function modalContrato(e){
     function startDrawing(e) {
     isDrawing = true;
         if (e.touches) {
+            body.style.overflow = 'hidden';
             [x, y] = [e.touches[0].pageX - e.target.offsetLeft, e.touches[0].pageY - e.target.offsetTop];
         } else {
             [x, y] = [e.offsetX, e.offsetY];
         }
     }
 
+    //create a function for drawing on the canvas with the finger
+   
     function draw(e) {
         if (!isDrawing) return;
         ctx.beginPath();
@@ -275,6 +286,7 @@ async function modalContrato(e){
     }
     
     function stopDrawing() {
+        body.style.overflow = 'auto';
         isDrawing = false;
         ctx.beginPath();
     }      

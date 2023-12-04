@@ -11,7 +11,7 @@ class MusicAlbumsController{
     public static function index(Router $router){
         isMusico();
         $albums = Albums::whereAll('id_usuario',$_SESSION['id']);
-        $titulo = 'music_main-title';
+        $titulo = 'music_main_title';
         $router->render('music/albums/index',[
             'titulo' => $titulo,
             'albums' => $albums

@@ -40,6 +40,10 @@
             <p id="contract-id-fiscal"></p>
         </div>
         <div class="grid-firmas__campo">
+            <p class="grid-firmas__campo--span">Address</p>
+            <p id="contract-direccion"></p>
+        </div>
+        <div class="grid-firmas__campo">
             <p class="grid-firmas__campo--span">Signature</p>
             <img id="signature-img" class="no-display" src="" alt="signature">
         </div>

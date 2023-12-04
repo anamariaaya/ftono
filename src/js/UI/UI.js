@@ -28,4 +28,31 @@ export function showPassword(){
     });
 }
 
+export function loader(){
+    document.addEventListener("DOMContentLoaded", function(event) {
+        // Hide the loading screen when the page is fully loaded
+        document.getElementById('loadingScreen').style.display = 'none';
+    
+        // Add event listener to all anchor tags
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Check if the link is not opening in a new tab or window
+                if (!e.target.target || e.target.target.toLowerCase() === '_self') {
+                    showLoadingScreen();
+                }
+            });
+        });
+    });
+    
+    // Function to show the loading screen
+    function showLoadingScreen() {
+        document.getElementById('loadingScreen').style.display = 'flex';
+    }
+    
+    // Add event listener to all forms for submit event
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', showLoadingScreen);
+    });
+}
+
 export default UI;

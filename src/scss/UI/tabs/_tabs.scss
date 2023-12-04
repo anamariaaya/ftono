@@ -219,14 +219,14 @@
     }
 }
 
-canvas{
-    width:60rem !important;
-    height: 20rem !important;
-    @include m.maxtablet{
-        width: 30rem !important;
-        height: 15rem !important;
-    }
-}
+// canvas{
+//     width:60rem !important;
+//     height: 20rem !important;
+//     @include m.maxtablet{
+//         width: 30rem !important;
+//         height: 15rem !important;
+//     }
+// }
 
 .mostrar{
     display: block;

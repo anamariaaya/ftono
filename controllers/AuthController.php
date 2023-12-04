@@ -376,35 +376,13 @@ class AuthController {
         $perfilUsuario = new PerfilUsuario();        
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            debugging($_POST);
             $empresa->sincronizar($_POST);
             $terms->sincronizar($_POST);
             $privacy->sincronizar($_POST);
             $comunicados->sincronizar($_POST);
             $firma = $_POST['signatureInput'];
             $firmaOpt= $_POST['signatureOptional'];
-
-
-            //debugging($_POST);
-
-            $contractPDF = new MusicalContract($usuario->id, $empresa->empresa, $usuario->nombre.' '.$usuario->apellido, $empresa->id_fiscal, $empresa->direccion, $firma, $_POST['pais_contacto_name'], $empresa->tel_contacto, $usuario->email, date('d-m-y'));
-
-            $contractPDF->guardarContrato();
-            
-            $ctr_music->id_usuario = $usuario->id;
-            $ctr_music->nombre_doc = $ctr_music->id_usuario.'-music-'.date('d-m-y').'.pdf';
-            $ctr_music->guardar();
-
-            if($firmaOpt != ''){
-                $contractPDF = new ArtisticContract($usuario->id, $empresa->empresa, $usuario->nombre.' '.$usuario->apellido, $empresa->id_fiscal, $firmaOpt, $_POST['pais_contacto_name'], $empresa->tel_contacto, $usuario->email, date('d-m-y'));
-
-                $contractPDF->guardarContrato();
-                $ctr_artistic->id_usuario = $usuario->id;
-                $ctr_artistic->nombre_doc = $ctr_artistic->id_usuario.'-music-'.date('d-m-y').'.pdf';
-                $ctr_artistic->guardar();
-            }
-            //mover el archivo a la carpeta de contratos
-    
+   
             //Asignar el id del usuario a cada tabla
             $terms->id_usuario = $usuario->id;
             //Asignar la version de los terminos y condiciones
@@ -424,6 +402,29 @@ class AuthController {
             //guardar los datos en la base de datos
             $empresa->guardar();
 
+            $contractPDF = new MusicalContract($usuario->id, $empresa->empresa, $usuario->nombre.' '.$usuario->apellido, $empresa->id_fiscal, $empresa->direccion, $firma, $_POST['pais_contacto_name'], $empresa->tel_contacto, $usuario->email, date('d-m-y'));
+
+            $contractPDF->guardarContrato();
+
+            $empresa = Empresa::where('empresa',$empresa->empresa);
+                        
+            $ctr_music->id_usuario = $usuario->id;
+            $ctr_music->id_empresa = $empresa->id;
+            $ctr_music->nombre_doc = $ctr_music->id_usuario.'-music-'.date('d-m-y').'.pdf';
+            $ctr_music->guardar();
+                       
+            if($firmaOpt != ''){
+                $contractPDF = new ArtisticContract($usuario->id, $empresa->empresa, $usuario->nombre.' '.$usuario->apellido, $empresa->id_fiscal, $empresa->direccion, $firmaOpt, $_POST['pais_contacto_name'], $empresa->tel_contacto, $usuario->email, date('d-m-y'));
+                $contractPDF->guardarContrato();
+
+                $empresa = Empresa::where('empresa',$empresa->empresa);
+                $ctr_artistic->id_usuario = $usuario->id;
+                $ctr_artistic->id_empresa = $empresa->id;
+                $ctr_artistic->nombre_doc = $ctr_artistic->id_usuario.'-music-'.date('d-m-y').'.pdf';
+                $ctr_artistic->guardar();
+            }
+            
+
             //Revisar si el usuario es un sello
             if(isset($_SESSION['nivel_musica'])){
                 $sello = new Sellos();
@@ -440,8 +441,6 @@ class AuthController {
                 }
             }
 
-            //Leer el id de la empresa que se acaba de crear
-            $empresa = Empresa::where('empresa',$empresa->empresa);
 
             //Asignar usuario y empresa a la tabla perfil_usuario
             $perfilUsuario->id_usuario = $usuario->id;

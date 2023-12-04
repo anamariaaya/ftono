@@ -13,7 +13,8 @@
 
 </head>
 <body class="dashboard">
-<?php 
+<?php
+        include_once __DIR__ .'/../templates/loading-screen.php';
         include_once __DIR__ .'/../templates/header-dashboard.php';
     ?>
         <div class="dashboard__grid">

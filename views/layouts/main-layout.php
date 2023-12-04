@@ -13,7 +13,9 @@
 
 </head>
 <body>
-    <?php 
+    </div>
+    <?php
+        include_once __DIR__ .'/../templates/loading-screen.php';
         include_once __DIR__ .'/../templates/header.php';
         include_once __DIR__ .'/../templates/main-sidebar.php';
         echo $contenido;

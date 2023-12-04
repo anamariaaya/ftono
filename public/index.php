@@ -13,21 +13,22 @@ use Controllers\Filmtono\AlbumsController;
 use Controllers\Filmtono\GenresController;
 use Controllers\Filmtono\LabelsController;
 use Controllers\Filmtono\PromosController;
+use Controllers\Music\APIArtistController;
 use Controllers\Filmtono\ArtistsController;
 use Controllers\Filmtono\ProfileController;
 use Controllers\Filmtono\APIUsersController;
 use Controllers\Filmtono\KeywordsController;
 use Controllers\Filmtono\PaymentsController;
-use Controllers\Filmtono\ContractsController;
-use Controllers\Filmtono\CategoriesController;
-
-
 use Controllers\Music\MusicAlbumsController;
+
+
 use Controllers\Music\MusicLabelsController;
-use Controllers\Music\APIArtistController;
+use Controllers\Filmtono\ContractsController;
+use Controllers\Music\MusicArtistsController;
 use Controllers\Music\MusicProfileController;
 
 
+use Controllers\Filmtono\CategoriesController;
 use Controllers\Clients\ClientProfileController;
 
 
@@ -76,6 +77,7 @@ $router->get('/music/albums/new', [MusicAlbumsController::class, 'new']);
 $router->post('/music/albums/new', [MusicAlbumsController::class, 'new']);
 $router->post('/music/albums/edit', [MusicAlbumsController::class, 'update']);
 $router->get('/music/albums/song/new', [MusicAlbumsController::class, 'newSong']);
+$router->get('/music/artists', [MusicArtistsController::class, 'index']);
 
 //Dashboard Compradores/Clients
 $router->get('/clients/dashboard', [DashboardController::class, 'clients']);

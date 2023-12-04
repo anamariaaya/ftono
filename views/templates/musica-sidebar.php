@@ -25,14 +25,14 @@
             </span>
         </a>
 
-        <a href="/music/albums" class="dashboard__enlace <?php pagina_admin('albums');?>">
+        <a href="/music/albums" class="dashboard__enlace <?php pagina_admin('albums'); regBtn();?>">
             <i class="fa-solid fa-compact-disc dashboard__icono"></i>
             <span class="dashboard__menu-texto">
                 <?php echo tt('sidebar_music');?>
             </span>
         </a>
 
-        <a href="/music/artists" class="dashboard__enlace <?php pagina_admin('artists');?>">
+        <a href="/music/artists" class="dashboard__enlace <?php pagina_admin('artists'); regBtn();?>">
             <i class="fa-solid fa-microphone-lines dashboard__icono"></i>
             <span class="dashboard__menu-texto">
                 <?php echo tt('sidebar_artists');?>

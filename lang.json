@@ -227,6 +227,10 @@
     "es": "Completar Registro",
     "en": "Complete Registration"      
   },
+  "dashboard-title":{
+    "es": "Dashboard",
+    "en": "Dashboard"      
+  },
   "layout_complete_register_musicians":{
     "es": "Debes completar el registro para poder cargar tu catálogo musical y acceder a todas las funciones de tu dashboard.",
     "en": "You must complete the registration to be able to upload your musical catalogue and access all the functions of your dashboard."      
@@ -352,8 +356,8 @@
     "en": "Create Account"      
   },
   "auth_message_title":{
-    "es": "Ya has creado tu cuenta en Filmtono",
-    "en": "You have already created your account in Filmtono"
+    "es": "Has creado tu cuenta en Filmtono",
+    "en": "You have created your account in Filmtono"
   },
   "auth_message_paragraph":{
     "es": "Te hemos enviado un correo ¡Revisa tu bandeja de entrada para confirmar tu cuenta!",
@@ -707,6 +711,10 @@
     "es": "Selecciona los artistas secundarios",
     "en": "Select the secondary artists"
   },
+  "music_albums_artist-secondary_btn":{
+    "es": "Agregar artista secundario",
+    "en": "Add secondary artist"
+  },
   "music_albums_upc_label":{
     "es": "UPC",
     "en": "UPC"
@@ -902,6 +910,10 @@
   "music_genres_form-new_placeholder-spanish":{
     "es": "Escribe un nuevo género en español",
     "en": "Write a new genre in Spanish"
+  },
+  "artists_main-title":{
+    "es": "Tus Artistas",
+    "en": "Your Artists"
   },
   "admin_genres_title":{
     "es": "Géneros",

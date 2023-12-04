@@ -54,6 +54,7 @@
                 <option value="<?php echo s($artista->id); ?>" data-name="<?php echo s($artista->nombre); ?>"><?php echo s($artista->nombre); ?></option>
             <?php endforeach; ?>
         </datalist>
+        <p>If the artist is not on the list, add a new one</p>
         <button type="button" class="btn-back" id="btn-add-artist">{%music_albums_artist-secondary_btn%}</button>
         <input type="hidden" name="art-secundarios" id="artsecundarios-hidden" value="">
     </div>
