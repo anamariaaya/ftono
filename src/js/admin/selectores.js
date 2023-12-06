@@ -27,6 +27,7 @@ export const empresa = document.querySelector('#empresa');
 export const idFiscal = document.querySelector('#id_fiscal');
 export const direccion = document.querySelector('#direccion');
 export const email = document.querySelector('#email');
+export const tabsActions = document.querySelector('.tabs__pags');
 
 export const terms = document.querySelector('#terms');
 export const privacy = document.querySelector('#privacy');

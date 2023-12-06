@@ -491,6 +491,10 @@
     "es": "Debes seleccionar un tipo de usuario",
     "en": "You must select a type of user"
   },
+  "auth_complete-register_title":{
+    "es": "Completa tu registro",
+    "en": "Complete your registration"
+  },
   "profile_alert-profile-updated":{
     "es": "Tu perfil ha sido actualizado",
     "en": "Your profile has been updated"

@@ -78,5 +78,9 @@
     "next":{
       "en": "Next",
       "es": "Siguiente"
+    },
+    "save":{
+      "en": "Save",
+      "es": "Guardar"
     }
 }

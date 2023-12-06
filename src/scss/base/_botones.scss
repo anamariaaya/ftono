@@ -135,3 +135,14 @@
         cursor: pointer;
     }
 }
+
+.btn-disabled{
+    background-color: v.$gray-light;
+    color: v.$gray-dark;
+    &:hover{
+        cursor: not-allowed;
+        pointer-events: none;
+        background-color: v.$gray-light;
+        transform: none;
+    }
+}

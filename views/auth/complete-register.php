@@ -1,4 +1,4 @@
-<h1><?php echo $titulo; ?></h1>
+<h1>{%auth_complete-register_title%}</h1>
 
 <p></p>
 
@@ -250,7 +250,7 @@
 
         <div class="tabs__pags">
             <button type="button" id="anterior" class="btn-tabs ocultar">&#129044; {%b-previous%}</button>
-            <button type="button" id="siguiente" class="btn-tabs">{%b-next%} &#10143;</button>
+            <button type="button" id="siguiente" class="btn-tabs btn-tabs--disabled">{%b-next%} &#10143;</button>
             <input type="submit" id="btn-submit" class="btn-tabs no-display" value="{%b-register%} &#10143;">
         </div>
         <input type="hidden" name="signatureInput" id="signatureInput" value="">

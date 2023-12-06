@@ -49,7 +49,7 @@ export async function imprimirAlerta(message, type, container, sibling) {
     // Quitar el alert despues de 3 segundos
     setTimeout( () => {
         divMensaje.remove();
-    }, 100000);
+    }, 4000);
 }
 
 export function validarFormulario(e) {
@@ -63,7 +63,6 @@ export function validarFormulario(e) {
         }
        
     } else {
-        //console.log('No hay nada');
         imprimirAlerta('input', 'error', form, e.target);
     }
 
@@ -81,7 +80,7 @@ export function validarFormulario(e) {
     }
 
     if(e.target.type === 'tel'){
-        if(num.test(e.target.value) === false || e.target.value.length < 9){
+        if(num.test(e.target.value) === false || e.target.value.length < 8){
             imprimirAlerta('phone', 'error', form, e.target);
         } 
     }

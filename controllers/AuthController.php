@@ -463,7 +463,7 @@ class AuthController {
         }
 
         $router->render('auth/complete-register', [
-            'titulo' => $titulo,
+            'titulo' => 'auth_complete-register_title',
             'usuario' => $usuario
         ]);
     }

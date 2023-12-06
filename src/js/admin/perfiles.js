@@ -1,5 +1,5 @@
 //Módulos importados
-import { botones, pagAnterior, pagSiguiente, afterNav, btnContrato, nombre, email, cargo, telContacto, empresa, idFiscal, direccion, terms, privacy, divCheck, btnSubmit, paisContacto, telIndex, hiddenMusic, hiddenArtistic, contratoMusical, contratoArtistico, confirmContrato, confirmContratoArt} from './selectores.js';
+import { botones, pagAnterior, pagSiguiente, afterNav, btnContrato, nombre, email, cargo, telContacto, empresa, idFiscal, direccion, terms, privacy, divCheck, btnSubmit, paisContacto, telIndex, hiddenMusic, hiddenArtistic, contratoMusical, contratoArtistico, confirmContrato, confirmContratoArt, selectPais} from './selectores.js';
 import { validarFormulario, imprimirAlerta } from '../base/funciones.js';
 import {readLang, readJSON} from '../base/funciones.js';
 
@@ -10,7 +10,8 @@ let paso = 1;
 //Funciones para el registro de empresa
 //*Paginador y tabs
 
-export function tabs() {   
+export function tabs() {
+    validarTab1();
     botones.forEach(tab => {
         tab.addEventListener('click', function(e) {
             paso = e.target.dataset.paso;
@@ -20,13 +21,11 @@ export function tabs() {
     });
 }
 const secciones = document.querySelectorAll('.tabs__section');
-function cambiarSeccion(e) {
-    
-    
+function cambiarSeccion(e) {   
     const tabActivo = document.querySelector(`#paso-${paso}`);
     tabActivo.classList.add('mostrar');
     e.target.classList.add('active');
-
+    let inputs;
     // Remueve la clase active de los botones
     if(tabActivo.id === 'paso-1'){
         botones[0].classList.add('active');
@@ -35,12 +34,14 @@ function cambiarSeccion(e) {
         secciones[0].classList.add('mostrar');
         secciones[1].classList.remove('mostrar');
         secciones[2].classList.remove('mostrar');
+        inputs = [cargo, telContacto, paisContacto];
     } else if(tabActivo.id === 'paso-2'){
         botones[1].classList.add('active');
         botones[2].classList.remove('active');
         secciones[1].classList.add('mostrar');
         secciones[2].classList.remove('mostrar');
         secciones[0].classList.remove('mostrar');
+        inputs = [empresa, idFiscal, direccion];
     } else{
         botones[1].classList.add('active');
         botones[2].classList.add('active');
@@ -48,12 +49,48 @@ function cambiarSeccion(e) {
         secciones[0].classList.remove('mostrar');
         secciones[1].classList.remove('mostrar');
     }
-    // secciones.forEach(seccion => {
-    //     if (seccion.id !== tabActivo.id) {
-    //         seccion.classList.remove('mostrar');
-    //     }
-    // });      
 }
+
+function validarTab(inputs){
+    let tabActive = document.querySelector(".mostrar");
+    console.log(tabActive.id);
+
+    if(tabActive.id === 'paso-2'){
+    pagSiguiente.classList.add('btn-disabled');
+    const arrayInputs = Array.from(inputs);
+    console.log(arrayInputs);
+    //agregar event listener a los campos
+        arrayInputs.forEach(input => {
+            input.addEventListener('input', ()=>{
+                if(arrayInputs.every( input => input.value !== '')){
+                    pagSiguiente.classList.remove('btn-disabled');
+                }else{
+                    pagSiguiente.classList.add('btn-disabled');
+                }
+            });
+        });  
+    } //validar que el array de inputs no este vacio
+
+}
+
+function validarTab1(){
+    const inputs = [cargo, telContacto, paisContacto];
+    const arrayInputs = Array.from(inputs);
+    // console.log(tabActivoId);
+    console.log(arrayInputs);
+    //agregar event listener a los campos
+    arrayInputs.forEach(input => {
+        input.addEventListener('input', ()=>{
+            if(arrayInputs.every( input => input.value !== '')){
+                pagSiguiente.classList.remove('btn-tabs--disabled');
+            }else{
+                pagSiguiente.classList.add('btn-tabs--disabled');
+            }
+        });
+    });   //validar que el array de inputs no este vacio
+
+}
+
 async function botonesPaginador(){ 
     const lang = await readLang();
     const alerts = await readJSON();
@@ -62,7 +99,6 @@ async function botonesPaginador(){
         case '1':
             pagAnterior.classList.add('ocultar');
             pagSiguiente.classList.remove('ocultar');
-            pagSiguiente.textContent = alerts['next'][lang]+' \u2713';
             afterNav.classList.remove('step2');
             afterNav.classList.remove('step3');
             pagSiguiente.classList.remove('btn-tabs--disabled');
@@ -73,6 +109,7 @@ async function botonesPaginador(){
             afterNav.classList.add('step2');
             afterNav.classList.remove('step3');
             pagSiguiente.classList.remove('btn-tabs--disabled');
+            pagSiguiente.textContent = alerts['next'][lang]+' \u2713';
             break;
         case '3':
             pagAnterior.classList.remove('ocultar');
@@ -99,6 +136,8 @@ export function paginador(){
 function paginaSiguiente(){
     if(!botones[1].classList.contains('active')){
         botones[1].click();
+        const inputs = [empresa, idFiscal, direccion];
+        validarTab(inputs);
     } else if(!botones[2].classList.contains('active')){
         botones[2].click();
     }
@@ -106,9 +145,11 @@ function paginaSiguiente(){
 
 function paginaAnterior(e){
     if(botones[2].classList.contains('active')){
-        botones[1].click();
+        pagSiguiente.classList.remove('btn-disabled');
+        botones[1].click();        
     } else if(botones[1].classList.contains('active')){
-        botones[0].click();
+        pagSiguiente.classList.remove('btn-disabled');
+        botones[0].click();        
     }
 }
 
@@ -315,7 +356,7 @@ async function modalContrato(e){
         sendBtn.classList.add('btn-tabs');
     }
 
-    sendBtn.textContent = 'Guardar';
+    sendBtn.textContent = alerts['save'][lang];
     sendBtn.onclick = canvasValidation(canvas, sendBtn);
     
     //add event listener to see if the canvas is empty
