@@ -1,6 +1,6 @@
 import { dropdownDiv, passbtn } from "./selectores.js";
 import { chooseLang } from "./language.js";
-import { UI, showPassword, loader } from "./UI.js";
+import { UI, showPassword, mainSlider } from "./UI.js";
 
 class App{
     constructor(){
@@ -18,8 +18,8 @@ class App{
         if(passbtn){
             showPassword();
         }
-
-        loader();
+        mainSlider();
+        // loader();
     }
 }
 

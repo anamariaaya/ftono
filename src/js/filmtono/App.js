@@ -1,7 +1,8 @@
-import { artistaSecundario, artistasInput, btnAgregar, btnEliminarCuenta, btnEliminarUsuario, portada } from "./selectores.js";
+import { artistaSecundario, artistasInput, btnAgregar, btnEliminarCuenta, btnEliminarUsuario, portada, promoInput } from "./selectores.js";
 import { eliminarCuenta } from "./profile.js";
 import { chooseLang } from "../UI/language.js";
 import { styleDatalist, styleFileInput, artistasSecundarios, addArtist } from "./artistas.js";
+import { readFileName } from "./ux.js";
 // import { eliminarUsuario } from "./users.js";
 //import { consultaUsuarios } from "./APIUsuarios.js";
 
@@ -30,6 +31,9 @@ class App{
         }
         if(btnAgregar){
             addArtist();
+        }
+        if(promoInput){
+            readFileName();
         }
         // if(btnEliminarUsuario){
         //     eliminarUsuario();

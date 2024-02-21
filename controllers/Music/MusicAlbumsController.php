@@ -42,7 +42,7 @@ class MusicAlbumsController{
            
             $album ->sincronizar($_POST);
             $album->id_usuario = $_SESSION['id'];
-            debugging($album);
+            //debugging($album);
             $album->guardar();
 
             //Buscar el álbum recién creado

@@ -37,6 +37,7 @@ session_start();
 
 // Iniciar Sesión
 $router->get('/', [PublicController::class, 'index']);
+$router->get('/category', [PublicController::class, 'category']);
 $router->get('/search', [PublicController::class, 'search']);
 $router->get('/cart', [PublicController::class, 'cart']);
 $router->get('/categories', [PublicController::class, 'categories']);
@@ -104,6 +105,11 @@ $router->post('/filmtono/profile/delete', [ProfileController::class, 'delete']);
 
 //Filmtono Promos
 $router->get('/filmtono/promos', [PromosController::class, 'index']);
+$router->get('/filmtono/promos/new', [PromosController::class, 'new']);
+$router->post('/filmtono/promos/new', [PromosController::class, 'new']);
+$router->get('/filmtono/promos/edit', [PromosController::class, 'edit']);
+$router->post('/filmtono/promos/edit', [PromosController::class, 'edit']);
+$router->post('/filmtono/promos/delete', [PromosController::class, 'delete']);
 
 //Filmtono Users
 $router->get('/filmtono/users', [UsersController::class, 'index']);

@@ -2,18 +2,13 @@
 @use 'base/mixins' as m;
 
 .alerta {
-    padding: 1rem 3rem;
+    padding: 0.5rem 1rem;
     text-transform: uppercase;
-    margin: 2.5rem auto;
-    font-size: 1.4rem;
+    margin: 0 auto;
+    font-size: 1.2rem;
     font-weight: v.$bold;
     border-radius: 1rem;
-    @include m.desktop{
-        max-width: 65%;
-    }
-    @include m.desktop-large{
-        max-width: 50%;
-    }
+    width: 100%;
     &__error{
         @extend .alerta;
         border: 0.2rem solid lighten(v.$red, 5);
@@ -29,7 +24,7 @@
 
 .dashboard .alerta{
     margin: 0;
-    padding: 0.5em 1rem;
+    padding: 0.5rem 1rem;
     font-size: 1.2rem;
     @include m.desktop{
         max-width: 100%;

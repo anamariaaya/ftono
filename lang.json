@@ -1,4 +1,8 @@
 {
+  "home_title":{
+    "es": "Encuentra la canción perfecta para tu proyecto",
+    "en": "Find the perfect song for your project"
+  },
   "nav_hello":{
     "es": "¡Hola",
     "en": "Hello"      
@@ -919,6 +923,34 @@
     "es": "Tus Artistas",
     "en": "Your Artists"
   },
+  "admin_alert_mandatory-file":{
+    "es": "Debes seleccionar un archivo",
+    "en": "You must select a file"
+  },
+  "admin_promos_title":{
+    "es": "Promos",
+    "en": "Promos"
+  },
+  "admin_promos_new-title":{
+    "es": "Nueva Promo",
+    "en": "New Promo"
+  },
+  "admin_promos_new-btn":{
+    "es": "Crear Promo",
+    "en": "Create Promo"
+  },
+  "admin_promos_edit-title":{
+    "es": "Editar Promo",
+    "en": "Edit Promo"
+  },
+  "admin_promos_edit-btn":{
+    "es": "Actualizar Promo",
+    "en": "Update Promo"
+  },
+  "admin_promos_btn-back":{
+    "es": "Volver a Promos",
+    "en": "Back to Promos"
+  },
   "admin_genres_title":{
     "es": "Géneros",
     "en": "Genres"
@@ -966,6 +998,26 @@
   "register":{
     "es": "Registrarse",
     "en": "Register"      
+  },
+  "index_subtitle-categories":{
+    "es": "Categorías",
+    "en": "Categories"
+  },
+  "category-genres":{
+    "es": "Géneros",
+    "en": "Genres"
+  },
+  "category-sensations":{
+    "es": "Sensaciones",
+    "en": "Sensations"
+  },
+  "category-instruments":{
+    "es": "Instrumentos",
+    "en": "Instruments"
+  },
+  "category-movies":{
+    "es": "Cine & TV",
+    "en": "Movies & TV"
   },
   "p-required_fields":{
     "es": "Los campos marcados con (*) son obligatorios",

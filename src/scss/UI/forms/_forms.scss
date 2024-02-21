@@ -108,7 +108,8 @@
             text-transform: capitalize;
         }
     }
-    &__custom__input{
+    &__custom{
+        &__input{
         @extend .form__group__input;
         color: transparent;
         background-color: v.$yellow;
@@ -129,6 +130,10 @@
             user-select: none;
             cursor: pointer;
           }
+        }
+        &__file-name{
+            color: v.$white;
+        }
     }
 }
 

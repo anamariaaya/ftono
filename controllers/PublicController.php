@@ -3,16 +3,26 @@
 namespace Controllers;
 
 use MVC\Router;
+use Model\Promos;
 
 class PublicController{
 
     public static function index(Router $router){
         $inicio = true;
         $titulo = 'index';
+        $promos = Promos::AllOrderDesc('id');
 
         $router->render('/paginas/index',[
             'inicio' => $inicio,
-            'titulo' => $titulo,
+            'titulo' => 'home_title',
+            'promos' => $promos
+        ]);
+    }
+
+    public static function category(Router $router){
+        $titulo = 'Categoría';
+        $router->render('/paginas/category',[
+            'titulo' => $titulo
         ]);
     }
 
@@ -26,7 +36,7 @@ class PublicController{
     public static function cart(Router $router){
         $titulo = 'Carrito';
         $router->render('/paginas/cart',[
-            'titulo' => $titulo
+            'titulo' => 'home_title'
         ]);
     }
 

@@ -168,8 +168,10 @@ function validarCheck(e){
         alertaCheck('terms');
     } else if(!privacy.checked){
         alertaCheck('privacy');
-    } else if(checkMusical === false){
-        alertaCheck('contract');
+    // } else if(btnContrato){
+    //      if(checkMusical === false){
+    //         alertaCheck('contract');
+    //     }
     }
     else{
         //comprobar que todos los inputs tengan un valor

@@ -10,3 +10,7 @@ export const portada = document.querySelectorAll('.form__custom__input');
 
 export const artistaSecundario = document.querySelector('#artsecundarios_input');
 export const btnAgregar = document.querySelector('#btn-add-artist'); 
+
+//Selectores de archivos
+export const promoInput = document.getElementById('promos');
+export const promoLabel = document.getElementById('promoLabel');

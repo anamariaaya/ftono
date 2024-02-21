@@ -6,8 +6,11 @@
     background-color: darken(v.$gray-dark, 4);
     padding: 1rem 4rem;
     place-items: center;
-    margin-top: 5rem;
+    margin-top: 4rem;
     @include m.grid(1, 2rem);
+    @include m.tablet{
+        margin-top: 8rem;
+    }
 
     &__logo{
         width: 20rem;
