@@ -10,9 +10,8 @@ const sourcemaps = require('gulp-sourcemaps');
 
 // Imagenes
 const cache = require('gulp-cache');
-const imagemin = require('gulp-imagemin');
+const imageop = require('gulp-image-optimization');
 const webp = require('gulp-webp');
-const svg = require('gulp-svgmin');
 
 // Javascript
 const terser = require('gulp-terser-js');
@@ -37,12 +36,14 @@ function css( done ) {
 
 function imagenes(done) {
     const opciones = {
-        optimizationLevel: 3
+        optimizationLevel: 3,
+        progressive: true,
+        interlaced: true
     }
     src(path.img)
-        .pipe( cache( imagemin(opciones) ) )
+        .pipe(  cache(imageop(opciones)) ) // Optimizarlo
         .pipe( dest('public/build/img') )
-    done();
+    done()
 }
 
 function versionWebp( done ) {
@@ -65,12 +66,6 @@ function javascript( done ) {
     done();
 }
 
-function imgSvg(){
-    return src(path.svg)
-        .pipe(svg())
-        .pipe(dest('public/build/img'));
-}
-
 function dev( done ) {
     watch(path.scss, css);
     watch(path.js, javascript);
@@ -82,5 +77,4 @@ exports.css = css;
 exports.js = javascript;
 exports.imagenes = imagenes;
 exports.versionWebp = versionWebp;
-exports.imgSvg = imgSvg;
-exports.dev = parallel( css, imagenes, versionWebp, javascript, imgSvg, dev);
+exports.dev = parallel( css, imagenes, versionWebp, javascript, dev);
