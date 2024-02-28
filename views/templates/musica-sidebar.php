@@ -18,12 +18,16 @@
             </span>
         </a>
 
-        <a href="/music/labels" class="dashboard__enlace <?php pagina_admin('labels'); regBtn();?>">
-            <i class="fa-solid fa-certificate dashboard__icono"></i>
-            <span class="dashboard__menu-texto">
-                <?php echo tt('sidebar_labels'); ?>
-            </span>
-        </a>
+        <?php
+            if($nivel->id_nivel == '2'):?>
+                <a href="/music/labels" class="dashboard__enlace <?php pagina_admin('labels'); regBtn();?>">
+                    <i class="fa-solid fa-certificate dashboard__icono"></i>
+                    <span class="dashboard__menu-texto">
+                        <?php echo tt('sidebar_labels'); ?>
+                    </span>
+                </a>
+            <?php endif;
+        ?>
 
         <a href="/music/albums" class="dashboard__enlace <?php pagina_admin('albums'); regBtn();?>">
             <i class="fa-solid fa-compact-disc dashboard__icono"></i>

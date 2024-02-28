@@ -405,25 +405,26 @@ class AuthController {
             //guardar los datos en la base de datos
             $empresa->guardar();
 
-            $contractPDF = new MusicalContract($usuario->id, $empresa->empresa, $usuario->nombre.' '.$usuario->apellido, $empresa->id_fiscal, $empresa->direccion, $firma, $_POST['pais_contacto_name'], $empresa->tel_contacto, $usuario->email, date('d-m-y'));
+            $empresa = Empresa::where('empresa', $empresa->empresa);
+
+            $contractPDF = new MusicalContract($usuario->id, $empresa->empresa, $usuario->nombre.' '.$usuario->apellido, $empresa->id_fiscal, $empresa->direccion, $firma, $_POST['pais_contacto_name'], $empresa->tel_contacto, $usuario->email, date('d-m-y'), $empresa->id);
 
             $contractPDF->guardarContrato();
-
-            $empresa = Empresa::where('empresa',$empresa->empresa);
                         
             $ctr_music->id_usuario = $usuario->id;
             $ctr_music->id_empresa = $empresa->id;
-            $ctr_music->nombre_doc = $ctr_music->id_usuario.'-music-'.date('d-m-y').'.pdf';
+            $ctr_music->nombre_doc = $ctr_music->id_usuario.'-'.$ctr_music->id_empresa.'-music-'.date('d-m-y').'.pdf';
             $ctr_music->guardar();
                        
             if($firmaOpt != ''){
-                $contractPDF = new ArtisticContract($usuario->id, $empresa->empresa, $usuario->nombre.' '.$usuario->apellido, $empresa->id_fiscal, $empresa->direccion, $firmaOpt, $_POST['pais_contacto_name'], $empresa->tel_contacto, $usuario->email, date('d-m-y'));
+                $empresa = Empresa::where('empresa', $empresa->empresa);
+
+                $contractPDF = new ArtisticContract($usuario->id, $empresa->empresa, $usuario->nombre.' '.$usuario->apellido, $empresa->id_fiscal, $empresa->direccion, $firmaOpt, $_POST['pais_contacto_name'], $empresa->tel_contacto, $usuario->email, date('d-m-y'), $empresa->id);
                 $contractPDF->guardarContrato();
 
-                $empresa = Empresa::where('empresa',$empresa->empresa);
                 $ctr_artistic->id_usuario = $usuario->id;
                 $ctr_artistic->id_empresa = $empresa->id;
-                $ctr_artistic->nombre_doc = $ctr_artistic->id_usuario.'-music-'.date('d-m-y').'.pdf';
+                $ctr_artistic->nombre_doc = $ctr_artistic->id_usuario.'-'.$ctr_artistic->id_empresa.'-artistic-'.date('d-m-y').'.pdf';
                 $ctr_artistic->guardar();
             }
             

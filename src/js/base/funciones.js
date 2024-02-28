@@ -166,3 +166,16 @@ export function cerrarAlerta(){
         alerta.remove();
     }
 }
+
+export function loader(button){
+    // Hide the loading screen when the page is fully loaded
+    document.getElementById('loadingScreen').style.display = 'none';
+
+    //Add event listener for the button given to trigger the loader
+    button.addEventListener('click', showLoadingScreen);
+    
+    // Function to show the loading screen
+    function showLoadingScreen() {
+        document.getElementById('loadingScreen').style.display = 'flex';
+    }
+}

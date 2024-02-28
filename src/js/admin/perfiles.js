@@ -1,7 +1,7 @@
 //Módulos importados
 import { botones, pagAnterior, pagSiguiente, afterNav, btnContrato, nombre, email, cargo, telContacto, empresa, idFiscal, direccion, terms, privacy, divCheck, btnSubmit, paisContacto, telIndex, hiddenMusic, hiddenArtistic, contratoMusical, contratoArtistico, confirmContrato, confirmContratoArt, selectPais} from './selectores.js';
-import { validarFormulario, imprimirAlerta } from '../base/funciones.js';
-import {readLang, readJSON} from '../base/funciones.js';
+import { validarFormulario, imprimirAlerta, loader, readJSON, readLang } from '../base/funciones.js';
+
 
 //Variables globales
 let checkMusical = false;
@@ -53,12 +53,10 @@ function cambiarSeccion(e) {
 
 function validarTab(inputs){
     let tabActive = document.querySelector(".mostrar");
-    console.log(tabActive.id);
 
     if(tabActive.id === 'paso-2'){
     pagSiguiente.classList.add('btn-disabled');
     const arrayInputs = Array.from(inputs);
-    console.log(arrayInputs);
     //agregar event listener a los campos
         arrayInputs.forEach(input => {
             input.addEventListener('input', ()=>{
@@ -76,8 +74,7 @@ function validarTab(inputs){
 function validarTab1(){
     const inputs = [cargo, telContacto, paisContacto];
     const arrayInputs = Array.from(inputs);
-    // console.log(tabActivoId);
-    console.log(arrayInputs);
+
     //agregar event listener a los campos
     arrayInputs.forEach(input => {
         input.addEventListener('input', ()=>{
@@ -177,13 +174,14 @@ function validarCheck(e){
         //comprobar que todos los inputs tengan un valor
         const inputs = [cargo, telContacto, empresa, idFiscal,  direccion];
         const arrayInputs = Array.from(inputs);
+        loader(btnSubmit);
 
         if(arrayInputs.every( input => input.value !== '')){
             btnSubmit.click();
+            //Add loader function when clicking the submit button
         } else{
             alertaCheck('inputs');
         }
-        //e.target.type = 'submit';
     }
 }
 

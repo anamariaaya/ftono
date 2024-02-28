@@ -58,8 +58,6 @@
 
     <p>The site will allow you to upload metadata of your songs so that users can find them and request information about their ownership and licensing permissions.</p>
 
-    <p>The site will allow you to upload audio tracks and their stems, in exchange for an annual subscription. For this you must provide high-quality Admos or WAV audio or high-quality film formats.</p>
-
     <p>You will be able to view notices of buyers&#39; offers, license terms, and approve applications.</p>
 
     <p>Create or Approve the creation of label and artist profiles that will also be able to view your applications and approve them.</p>

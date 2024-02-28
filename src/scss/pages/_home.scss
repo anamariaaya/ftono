@@ -4,8 +4,11 @@
 
 .main{
     width: 85%;
-    margin: 0 auto;
+    margin: calc(v.$separate/2) auto 0 auto;
     position: relative;
+    @include m.tablet{
+        margin: calc(v.$separate + 2rem) auto 0 auto;
+    }
     &__slider{
         overflow: hidden;
         &__wrapper{
@@ -14,13 +17,19 @@
         }
         &__item{
             min-width: 85%;
-            height: 25vw;
+            height: 45vw;
             margin: auto 0;
             color: v.$white;
             background-color: v.$black;
             font-size: 5rem;
+            @include m.desktop{
+                height: 25vw;
+            }
             &--active{
-                height: 30vw;
+                height: 55vw;
+                @include m.desktop{
+                    height: 30vw;
+                }
             }
             img, video{
                 width: 100%;
@@ -42,12 +51,13 @@
             padding: 0.7rem 1rem;
             &:hover{
                 cursor: pointer;
+                background-color: v.$yellow;
             }
         }
     }
     &__subtitle{
         text-align: left;
-        font-size: 3.8rem;
+        font-size: clamp(3rem, 2.5vw, 3.8rem);
         color: v.$green;
         margin-bottom: 4rem;
         &::after{
@@ -66,7 +76,7 @@
             &:hover .main__grid__text{
                 top: 100%;
                 font-size: clamp(1.4rem, 2.5vw, 3rem);
-                background-color: v.$blue;
+                background-color: v.$yellow;
                 height: auto;
                 border-radius: v.$border-radius;
             }  

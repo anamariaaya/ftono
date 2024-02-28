@@ -1,6 +1,6 @@
-import { btnAgregar } from "../filmtono/selectores.js";
-import { dropdownDiv, dropdownMenu, dropdownBtn,  passbtn } from "./selectores.js";
 
+import { dropdownDiv, dropdownMenu, dropdownBtn, passbtn} from "./selectores.js";
+import { nextBtn, prevBtn } from "./selectores.js";
 export function UI(){
     dropdownDiv.onmouseover = function(){
         dropdownMenu.classList.remove('no-display');
@@ -12,7 +12,7 @@ export function UI(){
     }
 }
 
-export function showPassword(){  
+export function showPassword(){
     passbtn.forEach(btn => {
         btn.addEventListener('click', () => {
             if(btn.classList.contains('fa-eye-slash')){
@@ -26,37 +26,6 @@ export function showPassword(){
             }
         });
     });
-}
-
-// export function loader(){
-//     document.addEventListener("DOMContentLoaded", function(event) {
-//         // Hide the loading screen when the page is fully loaded
-//         document.getElementById('loadingScreen').style.display = 'none';
-    
-//         // Add event listener to all anchor tags
-//         document.querySelectorAll('a').forEach(link => {
-//             link.addEventListener('click', function(e) {
-//                 // Check if the link is not opening in a new tab or window
-//                 if (!e.target.target || e.target.target.toLowerCase() === '_self') {
-//                     showLoadingScreen();
-//                 }
-//             });
-//         });
-//     });
-    
-//     // Add event listener to all forms for submit event
-//     document.querySelectorAll('form').forEach(form => {
-//         form.addEventListener('submit', showLoadingScreen);
-//     });
-
-//     document.querySelectorAll('button').forEach(btn => {
-//         btn.addEventListener('click', showLoadingScreen);
-//     });
-// }
-
-// Function to show the loading screen
-export function showLoadingScreen() {
-    document.getElementById('loadingScreen').style.display = 'flex';
 }
 
 //Function for main slider on index.php
@@ -77,11 +46,7 @@ export function mainSlider(){
         wrapper.style.transition = 'transform 0.5s ease-in-out';
         counter++;
         wrapper.style.transform = `translateX(${-slideWidth * counter + (0.08*slideWidth)}px)`;
-        // wrapper.style.transform = `translateX(${-slideWidth * counter + 15}px)`;
-
         addStyle();
-        //calculate the wrapper transform to move the slide plus 5% of the slide width
-        
 
         if(counter === slides.length - 1){
             setTimeout(() => {
@@ -107,8 +72,7 @@ export function mainSlider(){
     }
 
     //Add event listeners to the buttons to move the slides
-    const nextBtn = document.querySelector('.main__slider__btn--next');
-    const prevBtn = document.querySelector('.main__slider__btn--prev');
+
     nextBtn.addEventListener('click', moveSlide);
     prevBtn.addEventListener('click', moveSlideOneBack);
 
@@ -118,6 +82,7 @@ export function mainSlider(){
         counter--;
         wrapper.style.transform = `translateX(${-slideWidth * counter + (0.08*slideWidth)}px)`;
         addStyle();
+
         if(counter === 0){
             setTimeout(() => {
                 moveSlideBack();

@@ -6,11 +6,7 @@
 
     <h2>Definiciones</h2>
 
-    <p>El PROVEEDOR MUSICAL es la compañía/persona que administra u ostenta la
-    propiedad o una parte de esta y la administración de los derechos autorales y/o de
-    máster de audio de las canciones que se van a ofrecer a través del sitio Filmtono,
-    haciéndose responsable de que el 100% de los propietarios de una canción sean
-    realmente beneficiados si se llega a vender una licencia para su canción.</p>
+    <p>El PROVEEDOR MUSICAL es la compañía/persona que administra u ostenta la propiedad o una parte de esta y la administración de los derechos autorales y/o de máster de audio de las canciones que se van a ofrecer a través del sitio Filmtono, haciéndose responsable de que el 100% de los propietarios de una canción sean realmente beneficiados si se llega a vender una licencia para su canción.</p>
 
     <h3>All in One</h3>
 
@@ -62,8 +58,6 @@
     <h2>Administración del catálogo</h2>
 
     <p>El sitio permitirá subir la metadata de sus canciones para que los usuarios puedan encontrarlas y solicitar información acerca de su propiedad y permisos para licenciar.</p>
-
-    <p>El sitio permitirá subir tracks de audio y sus stems, a cambio de una suscripción anual. Para esto debe proveer audios de alta calidad Admos o WAV o formatos de alta calidad para cine.</p>
 
     <p>Podrá ver notificaciones de ofertas de compradores, los términos de la licencia y aprobar solicitudes.</p>
 

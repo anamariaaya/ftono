@@ -60,3 +60,9 @@
     </div>
     <!-- End of categories grid -->
 </div>
+
+<!-- Section with the artists -->
+<div class="container">
+    <h2 class="main__subtitle">{%index_subtitle-artists%}</h2>
+
+</div>
