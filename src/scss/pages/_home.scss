@@ -53,6 +53,9 @@
                 cursor: pointer;
                 background-color: v.$yellow;
             }
+            &--disabled{
+                visibility: hidden;
+            }
         }
     }
     &__subtitle{

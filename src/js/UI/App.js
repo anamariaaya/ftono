@@ -19,7 +19,6 @@ class App{
             showPassword();
         }
         mainSlider();
-        // loader();
     }
 }
 

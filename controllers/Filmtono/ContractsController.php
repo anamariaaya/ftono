@@ -11,24 +11,20 @@ use Model\PerfilUsuario;
 class ContractsController{
     public static function index(Router $router){
         isAdmin();
-        $titulo = 'Contracts';
+        $titulo = 'contracts_main-title';
         $contratosMusical = CTRMusical::all();
         $contratosArtistico = CTRArtistico::all();
-
-//create an array of objects with all the data from the database when finding the user id
-
-        foreach($contratosMusical as $contratoMusical){
-            $perfilUsuario = PerfilUsuario::where('id_usuario', $contratoMusical->id_usuario);
-            $empresa = Empresa::find($perfilUsuario->id_empresa);
-            $empresas[] = $empresa;
-        }
+        $contratos = CTRMusical::unionTables('ctr_musical', 'ctr_artistico');
+        $empresas = Empresa::all();
+        $perfilUsuario = PerfilUsuario::all();
 
         $router->render('/admin/contracts/index',[
             'titulo' => $titulo,
             'contratosMusical' => $contratosMusical,
             'contratosArtistico' => $contratosArtistico,
             'perfilUsuario' => $perfilUsuario,
-            'empresas' => $empresas
+            'empresas' => $empresas,
+            'contratos' => $contratos
         ]);
     }
 }

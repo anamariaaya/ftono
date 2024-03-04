@@ -32,72 +32,55 @@ export function showPassword(){
 export function mainSlider(){
     const wrapper = document.querySelector('.main__slider__wrapper');
     const slides = document.querySelectorAll('.main__slider__item');
-    //Add class to the first slide to make the transition smooth
-    slides[0].classList.add('main__slider__item--active');
-    //get the width of the slides
     let slideWidth = slides[0].clientWidth;
-    //set the initial position of the wrapper
-    //set the initial slide
     let counter = 0;
-    const time = 5000;
-    //set the initial position of the wrapper
-    //function to move the slides
+    const time = 7000;
+
+    const updateButtonStates = () => {
+        prevBtn.disabled = counter <= 0;
+        prevBtn.classList.toggle('main__slider__btn--disabled', counter <= 0);
+        nextBtn.disabled = counter >= slides.length - 1;
+        nextBtn.classList.toggle('main__slider__btn--disabled', counter >= slides.length - 1);
+    };
+
+    updateButtonStates(); // Set the initial state of the buttons
+
     const moveSlide = () => {
+        if(counter >= slides.length - 1) {
+            counter = -1; // Reset to -1 because it will increment to 0 in moveSlide()
+        }
         wrapper.style.transition = 'transform 0.5s ease-in-out';
         counter++;
-        wrapper.style.transform = `translateX(${-slideWidth * counter + (0.08*slideWidth)}px)`;
-        addStyle();
-
-        if(counter === slides.length - 1){
-            setTimeout(() => {
-                moveSlideBack();
-            }, time);
-        }
-    }
-    //function to move the slides back to the first slide
-    const moveSlideBack = () => {
-        wrapper.style.transition = 'transform 0.5s ease-in-out';
-        counter = 0;
         wrapper.style.transform = `translateX(${-slideWidth * counter}px)`;
-        addStyle();
-    }
-    //set the interval to move the slides
-    setInterval(moveSlide, time);
-    //Add specific style to the slides displaying according to the counter and remove the style from the rest of the slides
-    const addStyle = () => {
-        slides.forEach(slide => {
-            slide.classList.remove('main__slider__item--active');
-        });
-        slides[counter].classList.add('main__slider__item--active');
-    }
+        updateButtonStates();
+    };
 
-    //Add event listeners to the buttons to move the slides
-
-    nextBtn.addEventListener('click', moveSlide);
-    prevBtn.addEventListener('click', moveSlideOneBack);
-
-    //function to move the slides one back
-    function moveSlideOneBack(){
+    const moveSlideBack = () => {
+        if(counter <= 0) {
+            counter = slides.length; // Reset to length because it will decrement
+        }
         wrapper.style.transition = 'transform 0.5s ease-in-out';
         counter--;
-        wrapper.style.transform = `translateX(${-slideWidth * counter + (0.08*slideWidth)}px)`;
-        addStyle();
+        wrapper.style.transform = `translateX(${-slideWidth * counter}px)`;
+        updateButtonStates();
+    };
 
-        if(counter === 0){
-            setTimeout(() => {
-                moveSlideBack();
-            }, time);
-        }
-    }
+    // Reintegrate automatic sliding with setInterval
+    setInterval(() => {
+        moveSlide(); // Automatically move to the next slide
+    }, time);
 
-    //Add event listener to the window to move the slides when the window is resized
+    // Manual control
+    nextBtn.addEventListener('click', moveSlide);
+    prevBtn.addEventListener('click', moveSlideBack);
+
+    // Responsive adjustments
     window.addEventListener('resize', () => {
-        wrapper.style.transition = 'none';
         slideWidth = slides[0].clientWidth;
         wrapper.style.transform = `translateX(${-slideWidth * counter}px)`;
     });
-
-
 }
+
+
 
 export default UI;

@@ -47,7 +47,7 @@
         <a href="/filmtono/albums" class="dashboard__enlace <?php pagina_admin('albums');?>">
             <i class="fa-solid fa-compact-disc dashboard__icono"></i>
             <span class="dashboard__menu-texto">
-                <?php echo tt('sidebar_albums');?>
+                <?php echo tt('sidebar_music');?>
             </span>
         </a>
 
@@ -55,34 +55,6 @@
             <i class="fa-solid fa-face-grin-stars dashboard__icono"></i>
             <span class="dashboard__menu-texto">
                 <?php echo tt('sidebar_artists');?>
-            </span>
-        </a>
-
-        <a href="/filmtono/genres" class="dashboard__enlace <?php pagina_admin('genres');?>">
-            <i class="fa-solid fa-microphone-lines dashboard__icono"></i>
-            <span class="dashboard__menu-texto">
-                <?php echo tt('sidebar_genres');?>
-            </span>
-        </a>
-
-        <a href="/filmtono/keywords" class="dashboard__enlace <?php pagina_admin('keywords');?>">
-            <i class="fa-solid fa-font dashboard__icono"></i>
-            <span class="dashboard__menu-texto">
-                <?php echo tt('sidebar_keywords');?>
-            </span>
-        </a>
-
-        <a href="/filmtono/licenses" class="dashboard__enlace <?php pagina_admin('licenses');?>">
-            <i class="fa-solid fa-handshake dashboard__icono"></i>
-            <span class="dashboard__menu-texto">
-                <?php echo tt('sidebar_licenses');?>
-            </span>
-        </a>
-
-        <a href="/filmtono/payments" class="dashboard__enlace <?php pagina_admin('payments');?>">
-            <i class="fa-solid fa-money-check-dollar dashboard__icono"></i>
-            <span class="dashboard__menu-texto">
-                <?php echo tt('sidebar_payments');?>
             </span>
         </a>
 

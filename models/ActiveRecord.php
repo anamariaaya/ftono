@@ -148,6 +148,12 @@ class ActiveRecord{
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
+
+    public static function unionTables($tabla1, $tabla2){
+        $query = "SELECT * FROM " . $tabla1 . " UNION SELECT * FROM " . $tabla2;
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
  
     //Crea un nuevo registro
     public function crear() {

@@ -59,10 +59,6 @@
     "es": "Categorías",
     "en": "Categories"      
   },
-  "sidebar_albums":{
-    "es": "Álbumes",
-    "en": "Albums"      
-  },
   "sidebar_music":{
     "es": "Música",
     "en": "Music"      
@@ -70,26 +66,6 @@
   "sidebar_artists":{
     "es": "Artistas",
     "en": "Artists"      
-  },
-  "sidebar_genres":{
-    "es": "Géneros",
-    "en": "Genres"      
-  },
-  "sidebar_keywords":{
-    "es": "Palabras Clave",
-    "en": "Keywords"      
-  },
-  "sidebar_licenses":{
-    "es": "Licencias",
-    "en": "Licenses"      
-  },
-  "sidebar_payments":{
-    "es": "Pagos",
-    "en": "Payments"      
-  },
-  "sidebar_purchases":{
-    "es": "Compras",
-    "en": "Purchases"      
   },
   "sidebar_contracts":{
     "es": "Contratos",
@@ -990,6 +966,14 @@
   "admin_genres_back-btn":{
     "es": "Volver a Géneros",
     "en": "Back to Genres"
+  },
+  "contracts_main-title":{
+    "es": "Contratos",
+    "en": "Contracts"
+  },
+  "contracts_total":{
+    "es": "Total de Contratos",
+    "en": "Total Contracts"
   },
   "dashboard":{
     "es": "Dashboard",
