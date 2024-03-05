@@ -975,6 +975,30 @@
     "es": "Total de Contratos",
     "en": "Total Contracts"
   },
+  "contracts_user-name":{
+    "es": "Usuario",
+    "en": "User"
+  },
+  "contracts_type":{
+    "es": "Tipo",
+    "en": "Type"
+  },
+  "contracts_type-music":{
+    "es": "Musical",
+    "en": "Musical"
+  },
+  "contracts_type-artistic":{
+    "es": "Artístico",
+    "en": "Artistic"
+  },
+  "contracts_empresa":{
+    "es": "Empresa",
+    "en": "Company"
+  },
+  "contracts_fecha":{
+    "es": "Fecha",
+    "en": "Date"
+  },
   "dashboard":{
     "es": "Dashboard",
     "en": "Dashboard"      

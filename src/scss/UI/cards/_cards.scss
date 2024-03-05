@@ -35,6 +35,9 @@
     &__label, &__text{
         color: v.$black;
         margin: 0;
+        & span{
+            font-weight: v.$bold;
+        }
     }
     &__label{
         font-weight: v.$bold;
