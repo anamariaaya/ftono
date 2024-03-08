@@ -14,8 +14,12 @@
 <div class="cards">
     <div class="cards__container">
             <?php
-             foreach( $contratos as $contrato): ?>       
-                <a href="/filmtono/contracts/current?id=<?php echo $contrato->id;?>">
+             foreach( $contratos as $contrato):
+                $filename = $contrato->nombre_doc;
+                $parts = explode('-', $filename);
+                $type = $parts[2];
+             ?>       
+                <a href="/filmtono/contracts/current?id=<?php echo $contrato->id;?>&type=<?php echo $type;?>">
                     <div class="cards__card">
                         <div class="cards__info">
                             <p class="cards__text">
@@ -28,9 +32,6 @@
                                 <span>{%contracts_type%}: 
                                 </span>
                                 <?php
-                                $filename = $contrato->nombre_doc;
-                                $parts = explode('-', $filename);
-                                $type = $parts[2];
                                 if($type == 'music'):?>
                                     {%contracts_type-music%}
                                 <?php else: ?>

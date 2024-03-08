@@ -991,6 +991,14 @@
     "es": "Artístico",
     "en": "Artistic"
   },
+  "contract_music":{
+    "es": "Contrato musical",
+    "en": "Music contract"
+  },
+  "contract_artistic":{
+    "es": "Contrato artístico",
+    "en": "Artistic contract"
+  },
   "contracts_empresa":{
     "es": "Empresa",
     "en": "Company"
@@ -998,6 +1006,10 @@
   "contracts_fecha":{
     "es": "Fecha",
     "en": "Date"
+  },
+  "contracts_back-btn":{
+    "es": "Volver a Contratos",
+    "en": "Back to Contracts"
   },
   "dashboard":{
     "es": "Dashboard",
