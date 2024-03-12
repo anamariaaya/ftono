@@ -14,3 +14,15 @@ export const btnAgregar = document.querySelector('#btn-add-artist');
 //Selectores de archivos
 export const promoInput = document.getElementById('promos');
 export const promoLabel = document.getElementById('promoLabel');
+
+//Selectores de contratos
+export const contratos ={
+    id: null,
+    nombre: '',
+    apellido: '',
+    empresa: '',
+    fecha: '',
+    nombre_doc: ''
+};
+
+export const contratosContainer = document.querySelector('#cards-container');

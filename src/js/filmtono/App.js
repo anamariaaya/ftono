@@ -3,6 +3,7 @@ import { eliminarCuenta } from "./profile.js";
 import { chooseLang } from "../UI/language.js";
 import { styleDatalist, styleFileInput, artistasSecundarios, addArtist } from "./artistas.js";
 import { readFileName } from "./ux.js";
+import { consultaContratos } from "./contratos.js";
 // import { eliminarUsuario } from "./users.js";
 //import { consultaUsuarios } from "./APIUsuarios.js";
 
@@ -35,6 +36,7 @@ class App{
         if(promoInput){
             readFileName();
         }
+        consultaContratos();
         // if(btnEliminarUsuario){
         //     eliminarUsuario();
         // }

@@ -12,43 +12,6 @@
 </div>
 
 <div class="cards">
-    <div class="cards__container">
-            <?php
-             foreach( $contratos as $contrato):
-                $filename = $contrato->nombre_doc;
-                $parts = explode('-', $filename);
-                $type = $parts[2];
-             ?>       
-                <a href="/filmtono/contracts/current?id=<?php echo $contrato->id;?>&type=<?php echo $type;?>">
-                    <div class="cards__card">
-                        <div class="cards__info">
-                            <p class="cards__text">
-                                <span>{%contracts_user-name%}: </span>
-                                <?php echo $contrato->nombre.' '.$contrato->apellido;?></p>
-                            <p class="cards__text">
-                                <span>{%contracts_empresa%}: </span>
-                                <?php echo $contrato->empresa;?></p>
-                            <p class="cards__text">
-                                <span>{%contracts_type%}: 
-                                </span>
-                                <?php
-                                if($type == 'music'):?>
-                                    {%contracts_type-music%}
-                                <?php else: ?>
-                                    {%contracts_type-artistic%}
-                                <?php endif; ?>
-                            </p>
-                            <p class="cards__text">
-                                <span>{%contracts_fecha%}: </span>
-                                <?php echo $contrato->fecha;?></p>
-                        </div>
-                        <div class="cards__actions">
-                            <button id="eliminar-contrato" class="btn-delete" value="<?php echo $contrato->id;?>">
-                                <i class="fa-solid fa-trash-can no-click"></i>
-                            </button>
-                        </div>
-                    </div>
-                </a>
-            <?php endforeach ?>
+    <div class="cards__container" id="cards-container">
     </div>
 </div>

@@ -32,6 +32,21 @@ class ContractsController{
         ]);
     }
 
+    public static function contratos(Router $router){
+        isAdmin();
+        $titulo = 'contracts_main-title';
+        $contratosMusical = CTRMusical::All();
+        $contratosArtistico = CTRArtistico::All();
+        $consulta = 'SELECT ctr.id, ctr.fecha, ctr.nombre_doc, u.nombre AS nombre, u.apellido AS apellido, ';
+        $consulta .= 'e.empresa AS empresa ';
+        $consulta .= 'FROM (SELECT * FROM ctr_musical UNION ALL SELECT * FROM ctr_artistico) AS ctr ';
+        $consulta .= 'JOIN perfil_usuario pu ON pu.id_usuario = ctr.id_usuario ';
+        $consulta .= 'JOIN usuarios u ON u.id = pu.id_usuario ';
+        $consulta .= 'JOIN empresa e ON e.id = pu.id_empresa ORDER BY ctr.fecha DESC;';
+        $contratos = ContratosUsuario::consultarSQL($consulta);
+        echo json_encode($contratos);
+    }
+    
     public static function current(Router $router){
         isAdmin();
         $id = $_GET['id'];

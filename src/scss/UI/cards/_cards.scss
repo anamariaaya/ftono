@@ -24,6 +24,10 @@
     }
     &__info{
         margin-bottom: 1rem;
+        &--div{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;        }
     }
     &__img{
         width: 100%;
@@ -35,7 +39,7 @@
     &__label, &__text{
         color: v.$black;
         margin: 0;
-        & span{
+        &--span{
             font-weight: v.$bold;
         }
     }

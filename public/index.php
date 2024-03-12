@@ -143,6 +143,8 @@ $router->get('/filmtono/payments', [PaymentsController::class, 'index']);
 //Filmtono Contracts
 $router->get('/filmtono/contracts', [ContractsController::class, 'index']);
 $router->get('/filmtono/contracts/current', [ContractsController::class, 'current']);
+$router->get('/api/filmtono/contracts', [ContractsController::class, 'contratos']);
+
 
 //API Controllers
 $router->post('/api/profile', [APIProfileController::class, 'profile']);
