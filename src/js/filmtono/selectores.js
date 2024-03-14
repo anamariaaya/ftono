@@ -26,3 +26,4 @@ export const contratos ={
 };
 
 export const contratosContainer = document.querySelector('#cards-container');
+export const contratosSearch = document.querySelector('#contratos-search');

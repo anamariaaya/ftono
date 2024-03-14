@@ -29,12 +29,20 @@ export function showPassword(){
 }
 
 //Function for main slider on index.php
-export function mainSlider(){
+export function mainSlider() {
     const wrapper = document.querySelector('.main__slider__wrapper');
     const slides = document.querySelectorAll('.main__slider__item');
     let slideWidth = slides[0].clientWidth;
     let counter = 0;
     const time = 7000;
+
+    // Function to update active class on slides
+    const updateActiveClass = () => {
+        slides.forEach((slide, index) => {
+            slide.classList.toggle('main__slider__item--active', index === counter);
+        });
+    };
+    
 
     const updateButtonStates = () => {
         prevBtn.disabled = counter <= 0;
@@ -44,42 +52,51 @@ export function mainSlider(){
     };
 
     updateButtonStates(); // Set the initial state of the buttons
+    updateActiveClass();  // Update the active class on initial load
 
     const moveSlide = () => {
-        if(counter >= slides.length - 1) {
-            counter = -1; // Reset to -1 because it will increment to 0 in moveSlide()
-        }
-        wrapper.style.transition = 'transform 0.5s ease-in-out';
+        if (counter >= slides.length - 1) counter=-1; // Prevent going beyond the last slide
         counter++;
+        wrapper.style.transition = 'transform 0.5s ease-in-out';
         wrapper.style.transform = `translateX(${-slideWidth * counter}px)`;
         updateButtonStates();
+        updateActiveClass();
     };
 
     const moveSlideBack = () => {
-        if(counter <= 0) {
-            counter = slides.length; // Reset to length because it will decrement
-        }
-        wrapper.style.transition = 'transform 0.5s ease-in-out';
+        if (counter <= 0) return; // Prevent going before the first slide
         counter--;
+        wrapper.style.transition = 'transform 0.5s ease-in-out';
         wrapper.style.transform = `translateX(${-slideWidth * counter}px)`;
         updateButtonStates();
+        updateActiveClass();
     };
 
-    // Reintegrate automatic sliding with setInterval
-    setInterval(() => {
-        moveSlide(); // Automatically move to the next slide
-    }, time);
+    // Automatic sliding
+    let autoSlideInterval = setInterval(moveSlide, time);
 
-    // Manual control
-    nextBtn.addEventListener('click', moveSlide);
-    prevBtn.addEventListener('click', moveSlideBack);
-
-    // Responsive adjustments
+    // Stop the automatic sliding when manual navigation is used
+    const stopAutoSlide = () => {
+        clearInterval(autoSlideInterval);
+    };
+    
+    nextBtn.addEventListener('click', () => {
+        moveSlide();
+        stopAutoSlide();
+    });
+    
+    prevBtn.addEventListener('click', () => {
+        moveSlideBack();
+        stopAutoSlide();
+    });
+    
     window.addEventListener('resize', () => {
         slideWidth = slides[0].clientWidth;
-        wrapper.style.transform = `translateX(${-slideWidth * counter}px)`;
+        wrapper.style.transform = `translateX(${(-slideWidth * counter)}px)`;
+        updateActiveClass();
     });
-}
+}    
+
 
 
 

@@ -4,7 +4,17 @@
     <p>
         <span>{%contracts_total%}:</span>
         <?php echo count($contratosMusical) + count($contratosArtistico);?>
-    </p>    
+    </p>
+    <div class="flex">
+        <p>
+            <span>{%contracts_type-music%}:</span>
+            <?php echo count($contratosMusical);?>
+        </p>
+        <p>
+            <span>{%contracts_type-artistic%}:</span>
+            <?php echo count($contratosArtistico);?>
+        </p>
+    </div>
 
     <div class="dashboard__search">
         <input class="dashboard__total__type-search" type="text" id="contratos-search" placeholder="Buscar..."/>

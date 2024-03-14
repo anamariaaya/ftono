@@ -17,18 +17,18 @@
         }
         &__item{
             min-width: 85%;
-            height: 45vw;
+            height: 40vw;
             margin: auto 0;
             color: v.$white;
             background-color: v.$black;
             font-size: 5rem;
             @include m.desktop{
-                height: 25vw;
+                height: 28vw;
             }
             &--active{
-                height: 55vw;
+                height: 45vw;
                 @include m.desktop{
-                    height: 30vw;
+                    height: 33vw;
                 }
             }
             img, video{

@@ -1,5 +1,6 @@
 import {er, num, indicativo} from '../admin/selectores.js';
 import {container} from '../filmtono/selectores.js';
+import {body, dashboardContenido} from './selectores.js';
 
 export async function readLang(){
     try{
@@ -178,4 +179,67 @@ export function loader(button){
     function showLoadingScreen() {
         document.getElementById('loadingScreen').style.display = 'flex';
     }
+}
+
+export async function eliminarItem(e){
+    e.preventDefault();
+    const lang = await readLang();
+    const alerts = await readJSON();
+    if(e.target.classList.contains('btn-delete')){
+        const id = e.target.id;
+        dashboardContenido.classList.add('overlay');
+
+        const divModal = document.createElement('div');
+        divModal.classList.add('register');
+
+        const modal = document.createElement('div');
+        modal.classList.add('register__modal');
+        console.log('Borrar: '+id);
+
+        const btnCerrar = document.createElement('button');
+        btnCerrar.classList.add('register__btn-cerrar');
+        btnCerrar.innerHTML = '<i class="fas fa-times"></i>';
+        btnCerrar.onclick = cerrarModal;
+
+        const paragraph = document.createElement('p');
+        paragraph.textContent = alerts['delete_item'][lang];
+
+        const btnWrapper = document.createElement('div');
+        btnWrapper.classList.add('btn__wrapper');
+
+        const btnEliminar = document.createElement('button');
+        btnEliminar.classList.add('btn-delete');
+        btnEliminar.textContent = alerts['delete'][lang];
+        // btnEliminar.onclick = function(){
+        //     const form = document.createElement('form');
+        //     form.setAttribute('action', '/api/filmtono/eliminar');
+        //     form.setAttribute('method', 'POST');
+        //     const input = document.createElement('input');
+        //     input.setAttribute('type', 'hidden');
+        //     input.setAttribute('name', 'id');
+        //     input.setAttribute('value', id);
+        //     form.appendChild(input);
+        //     body.appendChild(form);
+        //     form.submit();
+        // }
+
+        const btnCancelar = document.createElement('button');
+        btnCancelar.classList.add('btn-cancel');
+        btnCancelar.textContent = alerts['cancel'][lang];
+        btnCancelar.onclick = cerrarModal;
+
+        btnWrapper.appendChild(btnEliminar);
+        btnWrapper.appendChild(btnCancelar);
+
+        modal.appendChild(paragraph);
+        modal.appendChild(btnWrapper);
+
+        divModal.appendChild(modal);
+        body.appendChild(divModal);
+    }
+}
+function cerrarModal(){
+    const modal = document.querySelector('.register');
+    dashboardContenido.classList.remove('overlay');
+    modal.remove();
 }

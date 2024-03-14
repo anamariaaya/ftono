@@ -7,6 +7,10 @@
     display: none !important;
 }
 
+.no-click{
+    pointer-events: none;
+}
+
 .light-bg{
     background-color: v.$gray;
     margin-top: 4rem;
@@ -151,5 +155,17 @@
         background-color: v.$yellow;
         color: v.$gray-dark;
         font-weight: v.$bold;
+    }
+}
+
+.overlay{
+    overflow: hidden !important;
+    overflow-y: hidden !important;
+}
+
+.flex{
+    @include m.tablet{
+        display: flex;
+        gap: 2rem;
     }
 }

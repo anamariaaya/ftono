@@ -1,5 +1,5 @@
-import {contratos, contratosContainer} from './selectores.js';
-import {imprimirAlerta, readLang, readJSON} from '../base/funciones.js';
+import {contratos, contratosContainer, contratosSearch} from './selectores.js';
+import {imprimirAlerta, readLang, readJSON, eliminarItem} from '../base/funciones.js';
 
 export async function consultaContratos(){
     try{
@@ -94,7 +94,8 @@ async function mostrarContratos(datos){
 
         const btnEliminar = document.createElement('button');
         btnEliminar.classList.add('btn-delete');
-        btnEliminar.id = "eliminar-contrato";
+        btnEliminar.id = id;
+        btnEliminar.onclick = eliminarItem;
 
         const iconEliminar = document.createElement('i');
         iconEliminar.classList.add('fa-solid', 'fa-trash-can', 'no-click');
@@ -114,4 +115,23 @@ async function mostrarContratos(datos){
         cardLink.appendChild(cardContrato);
         contratosContainer.appendChild(cardLink);
     });
+    filtrarContratos();
+}
+
+function filtrarContratos(){
+    contratosSearch.addEventListener('input', e => {
+        const texto = e.target.value.toLowerCase();
+        const cards = document.querySelectorAll('.cards__card');
+
+        cards.forEach(card => {
+            const nombre = card.textContent.toLowerCase();
+            if(nombre.indexOf(texto) !== -1){
+                card.style.display = 'flex';
+                card.style.marginRight = '2rem';
+                contratosContainer.style.gap = '0';
+            }else{
+                card.style.display = 'none';
+            }
+        });
+    }); 
 }

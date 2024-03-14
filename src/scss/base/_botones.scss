@@ -79,6 +79,7 @@
     @include m.boton(v.$red, block);
     margin-top: 1rem;
     width: fit-content;
+    height: fit-content;
     border-radius: 1rem;
     color: v.$white;
 }
@@ -144,5 +145,29 @@
         pointer-events: none;
         background-color: v.$gray-light;
         transform: none;
+    }
+}
+
+.btn-cancel{
+    @include m.boton(transparent, block);
+    margin: 1rem 0;
+    border-radius: 1rem;
+    border: 0.1rem solid v.$white;
+    color: v.$white;
+    width: fit-content;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.btn__wrapper{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    @include m.tablet{
+        justify-content: space-around;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        flex-direction: row;
     }
 }

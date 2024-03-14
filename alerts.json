@@ -114,5 +114,17 @@
     "contracts_fecha":{
       "es": "Fecha",
       "en": "Date"
+    },
+    "delete":{
+      "es": "Eliminar",
+      "en": "Delete"
+    },
+    "delete_item":{
+      "es": "¿Estás seguro que deseas eliminar este elemento?",
+      "en": "Are you sure you want to delete this item?"
+    },
+    "cancel":{
+      "es": "Cancelar",
+      "en": "Cancel"
     }
 }
