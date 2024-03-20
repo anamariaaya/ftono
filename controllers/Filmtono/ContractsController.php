@@ -62,4 +62,24 @@ class ContractsController{
             'empresa' => $empresa
         ]);
     }
+
+    public static function delete(){
+        isAdmin();
+        $id = $_GET['id'];
+        $id = filter_var($id, FILTER_VALIDATE_INT);  
+        $type = $_GET['type'];
+        if($type == 'music'){  
+            $contrato = CTRMusical::find($id);
+        } else {
+            $contrato = CTRArtistico::find($id);
+        }
+        //find the file in the folder
+        $file = $contrato->nombre_doc;
+        $file_route = '../public/contracts/'.$file;
+        //delete the file
+        unlink($file_route);
+        //delete the contract from the database
+        $contrato->eliminar();
+        header('Location: /filmtono/contracts');
+    }
 }

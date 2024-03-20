@@ -190,18 +190,21 @@ export async function eliminarItem(e){
         dashboardContenido.classList.add('overlay');
 
         const divModal = document.createElement('div');
-        divModal.classList.add('register');
+        divModal.classList.add('deleteModal');
 
         const modal = document.createElement('div');
-        modal.classList.add('register__modal');
-        console.log('Borrar: '+id);
+        modal.classList.add('deleteModal__modal');
 
         const btnCerrar = document.createElement('button');
-        btnCerrar.classList.add('register__btn-cerrar');
+        btnCerrar.classList.add('deleteModal__btn-close');
         btnCerrar.innerHTML = '<i class="fas fa-times"></i>';
         btnCerrar.onclick = cerrarModal;
 
+        const icon = document.createElement('i');
+        icon.classList.add('fa-solid', 'fa-circle-exclamation', 'deleteModal__icon');
+
         const paragraph = document.createElement('p');
+        paragraph.classList.add('deleteModal__paragraph');
         paragraph.textContent = alerts['delete_item'][lang];
 
         const btnWrapper = document.createElement('div');
@@ -210,18 +213,19 @@ export async function eliminarItem(e){
         const btnEliminar = document.createElement('button');
         btnEliminar.classList.add('btn-delete');
         btnEliminar.textContent = alerts['delete'][lang];
-        // btnEliminar.onclick = function(){
-        //     const form = document.createElement('form');
-        //     form.setAttribute('action', '/api/filmtono/eliminar');
-        //     form.setAttribute('method', 'POST');
-        //     const input = document.createElement('input');
-        //     input.setAttribute('type', 'hidden');
-        //     input.setAttribute('name', 'id');
-        //     input.setAttribute('value', id);
-        //     form.appendChild(input);
-        //     body.appendChild(form);
-        //     form.submit();
-        // }
+        btnEliminar.id = id;
+        btnEliminar.dataset.type = e.target.dataset.type;
+        btnEliminar.dataset.role = e.target.dataset.role;
+        btnEliminar.dataset.item = e.target.dataset.item;
+
+        //redirect to delete route
+        btnEliminar.onclick = (e) => {
+            if(e.target.dataset.type !== ''){
+                window.location.href = `/${e.target.dataset.role}/${e.target.dataset.item}/delete?id=${e.target.id}&type=${e.target.dataset.type}`;
+            }else{
+                window.location.href = `/${e.target.dataset.role}/${e.target.dataset.item}/delete?id=${e.target.id}`;
+            }
+        }
 
         const btnCancelar = document.createElement('button');
         btnCancelar.classList.add('btn-cancel');
@@ -231,6 +235,8 @@ export async function eliminarItem(e){
         btnWrapper.appendChild(btnEliminar);
         btnWrapper.appendChild(btnCancelar);
 
+        modal.appendChild(btnCerrar);
+        modal.appendChild(icon);
         modal.appendChild(paragraph);
         modal.appendChild(btnWrapper);
 
@@ -239,7 +245,7 @@ export async function eliminarItem(e){
     }
 }
 function cerrarModal(){
-    const modal = document.querySelector('.register');
+    const modal = document.querySelector('.deleteModal');
     dashboardContenido.classList.remove('overlay');
     modal.remove();
 }

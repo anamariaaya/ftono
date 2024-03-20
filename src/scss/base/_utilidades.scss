@@ -169,3 +169,7 @@
         gap: 2rem;
     }
 }
+
+.deleteModal{
+    @include m.modal(v.$gray-dark, 3rem, 90%, 40%, 0.2rem, v.$yellow, solid);
+}

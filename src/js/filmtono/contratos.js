@@ -23,6 +23,7 @@ async function mostrarContratos(datos){
 
         //Create the card to wrap the contract info and actions
         const cardLink = document.createElement('a');
+        cardLink.classList.add('cards__link');
         cardLink.href = '/filmtono/contracts/current?id='+id+'&type='+tipoContrato;
 
         //Create the info section
@@ -68,7 +69,11 @@ async function mostrarContratos(datos){
         titleTipo.classList.add('cards__text', 'cards__text--span');
 
         const tipo = document.createElement('p');
-        tipo.textContent = tipoContrato;
+        if(tipoContrato === 'music'){
+            tipo.textContent = alerts['contracts_type-music'][lang];
+        }else{
+            tipo.textContent = alerts['contracts_type-artistic'][lang];
+        }
         tipo.classList.add('cards__text');
 
         tipoInfo.appendChild(titleTipo);
@@ -82,7 +87,11 @@ async function mostrarContratos(datos){
         titleFecha.classList.add('cards__text', 'cards__text--span');
 
         const fechaContrato = document.createElement('p');
-        fechaContrato.textContent = fecha;
+        //add date as day/month/year
+        const date = new Date(fecha);
+        const options = {year: 'numeric', month: 'short', day: 'numeric'};
+        const fechaFormat = date.toLocaleDateString(lang, options);
+        fechaContrato.textContent = fechaFormat;
         fechaContrato.classList.add('cards__text');
 
         fechaInfo.appendChild(titleFecha);
@@ -95,6 +104,9 @@ async function mostrarContratos(datos){
         const btnEliminar = document.createElement('button');
         btnEliminar.classList.add('btn-delete');
         btnEliminar.id = id;
+        btnEliminar.dataset.type = tipoContrato;
+        btnEliminar.dataset.item = 'contracts';
+        btnEliminar.dataset.role = 'filmtono';
         btnEliminar.onclick = eliminarItem;
 
         const iconEliminar = document.createElement('i');

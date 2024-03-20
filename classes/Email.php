@@ -87,26 +87,46 @@ class Email {
                                 margin-top: 25px;
                             }
                         </style>";
-         $contenido .= "<body>";
-         $contenido .= "<div class='center'>";
-         $contenido .= "<img src='https://www.filmtono.com/build/img/confirm-account.webp' alt='confirm account' />";
-         $contenido .= "<div class='background'>";
-         $contenido .= "<div class='content'>";
-         $contenido .= "<h1>Welcome to Filmtono!</h1>";
-         $contenido .= "<h2>Hi " . $this->nombre .  "</h2>";
-         $contenido .= "<p>We need to verify your email to give you access to the most creative musical supervision</p>";
-         $contenido .= "<p>To confirm your account click here:";
-         $contenido .= "<a href='https://filmtono.com/confirm-account?token=" . $this->token . "'>Confirm Account</a>";
+         $contenido .= "<body style='max-width:400px'>";
+
+         $contenido .= "<div class='center' style='max-width:400px; margin:auto; display:block;'>";
+
+         $contenido .= "<img style='max-width:400px' src='https://www.filmtono.com/build/img/confirm-account.webp' alt='confirm account' />";
+
+         $contenido .= "<div class='background' style='max-width:400px; background-color: #dedede; padding: 20px 20px 10px 20px;'>";
+
+         $contenido .= "<div class='content' style='background-color: #fff;      padding: 20px; margin:-20% auto auto auto;'>";
+
+         $contenido .= "<h1 style='color: #FD9526; font-weight: 900;             text-align: center; margin-top: 5px;'>Welcome to Filmtono!</h1>";
+
+         $contenido .= "<h2 style='color:black; font-weight:bold;'>Hi " . $this->nombre .  "</h2>";
+
+         $contenido .= "<p style='color:black;'>We need to verify your email to give you access to the most creative musical supervision</p>";
+
+         $contenido .= "<p style='color:black;'>To confirm your account click here:</p>";
+
+         $contenido .= "<a style='background-color: #FD9526; color: #292B3F;     padding: 10px 20px; border-radius: 10px; margin: 10px auto;         text-decoration: none; font-weight: bold; display: block;           width: fit-content;' href='https://filmtono.com/confirm-account?token=" . $this->token . "'>Confirm Account</a>";
+
          $contenido .= "</div>";
-         $contenido .= "<div class='footer'>";       
-         $contenido .= "<p>If you did not create this account you can ignore this message</p>";
-         $contenido .= "<p>Regards,</p>";
-         $contenido .= "<p><span>Filmtono Team<span><p>";
+
+         $contenido .= "<div class='footer' style='margin: -40px auto auto auto';>";       
+
+         $contenido .= "<p style='color:black;'>If you did not create this account you can ignore this message</p>";
+
+         $contenido .= "<p style='color:black;'>Regards,</p>";
+
+         $contenido .= "<p style='color:black;'><span style='margin-top:25px; font-weight: bold; display:block;'>Filmtono Team</span></p>";
+
          $contenido .= "</div>";
+
          $contenido .= "</div>";
+
          $contenido .= "</div>";
+
          $contenido .= "</body>";
+
          $contenido .= '</html>';
+
          $mail->Body = $contenido;
 
          //Enviar el mail
@@ -182,23 +202,38 @@ class Email {
                             font-weight: bold;
                             display: block;
                             margin-top: 25px;
+                            color: black;
                         }
                     </style>";
-        $contenido .= "<body>";
-        $contenido .= "<div class='center'>";
-        $contenido .= "<img src='https://www.filmtono.com/build/img/confirm-account.webp' alt='confirm account' />";
-        $contenido .= "<div class='background'>";
-        $contenido .= "<div class='content'>";
-        $contenido .= "<h1>¡Bienvenido(a) a Filmtono!</h1>";
-        $contenido .= "<h2>Hola " . $this->nombre .  "</h2>";
-        $contenido .= "<p>Necesitamos verificar tu correo electrónico para darte acceso a la supervisión musical más creativa</p>";
-        $contenido .= "<p>Para confirmar tu cuenta haz click aquí:";
-        $contenido .= "<a href='https://filmtono.com/confirm-account?lang=es&token=" . $this->token . "'>Confirmar Cuenta</a>";
+        $contenido .= "<body style='max-width:400px'>";
+
+        $contenido .= "<div class='center' style='max-width:400px; margin:auto; display:block;'>";
+
+        $contenido .= "<img style='max-width:400px' src='https://www.filmtono.com/build/img/confirm-account.webp' alt='confirm account' />";
+        $contenido .= "<div class='background' style='max-width:400px; background-color: #dedede; padding: 20px 20px 10px 20px;'>";
+
+        $contenido .= "<div class='content' style='background-color: #fff;      padding: 20px; margin:-20% auto auto auto;'>";
+
+        $contenido .= "<h1 style='color: #FD9526; font-weight: 900;             text-align: center; margin-top: 5px;'>¡Bienvenido(a) a Filmtono!</h1>";
+
+        $contenido .= "<h2 style='color:black; font-weight:bold;'>Hola " . $this->nombre .  "</h2>";
+
+        $contenido .= "<p style='color:black;'>Necesitamos verificar tu correo electrónico para darte acceso a la supervisión musical más creativa</p>";
+
+        $contenido .= "<p style='color:black;'>Para confirmar tu cuenta haz click aquí:</p>";
+
+        $contenido .= "<a style='background-color: #FD9526; color: #292B3F;     padding: 10px 20px; border-radius: 10px; margin: 10px auto;         text-decoration: none; font-weight: bold; display: block;           width: fit-content;' href='https://filmtono.com/confirm-account?lang=es&token=" . $this->token . "'>Confirmar Cuenta</a>";
+
         $contenido .= "</div>";
-        $contenido .= "<div class='footer'>";
-        $contenido .= "<p>Si tú no creaste esta cuenta; puedes ignorar el mensaje</p>";
-        $contenido .= "<p>Saludos,</p>";
-        $contenido .= "<p><span>El equipo de Filmtono<span><p>";
+
+        $contenido .= "<div class='footer' style='margin: -40px auto auto auto';>";
+
+        $contenido .= "<p style='color:black;'>Si tú no creaste esta cuenta; puedes ignorar el mensaje</p>";
+
+        $contenido .= "<p style='color:black;'>Saludos,</p>";
+
+        $contenido .= "<p style='color:black;'><span style='margin-top:25px; font-weight: bold; display:block;'>El equipo de Filmtono</span></p>";
+
         $contenido .= "</div>";
         $contenido .= "</div>";
         $contenido .= "</div>";
@@ -280,26 +315,47 @@ class Email {
                             margin-top: 25px;
                         }
                     </style>";
-        $contenido .= "<body>";
-        $contenido .= "<div class='center'>";
-        $contenido .= "<img src='https://www.filmtono.com/build/img/reset-password.webp' alt='reset password' />";
-        $contenido .= "<div class='background'>";
-        $contenido .= "<div class='content'>";
-        $contenido .= "<h1>Reset your password!</h1>";
-        $contenido .= "<h2>Hi " . $this->nombre .  "</h2>";
-        $contenido .= "<p>You have requested to reset your password</p>";
-        $contenido .= "<p>To do so, click here:";
-        $contenido .= "<a href='https://filmtono.com/reset-password?token=" . $this->token . "'>Reset Password</a>";
+
+        $contenido .= "<body style='max-width:400px'>";
+
+        $contenido .= "<div class='center' style='max-width:400px; margin:auto; display:block;'>";
+
+        $contenido .= "<img style='max-width:400px' src='https://www.filmtono.com/build/img/reset-password.webp' alt='reset password' />";
+
+        $contenido .= "<div class='background' style='max-width:400px; background-color: #dedede; padding: 20px 20px 10px 20px;'>";
+
+        $contenido .= "<div class='content' style='background-color: #fff;      padding: 20px; margin:-20% auto auto auto;'>";
+
+        $contenido .= "<h1 style='color: #FD9526; font-weight: 900;             text-align: center; margin-top: 5px;'>Reset your password!</h1>";
+
+        $contenido .= "<h2 style='color:black; font-weight:bold;'>Hi " . $this->nombre .  "</h2>";
+
+        $contenido .= "<p style='color:black;'>You have requested to reset your password</p>";
+
+        $contenido .= "<p style='color:black;'>To do so, click here:</p>";
+
+        $contenido .= "<a style='background-color: #FD9526; color: #292B3F;     padding: 10px 20px; border-radius: 10px; margin: 10px auto;         text-decoration: none; font-weight: bold; display: block;           width: fit-content;' href='https://filmtono.com/reset-password?token=" . $this->token . "'>Reset Password</a>";
+
         $contenido .= "</div>";
-        $contenido .= "<div class='footer'>";
-        $contenido .= "<p>If you did not request this change; you can ignore the message</p>";
-        $contenido .= "<p>Regards,</p>";
-        $contenido .= "<p><span>Filmtono Team<span><p>";
+
+        $contenido .= "<div class='footer' style='margin: -40px auto auto auto';>";
+
+        $contenido .= "<p style='color:black;'>If you did not request this change; you can ignore the message</p>";
+
+        $contenido .= "<p style='color:black;'>Regards,</p>";
+
+        $contenido .= "<p><span style='margin-top:25px; font-weight: bold; display:block'>Filmtono Team</span></p>";
+
         $contenido .= "</div>";
+
         $contenido .= "</div>";
+
         $contenido .= "</div>";
+
         $contenido .= "</body>";
+
         $contenido .= '</html>';
+
         $mail->Body = $contenido;
 
         //Enviar el mail
@@ -376,26 +432,46 @@ class Email {
                             margin-top: 25px;
                         }
                     </style>";
-        $contenido .= "<body>";
-        $contenido .= "<div class='center'>";
-        $contenido .= "<img src='https://www.filmtono.com/build/img/reset-password.webp' alt='reset password' />";
-        $contenido .= "<div class='background'>";
-        $contenido .= "<div class='content'>";
-        $contenido .= "<h1>¡Reestablece tu contraseña!</h1>";
-        $contenido .= "<h2>Hola " . $this->nombre .  "</h2>";
-        $contenido .= "<p>Has solicitado restablecer tu contraseña</p>";
-        $contenido .= "<p>Para hacerlo, haz click aquí:";
-        $contenido .= "<a href='https://filmtono.com/reset-password?lang=es&token=" . $this->token . "'>Reestablecer Contraseña</a>";
+        $contenido .= "<body style='max-width:400px'>";
+
+        $contenido .= "<div class='center' style='max-width:400px; margin:auto; display:block;'>";
+
+        $contenido .= "<img style='max-width:400px;' src='https://www.filmtono.com/build/img/reset-password.webp' alt='reset password' />";
+
+        $contenido .= "<div class='background' style='max-width:400px; background-color: #dedede; padding: 20px 20px 10px 20px;'>";
+
+        $contenido .= "<div class='content' style='background-color: #fff;      padding: 20px; margin:-20% auto auto auto;'>";
+
+        $contenido .= "<h1 style='color: #FD9526; font-weight: 900; text-align: center; margin-top: 5px;'>¡Reestablece tu contraseña!</h1>";
+
+        $contenido .= "<h2 style='color:black; font-weight:bold;'>Hola " . $this->nombre .  "</h2>";
+
+        $contenido .= "<p style='color:black;'>Has solicitado restablecer tu contraseña</p>";
+
+        $contenido .= "<p style='color:black;'>Para hacerlo, haz click aquí:</p>";
+
+        $contenido .= "<a style='background-color: #FD9526; color: #292B3F; padding: 10px 20px; border-radius: 10px; margin: 10px auto; text-decoration: none; font-weight: bold; display: block; width: fit-content;' href='https://filmtono.com/reset-password?lang=es&token=" . $this->token . "'>Reestablecer Contraseña</a>";
+
         $contenido .= "</div>";
-        $contenido .= "<div class='footer'>";
-        $contenido .= "<p>Si tú no solicitaste este cambio; puedes ignorar el mensaje</p>";
-        $contenido .= "<p>Saludos,</p>";
-        $contenido .= "<p><span>El equipo de Filmtono<span><p>";
+
+        $contenido .= "<div class='footer' style='margin: -40px auto auto auto';>";
+
+        $contenido .= "<p style='color:black;'>Si tú no solicitaste este cambio; puedes ignorar el mensaje</p>";
+
+        $contenido .= "<p style='color:black;'>Saludos,</p>";
+
+        $contenido .= "<p style='color:black;'><span style='margin-top:25px; font-weight: bold; display:block'>El equipo de Filmtono</span></p>";
+
         $contenido .= "</div>";
+
         $contenido .= "</div>";
+
         $contenido .= "</div>";
+
         $contenido .= "</body>";
+
         $contenido .= '</html>';
+
         $mail->Body = $contenido;
 
         //Enviar el mail

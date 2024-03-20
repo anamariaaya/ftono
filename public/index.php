@@ -144,6 +144,7 @@ $router->get('/filmtono/payments', [PaymentsController::class, 'index']);
 $router->get('/filmtono/contracts', [ContractsController::class, 'index']);
 $router->get('/filmtono/contracts/current', [ContractsController::class, 'current']);
 $router->get('/api/filmtono/contracts', [ContractsController::class, 'contratos']);
+$router->get('/filmtono/contracts/delete', [ContractsController::class, 'delete']);
 
 
 //API Controllers

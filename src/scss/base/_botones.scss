@@ -165,8 +165,7 @@
     flex-direction: column;
     margin-top: 1rem;
     @include m.tablet{
-        justify-content: space-around;
-        gap: 1.5rem;
+        gap: 3rem;
         margin-top: 2rem;
         flex-direction: row;
     }
