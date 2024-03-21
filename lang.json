@@ -207,6 +207,22 @@
     "es": "Completar Registro",
     "en": "Complete Registration"      
   },
+  "complete_register_mobile":{
+    "es": "Por favor accede desde un ordenador para completar tu registro",
+    "en": "Please access from a computer to complete your registration"
+  }, 
+  "dashboard_sign_music-p":{
+    "es": "Debes firmar este contrato para poder acceder a todas las funciones de tu dashboard",
+    "en": "You must sign this contract to be able to access all the functions of your dashboard"
+  },
+  "dashboard_sign_artistic-p":{
+    "es": "Este contrato es opcional y lo puedes firmar cuando desees el servicio",
+    "en": "This contract is optional and you can sign it when you want the service"
+  },
+  "dashboard_sign_mobile":{
+    "es": "Por favor accede desde un ordenador para firmar",
+    "en": "Please access from a computer to sign"
+  },
   "dashboard-title":{
     "es": "Dashboard",
     "en": "Dashboard"      

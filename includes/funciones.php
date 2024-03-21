@@ -98,9 +98,12 @@ function isRegistered($mensaje, $contenido){
     if($_SESSION['perfil'] === '0' && !(strpos($url, '/complete-register') !== false && strpos($url, '/complete-register?'.$_SESSION['lang']) === false)):?>
         <p class="auth__text--post">
             <?php echo tt($mensaje); ?>
-            <a href="/complete-register" class="btn-submit--post" href="">
+            <a href="/complete-register" class="btn-submit--post only--desktop" href="">
                 <?php echo tt('complete_register')?>
             </a>
+            <span class="auth__text--post--mobile only--mobile">
+                <?php echo tt('complete_register_mobile')?>
+            </span>
         </p>
 
         <?php if(isset($_SESSION['nivel_compra'])){
@@ -111,8 +114,6 @@ function isRegistered($mensaje, $contenido){
         echo $contenido;        
     endif;
 }
-
-
 
 function chooseLanguage() {
     if(isset($_GET['lang'])) {

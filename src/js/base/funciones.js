@@ -217,6 +217,7 @@ export async function eliminarItem(e){
         btnEliminar.dataset.type = e.target.dataset.type;
         btnEliminar.dataset.role = e.target.dataset.role;
         btnEliminar.dataset.item = e.target.dataset.item;
+        loader(btnEliminar);
 
         //redirect to delete route
         btnEliminar.onclick = (e) => {

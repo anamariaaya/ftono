@@ -32,7 +32,10 @@
 
     &__header{
         background-color: darken(v.$gray-dark, 10);
-        padding: 3rem;
+        padding: 1.5rem;
+        @include m.laptop{
+            padding: 3rem;
+        }
     }
 
     &__header-grid{
@@ -46,16 +49,20 @@
     }
 
     &__logo{
-        width: 15rem;
-        @include m.tablet{
-            width: 13rem;
-        }
+        width: 13rem;
     }
 
     &__nav{
         display: flex;
         gap: 5rem;
         align-items: center;
+        @include m.maxtablet{
+            justify-content: space-evenly;
+        }
+        @include m.maxmidscreen{
+            gap: 3rem;
+            justify-content: center;
+        }
         &-enlace{
             color: v.$white;
             font-size: 1.6rem;
@@ -83,6 +90,10 @@
         margin: auto;
         margin-top: 2rem;
         border-radius: 1rem;
+        @include m.maxmidscreen{
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+        }
         @include m.maxtablet{
             min-width: 15rem;
             justify-content: center;

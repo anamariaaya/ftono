@@ -36,5 +36,9 @@
         @include m.maxtablet{
             line-height: 1.4;
         }
+        &--mobile{
+            color: v.$green;
+            font-size: 2rem;
+        }
     }
 }

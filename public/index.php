@@ -92,9 +92,11 @@ $router->get('/api/filmtono/users', [APIUsersController::class, 'index']);
 $router->get('/api/filmtono/lenguaje', [APIProfileController::class, 'lenguaje']);
 $router->get('/api/filmtono/alerts', [APIProfileController::class, 'alerts']);
 $router->get('/api/filmtono/contracts', [APIProfileController::class, 'contracts']);
+$router->post('/api/filmtono/signature', [APIProfileController::class, 'signatures']);
 $router->get('/api/filmtono/c-musical', [APIProfileController::class, 'contratoMusical']);
 $router->get('/api/filmtono/c-artistico', [APIProfileController::class, 'contratoArtistico']);
 $router->post('/api/albums/artistasNew', [APIArtistController::class, 'artistaNuevo']);
+
 
 
 //Filmtono Profile

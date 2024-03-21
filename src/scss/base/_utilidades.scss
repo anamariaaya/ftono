@@ -144,6 +144,50 @@
     margin-top: 5rem;
 }
 
+.mTop-5--only-mobile{
+    @include m.maxtablet{
+        margin-top: 5rem;
+    }
+}
+
+.mBottom-5{
+    margin-bottom: 5rem;
+}
+
+.mBottom-5--only-mobile{
+    @include m.maxtablet{
+        margin-bottom: 5rem;
+    }
+}
+
+.mTop-0{
+    margin-top: 0;
+}
+
+.mBottom-0{
+    margin-bottom: 0;
+}
+
+.center{
+    text-align: center;
+}
+
+.text-yellow{
+    color: v.$yellow;
+}
+
+.text-green{
+    color: v.$green;
+}
+
+.title-info{
+    font-size: 2.2rem;
+    @include m.tablet{
+        font-size: 2.5rem;
+    }
+}
+
+
 .option{
     cursor: pointer;
     padding: 0.5rem 1rem;
@@ -172,4 +216,17 @@
 
 .deleteModal{
     @include m.modal(v.$gray-dark, 3rem, 90%, 40%, 0.2rem, v.$yellow, solid);
+}
+
+.only--mobile{
+    @include m.tablet{
+        display: none;
+    }
+}
+
+.only--desktop{
+    display: none !important;
+    @include m.tablet{
+        display: block !important;
+    }
 }

@@ -42,3 +42,8 @@ export const singlesBlock = document.querySelector('.tabs__music--singles');
 export const albumsBtn = document.querySelector('#btn-albums');
 export const singlesBtn = document.querySelector('#btn-singles');
 export const musicBtn = document.querySelectorAll('.tabs__music__buttons--btn');
+
+//Selectores contrato dashboard
+export const btnContratoDash = document.querySelectorAll('.btn-contrato');
+export const firmasDashboard = document.querySelector('#firmar-contratos-dashboard');
+
