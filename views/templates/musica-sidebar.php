@@ -1,7 +1,5 @@
 <aside class="dashboard__sidebar">
     <nav class="dashboard__menu">
-
-
         <a href="<?php
             sesionActiva();
         ?>" class="dashboard__enlace <?php pagina_admin('dashboard');?>">
@@ -19,8 +17,8 @@
         </a>
 
         <?php
-            if($nivel->id_nivel == '2'):?>
-                <a href="/music/labels" class="dashboard__enlace <?php pagina_admin('labels'); regBtn();?>">
+            if($_SESSION['nivel_musica'] == '2'):?>
+                <a href="/music/labels" id="labels" class="dashboard__enlace <?php pagina_admin('labels'); regBtn();?>">
                     <i class="fa-solid fa-certificate dashboard__icono"></i>
                     <span class="dashboard__menu-texto">
                         <?php echo tt('sidebar_labels'); ?>
@@ -29,14 +27,14 @@
             <?php endif;
         ?>
 
-        <a href="/music/albums" class="dashboard__enlace <?php pagina_admin('albums'); regBtn();?>">
+        <a href="/music/albums" id="music" class="dashboard__enlace <?php pagina_admin('albums'); regBtn();?>">
             <i class="fa-solid fa-compact-disc dashboard__icono"></i>
             <span class="dashboard__menu-texto">
                 <?php echo tt('sidebar_music');?>
             </span>
         </a>
 
-        <a href="/music/artists" class="dashboard__enlace <?php pagina_admin('artists'); regBtn();?>">
+        <a href="/music/artists" id="artists" class="dashboard__enlace <?php pagina_admin('artists'); regBtn();?>">
             <i class="fa-solid fa-microphone-lines dashboard__icono"></i>
             <span class="dashboard__menu-texto">
                 <?php echo tt('sidebar_artists');?>

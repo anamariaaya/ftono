@@ -1,5 +1,17 @@
 import { imprimirAlerta, loader, readJSON, readLang } from "../base/funciones.js";
-import { btnContratoDash } from "./selectores.js";
+import { btnContratoDash, dashboardEnlaces } from "./selectores.js";
+
+export function blockDashboard(){
+    btnContratoDash.forEach(btn => {
+        if(btn.id === 'music'){
+            dashboardEnlaces.forEach(enlace => {
+                if(enlace.id === 'labels' || enlace.id === 'music' || enlace.id === 'artists'){
+                    enlace.classList.add('dashboard__enlace--disabled');
+                }
+            });
+        }
+    });
+}
 
 export function signContract(){
     btnContratoDash.forEach(btn => {
@@ -174,6 +186,7 @@ async function canvasValidation(canvas, sendBtn, hiddenInput, tipo, usuario){
             sendBtn.classList.remove('btn-tabs--disabled');
             hiddenInput = canvas.toDataURL();
             sendBtn.addEventListener('click', () => {
+                loader(sendBtn);
                 enviarImagen(hiddenInput, tipo, usuario);
             });
         }
