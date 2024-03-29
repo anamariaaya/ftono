@@ -8,6 +8,7 @@ use Controllers\PublicController;
 use Controllers\DashboardController;
 use Controllers\APIProfileController;
 
+use Controllers\Music\CompanyController;
 use Controllers\Filmtono\UsersController;
 use Controllers\Filmtono\AlbumsController;
 use Controllers\Filmtono\GenresController;
@@ -19,15 +20,15 @@ use Controllers\Filmtono\ProfileController;
 use Controllers\Filmtono\APIUsersController;
 use Controllers\Filmtono\KeywordsController;
 use Controllers\Filmtono\PaymentsController;
+
+
 use Controllers\Music\MusicAlbumsController;
-
-
 use Controllers\Music\MusicLabelsController;
 use Controllers\Filmtono\ContractsController;
 use Controllers\Music\MusicArtistsController;
+
+
 use Controllers\Music\MusicProfileController;
-
-
 use Controllers\Filmtono\CategoriesController;
 use Controllers\Clients\ClientProfileController;
 
@@ -79,6 +80,9 @@ $router->post('/music/albums/new', [MusicAlbumsController::class, 'new']);
 $router->post('/music/albums/edit', [MusicAlbumsController::class, 'update']);
 $router->get('/music/albums/song/new', [MusicAlbumsController::class, 'newSong']);
 $router->get('/music/artists', [MusicArtistsController::class, 'index']);
+
+$router->get('/music/company', [CompanyController::class, 'index']);
+$router->get('/music/company/contracts', [CompanyController::class, 'contracts']);
 
 //Dashboard Compradores/Clients
 $router->get('/clients/dashboard', [DashboardController::class, 'clients']);

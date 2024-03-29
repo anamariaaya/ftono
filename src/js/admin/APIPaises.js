@@ -1,5 +1,5 @@
 import { validarFormulario } from "../base/funciones.js";
-import { selectPais, paisContacto, indicativo } from "./selectores.js";
+import { selectPais, paisContacto, indicativo, countrySelected } from "./selectores.js";
 import  {readLang} from "../base/funciones.js";
 
 export async function consultaPaises(){
@@ -18,6 +18,7 @@ export async function consultaPaises(){
 
 
 function mostrarPaises(datos){
+    // selected.textContent = datos[0].name.common;
     readLang().then(lang => {
             if(lang === 'es'){
                 datos.forEach(pais => {
@@ -37,7 +38,9 @@ function mostrarPaises(datos){
                     option.textContent = pais.translations.spa.common;
                     option.setAttribute('data-pais', pais.translations.spa.common);
                     selectPais.appendChild(option);
-                    paisContacto.appendChild(option.cloneNode(true));
+                    if(paisContacto){
+                        paisContacto.appendChild(option.cloneNode(true));
+                    }
                 });
             } else{
                 datos.forEach(pais => {
@@ -56,8 +59,12 @@ function mostrarPaises(datos){
                     const option = document.createElement('option');
                     option.value = pais.cca2;
                     option.textContent = pais.name.common;
-                    selectPais.appendChild(option);  
-                    paisContacto.appendChild(option.cloneNode(true));
+                    if(selectPais){
+                        selectPais.appendChild(option);  
+                    }
+                    if(paisContacto){
+                        paisContacto.appendChild(option.cloneNode(true));
+                    }
                 });
             }
         }
@@ -65,8 +72,12 @@ function mostrarPaises(datos){
 }
 
 export function paisElegido(){
-    selectPais.addEventListener('blur', validarFormulario);
-    paisContacto.addEventListener('blur', validarFormulario);
+    if(selectPais){
+        selectPais.addEventListener('blur', validarFormulario);
+    }
+    if(paisContacto){
+        paisContacto.addEventListener('blur', validarFormulario);
+    }
 }
 
 export function indicativoTel(){
@@ -91,5 +102,20 @@ export function indicativoTel(){
                 });
         }
     });
+}
+
+export function countryCurrentValue(){
+    const url = `https://restcountries.com/v3.1/alpha/${countrySelected.value}`;
+    fetch(url)
+        .then(respuesta=> respuesta.json())
+        .then(datos => {
+            readLang().then(lang => {
+                if(lang === 'es'){
+                    countrySelected.textContent = datos[0].translations.spa.common;
+                } else{
+                    countrySelected.textContent = datos[0].name.common;
+                }
+            });
+        });
 }
 

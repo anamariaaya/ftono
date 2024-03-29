@@ -35,6 +35,7 @@ export const privacy = document.querySelector('#privacy');
 export const divCheck = document.querySelector('#div-check');
 export const hiddenMusic = document.querySelector('#signatureInput');
 export const hiddenArtistic = document.querySelector('#signatureOptional');
+export const countrySelected = document.querySelector('#current-pais');
 
 //Albums admin block
 export const albumsBlock = document.querySelector('.tabs__music--albums');

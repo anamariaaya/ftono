@@ -31,7 +31,7 @@ class DashboardController{
     public static function music(Router $router){
         isMusico();
         $usuario = Usuario::find($_SESSION['id']);
-        $nivel = NTMusica::where('id_usuario', $_SESSION['id']);
+        $nivel = NTMusica::where('id_usuario', $_SESSION['id']);                                                                                                               
         $contratoMusical = CTRMusical::where('id_usuario', $_SESSION['id']);
         $contratoArtistico = CTRArtistico::where('id_usuario', $_SESSION['id']);
 

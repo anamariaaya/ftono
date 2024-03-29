@@ -140,6 +140,18 @@
     }
 }
 
+.mTop-0{
+    margin-top: 0;
+}
+
+.mBottom-0{
+    margin-bottom: 0;
+}
+
+.mTop-1{
+    margin-top: 1rem;
+}
+
 .mTop-5{
     margin-top: 5rem;
 }
@@ -158,14 +170,6 @@
     @include m.maxtablet{
         margin-bottom: 5rem;
     }
-}
-
-.mTop-0{
-    margin-top: 0;
-}
-
-.mBottom-0{
-    margin-bottom: 0;
 }
 
 .center{
@@ -212,6 +216,25 @@
         display: flex;
         gap: 2rem;
     }
+}
+
+.flex--gap-3{
+    @include m.tablet{
+        display: flex;
+        gap: 3rem;
+    }
+}
+
+.flex--gap-5{
+    @include m.tablet{
+        display: flex;
+        gap: 5rem;
+    }
+}
+
+.block{
+    display: block;
+    width: 100%;
 }
 
 .deleteModal{

@@ -93,14 +93,17 @@
     text-decoration: none;
     padding: 1rem 3rem;
     text-align: center;
-    margin-top: math.div(v.$separate , 2);
     display: $display;
     border: none;
+    font-size: 1.4rem;
     &:hover{
         background-color: darken($bgColor, 7);
         transform: scale(1.03);
         transition: transform 0.2s;
         cursor: pointer;
+    }
+    @include desktop{
+        font-size: 1.8rem;
     }
 }
 

@@ -1027,6 +1027,106 @@
     "es": "Volver a Contratos",
     "en": "Back to Contracts"
   },
+  "contracts_all-btn":{
+    "es": "Ver tus contratos",
+    "en": "See your contracts"
+  },
+  "company_title":{
+    "es": "Datos de la empresa",
+    "en": "Company data"
+  },
+  "company_form_edit-company":{
+    "es": "Editar datos de la empresa",
+    "en": "Edit company data"
+  },
+  "company_form_company-name_label":{
+    "es": "Nombre de la empresa",
+    "en": "Company name"
+  },
+  "company_form_company-name_placeholder":{
+    "es": "Escribe el nombre de la empresa",
+    "en": "Write the company name"
+  },
+  "company_form_fiscal_id_label":{
+    "es": "Identificación fiscal",
+    "en": "Tax ID"
+  },
+  "company_form_fiscal_id_placeholder":{
+    "es": "Escribe la identificación fiscal",
+    "en": "Write the tax ID"
+  },
+  "company_form_country_label":{
+    "es": "País",
+    "en": "Country"
+  },
+  "company_form_country_placeholder":{
+    "es": "Selecciona un país",
+    "en": "Select a country"
+  },
+  "company_form_address_label":{
+    "es": "Dirección",
+    "en": "Address"
+  },
+  "company_form_address_placeholder":{
+    "es": "Escribe la dirección",
+    "en": "Write the address"
+  },
+  "company_form_position_label":{
+    "es": "Tu cargo",
+    "en": "Your position"
+  },
+  "company_form_position_placeholder":{
+    "es": "Escribe tu cargo",
+    "en": "Write your position"
+  },
+  "company_form_edit_purchase":{
+    "es": "Editar datos de contacto para compras",
+    "en": "Edit purchase contact data"
+  },
+  "company_form_purchase_name_label":{
+    "es": "Nombre",
+    "en": "Name"
+  },
+  "company_form_purchase_name_placeholder":{
+    "es": "Nombre de la persona encargada de compras",
+    "en": "Name of the person in charge of purchases"
+  },
+  "company_form_purchase_lastname_label":{
+    "es": "Apellido",
+    "en": "Last Name"
+  },
+  "company_form_purchase_lastname_placeholder":{
+    "es": "Apellido de la persona encargada de compras",
+    "en": "Last name of the person in charge of purchases"
+  },
+  "company_form_purchase_email_label":{
+    "es": "Email",
+    "en": "Email"
+  },
+  "company_form_purchase_email_placeholder":{
+    "es": "Email de la persona encargada de compras",
+    "en": "Email of the person in charge of purchases"
+  },
+  "company_form_purchase_phone_label":{
+    "es": "Teléfono",
+    "en": "Phone"
+  },
+  "company_form_purchase_phone_placeholder":{
+    "es": "Teléfono de la persona encargada de compras",
+    "en": "Phone of the person in charge of purchases"
+  },
+  "company_form_save-btn":{
+    "es": "Actualizar datos",
+    "en": "Update data"
+  },
+  "company_form_delete-btn":{
+    "es": "Eliminar datos de la empresa",
+    "en": "Delete company data"
+  },
+  "company_back-btn":{
+    "es": "Volver a datos de la empresa",
+    "en": "Back to company data"
+  },
   "dashboard":{
     "es": "Dashboard",
     "en": "Dashboard"      
