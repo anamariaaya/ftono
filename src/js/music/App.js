@@ -4,6 +4,8 @@ import { selectPais, afterNav, paisContacto, albumsBlock, singlesBlock, firmasDa
 import { chooseLang } from "../UI/language.js";
 import { musicTabs } from "./MusicTabs.js";
 import { blockDashboard, signContract } from "./contracts.js";
+import { eliminarItem } from "../base/funciones.js";
+import {btnEliminar} from '../base/selectores.js';
 
 class App{
     constructor(){
@@ -35,6 +37,9 @@ class App{
         }
         if(countrySelected){
             countryCurrentValue();
+        }
+        if(btnEliminar){
+            btnEliminar.addEventListener('click', eliminarItem);
         }
     }
 }

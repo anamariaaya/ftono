@@ -26,6 +26,7 @@
 
 <h3 class="dashboard__subtitle--filter"></h3>
 
-<div class="grid" id="grid-usuarios">
-
+<div class="cards">
+    <div class="cards__container" id="grid-usuarios">
+    </div>
 </div>

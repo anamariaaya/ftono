@@ -1,11 +1,10 @@
-import {contratos, contratosContainer, contratosSearch} from './selectores.js';
-import {imprimirAlerta, readLang, readJSON, eliminarItem} from '../base/funciones.js';
+import {contratosContainer, contratosSearch} from './selectores.js';
+import {readLang, readJSON, eliminarItem} from '../base/funciones.js';
 
 export async function consultaContratos(){
     try{
         const resultado = await fetch(window.location.origin+'/api/filmtono/contracts');
         const datos = await resultado.json();
-    //    console.log(datos);
        mostrarContratos(datos);
     }catch(error){
         console.log(error);
@@ -103,7 +102,8 @@ async function mostrarContratos(datos){
 
         const btnEliminar = document.createElement('button');
         btnEliminar.classList.add('btn-delete');
-        btnEliminar.id = id;
+        btnEliminar.id = 'eliminar';
+        btnEliminar.value = id;
         btnEliminar.dataset.type = tipoContrato;
         btnEliminar.dataset.item = 'contracts';
         btnEliminar.dataset.role = 'filmtono';

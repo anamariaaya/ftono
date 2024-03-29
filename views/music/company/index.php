@@ -2,12 +2,12 @@
 
 <a href="/music/company/contracts" class="btn-back">{%contracts_all-btn%}</a>
 
+<div class="form-div">
+    <form class="form" method="POST" enctype="multipart/form-data">
+
 <?php
     require_once __DIR__ . '/../../templates/alertas.php';
 ?>
-
-<div class="form-div">
-    <form class="form" method="POST">
     <legend class="form__legend">{% company_form_edit-company %}</legend>
         <div class="form__group">
             <label class="form__group__label" for="empresa">
@@ -110,7 +110,7 @@
         
         <div class="acciones">
             <input class="btn-submit--form" type="submit" value="{%company_form_save-btn%}">
-            <button id="eliminar-cuenta" class="btn-delete--form" value="<?php echo $empresa->id;?>">
+            <button id="eliminar-cuenta" data-item="company" data-role="music" class="btn-delete btn-delete--form" value="<?php echo $empresa->id;?>">
                 <i class="fa-solid fa-trash-can no-click"></i>
                 {%company_form_delete-btn%}
             </button>

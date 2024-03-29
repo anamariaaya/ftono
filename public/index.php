@@ -82,7 +82,9 @@ $router->get('/music/albums/song/new', [MusicAlbumsController::class, 'newSong']
 $router->get('/music/artists', [MusicArtistsController::class, 'index']);
 
 $router->get('/music/company', [CompanyController::class, 'index']);
+$router->post('/music/company', [CompanyController::class, 'index']);
 $router->get('/music/company/contracts', [CompanyController::class, 'contracts']);
+$router->get('/music/company/delete', [CompanyController::class, 'delete']);
 
 //Dashboard Compradores/Clients
 $router->get('/clients/dashboard', [DashboardController::class, 'clients']);

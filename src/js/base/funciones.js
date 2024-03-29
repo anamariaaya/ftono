@@ -1,4 +1,4 @@
-import {er, num, indicativo} from '../admin/selectores.js';
+import {er, num, indicativo} from '../music/selectores.js';
 import {container} from '../filmtono/selectores.js';
 import {body, dashboardContenido} from './selectores.js';
 
@@ -103,71 +103,6 @@ export function limpiarHTML(element){
     }
 }
 
-export function crearAlerta(accion, id){
-    const alertaContenedor = document.createElement('div');
-    alertaContenedor.classList.add('modal-alerta--activo');
-    // alertaContenedor.onclick = cerrarAlerta;
-
-    const alertaDiv = document.createElement('DIV');
-    alertaDiv.classList.add('modal-alerta');
-
-    const alertaIcono = document.createElement('I');
-    alertaIcono.classList.add('fa-solid', 'fa-circle-exclamation', 'modal-alerta__icono');
-
-    const alertaTitulo = document.createElement('H3');
-    alertaTitulo.classList.add('modal-alerta__titulo');
-    alertaTitulo.textContent = '¿Estás seguro?';
-
-    const alertaParrafo = document.createElement('P');
-    alertaParrafo.classList.add('modal-alerta__parrafo');
-    alertaParrafo.textContent = 'Esta acción no se puede deshacer';
-
-    const alertaBotones = document.createElement('DIV');
-    alertaBotones.classList.add('modal-alerta__botones');
-
-    const alertaBotonCancelar = document.createElement('BUTTON');
-    alertaBotonCancelar.classList.add('modal-alerta__boton', 'modal-alerta__boton--cancelar');
-    alertaBotonCancelar.textContent = 'Cancelar';
-    alertaBotonCancelar.onclick = cerrarAlerta;
-
-    const alertaBotonEliminar = document.createElement('FORM');
-    alertaBotonEliminar.setAttribute('action', accion);
-    alertaBotonEliminar.setAttribute('method', 'POST');
-
-    const alertaInput = document.createElement('INPUT');
-    alertaInput.setAttribute('type', 'hidden');
-    alertaInput.setAttribute('name', 'id');
-    alertaInput.setAttribute('value', id);
-
-    const alertaInputSubmit = document.createElement('INPUT');
-    alertaInputSubmit.setAttribute('type', 'submit');
-    alertaInputSubmit.setAttribute('value', 'Eliminar');
-    alertaInputSubmit.classList.add('modal-alerta__boton');
-
-    alertaBotonEliminar.appendChild(alertaInput);
-    alertaBotonEliminar.appendChild(alertaInputSubmit);
-
-    //Agregar botones al div de botones
-    alertaBotones.appendChild(alertaBotonCancelar);
-    alertaBotones.appendChild(alertaBotonEliminar);
-
-    //Agregar elementos en el DIV alerta
-    alertaDiv.appendChild(alertaIcono);
-    alertaDiv.appendChild(alertaTitulo);
-    alertaDiv.appendChild(alertaParrafo);
-    alertaDiv.appendChild(alertaBotones);
-
-    alertaContenedor.appendChild(alertaDiv);
-    container.appendChild(alertaContenedor);    
-}
-
-export function cerrarAlerta(){
-    const alerta = document.querySelector('.modal-alerta--activo');
-    if(alerta){
-        alerta.remove();
-    }
-}
-
 export function loader(button){
     // Hide the loading screen when the page is fully loaded
     document.getElementById('loadingScreen').style.display = 'none';
@@ -183,37 +118,48 @@ export function loader(button){
 
 export async function eliminarItem(e){
     e.preventDefault();
+
     const lang = await readLang();
     const alerts = await readJSON();
     if(e.target.classList.contains('btn-delete')){
-        const id = e.target.id;
+        const id = e.target.value;
         dashboardContenido.classList.add('overlay');
 
-        const divModal = document.createElement('div');
-        divModal.classList.add('deleteModal');
+        const alertaContenedor = document.createElement('div');
+        alertaContenedor.classList.add('modal-alerta--activo');
+        // alertaContenedor.onclick = cerrarAlerta;
 
-        const modal = document.createElement('div');
-        modal.classList.add('deleteModal__modal');
+        const alertaDiv = document.createElement('DIV');
+        alertaDiv.classList.add('modal-alerta');
+
+        const alertaIcono = document.createElement('I');
+        alertaIcono.classList.add('fa-solid', 'fa-circle-exclamation', 'modal-alerta__icono');
+
+        const alertaTitulo = document.createElement('H3');
+        alertaTitulo.classList.add('modal-alerta__titulo');
+        alertaTitulo.textContent = alerts['delete_item'][lang];
+
+        const alertaParrafo = document.createElement('P');
+        alertaParrafo.classList.add('modal-alerta__parrafo');
+        alertaParrafo.textContent = alerts['delete_confirmation'][lang];
+
+        const alertaBotones = document.createElement('DIV');
+        alertaBotones.classList.add('modal-alerta__botones');
+
+        const alertaBotonCancelar = document.createElement('BUTTON');
+        alertaBotonCancelar.classList.add('modal-alerta__boton', 'modal-alerta__boton--cancelar');
+        alertaBotonCancelar.textContent = 'Cancelar';
+        alertaBotonCancelar.onclick = cerrarAlerta;
 
         const btnCerrar = document.createElement('button');
         btnCerrar.classList.add('deleteModal__btn-close');
         btnCerrar.innerHTML = '<i class="fas fa-times"></i>';
-        btnCerrar.onclick = cerrarModal;
-
-        const icon = document.createElement('i');
-        icon.classList.add('fa-solid', 'fa-circle-exclamation', 'deleteModal__icon');
-
-        const paragraph = document.createElement('p');
-        paragraph.classList.add('deleteModal__paragraph');
-        paragraph.textContent = alerts['delete_item'][lang];
-
-        const btnWrapper = document.createElement('div');
-        btnWrapper.classList.add('btn__wrapper');
+        btnCerrar.onclick = cerrarAlerta;
 
         const btnEliminar = document.createElement('button');
         btnEliminar.classList.add('btn-delete');
         btnEliminar.textContent = alerts['delete'][lang];
-        btnEliminar.id = id;
+        btnEliminar.value = id;
         btnEliminar.dataset.type = e.target.dataset.type;
         btnEliminar.dataset.role = e.target.dataset.role;
         btnEliminar.dataset.item = e.target.dataset.item;
@@ -221,32 +167,29 @@ export async function eliminarItem(e){
 
         //redirect to delete route
         btnEliminar.onclick = (e) => {
-            if(e.target.dataset.type !== ''){
-                window.location.href = `/${e.target.dataset.role}/${e.target.dataset.item}/delete?id=${e.target.id}&type=${e.target.dataset.type}`;
-            }else{
-                window.location.href = `/${e.target.dataset.role}/${e.target.dataset.item}/delete?id=${e.target.id}`;
+           if( e.target.dataset.type === undefined || e.target.dataset.type === 'undefined'){
+                window.location.href = `/${e.target.dataset.role}/${e.target.dataset.item}/delete?id=${e.target.value}`;
+            }
+            else{
+                window.location.href = `/${e.target.dataset.role}/${e.target.dataset.item}/delete?id=${e.target.value}&type=${e.target.dataset.type}`;
             }
         }
 
-        const btnCancelar = document.createElement('button');
-        btnCancelar.classList.add('btn-cancel');
-        btnCancelar.textContent = alerts['cancel'][lang];
-        btnCancelar.onclick = cerrarModal;
-
-        btnWrapper.appendChild(btnEliminar);
-        btnWrapper.appendChild(btnCancelar);
-
-        modal.appendChild(btnCerrar);
-        modal.appendChild(icon);
-        modal.appendChild(paragraph);
-        modal.appendChild(btnWrapper);
-
-        divModal.appendChild(modal);
-        body.appendChild(divModal);
+        //Agregar botones al div de botones
+        alertaBotones.appendChild(alertaBotonCancelar);
+        alertaBotones.appendChild(btnEliminar);
+        alertaDiv.appendChild(alertaIcono);
+        alertaDiv.appendChild(alertaTitulo);
+        alertaDiv.appendChild(alertaParrafo);
+        alertaDiv.appendChild(alertaBotones);
+        alertaDiv.appendChild(btnCerrar);
+        alertaContenedor.appendChild(alertaDiv);
+        body.appendChild(alertaContenedor);
     }
 }
-function cerrarModal(){
-    const modal = document.querySelector('.deleteModal');
-    dashboardContenido.classList.remove('overlay');
-    modal.remove();
+export function cerrarAlerta(){
+    const alerta = document.querySelector('.modal-alerta--activo');
+    if(alerta){
+        alerta.remove();
+    }
 }

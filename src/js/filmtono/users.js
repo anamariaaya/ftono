@@ -1,5 +1,16 @@
 import { gridUsuarios } from './selectores.js';
-import { crearAlerta } from '../base/funciones.js';
+import { eliminarItem } from '../base/funciones.js';
+
+export async function consultaUsuarios(){
+    try{
+        const resultado = await fetch(window.location.origin+'/api/filmtono/users');
+        const datos = await resultado.json();
+        mostrarUsuarios(datos);
+
+    }catch(error){
+        console.log(error);
+    }
+}
 
 export function mostrarUsuarios(datos){
         datos.forEach(usuario => {
@@ -49,7 +60,7 @@ export function mostrarUsuarios(datos){
                 const btnInfo = document.createElement('A');
                 btnInfo.classList.add('btn-view');
                 btnInfo.textContent = 'Ver más';
-                btnInfo.href = `/filmtono/users/${id}`;
+                btnInfo.href = `/filmtono/users/current?id=${id}`;
 
                 //general ícono de ojo para el botón de ver más
                 const iconoOjo = document.createElement('I');
@@ -74,7 +85,9 @@ export function mostrarUsuarios(datos){
                 const btnEliminar = document.createElement('BUTTON');
                 btnEliminar.classList.add('btn-delete');
                 btnEliminar.value = id;
-                btnEliminar.onclick = eliminarUsuario;
+                btnEliminar.dataset.role = 'filmtono';
+                btnEliminar.dataset.item = 'users';
+                btnEliminar.onclick = eliminarItem;
                 
                 //generar ícono de basura para el botón de eliminar
                 const iconoBasura = document.createElement('I');
@@ -109,10 +122,4 @@ export function mostrarUsuarios(datos){
                 //agregar el contenedor de la información al grid
                 gridUsuarios.appendChild(card);
         });
-}
-
-export function eliminarUsuario(e){
-        e.preventDefault();
-        const id = e.target.value;
-        crearAlerta('/filmtono/users/delete');
 }

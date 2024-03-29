@@ -123,6 +123,10 @@
       "es": "¿Estás seguro que deseas eliminar este elemento?",
       "en": "Are you sure you want to delete this item?"
     },
+    "delete_confirmation":{
+      "es": "Esta acción no se puede deshacer",
+      "en": "This action cannot be undone"
+    },
     "cancel":{
       "es": "Cancelar",
       "en": "Cancel"

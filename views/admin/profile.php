@@ -37,7 +37,7 @@
         
         <div class="acciones">
             <input class="btn-submit" type="submit" value="Actualizar cuenta">
-            <button id="eliminar-cuenta" class="btn-delete" value="<?php echo $usuario->id;?>">
+            <button id="eliminar-cuenta" class="btn-delete" data-rol="filmtono" data-item="profile" value="<?php echo $usuario->id;?>">
                 <i class="fa-solid fa-trash-can no-click"></i>
                 Eliminar Cuenta
             </button>

@@ -487,9 +487,45 @@
     "es": "Debes seleccionar un tipo de usuario",
     "en": "You must select a type of user"
   },
+  "auth_alert_company-required":{
+    "es": "La empresa es obligatoria",
+    "en": "The company is required"
+  },
+  "auth_alert_id-fiscal-required":{
+    "es": "El ID fiscal es obligatorio",
+    "en": "The Tax ID is required"
+  },
+  "auth_alert_address-required":{
+    "es": "La dirección es obligatoria",
+    "en": "The address is required"
+  },
+  "auth_alert_country-required":{
+    "es": "El país es obligatorio",
+    "en": "The country is required"
+  },
+  "auth_alert_company-position-required":{
+    "es": "El cargo en la empresa es obligatorio",
+    "en": "The position in the company is required"
+  },
+  "auth_alert_phone-required":{
+    "es": "El teléfono es obligatorio",
+    "en": "The phone is required"
+  },
+  "auth_alert_your-country-required":{
+    "es": "Tu país es obligatorio",
+    "en": "Your country is required"
+  },
   "auth_complete-register_title":{
     "es": "Completa tu registro",
     "en": "Complete your registration"
+  },
+  "auth_alert_error":{
+    "es": "Ha ocurrido un error. Por favor, intenta de nuevo",
+    "en": "An error has occurred. Please try again"
+  },
+  "auth_alert_success":{
+    "es": "¡Registro completado con éxito!",
+    "en": "Registration completed successfully!"
   },
   "profile_alert-profile-updated":{
     "es": "Tu perfil ha sido actualizado",

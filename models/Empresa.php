@@ -21,4 +21,29 @@ class Empresa extends ActiveRecord{
         $this->email_compras = $args['email_compras'] ?? '';
         $this->tel_compras = $args['tel_compras'] ?? '';
     }
+
+    public function validar(){
+        if(!$this->empresa){
+            self::$alertas['error'][] = 'auth_alert_company-required';
+        }
+        if(!$this->id_fiscal){
+            self::$alertas['error'][] = 'auth_alert_id-fiscal-required';
+        }
+        if(!$this->direccion){
+            self::$alertas['error'][] = 'auth_alert_address-required';
+        }
+        if(!$this->pais){
+            self::$alertas['error'][] = 'auth_alert_country-required';
+        }
+        if(!$this->cargo){
+            self::$alertas['error'][] = 'auth_alert_company-position-required';
+        }
+        if(!$this->tel_contacto){
+            self::$alertas['error'][] = 'auth_alert_phone-required';
+        }
+        if(!$this->pais_contacto){
+            self::$alertas['error'][] = 'auth_alert_your-country-required';
+        }
+        return self::$alertas;
+    }
 }
