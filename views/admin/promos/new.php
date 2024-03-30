@@ -1,6 +1,9 @@
 <h1>{% admin_promos_new-title %}</h1>
 
-<a href="/filmtono/promos" class="btn-back">{%admin_promos_btn-back%}</a>
+<a href="/filmtono/promos" class="btn-back">
+    <i class="fa-solid fa-arrow-left"></i>
+    {%admin_promos_btn-back%}
+</a>
 
 <?php
     require_once __DIR__ . '/../../templates/alertas.php';

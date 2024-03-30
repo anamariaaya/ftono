@@ -1,5 +1,6 @@
 import { gridUsuarios } from './selectores.js';
 import { eliminarItem } from '../base/funciones.js';
+import { readLang, readJSON } from '../base/funciones.js';
 
 export async function consultaUsuarios(){
     try{
@@ -11,26 +12,25 @@ export async function consultaUsuarios(){
         console.log(error);
     }
 }
-
-export function mostrarUsuarios(datos){
+export async function mostrarUsuarios(datos){
+        const lang = await readLang();
+        const alerts = await readJSON();
         datos.forEach(usuario => {
-                const {id, nombre, apellido, email, confirmado, nivel_admin, nivel_musica, compradores, empresa} = usuario;
+                const {id, nombre, apellido, email, confirmado, perfil, nivel, tipo_es, tipo_en, empresa} = usuario;
 
                 //generar la etiqueta para el tipo de usuario
                 const tipoUsuario = document.createElement('H3');
                 tipoUsuario.classList.add('card__title');
-                if(nivel_admin){
-                        tipoUsuario.textContent = 'Administrador';
-                }else if(nivel_musica){
-                        if(nivel_musica == 2){
-                                tipoUsuario.textContent = 'Editorial';
-                        }else {
-                                tipoUsuario.textContent = 'Sello';
+                if(nivel != null){
+                        if(lang === 'es'){
+                                tipoUsuario.textContent = tipo_es;
+                        } else {
+                                tipoUsuario.textContent = tipo_en;
                         }
                 }else{
-                        tipoUsuario.textContent = 'Comprador';
+                        tipoUsuario.textContent = 'Admin';
                 }
-
+                
                 //generar la etiqueta para la empresa
                 const empresaUsuario = document.createElement('P');
                 empresaUsuario.classList.add('card__info--title');
@@ -50,10 +50,18 @@ export function mostrarUsuarios(datos){
                 //generar la etiqueta para el estado
                 const estadoUsuario = document.createElement('P');
                 estadoUsuario.classList.add('card__info--span');
-                if(confirmado){
+                if(confirmado==='1'){
                         estadoUsuario.textContent = 'Confirmado';
-                }else{
+                } else{
                         estadoUsuario.textContent = 'Sin confirmar';
+                }
+
+                const estadoPerfil = document.createElement('P');
+                estadoPerfil.classList.add('card__info--span');
+                if(perfil==='1'){
+                        estadoPerfil.textContent = 'Perfil completo';
+                } else {
+                        estadoPerfil.textContent = 'Perfil incompleto';
                 }
 
                 //generar el botón para abir el modal con la información del usuario
@@ -69,17 +77,9 @@ export function mostrarUsuarios(datos){
                 //Agregar el ícono al botón
                 btnInfo.appendChild(iconoOjo);
 
-                //generar el botón para editar el usuario
-                const btnEditar = document.createElement('A');
-                btnEditar.classList.add('btn-update');
-                btnEditar.href = `/filmtono/users/edit?id=${id}`;
-
                 //generar ícono de lápiz para el botón de editar
                 const iconoLapiz = document.createElement('I');
                 iconoLapiz.classList.add('fa-solid', 'fa-pencil', 'no-click');
-
-                //Agregar el ícono al botón
-                btnEditar.appendChild(iconoLapiz);
 
                 //generar el botón para eliminar el usuario
                 const btnEliminar = document.createElement('BUTTON');
@@ -95,13 +95,13 @@ export function mostrarUsuarios(datos){
 
                 //Agregar el ícono al botón
                 btnEliminar.appendChild(iconoBasura);
+                btnEliminar.onclick = eliminarItem;
 
                 //generar el contenedor de los botones
                 const contenedorBotones = document.createElement('DIV');
                 contenedorBotones.classList.add('card__acciones');
 
                 //agregar los botones al contenedor
-                contenedorBotones.appendChild(btnEditar);
                 contenedorBotones.appendChild(btnEliminar);
 
                 //Generar el contenedor de la información del usuario
@@ -116,10 +116,35 @@ export function mostrarUsuarios(datos){
                 card.appendChild(nombreUsuario);
                 card.appendChild(emailUsuario);
                 card.appendChild(estadoUsuario);
+                if(nivel != null){
+                        card.appendChild(estadoPerfil);
+                }
+                card.appendChild(empresaUsuario);
                 card.appendChild(btnInfo);
                 card.appendChild(contenedorBotones);
 
                 //agregar el contenedor de la información al grid
                 gridUsuarios.appendChild(card);
         });
+        filtrarUsuarios();
+}
+
+function filtrarUsuarios(){
+        const input = document.querySelector('#usuario-search');
+        input.addEventListener('input', e => {
+                const texto = e.target.value.toLowerCase();
+                console.log(texto);
+                const cards = document.querySelectorAll('.card');
+
+                cards.forEach(card => {
+                        const nombre = card.textContent.toLowerCase();
+                        if(nombre.indexOf(texto) !== -1){
+                                card.style.display = 'flex';
+                                card.style.marginRight = '2rem';
+                                gridUsuarios.style.columnGap = '0';
+                        }else{
+                                card.style.display = 'none';
+                        }
+                });
+        }); 
 }

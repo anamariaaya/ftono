@@ -57,7 +57,7 @@ class CompanyController{
 
     public static function delete(Router $router){
         isMusico();
-        $id = $_GET['id'];
+        $id = s($_GET['id']);
         $empresa = Empresa::find($id);
         $contratoMusical = CTRMusical::where('id_empresa', $id);
         $contratoArtistico = CTRArtistico::where('id_empresa', $id);

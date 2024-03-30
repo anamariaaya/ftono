@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="heading-yellow">{% <?php echo $titulo; ?> %}</h1>
+    <h1 class="text-yellow">{% <?php echo $titulo; ?> %}</h1>
     <p>{%auth_register-music_paragraph%}<p>
 
     <?php if(isset($_SESSION['id'])): ?>        

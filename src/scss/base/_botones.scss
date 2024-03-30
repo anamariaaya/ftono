@@ -79,6 +79,7 @@
     align-items: center;
     justify-content: center;
     gap:1rem;
+    padding: 0.5rem 1rem;
 }
 
 .btn-delete{
@@ -102,9 +103,16 @@
 
 .btn-update{
     @include m.boton(darken(v.$green, 17%), flex);
-    margin-top: 1rem;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 1rem;
     border-radius: 1rem;
     color: v.$white;
+    justify-content: center;
+    @include m.tablet{
+        width: auto;
+        margin-bottom: 0;
+    }
 }
 
 .btn-tabs{

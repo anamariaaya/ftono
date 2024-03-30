@@ -94,7 +94,7 @@ $router->get('/clients/profile', [ClientProfileController::class, 'profile']);
 $router->get('/filmtono/dashboard', [DashboardController::class, 'admin']);
 
 //Filmtono APIs
-$router->get('/api/filmtono/users', [APIUsersController::class, 'index']);
+$router->get('/api/filmtono/users', [APIUsersController::class, 'usuarios']);
 $router->get('/api/filmtono/lenguaje', [APIProfileController::class, 'lenguaje']);
 $router->get('/api/filmtono/alerts', [APIProfileController::class, 'alerts']);
 $router->get('/api/filmtono/contracts', [APIProfileController::class, 'contracts']);
@@ -121,6 +121,7 @@ $router->post('/filmtono/promos/delete', [PromosController::class, 'delete']);
 
 //Filmtono Users
 $router->get('/filmtono/users', [UsersController::class, 'index']);
+$router->get('/filmtono/users/current', [UsersController::class, 'current']);
 
 //Filmtono Labels
 $router->get('/filmtono/labels', [LabelsController::class, 'index']);

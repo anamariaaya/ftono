@@ -18,7 +18,7 @@ async function mostrarContratos(datos){
     datos.forEach(contrato => {
         //extract the type of contract from the name of the file nombre_doc
         const tipoContrato = contrato.nombre_doc.split('-')[2];
-        const{id, nombre, apellido, empresa, fecha, nombre_doc} = contrato;
+        const{id, nombre, apellido, empresa, fecha} = contrato;
 
         //Create the card to wrap the contract info and actions
         const cardLink = document.createElement('a');
@@ -140,7 +140,7 @@ function filtrarContratos(){
             if(nombre.indexOf(texto) !== -1){
                 card.style.display = 'flex';
                 card.style.marginRight = '2rem';
-                contratosContainer.style.gap = '0';
+                contratosContainer.style.columnGap = '0';
             }else{
                 card.style.display = 'none';
             }

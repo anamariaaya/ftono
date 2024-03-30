@@ -1,6 +1,9 @@
 <h1>{% music_songs_edit-title %}</h1>
 
-<a href="/filmtono/genres" class="btn-back">{%admin_genres_back-btn%}</a>
+<a href="/filmtono/genres" class="btn-back">
+    <i class="fa-solid fa-arrow-left"></i>
+    {%admin_genres_back-btn%}
+</a>
 
 <div class="form-div">
     <form class="form" method="POST">

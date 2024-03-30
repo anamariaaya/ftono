@@ -1,6 +1,9 @@
 <h1>{% <?php echo $titulo;?> %}</h1>
 
-<a href="/music/company" class="btn-back">{%company_back-btn%}</a>
+<a href="/music/company" class="btn-back">
+    <i class="fa-solid fa-arrow-left"></i>
+    {%company_back-btn%}
+</a>
 
 <div class="flex--gap-3">
     <div class="block light-bg">

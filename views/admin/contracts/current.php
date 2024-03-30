@@ -1,5 +1,8 @@
 <div class="container">
-    <a href="/filmtono/contracts" class="btn-back">{%contracts_back-btn%}</a>
+    <a href="/filmtono/contracts" class="btn-back">
+    <i class="fa-solid fa-arrow-left"></i>
+        {%contracts_back-btn%}
+    </a>
     <h1><?php echo ($type == 'music') ? '{%contract_music%}' : '{%contract_artistic%}';?></h1>
 
     <div class="contract__info">

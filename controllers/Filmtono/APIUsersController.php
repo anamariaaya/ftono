@@ -3,17 +3,37 @@
 namespace Controllers\Filmtono;
 
 use Model\Usuario;
+use Model\NTMusica;
 use Model\UsuarioTipo;
+use Model\ConsultaUsuarios;
 
 class APIUsersController{
-    public static function index(){
+    public static function usuarios(){
         isAdmin();
+        $consulta = "SELECT u.id, 
+        u.nombre, 
+        u.apellido, 
+        u.email,
+        u.confirmado,
+        u.perfil,        
+        nu.nivel,
+        tm.tipo_es,
+        tm.tipo_en,
+        e.empresa,
+        e.cargo
+     
+        FROM 
+        usuarios u
+        LEFT JOIN n_t_admin a ON u.id = a.id_usuario
+        LEFT JOIN n_t_musica m ON u.id = m.id_usuario
+        LEFT JOIN nivel_usuario nu ON m.id_nivel = nu.id
+        LEFT JOIN tipo_musica tm ON m.id_musica = tm.id
+        LEFT JOIN perfil_usuario pu ON u.id = pu.id_usuario
+        LEFT JOIN empresa e ON pu.id_empresa = e.id;";
 
-        // $consulta = "SELECT usuarios.id, usuarios.nombre, usuarios.apellido, usuarios.email, usuarios.confirmado, n_t_admin.id_nivel AS nivel_admin, n_t_musica.id_nivel AS nivel_musica, n_t_compra.id_nivel AS compradores, empresa.empresa FROM usuarios LEFT OUTER JOIN n_t_admin ON usuarios.id = n_t_admin.id_usuario LEFT OUTER JOIN n_t_musica ON usuarios.id = n_t_musica.id_usuario LEFT OUTER JOIN n_t_compra ON usuarios.id = n_t_compra.id_usuario LEFT OUTER JOIN empresa ON usuarios.id = empresa.id_usuario";
-        $usuarios = Usuario::All();
+        //$usuarios = Usuario::All();
 
-        // $usuarios = Usuario::consultarSQL($consulta);
-        // debugging($usuarios);
+        $usuarios = ConsultaUsuarios::consultarSQL($consulta);
         
         echo json_encode($usuarios);
     }

@@ -1,6 +1,9 @@
 <h1>{% <?php echo $titulo;?> %}</h1>
 
-<a href="/music/labels" class="btn-back">{%music_labels-back_btn%}</a>
+<a href="/music/labels" class="btn-back">
+    <i class="fa-solid fa-arrow-left"></i>
+    {%music_labels-back_btn%}
+</a>
 
 <?php
     include_once __DIR__.'/../../templates/alertas.php';

@@ -1,4 +1,7 @@
-<a href="/music/albums" class="btn-back">{%music_albums-back_btn%}</a>
+<a href="/music/albums" class="btn-back">
+    <i class="fa-solid fa-arrow-left"></i>
+    {%music_albums-back_btn%}
+</a>
 
 <h1><?php echo $titulo;?></h1>
 
@@ -16,6 +19,9 @@
 </div>
 
 <div class="music-table">
-    <a href="/music/albums/song/new?id=<?php echo $album->id;?>" class="btn-back">{%music_songs_add-btn%}</a>
+    <a href="/music/albums/song/new?id=<?php echo $album->id;?>" class="btn-back">
+        <i class="fa-solid fa-arrow-left"></i>
+        {%music_songs_add-btn%}
+    </a>
     <a>Aquí va la lista de canciones del álbum</a>
 </div>

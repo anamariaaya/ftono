@@ -42,8 +42,9 @@ class ContractsController{
     public static function current(Router $router){
         isAdmin();
         $titulo = 'contracts_main-title';
-        $id = $_GET['id'];
-        $type = $_GET['type'];
+        $id = s($_GET['id']);
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+        $type = s($_GET['type']);
 
         if($type == 'music'){
             $contrato = CTRMusical::find($id);

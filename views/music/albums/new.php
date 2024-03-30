@@ -1,6 +1,9 @@
 <h1>{% music_albums_add-title %}</h1>
 
-<a href="/music/albums" class="btn-back">{%music_albums-back_btn%}</a>
+<a href="/music/albums" class="btn-back">
+    <i class="fa-solid fa-arrow-left"></i>
+    {%music_albums-back_btn%}
+</a>
 
 <div class="form-div">
     <form class="form" method="POST">

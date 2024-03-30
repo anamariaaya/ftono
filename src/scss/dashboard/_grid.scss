@@ -19,12 +19,19 @@
 
 .card{
     border-radius: 0.5rem;
-    background-color: v.$gray-light;
+    background-color: v.$white;
+    border-left: 1.5rem solid v.$yellow;
     box-shadow: v.$shadow;
     padding: 1rem 1.5rem;
     border-bottom: 3px solid v.$yellow;
     display: flex;
+    justify-content: space-around;
     flex-direction: column;
+    width: 100%;
+    height: 100%;
+    @include m.tablet{
+        width: auto;
+    }
     &__title{
         font-size: 1.2rem;
         text-align: right;
@@ -44,6 +51,7 @@
         padding: .5rem 0;
         font-weight: v.$regular;
         flex: 1;
+        color: v.$black;
         @include m.desktop{
             font-size: 1.8rem;
         }
@@ -71,6 +79,7 @@
         justify-content: space-between;
         align-items: center;            
         flex: 1;
+        margin-top: 1rem;
         @include m.desktop{
             padding: .5rem;
             flex-direction: row;

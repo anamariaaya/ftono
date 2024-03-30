@@ -18,7 +18,7 @@ function s($html) : string {
 }
 
 function redireccionar(string $url){
-    $id = $_GET['id'];
+    $id = s($_GET['id']);
     //Validar la URL por ID válido
     $id = filter_var($id, FILTER_VALIDATE_INT);
 

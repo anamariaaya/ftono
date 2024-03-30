@@ -1163,6 +1163,18 @@
     "es": "Volver a datos de la empresa",
     "en": "Back to company data"
   },
+  "users_main_title":{
+    "es": "Usuarios",
+    "en": "Users"
+  },
+  "users_back-btn":{
+    "es": "Volver a Usuarios",
+    "en": "Back to Users"
+  },
+  "users_total":{
+    "es": "Total de Usuarios",
+    "en": "Total Users"
+  },
   "dashboard":{
     "es": "Dashboard",
     "en": "Dashboard"      
@@ -1203,9 +1215,53 @@
     "es": "Datos Personales",
     "en": "Personal Data"
   },
+  "t-email":{
+    "es": "Email",
+    "en": "Email"
+  },
+  "t-type-user":{
+    "es": "Tipo de Usuario",
+    "en": "Type of User"
+  },
+  "t-user-without-type":{
+    "es": "Usuario sin tipo",
+    "en": "User without type"
+  },
+  "t-country":{
+    "es": "País",
+    "en": "Country"
+  },
+  "t-phone":{
+    "es": "Teléfono",
+    "en": "Phone"
+  },
+  "t-position":{
+    "es": "Cargo",
+    "en": "Position"
+  },
+  "t-profile-complete":{
+    "es": "Perfil completo",
+    "en": "Complete profile"
+  },
+  "t-profile-incomplete":{
+    "es": "Perfil incompleto",
+    "en": "Incomplete profile"
+  },
   "t-complete_your_data":{
     "es": "Completa tus datos",
     "en": "Complete your data"
+  },
+  "t-confirmed":{
+    "es": "Usuario confirmado",
+    "en": "User confirmed"
+  },
+  "t-yes":{
+    "es": "Sí",
+    "en": "Yes"
+  },
+  "t-no":{
+    "es": "No",
+    "en": "No"
   },
   "i-name":{
     "es": "Nombre",
