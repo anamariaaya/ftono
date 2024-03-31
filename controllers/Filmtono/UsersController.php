@@ -50,4 +50,19 @@ class UsersController{
             'tipoMusica' => $tipoMusica
         ]);
     }
+
+    public static function new(Router $router){
+        isAdmin();
+        $titulo = 'users_new_title';
+        $router->render('/admin/users/new',[
+            'titulo' => $titulo
+        ]);
+    }
+
+    public static function delete(){
+        isAdmin();
+        $id = s($_GET['id']);
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+        debugging($id);
+    }
 }

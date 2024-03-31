@@ -1,6 +1,7 @@
 import {er, num, indicativo} from '../music/selectores.js';
 import {container} from '../filmtono/selectores.js';
-import {body, dashboardContenido} from './selectores.js';
+import {body, dashboardContenido, tabsBtns, tabsContent, tabsDiv} from './selectores.js';
+import { tabs } from '../music/perfiles.js';
 
 export async function readLang(){
     try{
@@ -191,5 +192,16 @@ export function cerrarAlerta(){
     const alerta = document.querySelector('.modal-alerta--activo');
     if(alerta){
         alerta.remove();
+    }
+}
+
+export function changeTabs(){
+    for(let i = 0; i < tabsBtns.length; i++){
+        tabsBtns[i].addEventListener('click', () => {
+            tabsBtns.forEach(btn => btn.classList.remove('tabs__lg--btn--active'));
+            tabsContent.forEach(content => content.style.display = 'none');
+            tabsBtns[i].classList.add('tabs__lg--btn--active');
+            tabsContent[i].style.display = 'block';
+        });
     }
 }

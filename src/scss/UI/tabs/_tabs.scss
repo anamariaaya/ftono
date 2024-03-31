@@ -224,6 +224,38 @@
     }
 }
 
+.tabs__lg{
+    &__buttons{
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        margin: 1rem auto;
+    }
+    &--btn{
+        width: 100%;
+        border-radius: 0.5rem;
+        padding: 2rem;
+        background-color: v.$gray-light;
+        border: none;
+        color: v.$white;
+        font-size: 2rem;
+        &:hover{
+            cursor: pointer;
+            background-color: v.$green;
+            color: v.$black;
+        }
+
+        &--active{
+            background-color: v.$green;
+            color: v.$black;
+        }
+    }
+
+    &--disabled{
+        display: none;
+    }
+}
+
 .mostrar{
     display: block;
 }

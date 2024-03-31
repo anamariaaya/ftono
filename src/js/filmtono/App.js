@@ -4,8 +4,8 @@ import { styleDatalist, styleFileInput, artistasSecundarios, addArtist } from ".
 import { readFileName } from "./ux.js";
 import { consultaContratos } from "./contratos.js";
 import { consultaUsuarios } from "./users.js";
-import { eliminarItem } from "../base/funciones.js";
-import {btnEliminar} from '../base/selectores.js';
+import { changeTabs, eliminarItem } from "../base/funciones.js";
+import {btnEliminar, tabsDiv} from '../base/selectores.js';
 import { countryValue } from "../music/APIPaises.js";
 import { paisValue } from "../music/selectores.js";
 
@@ -47,6 +47,9 @@ class App{
         }
         if(paisValue){
             countryValue();
+        }
+        if(tabsDiv){
+            changeTabs();
         }
     }
 }

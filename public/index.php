@@ -122,6 +122,9 @@ $router->get('/filmtono/promos/delete', [PromosController::class, 'delete']);
 //Filmtono Users
 $router->get('/filmtono/users', [UsersController::class, 'index']);
 $router->get('/filmtono/users/current', [UsersController::class, 'current']);
+$router->get('/filmtono/users/new', [UsersController::class, 'new']);
+$router->post('/filmtono/users/new', [UsersController::class, 'new']);
+$router->get('/filmtono/users/delete', [UsersController::class, 'delete']);
 
 //Filmtono Labels
 $router->get('/filmtono/labels', [LabelsController::class, 'index']);

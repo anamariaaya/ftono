@@ -1167,13 +1167,29 @@
     "es": "Usuarios",
     "en": "Users"
   },
+  "users_new-title":{
+    "es": "Nuevo Usuario",
+    "en": "New User"
+  },
   "users_back-btn":{
     "es": "Volver a Usuarios",
     "en": "Back to Users"
   },
+  "users_add-btn":{
+    "es": "Crear Usuario",
+    "en": "Create User"
+  },
   "users_total":{
     "es": "Total de Usuarios",
     "en": "Total Users"
+  },
+  "users_create_admin-title":{
+    "es": "Crear nuevo administrador",
+    "en": "Create new admin"
+  },
+  "users_create_music-title":{
+    "es": "Crear nuevo usuario musical",
+    "en": "Create new music user"
   },
   "dashboard":{
     "es": "Dashboard",
