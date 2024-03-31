@@ -9,7 +9,7 @@ class PromosController{
     public static function index(Router $router){
         isAdmin();
 
-        $promos = Promos::AllOrderAsc('id');
+        $promos = Promos::AllOrderDesc('id');
         
         $router->render('/admin/promos/index',[
             'titulo' => 'admin_promos_title',
@@ -94,14 +94,16 @@ class PromosController{
     }
 
     public static function delete(){
-        if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            $id = $_POST['id'];
-            $id = filter_var($id, FILTER_VALIDATE_INT);
-            if($id){
-                $promo = Promos::find($id);
-                $promo->eliminar();
-
-            }
+        isAdmin();
+        $id = s($_GET['id']);
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+        if($id){
+            $promo = Promos::find($id);
+            $promo->eliminar();
+            $path = $_SERVER['DOCUMENT_ROOT'] . '/build/img/promos/' . $promo->promos;
+            unlink($path);
+            header('Location: /filmtono/promos');
         }
+        
     }
 }

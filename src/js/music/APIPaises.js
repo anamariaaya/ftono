@@ -1,13 +1,11 @@
 import { validarFormulario } from "../base/funciones.js";
-import { selectPais, paisContacto, indicativo, countrySelected } from "./selectores.js";
+import { selectPais, paisContacto, indicativo, countrySelected, paisValue } from "./selectores.js";
 import  {readLang} from "../base/funciones.js";
 
 export async function consultaPaises(){
     try{
         let url = `https://restcountries.com/v3.1/all`;
-        // if(lang !== 'en'){
-        //     url += `&lang=${lang}`;
-        // }
+
         const resultado = await fetch(url);
         const datos = await resultado.json();
         mostrarPaises(datos);
@@ -117,5 +115,22 @@ export function countryCurrentValue(){
                 }
             });
         });
+}
+
+export function countryValue(){
+    paisValue.forEach(pais => {
+        const url = `https://restcountries.com/v3.1/alpha/${pais.id}`;
+    fetch(url)
+        .then(respuesta=> respuesta.json())
+        .then(datos => {
+            readLang().then(lang => {
+                if(lang === 'es'){
+                    pais.textContent = datos[0].translations.spa.common;
+                } else{
+                    pais.textContent = datos[0].name.common;
+                }
+            });
+        });
+    });
 }
 

@@ -6,6 +6,8 @@ import { consultaContratos } from "./contratos.js";
 import { consultaUsuarios } from "./users.js";
 import { eliminarItem } from "../base/funciones.js";
 import {btnEliminar} from '../base/selectores.js';
+import { countryValue } from "../music/APIPaises.js";
+import { paisValue } from "../music/selectores.js";
 
 class App{
     constructor(){
@@ -38,7 +40,13 @@ class App{
             consultaUsuarios();
         }
         if(btnEliminar){
-            btnEliminar.addEventListener('click', eliminarItem);
+            btnEliminar.forEach(btn => {
+                    btn.addEventListener('click', eliminarItem);
+                }
+            );
+        }
+        if(paisValue){
+            countryValue();
         }
     }
 }

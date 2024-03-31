@@ -117,7 +117,7 @@ $router->get('/filmtono/promos/new', [PromosController::class, 'new']);
 $router->post('/filmtono/promos/new', [PromosController::class, 'new']);
 $router->get('/filmtono/promos/edit', [PromosController::class, 'edit']);
 $router->post('/filmtono/promos/edit', [PromosController::class, 'edit']);
-$router->post('/filmtono/promos/delete', [PromosController::class, 'delete']);
+$router->get('/filmtono/promos/delete', [PromosController::class, 'delete']);
 
 //Filmtono Users
 $router->get('/filmtono/users', [UsersController::class, 'index']);

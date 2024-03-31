@@ -7,7 +7,7 @@
 
 <h3 class="dashboard__subtitle--filter"></h3>
 
-<div class="grid" id="grid-usuarios">
+<div class="grid" id="grid-promos">
     <?php
         foreach($promos as $promo):?>
         <div class="card">
@@ -28,10 +28,10 @@
             <?php endif;?>    
 
             <div class="card__acciones">
-                <a href="/filmtono/promos/edit?id=<?php echo $promo->id;?>" class="btn-accion">
+                <a href="/filmtono/promos/edit?id=<?php echo $promo->id;?>" class="btn-update">
                     <i class="fa-solid fa-edit"></i>
                 </a>
-                <button id="eliminar" class="btn-eliminar--externo" value="<?php echo $promo->id;?>">
+                <button id="eliminar" class="btn-delete" data-role="filmtono" data-item="promos" value="<?php echo $promo->id;?>">
                     <i class="fa-solid fa-trash-can no-click"></i>
                 </button>
             </div>

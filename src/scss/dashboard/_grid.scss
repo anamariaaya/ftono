@@ -32,6 +32,10 @@
     @include m.tablet{
         width: auto;
     }
+    img{
+        height: -webkit-fill-available;
+        object-fit: cover;
+    }
     &__title{
         font-size: 1.2rem;
         text-align: right;

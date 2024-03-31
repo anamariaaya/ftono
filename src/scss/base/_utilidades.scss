@@ -240,6 +240,15 @@
     }
 }
 
+.grid-2{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    @include m.tablet{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 .block{
     display: block;
     width: 100%;

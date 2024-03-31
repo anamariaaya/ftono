@@ -1263,6 +1263,14 @@
     "es": "No",
     "en": "No"
   },
+  "t-contact_phone":{
+    "es": "Teléfono de contacto",
+    "en": "Contact phone"
+  },
+  "t-contact_country":{
+    "es": "País de contacto",
+    "en": "Contact country"
+  },
   "i-name":{
     "es": "Nombre",
     "en": "Name"
@@ -1300,8 +1308,8 @@
     "en": "Phone"
   },
   "i-position":{
-    "es": "Cargo",
-    "en": "Position"
+    "es": "Cargo en la empresa",
+    "en": "Position in the company"
   },
   "t-about_company":{
     "es": "Sobre la Empresa",
@@ -1326,6 +1334,22 @@
   "t-purchase_contact":{
     "es": "Datos de Contacto para Compras",
     "en": "Purchases Contact Data"
+  },
+  "t-purchase_name":{
+    "es": "Nombre de la persona encargada de compras",
+    "en": "Name of the person in charge of purchases"
+  },
+  "t-purchase_lastname":{
+    "es": "Apellido de la persona de compras",
+    "en": "Last name of the person in charge of purchases"
+  },
+  "t-purchase_email":{
+    "es": "Email de la persona encargada de compras",
+    "en": "Email of the person in charge of purchases"
+  },
+  "t-purchase_phone":{
+    "es": "Teléfono de la persona encargada de compras",
+    "en": "Phone of the person in charge of purchases"
   },
   "t-authorizations":{
     "es": "Autorizaciones",
