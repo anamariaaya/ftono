@@ -32,7 +32,7 @@
     @include m.tablet{
         width: auto;
     }
-    img{
+    img, video{
         height: -webkit-fill-available;
         object-fit: cover;
     }

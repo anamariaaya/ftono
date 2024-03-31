@@ -29,7 +29,7 @@ class UsersController{
 
     public static function current(Router $router){
         isAdmin();
-        $titulo = 'users_main-title';
+        $titulo = 'users_main_title';
         $id = s($_GET['id']);
         $id = filter_var($id, FILTER_VALIDATE_INT);
         $empresa = null;
@@ -59,12 +59,17 @@ class UsersController{
 
     public static function new(Router $router){
         isAdmin();
+        $lang = $_SESSION['lang'] ?? 'en';
         $alertas = [];
-        $titulo = 'users_new_title';
+        $titulo = 'users_new-title"';
         $usuario = new Usuario();
         $tipoAdmin = new NTAdmin();
+        $musico = TipoMusica::allOrderBy('tipo_'.$lang);
+        $tipoMusico = new NTMusica;
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $id_tipo= $_POST['id_musica'];
             $usuario->sincronizar($_POST);
+            $tipoMusico->sincronizar($_POST);
             $alertas = $usuario->validar_cuenta();
             $alertas = $usuario->validarPassword();
 
@@ -78,13 +83,23 @@ class UsersController{
                     $usuario->hashPassword();
                     // Eliminar password2
                     unset($usuario->password2);
-
+                    $resultado =  $usuario->guardar();
                     // Generar el Token
                     $usuario->crearToken();
-                    $resultado =  $usuario->guardar();
-                    $tipoAdmin->id_usuario = $resultado['id'];
-                    $tipoAdmin->id_nivel = 1;
-                    $tipoAdmin->guardar();
+                    if($id_tipo){
+                        if($tipoMusico->id_musica === '1' || $tipoMusico->id_musica === '2'){
+                            $tipoMusico->id_nivel = '2';
+                        } elseif($tipoMusico->id_musica === '3'){
+                            $tipoMusico->id_nivel = '3';
+                        }
+                        $tipoMusico->id_usuario = $resultado['id'];
+                        $tipoMusico->guardar();
+                    }else{
+                        $tipoAdmin->id_usuario = $resultado['id'];
+                        $tipoAdmin->id_nivel = 1;
+                        $tipoAdmin->guardar();
+                        $usuario->perfil = 1;
+                    }
 
                     $email = new Email($usuario->email, $usuario->nombre, $usuario->token);
 
@@ -99,17 +114,15 @@ class UsersController{
                     }
                 }
             }
-
-            $usuario->password = password_hash($usuario->password, PASSWORD_DEFAULT);
-            $usuario->perfil = 1;
-            
         }
         $alertas = Usuario::getAlertas();
 
         $router->render('/admin/users/new',[
             'titulo' => $titulo,
             'alertas' => $alertas,
-            'usuario' => $usuario
+            'usuario' => $usuario,
+            'musico' => $musico,
+            'lang' => $lang
         ]);
     }
 
@@ -126,7 +139,7 @@ class UsersController{
             if($resultado) {
                 header('Location: /filmtono/users');
             }
-        }else{
+        }elseif($ntmusica){
             $perfilUsuario = PerfilUsuario::where('id_usuario', $id);
             if($perfilUsuario){
                 $empresa = Empresa::find($perfilUsuario->id_empresa);
@@ -158,6 +171,9 @@ class UsersController{
                 $empresa->eliminar();
             }
             $ntmusica->eliminar();
+            $usuario->eliminar();
+            header('Location: /filmtono/users');
+        }else{
             $usuario->eliminar();
             header('Location: /filmtono/users');
         }

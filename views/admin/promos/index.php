@@ -14,17 +14,17 @@
             <!--get the extension of the file-->
             <?php 
                 //get the type of the file
-                $type = mime_content_type($_SERVER['DOCUMENT_ROOT'].'/build/img/promos/'.$promo->promos);
+                $f = $promo->promos;
                 //get the first part of the type before the slash
-                $type = explode('/', $type);
-                //set the type of the file
-                $type = $type[0];
+                $f = explode('.', $f);
+                //set the f of the file
+                $f = $f[1];
             ?> 
             
-            <?php if($type == 'image'):?>
-                <img class="card__img" src="/build/img/promos/<?php echo $promo->promos ?>" alt="">
-            <?php else:?>
+            <?php if($f == 'mp4' || $f == 'avi' || $f == 'mov'):?>
                 <video class="card__video" src="/build/img/promos/<?php echo $promo->promos ?>" autoplay loop muted></video>
+            <?php else:?>
+                <img class="card__img" src="/build/img/promos/<?php echo $promo->promos ?>" alt="">
             <?php endif;?>    
 
             <div class="card__acciones">

@@ -75,6 +75,10 @@ class PromosController{
                 //update the name of the file                
                 $path = $_SERVER['DOCUMENT_ROOT'] . '/build/img/promos/' . $promo->promos;
 
+                if(file_exists($path)){
+                    $prueba = unlink($path);
+                 } 
+
                 //move the file to the new path
                 move_uploaded_file($_FILES['promos']['tmp_name'], $path);
 

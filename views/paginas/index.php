@@ -6,16 +6,16 @@
                     <div class="main__slider__item">
                     <?php 
                         //get the type of the file
-                        $type = mime_content_type($_SERVER['DOCUMENT_ROOT'].'/build/img/promos/'.$promo->promos);
+                        $f = $promo->promos;
                         //get the first part of the type before the slash
-                        $type = explode('/', $type);
+                        $f = explode('.', $f);
                         //set the type of the file
-                        $type = $type[0];
+                        $f = $f[1];
                     ?> 
-                    <?php if($type == 'image'):?>
-                        <img class="main__slider__img" src="/build/img/promos/<?php echo $promo->promos?>" alt="">
-                    <?php else:?>
+                    <?php if($f == 'mp4' || $f == 'avi' || $f == 'mov'):?>
                         <video class="main__slider__video" src="/build/img/promos/<?php echo $promo->promos?>" autoplay loop muted></video>
+                    <?php else:?>
+                        <img class="main__slider__img" src="/build/img/promos/<?php echo $promo->promos?>" alt="">
                     <?php endif;?>
                     </div>
                 <?php endforeach; ?>

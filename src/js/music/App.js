@@ -4,8 +4,8 @@ import { selectPais, afterNav, paisContacto, albumsBlock, singlesBlock, firmasDa
 import { chooseLang } from "../UI/language.js";
 import { musicTabs } from "./MusicTabs.js";
 import { blockDashboard, signContract } from "./contracts.js";
-import { eliminarItem, btnSubmitLoader } from "../base/funciones.js";
-import { btnEliminar, submitBtns } from '../base/selectores.js';
+import { eliminarItem, btnSubmitLoader, changeTabs } from "../base/funciones.js";
+import { btnEliminar, submitBtns, tabsDiv } from '../base/selectores.js';
 import { passbtn } from "../UI/selectores.js";
 import { showPassword } from "../UI/UI.js";
 
@@ -45,6 +45,9 @@ class App{
         }
         if(passbtn){
             showPassword();
+        }
+        if(tabsDiv){
+            changeTabs();
         }
         if(submitBtns){
             btnSubmitLoader();

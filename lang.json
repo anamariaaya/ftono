@@ -599,6 +599,14 @@
     "es": "No, cancelar",
     "en": "No, cancel"
   },
+  "profile_your-data_title":{
+    "es": "Tus datos",
+    "en": "Your data"
+  },
+  "profile_company-data_title":{
+    "es": "Datos de la empresa",
+    "en": "Company data"
+  },
   "music_dashboard-subtitle":{
     "es": "Bienvenido a tu panel de control",
     "en": "Welcome to your control panel"
