@@ -1,6 +1,6 @@
 
 import { dropdownDiv, dropdownMenu, dropdownBtn, passbtn} from "./selectores.js";
-import { nextBtn, prevBtn } from "./selectores.js";
+import { nextBtn, prevBtn, wrapper } from "./selectores.js";
 export function UI(){
     dropdownDiv.onmouseover = function(){
         dropdownMenu.classList.remove('no-display');
@@ -30,7 +30,6 @@ export function showPassword(){
 
 //Function for main slider on index.php
 export function mainSlider() {
-    const wrapper = document.querySelector('.main__slider__wrapper');
     const slides = document.querySelectorAll('.main__slider__item');
     let slideWidth = slides[0].clientWidth;
     let counter = 0;

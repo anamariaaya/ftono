@@ -4,10 +4,12 @@ import { styleDatalist, styleFileInput, artistasSecundarios, addArtist } from ".
 import { readFileName } from "./ux.js";
 import { consultaContratos } from "./contratos.js";
 import { consultaUsuarios } from "./users.js";
-import { changeTabs, eliminarItem } from "../base/funciones.js";
-import {btnEliminar, tabsDiv} from '../base/selectores.js';
+import { changeTabs, eliminarItem, btnSubmitLoader } from "../base/funciones.js";
+import {btnEliminar, submitBtns, tabsDiv} from '../base/selectores.js';
 import { countryValue } from "../music/APIPaises.js";
-import { paisValue } from "../music/selectores.js";
+import { btnSubmit, paisValue } from "../music/selectores.js";
+import { passbtn } from "../UI/selectores.js";
+import { showPassword } from "../UI/UI.js";
 
 class App{
     constructor(){
@@ -50,6 +52,12 @@ class App{
         }
         if(tabsDiv){
             changeTabs();
+        }
+        if(passbtn){
+            showPassword();
+        }
+        if(submitBtns){
+            btnSubmitLoader();
         }
     }
 }

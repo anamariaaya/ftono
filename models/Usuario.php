@@ -45,15 +45,6 @@ class Usuario extends ActiveRecord {
         if(!$this->email) {
             self::$alertas['error'][] = 'auth_alert_email-required';
         }
-        if(!$this->password) {
-            self::$alertas['error'][] = 'auth_alert_password-required';
-        }
-        if(strlen($this->password) < 6) {
-            self::$alertas['error'][] = 'auth_alert_password-minlength';
-        }
-        if($this->password !== $this->password2) {
-            self::$alertas['error'][] = 'auth_alert_password-different';
-        }
         return self::$alertas;
     }
 

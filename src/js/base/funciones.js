@@ -1,7 +1,7 @@
 import {er, num, indicativo} from '../music/selectores.js';
-import {container} from '../filmtono/selectores.js';
-import {body, dashboardContenido, tabsBtns, tabsContent, tabsDiv} from './selectores.js';
-import { tabs } from '../music/perfiles.js';
+
+import {body, dashboardContenido, tabsBtns, tabsContent, tabsDiv, submitBtns} from './selectores.js';
+
 
 export async function readLang(){
     try{
@@ -204,4 +204,10 @@ export function changeTabs(){
             tabsContent[i].style.display = 'block';
         });
     }
+}
+
+export function btnSubmitLoader(){
+    submitBtns.forEach(btn => {
+        loader(btn);
+    });
 }

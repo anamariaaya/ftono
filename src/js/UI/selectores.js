@@ -10,4 +10,5 @@ export let passbtn = document.querySelectorAll('.passview');
 //Selectores para el slider del home
 export const nextBtn = document.querySelector('.main__slider__btn--next');
 export const prevBtn = document.querySelector('.main__slider__btn--prev');
+export const wrapper = document.querySelector('.main__slider__wrapper');
 

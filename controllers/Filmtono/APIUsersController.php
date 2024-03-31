@@ -29,7 +29,8 @@ class APIUsersController{
         LEFT JOIN nivel_usuario nu ON m.id_nivel = nu.id
         LEFT JOIN tipo_musica tm ON m.id_musica = tm.id
         LEFT JOIN perfil_usuario pu ON u.id = pu.id_usuario
-        LEFT JOIN empresa e ON pu.id_empresa = e.id;";
+        LEFT JOIN empresa e ON pu.id_empresa = e.id
+        ORDER BY u.nombre;";
 
         //$usuarios = Usuario::All();
 
