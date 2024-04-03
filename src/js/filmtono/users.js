@@ -51,23 +51,23 @@ export async function mostrarUsuarios(datos){
                 const estadoUsuario = document.createElement('P');
                 estadoUsuario.classList.add('card__info--span');
                 if(confirmado==='1'){
-                        estadoUsuario.textContent = 'Confirmado';
+                        estadoUsuario.textContent = alerts['confirmed'][lang];
                 } else{
-                        estadoUsuario.textContent = 'Sin confirmar';
+                        estadoUsuario.textContent = alerts['not-confirmed'][lang];
                 }
 
                 const estadoPerfil = document.createElement('P');
                 estadoPerfil.classList.add('card__info--span');
                 if(perfil==='1'){
-                        estadoPerfil.textContent = 'Perfil completo';
+                        estadoPerfil.textContent = alerts['profile-complete'][lang];
                 } else {
-                        estadoPerfil.textContent = 'Perfil incompleto';
+                        estadoPerfil.textContent = alerts['profile-incomplete'][lang];
                 }
 
                 //generar el botón para abir el modal con la información del usuario
                 const btnInfo = document.createElement('A');
                 btnInfo.classList.add('btn-view');
-                btnInfo.textContent = 'Ver más';
+                btnInfo.textContent = alerts['see-more'][lang];
                 btnInfo.href = `/filmtono/users/current?id=${id}`;
 
                 //general ícono de ojo para el botón de ver más
@@ -76,10 +76,6 @@ export async function mostrarUsuarios(datos){
 
                 //Agregar el ícono al botón
                 btnInfo.appendChild(iconoOjo);
-
-                //generar ícono de lápiz para el botón de editar
-                const iconoLapiz = document.createElement('I');
-                iconoLapiz.classList.add('fa-solid', 'fa-pencil', 'no-click');
 
                 //generar el botón para eliminar el usuario
                 const btnEliminar = document.createElement('BUTTON');

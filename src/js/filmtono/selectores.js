@@ -25,3 +25,7 @@ export const contratos ={
 
 export const contratosContainer = document.querySelector('#cards-container');
 export const contratosSearch = document.querySelector('#contratos-search');
+
+//Selectores de la sección de categorías
+export const gridCategorias = document.querySelector('#grid-categorias');
+export const categoriasInput = document.querySelector('#categorias-search');

@@ -12,10 +12,8 @@
 
 <a href="/filmtono/users/new" class="btn-submit">
     <i class="fa-solid fa-plus"></i>
-    Crear Usuario
+    {%users_add-btn%}
 </a>
-
-<h3 class="dashboard__subtitle--filter"></h3>
 
 <div class="cards">
     <div class="cards__container" id="grid-usuarios">

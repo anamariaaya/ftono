@@ -955,6 +955,26 @@
     "es": "Escribe un nuevo género en español",
     "en": "Write a new genre in Spanish"
   },
+  "categories_main-title":{
+    "es": "Categorías",
+    "en": "Categories"
+  },
+  "categories_total":{
+    "es": "Total de Categorías",
+    "en": "Total Categories"
+  },
+  "categories_new-btn":{
+    "es": "Nueva Categoría",
+    "en": "New Category"
+  },
+  "categories_mandatory-category-name-en":{
+    "es": "Debes escribir el nombre de la categoría en inglés",
+    "en": "You must write the category name in English"
+  },
+  "categories_mandatory-category-name-es":{
+    "es": "Debes escribir el nombre de la categoría en español",
+    "en": "You must write the category name in Spanish"
+  },
   "artists_main-title":{
     "es": "Tus Artistas",
     "en": "Your Artists"

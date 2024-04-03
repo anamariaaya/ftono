@@ -142,6 +142,18 @@ class UsersController{
         }elseif($ntmusica){
             $perfilUsuario = PerfilUsuario::where('id_usuario', $id);
             if($perfilUsuario){
+                $consulta='SELECT sellos.* FROM sellos
+                INNER JOIN usuario_sellos ON sellos.id = usuario_sellos.id_sellos
+                WHERE usuario_sellos.id_usuario = 26;';
+                $consulta = Sellos::consultarSQL($consulta);
+                if($consulta){
+                    foreach ($consulta as $sello) {
+                        $sello->eliminar();
+                    }
+                    foreach ($UsuarioSellos as $us){
+                        $us->eliminar();
+                    }
+                }
                 $empresa = Empresa::find($perfilUsuario->id_empresa);
                 $ctr_music = CTRMusical::where('id_empresa', $empresa->id);
                 $ctr_artistico = CTRArtistico::where('id_empresa', $empresa->id);

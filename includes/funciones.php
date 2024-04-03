@@ -106,6 +106,10 @@ function isRegistered($mensaje, $contenido){
             </span>
         </p>
 
+        <?php if(strpos($url, '/music/profile') !== false): ?>
+            <?php echo $contenido; ?>
+        <?php endif; ?>
+
         <?php if(isset($_SESSION['nivel_compra'])){
             echo $contenido;
         } ?>

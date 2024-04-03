@@ -63,10 +63,13 @@ $router->post('/logout', [AuthController::class, 'logout']);
 $router->get('/complete-register', [AuthController::class, 'completeRegister']);
 $router->post('/complete-register', [AuthController::class, 'completeRegister']);
 
-//Dashboard Editoriales/Publishers
+//**----- Dashboard Editoriales/Publishers
 $router->get('/music/dashboard', [DashboardController::class, 'music']);
+//Profile
 $router->get('/music/profile', [MusicProfileController::class, 'index']);
 $router->post('/music/profile', [MusicProfileController::class, 'index']);
+$router->get('/music/profile/delete', [MusicProfileController::class, 'delete']);
+
 $router->get('/music/labels', [MusicLabelsController::class, 'index']);
 $router->get('/music/labels/new', [MusicLabelsController::class, 'new']);
 $router->post('/music/labels/new', [MusicLabelsController::class, 'new']);
@@ -131,6 +134,12 @@ $router->get('/filmtono/labels', [LabelsController::class, 'index']);
 
 //Filmtono Categories
 $router->get('/filmtono/categories', [CategoriesController::class, 'index']);
+$router->get('/api/filmtono/categories', [CategoriesController::class, 'consultarCategorias']);
+$router->get('/filmtono/categories/new', [CategoriesController::class, 'new']);
+$router->post('/filmtono/categories/new', [CategoriesController::class, 'new']);
+$router->get('/filmtono/categories/edit', [CategoriesController::class, 'edit']);
+$router->post('/filmtono/categories/edit', [CategoriesController::class, 'edit']);
+$router->get('/filmtono/categories/delete', [CategoriesController::class, 'delete']);
 
 //Filmtono Albums
 $router->get('/filmtono/albums', [AlbumsController::class, 'index']);

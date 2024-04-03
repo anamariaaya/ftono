@@ -130,5 +130,25 @@
     "cancel":{
       "es": "Cancelar",
       "en": "Cancel"
+    },
+    "see-more":{
+      "es": "Ver más",
+      "en": "See more"
+    },
+    "profile-complete":{
+      "es": "Perfil completo",
+      "en": "Profile complete"
+    },
+    "profile-incomplete":{
+      "es": "Perfil incompleto",
+      "en": "Profile incomplete"
+    },
+    "confirmed":{
+      "es": "Confirmado",
+      "en": "Confirmed"
+    },
+    "not-confirmed":{
+      "es": "Sin confirmar",
+      "en": "Not confirmed"
     }
 }

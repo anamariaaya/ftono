@@ -38,7 +38,7 @@
             </div>
 
             <div class="form__group">
-                <label class="form__group__label" for="nombre">{%auth_register_lastname_label%}</label>
+                <label class="form__group__label" for="apellido">{%auth_register_lastname_label%}</label>
                 <input class="form__group__input" type="text" name="apellido" id="apellido" placeholder="{%auth_register_lastname_label%}" value="<?php echo s($usuario->apellido); ?>">
             </div>
 
