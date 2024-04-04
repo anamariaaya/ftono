@@ -6,7 +6,7 @@
     </p>
 
     <div class="dashboard__search">
-        <input class="dashboard__total__type-search" type="text" id="usuario-search" placeholder="Search user by name or email"/>
+        <input class="dashboard__total__type-search" type="text" id="usuario-search" placeholder="{%users_search-placeholder%}"/>
     </div>
 </div>
 

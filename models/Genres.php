@@ -15,10 +15,10 @@ class Genres extends ActiveRecord{
 
     public function validar_tipo() {
         if(!$this->genero_en) {
-            self::$alertas['error'][] = 'You must type a genre in English';
+            self::$alertas['error'][] = 'admin_genres_form-name_spanish_mandatory';
         }
         if(!$this->genero_es) {
-            self::$alertas['error'][] = 'Debes escribir un género en Español';
+            self::$alertas['error'][] = 'admin_genres_form-name_english_mandatory';
         }
         return self::$alertas;
     }

@@ -14,7 +14,7 @@ class Categorias extends ActiveRecord{
     }
 
     // Validación para sellos al agregar un álbum
-    public function validarSello() {
+    public function validar() {
         if(!$this->categoria_en) {
             self::$alertas['error'][] = 'categories_mandatory-category-name-en';
         }

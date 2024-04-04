@@ -149,11 +149,12 @@ $router->get('/filmtono/artists', [ArtistsController::class, 'index']);
 
 //Filmtono Genres
 $router->get('/filmtono/genres', [GenresController::class, 'index']);
+$router->get('/api/filmtono/genres', [GenresController::class, 'consultarGeneros']);
 $router->get('/filmtono/genres/new', [GenresController::class, 'new']);
 $router->post('/filmtono/genres/new', [GenresController::class, 'new']);
 $router->get('/filmtono/genres/edit', [GenresController::class, 'edit']);
 $router->post('/filmtono/genres/edit', [GenresController::class, 'edit']);
-$router->post('/filmtono/genres/delete', [GenresController::class, 'delete']);
+$router->get('/filmtono/genres/delete', [GenresController::class, 'delete']);
 
 //Filmtono Keywords
 $router->get('/filmtono/keywords', [KeywordsController::class, 'index']);

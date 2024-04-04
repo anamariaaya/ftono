@@ -1,4 +1,4 @@
-<h1>{% music_songs_edit-title %}</h1>
+<h1>{% admin_genres_edit-title %}</h1>
 
 <a href="/filmtono/genres" class="btn-back">
     <i class="fa-solid fa-arrow-left"></i>

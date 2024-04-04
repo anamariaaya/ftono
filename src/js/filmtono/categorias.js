@@ -6,7 +6,6 @@ export async function consultaCategorias(){
     try{
         const resultado = await fetch(window.location.origin+'/api/filmtono/categories');
         const datos = await resultado.json();
-        console.log(datos);
         mostrarCategorias(datos);
 
     }catch(error){
@@ -93,7 +92,6 @@ export async function mostrarCategorias(datos){
 function filtraCategorias(){
         categoriasInput.addEventListener('input', e => {
                 const texto = e.target.value.toLowerCase();
-                console.log(texto);
                 const cards = document.querySelectorAll('.card');
 
                 cards.forEach(card => {

@@ -29,3 +29,7 @@ export const contratosSearch = document.querySelector('#contratos-search');
 //Selectores de la sección de categorías
 export const gridCategorias = document.querySelector('#grid-categorias');
 export const categoriasInput = document.querySelector('#categorias-search');
+
+//selectores de la sección de géneros
+export const gridGeneros = document.querySelector('#grid-generos');
+export const generosInput = document.querySelector('#generos-search');

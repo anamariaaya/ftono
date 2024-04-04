@@ -963,9 +963,49 @@
     "es": "Total de Categorías",
     "en": "Total Categories"
   },
+  "categories_search-placeholder":{
+    "es": "Buscar categorías por nombre",
+    "en": "Search categories by name"
+  },
   "categories_new-btn":{
     "es": "Nueva Categoría",
     "en": "New Category"
+  },
+  "categories_new-title":{
+    "es": "Nueva Categoría",
+    "en": "New Category"
+  },
+  "categories_new-submit-btn":{
+    "es": "Crear Categoría",
+    "en": "Create Category"
+  },
+  "categories_edit-title":{
+    "es": "Editar Categoría",
+    "en": "Edit Category"
+  },
+  "categories_edit-submit-btn":{
+    "es": "Actualizar Categoría",
+    "en": "Update Category"
+  },
+  "categories_back-btn":{
+    "es": "Volver a Categorías",
+    "en": "Back to Categories"
+  },
+  "categories_form-name-label-en":{
+    "es": "Nombre de la categoría en inglés",
+    "en": "Category name in English"
+  },
+  "categories_form-name-placeholder-en":{
+    "es": "Ejemplo: Children's music",
+    "en": "Example: Children's music"
+  },
+  "categories_form-name-label-es":{
+    "es": "Nombre de la categoría en español",
+    "en": "Category name in Spanish"
+  },
+  "categories_form-name-placeholder-es":{
+    "es": "Ejemplo: Música infantil",
+    "en": "Example: Música infantil"
   },
   "categories_mandatory-category-name-en":{
     "es": "Debes escribir el nombre de la categoría en inglés",
@@ -1011,6 +1051,14 @@
     "es": "Géneros",
     "en": "Genres"
   },
+  "admin_genres_total":{
+    "es": "Total de Géneros",
+    "en": "Total Genres"
+  },
+  "admin_genres_search-placeholder":{
+    "es": "Buscar géneros por nombre",
+    "en": "Search genres by name"
+  },
   "admin_genres_new-title":{
     "es": "Nuevo Género",
     "en": "New Genre"
@@ -1028,8 +1076,8 @@
     "en": "Update Genre"
   },
   "admin_genres_form-name_spanish_label":{
-    "es": "Nombre del Género",
-    "en": "Genre Name"
+    "es": "Nombre del Género en español",
+    "en": "Genre Name in spanish"
   },
   "admin_genres_form-name_spanish_placeholder":{
     "es": "Ejemplo: Rock",
@@ -1042,6 +1090,14 @@
   "admin_genres_form-name_english_placeholder":{
     "es": "Ejemplo: Rock",
     "en": "Example: Rock"
+  },
+  "admin_genres_form-name_spanish_mandatory":{
+    "es": "Debes escribir el nombre del género en español",
+    "en": "You must write the genre name in spanish"
+  },
+  "admin_genres_form-name_english_mandatory":{
+    "es": "Debes escribir el nombre del género en inglés",
+    "en": "You must write the genre name in english"
   },
   "admin_genres_back-btn":{
     "es": "Volver a Géneros",
@@ -1210,6 +1266,10 @@
   "users_total":{
     "es": "Total de Usuarios",
     "en": "Total Users"
+  },
+  "users_search-placeholder":{
+    "es": "Buscar usuarios por nombre",
+    "en": "Search users by name"
   },
   "users_create_admin-title":{
     "es": "Crear nuevo administrador",
@@ -1466,5 +1526,9 @@
   "t-labels":{
     "es": "Sellos Discográficos",
     "en": "Record Labels"
+  },
+  "alert-error": {
+    "es": "Ha ocurrido un error. Por favor, intenta de nuevo",
+    "en": "An error has occurred. Please try again"
   }
 }

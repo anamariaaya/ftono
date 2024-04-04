@@ -1,10 +1,11 @@
-import { artistaSecundario, artistasInput, btnAgregar, contratosContainer, gridUsuarios, portada, promoInput, gridCategorias } from "./selectores.js";
+import { artistaSecundario, artistasInput, btnAgregar, contratosContainer, gridUsuarios, portada, promoInput, gridCategorias, gridGeneros } from "./selectores.js";
 import { chooseLang } from "../UI/language.js";
 import { styleDatalist, styleFileInput, artistasSecundarios, addArtist } from "./artistas.js";
 import { readFileName } from "./ux.js";
 import { consultaContratos } from "./contratos.js";
 import { consultaUsuarios } from "./users.js";
 import { consultaCategorias } from "./categorias.js";
+import { consultaGeneros } from "./generos.js";
 import { changeTabs, eliminarItem, btnSubmitLoader } from "../base/funciones.js";
 import {btnEliminar, submitBtns, tabsDiv} from '../base/selectores.js';
 import { countryValue } from "../music/APIPaises.js";
@@ -62,6 +63,9 @@ class App{
         }
         if(gridCategorias){
             consultaCategorias();
+        }
+        if(gridGeneros){
+            consultaGeneros();
         }
     }
 }

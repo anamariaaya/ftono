@@ -103,10 +103,12 @@ class PromosController{
         $id = filter_var($id, FILTER_VALIDATE_INT);
         if($id){
             $promo = Promos::find($id);
-            $promo->eliminar();
-            $path = $_SERVER['DOCUMENT_ROOT'] . '/build/img/promos/' . $promo->promos;
-            unlink($path);
-            header('Location: /filmtono/promos');
+            $resultado = $promo->eliminar();
+            if($resultado){
+                $path = $_SERVER['DOCUMENT_ROOT'] . '/build/img/promos/' . $promo->promos;
+                unlink($path);
+                header('Location: /filmtono/promos');
+            }
         }
         
     }
