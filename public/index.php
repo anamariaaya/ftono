@@ -157,7 +157,13 @@ $router->post('/filmtono/genres/edit', [GenresController::class, 'edit']);
 $router->get('/filmtono/genres/delete', [GenresController::class, 'delete']);
 
 //Filmtono Keywords
-$router->get('/filmtono/keywords', [KeywordsController::class, 'index']);
+$router->get('/filmtono/categories/keywords', [KeywordsController::class, 'index']);
+$router->get('/api/filmtono/keywords', [KeywordsController::class, 'consultarKeywords']);
+$router->get('/filmtono/categories/keywords/new', [KeywordsController::class, 'new']);
+$router->post('/filmtono/categories/keywords/new', [KeywordsController::class, 'new']);
+$router->get('/filmtono/categories/keywords/edit', [KeywordsController::class, 'edit']);
+$router->post('/filmtono/categories/keywords/edit', [KeywordsController::class, 'edit']);
+$router->get('/filmtono/keywords/delete', [KeywordsController::class, 'delete']);
 
 //Filmtono Payments
 $router->get('/filmtono/payments', [PaymentsController::class, 'index']);

@@ -13,7 +13,7 @@ class Genres extends ActiveRecord{
         $this->genero_es = $args['genero_es'] ?? '';
     }
 
-    public function validar_tipo() {
+    public function validar() {
         if(!$this->genero_en) {
             self::$alertas['error'][] = 'admin_genres_form-name_spanish_mandatory';
         }

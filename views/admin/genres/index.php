@@ -6,7 +6,7 @@
 </a>
 
 <div class="dashboard__total">
-    <p><span>{%cadmin_genres_total%}: </span>
+    <p><span>{%admin_genres_total%}: </span>
         <?php echo count($generos); ?>
     </p>
 
@@ -17,7 +17,7 @@
 
 <a href="/filmtono/genres/new" class="btn-submit">
     <i class="fa-solid fa-plus"></i>
-    {%categories_new-btn%}
+    {%admin_genres_new-btn%}
 </a>
 
 <div class="cards">

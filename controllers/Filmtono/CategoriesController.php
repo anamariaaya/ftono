@@ -3,6 +3,7 @@
 namespace Controllers\Filmtono;
 
 use MVC\Router;
+use Model\Keywords;
 use Model\Categorias;
 
 class CategoriesController{
@@ -81,6 +82,18 @@ class CategoriesController{
         $id = filter_var($id,FILTER_VALIDATE_INT);
         if($id){
             $categoria = Categorias::find($id);
+            $consulta = 'SELECT keywords.*
+            FROM keywords
+            INNER JOIN categ_keyword ON keywords.id = categ_keyword.id_keyword
+            INNER JOIN categorias ON categ_keyword.id_categoria = categorias.id
+            WHERE categorias.id = 11;
+            ';
+            $keywords = Keywords::consultarSQL($consulta);
+            if($keywords){
+                foreach($keywords as $keyword){
+                    $keyword->eliminar();
+                }
+            }
             $resultado = $categoria->eliminar();
             if($resultado){
                 header('Location: /filmtono/categories');

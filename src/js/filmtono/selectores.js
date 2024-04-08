@@ -33,3 +33,7 @@ export const categoriasInput = document.querySelector('#categorias-search');
 //selectores de la sección de géneros
 export const gridGeneros = document.querySelector('#grid-generos');
 export const generosInput = document.querySelector('#generos-search');
+
+//selectores de la sección de keywords
+export const gridKeywords = document.querySelector('#grid-keywords');
+export const keywordsInput = document.querySelector('#keywords-search');

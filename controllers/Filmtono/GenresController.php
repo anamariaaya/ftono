@@ -68,13 +68,14 @@ class GenresController{
 
         $router->render('/admin/genres/edit',[
             'titulo' => $titulo,
-            'genero' => $genero
+            'genero' => $genero,
+            'alertas' => $alertas
         ]);
     }
 
     public static function delete(){
         isAdmin();
-        $id = redireccionar('/admin/genres');
+        $id = redireccionar('/filmtono/genres');
         $genero = Genres::find($id);
         $genero->eliminar();
         header('Location: /filmtono/genres');

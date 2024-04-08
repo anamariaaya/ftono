@@ -1015,6 +1015,66 @@
     "es": "Debes escribir el nombre de la categoría en español",
     "en": "You must write the category name in Spanish"
   },
+  "keywords_main-title":{
+    "es": "Palabras Clave",
+    "en": "Keywords"
+  },
+  "keywords_total":{
+    "es": "Total de Palabras Clave",
+    "en": "Total Keywords"
+  },
+  "keywords_search-placeholder":{
+    "es": "Buscar palabras clave por nombre",
+    "en": "Search keywords by name"
+  },
+  "keywords_new-btn":{
+    "es": "Nueva Palabra Clave",
+    "en": "New Keyword"
+  },
+  "keywords_new-title":{
+    "es": "Nueva Palabra Clave",
+    "en": "New Keyword"
+  },
+  "keywords_new-submit-btn":{
+    "es": "Crear Palabra Clave",
+    "en": "Create Keyword"
+  },
+  "keywords_edit-title":{
+    "es": "Editar Palabra Clave",
+    "en": "Edit Keyword"
+  },
+  "keywords_edit-submit-btn":{
+    "es": "Actualizar Palabra Clave",
+    "en": "Update Keyword"
+  },
+  "keywords_back-btn":{
+    "es": "Volver a Palabras Clave",
+    "en": "Back to Keywords"
+  },
+  "keywords_form-name-label-en":{
+    "es": "Nombre de la palabra clave en inglés",
+    "en": "Keyword name in English"
+  },
+  "keywords_form-name-placeholder-en":{
+    "es": "Ejemplo: Happy",
+    "en": "Example: Happy"
+  },
+  "keywords_form-name-label-es":{
+    "es": "Nombre de la palabra clave en español",
+    "en": "Keyword name in Spanish"
+  },
+  "keywords_form-name-placeholder-es":{
+    "es": "Ejemplo: Feliz",
+    "en": "Example: Feliz"
+  },
+  "keywords_mandatory-keyword-name-en":{
+    "es": "Debes escribir el nombre de la palabra clave en inglés",
+    "en": "You must write the keyword name in English"
+  },
+  "keywords_mandatory-keyword-name-es":{
+    "es": "Debes escribir el nombre de la palabra clave en español",
+    "en": "You must write the keyword name in Spanish"
+  },
   "artists_main-title":{
     "es": "Tus Artistas",
     "en": "Your Artists"
@@ -1530,5 +1590,9 @@
   "alert-error": {
     "es": "Ha ocurrido un error. Por favor, intenta de nuevo",
     "en": "An error has occurred. Please try again"
+  },
+  "alert-error-item-exists": {
+    "es": "El elemento ya existe",
+    "en": "The item already exists"
   }
 }

@@ -26,6 +26,7 @@
     margin: 0;
     padding: 0.5rem 1rem;
     font-size: 1.2rem;
+    text-align: center;
     @include m.desktop{
         max-width: 100%;
     }
@@ -33,12 +34,14 @@
         @extend .alerta;
         border: 0.2rem solid lighten(v.$red, 5);
         color: lighten(v.$red, 5);
+        margin-bottom: 0.5rem;
     }
 
     &__exito{
         @extend .alerta;
         border: 0.2rem solid lighten(v.$green, 10);
         color: lighten(v.$green, 10);
+        margin-bottom: 0.5rem;
     }
 
 }

@@ -192,6 +192,18 @@
     color: v.$green;
 }
 
+.text-blue{
+    color: v.$blue;
+}
+
+.text-white{
+    color: v.$white;
+}
+
+.caps{
+    text-transform: capitalize;
+}
+
 .title-info{
     font-size: 2.2rem;
     @include m.tablet{

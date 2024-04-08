@@ -23,10 +23,8 @@ export async function mostrarCategorias(datos){
                 categoriaLink.classList.add('cards__link');
                 if(categoria.categoria_en === 'genres'){
                     categoriaLink.href = '/filmtono/genres';
-                } else if(categoria.categoria_en === 'instruments'){
-                    categoriaLink.href = '/filmtono/instruments';
                 } else{
-                    categoriaLink.href = '/filmtono/categories/current?id='+id;
+                    categoriaLink.href = '/filmtono/categories/keywords?id='+id+'&category='+categoria_en;
                 }
 
                 //generar la etiqueta para el tipo de usuario

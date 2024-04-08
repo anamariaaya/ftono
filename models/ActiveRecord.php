@@ -133,6 +133,7 @@ class ActiveRecord{
     // Busqueda Where con Columna 
     public static function whereAll($columna, $valor) {
         $query = "SELECT * FROM " . static::$tabla . " WHERE ${columna} = '${valor}'";
+        //debugging($query);
         $resultado = self::consultarSQL($query);
         return $resultado;
     }

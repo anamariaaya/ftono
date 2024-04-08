@@ -27,7 +27,7 @@ class ProfileController{
             if(empty($errores)){
                 $usuario->guardar();
             }
-            Usuario::setAlerta('exito','Profile updated successfully');
+            Usuario::setAlerta('exito','profile_alert-profile-updated');
         }
 
         $titulo = 'Profile';
