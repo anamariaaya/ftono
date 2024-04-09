@@ -1,2 +1,0 @@
-export class Empresa{constructor(i,s,t,e,a,l,c,o,r,h,m,n,_,d,p,b){this.id=null,this.empresa=s,this.id_fiscal=t,this.direccion=e,this.ciudad=a,this.pais=l,this.instagram=c,this.nombre_comercial=o,this.apellido_comercial=r,this.email_comercial=h,this.tel_comercial=m,this.nombre_contable=n,this.apellido_contable=_,this.email_contable=d,this.tel_contable=p,this.id_usuario=null}}export const datosEmpresa=new Empresa;
-//# sourceMappingURL=Empresa.js.map

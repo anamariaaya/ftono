@@ -1,2 +1,2 @@
-import App from"./admin/App.js";const app=new App;
+import App from"./music/App.js";const app=new App;
 //# sourceMappingURL=admin.js.map

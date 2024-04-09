@@ -24,6 +24,16 @@ class MusicLabelsController{
         ]);
     }
 
+    public static function consultarSellos(){
+        isMusico();
+        $usuario = Usuario::find($_SESSION['id']);
+        $usuarioId = $usuario->id;
+        $consulta = 'SELECT sellos.id, sellos.nombre, sellos.creado FROM sellos INNER JOIN usuario_sellos ON sellos.id = usuario_sellos.id_sellos INNER JOIN usuarios ON usuario_sellos.id_usuario = usuarios.id WHERE usuarios.id =' . $usuarioId .' ORDER BY sellos.nombre ASC';
+
+        $sellos = Sellos::consultarSQL($consulta);
+        echo json_encode($sellos);
+    }
+
     public static function new(Router $router){
         isMusico();
         $sellos = new Sellos();
@@ -52,7 +62,7 @@ class MusicLabelsController{
         ]);
     }
 
-    public static function update(Router $router){
+    public static function edit(Router $router){
         isMusico();
         $id = redireccionar('/music/labels');
         $sellos = Sellos::find($id);
@@ -70,7 +80,7 @@ class MusicLabelsController{
             header('Location: /music/labels');
         }
 
-        $router->render('music/labels/update',[
+        $router->render('music/labels/edit',[
             'titulo' => $titulo,
             'sellos' => $sellos,
             'alertas' => $alertas
@@ -79,16 +89,12 @@ class MusicLabelsController{
 
     public static function delete(){
         isMusico();
-        if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            $id = $_POST['id'];
-            $id = filter_var($id, FILTER_VALIDATE_INT);
-            if($id){
-                $tipo = $_POST['tipo'];
-                if(validarTipoContenido($tipo)){
-                    $sellos = Sellos::find($id);
-                    $sellos->eliminar();
-                }
-            }
+        $id = s($_GET['id']);
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+        $sellos = Sellos::find($id);
+        $resultado = $sellos->eliminar();
+        if($resultado){
+            header('Location: /music/labels');
         }
     }
 }

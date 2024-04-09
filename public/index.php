@@ -70,12 +70,16 @@ $router->get('/music/profile', [MusicProfileController::class, 'index']);
 $router->post('/music/profile', [MusicProfileController::class, 'index']);
 $router->get('/music/profile/delete', [MusicProfileController::class, 'delete']);
 
+//Music Labels
 $router->get('/music/labels', [MusicLabelsController::class, 'index']);
+$router->get('/api/music/labels', [MusicLabelsController::class, 'consultarSellos']);
 $router->get('/music/labels/new', [MusicLabelsController::class, 'new']);
 $router->post('/music/labels/new', [MusicLabelsController::class, 'new']);
-$router->get('/music/labels/update', [MusicLabelsController::class, 'update']);
-$router->post('/music/labels/update', [MusicLabelsController::class, 'update']);
-$router->post('/music/labels/delete', [MusicLabelsController::class, 'delete']);
+$router->get('/music/labels/edit', [MusicLabelsController::class, 'edit']);
+$router->post('/music/labels/edit', [MusicLabelsController::class, 'edit']);
+$router->get('/music/labels/delete', [MusicLabelsController::class, 'delete']);
+
+
 $router->get('/music/albums', [MusicAlbumsController::class, 'index']);
 $router->get('/music/albums/current', [MusicAlbumsController::class, 'current']);
 $router->get('/music/albums/new', [MusicAlbumsController::class, 'new']);

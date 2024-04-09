@@ -1,5 +1,5 @@
 import {contratosContainer, contratosSearch} from './selectores.js';
-import {readLang, readJSON, eliminarItem} from '../base/funciones.js';
+import {readLang, readJSON, eliminarItem, normalizeText} from '../base/funciones.js';
 
 export async function consultaContratos(){
     try{
@@ -121,22 +121,22 @@ async function mostrarContratos(datos){
         cardInfo.appendChild(tipoInfo);
         cardInfo.appendChild(fechaInfo);
 
-        cardContrato.appendChild(cardInfo);
-        cardContrato.appendChild(cardActions);
+        cardLink.appendChild(cardInfo);
+        cardLink.appendChild(cardActions);
 
-        cardLink.appendChild(cardContrato);
-        contratosContainer.appendChild(cardLink);
+        cardContrato.appendChild(cardLink);
+        contratosContainer.appendChild(cardContrato);
     });
     filtrarContratos();
 }
 
 function filtrarContratos(){
     contratosSearch.addEventListener('input', e => {
-        const texto = e.target.value.toLowerCase();
+        const texto = normalizeText(e.target.value);
         const cards = document.querySelectorAll('.cards__card');
 
         cards.forEach(card => {
-            const nombre = card.textContent.toLowerCase();
+            const nombre = normalizeText(card.textContent);
             if(nombre.indexOf(texto) !== -1){
                 card.style.display = 'flex';
                 card.style.marginRight = '2rem';

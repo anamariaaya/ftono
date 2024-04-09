@@ -1,3 +1,3 @@
-import App from './admin/App.js';
+import App from './music/App.js';
 
 const app = new App();

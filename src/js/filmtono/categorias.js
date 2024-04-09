@@ -1,6 +1,5 @@
 import { categoriasInput, gridCategorias } from './selectores.js';
-import { eliminarItem } from '../base/funciones.js';
-import { readLang, readJSON } from '../base/funciones.js';
+import { readLang, readJSON, eliminarItem, normalizeText } from '../base/funciones.js';
 
 export async function consultaCategorias(){
     try{
@@ -55,7 +54,7 @@ export async function mostrarCategorias(datos){
                 btnEliminar.dataset.role = 'filmtono';
                 btnEliminar.dataset.item = 'categories';
                 btnEliminar.onclick = eliminarItem;
-                
+
                 //generar ícono de basura para el botón de eliminar
                 const iconoBasura = document.createElement('I');
                 iconoBasura.classList.add('fa-solid', 'fa-trash-can', 'no-click');
@@ -63,6 +62,9 @@ export async function mostrarCategorias(datos){
                 //Agregar el ícono al botón
                 btnEliminar.appendChild(iconoBasura);
                 btnEliminar.onclick = eliminarItem;
+                
+                
+                
 
                 //generar el contenedor de los botones
                 const contenedorBotones = document.createElement('DIV');
@@ -70,7 +72,10 @@ export async function mostrarCategorias(datos){
 
                 //agregar los botones al contenedor
                 contenedorBotones.appendChild(btnEditar);
-                contenedorBotones.appendChild(btnEliminar);
+                if(categoria.categoria_en !== 'genres'){
+                        contenedorBotones.appendChild(btnEliminar);
+                }
+                
 
                 //Generar el contenedor de la información del usuario
                 const card = document.createElement('DIV');
@@ -89,11 +94,11 @@ export async function mostrarCategorias(datos){
 
 function filtraCategorias(){
         categoriasInput.addEventListener('input', e => {
-                const texto = e.target.value.toLowerCase();
+                const texto = normalizeText(e.target.value);
                 const cards = document.querySelectorAll('.card');
 
                 cards.forEach(card => {
-                        const categoriaTitle = card.textContent.toLowerCase();
+                        const categoriaTitle = normalizeText(card.textContent);
                         if(categoriaTitle.indexOf(texto) !== -1){
                                 card.style.display = 'flex';
                                 card.style.marginRight = '2rem';

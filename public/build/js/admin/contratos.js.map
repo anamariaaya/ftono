@@ -1,1 +1,0 @@
-{"version":3,"sources":["admin/contratos.js"],"names":["consultaContratos","console","log"],"mappings":"OAAO,SAASA,oBACZC,QAAQC,IAAI","file":"contratos.js","sourcesContent":["export function consultaContratos(){\r\n    console.log('hola');\r\n}\r\n\r\n"]}

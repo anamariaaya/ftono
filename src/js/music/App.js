@@ -1,6 +1,6 @@
 import { consultaPaises, countryCurrentValue, indicativoTel, paisElegido } from "./APIPaises.js";
 import {tabs, paginador, formularioReg} from "./perfiles.js";
-import { selectPais, afterNav, paisContacto, albumsBlock, singlesBlock, firmasDashboard, countrySelected } from "./selectores.js";
+import { selectPais, afterNav, paisContacto, albumsBlock, singlesBlock, firmasDashboard, countrySelected, gridSellos } from "./selectores.js";
 import { chooseLang } from "../UI/language.js";
 import { musicTabs } from "./MusicTabs.js";
 import { blockDashboard, signContract } from "./contracts.js";
@@ -8,6 +8,7 @@ import { eliminarItem, btnSubmitLoader, changeTabs } from "../base/funciones.js"
 import { btnEliminar, submitBtns, tabsDiv } from '../base/selectores.js';
 import { passbtn } from "../UI/selectores.js";
 import { showPassword } from "../UI/UI.js";
+import {consultaSellos } from "./labels.js";
 
 class App{
     constructor(){
@@ -41,7 +42,10 @@ class App{
             countryCurrentValue();
         }
         if(btnEliminar){
-            btnEliminar.addEventListener('click', eliminarItem);
+            btnEliminar.forEach(btn => {
+                    btn.addEventListener('click', eliminarItem);
+                }
+            );
         }
         if(passbtn){
             showPassword();
@@ -51,6 +55,9 @@ class App{
         }
         if(submitBtns){
             btnSubmitLoader();
+        }
+        if(gridSellos){
+            consultaSellos();
         }
     }
 }

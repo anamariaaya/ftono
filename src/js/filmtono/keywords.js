@@ -1,6 +1,5 @@
 import { keywordsInput, gridKeywords } from './selectores.js';
-import { eliminarItem } from '../base/funciones.js';
-import { readLang, readJSON } from '../base/funciones.js';
+import { readLang, readJSON, eliminarItem, normalizeText } from '../base/funciones.js';
 
 export async function consultaKeywords(){
     try{
@@ -119,11 +118,11 @@ export async function mostrarKeywords(datos){
 
 function filtrakeywords(){
         keywordsInput.addEventListener('input', e => {
-                const texto = e.target.value.toLowerCase();
+                const texto = normalizeText(e.target.value);
                 const cards = document.querySelectorAll('.card');
 
                 cards.forEach(card => {
-                        const keywordTitle = card.textContent.toLowerCase();
+                        const keywordTitle = normalizeText(card.textContent);
                         if(keywordTitle.indexOf(texto) !== -1){
                                 card.style.display = 'flex';
                                 card.style.marginRight = '2rem';

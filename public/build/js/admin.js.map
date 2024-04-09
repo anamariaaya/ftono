@@ -1,1 +1,1 @@
-{"version":3,"sources":["admin.js"],"names":["App","app"],"mappings":"OAAOA,QAAS,iBAEhB,MAAMC,IAAM,IAAID","file":"admin.js","sourcesContent":["import App from './admin/App.js';\r\n\r\nconst app = new App();\r\n"]}
+{"version":3,"sources":["admin.js"],"names":["App","app"],"mappings":"OAAOA,QAAS,iBAEhB,MAAMC,IAAM,IAAID","file":"admin.js","sourcesContent":["import App from './music/App.js';\r\n\r\nconst app = new App();\r\n"]}
