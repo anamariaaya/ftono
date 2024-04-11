@@ -37,3 +37,7 @@ export const generosInput = document.querySelector('#generos-search');
 //selectores de la sección de keywords
 export const gridKeywords = document.querySelector('#grid-keywords');
 export const keywordsInput = document.querySelector('#keywords-search');
+
+//selectores se la sección de sellos
+export const gridLabels = document.querySelector('#grid-userLabel');
+export const labelsInput = document.querySelector('#userLabel-search');

@@ -135,6 +135,7 @@ $router->get('/filmtono/users/delete', [UsersController::class, 'delete']);
 
 //Filmtono Labels
 $router->get('/filmtono/labels', [LabelsController::class, 'index']);
+$router->get('/api/filmtono/labels', [LabelsController::class, 'consultaUsuariosMusica']);
 
 //Filmtono Categories
 $router->get('/filmtono/categories', [CategoriesController::class, 'index']);

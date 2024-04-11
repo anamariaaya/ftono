@@ -150,5 +150,45 @@
     "not-confirmed":{
       "es": "Sin confirmar",
       "en": "Not confirmed"
+    },
+    "userLabel-type":{
+      "es": "Tipo de usuario",
+      "en": "User type"
+    },
+    "aggregator":{
+      "es": "Agregador",
+      "en": "Aggregator"
+    },
+    "publisher":{
+      "es": "Editorial",
+      "en": "Publisher"
+    },
+    "label":{
+      "es": "Sello discográfico",
+      "en": "Record label"
+    },
+    "label-name":{
+      "es": "Nombre del sello",
+      "en": "Label name"
+    },
+    "label-creation":{
+      "es": "Fecha de creación",
+      "en": "Creation date"
+    },
+    "company":{
+      "es": "Empresa",
+      "en": "Company"
+    },
+    "see-company":{
+      "es": "Ver empresa",
+      "en": "See company"
+    },
+    "user":{
+      "es": "Usuario",
+      "en": "User"
+    },
+    "see-user":{
+      "es": "Ver usuario",
+      "en": "See user"
     }
 }

@@ -14,11 +14,11 @@
     </p>
 
     <div class="dashboard__search">
-        <input class="dashboard__total__type-search" type="text" id="sellos-search" placeholder="{% labels_placeholder %}"/>
+        <input class="dashboard__total__type-search" type="text" id="userLabel-search" placeholder="{% labels_placeholder %}"/>
     </div>
 </div>
 
 <div class="cards">
-    <div class="cards__container" id="grid-sellos">
+    <div class="cards__container" id="grid-userLabel">
     </div>
 </div>
