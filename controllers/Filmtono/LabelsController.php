@@ -4,6 +4,7 @@ namespace Controllers\Filmtono;
 
 use MVC\Router;
 use Model\Sellos;
+use Model\Empresa;
 use Model\Usuario;
 use Model\NTMusica;
 use Model\PerfilUsuario;
@@ -16,7 +17,14 @@ class LabelsController{
         $ntmusica = NTMusica::all();
 
         $userIds = [];
+        $companyIds = [];
+        $sellosIds = [];
         $usuarios = Usuario::innerJoin('usuarios','n_t_musica','id', 'id_usuario');
+
+        $aggregators = NTMusica::whereAll('id_musica', 1);
+        $publishers = NTMusica::whereAll('id_musica', 2);
+        $labels = NTMusica::whereAll('id_musica', 3);
+        //debugging($agregadores);
 
         foreach ($usuarios as $usuario) {
 
@@ -24,17 +32,44 @@ class LabelsController{
         }
         $userIdsString = implode(',', $userIds);
 
-        $consultaSellos = "SELECT usuario_sellos.*
+        $consultaUsuarioSellos = "SELECT usuario_sellos.*
         FROM usuario_sellos
         INNER JOIN usuarios
         ON usuario_sellos.id_usuario = usuarios.id  WHERE usuarios.id IN (".$userIdsString.");";
 
-        $perfilUsuario = UsuarioSellos::consultarSQL($consultaSellos);
-        
+        $usuarioSellos = UsuarioSellos::consultarSQL($consultaUsuarioSellos);
+        foreach ($usuarioSellos as $usuarioSello) {
+            $companyIds[] = $usuarioSello->id_empresa;
+            $sellosIds[] = $usuarioSello->id_sellos;
+        }
 
-        debugging($perfilUsuario);
+        $companyIdsString = implode(',', $companyIds);
+        $sellosIdsString = implode(',', $sellosIds);
+
+        $consultaEmpresas = "SELECT empresa.*
+        FROM empresa
+        INNER JOIN usuario_sellos
+        ON empresa.id = usuario_sellos.id_empresa WHERE usuario_sellos.id_empresa IN (".$companyIdsString.");";
+
+        $empresas = Empresa::consultarSQL($consultaEmpresas);
+
+        $consultaSellos = "SELECT sellos.*
+        FROM sellos
+        INNER JOIN usuario_sellos
+        ON sellos.id = usuario_sellos.id_sellos WHERE usuario_sellos.id_sellos IN (".$sellosIdsString.");";
+
+        $sellos = Sellos::consultarSQL($consultaSellos);
+
         $router->render('/admin/labels/index',[
-            'titulo' => $titulo
+            'titulo' => $titulo,
+            'usuarios' => $usuarios,
+            'usuarioSellos' => $usuarioSellos,
+            'empresas' => $empresas,
+            'sellos' => $sellos,
+            'ntmusica' => $ntmusica,
+            'aggregators' => $aggregators,
+            'publishers' => $publishers,
+            'labels' => $labels
         ]);
     }
 }
