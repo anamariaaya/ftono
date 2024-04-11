@@ -32,6 +32,8 @@ class MusicProfileController{
             }
 
             $usuario->sincronizar($args);
+            $usuario->nombre = sText($usuario->nombre);
+            $usuario->apellido = sText($usuario->apellido);
             $alertas = $usuario->validarPassword();
             
             if(empty($alertas)){

@@ -163,6 +163,8 @@ class AuthController {
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $usuario->sincronizar($_POST);
+            $usuario->nombre = sText($usuario->nombre);
+            $usuario->apellido = sText($usuario->apellido);
             $tipoMusico->sincronizar($_POST);
             //debuguear($_POST);
             
