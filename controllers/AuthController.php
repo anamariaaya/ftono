@@ -399,9 +399,13 @@ class AuthController {
 
             $comunicados->id_usuario = $usuario->id;
             $comunicados->guardar();
+            
 
             //Organizar el teléfono de contacto
             $empresa->tel_contacto = $_POST['tel-index'].$_POST['tel_contacto'];
+
+            $empresa->cargo = sText($empresa->cargo);
+            $empresa->empresa = sText($empresa->empresa);
             //guardar los datos en la base de datos
             $empresa->guardar();
 
@@ -440,6 +444,7 @@ class AuthController {
                     $sello = Sellos::where('nombre',$sello->nombre);
                     $usuarioSellos = new UsuarioSellos();
                     $usuarioSellos->id_usuario = $usuario->id;
+                    $usuarioSellos->id_empresa = $empresa->id;
                     $usuarioSellos->id_sellos = $sello->id;
                     $usuarioSellos->guardar();
                 }

@@ -7,6 +7,7 @@ use Model\Sellos;
 use Model\Empresa;
 use Model\Privacy;
 use Model\Usuario;
+use Model\NTMusica;
 use Model\CTRMusical;
 use Model\Comunicados;
 use Model\CTRArtistico;
@@ -21,11 +22,19 @@ class CompanyController{
         $alertas = [];
         $perfilUsuario = PerfilUsuario::where('id_usuario', $_SESSION['id']);
         $empresa = Empresa::find($perfilUsuario->id_empresa);
+        $tipoUsuario = NTMusica::where('id_usuario', $_SESSION['id']);
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $empresa->sincronizar($_POST);
+            $empresa->empresa = sText($empresa->empresa);
             $alertas = $empresa->validar();
             if(empty($alertas)){
+                if($tipoUsuario->id_musica == '3'){
+                    $UsuarioSello = UsuarioSellos::where('id_empresa', $empresa->id);
+                    $sello = Sellos::find($UsuarioSello->id_sellos);
+                    $sello->nombre = $empresa->empresa;
+                    $sello->guardar();
+                 }
                 $empresa->guardar();
                 Empresa::setAlerta('exito', 'auth_alert_success');
             }else{

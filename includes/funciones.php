@@ -17,6 +17,13 @@ function s($html) : string {
     return $s;
 }
 
+function sText($var) : string{
+    if(str_contains($var, "'") === true){
+        $var = str_replace("'", "´", $var);
+    }
+    return $var;
+}
+
 function redireccionar(string $url){
     $id = s($_GET['id']);
     //Validar la URL por ID válido

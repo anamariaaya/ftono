@@ -125,7 +125,8 @@ class ActiveRecord{
 
     // Busqueda Where con Columna 
     public static function where($columna, $valor) {
-        $query = "SELECT * FROM " . static::$tabla . " WHERE ${columna} = '${valor}'";// Descomentar si no te funciona algo
+        $query = "SELECT * FROM " . static::$tabla . " WHERE ${columna} = '${valor}'";
+        //debugging($query);
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado );
     }
@@ -152,6 +153,25 @@ class ActiveRecord{
 
     public static function unionTables($tabla1, $tabla2){
         $query = "SELECT * FROM " . $tabla1 . " UNION SELECT * FROM " . $tabla2;
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
+    public static function innerJoin($tabla1, $tabla2, $col1, $col2){
+        $query = "SELECT ".$tabla1.".*". "FROM " . $tabla1 . " INNER JOIN " . $tabla2 . " ON " . $tabla1 . "." . $col1 . " = " . $tabla2 . "." . $col2;
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
+    public static function innerJoinWhere($tabla1, $tabla2, $col1, $col2){
+        $query = "SELECT ".$tabla1.".*". "FROM " . $tabla1 . " INNER JOIN " . $tabla2 . " ON " . $tabla1 . "." . $col1 . " = " . $tabla2 . "." . $col2 . " WHERE " . $tabla2 . $col2 . " = " . $col2;
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
+
+    public static function innerJoinAll($tabla1, $tabla2, $col1, $col2){
+        $query = "SELECT * FROM " . $tabla1 . " INNER JOIN " . $tabla2 . " ON " . $tabla1 . "." . $col1 . " = " . $tabla2 . "." . $col2;
         $resultado = self::consultarSQL($query);
         return $resultado;
     }

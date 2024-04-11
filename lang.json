@@ -635,6 +635,10 @@
     "es": "Añadir Sello Discográfico",
     "en": "Add Record Label"
   },
+  "music_labels_mandatory-name":{
+    "es": "El nombre del sello discográfico es obligatorio",
+    "en": "The record label name is required"
+  },
   "music_labels_card_label-name":{
     "es": "Sello",
     "en": "Label"
@@ -954,6 +958,22 @@
   "music_genres_form-new_placeholder-spanish":{
     "es": "Escribe un nuevo género en español",
     "en": "Write a new genre in Spanish"
+  },
+  "labels_total":{
+    "es": "Total de Sellos Discográficos",
+    "en": "Total Record Labels"
+  },
+  "publishers_total":{
+    "es": "Total de Editoriales",
+    "en": "Total Publishers"
+  },
+  "aggregators_total":{
+    "es": "Total de Agregadores",
+    "en": "Total Aggregators"
+  },
+  "labels_placeholder":{
+    "es": "Buscar sellos, editoriales o agregadores por nombre",
+    "en": "Search labels, publishers or aggregators by name"
   },
   "categories_main-title":{
     "es": "Categorías",

@@ -5,6 +5,7 @@ namespace Controllers\Music;
 use MVC\Router;
 use Model\Sellos;
 use Model\Usuario;
+use Model\PerfilUsuario;
 use Model\UsuarioSellos;
 
 class MusicLabelsController{
@@ -38,6 +39,7 @@ class MusicLabelsController{
         isMusico();
         $sellos = new Sellos();
         $usuario = Usuario::find($_SESSION['id']);
+        $perfilUsuario = PerfilUsuario::where('id_usuario', $usuario->id);
         $titulo = 'music_labels_new-title';
         $alertas = Sellos::getAlertas();
         $usuarioSellos = new UsuarioSellos();
@@ -50,9 +52,10 @@ class MusicLabelsController{
                 $sellos = Sellos::where('nombre', $sellos->nombre);
                 $usuarioSellos->id_usuario = $usuario->id;
                 $usuarioSellos->id_sellos = $sellos->id;
+                $usuarioSellos->id_empresa = $perfilUsuario->id_empresa;
                 $usuarioSellos->guardar();
+                header('Location: /music/labels');
             }
-            header('Location: /music/labels');
         }        
 
         $router->render('music/labels/new',[

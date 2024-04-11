@@ -16,7 +16,7 @@ class Sellos extends ActiveRecord{
     // Validación para sellos al agregar un álbum
     public function validarSello() {
         if(!$this->nombre) {
-            self::$alertas['error'][] = 'El Nombre del Sello es Obligatorio';
+            self::$alertas['error'][] = 'music_labels_mandatory-name';
         }
         return self::$alertas;
     }
