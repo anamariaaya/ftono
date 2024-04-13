@@ -1630,5 +1630,9 @@
   "alert-error-item-exists": {
     "es": "El elemento ya existe",
     "en": "The item already exists"
+  },
+  "search_by_name": {
+    "es": "Buscar por nombre",
+    "en": "Search by name"
   }
 }

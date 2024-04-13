@@ -45,6 +45,7 @@ $router->get('/api/public/categories', [PublicController::class, 'consultarCateg
 $router->get('/category/genres', [PublicController::class, 'genres']);
 $router->get('/api/public/genres', [PublicController::class, 'consultarGeneros']);
 $router->get('/category', [PublicController::class, 'category']);
+$router->get('/api/public/category', [PublicController::class, 'consultarCategory']);
 
 $router->get('/search', [PublicController::class, 'search']);
 $router->get('/cart', [PublicController::class, 'cart']);

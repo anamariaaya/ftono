@@ -20,3 +20,7 @@ export const categoriasInput = document.querySelector('#categorias-search-public
 export const gridGeneros = document.querySelector('#grid-generos-public');
 export const generosInput = document.querySelector('#generos-search-public');
 
+//Selectores para página de categoría
+export const gridCategory = document.querySelector('#grid-category-public');
+export const categoryInput = document.querySelector('#category-search-public');
+

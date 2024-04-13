@@ -5,6 +5,7 @@ namespace Controllers;
 use MVC\Router;
 use Model\Genres;
 use Model\Promos;
+use Model\Keywords;
 use Model\Categorias;
 
 class PublicController{
@@ -47,9 +48,31 @@ class PublicController{
 
     public static function category(Router $router){
         $titulo = 't-category';
+        $lang = $_SESSION['lang'];
+        $id = s($_GET['id']) ?? null;
+        $categoria = Categorias::find($id);
+        if(!$categoria){
+            header('Location: /categories');
+        } else if($lang == 'es'){
+            $categoria = $categoria->categoria_es;
+        } else {
+            $categoria = $categoria->categoria_en;
+        }
         $router->render('/paginas/category',[
-            'titulo' => $titulo
+            'titulo' => $titulo,
+            'categoria' => $categoria
         ]);
+    }
+
+    public static function consultarCategory(){
+        $id = $_GET['id'] ?? null;
+        if(!$id){
+            header('Location: /categories');
+        }else{
+            $consulta = "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = ".$id.";";
+            $keywords = Keywords::consultarSQL($consulta);
+        }
+        echo json_encode($keywords);
     }
 
     public static function search(Router $router){
