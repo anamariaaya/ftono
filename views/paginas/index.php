@@ -34,16 +34,16 @@
     <h2 class="main__subtitle">{%index_subtitle-categories%}</h2>
     <div class="main__grid">
         <div class="main__grid__item">
-            <a href="/category?name=genres">
+            <a href="/category/genres">
                 <img class="main__grid__img" src="/build/img/categories/thumb--genres.jpeg" alt="{%category-genres%}">
             </a>
             <p class="main__grid__text">{%category-genres%}</p>
         </div>
         <div class="main__grid__item">
-            <a href="/category?name=sensations">
-                <img class="main__grid__img" src="/build/img/categories/thumb--sensations.jpeg" alt="{%category-sensations%}">
+            <a href="/category?name=feelings">
+                <img class="main__grid__img" src="/build/img/categories/thumb--sensations.jpeg" alt="{%category-feelings%}">
             </a>
-            <p class="main__grid__text">{%category-sensations%}</p>
+            <p class="main__grid__text">{%category-feelings%}</p>
         </div>
         <div class="main__grid__item">
             <a href="/category?name=instruments">
@@ -52,7 +52,7 @@
             <p class="main__grid__text">{%category-instruments%}</p>
         </div>
         <div class="main__grid__item">
-            <a href="/category?name=movies-tv">
+            <a href="/category?name=movies and tv">
                 <img class="main__grid__img" src="/build/img/categories/thumb--movies.jpeg" alt="{%category-movies%}">
             </a>
             <p class="main__grid__text">{%category-movies%}</p>

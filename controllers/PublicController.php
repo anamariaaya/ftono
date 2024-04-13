@@ -49,8 +49,18 @@ class PublicController{
     public static function category(Router $router){
         $titulo = 't-category';
         $lang = $_SESSION['lang'];
-        $id = s($_GET['id']) ?? null;
-        $categoria = Categorias::find($id);
+        $id = $_GET['id'] ?? null;
+        if($id){
+            $id = filter_var($id, FILTER_VALIDATE_INT);
+        }
+        $name = $_GET['name'] ?? null;
+        if($id !== null){
+            $categoria = Categorias::find($id);
+        } elseif($name !== null){
+            $categoria = Categorias::where('categoria_en',$name);
+        } else {
+           header('Location: /categories');
+        }
         if(!$categoria){
             header('Location: /categories');
         } else if($lang == 'es'){
