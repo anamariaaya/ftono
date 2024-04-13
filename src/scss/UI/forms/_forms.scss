@@ -40,7 +40,10 @@
 
     &--max{
         @extend .form;
-        width: 65%;
+        width: 100%;
+        @include m.tablet{
+            width: 65%;
+        }
     }
 
     &__legend{

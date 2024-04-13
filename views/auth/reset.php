@@ -1,4 +1,4 @@
-<main class="auth">
+<main class="auth container">
     <h1 class="auth__heading">{%<?php echo $titulo; ?>%}</h1>
     
 
@@ -10,22 +10,15 @@
         <p>{%auth_reset-password_paragraph%}</p>
         <form method="POST" class="form--max">
             <div class="form__group">
-                <label for="password" class="form__group__label">{%auth_reset-password_password_label%}</label>
-                <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    class="form__group__input"
-                    placeholder="{%auth_reset-password_password_label%}"
-                />
-                <label for="password2" class="form__group__label">{%auth_reset-password_password_confirmation_label%}</label>
-                <input
-                    type="password"
-                    name="password2"
-                    id="password2"
-                    class="form__group__input"
-                    placeholder="{%auth_reset-password_password_confirmation_label%}"
-                />
+                <label class="form__group__label" for="password">{%auth_register_password_label%}</label>
+                <input class="form__group__input" type="password" name="password" id="password" placeholder="{%auth_register_password_label%}">
+                <i class="fa fa-eye passview"></i>
+            </div>
+
+            <div class="form__group">
+                <label class="form__group__label" for="password2">{%auth_register_password_confirmation_label%}</label>
+                <input class="form__group__input" type="password" name="password2" id="password2" placeholder="{%auth_register_password_confirmation_label%}">
+                <i class="fa fa-eye passview"></i>
             </div>
 
             <input type="submit" value="{%auth_reset-password_btn%}" class="btn-submit" />
