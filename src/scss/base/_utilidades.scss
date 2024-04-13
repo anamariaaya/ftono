@@ -161,7 +161,10 @@
 }
 
 .mTop-5{
-    margin-top: 5rem;
+    margin-top: 2.5rem !important;
+    @include m.tablet{
+        margin-top: 5rem !important;
+    }
 }
 
 .mTop-5--only-mobile{
@@ -179,7 +182,6 @@
         margin-bottom: 5rem;
     }
 }
-
 .center{
     text-align: center;
 }
@@ -198,6 +200,26 @@
 
 .text-white{
     color: v.$white;
+}
+
+.text-20{
+    font-size: 1.4rem !important;
+    @include m.tablet{
+        font-size: 1.8rem !important;
+    }
+    @include m.desktop{
+        font-size: 2rem !important;
+    }
+}
+
+.text-24{
+    font-size: 1.6rem !important;
+    @include m.tablet{
+        font-size: 2rem !important;
+    }
+    @include m.desktop{
+        font-size: 2.4rem !important;
+    }
 }
 
 .caps{

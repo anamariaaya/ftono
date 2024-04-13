@@ -30,7 +30,7 @@ class ProfileController{
             Usuario::setAlerta('exito','profile_alert-profile-updated');
         }
 
-        $titulo = 'Profile';
+        $titulo = 't-profile';
         $router->render('/admin/profile',[
             'titulo' => $titulo,
             'usuario' => $usuario,

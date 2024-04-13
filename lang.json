@@ -1371,6 +1371,10 @@
     "es": "Categorías",
     "en": "Categories"
   },
+  "index_btn-categories":{
+    "es": "Ver Categorías",
+    "en": "See Categories"
+  },
   "index_subtitle-artists":{
     "es": "Artistas",
     "en": "Artists"
@@ -1606,6 +1610,18 @@
   "t-labels":{
     "es": "Sellos Discográficos",
     "en": "Record Labels"
+  },
+"t-category":{
+    "es": "Categoría",
+    "en": "Category"
+  },
+  "t-categories":{
+    "es": "Categorías",
+    "en": "Categories"
+  },
+  "t-genres":{
+    "es": "Géneros",
+    "en": "Genres"
   },
   "alert-error": {
     "es": "Ha ocurrido un error. Por favor, intenta de nuevo",

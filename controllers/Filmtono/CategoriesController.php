@@ -18,6 +18,7 @@ class CategoriesController{
     }
 
     public static function consultarCategorias(){
+        isAdmin();
         $categorias = Categorias::allOrderAsc('id');
         echo json_encode($categorias);
     }

@@ -14,7 +14,7 @@ use Model\UsuarioSellos;
 class LabelsController{
     public static function index(Router $router){
         isAdmin();
-        $titulo = 'music_labels-title';
+        $titulo = 't-labels';
         $ntmusica = NTMusica::all();
 
         $aggregators = NTMusica::whereAll('id_musica', 1);

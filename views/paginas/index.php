@@ -29,7 +29,7 @@
     </div>
 </main>
 
-<div class="container">
+<section class="container">
     <!-- Section with categories grid -->
     <h2 class="main__subtitle">{%index_subtitle-categories%}</h2>
     <div class="main__grid">
@@ -58,11 +58,12 @@
             <p class="main__grid__text">{%category-movies%}</p>
         </div>
     </div>
+    <a href="/categories" class="btn-view mTop-5 text-24">{%index_btn-categories%}</a>
     <!-- End of categories grid -->
-</div>
+</section>
 
 <!-- Section with the artists -->
-<div class="container">
+<section class="container">
     <h2 class="main__subtitle">{%index_subtitle-artists%}</h2>
 
-</div>
+</section>

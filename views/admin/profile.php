@@ -1,5 +1,5 @@
 
-<h1><?php echo $titulo; ?></h1>
+<h1>{%t-profile%}</h1>
 
 <?php
     require_once __DIR__ . '/../templates/alertas.php';

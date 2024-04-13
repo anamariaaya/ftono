@@ -1,8 +1,10 @@
-import { dropdownDiv, passbtn, wrapper } from "./selectores.js";
+import { dropdownDiv, passbtn, wrapper, gridCategorias, gridGeneros } from "./selectores.js";
 import { chooseLang } from "./language.js";
 import { UI, showPassword, mainSlider } from "./UI.js";
 import { btnSubmitLoader } from "../base/funciones.js";
 import { submitBtns } from '../base/selectores.js';
+import { consultaCategorias } from "./categories.js";
+import { consultaGeneros } from "./generos.js";
 
 
 
@@ -27,6 +29,12 @@ class App{
         }
         if(wrapper){
             mainSlider();
+        }
+        if(gridCategorias){
+            consultaCategorias();
+        }
+        if(gridGeneros){
+            consultaGeneros();
         }
     }
 }

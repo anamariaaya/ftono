@@ -12,3 +12,11 @@ export const nextBtn = document.querySelector('.main__slider__btn--next');
 export const prevBtn = document.querySelector('.main__slider__btn--prev');
 export const wrapper = document.querySelector('.main__slider__wrapper');
 
+//Selectores para página de categorías
+export const gridCategorias = document.querySelector('#grid-categorias-public');
+export const categoriasInput = document.querySelector('#categorias-search-public');
+
+//Selectores para página de géneros
+export const gridGeneros = document.querySelector('#grid-generos-public');
+export const generosInput = document.querySelector('#generos-search-public');
+

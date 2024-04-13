@@ -38,10 +38,16 @@ session_start();
 
 // Iniciar Sesión
 $router->get('/', [PublicController::class, 'index']);
+
+// Public categories
+$router->get('/categories', [PublicController::class, 'categories']);
+$router->get('/api/public/categories', [PublicController::class, 'consultarCategorias']);
+$router->get('/category/genres', [PublicController::class, 'genres']);
+$router->get('/api/public/genres', [PublicController::class, 'consultarGeneros']);
 $router->get('/category', [PublicController::class, 'category']);
+
 $router->get('/search', [PublicController::class, 'search']);
 $router->get('/cart', [PublicController::class, 'cart']);
-$router->get('/categories', [PublicController::class, 'categories']);
 $router->get('/help', [PublicController::class, 'help']);
 $router->get('/faq', [PublicController::class, 'faq']);
 $router->get('/artists', [PublicController::class, 'artists']);
