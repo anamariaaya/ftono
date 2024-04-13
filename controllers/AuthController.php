@@ -160,6 +160,7 @@ class AuthController {
         $musico = TipoMusica::allOrderBy('tipo_'.$lang);
         $tipoMusico = new NTMusica;
         $usuario = new Usuario;
+        $userType = $_GET['type'] ?? null;
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $usuario->sincronizar($_POST);
@@ -223,7 +224,8 @@ class AuthController {
             'alertas' => $alertas,
             'musico' => $musico,
             'lang' => $lang,
-            'usuario' => $usuario
+            'usuario' => $usuario,
+            'userType' => $userType
         ]);
     }
 

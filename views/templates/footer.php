@@ -23,16 +23,16 @@
 
         <div class="footer__links">
             <h4><?php echo tt('footer_music_ind'); ?></h4>
-            <a href="#" class="footer__link">
+            <a href="/register-music?type=artista" class="footer__link">
                 <?php echo tt('footer_music_ind-1'); ?>
             </a>
-            <a href="#" class="footer__link">
+            <a href="/register-music?type=sello" class="footer__link">
                 <?php echo tt('footer_music_ind-2'); ?>
             </a>
-            <a href="#" class="footer__link">
+            <a href="/register-music?type=agregador" class="footer__link">
                 <?php echo tt('footer_music_ind-3'); ?>
             </a>
-            <a href="#" class="footer__link">
+            <a href="/register-music?type=productor" class="footer__link">
                 <?php echo tt('footer_music_ind-4'); ?>
             </a>
         </div>
@@ -110,10 +110,5 @@
             </a>
         </div>
         <p class="footer__social--copyright"><?php echo tt('footer_rights'); ?> &#174; Filmtono <?php echo date('Y'); ?></p>
-    </div>
-
-    <div class="footer__terms">
-        <a href="/register-music"><?php echo tt('footer_register_music'); ?></a>
-        
     </div>
 </footer>

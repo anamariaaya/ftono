@@ -1,6 +1,24 @@
 <div class="container">
     <h1 class="text-yellow">{% <?php echo $titulo; ?> %}</h1>
-    <p>{%auth_register-music_paragraph%}<p>
+
+    <?php switch($userType):
+        case 'artista': ?>
+            <p>Soy un Artista<p>
+            <?php break;
+        case 'sello': ?>
+            <p>Soy un sello<p>
+            <?php break;
+        case 'agregador': ?>
+            <p>Soy un agregador<p>
+            <?php break;
+        case 'productor': ?>
+            <p>Soy un productor<p>
+            <?php break;
+        default: ?>
+            <?php break;
+    endswitch; ?>
+
+<p>{%auth_register-music_paragraph%}<p>
 
     <?php if(isset($_SESSION['id'])): ?>        
         <p class="auth__text">{%auth_alert_user-already-exist%}</p>
