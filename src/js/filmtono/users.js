@@ -128,7 +128,6 @@ function filtrarUsuarios(){
         const input = document.querySelector('#usuario-search');
         input.addEventListener('input', e => {
                 const texto = normalizeText(e.target.value);
-                console.log(texto);
                 const cards = document.querySelectorAll('.card');
 
                 cards.forEach(card => {
