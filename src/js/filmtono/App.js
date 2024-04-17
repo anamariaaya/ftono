@@ -1,4 +1,4 @@
-import { artistaSecundario, artistasInput, btnAgregar, contratosContainer, gridUsuarios, portada, promoInput, gridCategorias, gridGeneros, gridKeywords, gridLabels } from "./selectores.js";
+import { artistaSecundario, artistasInput, btnAgregar, contratosContainer, gridUsuarios, portada, promoInput, gridCategorias, gridGeneros, gridKeywords, gridLabels, gridIdiomas } from "./selectores.js";
 import { chooseLang } from "../UI/language.js";
 import { styleDatalist, styleFileInput, artistasSecundarios, addArtist } from "./artistas.js";
 import { readFileName } from "./ux.js";
@@ -8,6 +8,7 @@ import { consultaCategorias } from "./categorias.js";
 import { consultaGeneros } from "./generos.js";
 import { consultaKeywords } from "./keywords.js";
 import { consultaLabels } from "./labels.js";
+import { consultaIdiomas } from "./idiomas.js";
 import { changeTabs, eliminarItem, btnSubmitLoader } from "../base/funciones.js";
 import {btnEliminar, submitBtns, tabsDiv} from '../base/selectores.js';
 import { countryValue } from "../music/APIPaises.js";
@@ -74,6 +75,9 @@ class App{
         }
         if(gridLabels){
             consultaLabels();
+        }
+        if(gridIdiomas){
+            consultaIdiomas();
         }
     }
 }

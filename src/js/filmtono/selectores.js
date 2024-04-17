@@ -41,3 +41,7 @@ export const keywordsInput = document.querySelector('#keywords-search');
 //selectores se la sección de sellos
 export const gridLabels = document.querySelector('#grid-userLabel');
 export const labelsInput = document.querySelector('#userLabel-search');
+
+//Selectores de la sección de idiomas
+export const gridIdiomas = document.querySelector('#grid-idiomas');
+export const idiomasInput = document.querySelector('#idiomas-search');

@@ -58,6 +58,13 @@
             </span>
         </a>
 
+        <a href="/filmtono/languages" class="dashboard__enlace <?php pagina_admin('languages');?>">
+            <i class="fa-solid fa-language dashboard__icono"></i>
+            <span class="dashboard__menu-texto">
+                <?php echo tt('sidebar_languages');?>
+            </span>
+        </a>
+
         <a href="/filmtono/contracts" class="dashboard__enlace <?php pagina_admin('contracts');?>">
             <i class="fa-solid fa-file-signature dashboard__icono"></i>
             <span class="dashboard__menu-texto">

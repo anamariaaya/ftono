@@ -67,6 +67,10 @@
     "es": "Artistas",
     "en": "Artists"      
   },
+  "sidebar_languages":{
+    "es": "Idiomas",
+    "en": "Languages"      
+  },
   "sidebar_contracts":{
     "es": "Contratos",
     "en": "Contracts"      
@@ -959,9 +963,13 @@
     "es": "Escribe un nuevo género en español",
     "en": "Write a new genre in Spanish"
   },
-  "labels_total":{
-    "es": "Total de Sellos Discográficos",
-    "en": "Total Record Labels"
+  "register-labels_total":{
+    "es": "Total de Sellos registrados",
+    "en": "Total Labels registered"
+  },
+  "labels-users_total":{
+    "es": "Total de Sellos como usuario",
+    "en": "Total Labels as user"
   },
   "publishers_total":{
     "es": "Total de Editoriales",
@@ -1182,6 +1190,62 @@
   "admin_genres_back-btn":{
     "es": "Volver a Géneros",
     "en": "Back to Genres"
+  },
+  "languages_main-title":{
+    "es": "Idiomas",
+    "en": "Languages"
+  },
+  "languages_total":{
+    "es": "Total de Idiomas",
+    "en": "Total Languages"
+  },
+  "languages_search-placeholder":{
+    "es": "Buscar idiomas por nombre",
+    "en": "Search languages by name"
+  },
+  "languages_new-title":{
+    "es": "Nuevo Idioma",
+    "en": "New Language"
+  },
+  "languages_new-btn":{
+    "es": "Crear Idioma",
+    "en": "Create Language"
+  },
+  "languages_edit-title":{
+    "es": "Editar Idioma",
+    "en": "Edit Language"
+  },
+  "languages_edit-btn":{
+    "es": "Actualizar Idioma",
+    "en": "Update Language"
+  },
+  "languages_form-name_label-en":{
+    "es": "Nombre del Idioma en inglés",
+    "en": "Language Name in English"
+  },
+  "languages_form-name_placeholder-en":{
+    "es": "Ejemplo: Spanish",
+    "en": "Example: Spanish"
+  },
+  "languages_form-name_label-es":{
+    "es": "Nombre del Idioma en español",
+    "en": "Language Name in Spanish"
+  },
+  "languages_form-name_placeholder-es":{
+    "es": "Ejemplo: Español",
+    "en": "Example: Español"
+  },
+  "languages_mandatory-language-name-en":{
+    "es": "Debes escribir el nombre del idioma en inglés",
+    "en": "You must write the language name in English"
+  },
+  "languages_mandatory-language-name-es":{
+    "es": "Debes escribir el nombre del idioma en español",
+    "en": "You must write the language name in Spanish"
+  },
+  "languages_back-btn":{
+    "es": "Volver a Idiomas",
+    "en": "Back to Languages"
   },
   "contracts_main-title":{
     "es": "Contratos",
@@ -1611,7 +1675,7 @@
     "es": "Sellos Discográficos",
     "en": "Record Labels"
   },
-"t-category":{
+  "t-category":{
     "es": "Categoría",
     "en": "Category"
   },
@@ -1622,6 +1686,10 @@
   "t-genres":{
     "es": "Géneros",
     "en": "Genres"
+  },
+  "t-languages":{
+    "es": "Idiomas",
+    "en": "Languages"
   },
   "alert-error": {
     "es": "Ha ocurrido un error. Por favor, intenta de nuevo",

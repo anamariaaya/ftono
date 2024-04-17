@@ -18,14 +18,20 @@ class LabelsController{
         $ntmusica = NTMusica::all();
 
         $aggregators = NTMusica::whereAll('id_musica', 1);
+        $aggregators = count($aggregators);
         $publishers = NTMusica::whereAll('id_musica', 2);
+        $publishers = count($publishers);
         $labels = NTMusica::whereAll('id_musica', 3);
+        $labels = count($labels);
+        $labelsTotal = Sellos::all();
+        $labelsTotal = count($labelsTotal);
 
         $router->render('/admin/labels/index',[
             'titulo' => $titulo,
             'aggregators' => $aggregators,
             'publishers' => $publishers,
-            'labels' => $labels
+            'labels' => $labels,
+            'labelsTotal' => $labelsTotal
         ]);
     }
 

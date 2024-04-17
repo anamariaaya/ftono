@@ -3,14 +3,17 @@
 <!-- <?php //debugging($ntmusica)
 ;?> -->
 <div class="dashboard__total">
-    <p><span>{% labels_total %}: </span> 
-        <?php echo count($labels); ?>
+    <p><span>{% register-labels_total %}: </span> 
+        <?php echo $labelsTotal; ?>
+    </p>
+    <p><span>{% labels-users_total %}: </span> 
+        <?php echo $labels; ?>
     </p>
     <p><span>{% publishers_total %}: </span> 
-        <?php echo count($publishers); ?>
+        <?php echo $publishers; ?>
     </p>
     <p><span>{% aggregators_total %}: </span> 
-        <?php echo count($aggregators); ?>
+        <?php echo $aggregators; ?>
     </p>
 
     <div class="dashboard__search">

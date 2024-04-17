@@ -8,23 +8,23 @@ use Controllers\PublicController;
 use Controllers\DashboardController;
 use Controllers\APIProfileController;
 
-use Controllers\Music\CompanyController;
+
 use Controllers\Filmtono\UsersController;
 use Controllers\Filmtono\AlbumsController;
 use Controllers\Filmtono\GenresController;
 use Controllers\Filmtono\LabelsController;
 use Controllers\Filmtono\PromosController;
-use Controllers\Music\APIArtistController;
+use Controllers\Filmtono\ContractsController;
 use Controllers\Filmtono\ArtistsController;
 use Controllers\Filmtono\ProfileController;
 use Controllers\Filmtono\APIUsersController;
 use Controllers\Filmtono\KeywordsController;
-use Controllers\Filmtono\PaymentsController;
+use Controllers\Filmtono\LanguagesController;
 
-
+use Controllers\Music\CompanyController;
 use Controllers\Music\MusicAlbumsController;
 use Controllers\Music\MusicLabelsController;
-use Controllers\Filmtono\ContractsController;
+use Controllers\Music\APIArtistController;
 use Controllers\Music\MusicArtistsController;
 
 
@@ -177,8 +177,14 @@ $router->get('/filmtono/categories/keywords/edit', [KeywordsController::class, '
 $router->post('/filmtono/categories/keywords/edit', [KeywordsController::class, 'edit']);
 $router->get('/filmtono/keywords/delete', [KeywordsController::class, 'delete']);
 
-//Filmtono Payments
-$router->get('/filmtono/payments', [PaymentsController::class, 'index']);
+//Filmtono Languages
+$router->get('/filmtono/languages', [LanguagesController::class, 'index']);
+$router->get('/api/filmtono/languages', [LanguagesController::class, 'consultarIdiomas']);
+$router->get('/filmtono/languages/new', [LanguagesController::class, 'new']);
+$router->post('/filmtono/languages/new', [LanguagesController::class, 'new']);
+$router->get('/filmtono/languages/edit', [LanguagesController::class, 'edit']);
+$router->post('/filmtono/languages/edit', [LanguagesController::class, 'edit']);
+$router->get('/filmtono/languages/delete', [LanguagesController::class, 'delete']);
 
 //Filmtono Contracts
 $router->get('/filmtono/contracts', [ContractsController::class, 'index']);
