@@ -24,7 +24,6 @@
             <input type="submit" value="{%auth_reset-password_btn%}" class="btn-submit" />
         </form>
     <?php } ?>
-
     <div class="acciones">
         <a href="/login" class="acciones__enlace">{%auth_register_already_account%}</a>
         <a href="/register" class="acciones__enlace">{%auth_login_not_account%}</a>        

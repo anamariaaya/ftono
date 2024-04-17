@@ -75,8 +75,10 @@ class PublicController{
     }
 
     public static function consultarCategory(){
-        $id = $_GET['id'] ?? null;
-        if(!$id){
+        $name = $_GET['name'] ?? null;
+        $categoria = Categorias::where('categoria_en',$name);
+        $id = $_GET['id'] ?? $categoria->id;
+        if(!$name && !$id){
             header('Location: /categories');
         }else{
             $consulta = "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = ".$id.";";

@@ -33,11 +33,22 @@ class CategoriesController{
             $categoria->sincronizar($args);
             $alertas = $categoria->validar();
             if(empty($alertas)){
-                $resultado = $categoria->guardar();
-                if($resultado){
-                    header('Location: /filmtono/categories');
+                $existeCategoria = Categorias::where('categoria_en',$_POST['categoria_en']);
+                if($existeCategoria){
+                    Categorias::setAlerta('error','alert-error-item-exists');
+                }else if($existeCategoria = Categorias::where('categoria_es',$_POST['categoria_es'])){
+                    Categorias::setAlerta('error','alert-error-item-exists');
+                }else if ($existeCategoria = Categorias::where('categoria_en',$_POST['categoria_es'])){
+                    Categorias::setAlerta('error','alert-error-item-exists');
+                }else if ($existeCategoria = Categorias::where('categoria_es',$_POST['categoria_en'])){
+                    Categorias::setAlerta('error','alert-error-item-exists');
                 }else{
-                    Categorias::setAlerta('error','alert-error');
+                $resultado = $categoria->guardar();
+                    if($resultado){
+                        header('Location: /filmtono/categories');
+                    }else{
+                        Categorias::setAlerta('error','alert-error');
+                    }
                 }
             }
         }

@@ -19,7 +19,7 @@
 
 .card{
     border-radius: 0.5rem;
-    background-color: v.$white;
+    background-color: v.$gray-light;
     border-left: 1.5rem solid v.$yellow;
     box-shadow: v.$shadow;
     padding: 1rem 1.5rem;
@@ -29,6 +29,9 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
+    &:hover{
+        background-color: darken(v.$gray-dark, 9);
+    }
     @include m.tablet{
         width: auto;
     }
@@ -55,7 +58,7 @@
         padding: .5rem 0;
         font-weight: v.$regular;
         flex: 1;
-        color: v.$black;
+        color: v.$white;
         @include m.desktop{
             font-size: 1.8rem;
         }

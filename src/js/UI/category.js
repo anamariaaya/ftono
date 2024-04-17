@@ -8,7 +8,12 @@ export async function consultaCategory(){
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get('id');
         const category = urlParams.get('name');
-        const url = window.location.origin+'/api/public/category?id='+id+'&name='+category;
+        let url = '';
+        if(!id){
+            url = window.location.origin+'/api/public/category?name='+category;
+        } else{
+            url = window.location.origin+'/api/public/category?id='+id+'&name='+category;
+        }
         const resultado = await fetch(url);
         const datos = await resultado.json();
         mostrarCategory(datos);

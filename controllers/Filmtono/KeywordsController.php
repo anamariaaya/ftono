@@ -68,6 +68,10 @@ class KeywordsController{
                     Keywords::setAlerta('error','alert-error-item-exists');
                 }else if($existeKeyword = Keywords::where('keyword_es',$_POST['keyword_es'])){
                     Keywords::setAlerta('error','alert-error-item-exists');
+                } else if($existeKeyword = Keywords::where('keyword_en',$_POST['keyword_es'])){
+                    Keywords::setAlerta('error','alert-error-item-exists');
+                } else if($existeKeyword = Keywords::where('keyword_es',$_POST['keyword_en'])){
+                    Keywords::setAlerta('error','alert-error-item-exists');
                 }
                 else{
                     $keyword->guardar();
