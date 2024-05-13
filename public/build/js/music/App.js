@@ -1,2 +1,65 @@
-import{consultaPaises,countryCurrentValue,indicativoTel,paisElegido}from"./APIPaises.js";import{tabs,paginador,formularioReg}from"./perfiles.js";import{selectPais,afterNav,paisContacto,albumsBlock,singlesBlock,firmasDashboard,countrySelected,gridSellos}from"./selectores.js";import{chooseLang}from"../UI/language.js";import{musicTabs}from"./MusicTabs.js";import{blockDashboard,signContract}from"./contracts.js";import{eliminarItem,btnSubmitLoader,changeTabs}from"../base/funciones.js";import{btnEliminar,submitBtns,tabsDiv}from"../base/selectores.js";import{passbtn}from"../UI/selectores.js";import{showPassword}from"../UI/UI.js";import{consultaSellos}from"./labels.js";class App{constructor(){this.initApp()}initApp(){chooseLang&&chooseLang(),selectPais&&(consultaPaises(),paisElegido()),paisContacto&&indicativoTel(),afterNav&&(tabs(),paginador(),formularioReg()),albumsBlock&&singlesBlock&&musicTabs(),firmasDashboard&&(blockDashboard(),signContract()),countrySelected&&countryCurrentValue(),btnEliminar&&btnEliminar.forEach(s=>{s.addEventListener("click",eliminarItem)}),passbtn&&showPassword(),tabsDiv&&changeTabs(),submitBtns&&btnSubmitLoader(),gridSellos&&consultaSellos()}}export default App;
-//# sourceMappingURL=App.js.map
+import { consultaPaises, countryCurrentValue, indicativoTel, paisElegido } from "./APIPaises.js";
+import {tabs, paginador, formularioReg} from "./perfiles.js";
+import { selectPais, afterNav, paisContacto, albumsBlock, singlesBlock, firmasDashboard, countrySelected, gridSellos } from "./selectores.js";
+import { chooseLang } from "../UI/language.js";
+import { musicTabs } from "./MusicTabs.js";
+import { blockDashboard, signContract } from "./contracts.js";
+import { eliminarItem, btnSubmitLoader, changeTabs } from "../base/funciones.js";
+import { btnEliminar, submitBtns, tabsDiv } from '../base/selectores.js';
+import { passbtn } from "../UI/selectores.js";
+import { showPassword } from "../UI/UI.js";
+import {consultaSellos } from "./labels.js";
+
+class App{
+    constructor(){
+        this.initApp();
+    }
+
+    initApp(){ 
+        if(chooseLang){
+            chooseLang();
+        }       
+        if(selectPais){
+            consultaPaises();
+            paisElegido();
+        }
+        if(paisContacto){
+            indicativoTel();
+        }
+        if(afterNav){
+            tabs();
+            paginador();
+            formularioReg();
+        }
+        if(albumsBlock && singlesBlock){
+            musicTabs();
+        }
+        if(firmasDashboard){
+            blockDashboard();
+            signContract();
+        }
+        if(countrySelected){
+            countryCurrentValue();
+        }
+        if(btnEliminar){
+            btnEliminar.forEach(btn => {
+                    btn.addEventListener('click', eliminarItem);
+                }
+            );
+        }
+        if(passbtn){
+            showPassword();
+        }
+        if(tabsDiv){
+            changeTabs();
+        }
+        if(submitBtns){
+            btnSubmitLoader();
+        }
+        if(gridSellos){
+            consultaSellos();
+        }
+    }
+}
+
+export default App;

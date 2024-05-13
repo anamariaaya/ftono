@@ -1,2 +1,144 @@
-import{gridUsuarios}from"./selectores.js";import{readLang,readJSON,eliminarItem,normalizeText}from"../base/funciones.js";export async function consultaUsuarios(){try{const e=await fetch(window.location.origin+"/api/filmtono/users");mostrarUsuarios(await e.json())}catch(e){console.log(e)}}export async function mostrarUsuarios(e){const t=await readLang(),n=await readJSON();e.forEach(e=>{const{id:a,nombre:o,apellido:s,email:i,confirmado:d,perfil:c,nivel:l,tipo_es:r,tipo_en:m,empresa:p}=e,u=document.createElement("H3");u.classList.add("card__title"),u.textContent=null!=l?"es"===t?r:m:"Admin";const f=document.createElement("P");f.classList.add("card__info--title"),f.textContent=p;const h=document.createElement("P");h.classList.add("card__info"),h.textContent=o+" "+s;const C=document.createElement("P");C.classList.add("card__info"),C.textContent=i;const _=document.createElement("P");_.classList.add("card__info--span"),_.textContent="1"===d?n.confirmed[t]:n["not-confirmed"][t];const x=document.createElement("P");x.classList.add("card__info--span"),x.textContent="1"===c?n["profile-complete"][t]:n["profile-incomplete"][t];const E=document.createElement("A");E.classList.add("btn-view"),E.textContent=n["see-more"][t],E.href="/filmtono/users/current?id="+a;const L=document.createElement("I");L.classList.add("fa-solid","fa-eye"),E.appendChild(L);const y=document.createElement("BUTTON");y.classList.add("btn-delete"),y.value=a,y.dataset.role="filmtono",y.dataset.item="users",y.onclick=eliminarItem;const g=document.createElement("I");g.classList.add("fa-solid","fa-trash-can","no-click"),y.appendChild(g),y.onclick=eliminarItem;const U=document.createElement("DIV");U.classList.add("card__acciones"),U.appendChild(y);const w=document.createElement("DIV");w.classList.add("card"),w.appendChild(u),p&&w.appendChild(f),w.appendChild(h),w.appendChild(C),w.appendChild(_),null!=l&&w.appendChild(x),w.appendChild(f),w.appendChild(E),w.appendChild(U),gridUsuarios.appendChild(w)}),filtrarUsuarios()}function filtrarUsuarios(){document.querySelector("#usuario-search").addEventListener("input",e=>{const t=normalizeText(e.target.value);document.querySelectorAll(".card").forEach(e=>{-1!==normalizeText(e.textContent).indexOf(t)?(e.style.display="flex",e.style.marginRight="2rem",gridUsuarios.style.columnGap="0"):e.style.display="none"})})}
-//# sourceMappingURL=users.js.map
+import { gridUsuarios } from './selectores.js';
+import { readLang, readJSON, eliminarItem, normalizeText } from '../base/funciones.js';
+
+export async function consultaUsuarios(){
+    try{
+        const resultado = await fetch(window.location.origin+'/api/filmtono/users');
+        const datos = await resultado.json();
+        mostrarUsuarios(datos);
+
+    }catch(error){
+        console.log(error);
+    }
+}
+export async function mostrarUsuarios(datos){
+        const lang = await readLang();
+        const alerts = await readJSON();
+        datos.forEach(usuario => {
+                const {id, nombre, apellido, email, confirmado, perfil, nivel, tipo_es, tipo_en, empresa} = usuario;
+
+                //generar la etiqueta para el tipo de usuario
+                const tipoUsuario = document.createElement('H3');
+                tipoUsuario.classList.add('card__title');
+                if(nivel != null){
+                        if(lang === 'es'){
+                                tipoUsuario.textContent = tipo_es;
+                        } else {
+                                tipoUsuario.textContent = tipo_en;
+                        }
+                }else{
+                        tipoUsuario.textContent = 'Admin';
+                }
+                
+                //generar la etiqueta para la empresa
+                const empresaUsuario = document.createElement('P');
+                empresaUsuario.classList.add('card__info--title');
+                empresaUsuario.textContent = empresa;
+
+
+                //generar la etiqueta para el nombre
+                const nombreUsuario = document.createElement('P');
+                nombreUsuario.classList.add('card__info');
+                nombreUsuario.textContent = nombre + ' ' + apellido;
+                
+                //generar la etiqueta para el email
+                const emailUsuario = document.createElement('P');
+                emailUsuario.classList.add('card__info');
+                emailUsuario.textContent = email;
+
+                //generar la etiqueta para el estado
+                const estadoUsuario = document.createElement('P');
+                estadoUsuario.classList.add('card__info--span');
+                if(confirmado==='1'){
+                        estadoUsuario.textContent = alerts['confirmed'][lang];
+                } else{
+                        estadoUsuario.textContent = alerts['not-confirmed'][lang];
+                }
+
+                const estadoPerfil = document.createElement('P');
+                estadoPerfil.classList.add('card__info--span');
+                if(perfil==='1'){
+                        estadoPerfil.textContent = alerts['profile-complete'][lang];
+                } else {
+                        estadoPerfil.textContent = alerts['profile-incomplete'][lang];
+                }
+
+                //generar el botón para abir el modal con la información del usuario
+                const btnInfo = document.createElement('A');
+                btnInfo.classList.add('btn-view');
+                btnInfo.textContent = alerts['see-more'][lang];
+                btnInfo.href = `/filmtono/users/current?id=${id}`;
+
+                //general ícono de ojo para el botón de ver más
+                const iconoOjo = document.createElement('I');
+                iconoOjo.classList.add('fa-solid', 'fa-eye');
+
+                //Agregar el ícono al botón
+                btnInfo.appendChild(iconoOjo);
+
+                //generar el botón para eliminar el usuario
+                const btnEliminar = document.createElement('BUTTON');
+                btnEliminar.classList.add('btn-delete');
+                btnEliminar.value = id;
+                btnEliminar.dataset.role = 'filmtono';
+                btnEliminar.dataset.item = 'users';
+                btnEliminar.onclick = eliminarItem;
+                
+                //generar ícono de basura para el botón de eliminar
+                const iconoBasura = document.createElement('I');
+                iconoBasura.classList.add('fa-solid', 'fa-trash-can', 'no-click');
+
+                //Agregar el ícono al botón
+                btnEliminar.appendChild(iconoBasura);
+                btnEliminar.onclick = eliminarItem;
+
+                //generar el contenedor de los botones
+                const contenedorBotones = document.createElement('DIV');
+                contenedorBotones.classList.add('card__acciones');
+
+                //agregar los botones al contenedor
+                contenedorBotones.appendChild(btnEliminar);
+
+                //Generar el contenedor de la información del usuario
+                const card = document.createElement('DIV');
+                card.classList.add('card');
+
+                //agregar la información al contenedor
+                card.appendChild(tipoUsuario);
+                if(empresa){
+                        card.appendChild(empresaUsuario);
+                }
+                card.appendChild(nombreUsuario);
+                card.appendChild(emailUsuario);
+                card.appendChild(estadoUsuario);
+                if(nivel != null){
+                        card.appendChild(estadoPerfil);
+                }
+                card.appendChild(empresaUsuario);
+                card.appendChild(btnInfo);
+                card.appendChild(contenedorBotones);
+
+                //agregar el contenedor de la información al grid
+                gridUsuarios.appendChild(card);
+        });
+        filtrarUsuarios();
+}
+
+function filtrarUsuarios(){
+        const input = document.querySelector('#usuario-search');
+        input.addEventListener('input', e => {
+                const texto = normalizeText(e.target.value);
+                const cards = document.querySelectorAll('.card');
+
+                cards.forEach(card => {
+                        const nombre = normalizeText(card.textContent);
+                        if(nombre.indexOf(texto) !== -1){
+                                card.style.display = 'flex';
+                                card.style.marginRight = '2rem';
+                                gridUsuarios.style.columnGap = '0';
+                        }else{
+                                card.style.display = 'none';
+                        }
+                });
+        }); 
+}

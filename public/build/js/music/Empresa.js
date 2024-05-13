@@ -1,2 +1,22 @@
-export class Empresa{constructor(i,s,t,e,a,l,c,o,r,h,m,n,_,d,p,b){this.id=null,this.empresa=s,this.id_fiscal=t,this.direccion=e,this.ciudad=a,this.pais=l,this.instagram=c,this.nombre_comercial=o,this.apellido_comercial=r,this.email_comercial=h,this.tel_comercial=m,this.nombre_contable=n,this.apellido_contable=_,this.email_contable=d,this.tel_contable=p,this.id_usuario=null}}export const datosEmpresa=new Empresa;
-//# sourceMappingURL=Empresa.js.map
+export class Empresa{
+    constructor(id, empresa, id_fiscal, direccion, ciudad, pais, instagram, nombre_comercial, apellido_comercial, email_comercial, tel_comercial, nombre_contable, apellido_contable, email_contable, tel_contable, id_usuario){
+        this.id = null;
+        this.empresa = empresa;
+        this.id_fiscal = id_fiscal;
+        this.direccion = direccion;
+        this.ciudad = ciudad;
+        this.pais = pais;
+        this.instagram = instagram;
+        this.nombre_comercial = nombre_comercial;
+        this.apellido_comercial = apellido_comercial;
+        this.email_comercial = email_comercial;
+        this.tel_comercial = tel_comercial;
+        this.nombre_contable = nombre_contable;
+        this.apellido_contable = apellido_contable;
+        this.email_contable = email_contable;
+        this.tel_contable = tel_contable;
+        this.id_usuario = null;
+    }
+}
+
+export const datosEmpresa = new Empresa();

@@ -1,2 +1,100 @@
-import{gridSellos,sellosInput}from"./selectores.js";import{readLang,readJSON,eliminarItem,normalizeText}from"../base/funciones.js";export async function consultaSellos(){try{const e=await fetch(window.location.origin+"/api/music/labels");mostrarSellos(await e.json())}catch(e){console.log(e)}}async function mostrarSellos(e){const t=await readLang();await readJSON();e.forEach(e=>{const{id:a,nombre:n,creado:s}=e,l=document.createElement("div");l.classList.add("cards__card");const d=document.createElement("div");d.classList.add("cards__info");const c=document.createElement("p");c.textContent=n,c.classList.add("cards__text","cards__text--span");const o=document.createElement("p"),i=new Date(s).toLocaleDateString(t,{year:"numeric",month:"short",day:"numeric"});o.textContent=i,o.classList.add("cards__text");const r=document.createElement("div");r.classList.add("cards__actions");const m=document.createElement("A");m.classList.add("btn-update"),m.href="/music/labels/edit?id="+a;const p=document.createElement("I");p.classList.add("fa-solid","fa-pencil","no-click"),m.appendChild(p);const u=document.createElement("button");u.classList.add("btn-delete"),u.id="eliminar",u.value=a,u.dataset.item="labels",u.dataset.role="music",u.onclick=eliminarItem;const f=document.createElement("i");f.classList.add("fa-solid","fa-trash-can","no-click"),u.appendChild(f),r.appendChild(m),r.appendChild(u),d.appendChild(c),d.appendChild(o),l.appendChild(d),l.appendChild(r),gridSellos.appendChild(l)}),filtrarSellos()}function filtrarSellos(){sellosInput.addEventListener("input",e=>{const t=normalizeText(e.target.value);document.querySelectorAll(".cards__card").forEach(e=>{-1!==normalizeText(e.textContent).indexOf(t)?(e.style.display="flex",e.style.marginRight="2rem",gridSellos.style.columnGap="0"):e.style.display="none"})})}
-//# sourceMappingURL=labels.js.map
+import {gridSellos, sellosInput} from './selectores.js';
+import {readLang, readJSON, eliminarItem, normalizeText} from '../base/funciones.js';
+
+export async function consultaSellos(){
+    try{
+        const resultado = await fetch(window.location.origin+'/api/music/labels');
+        const datos = await resultado.json();
+       mostrarSellos(datos);
+    }catch(error){
+        console.log(error);
+    }
+}
+
+async function mostrarSellos(datos){
+    const lang = await readLang();
+    const alerts = await readJSON();
+
+    datos.forEach(sello => {
+        //extract the type of contract from the name of the file nombre_doc
+        const{id, nombre, creado} = sello;
+
+        //Create the info section
+        const cardSello = document.createElement('div');
+        cardSello.classList.add('cards__card');
+
+        const cardInfo = document.createElement('div');
+        cardInfo.classList.add('cards__info');
+
+        const titleSello = document.createElement('p');
+        titleSello.textContent = nombre;
+        titleSello.classList.add('cards__text', 'cards__text--span');
+
+        const fechaSello = document.createElement('p');
+        //add date as day/month/year
+        const date = new Date(creado);
+        const options = {year: 'numeric', month: 'short', day: 'numeric'};
+        const fechaFormat = date.toLocaleDateString(lang, options);
+        fechaSello.textContent = fechaFormat;
+        fechaSello.classList.add('cards__text');
+
+        //Create the actions section
+        const cardActions = document.createElement('div');
+        cardActions.classList.add('cards__actions');
+
+        //generar el botón para editar el sello
+        const btnEditar = document.createElement('A');
+        btnEditar.classList.add('btn-update');
+        btnEditar.href = '/music/labels/edit?id='+id;
+
+        //generar ícono de lápiz para el botón de editar
+        const iconoLapiz = document.createElement('I');
+        iconoLapiz.classList.add('fa-solid', 'fa-pencil', 'no-click');
+
+        //Agregar el ícono al botón
+        btnEditar.appendChild(iconoLapiz);
+
+        const btnEliminar = document.createElement('button');
+        btnEliminar.classList.add('btn-delete');
+        btnEliminar.id = 'eliminar';
+        btnEliminar.value = id;
+        btnEliminar.dataset.item = 'labels';
+        btnEliminar.dataset.role = 'music';
+        btnEliminar.onclick = eliminarItem;
+
+        const iconEliminar = document.createElement('i');
+        iconEliminar.classList.add('fa-solid', 'fa-trash-can', 'no-click');
+
+        btnEliminar.appendChild(iconEliminar);
+        cardActions.appendChild(btnEditar);
+        cardActions.appendChild(btnEliminar);
+
+        cardInfo.appendChild(titleSello);
+        cardInfo.appendChild(fechaSello);
+
+        cardSello.appendChild(cardInfo);
+        cardSello.appendChild(cardActions);
+
+  
+        gridSellos.appendChild(cardSello);
+    });
+    filtrarSellos();
+}
+
+function filtrarSellos(){
+    sellosInput.addEventListener('input', e => {
+        const texto = normalizeText(e.target.value);
+        const cards = document.querySelectorAll('.cards__card');
+
+        cards.forEach(card => {
+            const nombre = normalizeText(card.textContent);
+            if(nombre.indexOf(texto) !== -1){
+                card.style.display = 'flex';
+                card.style.marginRight = '2rem';
+                gridSellos.style.columnGap = '0';
+            }else{
+                card.style.display = 'none';
+            }
+        });
+    }); 
+}

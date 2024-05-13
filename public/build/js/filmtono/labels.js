@@ -1,2 +1,161 @@
-import{gridLabels,labelsInput}from"./selectores.js";import{readLang,readJSON,eliminarItem,normalizeText}from"../base/funciones.js";export async function consultaLabels(){try{const e=await fetch(window.location.origin+"/api/filmtono/labels");mostrarLabels(await e.json())}catch(e){console.log(e)}}async function mostrarLabels(e){const t=await readLang(),a=await readJSON();e.forEach(e=>{const{labelId:n,labelName:d,labelDate:s,userId:c,userName:l,companyId:i,companyName:o,musicType:r}=e,m=document.createElement("a");m.classList.add("cards__link"),m.href="/filmtono/labels/current?id="+n;const p=document.createElement("div");p.classList.add("cards__card");const u=document.createElement("div");u.classList.add("cards__info");const _=document.createElement("H3");_.classList.add("card__title"),_.textContent="1"===r?a.aggregator[t]:"2"===r?a.publisher[t]:a.label[t];const L=document.createElement("div");L.classList.add("cards__info--div");const h=document.createElement("p");h.textContent=a["label-name"][t]+":",h.classList.add("cards__text","cards__text--span");const C=document.createElement("p");C.textContent=d,C.classList.add("cards__text"),L.appendChild(h),L.appendChild(C);const x=document.createElement("div");x.classList.add("cards__info--div");const f=document.createElement("p");f.textContent=a["label-creation"][t]+":",f.classList.add("cards__text","cards__text--span");const b=document.createElement("p"),E=new Date(s).toLocaleDateString(t,{year:"numeric",month:"short",day:"numeric"});b.textContent=E,b.classList.add("cards__text"),x.appendChild(f),x.appendChild(b);const y=document.createElement("div");y.classList.add("cards__info--div");const v=document.createElement("p");v.textContent=a.company[t]+":",v.classList.add("cards__text","cards__text--span");const g=document.createElement("p");g.textContent=o,g.classList.add("cards__text"),y.appendChild(v),y.appendChild(g);const w=document.createElement("div");w.classList.add("cards__info--div");const I=document.createElement("p");I.textContent=a.user[t]+":",I.classList.add("cards__text","cards__text--span");const N=document.createElement("p");N.textContent=l,N.classList.add("cards__text");const S=document.createElement("a");S.classList.add("btn-view"),S.textContent=a["see-user"][t],S.href="/filmtono/users/current?id="+c;const T=document.createElement("i");T.classList.add("fa-solid","fa-person"),S.appendChild(T),w.appendChild(I),w.appendChild(N);const j=document.createElement("div");j.classList.add("cards__actions");const k=document.createElement("button");k.classList.add("btn-delete"),k.id="eliminar",k.value=n,k.dataset.item="labels",k.dataset.role="filmtono",k.onclick=eliminarItem;const z=document.createElement("i");z.classList.add("fa-solid","fa-trash-can","no-click"),k.appendChild(z),j.appendChild(k),u.appendChild(_),u.appendChild(L),u.appendChild(x),u.appendChild(y),u.appendChild(w),u.appendChild(S),m.appendChild(u),m.appendChild(j),p.appendChild(m),gridLabels.appendChild(p)}),filtrarLabels()}function filtrarLabels(){labelsInput.addEventListener("input",e=>{const t=normalizeText(e.target.value);document.querySelectorAll(".cards__card").forEach(e=>{-1!==normalizeText(e.textContent).indexOf(t)?(e.style.display="flex",e.style.marginRight="2rem",gridLabels.style.columnGap="0"):e.style.display="none"})})}
-//# sourceMappingURL=labels.js.map
+import {gridLabels, labelsInput} from './selectores.js';
+import {readLang, readJSON, eliminarItem, normalizeText} from '../base/funciones.js';
+export async function consultaLabels(){
+    try{
+        const resultado = await fetch(window.location.origin+'/api/filmtono/labels');
+        const datos = await resultado.json();
+       mostrarLabels(datos);
+    }catch(error){
+        console.log(error);
+    }
+}
+
+async function mostrarLabels(datos){
+    const lang = await readLang();
+    const alerts = await readJSON();
+    datos.forEach(userLabel => {
+        //extract the type of contract from the name of the file nombre_doc
+        const{labelId, labelName, labelDate, userId, userName, companyId, companyName, musicType} = userLabel;
+
+        const cardLink = document.createElement('a');
+        cardLink.classList.add('cards__link');
+        cardLink.href = '/filmtono/labels/current?id='+labelId;
+
+        //Create the info section
+        const cardLabel = document.createElement('div');
+        cardLabel.classList.add('cards__card');
+
+        const cardInfo = document.createElement('div');
+        cardInfo.classList.add('cards__info');
+
+
+        const typeLabel = document.createElement('H3');
+        typeLabel.classList.add('card__title');
+        if(musicType === '1'){
+            typeLabel.textContent = alerts['aggregator'][lang];
+        } else if(musicType === '2'){
+            typeLabel.textContent = alerts['publisher'][lang];
+        } else {
+            typeLabel.textContent = alerts['label'][lang];
+        }
+
+        const nameInfo = document.createElement('div');
+        nameInfo.classList.add('cards__info--div');
+
+        const labelTitle = document.createElement('p');
+        labelTitle.textContent = alerts['label-name'][lang]+':';
+        labelTitle.classList.add('cards__text', 'cards__text--span');
+
+        const labelNameInfo = document.createElement('p');
+        labelNameInfo.textContent = labelName;
+        labelNameInfo.classList.add('cards__text');
+
+        nameInfo.appendChild(labelTitle);
+        nameInfo.appendChild(labelNameInfo);
+
+        const dateInfo = document.createElement('div');
+        dateInfo.classList.add('cards__info--div');
+
+        const dateTitle = document.createElement('p');
+        dateTitle.textContent = alerts['label-creation'][lang]+':';
+        dateTitle.classList.add('cards__text', 'cards__text--span');
+
+        const dateLabel = document.createElement('p');
+        const date = new Date(labelDate);
+        const options = {year: 'numeric', month: 'short', day: 'numeric'};
+        const dateFormated = date.toLocaleDateString(lang, options);
+        dateLabel.textContent = dateFormated;
+        dateLabel.classList.add('cards__text');
+
+        dateInfo.appendChild(dateTitle);
+        dateInfo.appendChild(dateLabel);
+
+        const companyInfo = document.createElement('div');
+        companyInfo.classList.add('cards__info--div');
+
+        const companyTitle = document.createElement('p');
+        companyTitle.textContent = alerts['company'][lang]+':';
+        companyTitle.classList.add('cards__text', 'cards__text--span');
+
+        const companyNameInfo = document.createElement('p');
+        companyNameInfo.textContent = companyName;
+        companyNameInfo.classList.add('cards__text');
+
+        companyInfo.appendChild(companyTitle);
+        companyInfo.appendChild(companyNameInfo);
+
+        const userInfo = document.createElement('div');
+        userInfo.classList.add('cards__info--div');
+
+        const userTitle = document.createElement('p');
+        userTitle.textContent = alerts['user'][lang]+':';
+        userTitle.classList.add('cards__text', 'cards__text--span');
+
+        const userNameInfo = document.createElement('p');
+        userNameInfo.textContent = userName;
+        userNameInfo.classList.add('cards__text');
+
+        const userLink = document.createElement('a');
+        userLink.classList.add('btn-view');
+        userLink.textContent = alerts['see-user'][lang];
+        userLink.href = `/filmtono/users/current?id=${userId}`;
+
+        const iconUser = document.createElement('i');
+        iconUser.classList.add('fa-solid', 'fa-person');
+
+        userLink.appendChild(iconUser);
+
+        userInfo.appendChild(userTitle);
+        userInfo.appendChild(userNameInfo);
+
+        //Create the actions section
+        const cardActions = document.createElement('div');
+        cardActions.classList.add('cards__actions');
+
+        const btnEliminar = document.createElement('button');
+        btnEliminar.classList.add('btn-delete');
+        btnEliminar.id = 'eliminar';
+        btnEliminar.value = labelId;
+        btnEliminar.dataset.item = 'labels';
+        btnEliminar.dataset.role = 'filmtono';
+        btnEliminar.onclick = eliminarItem;
+
+        const iconEliminar = document.createElement('i');
+        iconEliminar.classList.add('fa-solid', 'fa-trash-can', 'no-click');
+
+        btnEliminar.appendChild(iconEliminar);
+        cardActions.appendChild(btnEliminar);
+
+        cardInfo.appendChild(typeLabel);
+        cardInfo.appendChild(nameInfo);
+        cardInfo.appendChild(dateInfo);
+        cardInfo.appendChild(companyInfo);
+        cardInfo.appendChild(userInfo);
+        cardInfo.appendChild(userLink);
+
+        cardLink.appendChild(cardInfo);
+        cardLink.appendChild(cardActions);
+
+        cardLabel.appendChild(cardLink);
+        gridLabels.appendChild(cardLabel);
+    });
+    filtrarLabels();
+}
+
+function filtrarLabels(){
+    labelsInput.addEventListener('input', e => {
+        const texto = normalizeText(e.target.value);
+        const cards = document.querySelectorAll('.cards__card');
+
+        cards.forEach(card => {
+            const nombre = normalizeText(card.textContent);
+            if(nombre.indexOf(texto) !== -1){
+                card.style.display = 'flex';
+                card.style.marginRight = '2rem';
+                gridLabels.style.columnGap = '0';
+            }else{
+                card.style.display = 'none';
+            }
+        });
+    }); 
+}

@@ -1,2 +1,111 @@
-import{categoriasInput,gridCategorias}from"./selectores.js";import{readLang,readJSON,eliminarItem,normalizeText}from"../base/funciones.js";export async function consultaCategorias(){try{const e=await fetch(window.location.origin+"/api/filmtono/categories");mostrarCategorias(await e.json())}catch(e){console.log(e)}}export async function mostrarCategorias(e){const t=await readLang();await readJSON();e.forEach(e=>{const{id:a,categoria_en:n,categoria_es:i}=e,o=document.createElement("A");o.classList.add("cards__link"),"genres"===e.categoria_en?o.href="/filmtono/genres":o.href="/filmtono/categories/keywords?id="+a+"&category="+n;const s=document.createElement("H3");s.classList.add("card__info--title"),s.textContent="es"==t?i:n;const c=document.createElement("A");c.classList.add("btn-update"),c.href="/filmtono/categories/edit?id="+a;const r=document.createElement("I");r.classList.add("fa-solid","fa-pencil","no-click"),c.appendChild(r);const d=document.createElement("BUTTON");d.classList.add("btn-delete"),d.value=a,d.dataset.role="filmtono",d.dataset.item="categories",d.onclick=eliminarItem;const l=document.createElement("I");l.classList.add("fa-solid","fa-trash-can","no-click"),d.appendChild(l),d.onclick=eliminarItem;const m=document.createElement("DIV");m.classList.add("card__acciones"),m.appendChild(c),"genres"!==e.categoria_en&&m.appendChild(d);const g=document.createElement("DIV");g.classList.add("card"),o.appendChild(s),o.appendChild(m),g.appendChild(o),gridCategorias.appendChild(g)}),filtraCategorias()}function filtraCategorias(){categoriasInput.addEventListener("input",e=>{const t=normalizeText(e.target.value);document.querySelectorAll(".card").forEach(e=>{-1!==normalizeText(e.textContent).indexOf(t)?(e.style.display="flex",e.style.marginRight="2rem",gridCategorias.style.columnGap="0"):e.style.display="none"})})}
-//# sourceMappingURL=categorias.js.map
+import { categoriasInput, gridCategorias } from './selectores.js';
+import { readLang, readJSON, eliminarItem, normalizeText } from '../base/funciones.js';
+
+export async function consultaCategorias(){
+    try{
+        const resultado = await fetch(window.location.origin+'/api/filmtono/categories');
+        const datos = await resultado.json();
+        mostrarCategorias(datos);
+
+    }catch(error){
+        console.log(error);
+    }
+}
+export async function mostrarCategorias(datos){
+        const lang = await readLang();
+        const alerts = await readJSON();
+        datos.forEach(categoria => {
+                const {id, categoria_en, categoria_es} = categoria;
+
+                //generar el link para la categoria
+                const categoriaLink = document.createElement('A');
+                categoriaLink.classList.add('cards__link');
+                if(categoria.categoria_en === 'genres'){
+                    categoriaLink.href = '/filmtono/genres';
+                } else{
+                    categoriaLink.href = '/filmtono/categories/keywords?id='+id+'&category='+categoria_en;
+                }
+
+                //generar la etiqueta para el tipo de usuario
+                const categoriaTitle = document.createElement('H3');
+                categoriaTitle.classList.add('card__info--title');
+                if(lang == 'es'){
+                        categoriaTitle.textContent = categoria_es;
+                }else{
+                        categoriaTitle.textContent = categoria_en;
+                }
+
+                const btnEditar = document.createElement('A');
+                btnEditar.classList.add('btn-update');
+                btnEditar.href = '/filmtono/categories/edit?id='+id;
+                
+
+                //generar ícono de lápiz para el botón de editar
+                const iconoLapiz = document.createElement('I');
+                iconoLapiz.classList.add('fa-solid', 'fa-pencil', 'no-click');
+
+                //Agregar el ícono al botón
+                btnEditar.appendChild(iconoLapiz);
+
+                //generar el botón para eliminar el usuario
+                const btnEliminar = document.createElement('BUTTON');
+                btnEliminar.classList.add('btn-delete');
+                btnEliminar.value = id;
+                btnEliminar.dataset.role = 'filmtono';
+                btnEliminar.dataset.item = 'categories';
+                btnEliminar.onclick = eliminarItem;
+
+                //generar ícono de basura para el botón de eliminar
+                const iconoBasura = document.createElement('I');
+                iconoBasura.classList.add('fa-solid', 'fa-trash-can', 'no-click');
+
+                //Agregar el ícono al botón
+                btnEliminar.appendChild(iconoBasura);
+                btnEliminar.onclick = eliminarItem;
+                
+                
+                
+
+                //generar el contenedor de los botones
+                const contenedorBotones = document.createElement('DIV');
+                contenedorBotones.classList.add('card__acciones');
+
+                //agregar los botones al contenedor
+                contenedorBotones.appendChild(btnEditar);
+                if(categoria.categoria_en !== 'genres'){
+                        contenedorBotones.appendChild(btnEliminar);
+                }
+                
+
+                //Generar el contenedor de la información del usuario
+                const card = document.createElement('DIV');
+                card.classList.add('card');
+
+                //agregar la información al contenedor
+                categoriaLink.appendChild(categoriaTitle);
+                categoriaLink.appendChild(contenedorBotones);
+                //agregar el link contenedor a la tarjeta
+                card.appendChild(categoriaLink);
+                //agregar el contenedor de la información al grid
+                gridCategorias.appendChild(card);
+        });
+        filtraCategorias();
+}
+
+function filtraCategorias(){
+        categoriasInput.addEventListener('input', e => {
+                const texto = normalizeText(e.target.value);
+                const cards = document.querySelectorAll('.card');
+
+                cards.forEach(card => {
+                        const categoriaTitle = normalizeText(card.textContent);
+                        if(categoriaTitle.indexOf(texto) !== -1){
+                                card.style.display = 'flex';
+                                card.style.marginRight = '2rem';
+                                gridCategorias.style.columnGap = '0';
+                        }else{
+                                card.style.display = 'none';
+                        }
+                });
+        }); 
+}

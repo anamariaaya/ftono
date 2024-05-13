@@ -1,1 +1,0 @@
-{"version":3,"sources":["app.js"],"names":["App","app"],"mappings":"OAAOA,QAAS,cAEhB,MAAMC,IAAM,IAAID","file":"app.js","sourcesContent":["import App from './UI/App.js';\r\n\r\nconst app = new App();\r\n"]}

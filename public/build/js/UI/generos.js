@@ -1,2 +1,66 @@
-import{generosInput,gridGeneros}from"./selectores.js";import{readLang,readJSON,eliminarItem,normalizeText}from"../base/funciones.js";export async function consultaGeneros(){try{const e=await fetch(window.location.origin+"/api/public/genres");mostrarGeneros(await e.json())}catch(e){console.log(e)}}export async function mostrarGeneros(e){const t=await readLang();await readJSON();e.forEach(e=>{const{id:n,genero_en:r,genero_es:a}=e,o=document.createElement("A");o.classList.add("p-cards__grid__link"),o.href="#";const s=document.createElement("P");s.classList.add("p-cards__grid__text"),s.textContent="es"==t?a:r;const i=document.createElement("DIV");i.classList.add("p-cards__grid__item","card-public"),o.appendChild(s),i.appendChild(o),gridGeneros.appendChild(i)}),filtrageneros()}function filtrageneros(){generosInput.addEventListener("input",e=>{const t=normalizeText(e.target.value);document.querySelectorAll(".card-public").forEach(e=>{-1!==normalizeText(e.textContent).indexOf(t)?(e.style.display="flex",e.style.marginRight="2rem",gridGeneros.style.columnGap="0"):e.style.display="none"})})}
-//# sourceMappingURL=generos.js.map
+import { generosInput, gridGeneros } from './selectores.js';
+import { readLang, readJSON, eliminarItem, normalizeText } from '../base/funciones.js';
+
+export async function consultaGeneros(){
+    try{
+        const resultado = await fetch(window.location.origin+'/api/public/genres');
+        const datos = await resultado.json();
+        mostrarGeneros(datos);
+
+    }catch(error){
+        console.log(error);
+    }
+}
+export async function mostrarGeneros(datos){
+        const lang = await readLang();
+        const alerts = await readJSON();
+        datos.forEach(genero => {
+                const {id, genero_en, genero_es} = genero;
+
+                //generar el link para la genero
+                const generoLink = document.createElement('A');
+                generoLink.classList.add('p-cards__grid__link');
+                generoLink.href = '#';
+                
+
+                //generar la etiqueta para el tipo de usuario
+                const generoTitle = document.createElement('P');
+                generoTitle.classList.add('p-cards__grid__text');
+                if(lang == 'es'){
+                        generoTitle.textContent = genero_es;
+                }else{
+                        generoTitle.textContent = genero_en;
+                }
+                
+
+                //Generar el contenedor de la información del usuario
+                const card = document.createElement('DIV');
+                card.classList.add('p-cards__grid__item', 'card-public');
+
+                //agregar la información al contenedor
+                generoLink.appendChild(generoTitle);
+                //agregar el link contenedor a la tarjeta
+                card.appendChild(generoLink);
+                //agregar el contenedor de la información al grid
+                gridGeneros.appendChild(card);
+        });
+        filtrageneros();
+}
+
+function filtrageneros(){
+        generosInput.addEventListener('input', e => {
+                const texto = normalizeText(e.target.value);
+                const cards = document.querySelectorAll('.card-public');
+
+                cards.forEach(card => {
+                        const generoTitle = normalizeText(card.textContent);
+                        if(generoTitle.indexOf(texto) !== -1){
+                                card.style.display = 'flex';
+                                card.style.marginRight = '2rem';
+                                gridGeneros.style.columnGap = '0';
+                        }else{
+                                card.style.display = 'none';
+                        }
+                });
+        }); 
+}

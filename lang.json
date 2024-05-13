@@ -1459,6 +1459,90 @@
     "es": "Cine & TV",
     "en": "Movies & TV"
   },
+  "register_artist-title-1":{
+    "es": "Soy artista y deseo entrar al mercado de FILMTONO y apoyar otros artistas",
+    "en": "I am an artist and I want to enter the FILMTONO market and support other artists"
+  },
+  "register_artist-title-2":{
+    "es": "Soy artista y deseo ofrecer mi música para proyectos audiovisuales de FILMTONO",
+    "en": "I am an artist and I want to offer my music for audiovisual projects of FILMTONO"
+  },
+  "register_artist-p-1":{
+    "es": "Si eres artista musical, músico, productor, dj, instrumentista, autor o compositor, estás invitado a participar dentro de FILMTONO. Te contaremos mas adelante cómo puedes hacerlo.",
+    "en": "If you are a music artist, musician, producer, DJ, instrumentalist, author or composer, you are invited to participate within FILMTONO. We will tell you later how you can do it."
+  },
+  "register_artist-p-2":{
+    "es": "Si deseas que tus canciones se tengan en cuenta para compra de licencias,puedes participar enviando tu material musical a través de algún sello discográfico o distribuidora independiente con la que ya tengamos acuerdo.",
+    "en": "If you want your songs to be taken into account for licensing purchases, you can participate by sending your musical material through a record label or independent distributor with which we already have an agreement."
+  },
+  "register_artist-p-3":{
+    "es": "Si aún no cuentas con un sello discográfico o distribuidora que te presente, aquí te dejamos una lista de sellos a través de los cuales puedes activar tu servicio con FILMTONO:",
+    "en": "If you do not yet have a record label or distributor to present you, here is a list of labels through which you can activate your service with FILMTONO:"
+  },
+  "register_label-title-1":{
+    "es": "Soy un sello discográfico y quiero ofrecer las canciones de mis artistas para la búsqueda de oportunidades de licenciamiento. ¿Soy elegible?",
+    "en": "I am a record label and I want to offer the songs of my artists for the search of licensing opportunities. Am I eligible?"
+  },
+  "register_label-title-2":{
+    "es": "Soy un sello discográfico y quiero registrarme para subir mi catálogo musical",
+    "en": "I am a record label and I want to register to upload my music catalog"
+  },
+  "register_label-p-1":{
+    "es": "FILMTONO Busca nuevas oportunidades para exhibir tu catálogo musical en una plataforma visible en mercados activos del cine, ofreciendo licenciamientos ágiles con el fin de disminuir el tiempo de investigación y gestión de licencias.",
+    "en": "FILMTONO Seeks new opportunities to exhibit your music catalog on a platform visible in active film markets, offering agile licensing in order to reduce the time of research and license management."
+  },
+  "register_label-p-2":{
+    "es": "Por esta razón hacemos una curaduría previa para dar prioridad a las canciones mas factibles de ser licenciadas en nuestros proyectos audiovisuales preferiblemente canciones “all in one” o de fácil licenciamiento frente a las canciones que tienen dificultades para ser licenciadas ya sea porque se desconoce una parte de sus propietarios y estos no podrán recibir el pago por su trabajo o tiene acuerdos muy complejos con sus discográficas.",
+    "en": "For this reason we do a previous curation to give priority to the most feasible songs to be licensed in our audiovisual projects preferably “all in one” songs or easy licensing compared to songs that have difficulties to be licensed either because a part of their owners is unknown and they will not be able to receive payment for their work or have very complex agreements with their record labels."
+  },
+  "register_label-p-3":{
+    "es": "En este sentido para FILMTONO es prioridad beneficiar a los creadores, hacer impacto positivo en personas creadoras de canciones se encuentren en vida que necesitan más oportunidades para darse visibilidad y seguir haciendo música.",
+    "en": "In this sense, for FILMTONO it is a priority to benefit creators, make a positive impact on song creators who are alive and need more opportunities to gain visibility and continue making music."
+  },
+  "register_label-p-4":{
+    "es": "Si eres un sello discográfico independiente, agregador musical que trabaja con artistas independientes puedes registrarte a FILMTONO para cargar tu catálogo musical sujeto a curaduría. Si tu catálogo es aceptado nos comunicaremos contigo de lo contrario recibirás un email con la no aceptación y las causas.",
+    "en": "If you are an independent record label, music aggregator that works with independent artists you can register to FILMTONO to upload your music catalog subject to curation. If your catalog is accepted we will contact you otherwise you will receive an email with the non-acceptance and the causes."
+  },
+  "register_aggregator-title-1":{
+    "es": "Soy un agregador musical y quiero distribuir el catálogo en FILMTONO.",
+    "en": "I am a music aggregator and I want to distribute the catalog in FILMTONO."
+  },
+  "register_aggregator-title-2":{
+    "es": "Soy un agregador musical quiero registrarme para subir mi catálogo musical",
+    "en": "I am a music aggregator and I want to register to upload my music catalog"
+  },
+  "register_aggregator-p-1":{
+    "es": "FILMTONO Busca nuevas oportunidades para los artistas que produzcan activamente y se encuentren en vida con el fin de hacer impacto en la vida de los artistas. Por esta razón hacemos una curaduría previa para dar prioridad a los proyectos musicales activos.",
+    "en": "FILMTONO Seeks new opportunities for artists who produce actively and are alive in order to make an impact on the lives of artists. For this reason we do a previous curation to give priority to active musical projects."
+  },
+  "register_aggregator-p-2":{
+    "es": "Seleccionamos las canciones mas factibles de ser licenciadas en nuestros proyectos audiovisuales preferiblemente canciones con la metadata mas completa para asegurarnos de que sus creadores se beneficiarán, principalmente canciones “all in one” o de fácil licenciamiento frente a las canciones que tienen dificultades para ser licenciadas, ya sea porque se desconoce una parte de sus propietarios y o tienen acuerdos muy complejos con sus discográficas.",
+    "en": "We select the most feasible songs to be licensed in our audiovisual projects preferably songs with the most complete metadata to ensure that their creators will benefit, mainly “all in one” songs or easy licensing compared to songs that have difficulties to be licensed, either because a part of their owners is unknown and or have very complex agreements with their record labels."
+  },
+  "register_aggregator-p-3":{
+    "es": "Las producciones de FILMTONO son amplias en variedad, géneros y tipos por ejemplo: cine, publicidad, videojuegos. Por lo tanto la oferta musical puede ser amplia.",
+    "en": "FILMTONO's productions are wide in variety, genres and types for example: cinema, advertising, video games. Therefore the musical offer can be wide."
+  },
+  "register_aggregator-p-4":{
+    "es": "Si eres un agregador musical que trabaja con artistas independientes puedes registrarte a FILMTONO para solicitar que nos contactemos contigo y adelantar los términos del acuerdo.",
+    "en": "If you are a music aggregator that works with independent artists you can register to FILMTONO to request that we contact you and advance the terms of the agreement."
+  },
+  "register_producer-title-1":{
+    "es": "Soy un productor musical y quiero registrarme para subir mi catálogo musical como sello independiente",
+    "en": "I am a music producer and I want to register to upload my music catalog as an independent label"
+  },
+  "register_producer-p-1":{
+    "es": "Si eres un sello discográfico independiente, que trabaja con artistas independientes puedes registrarte a FILMTONO para cargar tu catálogo musical sujeto a curaduría. Si tu catálogo es aceptado nos comunicaremos contigo de lo contrario recibirás un email con la no aceptación y las causas.",
+    "en": "If you are an independent record label, that works with independent artists you can register to FILMTONO to upload your music catalog subject to curation. If your catalog is accepted we will contact you otherwise you will receive an email with the non-acceptance and the causes."
+  },
+  "register_producer-p-2":{
+    "es": "Recuerda que debes ser un sello discográfico legalmente constituido y tener acuerdos por escrito y vigentes, con tus artistas y compositores, además de una metada muy completa que beneficie a todos los autores, artistas y propietarios de cada canción que se van a beneficiar de tu administración dentro de FILMTONO.",
+    "en": "Remember that you must be a legally constituted record label and have written and current agreements, with your artists and composers, in addition to a very complete metadata that benefits all authors, artists and owners of each song that will benefit from your administration within FILMTONO."
+  },
+  "t-inempresarios":{
+    "es": "In Empresarios",
+    "en": "In Empresarios"
+  },
   "p-required_fields":{
     "es": "Los campos marcados con (*) son obligatorios",
     "en": "The fields marked with (*) are required"

@@ -1,2 +1,136 @@
-import{validarFormulario}from"../base/funciones.js";import{selectPais,paisContacto,indicativo,countrySelected,paisValue}from"./selectores.js";import{readLang}from"../base/funciones.js";export async function consultaPaises(){try{let t="https://restcountries.com/v3.1/all";const o=await fetch(t);mostrarPaises(await o.json())}catch(t){console.log(t)}}function mostrarPaises(t){readLang().then(o=>{"es"===o?t.forEach(o=>{t.sort((t,o)=>t.translations.spa.common<o.translations.spa.common?-1:t.translations.spa.common>o.translations.spa.common?1:0);const e=document.createElement("option");e.value=o.cca2,e.textContent=o.translations.spa.common,e.setAttribute("data-pais",o.translations.spa.common),selectPais.appendChild(e),paisContacto&&paisContacto.appendChild(e.cloneNode(!0))}):t.forEach(o=>{t.sort((t,o)=>t.name.common<o.name.common?-1:t.name.common>o.name.common?1:0);const e=document.createElement("option");e.value=o.cca2,e.textContent=o.name.common,selectPais&&selectPais.appendChild(e),paisContacto&&paisContacto.appendChild(e.cloneNode(!0))})})}export function paisElegido(){selectPais&&selectPais.addEventListener("blur",validarFormulario),paisContacto&&paisContacto.addEventListener("blur",validarFormulario)}export function indicativoTel(){paisContacto.addEventListener("change",(function(t){if(""!==t.target.value){const o="https://restcountries.com/v3.1/alpha/"+t.target.value;fetch(o).then(t=>t.json()).then(t=>{if(console.log(),0===Object.keys(t[0].idd).length)indicativo.value="0-";else{const o=t[0].idd.root,e=t[0].idd.suffixes[0];indicativo.value=`${o}${e}`,indicativo.setAttribute("readonly","readonly"),indicativo.setAttribute("value",`${o}${e}`)}})}}))}export function countryCurrentValue(){const t="https://restcountries.com/v3.1/alpha/"+countrySelected.value;fetch(t).then(t=>t.json()).then(t=>{readLang().then(o=>{countrySelected.textContent="es"===o?t[0].translations.spa.common:t[0].name.common})})}export function countryValue(){paisValue.forEach(t=>{const o="https://restcountries.com/v3.1/alpha/"+t.id;fetch(o).then(t=>t.json()).then(o=>{readLang().then(e=>{t.textContent="es"===e?o[0].translations.spa.common:o[0].name.common})})})}
-//# sourceMappingURL=APIPaises.js.map
+import { validarFormulario } from "../base/funciones.js";
+import { selectPais, paisContacto, indicativo, countrySelected, paisValue } from "./selectores.js";
+import  {readLang} from "../base/funciones.js";
+
+export async function consultaPaises(){
+    try{
+        let url = `https://restcountries.com/v3.1/all`;
+
+        const resultado = await fetch(url);
+        const datos = await resultado.json();
+        mostrarPaises(datos);
+    }catch(error){
+        console.log(error);
+    }
+}
+
+
+function mostrarPaises(datos){
+    // selected.textContent = datos[0].name.common;
+    readLang().then(lang => {
+            if(lang === 'es'){
+                datos.forEach(pais => {
+                    //ordenar los paises por orden alfabético
+                    datos.sort((a, b) => {
+                        if(a.translations.spa.common < b.translations.spa.common){
+                            return -1;
+                        }
+                        if(a.translations.spa.common > b.translations.spa.common){
+                            return 1;
+                        }
+                        return 0;
+                    });
+                    //crear option con el nombre del pais
+                    const option = document.createElement('option');
+                    option.value = pais.cca2;
+                    option.textContent = pais.translations.spa.common;
+                    option.setAttribute('data-pais', pais.translations.spa.common);
+                    selectPais.appendChild(option);
+                    if(paisContacto){
+                        paisContacto.appendChild(option.cloneNode(true));
+                    }
+                });
+            } else{
+                datos.forEach(pais => {
+                    //ordenar los países por orden alfabético
+                    datos.sort((a, b) => {
+                        if(a.name.common < b.name.common){
+                            return -1;
+                        }
+                        if(a.name.common > b.name.common){
+                            return 1;
+                        }
+                        return 0;
+                    });
+
+                    //crear option con el nombre del pais
+                    const option = document.createElement('option');
+                    option.value = pais.cca2;
+                    option.textContent = pais.name.common;
+                    if(selectPais){
+                        selectPais.appendChild(option);  
+                    }
+                    if(paisContacto){
+                        paisContacto.appendChild(option.cloneNode(true));
+                    }
+                });
+            }
+        }
+    );
+}
+
+export function paisElegido(){
+    if(selectPais){
+        selectPais.addEventListener('blur', validarFormulario);
+    }
+    if(paisContacto){
+        paisContacto.addEventListener('blur', validarFormulario);
+    }
+}
+
+export function indicativoTel(){
+    paisContacto.addEventListener('change', function(e){
+        if(e.target.value !== ''){
+            //consultar API para obtener el indicativo
+            const url = `https://restcountries.com/v3.1/alpha/${e.target.value}`;
+            fetch(url)
+                .then(respuesta => respuesta.json())
+                .then(datos => {      
+                    //leer longitud de un array
+                    console.log();              
+                    if(Object.keys(datos[0].idd).length === 0){
+                        indicativo.value = '0-';
+                    } else{
+                        const root = datos[0].idd.root;
+                        const suffix = datos[0].idd.suffixes[0];
+                        indicativo.value = `${root}${suffix}`;
+                        indicativo.setAttribute('readonly', 'readonly');
+                        indicativo.setAttribute('value', `${root}${suffix}`);
+                    }
+                });
+        }
+    });
+}
+
+export function countryCurrentValue(){
+    const url = `https://restcountries.com/v3.1/alpha/${countrySelected.value}`;
+    fetch(url)
+        .then(respuesta=> respuesta.json())
+        .then(datos => {
+            readLang().then(lang => {
+                if(lang === 'es'){
+                    countrySelected.textContent = datos[0].translations.spa.common;
+                } else{
+                    countrySelected.textContent = datos[0].name.common;
+                }
+            });
+        });
+}
+
+export function countryValue(){
+    paisValue.forEach(pais => {
+        const url = `https://restcountries.com/v3.1/alpha/${pais.id}`;
+    fetch(url)
+        .then(respuesta=> respuesta.json())
+        .then(datos => {
+            readLang().then(lang => {
+                if(lang === 'es'){
+                    pais.textContent = datos[0].translations.spa.common;
+                } else{
+                    pais.textContent = datos[0].name.common;
+                }
+            });
+        });
+    });
+}
+

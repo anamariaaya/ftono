@@ -1,2 +1,3 @@
-import App from"./music/App.js";const app=new App;
-//# sourceMappingURL=admin.js.map
+import App from './music/App.js';
+
+const app = new App();

@@ -1,2 +1,131 @@
-import{idiomasInput,gridIdiomas}from"./selectores.js";import{readLang,readJSON,eliminarItem,normalizeText}from"../base/funciones.js";export async function consultaIdiomas(){try{const e=window.location.origin+"/api/filmtono/languages",a=await fetch(e);mostrarIdiomas(await a.json())}catch(e){console.log(e)}}export async function mostrarIdiomas(e){const a=await readLang();await readJSON();(e=e.map(e=>({id:e.id,idioma_en:e.idioma_en.toLowerCase(),idioma_es:e.idioma_es.toLowerCase()}))).sort((e,t)=>"es"===a?e.idioma_es<t.idioma_es?-1:e.idioma_es>t.idioma_es?1:0:e.idioma_en<t.idioma_en?-1:e.idioma_en>t.idioma_en?1:0),e.forEach(e=>{const{id:t,idioma_en:i,idioma_es:o,id_categoria:n}=e,d=document.createElement("DIV");d.classList.add("cards__div");const s=document.createElement("H3");s.classList.add("card__info--title"),s.textContent="es"==a?o:i;const c=new URLSearchParams(window.location.search).get("category"),l=document.createElement("A");l.classList.add("btn-update"),l.href="/filmtono/languages/edit?id="+t;const m=document.createElement("I");m.classList.add("fa-solid","fa-pencil","no-click"),l.appendChild(m);const r=document.createElement("BUTTON");r.classList.add("btn-delete"),r.value=t,r.dataset.type=c,r.dataset.role="filmtono",r.dataset.item="languages",r.onclick=eliminarItem;const p=document.createElement("I");p.classList.add("fa-solid","fa-trash-can","no-click"),r.appendChild(p),r.onclick=eliminarItem;const u=document.createElement("DIV");u.classList.add("card__acciones"),u.appendChild(l),u.appendChild(r);const f=document.createElement("DIV");f.classList.add("card"),d.appendChild(s),d.appendChild(u),f.appendChild(d),gridIdiomas.appendChild(f)}),filtraIdiomas()}function filtraIdiomas(){idiomasInput.addEventListener("input",e=>{const a=normalizeText(e.target.value);document.querySelectorAll(".card").forEach(e=>{-1!==normalizeText(e.textContent).indexOf(a)?(e.style.display="flex",e.style.marginRight="2rem",gridIdiomas.style.columnGap="0"):e.style.display="none"})})}
-//# sourceMappingURL=idiomas.js.map
+import { idiomasInput, gridIdiomas } from './selectores.js';
+import { readLang, readJSON, eliminarItem, normalizeText } from '../base/funciones.js';
+
+export async function consultaIdiomas(){
+    try{
+        const url = window.location.origin+'/api/filmtono/languages';
+        const resultado = await fetch(url);
+        const datos = await resultado.json();
+        mostrarIdiomas(datos);
+
+    }catch(error){
+        console.log(error);
+    }
+}
+export async function mostrarIdiomas(datos){
+        const lang = await readLang();
+        const alerts = await readJSON();
+        //get the data and convert all to lowercase
+        datos = datos.map(idioma => {
+            return {
+                id: idioma.id,
+                idioma_en: idioma.idioma_en.toLowerCase(),
+                idioma_es: idioma.idioma_es.toLowerCase()
+            }
+        });
+        //order the idiomas by alphabetical order depending on the language
+        datos.sort((a, b) => {
+            if(lang === 'es'){
+                if(a.idioma_es < b.idioma_es){
+                    return -1;
+                }
+                if(a.idioma_es > b.idioma_es){
+                    return 1;
+                }
+                return 0;
+            }else{
+                if(a.idioma_en < b.idioma_en){
+                    return -1;
+                }
+                if(a.idioma_en > b.idioma_en){
+                    return 1;
+                }
+                return 0;
+            }
+        });
+
+        datos.forEach(idioma => {
+                const {id, idioma_en, idioma_es, id_categoria} = idioma;
+                //generar el link para la idioma
+                const idiomaDiv = document.createElement('DIV');
+                idiomaDiv.classList.add('cards__div');
+
+                //generar la etiqueta para el tipo de usuario
+                const idiomaTitle = document.createElement('H3');
+                idiomaTitle.classList.add('card__info--title');
+                if(lang == 'es'){
+                        idiomaTitle.textContent = idioma_es;
+                }else{
+                        idiomaTitle.textContent = idioma_en;
+                }
+                const urlParams = new URLSearchParams(window.location.search);
+                const category = urlParams.get('category');
+                const btnEditar = document.createElement('A');
+                btnEditar.classList.add('btn-update');
+                btnEditar.href = '/filmtono/languages/edit?id='+id;
+                
+
+                //generar ícono de lápiz para el botón de editar
+                const iconoLapiz = document.createElement('I');
+                iconoLapiz.classList.add('fa-solid', 'fa-pencil', 'no-click');
+
+                //Agregar el ícono al botón
+                btnEditar.appendChild(iconoLapiz);
+
+                //generar el botón para eliminar el usuario
+                const btnEliminar = document.createElement('BUTTON');
+                btnEliminar.classList.add('btn-delete');
+                btnEliminar.value = id;
+                btnEliminar.dataset.type = category;
+                btnEliminar.dataset.role = 'filmtono';
+                btnEliminar.dataset.item = 'languages';
+                btnEliminar.onclick = eliminarItem;
+                
+                //generar ícono de basura para el botón de eliminar
+                const iconoBasura = document.createElement('I');
+                iconoBasura.classList.add('fa-solid', 'fa-trash-can', 'no-click');
+
+                //Agregar el ícono al botón
+                btnEliminar.appendChild(iconoBasura);
+                btnEliminar.onclick = eliminarItem;
+
+                //generar el contenedor de los botones
+                const contenedorBotones = document.createElement('DIV');
+                contenedorBotones.classList.add('card__acciones');
+
+                //agregar los botones al contenedor
+                contenedorBotones.appendChild(btnEditar);
+                contenedorBotones.appendChild(btnEliminar);
+
+                //Generar el contenedor de la información del usuario
+                const card = document.createElement('DIV');
+                card.classList.add('card');
+
+                //agregar la información al contenedor
+                idiomaDiv.appendChild(idiomaTitle);
+                idiomaDiv.appendChild(contenedorBotones);
+                //agregar el dividiomaDiv contenedor a la tarjeta
+                card.appendChild(idiomaDiv);
+                //agregar el contenedor de la información al grid
+                gridIdiomas.appendChild(card);
+        });
+        filtraIdiomas();
+}
+
+function filtraIdiomas(){
+        idiomasInput.addEventListener('input', e => {
+                const texto = normalizeText(e.target.value);
+                const cards = document.querySelectorAll('.card');
+
+                cards.forEach(card => {
+                        const idiomaTitle = normalizeText(card.textContent);
+                        if(idiomaTitle.indexOf(texto) !== -1){
+                                card.style.display = 'flex';
+                                card.style.marginRight = '2rem';
+                                gridIdiomas.style.columnGap = '0';
+                        }else{
+                                card.style.display = 'none';
+                        }
+                });
+        }); 
+}

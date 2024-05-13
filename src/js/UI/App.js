@@ -13,7 +13,6 @@ class App{
     }
 
     initApp(){
-
         if(dropdownDiv){
            UI();
         }

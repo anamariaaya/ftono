@@ -1,8 +1,8 @@
-@use 'base';
-@use 'layout';
-@use 'UI';
-@use 'auth';
-@use 'dashboard';
-@use 'music';
-@use 'pages';
-@use 'admin';
+@forward 'base';
+@forward 'layout';
+@forward 'UI';
+@forward 'auth';
+@forward 'dashboard';
+@forward 'music';
+@forward 'pages';
+@forward 'admin';

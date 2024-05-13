@@ -1,20 +1,14 @@
-const { src, dest, watch, parallel } = require('gulp');
+import {src, dest, watch, series} from 'gulp'
+import * as dartSass from 'sass'
+import gulpSass from 'gulp-sass'
+import postcss from 'gulp-postcss'
+import autoprefixer from 'autoprefixer'
+import cssnano from 'cssnano'
+import sourcemaps from 'gulp-sourcemaps'
+import plumber from 'gulp-plumber'
+import cache from 'gulp-cache'
 
-// CSS
-const sass = require('gulp-sass')(require('sass'));
-const plumber = require('gulp-plumber');
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
-const postcss = require('gulp-postcss');
-const sourcemaps = require('gulp-sourcemaps');
-
-// Imagenes
-const cache = require('gulp-cache');
-const imageop = require('gulp-image-optimization');
-const webp = require('gulp-webp');
-
-// Javascript
-const terser = require('gulp-terser-js');
+const sass = gulpSass(dartSass);
 
 const path = {
     scss: 'src/scss/**/*.scss',
@@ -23,58 +17,27 @@ const path = {
     svg: 'src/img/**/*.svg'
 }
 
-function css( done ) {
+export async function css( done ) {
     src(path.scss) // Identificar el archivo .SCSS a compilar
         .pipe(sourcemaps.init())
         .pipe( plumber())
-        .pipe( sass() ) // Compilarlo
+        .pipe(sass().on('error', sass.logError))
         .pipe( postcss([ autoprefixer(), cssnano() ]) )
         .pipe(sourcemaps.write('.'))
         .pipe(  dest('public/build/css') );
     done();
 }
 
-function imagenes(done) {
-    const opciones = {
-        optimizationLevel: 3,
-        progressive: true,
-        interlaced: true
-    }
-    src(path.img)
-        .pipe(  cache(imageop(opciones)) ) // Optimizarlo
-        .pipe( dest('public/build/img') )
-    done()
-}
-
-function versionWebp( done ) {
-    const opciones = {
-        quality: 50
-    };
-    src(path.img)
-        .pipe( webp(opciones) )
-        .pipe( dest('public/build/img') )
-    done();
-}
-
-function javascript( done ) {
+export async function js( done ) {
     src(path.js)
-        .pipe(sourcemaps.init())
-        .pipe( terser() )
-        .pipe(sourcemaps.write('.'))
-        .pipe(dest('public/build/js'));
-
+        .pipe( dest('public/build/js') )
     done();
 }
 
-function dev( done ) {
-    watch(path.scss, css);
-    watch(path.js, javascript);
 
-    done();
+export async function dev() {
+    watch(path.scss, css)
+    watch(path.js, js)
 }
 
-exports.css = css;
-exports.js = javascript;
-exports.imagenes = imagenes;
-exports.versionWebp = versionWebp;
-exports.dev = parallel( css, imagenes, versionWebp, javascript, dev);
+export default series( css, js, dev )

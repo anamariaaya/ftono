@@ -1,6 +1,6 @@
 @use 'sass:math';
-@use 'base/variables' as v;
-@use 'base/mixins' as m;
+@use "../../base/variables" as v;
+@use "../../base/mixins" as m;
 
 .cards{
     margin: v.$separate 0;

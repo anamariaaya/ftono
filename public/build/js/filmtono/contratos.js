@@ -1,2 +1,149 @@
-import{contratosContainer,contratosSearch}from"./selectores.js";import{readLang,readJSON,eliminarItem,normalizeText}from"../base/funciones.js";export async function consultaContratos(){try{const t=await fetch(window.location.origin+"/api/filmtono/contracts");mostrarContratos(await t.json())}catch(t){console.log(t)}}async function mostrarContratos(t){const e=await readLang(),a=await readJSON();t.forEach(t=>{const n=t.nombre_doc.split("-")[2],{id:c,nombre:s,apellido:d,empresa:o,fecha:r}=t,i=document.createElement("a");i.classList.add("cards__link"),i.href="/filmtono/contracts/current?id="+c+"&type="+n;const l=document.createElement("div");l.classList.add("cards__card");const m=document.createElement("div");m.classList.add("cards__info");const p=document.createElement("div");p.classList.add("cards__info--div");const _=document.createElement("p");_.textContent=a["contracts_user-name"][e]+":",_.classList.add("cards__text","cards__text--span");const u=document.createElement("p");u.textContent=`${s} ${d}`,u.classList.add("cards__text"),p.appendChild(_),p.appendChild(u);const C=document.createElement("div");C.classList.add("cards__info--div");const h=document.createElement("p");h.textContent=a.contracts_empresa[e]+":",h.classList.add("cards__text","cards__text--span");const x=document.createElement("p");x.textContent=o,x.classList.add("cards__text"),C.appendChild(h),C.appendChild(x);const f=document.createElement("div");f.classList.add("cards__info--div");const L=document.createElement("p");L.textContent=a.contracts_type[e]+":",L.classList.add("cards__text","cards__text--span");const E=document.createElement("p");E.textContent="music"===n?a["contracts_type-music"][e]:a["contracts_type-artistic"][e],E.classList.add("cards__text"),f.appendChild(L),f.appendChild(E);const y=document.createElement("div");y.classList.add("cards__info--div");const v=document.createElement("p");v.textContent=a.contracts_fecha[e]+":",v.classList.add("cards__text","cards__text--span");const g=document.createElement("p"),w=new Date(r).toLocaleDateString(e,{year:"numeric",month:"short",day:"numeric"});g.textContent=w,g.classList.add("cards__text"),y.appendChild(v),y.appendChild(g);const S=document.createElement("div");S.classList.add("cards__actions");const b=document.createElement("button");b.classList.add("btn-delete"),b.id="eliminar",b.value=c,b.dataset.type=n,b.dataset.item="contracts",b.dataset.role="filmtono",b.onclick=eliminarItem;const j=document.createElement("i");j.classList.add("fa-solid","fa-trash-can","no-click"),b.appendChild(j),S.appendChild(b),m.appendChild(p),m.appendChild(C),m.appendChild(f),m.appendChild(y),i.appendChild(m),i.appendChild(S),l.appendChild(i),contratosContainer.appendChild(l)}),filtrarContratos()}function filtrarContratos(){contratosSearch.addEventListener("input",t=>{const e=normalizeText(t.target.value);document.querySelectorAll(".cards__card").forEach(t=>{-1!==normalizeText(t.textContent).indexOf(e)?(t.style.display="flex",t.style.marginRight="2rem",contratosContainer.style.columnGap="0"):t.style.display="none"})})}
-//# sourceMappingURL=contratos.js.map
+import {contratosContainer, contratosSearch} from './selectores.js';
+import {readLang, readJSON, eliminarItem, normalizeText} from '../base/funciones.js';
+
+export async function consultaContratos(){
+    try{
+        const resultado = await fetch(window.location.origin+'/api/filmtono/contracts');
+        const datos = await resultado.json();
+       mostrarContratos(datos);
+    }catch(error){
+        console.log(error);
+    }
+}
+
+async function mostrarContratos(datos){
+    const lang = await readLang();
+    const alerts = await readJSON();
+
+    datos.forEach(contrato => {
+        //extract the type of contract from the name of the file nombre_doc
+        const tipoContrato = contrato.nombre_doc.split('-')[2];
+        const{id, nombre, apellido, empresa, fecha} = contrato;
+
+        //Create the card to wrap the contract info and actions
+        const cardLink = document.createElement('a');
+        cardLink.classList.add('cards__link');
+        cardLink.href = '/filmtono/contracts/current?id='+id+'&type='+tipoContrato;
+
+        //Create the info section
+        const cardContrato = document.createElement('div');
+        cardContrato.classList.add('cards__card');
+
+        const cardInfo = document.createElement('div');
+        cardInfo.classList.add('cards__info');
+
+        const nameInfo = document.createElement('div');
+        nameInfo.classList.add('cards__info--div');
+
+        const titleNombre = document.createElement('p');
+        titleNombre.textContent = alerts['contracts_user-name'][lang]+':';
+        titleNombre.classList.add('cards__text', 'cards__text--span');
+
+        const nombreCompleto = document.createElement('p');
+        nombreCompleto.textContent = `${nombre} ${apellido}`;
+        nombreCompleto.classList.add('cards__text');
+        
+        nameInfo.appendChild(titleNombre);
+        nameInfo.appendChild(nombreCompleto);
+
+        const empresaInfo = document.createElement('div');
+        empresaInfo.classList.add('cards__info--div');
+
+        const titleEmpresa = document.createElement('p');
+        titleEmpresa.textContent = alerts['contracts_empresa'][lang]+':';
+        titleEmpresa.classList.add('cards__text', 'cards__text--span');
+
+        const empresaContrato = document.createElement('p');
+        empresaContrato.textContent = empresa;
+        empresaContrato.classList.add('cards__text');
+
+        empresaInfo.appendChild(titleEmpresa);
+        empresaInfo.appendChild(empresaContrato);
+
+        const tipoInfo = document.createElement('div');
+        tipoInfo.classList.add('cards__info--div');
+
+        const titleTipo = document.createElement('p');
+        titleTipo.textContent = alerts['contracts_type'][lang]+':';
+        titleTipo.classList.add('cards__text', 'cards__text--span');
+
+        const tipo = document.createElement('p');
+        if(tipoContrato === 'music'){
+            tipo.textContent = alerts['contracts_type-music'][lang];
+        }else{
+            tipo.textContent = alerts['contracts_type-artistic'][lang];
+        }
+        tipo.classList.add('cards__text');
+
+        tipoInfo.appendChild(titleTipo);
+        tipoInfo.appendChild(tipo);
+
+        const fechaInfo = document.createElement('div');
+        fechaInfo.classList.add('cards__info--div');
+
+        const titleFecha = document.createElement('p');
+        titleFecha.textContent = alerts['contracts_fecha'][lang]+':';
+        titleFecha.classList.add('cards__text', 'cards__text--span');
+
+        const fechaContrato = document.createElement('p');
+        //add date as day/month/year
+        const date = new Date(fecha);
+        const options = {year: 'numeric', month: 'short', day: 'numeric'};
+        const fechaFormat = date.toLocaleDateString(lang, options);
+        fechaContrato.textContent = fechaFormat;
+        fechaContrato.classList.add('cards__text');
+
+        fechaInfo.appendChild(titleFecha);
+        fechaInfo.appendChild(fechaContrato);
+
+        //Create the actions section
+        const cardActions = document.createElement('div');
+        cardActions.classList.add('cards__actions');
+
+        const btnEliminar = document.createElement('button');
+        btnEliminar.classList.add('btn-delete');
+        btnEliminar.id = 'eliminar';
+        btnEliminar.value = id;
+        btnEliminar.dataset.type = tipoContrato;
+        btnEliminar.dataset.item = 'contracts';
+        btnEliminar.dataset.role = 'filmtono';
+        btnEliminar.onclick = eliminarItem;
+
+        const iconEliminar = document.createElement('i');
+        iconEliminar.classList.add('fa-solid', 'fa-trash-can', 'no-click');
+
+        btnEliminar.appendChild(iconEliminar);
+        cardActions.appendChild(btnEliminar);
+
+
+        cardInfo.appendChild(nameInfo);
+        cardInfo.appendChild(empresaInfo);
+        cardInfo.appendChild(tipoInfo);
+        cardInfo.appendChild(fechaInfo);
+
+        cardLink.appendChild(cardInfo);
+        cardLink.appendChild(cardActions);
+
+        cardContrato.appendChild(cardLink);
+        contratosContainer.appendChild(cardContrato);
+    });
+    filtrarContratos();
+}
+
+function filtrarContratos(){
+    contratosSearch.addEventListener('input', e => {
+        const texto = normalizeText(e.target.value);
+        const cards = document.querySelectorAll('.cards__card');
+
+        cards.forEach(card => {
+            const nombre = normalizeText(card.textContent);
+            if(nombre.indexOf(texto) !== -1){
+                card.style.display = 'flex';
+                card.style.marginRight = '2rem';
+                contratosContainer.style.columnGap = '0';
+            }else{
+                card.style.display = 'none';
+            }
+        });
+    }); 
+}

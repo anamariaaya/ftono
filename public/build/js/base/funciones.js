@@ -1,2 +1,217 @@
-import{er,num,indicativo}from"../music/selectores.js";import{body,dashboardContenido,tabsBtns,tabsContent,tabsDiv,submitBtns}from"./selectores.js";export async function readLang(){try{const t=await fetch(window.location.origin+"/api/filmtono/lenguaje");return await t.json()}catch(t){console.log(t)}}export async function readJSON(){try{const t=await fetch(window.location.origin+"/api/filmtono/alerts",{mode:"cors"});return await t.json()}catch(t){console.log(t)}}export async function imprimirAlerta(t,e,a,r){const o=document.createElement("div");o.style.gridColumn="1 / 3","error"===e?o.classList.add("alerta__error"):o.classList.add("alerta__exito");const n=document.querySelector(".alerta__error");n&&n.remove();const l=await readLang(),i=await readJSON();o.textContent=i[t][l],a.insertBefore(o,r),setTimeout(()=>{o.remove()},4e3)}export function validarFormulario(t){const e=t.target.parentElement;if(t.target.value.length>0){const t=document.querySelector(".alerta__error");t&&t.remove()}else imprimirAlerta("input","error",e,t.target);"email"===t.target.type&&!1===er.test(t.target.value)&&imprimirAlerta("email","error",e,t.target),"select-one"===t.target.type&&("0"!==t.target.value&&""!==t.target.value||imprimirAlerta("select","error",e,t.target)),"tel"===t.target.type&&(!1===num.test(t.target.value)||t.target.value.length<8)&&imprimirAlerta("phone","error",e,t.target)}export function llenarDatos(){const t=document.querySelectorAll(".form input"),e=Array.from(t),a={};return e.forEach(t=>{a[t.id]=t.value}),a}export function limpiarHTML(t){for(;t.firstChild;)t.removeChild(t.firstChild)}export function loader(t){document.getElementById("loadingScreen").style.display="none",t.addEventListener("click",(function(){document.getElementById("loadingScreen").style.display="flex"}))}export async function eliminarItem(t){t.preventDefault();const e=await readLang(),a=await readJSON();if(t.target.classList.contains("btn-delete")){const r=t.target.value;dashboardContenido.classList.add("overlay");const o=document.createElement("div");o.classList.add("modal-alerta--activo");const n=document.createElement("DIV");n.classList.add("modal-alerta");const l=document.createElement("I");l.classList.add("fa-solid","fa-circle-exclamation","modal-alerta__icono");const i=document.createElement("H3");i.classList.add("modal-alerta__titulo"),i.textContent=a.delete_item[e];const s=document.createElement("P");s.classList.add("modal-alerta__parrafo"),s.textContent=a.delete_confirmation[e];const d=document.createElement("DIV");d.classList.add("modal-alerta__botones");const c=document.createElement("BUTTON");c.classList.add("modal-alerta__boton","modal-alerta__boton--cancelar"),c.textContent="Cancelar",c.onclick=cerrarAlerta;const m=document.createElement("button");m.classList.add("deleteModal__btn-close"),m.innerHTML='<i class="fas fa-times"></i>',m.onclick=cerrarAlerta;const u=document.createElement("button");u.classList.add("btn-delete"),u.textContent=a.delete[e],u.value=r,u.dataset.type=t.target.dataset.type,u.dataset.role=t.target.dataset.role,u.dataset.item=t.target.dataset.item,loader(u),u.onclick=t=>{void 0===t.target.dataset.type||"undefined"===t.target.dataset.type?window.location.href=`/${t.target.dataset.role}/${t.target.dataset.item}/delete?id=${t.target.value}`:window.location.href=`/${t.target.dataset.role}/${t.target.dataset.item}/delete?id=${t.target.value}&type=${t.target.dataset.type}`},d.appendChild(c),d.appendChild(u),n.appendChild(l),n.appendChild(i),n.appendChild(s),n.appendChild(d),n.appendChild(m),o.appendChild(n),body.appendChild(o)}}export function cerrarAlerta(){const t=document.querySelector(".modal-alerta--activo");t&&t.remove()}export function changeTabs(){for(let t=0;t<tabsBtns.length;t++)tabsBtns[t].addEventListener("click",()=>{tabsBtns.forEach(t=>t.classList.remove("tabs__lg--btn--active")),tabsContent.forEach(t=>t.style.display="none"),tabsBtns[t].classList.add("tabs__lg--btn--active"),tabsContent[t].style.display="block"})}export function btnSubmitLoader(){submitBtns.forEach(t=>{loader(t)})}export function normalizeText(t){return t.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase()}
-//# sourceMappingURL=funciones.js.map
+import {er, num, indicativo} from '../music/selectores.js';
+
+import {body, dashboardContenido, tabsBtns, tabsContent, tabsDiv, submitBtns} from './selectores.js';
+
+
+export async function readLang(){
+    try{
+        const resultado = await fetch(window.location.origin+'/api/filmtono/lenguaje');
+        const data = await resultado.json();
+        return data;
+    }catch(error){
+        console.log(error);
+    }
+}
+
+//Leer el lang.json
+export async function readJSON(){
+    try{
+        const resultado = await fetch(window.location.origin+'/api/filmtono/alerts', {mode: 'cors'});
+        const data = await resultado.json();
+        return data;
+    }catch(error){
+        console.log(error);
+    }
+}
+
+export async function imprimirAlerta(message, type, container, sibling) {
+    // Crea el div
+    const divMensaje = document.createElement('div');
+    divMensaje.style.gridColumn = '1 / 3';
+    
+    // Si es de tipo error agrega una clase
+    if(type === 'error') {
+         divMensaje.classList.add('alerta__error');
+    } else {
+         divMensaje.classList.add('alerta__exito');
+    }
+
+    const error = document.querySelector('.alerta__error');
+    if(error){
+        error.remove();
+    }
+
+    const lang = await readLang();
+    const alerts = await readJSON();
+    divMensaje.textContent = alerts[message][lang];
+
+    // Insertar en el DOM
+    container.insertBefore(divMensaje, sibling);
+
+    // Quitar el alert despues de 3 segundos
+    setTimeout( () => {
+        divMensaje.remove();
+    }, 4000);
+}
+
+export function validarFormulario(e) {
+    const form = e.target.parentElement;
+
+    if(e.target.value.length > 0){
+        //Elimina los errores
+        const error = document.querySelector('.alerta__error');
+        if(error){
+            error.remove();
+        }
+       
+    } else {
+        imprimirAlerta('input', 'error', form, e.target);
+    }
+
+    if(e.target.type === 'email'){
+        if(er.test(e.target.value) === false){
+            imprimirAlerta('email', 'error', form, e.target);
+        } 
+    }
+
+    //verificar que se alla elegido una opción de un select
+    if(e.target.type === 'select-one'){
+        if(e.target.value === '0' || e.target.value === ''){
+            imprimirAlerta('select', 'error', form, e.target);
+        }
+    }
+
+    if(e.target.type === 'tel'){
+        if(num.test(e.target.value) === false || e.target.value.length < 8){
+            imprimirAlerta('phone', 'error', form, e.target);
+        } 
+    }
+}
+
+export function llenarDatos() {
+    const inputs = document.querySelectorAll('.form input');
+    const arrayInputs = Array.from(inputs);
+    const datos = {};
+    arrayInputs.forEach( input => {
+        datos[input.id] = input.value;
+    });
+    return datos;
+}
+
+export function limpiarHTML(element){
+    while(element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
+}
+
+export function loader(button){
+    // Hide the loading screen when the page is fully loaded
+    document.getElementById('loadingScreen').style.display = 'none';
+
+    //Add event listener for the button given to trigger the loader
+    button.addEventListener('click', showLoadingScreen);
+    
+    // Function to show the loading screen
+    function showLoadingScreen() {
+        document.getElementById('loadingScreen').style.display = 'flex';
+    }
+}
+
+export async function eliminarItem(e){
+    e.preventDefault();
+
+    const lang = await readLang();
+    const alerts = await readJSON();
+    if(e.target.classList.contains('btn-delete')){
+        const id = e.target.value;
+        dashboardContenido.classList.add('overlay');
+
+        const alertaContenedor = document.createElement('div');
+        alertaContenedor.classList.add('modal-alerta--activo');
+        // alertaContenedor.onclick = cerrarAlerta;
+
+        const alertaDiv = document.createElement('DIV');
+        alertaDiv.classList.add('modal-alerta');
+
+        const alertaIcono = document.createElement('I');
+        alertaIcono.classList.add('fa-solid', 'fa-circle-exclamation', 'modal-alerta__icono');
+
+        const alertaTitulo = document.createElement('H3');
+        alertaTitulo.classList.add('modal-alerta__titulo');
+        alertaTitulo.textContent = alerts['delete_item'][lang];
+
+        const alertaParrafo = document.createElement('P');
+        alertaParrafo.classList.add('modal-alerta__parrafo');
+        alertaParrafo.textContent = alerts['delete_confirmation'][lang];
+
+        const alertaBotones = document.createElement('DIV');
+        alertaBotones.classList.add('modal-alerta__botones');
+
+        const alertaBotonCancelar = document.createElement('BUTTON');
+        alertaBotonCancelar.classList.add('modal-alerta__boton', 'modal-alerta__boton--cancelar');
+        alertaBotonCancelar.textContent = 'Cancelar';
+        alertaBotonCancelar.onclick = cerrarAlerta;
+
+        const btnCerrar = document.createElement('button');
+        btnCerrar.classList.add('deleteModal__btn-close');
+        btnCerrar.innerHTML = '<i class="fas fa-times"></i>';
+        btnCerrar.onclick = cerrarAlerta;
+
+        const btnEliminar = document.createElement('button');
+        btnEliminar.classList.add('btn-delete');
+        btnEliminar.textContent = alerts['delete'][lang];
+        btnEliminar.value = id;
+        btnEliminar.dataset.type = e.target.dataset.type;
+        btnEliminar.dataset.role = e.target.dataset.role;
+        btnEliminar.dataset.item = e.target.dataset.item;
+        loader(btnEliminar);
+
+        //redirect to delete route
+        btnEliminar.onclick = (e) => {
+           if( e.target.dataset.type === undefined || e.target.dataset.type === 'undefined'){
+                window.location.href = `/${e.target.dataset.role}/${e.target.dataset.item}/delete?id=${e.target.value}`;
+            }
+            else{
+                window.location.href = `/${e.target.dataset.role}/${e.target.dataset.item}/delete?id=${e.target.value}&type=${e.target.dataset.type}`;
+            }
+        }
+
+        //Agregar botones al div de botones
+        alertaBotones.appendChild(alertaBotonCancelar);
+        alertaBotones.appendChild(btnEliminar);
+        alertaDiv.appendChild(alertaIcono);
+        alertaDiv.appendChild(alertaTitulo);
+        alertaDiv.appendChild(alertaParrafo);
+        alertaDiv.appendChild(alertaBotones);
+        alertaDiv.appendChild(btnCerrar);
+        alertaContenedor.appendChild(alertaDiv);
+        body.appendChild(alertaContenedor);
+    }
+}
+export function cerrarAlerta(){
+    const alerta = document.querySelector('.modal-alerta--activo');
+    if(alerta){
+        alerta.remove();
+    }
+}
+
+export function changeTabs(){
+    for(let i = 0; i < tabsBtns.length; i++){
+        tabsBtns[i].addEventListener('click', () => {
+            tabsBtns.forEach(btn => btn.classList.remove('tabs__lg--btn--active'));
+            tabsContent.forEach(content => content.style.display = 'none');
+            tabsBtns[i].classList.add('tabs__lg--btn--active');
+            tabsContent[i].style.display = 'block';
+        });
+    }
+}
+
+export function btnSubmitLoader(){
+    submitBtns.forEach(btn => {
+        loader(btn);
+    });
+}
+
+export function normalizeText(text) {
+    return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+}
