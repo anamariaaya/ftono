@@ -272,8 +272,8 @@
     "en": "Forgot your password?"      
   },
   "auth_register_title":{
-    "es": "Crea tu cuenta y encuentra la mejor música para tus proyectos",
-    "en": "Create your account and find the best music for your projects"      
+    "es": "Contacta con nosotros si deseas comprar música para tus proyectos",
+    "en": "Contact us if you want to buy music for your projects"    
   },
   "auth_already_registered":{
     "es": "Ya estás registrado",
@@ -306,6 +306,18 @@
   "auth_register_password_confirmation_label":{
     "es": "Confirmar Contraseña",
     "en": "Confirm Password"      
+  },
+  "auth_register_message_label":{
+    "es": "Mensaje",
+    "en": "Message"      
+  },
+  "auth_register_message_placeholder":{
+    "es": "Escribe aquí tu mensaje y te contactaremos pronto",
+    "en": "Write your message here and we will contact you soon"
+  },
+  "auth_register_message_btn":{
+    "es": "Enviar mensaje",
+    "en": "Send message"      
   },
   "auth_register_btn":{
     "es": "Crear Cuenta",
@@ -1538,6 +1550,10 @@
   "register_producer-p-2":{
     "es": "Recuerda que debes ser un sello discográfico legalmente constituido y tener acuerdos por escrito y vigentes, con tus artistas y compositores, además de una metada muy completa que beneficie a todos los autores, artistas y propietarios de cada canción que se van a beneficiar de tu administración dentro de FILMTONO.",
     "en": "Remember that you must be a legally constituted record label and have written and current agreements, with your artists and composers, in addition to a very complete metadata that benefits all authors, artists and owners of each song that will benefit from your administration within FILMTONO."
+  },
+  "login_purchase-title":{
+    "es": "Si deseas comprar licencias de música para tus proyectos audiovisuales, contacta con nosotros y nos pondremos en contacto",
+    "en": "If you want to buy music licenses for your audiovisual projects, contact us and we will get in touch"
   },
   "t-inempresarios":{
     "es": "In Empresarios",

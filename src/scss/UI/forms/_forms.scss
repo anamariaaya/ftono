@@ -104,6 +104,9 @@
                 color: lighten(v.$gray-light, 10);
                 font-size: 1.8rem;
             }
+            &::placeholder{
+                color: darken(v.$white, 25%);
+            }
         }
         &__select option{
             cursor: pointer;

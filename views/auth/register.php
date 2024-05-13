@@ -1,7 +1,10 @@
 <div class="container">
-    <h1>
+    
+     <h1>
         {% <?php echo $titulo;?> %}
     </h1>
+
+    <p class="center">{%login_purchase-title%}</p>
 
     <?php if(isset($_SESSION['id'])): ?>
         
@@ -18,19 +21,7 @@
 
     <div class="form-div">
         <form class="form" method="POST" action="/register">
-            <div class="form__group">
-                <input type="hidden" name="id_nivel" value="4">
-
-                <label class="form__group__label" for="tipo">{%auth_register_music_purpose_label%}</label>
-                <select class="form__group__select" name="id_compra" id="tipo">
-                    <option selected disabled>
-                        {%auth_register_select_default%}
-                    </option>
-                    <?php foreach($comprador as $tipo): ?>
-                        <option value="<?php echo $tipo->id;?>"><?php echo $lang =='en' ? $tipo->tipo_en : $tipo->tipo_es ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
+            <input type="hidden" name="id_nivel" value="4">
 
             <div class="form__group">
                 <label class="form__group__label" for="nombre">{%auth_register_name_label%}</label>
@@ -47,27 +38,14 @@
                 <input class="form__group__input" type="email" name="email" id="email" placeholder="{%auth_register_email_label%}" value="<?php echo s($usuario->email); ?>">
             </div>
 
-            <p class="texto--password">{%auth_alert_password-weak%}</p>
-
             <div class="form__group">
-                <label class="form__group__label" for="password">{%auth_register_password_label%}</label>
-                <input class="form__group__input" type="password" name="password" id="password" placeholder="{%auth_register_password_label%}">
-                <i class="fa fa-eye passview"></i>
+                <label class="form__group__label" for="password">{%auth_register_message_label%}</label>
+                <textarea class="form__group__input" name="message" id="message" placeholder="{%auth_register_message_placeholder%}"></textarea>
             </div>
 
-            <div class="form__group">
-                <label class="form__group__label" for="password2">{%auth_register_password_confirmation_label%}</label>
-                <input class="form__group__input" type="password" name="password2" id="password2" placeholder="{%auth_register_password_confirmation_label%}">
-                <i class="fa fa-eye passview"></i>
-            </div>
-
-            <input class="btn-submit" type="submit" value="{%auth_register_btn%}">
+            <input class="btn-submit" type="submit" value="{%auth_register_message_btn%}">
         </form>
-    </div>
-
-    <div class="acciones">
-        <a href="/login" class="acciones__enlace">{%auth_register_already_account%}</a><a href="/forgot-password" class="acciones__enlace">{%auth_register_forgot_password%}</a>
     </div>
     
     <?php endif; ?>
-</div>
+</div> 
