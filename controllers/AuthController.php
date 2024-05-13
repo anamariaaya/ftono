@@ -14,11 +14,13 @@ use Model\NTCompra;
 use Model\NTMusica;
 use Model\CTRMusical;
 use Model\TipoMusica;
+use Classes\Comprador;
 use Model\Comunicados;
 use Model\CTRArtistico;
 use Model\PerfilUsuario;
 use Model\TipoComprador;
 use Model\UsuarioSellos;
+use Model\ContactoCompra;
 use Classes\MusicalContract;
 use Classes\ArtisticContract;
 
@@ -94,52 +96,24 @@ class AuthController {
     public static function register(Router $router) {
         $lang = $_SESSION['lang'] ?? 'en';
         $alertas = [];
-        $comprador = TipoComprador::allOrderBy('tipo_'.$lang);
-        $usuario = new Usuario;
-        $tipoComprador = new NTCompra;
+        $contacto = new ContactoCompra;
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $usuario->sincronizar($_POST);
-            $tipoComprador->sincronizar($_POST);
-            
-            $alertas = $usuario->validar_cuenta();
-            $alertas = $tipoComprador->validar_tipo();
-            $alertas = $usuario->validarPassword();
+            $contacto->sincronizar($_POST);
+            //debugging($contacto);
+            $alertas = $contacto->validar();
 
             if(empty($alertas)) {
-                $existeUsuario = Usuario::where('email', $usuario->email);
-
-                if($existeUsuario) {
-                    Usuario::setAlerta('error', 'auth_alert_user-already-exist');
-                    $alertas = Usuario::getAlertas();
-                } else {
-                    // Hashear el password
-                    $usuario->hashPassword();
-
-                    // Eliminar password2
-                    unset($usuario->password2);
-
-                    // Generar el Token
-                    $usuario->crearToken();
-
-                    // Crear un nuevo usuario
-                    $resultado =  $usuario->guardar();
+                    // Crear un nuevo contacto
+                $resultado =  $contacto->guardar();
                     
-                    $tipoComprador->id_usuario = $resultado['id'];
-                    $tipoComprador->guardar();
+                // Enviar email
+                $email = new Comprador($contacto->nombre, $contacto->apellido, $contacto->email, $contacto->pais, $contacto->telefono, $contacto->presupuesto, $contacto->mensaje);
+                $email->enviarMensaje();
 
-                    // Enviar email
-                    $email = new Email($usuario->email, $usuario->nombre, $usuario->token);
-                    if($lang == 'en'){
-                        $email->enviarConfirmacion();
-                    } else{
-                        $email->enviarConfirmacionEs();
-                    }
-                    
-
+                
                     if($resultado) {
-                        header('Location: /message');
-                    }
+                    header('Location: /');
                 }
             }
         }
@@ -148,8 +122,7 @@ class AuthController {
         $router->render('auth/register', [
             'titulo' => 'auth_register_title',
             'lang' => $lang,
-            'comprador' => $comprador,
-            'usuario' => $usuario, 
+            'contacto' => $contacto,
             'alertas' => $alertas
         ]);
     }

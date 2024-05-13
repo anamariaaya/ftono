@@ -25,22 +25,39 @@
 
             <div class="form__group">
                 <label class="form__group__label" for="nombre">{%auth_register_name_label%}</label>
-                <input class="form__group__input" type="text" name="nombre" id="nombre" placeholder="{%auth_register_name_label%}" value="<?php echo s($usuario->nombre); ?>">
+                <input class="form__group__input" type="text" name="nombre" id="nombre" placeholder="{%auth_register_name_label%}" value="<?php echo s($contacto->nombre); ?>">
             </div>
 
             <div class="form__group">
                 <label class="form__group__label" for="apellido">{%auth_register_lastname_label%}</label>
-                <input class="form__group__input" type="text" name="apellido" id="apellido" placeholder="{%auth_register_lastname_label%}" value="<?php echo s($usuario->apellido); ?>">
+                <input class="form__group__input" type="text" name="apellido" id="apellido" placeholder="{%auth_register_lastname_label%}" value="<?php echo s($contacto->apellido); ?>">
             </div>
 
             <div class="form__group">
                 <label class="form__group__label" for="email">{%auth_register_email_label%}</label>
-                <input class="form__group__input" type="email" name="email" id="email" placeholder="{%auth_register_email_label%}" value="<?php echo s($usuario->email); ?>">
+                <input class="form__group__input" type="email" name="email" id="email" placeholder="{%auth_register_email_label%}" value="<?php echo s($contacto->email); ?>">
             </div>
 
             <div class="form__group">
-                <label class="form__group__label" for="password">{%auth_register_message_label%}</label>
-                <textarea class="form__group__input" name="message" id="message" placeholder="{%auth_register_message_placeholder%}"></textarea>
+                <label class="form__group__label" for="pais">{%auth_register_country_label%}</label>
+                <input class="form__group__input" type="text" name="pais" id="pais" placeholder="{%auth_register_country_label%}" value="<?php echo s($contacto->pais); ?>">
+            </div>
+
+            <div class="form__group">
+                <label class="form__group__label" for="telefono">{%auth_register_phone_label%}</label>
+                <input class="form__group__input" type="text" name="telefono" id="telefono" placeholder="{%auth_register_phone_label%}" value="<?php echo s($contacto->telefono); ?>">
+            </div>
+
+            <div class="form__group">
+                <label class="form__group__label" for="presupuesto">{%auth_register_budget_label%}</label>
+                <input class="form__group__input" type="text" name="presupuesto" id="presupuesto" placeholder="{%auth_register_budget_placeholder%}" value="<?php echo s($contacto->presupuesto); ?>">
+            </div>
+
+
+            <div class="form__group">
+                <p>{%auth_register_message_paragraph%}</p>
+                <label class="form__group__label" for="mensaje">{%auth_register_message_label%}</label>
+                <textarea class="form__group__input" name="mensaje" id="mensaje" placeholder="{%auth_register_message_placeholder%}"></textarea>
             </div>
 
             <input class="btn-submit" type="submit" value="{%auth_register_message_btn%}">

@@ -307,6 +307,22 @@
     "es": "Confirmar Contraseña",
     "en": "Confirm Password"      
   },
+  "auth_register_country_label":{
+    "es": "País",
+    "en": "Country"      
+  },
+  "auth_register_phone_label":{
+    "es": "Teléfono",
+    "en": "Phone"      
+  },
+  "auth_register_budget_label":{
+    "es": "¿Cuál es tu presupuesto? (opcional)",
+    "en": "What is your budget? (optional)"      
+  },
+  "auth_register_budget_placeholder":{
+    "es": "Indica un estimado de tu presupuesto en dólares",
+    "en": "Indicate an estimate of your budget in dollars" 
+  },
   "auth_register_message_label":{
     "es": "Mensaje",
     "en": "Message"      
@@ -530,6 +546,22 @@
   "auth_alert_your-country-required":{
     "es": "Tu país es obligatorio",
     "en": "Your country is required"
+  },
+  "auth_alert_message-required":{
+    "es": "El mensaje es obligatorio",
+    "en": "The message is required"
+  },
+  "auth_alert_message-minlength":{
+    "es": "El mensaje debe tener al menos 10 caracteres",
+    "en": "The message must be at least 10 characters"
+  },
+  "auth_alert_message-maxlength":{
+    "es": "El mensaje no puede tener más de 200 caracteres",
+    "en": "The message cannot be more than 200 characters"
+  },
+  "auth_register_message_paragraph":{
+    "es": "El mensaje debe tener máximo 200 caracteres",
+    "en": "The message must be a maximum of 200 characters"
   },
   "auth_complete-register_title":{
     "es": "Completa tu registro",
