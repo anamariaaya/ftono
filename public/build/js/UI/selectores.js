@@ -24,3 +24,6 @@ export const generosInput = document.querySelector('#generos-search-public');
 export const gridCategory = document.querySelector('#grid-category-public');
 export const categoryInput = document.querySelector('#category-search-public');
 
+//Selectores para contacto
+export const mensajeInput = document.querySelector('#mensaje');
+

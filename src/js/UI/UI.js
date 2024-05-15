@@ -1,6 +1,7 @@
 
-import { dropdownDiv, dropdownMenu, dropdownBtn, passbtn} from "./selectores.js";
+import { dropdownDiv, dropdownMenu, dropdownBtn, passbtn, mensajeInput} from "./selectores.js";
 import { nextBtn, prevBtn, wrapper } from "./selectores.js";
+import { readLang, readJSON} from '../base/funciones.js';
 
 export function UI(){
     dropdownDiv.onmouseover = function(){
@@ -97,6 +98,47 @@ export function mainSlider() {
     });
 }    
 
+export async function mensaje(){
+    const lang = await readLang();
+    const alerts = await readJSON();
+    const btnSubmit = document.querySelector('.btn-submit');
+    mensajeInput.addEventListener('input', () => {
+         //crear un mensaje con los caracteres restantes
+    const mensajeMax = document.createElement('P');
+    mensajeMax.classList.add('mensaje-max');
+        //restar de 200 los caracteres introducidos
+        let mensaje = mensajeInput.value.length;
+        if(mensaje > 200){
+            mensajeMax.textContent = alerts['max-characters-exceeded'][lang];
+        } else{
+            mensajeMax.textContent = (200 - mensaje) +' '+ alerts['characters-remaining'][lang];
+        }
+        //Agregar el mensaje al formulario eliminando el anterior
+        const mensajeAnterior = document.querySelector('.mensaje-max');
+        if(mensajeAnterior){
+            mensajeAnterior.remove();
+        }
+        mensajeInput.parentElement.appendChild(mensajeMax);
+
+        console.log(mensajeInput.value.length);
+        if(mensajeInput.value.length > 200){
+            mensajeInput.style.color = '#ff3939';
+            mensajeMax.style.color = '#770505';
+            mensajeMax.style.backgroundColor = 'rgba(255, 255, 255, 0.75)';
+            mensajeMax.style.border = '1px solid #ff3939';
+            mensajeMax.style.borderRadius = '5px';
+            mensajeMax.style.paddingLeft = '0.5rem';
+            btnSubmit.classList.add('disabled-btn');
+        } else {
+            mensajeInput.style.color = 'white';
+            mensajeMax.style.color = '#36DE8C';
+            mensajeMax.style.backgroundColor = 'transparent';
+            mensajeMax.style.border = 'none';
+            mensajeMax.style.paddingLeft = '0';
+            btnSubmit.classList.remove('disabled-btn');
+        }
+    });
+}
 
 
 

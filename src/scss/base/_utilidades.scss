@@ -106,6 +106,21 @@
     pointer-events: none;   
 }
 
+.disabled-btn{
+    background-color: v.$gray-light !important;
+    color: darken(v.$gray-dark, 9) !important;
+    pointer-events: none;
+    &:hover{
+        background-color: v.$gray-light !important;
+        color: darken(v.$gray-dark, 9) !important;
+    }
+}
+
+.mensaje-max{
+    color: v.$green;
+    font-weight: v.$bold;
+}
+
 .text-yellow{
     color: v.$yellow;
 }
@@ -272,6 +287,12 @@
         display: flex;
         gap: 5rem;
     }
+}
+
+.flex-icon{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
 }
 
 .grid-2{

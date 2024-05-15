@@ -190,5 +190,17 @@
     "see-user":{
       "es": "Ver usuario",
       "en": "See user"
+    },
+    "undefined":{
+      "es": "No definido",
+      "en": "Undefined"
+    },
+    "max-characters-exceeded":{
+      "es": "Se ha excedido el número máximo de caracteres",
+      "en": "The maximum number of characters has been exceeded"
+    },
+    "characters-remaining":{
+      "es": "Caracteres restantes",
+      "en": "Characters remaining"
     }
 }

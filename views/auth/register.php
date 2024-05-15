@@ -55,9 +55,9 @@
 
 
             <div class="form__group">
-                <p>{%auth_register_message_paragraph%}</p>
+                <p class="texto--password">{%auth_register_message_paragraph%}</p>
                 <label class="form__group__label" for="mensaje">{%auth_register_message_label%}</label>
-                <textarea class="form__group__input" name="mensaje" id="mensaje" placeholder="{%auth_register_message_placeholder%}"></textarea>
+                <textarea class="form__group__textarea" name="mensaje" id="mensaje" placeholder="{%auth_register_message_placeholder%}"></textarea>
             </div>
 
             <input class="btn-submit" type="submit" value="{%auth_register_message_btn%}">

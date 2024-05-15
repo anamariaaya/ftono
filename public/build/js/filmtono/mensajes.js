@@ -19,32 +19,89 @@ export async function mostrarMensajes(datos){
                 const {id, nombre, apellido, email, pais, telefono, presupuesto, mensaje} = contacto;
 
 
+                const divNombre = document.createElement('DIV');
+                divNombre.classList.add('card__info--title', 'flex-icon');
+    
                 //generar la etiqueta para el nombre
                 const nombreContacto = document.createElement('P');
                 nombreContacto.classList.add('card__info--title');
                 nombreContacto.textContent = nombre + ' ' + apellido;
+
+                const iconoContacto = document.createElement('I');
+                iconoContacto.classList.add('fa-solid', 'fa-user', 'no-click', 'text-yellow');
+
+                divNombre.appendChild(iconoContacto);
+                divNombre.appendChild(nombreContacto);
                 
+                const divContacto = document.createElement('DIV');
+                divContacto.classList.add('card__info--title', 'flex-icon');
+
                 //generar la etiqueta para el email
                 const emailContacto = document.createElement('P');
                 emailContacto.classList.add('card__info');
                 emailContacto.textContent = email;
 
+                const iconoEmail = document.createElement('I');
+                iconoEmail.classList.add('fa-solid', 'fa-envelope', 'no-click', 'text-yellow');
+
+                divContacto.appendChild(iconoEmail);
+                divContacto.appendChild(emailContacto);
+
+                const divPais = document.createElement('DIV');
+                divPais.classList.add('card__info--title', 'flex-icon');
+
                 const paisContacto = document.createElement('P');
                 paisContacto.classList.add('card__info');
                 paisContacto.textContent = pais;
 
-                //generar el botón para abir el modal con la información del usuario
-                const btnInfo = document.createElement('A');
-                btnInfo.classList.add('btn-view');
-                btnInfo.textContent = alerts['see-more'][lang];
-                btnInfo.href = `/filmtono/messages/current?id=${id}`;
+                const iconoPais = document.createElement('I');
+                iconoPais.classList.add('fa-solid', 'fa-globe', 'no-click', 'text-yellow');
 
-                //general ícono de ojo para el botón de ver más
-                const iconoOjo = document.createElement('I');
-                iconoOjo.classList.add('fa-solid', 'fa-eye');
+                divPais.appendChild(iconoPais);
+                divPais.appendChild(paisContacto);
 
-                //Agregar el ícono al botón
-                btnInfo.appendChild(iconoOjo);
+                const divTelefono = document.createElement('DIV');
+                divTelefono.classList.add('card__info--title', 'flex-icon');
+
+                const telefonoContacto = document.createElement('P');
+                telefonoContacto.classList.add('card__info');
+                telefonoContacto.textContent = telefono;
+
+                const iconoTelefono = document.createElement('I');
+                iconoTelefono.classList.add('fa-solid', 'fa-phone', 'no-click', 'text-yellow');
+
+                divTelefono.appendChild(iconoTelefono);
+                divTelefono.appendChild(telefonoContacto);
+
+                const divPresupuesto = document.createElement('DIV');
+                divPresupuesto.classList.add('card__info--title', 'flex-icon');
+
+                const presupuestoContacto = document.createElement('P');
+                presupuestoContacto.classList.add('card__info');
+                if(presupuesto === ''){
+                    presupuestoContacto.textContent = alerts['undefined'][lang];
+                }else{
+                    presupuestoContacto.textContent = '$ ' + presupuesto;
+                }
+
+                const iconoPresupuesto = document.createElement('I');
+                iconoPresupuesto.classList.add('fa-solid', 'fa-sack-dollar', 'no-click', 'text-yellow');
+
+                divPresupuesto.appendChild(iconoPresupuesto);
+                divPresupuesto.appendChild(presupuestoContacto);
+
+                const divMensaje = document.createElement('DIV');
+                divMensaje.classList.add('card__info--title', 'flex-icon');
+
+                const mensajeContacto = document.createElement('P');
+                mensajeContacto.classList.add('card__info');
+                mensajeContacto.textContent = mensaje;
+
+                const iconoMensaje = document.createElement('I');
+                iconoMensaje.classList.add('fa-solid', 'fa-envelope', 'no-click', 'text-yellow');
+
+                divMensaje.appendChild(iconoMensaje);
+                divMensaje.appendChild(mensajeContacto);
 
                 //generar el botón para eliminar el usuario
                 const btnEliminar = document.createElement('BUTTON');
@@ -75,12 +132,12 @@ export async function mostrarMensajes(datos){
 
                 //agregar la información al contenedor
 
-                card.appendChild(nombreContacto);
-                card.appendChild(emailContacto);
-                card.appendChild(paisContacto);
-
-
-                card.appendChild(btnInfo);
+                card.appendChild(divNombre);
+                card.appendChild(divContacto);
+                card.appendChild(divPais);
+                card.appendChild(divTelefono);
+                card.appendChild(divPresupuesto);
+                card.appendChild(divMensaje);
                 card.appendChild(contenedorBotones);
 
                 //agregar el contenedor de la información al grid
