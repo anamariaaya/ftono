@@ -188,27 +188,23 @@
         </div>
 
         <div id="paso-3" class="tabs__section">
-            <?php if(isset($_SESSION['nivel_compra'])): ?>
-                <h3>3. {%t-authorizations%}</h3>
-                <?php elseif(isset($_SESSION['nivel_musica'])): ?>
-                <h3>3. {%t-signs_authorizations%}</h3>
-                <div class="tabs__auth">
-                    <div class="tabs__auth__bloque">
-                        <i class="tabs__help fa-solid fa-circle-info"></i>
-                        <p>{%p-sign_music_contract%} *</p>
-                        <p class="tabs__help--info">{%p-info_music_contract%}</p>
-                        <button type="button" class="btn-tabs btn-contrato" id="contrato-musical">{%b-read_sign%}</button>
-                        <p class="tabs__help--confirm" id="confirm-contrato"></p>
-                    </div>
-                    <div class="tabs__auth__bloque">
-                        <i class="tabs__help fa-solid fa-circle-info"></i>
-                        <p>{%p-sign_artistic_contract%}</p>
-                        <p class="tabs__help--info">{%p-info_artistic_contract%}</p>
-                        <button type="button" class="btn-tabs btn-contrato btn-contrato--optional" id="contrato-artistico">{%b-read_sign%}</button>
-                        <p class="tabs__help--confirm" id="confirm-contrato-art"></p>
-                    </div>
+            <h3>3. {%t-signs_authorizations%}</h3>
+            <div class="tabs__auth">
+                <div class="tabs__auth__bloque">
+                    <i class="tabs__help fa-solid fa-circle-info"></i>
+                    <p>{%p-sign_music_contract%} *</p>
+                    <p class="tabs__help--info">{%p-info_music_contract%}</p>
+                    <button type="button" class="btn-tabs btn-contrato" id="contrato-musical">{%b-read_sign%}</button>
+                    <p class="tabs__help--confirm" id="confirm-contrato"></p>
                 </div>
-            <?php endif; ?>            
+                <div class="tabs__auth__bloque">
+                    <i class="tabs__help fa-solid fa-circle-info"></i>
+                    <p>{%p-sign_artistic_contract%}</p>
+                    <p class="tabs__help--info">{%p-info_artistic_contract%}</p>
+                    <button type="button" class="btn-tabs btn-contrato btn-contrato--optional" id="contrato-artistico">{%b-read_sign%}</button>
+                    <p class="tabs__help--confirm" id="confirm-contrato-art"></p>
+                </div>
+            </div>
             
             <h4>{%t-terms_acceptance%}</h4>
             <div class="form--registro__checkbox--div" id="div-check">

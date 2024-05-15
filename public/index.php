@@ -31,7 +31,6 @@ use Controllers\Filmtono\LanguagesController;
 use Controllers\Music\MusicArtistsController;
 use Controllers\Music\MusicProfileController;
 use Controllers\Filmtono\CategoriesController;
-use Controllers\Clients\ClientProfileController;
 
 
 $router = new Router();
@@ -100,10 +99,6 @@ $router->get('/music/company', [CompanyController::class, 'index']);
 $router->post('/music/company', [CompanyController::class, 'index']);
 $router->get('/music/company/contracts', [CompanyController::class, 'contracts']);
 $router->get('/music/company/delete', [CompanyController::class, 'delete']);
-
-//Dashboard Compradores/Clients
-$router->get('/clients/dashboard', [DashboardController::class, 'clients']);
-$router->get('/clients/profile', [ClientProfileController::class, 'profile']);
 
 //Dashboard Filmtono
 $router->get('/filmtono/dashboard', [DashboardController::class, 'admin']);

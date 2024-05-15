@@ -15,17 +15,6 @@
                     <button class="btn-lang" value="es">Español</button>
                 </div>
             </div>
-            <?php
-                if(isset($_SESSION['nivel_compra'])):
-            ?>
-                <a href="/cart">
-                <img class="dashboard__nav-icono" src="/build/img/cart.svg" loading="lazy" alt="icono carrito">
-                <!-- <span class="dashboard__nav-numero"><?php echo $total; ?></span> -->
-                </a>
-                <a href="/categories" class="dashboard__nav-enlace">
-                    <?php echo tt('nav_explore_music'); ?>
-                </a>
-            <?php endif; ?>
 
             <form class="dashboard__form" action="/logout" method="POST">
                 <input class="dashboard__submit--logout" type="submit" value="<?php echo tt('nav_logout'); ?>"/>

@@ -17,17 +17,6 @@ class DashboardController{
         ]);
     }
 
-    public static function clients(Router $router){        
-        isComprador();
-        $usuario = Usuario::find($_SESSION['id']);
-
-        $titulo = 'dashboard-title';
-        $router->render('clients/dashboard',[
-            'titulo' => $titulo,
-            'usuario' => $usuario
-        ]);
-    }
-
     public static function music(Router $router){
         isMusico();
         $usuario = Usuario::find($_SESSION['id']);

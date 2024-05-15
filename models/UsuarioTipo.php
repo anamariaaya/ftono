@@ -4,7 +4,7 @@ namespace Model;
 
 class UsuarioTipo extends ActiveRecord{
     protected static $tabla = 'usuario_tipo';
-    protected static $columnasDB = ['id', 'nombre', 'apellido', 'email', 'confirmado', 'nivel_admin', 'nivel_musica', 'compradores', 'empresa'];
+    protected static $columnasDB = ['id', 'nombre', 'apellido', 'email', 'confirmado', 'nivel_admin', 'nivel_musica', 'empresa'];
    
     public $id;
     public $nombre;
@@ -13,7 +13,6 @@ class UsuarioTipo extends ActiveRecord{
     public $confirmado;
     public $nivel_admin;
     public $nivel_musica;
-    public $compradores;
     public $empresa;
 
     public function __construct($args = []){
@@ -24,7 +23,6 @@ class UsuarioTipo extends ActiveRecord{
         $this->confirmado = $args['confirmado'] ?? '';
         $this->nivel_admin = $args['nivel_admin'] ?? '';
         $this->nivel_musica = $args['nivel_musica'] ?? '';
-        $this->compradores = $args['compradores'] ?? '';
         $this->empresa = $args['empresa'] ?? '';
     }
 }

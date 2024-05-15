@@ -10,7 +10,6 @@ use Model\Empresa;
 use Model\NTAdmin;
 use Model\Privacy;
 use Model\Usuario;
-use Model\NTCompra;
 use Model\NTMusica;
 use Model\CTRMusical;
 use Model\TipoMusica;
@@ -18,7 +17,6 @@ use Classes\Comprador;
 use Model\Comunicados;
 use Model\CTRArtistico;
 use Model\PerfilUsuario;
-use Model\TipoComprador;
 use Model\UsuarioSellos;
 use Model\ContactoCompra;
 use Classes\MusicalContract;
@@ -43,7 +41,6 @@ class AuthController {
                 } else {
                     // El Usuario existe
                     if( password_verify($_POST['password'], $usuario->password) ) {
-                        $nivel_compra = NTCompra::where('id_usuario', $usuario->id);
                         $nivel_musica = NTMusica::where('id_usuario', $usuario->id);
                         $nivel_admin = NTAdmin::where('id_usuario', $usuario->id);
                         
@@ -56,10 +53,7 @@ class AuthController {
                         $_SESSION['perfil'] = $usuario->perfil;
 
                         // Verificar el nivel de acceso y redireccionar
-                        if($nivel_compra) {
-                            $_SESSION['nivel_compra'] = $nivel_compra->id_nivel;
-                            header('Location: /clients/dashboard');
-                        }elseif($nivel_musica) {
+                        if($nivel_musica) {
                             $_SESSION['nivel_musica'] = $nivel_musica->id_nivel;
                             header('Location: /music/dashboard');
                         }elseif($nivel_admin) {
@@ -435,13 +429,11 @@ class AuthController {
 
             //Cambiar el estado del perfil del usuario y Redireccionar al usuario a la pagina de inicio
             $usuario->perfil = '1';
-            $usuario->guardar();
+            $resultado = $usuario->guardar();
             $_SESSION['perfil'] = $usuario->perfil;
 
-            if(isset($_SESSION['nivel_musica'])){
+            if($resultado){
                 header('Location: /music/dashboard');
-            } else{
-                header('Location: /clients/dashboard');
             }
         }
 

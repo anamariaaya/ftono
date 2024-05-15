@@ -67,12 +67,6 @@ function isAdmin() : void {
     }
 }
 
-function isComprador() : void {
-    if(!isset($_SESSION['nivel_compra'])){
-        header('Location: /');
-    }
-}
-
 function isMusico() : void {
     if(!isset($_SESSION['nivel_musica'])){
         header('Location: /');
@@ -83,8 +77,6 @@ function isMusico() : void {
 function sesionActiva() : void {
     if(isset($_SESSION['nivel_admin'])){
         echo '/filmtono/dashboard';
-    } elseif(isset($_SESSION['nivel_compra'])){
-        echo '/clients/dashboard';
     } elseif(isset($_SESSION['nivel_musica'])){
         echo '/music/dashboard';
     } else{
@@ -99,7 +91,7 @@ function regBtn(){
     }
 }
 
-//Comprueba si el usuario está registrado completando su perfil y verifica si es comprador para no restringir la navegación.
+//Comprueba si el usuario está registrado completando su perfil 
 function isRegistered($mensaje, $contenido){
     $url = $_SERVER['REQUEST_URI'];
     if($_SESSION['perfil'] === '0' && !(strpos($url, '/complete-register') !== false && strpos($url, '/complete-register?'.$_SESSION['lang']) === false)):?>
@@ -116,10 +108,6 @@ function isRegistered($mensaje, $contenido){
         <?php if(strpos($url, '/music/profile') !== false): ?>
             <?php echo $contenido; ?>
         <?php endif; ?>
-
-        <?php if(isset($_SESSION['nivel_compra'])){
-            echo $contenido;
-        } ?>
 
     <?php else:
         echo $contenido;        

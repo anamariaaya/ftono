@@ -71,8 +71,6 @@ class Router
 
         if(str_contains($url_actual, '/filmtono')) {
             include_once __DIR__ . "/views/layouts/admin-layout.php";
-        } elseif(str_contains($url_actual, '/clients') || (isset($_SESSION['nivel_compra']) && str_contains($url_actual, '/complete-register'))) {
-            include_once __DIR__ . "/views/layouts/compras-layout.php";
         } elseif(str_contains($url_actual, '/music') || (isset($_SESSION['nivel_musica'])&& str_contains($url_actual, '/complete-register'))) {
             include_once __DIR__ . "/views/layouts/musica-layout.php";
         } else {
