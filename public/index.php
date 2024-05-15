@@ -9,25 +9,26 @@ use Controllers\DashboardController;
 use Controllers\APIProfileController;
 
 
+use Controllers\Music\CompanyController;
 use Controllers\Filmtono\UsersController;
 use Controllers\Filmtono\AlbumsController;
 use Controllers\Filmtono\GenresController;
 use Controllers\Filmtono\LabelsController;
 use Controllers\Filmtono\PromosController;
-use Controllers\Filmtono\ContractsController;
+use Controllers\Music\APIArtistController;
 use Controllers\Filmtono\ArtistsController;
 use Controllers\Filmtono\ProfileController;
 use Controllers\Filmtono\APIUsersController;
 use Controllers\Filmtono\KeywordsController;
-use Controllers\Filmtono\LanguagesController;
 
-use Controllers\Music\CompanyController;
+use Controllers\Filmtono\MessagesController;
 use Controllers\Music\MusicAlbumsController;
 use Controllers\Music\MusicLabelsController;
-use Controllers\Music\APIArtistController;
+use Controllers\Filmtono\ContractsController;
+use Controllers\Filmtono\LanguagesController;
+
+
 use Controllers\Music\MusicArtistsController;
-
-
 use Controllers\Music\MusicProfileController;
 use Controllers\Filmtono\CategoriesController;
 use Controllers\Clients\ClientProfileController;
@@ -116,6 +117,7 @@ $router->post('/api/filmtono/signature', [APIProfileController::class, 'signatur
 $router->get('/api/filmtono/c-musical', [APIProfileController::class, 'contratoMusical']);
 $router->get('/api/filmtono/c-artistico', [APIProfileController::class, 'contratoArtistico']);
 $router->post('/api/albums/artistasNew', [APIArtistController::class, 'artistaNuevo']);
+$router->get('/api/filmtono/messages', [MessagesController::class, 'consultarMensajes']);
 
 
 
@@ -191,6 +193,10 @@ $router->get('/filmtono/contracts', [ContractsController::class, 'index']);
 $router->get('/filmtono/contracts/current', [ContractsController::class, 'current']);
 $router->get('/api/filmtono/contracts', [ContractsController::class, 'contratos']);
 $router->get('/filmtono/contracts/delete', [ContractsController::class, 'delete']);
+
+//Filmtono messages
+$router->get('/filmtono/messages', [MessagesController::class, 'index']);
+$router->get('/filmtono/messages/delete', [MessagesController::class, 'delete']);
 
 
 //API Controllers

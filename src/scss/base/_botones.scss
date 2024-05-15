@@ -80,6 +80,9 @@
     justify-content: center;
     gap:1rem;
     padding: 0.5rem 1rem;
+    @include m.tablet{
+        width: fit-content;
+    }
 }
 
 .btn-delete{

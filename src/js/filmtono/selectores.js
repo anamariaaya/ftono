@@ -45,3 +45,7 @@ export const labelsInput = document.querySelector('#userLabel-search');
 //Selectores de la sección de idiomas
 export const gridIdiomas = document.querySelector('#grid-idiomas');
 export const idiomasInput = document.querySelector('#idiomas-search');
+
+//Selectores de la sección de mensajes
+export const gridMensajes = document.querySelector('#grid-mensajes');
+export const mensajesInput = document.querySelector('#mensajes-search');

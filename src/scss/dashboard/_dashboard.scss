@@ -200,14 +200,17 @@
         transition: 300ms background-color ease, 300ms color ease, 300ms border-radius ease;
         padding: 1rem;
         @include m.tablet{
-            padding: 2rem;
+            padding: 1.5rem;
         }
         
         &:hover,
         &--actual{
             background-color: v.$yellow;
-            color: v.$white !important;
+            color: v.$gray-dark !important;
             border-radius: 1rem;
+            & .dashboard__menu-texto{
+                font-weight: v.$ultrabold;
+            }
         }
 
         &--disabled{
@@ -235,7 +238,6 @@
         font-size:1.1rem;
         text-transform: uppercase;
         font-weight: v.$regular;
-        margin-top: .5rem;
         display: none;
         text-align: center;
         @include m.tablet{

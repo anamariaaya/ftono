@@ -75,6 +75,10 @@
     "es": "Contratos",
     "en": "Contracts"      
   },
+  "sidebar_messages":{
+    "es": "Mensajes",
+    "en": "Messages"      
+  },
   "sidebar_songs":{
     "es": "Canciones",
     "en": "Songs"      
@@ -230,6 +234,18 @@
   "dashboard-title":{
     "es": "Dashboard",
     "en": "Dashboard"      
+  },
+  "messages_title":{
+    "es": "Mensajes",
+    "en": "Messages"      
+  },
+  "messages_total":{
+    "es": "Total de mensajes",
+    "en": "Total messages"      
+  },
+  "messages_search-placeholder":{
+    "es": "Buscar mensajes por nombre",
+    "en": "Search messages by name"      
   },
   "layout_complete_register_musicians":{
     "es": "Debes completar el registro para poder cargar tu catálogo musical y acceder a todas las funciones de tu dashboard.",

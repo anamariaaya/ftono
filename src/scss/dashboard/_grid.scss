@@ -34,6 +34,7 @@
     }
     @include m.tablet{
         width: auto;
+        max-width: 50vw;
     }
     img, video{
         height: -webkit-fill-available;

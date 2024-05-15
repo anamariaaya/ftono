@@ -71,5 +71,12 @@
                 <?php echo tt('sidebar_contracts');?>
             </span>
         </a>
+
+        <a href="/filmtono/messages" class="dashboard__enlace <?php pagina_admin('messages');?>">
+            <i class="fa-solid fa-address-card dashboard__icono"></i>
+            <span class="dashboard__menu-texto">
+                <?php echo tt('sidebar_messages');?>
+            </span>
+        </a>
     </nav>
 </aside>
