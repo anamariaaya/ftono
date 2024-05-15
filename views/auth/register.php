@@ -20,7 +20,7 @@
     ?>
 
     <div class="form-div">
-        <form class="form" method="POST" action="/register">
+        <form class="form" method="POST" action="/register" id="mesagge-form">
             <input type="hidden" name="id_nivel" value="4">
 
             <div class="form__group">
@@ -60,9 +60,21 @@
                 <textarea class="form__group__textarea" name="mensaje" id="mensaje" placeholder="{%auth_register_message_placeholder%}"></textarea>
             </div>
 
+            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
             <input class="btn-submit" type="submit" value="{%auth_register_message_btn%}">
         </form>
     </div>
     
     <?php endif; ?>
 </div> 
+
+
+<script src="https://www.google.com/recaptcha/api.js?render=6LdErd0pAAAAAH6zMR7aF0fP9CAZpZDWCC0EKpFU"></script>
+
+<script>
+grecaptcha.ready(function() {
+    grecaptcha.execute('6LdErd0pAAAAAH6zMR7aF0fP9CAZpZDWCC0EKpFU', {action: 'submit'}).then(function(token) {
+        document.getElementById('g-recaptcha-response').value = token;
+    });
+});
+</script>

@@ -42,14 +42,19 @@
             <?php break;
     endswitch; ?>
 
-<?php
-    if($userType !== 'artista'):
-        require_once __DIR__ . '/form.php';
-    endif;
-?>
-
-<!-- <p>{%auth_register-music_paragraph%}<p> -->
-
-   
+    <?php
+        if($userType !== 'artista'):
+            require_once __DIR__ . '/form.php';
+        endif;
+    ?>
 </div>
 
+<script src="https://www.google.com/recaptcha/api.js?render=6LdErd0pAAAAAH6zMR7aF0fP9CAZpZDWCC0EKpFU"></script>
+
+<script>
+grecaptcha.ready(function() {
+    grecaptcha.execute('6LdErd0pAAAAAH6zMR7aF0fP9CAZpZDWCC0EKpFU', {action: 'submit'}).then(function(token) {
+        document.getElementById('g-recaptcha-response').value = token;
+    });
+});
+</script>
