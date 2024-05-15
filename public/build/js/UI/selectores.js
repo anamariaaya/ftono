@@ -27,3 +27,7 @@ export const categoryInput = document.querySelector('#category-search-public');
 //Selectores para contacto
 export const mensajeInput = document.querySelector('#mensaje');
 
+//Selectores para YouTube
+export const videoIds = ['duC60gX8OCU', 'CBwAMEqhvh8']; 
+export const player = document.querySelector('#player');
+

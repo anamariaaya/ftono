@@ -64,6 +64,13 @@
 
 <!-- Section with the artists -->
 <section class="container">
-    <h2 class="main__subtitle">{%index_subtitle-artists%}</h2>
-
+    <div class="video-container">
+        <div class="video-list">
+            <button id="playAll">Play All</button>
+            <div id="videoItems"></div>
+        </div>
+        <div class="video-player">
+            <div id="player"></div>
+        </div>
+    </div>
 </section>
