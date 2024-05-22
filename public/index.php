@@ -113,6 +113,7 @@ $router->get('/api/filmtono/c-musical', [APIProfileController::class, 'contratoM
 $router->get('/api/filmtono/c-artistico', [APIProfileController::class, 'contratoArtistico']);
 $router->post('/api/albums/artistasNew', [APIArtistController::class, 'artistaNuevo']);
 $router->get('/api/filmtono/messages', [MessagesController::class, 'consultarMensajes']);
+$router->get('/api/filmtono/countries', [APIProfileController::class, 'getCountries']);
 
 
 

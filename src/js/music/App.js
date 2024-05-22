@@ -1,8 +1,7 @@
 import { consultaPaises, countryCurrentValue, indicativoTel, paisElegido } from "./APIPaises.js";
 import {tabs, paginador, formularioReg} from "./perfiles.js";
-import { selectPais, afterNav, paisContacto, albumsBlock, singlesBlock, firmasDashboard, countrySelected, gridSellos } from "./selectores.js";
+import { selectPais, afterNav, paisContacto, firmasDashboard, countrySelected, gridSellos } from "./selectores.js";
 import { chooseLang } from "../UI/language.js";
-import { musicTabs } from "./MusicTabs.js";
 import { blockDashboard, signContract } from "./contracts.js";
 import { eliminarItem, btnSubmitLoader, changeTabs } from "../base/funciones.js";
 import { btnEliminar, submitBtns, tabsDiv } from '../base/selectores.js';
@@ -31,9 +30,7 @@ class App{
             paginador();
             formularioReg();
         }
-        if(albumsBlock && singlesBlock){
-            musicTabs();
-        }
+
         if(firmasDashboard){
             blockDashboard();
             signContract();

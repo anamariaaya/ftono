@@ -92,5 +92,10 @@ class APIProfileController{
 
         echo json_encode(['resultado' => $resultado]);
     }
+
+    public static function getCountries(){
+        $paises = file_get_contents(__DIR__.'/../countries.json');
+        echo $paises;
+    }
 }
 

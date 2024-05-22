@@ -1,4 +1,4 @@
-import { albumsBlock, singlesBlock, albumsBtn, singlesBtn, musicBtn } from "./selectores.js";
+import { albumsBlock, singlesBlock, albumsBtn, singlesBtn } from "./selectores.js";
 
 export function musicTabs(){
     albumsBtn.addEventListener('click', showAlbums);

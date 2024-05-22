@@ -117,6 +117,17 @@ export function loader(button){
     }
 }
 
+export function loaderPage(){
+    document.getElementById('loadingScreen').style.display = 'none';
+    window.addEventListener('load', () => {
+        document.getElementById('loadingScreen').style.display = 'flex';
+    });
+}
+
+export function stopLoader(){
+    document.getElementById('loadingScreen').style.display = 'none';
+}
+
 export async function eliminarItem(e){
     e.preventDefault();
 

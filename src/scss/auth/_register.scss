@@ -9,6 +9,9 @@
     display: grid;
     place-items: center;
     overflow: auto;
+    & ul li{
+        color: var(--color--black);
+    }
     &__modal{
         margin: v.$separate 0;
         background-color: v.$gray-dark;

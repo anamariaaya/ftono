@@ -1,14 +1,19 @@
-import { validarFormulario } from "../base/funciones.js";
+import { loaderPage, validarFormulario, stopLoader } from "../base/funciones.js";
 import { selectPais, paisContacto, indicativo, countrySelected, paisValue } from "./selectores.js";
 import  {readLang} from "../base/funciones.js";
 
 export async function consultaPaises(){
     try{
-        let url = `https://restcountries.com/v3.1/all`;
+        loaderPage();
+        setTimeout(() => {
+            stopLoader();
+        }, 1500);
+        const url = window.location.origin+'/api/filmtono/countries';
 
         const resultado = await fetch(url);
         const datos = await resultado.json();
         mostrarPaises(datos);
+         // 2000 milliseconds = 2 seconds
     }catch(error){
         console.log(error);
     }
