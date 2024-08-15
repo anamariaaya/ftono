@@ -16,6 +16,26 @@ class MusicArtistsController{
         ]);
     }
 
+    public static function new(Router $router){
+        isMusico();
+        $titulo = 'artists_new-title';
+        $alertas = [];
+        $router->render('music/artists/new',[
+            'titulo' => $titulo,
+            'alertas' => $alertas
+        ]);
+    }
+
+    public static function edit(Router $router){
+        isMusico();
+        $titulo = 'artists_edit-title';
+        $alertas = [];
+        $router->render('music/artists/edit',[
+            'titulo' => $titulo,
+            'alertas' => $alertas
+        ]);
+    }
+
     // public static function current(Router $router){
     //     isMusico();
     //     $albumId = redireccionar('/music/albums');
@@ -30,61 +50,6 @@ class MusicArtistsController{
     //     ]);
     // }
 
-    // public static function new(Router $router){
-    //     isMusico();
-    //     $artistas = Artistas::AllOrderAsc('nombre');
-    //     $titulo = tt('music_albums_new');
-    //     $album = new Albums();
-
-    //     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-           
-    //         $album ->sincronizar($_POST);
-    //         $album->id_usuario = $_SESSION['id'];
-    //         debugging($album);
-    //         $album->guardar();
-
-    //         //Buscar el álbum recién creado
-    //         $album = Albums::where('id', $_POST['id']);
-    //         if($_POST['artistas']){
-    //             $artista = Artistas::where('nombre', $_POST['artistas']);
-    //             if($artista == null || !$artista || $artista == ''){
-    //                 $artista = new Artistas();
-    //                 $artista->nombre = $_POST['artistas'];
-    //                 $artista->guardar();
-
-    //                 //Asignar el artista al album
-    //                 $artista = Artistas::where('nombre', $_POST['artistas']);
-    //                 $albumArtista = new AlbumArtista();
-    //                 $albumArtista->id_albums = $album->id;
-    //                 $albumArtista->id_artistas = $artista->id;
-    //                 $albumArtista->guardar();
-    //             } else{
-    //                 $albumArtista = new AlbumArtista();
-    //                 $albumArtista->id_albums = $album->id;
-    //                 $albumArtista->id_artistas = $artista->id;
-    //                 $albumArtista->guardar();
-    //             }
-    //         }
-    //         if($_POST['art-secundarios']){
-    //             $idSecundarios = explode(',', $_POST['art-secundarios']);
-    //             //save each artist in the album
-    //             foreach($idSecundarios as $idSecundario){
-    //                 $albumArtista = new AlbumArtista();
-    //                 $albumArtista->id_albums = $album->id;
-    //                 $albumArtista->id_artistas = $idSecundario;
-    //                 $albumArtista->guardar();
-    //             }
-    //         }
-            
-    //         // header('Location: /music/albums');
-    //     }
-
-    //     $router->render('music/albums/new',[
-    //         'titulo' => $titulo,
-    //         'album' => $album,
-    //         'artistas' => $artistas
-    //     ]);
-    // }
 
     // public static function update(Router $router){
     //     isMusico();

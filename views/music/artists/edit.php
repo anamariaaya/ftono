@@ -11,8 +11,8 @@
 
 <div class="form-div">
     <form class="form" method="POST">
-        <legend class="form__legend">{%artists_new-legend%}</legend>
+        <legend class="form__legend">{%artists_edit-legend%}</legend>
         <?php include_once __DIR__.'/form.php'?>
-        <input type="submit" value="{%artists_new-submit-btn%}" class="btn-submit">
+        <input type="submit" value="{%artists_edit-submit-btn%}" class="btn-submit">
     </form>
 </div>

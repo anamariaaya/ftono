@@ -1167,6 +1167,70 @@
     "es": "Tus Artistas",
     "en": "Your Artists"
   },
+  "artists_total":{
+    "es": "Total de Artistas",
+    "en": "Total Artists"
+  },
+  "artists_search-placeholder":{
+    "es": "Buscar artistas por nombre",
+    "en": "Search artists by name"
+  },
+  "artists_new-btn":{
+    "es": "Nuevo Artista",
+    "en": "New Artist"
+  },
+  "artists_new-title":{
+    "es": "Nuevo Artista",
+    "en": "New Artist"
+  },
+  "artists_new-submit-btn":{
+    "es": "Crear Artista",
+    "en": "Create Artist"
+  },
+  "artists_edit-title":{
+    "es": "Editar Artista",
+    "en": "Edit Artist"
+  },
+  "artists_edit-submit-btn":{
+    "es": "Actualizar Artista",
+    "en": "Update Artist"
+  },
+  "artists_back-btn":{
+    "es": "Volver a Artistas",
+    "en": "Back to Artists"
+  },
+  "artists_new-legend":{
+    "es": "Aquí puedes crear un nuevo artista",
+    "en": "Here you can create a new artist"
+  },
+  "artists_edit-legend":{
+    "es": "Aquí puedes editar el artista",
+    "en": "Here you can edit the artist"
+  },
+  "artists_form-name_label":{
+    "es": "Nombre del Artista",
+    "en": "Artist Name"
+  },
+  "artists_form-name_placeholder":{
+    "es": "Ejemplo: John Doe",
+    "en": "Example: John Doe"
+  },
+  "artists_mandatory-artist-name":{
+    "es": "Debes escribir el nombre del artista",
+    "en": "You must write the artist name"
+  },
+  "artists_form-show-price_label":{
+    "es": "Precio del show en dólares",
+    "en": "Show price in dollars"
+  },
+  "artists_form-show-price_placeholder":{
+    "es": "Ejemplo: 1000",
+    "en": "Example: 1000"
+  },
+  "artists_form-show-price-mandatory":{
+    "es": "Debes escribir el precio del show",
+    "en": "You must write the show price"
+  },
   "admin_alert_mandatory-file":{
     "es": "Debes seleccionar un archivo",
     "en": "You must select a file"
