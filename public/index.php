@@ -101,6 +101,7 @@ $router->post('/music/artists/new', [MusicArtistsController::class, 'new']);
 $router->get('/music/artists/edit', [MusicArtistsController::class, 'edit']);
 $router->post('/music/artists/edit', [MusicArtistsController::class, 'edit']);
 $router->get('/music/artists/delete', [MusicArtistsController::class, 'delete']);
+$router->get('/api/music/artists/artists', [MusicArtistsController::class, 'consultaArtistas']);
 
 //Music contracts
 $router->get('/music/company', [CompanyController::class, 'index']);

@@ -54,3 +54,7 @@ export const dashboardEnlaces = document.querySelectorAll('.dashboard__enlace');
 export const gridSellos = document.querySelector('#grid-sellos');
 export const sellosInput = document.querySelector('#sellos-search');
 
+//Selectores de la sección de artistas
+export const gridArtistas = document.querySelector('#grid-artistas');
+export const artistasInput = document.querySelector('#artistas-search');
+

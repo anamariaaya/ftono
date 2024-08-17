@@ -1227,9 +1227,13 @@
     "es": "Ejemplo: 1000",
     "en": "Example: 1000"
   },
-  "artists_form-show-price-mandatory":{
+  "artists_mandatory-show-price":{
     "es": "Debes escribir el precio del show",
     "en": "You must write the show price"
+  },
+  "artists_alert_already-exist":{
+    "es": "El artista ya está registrado",
+    "en": "The artist is already registered"
   },
   "admin_alert_mandatory-file":{
     "es": "Debes seleccionar un archivo",

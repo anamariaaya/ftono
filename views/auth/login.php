@@ -19,7 +19,7 @@
         <form class="form" method="POST" action="/login">
             <div class="form__group">
                 <label class="form__group__label" for="email">{%auth_login_email_label%}</label>
-                <input class="form__group__input" type="email" name="email" id="email" placeholder="Tu email">
+                <input class="form__group__input" type="email" name="email" id="email" placeholder="Tu email" value="<?php echo ($usuario)? s($usuario->email): '';?>">
             </div>
 
             <div class="form__group">

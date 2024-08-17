@@ -25,11 +25,11 @@ use Classes\ArtisticContract;
 class AuthController {
     public static function login(Router $router) {
         $alertas = [];
+        $usuario = [];
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
     
             $usuario = new Usuario($_POST);
-            
             $alertas = $usuario->validarLogin();
             
             if(empty($alertas)) {
@@ -37,6 +37,8 @@ class AuthController {
                 $usuario = Usuario::where('email', $usuario->email);
 
                 if(!$usuario || !$usuario->confirmado ) {
+                    $usuario = new Usuario;
+                    $usuario->email = s($_POST['email']);
                     Usuario::setAlerta('error', 'auth_alert_user-not-exist');
                 } else {
                     // El Usuario existe
@@ -75,7 +77,8 @@ class AuthController {
         // Render a la vista 
         $router->render('auth/login', [
             'titulo' => 'auth_login_title',
-            'alertas' => $alertas
+            'alertas' => $alertas,
+            'usuario' => $usuario
         ]);
     }
 

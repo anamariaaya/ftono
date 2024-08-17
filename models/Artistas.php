@@ -13,12 +13,12 @@ class Artistas extends ActiveRecord{
         $this->precio_show = $args['precio_show'] ?? '';
     }
 
-    public function validarAlbum(){
+    public function validarArtista(){
         if(!$this->nombre) {
-            self::$alertas['error'][] = 'El nombre del artista es Obligatorio';
+            self::$alertas['error'][] = 'artists_mandatory-artist-name';
         }
         if(!$this->precio_show) {
-            self::$alertas['error'][] = 'El precio del show del artista es Obligatorio';
+            self::$alertas['error'][] = 'artists_mandatory-show-price';
         }
         return self::$alertas;
     }

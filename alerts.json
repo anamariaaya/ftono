@@ -202,5 +202,9 @@
     "characters-remaining":{
       "es": "Caracteres restantes",
       "en": "Characters remaining"
+    },
+    "show-price":{
+      "es": "Precio del show",
+      "en": "Show price"
     }
 }
