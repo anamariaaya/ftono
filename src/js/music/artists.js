@@ -1,5 +1,5 @@
 import {gridArtistas, artistasInput} from './selectores.js';
-import {readLang, readJSON, eliminarItem, normalizeText} from '../base/funciones.js';
+import {readLang, readJSON, eliminarItem, normalizeText, caps} from '../base/funciones.js';
 
 export async function consultaArtistas(){
     try{
@@ -17,7 +17,7 @@ async function mostrarArtistas(datos){
 
     datos.forEach(artista => {
         //extract the type of contract from the name of the file nombre_doc
-        const{id, nombre, precio_show} = artista;
+        const{id, nombre, precio_show, nivel_en, nivel_es} = artista;
 
         //Create the info section
         const cardArtista = document.createElement('div');
@@ -45,6 +45,21 @@ async function mostrarArtistas(datos){
 
         precioInfo.appendChild(titlePrecio);
         precioInfo.appendChild(precioArtista);
+
+        const nivelInfo = document.createElement('DIV');
+        nivelInfo.classList.add('cards__info--div');
+
+        const titleNivel = document.createElement('p');
+        titleNivel.textContent = lang === 'en' ? 'Level: ' : 'Nivel: ';
+        titleNivel.classList.add('cards__text', 'cards__text--span');
+
+
+        const nivelArtista = document.createElement('p');
+        nivelArtista.textContent = lang === 'en' ? caps(nivel_en) : caps(nivel_es);
+        nivelArtista.classList.add('cards__text', 'cards__text--span');
+
+        nivelInfo.appendChild(titleNivel);
+        nivelInfo.appendChild(nivelArtista);
 
         //Create the actions section
         const cardActions = document.createElement('div');
@@ -79,6 +94,7 @@ async function mostrarArtistas(datos){
 
         cardArtista.appendChild(cardInfo);
         cardArtista.appendChild(precioInfo);
+        cardArtista.appendChild(nivelInfo);
         cardArtista.appendChild(cardActions);
 
   

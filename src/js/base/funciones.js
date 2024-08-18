@@ -226,3 +226,7 @@ export function btnSubmitLoader(){
 export function normalizeText(text) {
     return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 }
+
+export function caps(text) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+}

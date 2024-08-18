@@ -6,6 +6,7 @@ use Model\Albums;
 use Model\Genres;
 use Model\Artistas;
 use Model\AlbumArtista;
+use Model\NivelArtistas;
 
 class MusicArtistsController{
     public static function index(Router $router){
@@ -19,8 +20,21 @@ class MusicArtistsController{
     }
 
     public static function consultaArtistas(){
-        isMusico();
-        $artistas = Artistas::AllOrderAsc('nombre');
+        //isMusico();
+        $consultaArtistas = 'SELECT 
+            a.id, 
+            a.nombre, 
+            a.precio_show, 
+            n.nivel_en, 
+            n.nivel_es
+        FROM 
+            artistas a
+        INNER JOIN 
+            nivel_artistas n ON a.id_nivel = n.id
+        ORDER BY 
+            a.nombre ASC;
+        ';
+        $artistas = NivelArtistas::consultarSQL($consultaArtistas);
         echo json_encode($artistas);
     }
 
@@ -29,6 +43,9 @@ class MusicArtistsController{
         $titulo = 'artists_new-title';
         $alertas = [];
         $artista = new Artistas();
+        $niveles = NivelArtistas::all();
+        $lang = $_SESSION['lang'];
+
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $artista->sincronizar($_POST);
             $artista->nombre = sText($artista->nombre);
@@ -51,7 +68,9 @@ class MusicArtistsController{
         $router->render('music/artists/new',[
             'titulo' => $titulo,
             'alertas' => $alertas,
-            'artista' => $artista
+            'artista' => $artista,
+            'niveles' => $niveles,
+            'lang' => $lang
         ]);
     }
 
@@ -61,6 +80,9 @@ class MusicArtistsController{
         $id = redireccionar('/music/artists');
         $artista = Artistas::find($id);
         $alertas = Artistas::getAlertas();
+        $niveles = NivelArtistas::all();
+        $lang = $_SESSION['lang'];
+
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $artista->sincronizar($_POST);
             $artista->nombre = sText($artista->nombre);
@@ -76,7 +98,9 @@ class MusicArtistsController{
         $router->render('music/artists/edit',[
             'titulo' => $titulo,
             'alertas' => $alertas,
-            'artista' => $artista
+            'artista' => $artista,
+            'niveles' => $niveles,
+            'lang' => $lang
         ]);
     }
 

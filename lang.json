@@ -1235,6 +1235,18 @@
     "es": "El artista ya está registrado",
     "en": "The artist is already registered"
   },
+  "artists_mandatory_artist-level":{
+    "es": "Debes seleccionar un nivel de artista",
+    "en": "You must select an artist level"
+  },
+  "artists_form-level_label":{
+    "es": "Nivel del Artista",
+    "en": "Artist Level"
+  },
+  "artists_form-level_placeholder":{
+    "es": "Selecciona un nivel",
+    "en": "Select a level"
+  },
   "admin_alert_mandatory-file":{
     "es": "Debes seleccionar un archivo",
     "en": "You must select a file"
