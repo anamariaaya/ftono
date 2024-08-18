@@ -125,12 +125,10 @@ $router->get('/api/filmtono/messages', [MessagesController::class, 'consultarMen
 $router->get('/api/filmtono/countries', [APIProfileController::class, 'getCountries']);
 
 
-
 //Filmtono Profile
 $router->get('/filmtono/profile', [ProfileController::class, 'profile']);
 $router->post('/filmtono/profile', [ProfileController::class, 'profile']);
 $router->post('/filmtono/profile/delete', [ProfileController::class, 'delete']);
-
 
 //Filmtono Promos
 $router->get('/filmtono/promos', [PromosController::class, 'index']);
@@ -150,6 +148,8 @@ $router->get('/filmtono/users/delete', [UsersController::class, 'delete']);
 //Filmtono Labels
 $router->get('/filmtono/labels', [LabelsController::class, 'index']);
 $router->get('/api/filmtono/labels', [LabelsController::class, 'consultaUsuariosMusica']);
+$router->get('/filmtono/labels/current', [LabelsController::class, 'current']);
+$router->get('/filmtono/labels/delete', [LabelsController::class, 'delete']);
 
 //Filmtono Categories
 $router->get('/filmtono/categories', [CategoriesController::class, 'index']);

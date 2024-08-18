@@ -1319,6 +1319,34 @@
     "es": "Volver a Géneros",
     "en": "Back to Genres"
   },
+  "admin_label_title":{
+    "es": "Sello Discográfico",
+    "en": "Record Labels"
+  },
+  "admin_labels_back-btn":{
+    "es": "Volver a Sellos Discográficos",
+    "en": "Back to Record Labels"
+  },
+  "admin_labels_aggregator":{
+    "es": "Agregador",
+    "en": "Aggregator"
+  },
+  "admin_labels_publisher":{
+    "es": "Editorial",
+    "en": "Publisher"
+  },
+  "admin_labels_created":{
+    "es": "Creado en",
+    "en": "Created at"
+  },
+  "admin_labels_user":{
+    "es": "Creado por el usuario",
+    "en": "Created by user"
+  },
+  "admin_labels_company":{
+    "es": "Empresa",
+    "en": "Company"
+  },
   "languages_main-title":{
     "es": "Idiomas",
     "en": "Languages"

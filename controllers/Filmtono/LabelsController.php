@@ -40,43 +40,6 @@ class LabelsController{
         $titulo = 'music_labels-title';
         $ntmusica = NTMusica::all();
 
-        // $userIds = [];
-        // $companyIds = [];
-        // $sellosIds = [];
-        // $usuarios = Usuario::innerJoin('usuarios','n_t_musica','id', 'id_usuario');
-
-        // foreach ($usuarios as $usuario) {
-
-        //     $userIds[] = $usuario->id;
-        // }
-        // $userIdsString = implode(',', $userIds);
-
-        // $consultaUsuarioSellos = "SELECT usuario_sellos.*
-        // FROM usuario_sellos
-        // INNER JOIN usuarios
-        // ON usuario_sellos.id_usuario = usuarios.id  WHERE usuarios.id IN (".$userIdsString.");";
-
-        // $usuarioSellos = UsuarioSellos::consultarSQL($consultaUsuarioSellos);
-        // foreach ($usuarioSellos as $usuarioSello) {
-        //     $companyIds[] = $usuarioSello->id_empresa;
-        //     $sellosIds[] = $usuarioSello->id_sellos;
-        // }
-
-        // $companyIdsString = implode(',', $companyIds);
-        // $sellosIdsString = implode(',', $sellosIds);
-
-        // $consultaEmpresas = "SELECT empresa.*
-        // FROM empresa
-        // INNER JOIN usuario_sellos
-        // ON empresa.id = usuario_sellos.id_empresa WHERE usuario_sellos.id_empresa IN (".$companyIdsString.");";
-
-        // $empresas = Empresa::consultarSQL($consultaEmpresas);
-
-        // $consultaSellos = "SELECT sellos.*
-        // FROM sellos
-        // INNER JOIN usuario_sellos
-        // ON sellos.id = usuario_sellos.id_sellos WHERE usuario_sellos.id_sellos IN (".$sellosIdsString.");";
-
         $consultaSellos ="SELECT s.nombre AS labelName, s.creado AS labelDate, s.id AS labelId,
         u.id AS userId, CONCAT(u.nombre, ' ', u.apellido) AS userName,
         e.id AS companyId, e.empresa AS companyName,
@@ -90,5 +53,45 @@ class LabelsController{
 
         $userLabels = UserLabels::consultarSQL($consultaSellos);
         echo json_encode($userLabels);
+    }
+
+    public static function current(Router $router){
+        isAdmin();
+        $titulo = 'admin_label_title';
+        $ntmusica = NTMusica::all();
+        $id = s($_GET['id']);
+        
+        $consultaSellos ="SELECT s.nombre AS labelName, s.creado AS labelDate, s.id AS labelId,
+        u.id AS userId, CONCAT(u.nombre, ' ', u.apellido) AS userName,
+        e.id AS companyId, e.empresa AS companyName,
+        m.id_musica AS musicType
+            FROM sellos s
+            INNER JOIN usuario_sellos us ON s.id = us.id_sellos
+            INNER JOIN usuarios u ON u.id = us.id_usuario
+            INNER JOIN empresa e On e.id = us.id_empresa
+            INNER JOIN n_t_musica m ON m.id_usuario = us.id_usuario
+            WHERE s.id={$id};";
+
+        $sello = UserLabels::consultarSQL($consultaSellos);
+        //convert to object
+        $sello = (object)$sello[0];
+
+        //debugging($sello);
+
+        $router->render('/admin/labels/current',[
+            'titulo' => $titulo,
+            'ntmusica' => $ntmusica,
+            'sello' => $sello
+        ]);
+    }
+
+    public static function delete(){
+        isAdmin();
+        $id = redireccionar('/filmtono/labels');
+        $sellos = Sellos::find($id);
+        $resultado = $sellos->eliminar();
+        if($resultado){
+            header('Location: /filmtono/labels');
+        }
     }
 }
