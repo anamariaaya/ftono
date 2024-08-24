@@ -49,3 +49,7 @@ export const idiomasInput = document.querySelector('#idiomas-search');
 //Selectores de la sección de mensajes
 export const gridMensajes = document.querySelector('#grid-mensajes');
 export const mensajesInput = document.querySelector('#mensajes-search');
+
+//selectores de artistas
+export const gridArtistas = document.querySelector('#grid-artistas');
+export const artistasSearchInput = document.querySelector('#artistas-search');

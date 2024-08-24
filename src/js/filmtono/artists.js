@@ -1,9 +1,10 @@
-import {gridArtistas, artistasInput} from './selectores.js';
+import {gridArtistas, artistasSearchInput} from './selectores.js';
 import {readLang, readJSON, eliminarItem, normalizeText, caps} from '../base/funciones.js';
+
 
 export async function consultaArtistas(){
     try{
-        const resultado = await fetch(window.location.origin+'/api/music/artists/artists');
+        const resultado = await fetch(window.location.origin+'/api/filmtono/artists/artists');
         const datos = await resultado.json();
        mostrarArtistas(datos);
     }catch(error){
@@ -68,7 +69,7 @@ async function mostrarArtistas(datos){
         //generar el botón para editar el sello
         const btnEditar = document.createElement('A');
         btnEditar.classList.add('btn-update');
-        btnEditar.href = '/music/artists/edit?id='+id;
+        btnEditar.href = '/filmtono/artists/edit?id='+id;
 
         //generar ícono de lápiz para el botón de editar
         const iconoLapiz = document.createElement('I');
@@ -82,7 +83,7 @@ async function mostrarArtistas(datos){
         btnEliminar.id = 'eliminar';
         btnEliminar.value = id;
         btnEliminar.dataset.item = 'artists';
-        btnEliminar.dataset.role = 'music';
+        btnEliminar.dataset.role = 'filmtono';
         btnEliminar.onclick = eliminarItem;
 
         const iconEliminar = document.createElement('i');
@@ -104,7 +105,7 @@ async function mostrarArtistas(datos){
 }
 
 function filtrarArtistas(){
-    artistasInput.addEventListener('input', e => {
+    artistasSearchInput.addEventListener('input', e => {
         const texto = normalizeText(e.target.value);
         const cards = document.querySelectorAll('.cards__card');
 

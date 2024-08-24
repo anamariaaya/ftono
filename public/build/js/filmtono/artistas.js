@@ -1,6 +1,5 @@
-import { artistasInput, portada, artistaSecundario, btnAgregar } from "./selectores.js";
+import {  artistasInput, portada, artistaSecundario, btnAgregar } from "./selectores.js";
 import  {readLang, readJSON, validarFormulario} from "../base/funciones.js";
-
 
 export function styleDatalist(){
     artistasInput.forEach(input => {

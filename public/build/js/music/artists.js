@@ -100,10 +100,10 @@ async function mostrarArtistas(datos){
   
         gridArtistas.appendChild(cardArtista);
     });
-    filtrarSellos();
+    filtrarArtistas();
 }
 
-function filtrarSellos(){
+function filtrarArtistas(){
     artistasInput.addEventListener('input', e => {
         const texto = normalizeText(e.target.value);
         const cards = document.querySelectorAll('.cards__card');

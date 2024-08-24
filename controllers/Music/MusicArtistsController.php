@@ -20,7 +20,7 @@ class MusicArtistsController{
     }
 
     public static function consultaArtistas(){
-        //isMusico();
+        isMusico();
         $consultaArtistas = 'SELECT 
             a.id, 
             a.nombre, 
