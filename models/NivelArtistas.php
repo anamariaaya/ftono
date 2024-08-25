@@ -4,7 +4,7 @@ namespace Model;
 
 class NivelArtistas extends ActiveRecord{
     protected static $tabla = 'nivel_artistas';
-    protected static $columnasDB = ['id', 'nombre', 'precio_show', 'nivel_en', 'nivel_es'];
+    protected static $columnasDB = ['id', 'nombre', 'precio_show', 'nivel_en', 'nivel_es', 'id_usuario'];
 
     public function __construct($args = [])
     {
@@ -13,5 +13,6 @@ class NivelArtistas extends ActiveRecord{
         $this->precio_show = $args['precio_show'] ?? '';
         $this->nivel_en = $args['nivel_en'] ?? '';
         $this->nivel_es = $args['nivel_es'] ?? '';
+        $this->id_usuario = $args['id_usuario'] ?? '';
     }
 }

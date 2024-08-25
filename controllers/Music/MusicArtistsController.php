@@ -21,16 +21,20 @@ class MusicArtistsController{
 
     public static function consultaArtistas(){
         isMusico();
+        $id = $_SESSION['id'];
         $consultaArtistas = 'SELECT 
             a.id, 
             a.nombre, 
             a.precio_show, 
+            a.id_usuario,
             n.nivel_en, 
             n.nivel_es
         FROM 
             artistas a
         INNER JOIN 
             nivel_artistas n ON a.id_nivel = n.id
+        WHERE 
+            a.id_usuario = '.$id.'
         ORDER BY 
             a.nombre ASC;
         ';
@@ -45,6 +49,7 @@ class MusicArtistsController{
         $artista = new Artistas();
         $niveles = NivelArtistas::all();
         $lang = $_SESSION['lang'];
+        $id = $_SESSION['id'];
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $artista->sincronizar($_POST);
@@ -58,6 +63,7 @@ class MusicArtistsController{
                     Artistas::setAlerta('error', 'artists_alert_already-exist');
                     $alertas = Artistas::getAlertas();
                 }else{
+                    $artista->id_usuario = $id;
                     $resultado = $artista->guardar();
                     if($resultado){
                         header('Location: /music/artists');

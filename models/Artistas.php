@@ -4,7 +4,7 @@ namespace Model;
 
 class Artistas extends ActiveRecord{
     protected static $tabla = 'artistas';
-    protected static $columnasDB = ['id', 'nombre', 'precio_show', 'id_nivel'];
+    protected static $columnasDB = ['id', 'nombre', 'precio_show', 'id_nivel', 'id_usuario'];
 
     public function __construct($args = [])
     {
@@ -12,6 +12,7 @@ class Artistas extends ActiveRecord{
         $this->nombre = $args['nombre'] ?? '';
         $this->precio_show = $args['precio_show'] ?? '';
         $this->id_nivel = $args['id_nivel'] ?? '';
+        $this->id_usuario = $args['id_usuario'] ?? '';
     }
 
     public function validarArtista(){
