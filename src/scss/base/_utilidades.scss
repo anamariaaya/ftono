@@ -202,19 +202,19 @@
 }
 
 .text-yellow{
-    color: v.$yellow;
+    color: v.$yellow !important;
 }
 
 .text-green{
-    color: v.$green;
+    color: v.$green !important;
 }
 
 .text-blue{
-    color: v.$blue;
+    color: v.$blue !important;
 }
 
 .text-white{
-    color: v.$white;
+    color: v.$white !important;
 }
 
 .text-20{
@@ -234,6 +234,16 @@
     }
     @include m.desktop{
         font-size: 2.4rem !important;
+    }
+}
+
+.text-30{
+    font-size: 2rem !important;
+    @include m.tablet{
+        font-size: 2.5rem !important;
+    }
+    @include m.desktop{
+        font-size: 3rem !important;
     }
 }
 

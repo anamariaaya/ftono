@@ -29,11 +29,6 @@
 
     <script type="module" src="/build/js/admin.js"></script>
     <script type="module" src="/build/js/filmtono.js"></script>
-    <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
-
-    <script type="module">
-        import Swal from 'https://cdn.jsdelivr.net/npm/sweetalert2@8/src/sweetalert2.js';
-    </script>
 
     <?php
         echo $script ?? '';

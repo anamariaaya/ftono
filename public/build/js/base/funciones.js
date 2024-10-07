@@ -1,4 +1,4 @@
-import {er, num, indicativo} from '../music/selectores.js';
+import {er, num, indicativo, formArtist, artistFields} from '../music/selectores.js';
 
 import {body, dashboardContenido, tabsBtns, tabsContent, tabsDiv, submitBtns} from './selectores.js';
 
@@ -229,4 +229,22 @@ export function normalizeText(text) {
 
 export function caps(text) {
     return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+//social media url validation
+export function validateUrl(e) {
+    let urlValue = e.target.value.trim(); // Get the current value of the input and trim spaces
+    const re = /^(https?:\/\/)?([a-zA-Z0-9-]+)\.[a-zA-Z]{2,}(\/\S*)?$/; // Flexible URL validation
+
+    if (re.test(urlValue) === false) {
+        imprimirAlerta('url', 'error', e.target.closest('.form__group'), e.target);
+    } else {
+        // If no http/https, prepend 'https://'
+        if (!urlValue.match(/^https?:\/\//)) {
+            urlValue = 'https://' + urlValue;
+        }
+        
+        // Set the corrected value back into the input
+        e.target.value = urlValue;
+    }
 }

@@ -7,7 +7,7 @@
     padding: 1rem 4rem;
     place-items: center;
     margin-top: 4rem;
-    @include m.grid(1, 2rem);
+    @include m.grid(1, 0);
     @include m.tablet{
         margin-top: 8rem;
     }
@@ -72,8 +72,9 @@
 
     &__link{
         font-size: 1.4rem;
-        padding-bottom: 0.2rem;
+        padding-bottom: 1.2rem;
         font-weight: 300;
+        line-height: 1.2;
         @include m.tablet{
             font-size: 1.6rem;
         }

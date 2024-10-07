@@ -58,8 +58,25 @@
             <p class="main__grid__text">{%category-movies%}</p>
         </div>
     </div>
-    <a href="/categories" class="btn-view mTop-5 text-24">{%index_btn-categories%}</a>
+    <a href="/categories" class="btn-view mTop-5 text-20">{%index_btn-categories%}</a>
     <!-- End of categories grid -->
+</section>
+
+<!-- Section with the artists -->
+<section class="container">
+    <h2 class="main__subtitle">{%index_subtitle-artists%}</h2>
+    <div class="main__artists">
+        <?php
+            foreach($artists as $artist):?>
+                <div class="main__artists__item">
+                    <a href="/artist?id=<?php echo $artist->id?>">
+                        <img class="main__artists__img" src="/build/img/artists/<?php echo $artist->image?>" alt="<?php echo $artist->name?>">
+                    </a>
+                    <p class="main__artists__name"><?php echo $artist->name?></p>
+                </div>
+            <?php endforeach; ?>
+    </div>
+    <a href="/artists" class="btn-view mTop-5 text-20">{%index_btn-artists%}</a>
 </section>
 
 <!-- Section with the artists -->

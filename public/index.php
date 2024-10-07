@@ -36,7 +36,7 @@ use Controllers\Filmtono\CategoriesController;
 $router = new Router();
 session_start();
 
-// Iniciar Sesión
+// Home
 $router->get('/', [PublicController::class, 'index']);
 
 // Public categories

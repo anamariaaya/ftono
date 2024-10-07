@@ -108,7 +108,10 @@
                 color: darken(v.$white, 25%);
             }
         }
-        &__select option{
+        &__select{
+            text-transform: capitalize;
+        }
+        &_select option{
             cursor: pointer;
             background-color: v.$gray-dark;
             text-transform: capitalize;

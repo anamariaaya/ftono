@@ -20,21 +20,23 @@ class ArtistsController{
     public static function consultaArtistas(){
         isAdmin();
         $consultaArtistas = 'SELECT 
-            a.id, 
-            a.nombre, 
-            a.precio_show, 
-            n.nivel_en, 
-            n.nivel_es
+            a.*,
+            e.empresa AS empresa
         FROM 
             artistas a
         INNER JOIN 
             nivel_artistas n ON a.id_nivel = n.id
+        INNER JOIN 
+            perfil_usuario pu ON a.id_usuario = pu.id_usuario
+        INNER JOIN 
+            empresa e ON pu.id_empresa = e.id
         ORDER BY 
             a.nombre ASC;
         ';
         $artistas = NivelArtistas::consultarSQL($consultaArtistas);
         echo json_encode($artistas);
     }
+
 
     public static function new(Router $router){
         isAdmin();

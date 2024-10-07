@@ -206,5 +206,9 @@
     "show-price":{
       "es": "Precio del show",
       "en": "Show price"
+    },
+    "url":{
+      "es": "URL inválida",
+      "en": "Invalid URL"
     }
 }

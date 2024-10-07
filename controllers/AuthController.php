@@ -86,6 +86,7 @@ class AuthController {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION = [];
             session_destroy();
+            $_SESSION = [];
             header('Location: /');
         }       
     }

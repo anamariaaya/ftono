@@ -1207,27 +1207,27 @@
     "es": "Aquí puedes editar el artista",
     "en": "Here you can edit the artist"
   },
-  "artists_form-name_label":{
+  "artists_form_name_label":{
     "es": "Nombre del Artista",
     "en": "Artist Name"
   },
-  "artists_form-name_placeholder":{
+  "artists_form_name_placeholder":{
     "es": "Ejemplo: John Doe",
     "en": "Example: John Doe"
   },
-  "artists_mandatory-artist-name":{
+  "artists_mandatory_artist-name":{
     "es": "Debes escribir el nombre del artista",
     "en": "You must write the artist name"
   },
-  "artists_form-show-price_label":{
+  "artists_form_show-price_label":{
     "es": "Precio del show en dólares",
     "en": "Show price in dollars"
   },
-  "artists_form-show-price_placeholder":{
+  "artists_form_show-price_placeholder":{
     "es": "Ejemplo: 1000",
     "en": "Example: 1000"
   },
-  "artists_mandatory-show-price":{
+  "artists_mandatory_show-price":{
     "es": "Debes escribir el precio del show",
     "en": "You must write the show price"
   },
@@ -1246,6 +1246,62 @@
   "artists_form-level_placeholder":{
     "es": "Selecciona un nivel",
     "en": "Select a level"
+  },
+  "artists_form_instagram_label":{
+    "es": "Instagram",
+    "en": "Instagram"
+  },
+  "artists_form_instagram_placeholder":{
+    "es": "Ejemplo: https://www.instagram.com/johndoe",
+    "en": "Example: https://www.instagram.com/johndoe"
+  },
+  "artists_form_facebook_label":{
+    "es": "Facebook",
+    "en": "Facebook"
+  },
+  "artists_form_facebook_placeholder":{
+    "es": "Ejemplo: https://www.facebook.com/johndoe",
+    "en": "Example: https://www.facebook.com/johndoe"
+  },
+  "artists_form_twitter_label":{
+    "es": "Twitter",
+    "en": "Twitter"
+  },
+  "artists_form_twitter_placeholder":{
+    "es": "Ejemplo: https://www.twitter.com/johndoe",
+    "en": "Example: https://www.twitter.com/johndoe"
+  },
+  "artists_form_youtube_label":{
+    "es": "YouTube",
+    "en": "YouTube"
+  },
+  "artists_form_youtube_placeholder":{
+    "es": "Ejemplo: https://www.youtube.com/johndoe",
+    "en": "Example: https://www.youtube.com/johndoe"
+  },
+  "artists_form_spotify_label":{
+    "es": "Spotify",
+    "en": "Spotify"
+  },
+  "artists_form_spotify_placeholder":{
+    "es": "Ejemplo: https://open.spotify.com/artist/1",
+    "en": "Example: https://open.spotify.com/artist/1"
+  },
+  "artists_form_tiktok_label":{
+    "es": "TikTok",
+    "en": "TikTok"
+  },
+  "artists_form_tiktok_placeholder":{
+    "es": "Ejemplo: https://www.tiktok.com/@johndoe",
+    "en": "Example: https://www.tiktok.com/@johndoe"
+  },
+  "artists_form_website_label":{
+    "es": "Sitio Web",
+    "en": "Website"
+  },
+  "artists_form_website_placeholder":{
+    "es": "Ejemplo: https://www.johndoe.com",
+    "en": "Example: https://www.johndoe.com"
   },
   "admin_alert_mandatory-file":{
     "es": "Debes seleccionar un archivo",

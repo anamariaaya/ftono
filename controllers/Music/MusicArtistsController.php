@@ -12,7 +12,24 @@ class MusicArtistsController{
     public static function index(Router $router){
         isMusico();
         $titulo = 'artists_main-title';
-        $artistas = Artistas::AllOrderAsc('nombre');
+        $id = $_SESSION['id'];
+        $consultaArtistas = 'SELECT 
+            a.id, 
+            a.nombre, 
+            a.precio_show, 
+            a.id_usuario,
+            n.nivel_en, 
+            n.nivel_es
+        FROM 
+            artistas a
+        INNER JOIN 
+            nivel_artistas n ON a.id_nivel = n.id
+        WHERE 
+            a.id_usuario = '.$id.'
+        ORDER BY 
+            a.nombre ASC;
+        ';
+        $artistas = NivelArtistas::consultarSQL($consultaArtistas);
         $router->render('music/artists/index',[
             'titulo' => $titulo,
             'artistas' => $artistas
@@ -22,10 +39,9 @@ class MusicArtistsController{
     public static function consultaArtistas(){
         isMusico();
         $id = $_SESSION['id'];
+        //debbuging($id);
         $consultaArtistas = 'SELECT 
-            a.id, 
-            a.nombre, 
-            a.precio_show, 
+            a.*, 
             a.id_usuario,
             n.nivel_en, 
             n.nivel_es

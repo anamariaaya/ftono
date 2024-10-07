@@ -58,3 +58,7 @@ export const sellosInput = document.querySelector('#sellos-search');
 export const gridArtistas = document.querySelector('#grid-artistas');
 export const artistasInput = document.querySelector('#artistas-search');
 
+//Selectores de la validación de artistas
+export const formArtist = document.querySelector('.form-artist');
+export const url = document.querySelectorAll('.url');
+export const artistFields = document.querySelectorAll('.form__group');

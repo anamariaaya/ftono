@@ -1,6 +1,6 @@
 import { consultaPaises, countryCurrentValue, indicativoTel, paisElegido } from "./APIPaises.js";
 import {tabs, paginador, formularioReg} from "./perfiles.js";
-import { selectPais, afterNav, paisContacto, firmasDashboard, countrySelected, gridSellos, gridArtistas } from "./selectores.js";
+import { selectPais, afterNav, paisContacto, firmasDashboard, countrySelected, gridSellos, gridArtistas, formArtist } from "./selectores.js";
 import { chooseLang } from "../UI/language.js";
 import { blockDashboard, signContract } from "./contracts.js";
 import { eliminarItem, btnSubmitLoader, changeTabs } from "../base/funciones.js";
@@ -9,6 +9,7 @@ import { passbtn } from "../UI/selectores.js";
 import { showPassword } from "../UI/UI.js";
 import {consultaSellos } from "./labels.js";
 import {consultaArtistas} from "./artists.js";
+import {validateArtistForm} from "./artistValidation.js";
 
 class App{
     constructor(){
@@ -59,6 +60,9 @@ class App{
         }
         if(gridArtistas){
             consultaArtistas();
+        }
+        if(formArtist){
+            validateArtistForm();
         }
     }
 }

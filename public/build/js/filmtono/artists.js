@@ -18,7 +18,7 @@ async function mostrarArtistas(datos){
 
     datos.forEach(artista => {
         //extract the type of contract from the name of the file nombre_doc
-        const{id, nombre, precio_show, nivel_en, nivel_es} = artista;
+        const{id, nombre, precio_show, nivel_en, nivel_es, empresa, instagram, facebook, twitter, youtube, spotify, tiktok, website} = artista;
 
         //Create the info section
         const cardArtista = document.createElement('div');
@@ -29,7 +29,7 @@ async function mostrarArtistas(datos){
 
         const titleArtista = document.createElement('p');
         titleArtista.textContent = nombre;
-        titleArtista.classList.add('cards__text', 'cards__text--span');
+        titleArtista.classList.add('cards__text', 'cards__text--span', 'text-green', 'text-24');
 
         cardInfo.appendChild(titleArtista);
 
@@ -42,7 +42,7 @@ async function mostrarArtistas(datos){
 
         const precioArtista = document.createElement('p');
         precioArtista.textContent = '$'+precio_show.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ".");
-        precioArtista.classList.add('cards__text', 'cards__text--span');
+        precioArtista.classList.add('cards__text');
 
         precioInfo.appendChild(titlePrecio);
         precioInfo.appendChild(precioArtista);
@@ -57,10 +57,129 @@ async function mostrarArtistas(datos){
 
         const nivelArtista = document.createElement('p');
         nivelArtista.textContent = lang === 'en' ? caps(nivel_en) : caps(nivel_es);
-        nivelArtista.classList.add('cards__text', 'cards__text--span');
+        nivelArtista.classList.add('cards__text');
 
         nivelInfo.appendChild(titleNivel);
         nivelInfo.appendChild(nivelArtista);
+
+        const empresaInfo = document.createElement('DIV');
+        empresaInfo.classList.add('cards__info--div');
+
+        const titleEmpresa = document.createElement('p');
+        titleEmpresa.textContent = alerts['company'][lang]+':';
+        titleEmpresa.classList.add('cards__text', 'cards__text--span');
+
+        const empresaArtista = document.createElement('p');
+        empresaArtista.textContent = empresa;
+        empresaArtista.classList.add('cards__text');
+
+        empresaInfo.appendChild(titleEmpresa);
+        empresaInfo.appendChild(empresaArtista);
+
+        const instagramInfo = document.createElement('DIV');
+        instagramInfo.classList.add('cards__info--div');
+
+        const titleInstagram = document.createElement('p');
+        titleInstagram.textContent = 'Instagram:';
+        titleInstagram.classList.add('cards__text', 'cards__text--span');
+
+        const instagramArtista = document.createElement('p');
+        instagramArtista.textContent = instagram;
+        instagramArtista.classList.add('cards__text');
+        instagramArtista.target = '_blank';
+
+        instagramInfo.appendChild(titleInstagram);
+        instagramInfo.appendChild(instagramArtista);
+
+        const facebookInfo = document.createElement('DIV');
+        facebookInfo.classList.add('cards__info--div');
+
+        const titleFacebook = document.createElement('p');
+        titleFacebook.textContent = 'Facebook:';
+        titleFacebook.classList.add('cards__text', 'cards__text--span');
+
+        const facebookArtista = document.createElement('p');
+        facebookArtista.textContent = facebook;
+        facebookArtista.classList.add('cards__text');
+        facebookArtista.target = '_blank';
+
+        facebookInfo.appendChild(titleFacebook);
+        facebookInfo.appendChild(facebookArtista);
+
+        const twitterInfo = document.createElement('DIV');
+        twitterInfo.classList.add('cards__info--div');
+
+        const titleTwitter = document.createElement('p');
+        titleTwitter.textContent = 'Twitter:';
+        titleTwitter.classList.add('cards__text', 'cards__text--span');
+
+        const twitterArtista = document.createElement('p');
+        twitterArtista.textContent = twitter;
+        twitterArtista.classList.add('cards__text');
+        twitterArtista.target = '_blank';
+
+        twitterInfo.appendChild(titleTwitter);
+        twitterInfo.appendChild(twitterArtista);
+
+        const youtubeInfo = document.createElement('DIV');
+        youtubeInfo.classList.add('cards__info--div');
+
+        const titleYoutube = document.createElement('p');
+        titleYoutube.textContent = 'Youtube:';
+        titleYoutube.classList.add('cards__text', 'cards__text--span');
+
+        const youtubeArtista = document.createElement('p');
+        youtubeArtista.textContent = youtube;
+        youtubeArtista.classList.add('cards__text');
+        youtubeArtista.target = '_blank';
+
+        youtubeInfo.appendChild(titleYoutube);
+        youtubeInfo.appendChild(youtubeArtista);
+
+        const spotifyInfo = document.createElement('DIV');
+        spotifyInfo.classList.add('cards__info--div');
+
+        const titleSpotify = document.createElement('p');
+        titleSpotify.textContent = 'Spotify:';
+        titleSpotify.classList.add('cards__text', 'cards__text--span');
+
+        const spotifyArtista = document.createElement('p');
+        spotifyArtista.textContent = spotify;
+        spotifyArtista.classList.add('cards__text');
+        spotifyArtista.target = '_blank';
+
+        spotifyInfo.appendChild(titleSpotify);
+        spotifyInfo.appendChild(spotifyArtista);
+
+        const tiktokInfo = document.createElement('DIV');
+        tiktokInfo.classList.add('cards__info--div');
+
+        const titleTiktok = document.createElement('p');
+        titleTiktok.textContent = 'Tiktok:';
+        titleTiktok.classList.add('cards__text', 'cards__text--span');
+
+        const tiktokArtista = document.createElement('p');
+        tiktokArtista.textContent = tiktok;
+        tiktokArtista.classList.add('cards__text');
+        tiktokArtista.target = '_blank';
+
+        tiktokInfo.appendChild(titleTiktok);
+        tiktokInfo.appendChild(tiktokArtista);
+
+        const websiteInfo = document.createElement('DIV');
+        websiteInfo.classList.add('cards__info--div');
+
+        const titleWebsite = document.createElement('p');
+        titleWebsite.textContent = 'Website:';
+        titleWebsite.classList.add('cards__text', 'cards__text--span');
+
+        const websiteArtista = document.createElement('p');
+        websiteArtista.textContent = website;
+        websiteArtista.classList.add('cards__text');
+        websiteArtista.target = '_blank';
+
+        websiteInfo.appendChild(titleWebsite);
+        websiteInfo.appendChild(websiteArtista);
 
         //Create the actions section
         const cardActions = document.createElement('div');
@@ -96,6 +215,14 @@ async function mostrarArtistas(datos){
         cardArtista.appendChild(cardInfo);
         cardArtista.appendChild(precioInfo);
         cardArtista.appendChild(nivelInfo);
+        cardArtista.appendChild(empresaInfo);
+        cardArtista.appendChild(instagramInfo);
+        cardArtista.appendChild(facebookInfo);
+        cardArtista.appendChild(twitterInfo);
+        cardArtista.appendChild(youtubeInfo);
+        cardArtista.appendChild(spotifyInfo);
+        cardArtista.appendChild(tiktokInfo);
+        cardArtista.appendChild(websiteInfo);
         cardArtista.appendChild(cardActions);
 
   
