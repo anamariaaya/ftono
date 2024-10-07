@@ -127,12 +127,6 @@ function chooseLanguage() {
     return $_SESSION['lang'];
 }
 
-function setSessionId(){
-    if(isset($_SESSION['id'])){
-       return $_SESSION['id'];
-    }
-}
-
 //Función para leer e imprimir cada valor del array de idiomas
 function tt($key) {
     ob_start();

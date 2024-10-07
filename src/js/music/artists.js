@@ -172,7 +172,7 @@ async function mostrarArtistas(datos){
         cardActions.classList.add('cards__actions');
 
         //generar el botón para editar el sello
-        const btnEditar = document.createElement('p');
+        const btnEditar = document.createElement('a');
         btnEditar.classList.add('btn-update');
         btnEditar.href = '/music/artists/edit?id='+id;
 

@@ -20,7 +20,9 @@ class ArtistsController{
     public static function consultaArtistas(){
         isAdmin();
         $consultaArtistas = 'SELECT 
-            a.*,
+            a.*, 
+            n.nivel_en, 
+            n.nivel_es,
             e.empresa AS empresa
         FROM 
             artistas a
@@ -35,43 +37,6 @@ class ArtistsController{
         ';
         $artistas = NivelArtistas::consultarSQL($consultaArtistas);
         echo json_encode($artistas);
-    }
-
-
-    public static function new(Router $router){
-        isAdmin();
-        $titulo = 'artists_new-title';
-        $alertas = [];
-        $artista = new Artistas();
-        $niveles = NivelArtistas::all();
-        $lang = $_SESSION['lang'];
-
-        if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            $artista->sincronizar($_POST);
-            $artista->nombre = sText($artista->nombre);
-            $artista->precio_show = filter_var($artista->precio_show, FILTER_SANITIZE_NUMBER_INT);
-
-            $alertas = $artista->validarArtista();
-            if(empty($alertas)){
-                $existeArtista = Artistas::where('nombre', $artista->nombre);
-                if($existeArtista){
-                    Artistas::setAlerta('error', 'artists_alert_already-exist');
-                    $alertas = Artistas::getAlertas();
-                }else{
-                    $resultado = $artista->guardar();
-                    if($resultado){
-                        header('Location: /filmtono/artists');
-                    }
-                }
-            }
-        }
-        $router->render('admin/artists/new',[
-            'titulo' => $titulo,
-            'alertas' => $alertas,
-            'artista' => $artista,
-            'niveles' => $niveles,
-            'lang' => $lang
-        ]);
     }
 
     public static function edit(Router $router){

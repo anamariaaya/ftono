@@ -23,7 +23,6 @@ class Router
         //session_start();
         define('DEFAULT_LANGUAGE', 'en');
         chooseLanguage();
-        setSessionId();
 
         $url_actual = $_SERVER['PATH_INFO'] ?? '/';
         $method = $_SERVER['REQUEST_METHOD'];

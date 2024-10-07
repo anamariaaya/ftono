@@ -2014,5 +2014,9 @@
   "search_by_name": {
     "es": "Buscar por nombre",
     "en": "Search by name"
+  },
+  "invalid_url": {
+    "es": "URL inválida",
+    "en": "Invalid URL"
   }
 }

@@ -166,8 +166,6 @@ $router->get('/filmtono/albums', [AlbumsController::class, 'index']);
 //Filmtono Artists
 $router->get('/filmtono/artists', [ArtistsController::class, 'index']);
 $router->get('/api/filmtono/artists/artists', [ArtistsController::class, 'consultaArtistas']);
-$router->get('/filmtono/artists/new', [ArtistsController::class, 'new']);
-$router->post('/filmtono/artists/new', [ArtistsController::class, 'new']);
 $router->get('/filmtono/artists/edit', [ArtistsController::class, 'edit']);
 $router->post('/filmtono/artists/edit', [ArtistsController::class, 'edit']);
 $router->get('/filmtono/artists/delete', [ArtistsController::class, 'delete']); 

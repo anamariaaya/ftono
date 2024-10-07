@@ -32,6 +32,28 @@ class Artistas extends ActiveRecord{
         if(!$this->id_nivel) {
             self::$alertas['error'][] = 'artists_mandatory_artist-level';
         }
+        //validate url format for each social media
+        if($this->instagram && !filter_var($this->instagram, FILTER_VALIDATE_URL)){
+            self::$alertas['error'][] = 'invalid_url';
+        }
+        if($this->facebook && !filter_var($this->facebook, FILTER_VALIDATE_URL)){
+            self::$alertas['error'][] = 'invalid_url';
+        }
+        if($this->twitter && !filter_var($this->twitter, FILTER_VALIDATE_URL)){
+            self::$alertas['error'][] = 'invalid_url';
+        }
+        if($this->youtube && !filter_var($this->youtube, FILTER_VALIDATE_URL)){
+            self::$alertas['error'][] = 'invalid_url';
+        }
+        if($this->spotify && !filter_var($this->spotify, FILTER_VALIDATE_URL)){
+            self::$alertas['error'][] = 'invalid_url';
+        }
+        if($this->tiktok && !filter_var($this->tiktok, FILTER_VALIDATE_URL)){
+            self::$alertas['error'][] = 'invalid_url';
+        }
+        if($this->website && !filter_var($this->website, FILTER_VALIDATE_URL)){
+            self::$alertas['error'][] = 'invalid_url';
+        }
         return self::$alertas;
     }
 }

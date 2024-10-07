@@ -10,11 +10,6 @@
     </div>
 </div>
 
-<a href="/filmtono/artists/new" class="btn-submit">
-    <i class="fa-solid fa-plus"></i>
-    {% artists_new-submit-btn %}
-</a>
-
 <div class="cards">
     <div class="cards__container" id="grid-artistas">
     </div>

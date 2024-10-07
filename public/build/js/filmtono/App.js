@@ -14,9 +14,10 @@ import { consultaArtistas } from "./artists.js";
 import { changeTabs, eliminarItem, btnSubmitLoader } from "../base/funciones.js";
 import {btnEliminar, submitBtns, tabsDiv} from '../base/selectores.js';
 import { countryValue } from "../music/APIPaises.js";
-import { btnSubmit, paisValue } from "../music/selectores.js";
+import { btnSubmit, paisValue, formArtist } from "../music/selectores.js";
 import { passbtn } from "../UI/selectores.js";
 import { showPassword } from "../UI/UI.js";
+import { validateArtistForm } from "../music/artistValidation.js";
 
 class App{
     constructor(){
@@ -86,6 +87,9 @@ class App{
         }
         if(gridArtistas){
             consultaArtistas();
+        }
+        if(formArtist){
+            validateArtistForm();
         }
     }
 }

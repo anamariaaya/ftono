@@ -38,7 +38,7 @@
         <label class="form__group__label" for="instagram">{%artists_form_instagram_label%}</label>
         <input
             type="text"
-            class="form__group__input"
+            class="form__group__input url"
             id="instagram"
             name="instagram""
             placeholder="{%artists_form_instagram_placeholder%}"
@@ -48,7 +48,7 @@
         <label class="form__group__label" for="facebook">{%artists_form_facebook_label%}</label>
         <input
             type="text"
-            class="form__group__input"
+            class="form__group__input url"
             id="facebook"
             name="facebook"
             placeholder="{%artists_form_facebook_placeholder%}"
@@ -58,7 +58,7 @@
         <label class="form__group__label" for="twitter">{%artists_form_twitter_label%}</label>
         <input
             type="text"
-            class="form__group__input"
+            class="form__group__input url"
             id="twitter"
             name="twitter"
             placeholder="{%artists_form_twitter_placeholder%}"
@@ -68,7 +68,7 @@
         <label class="form__group__label" for="youtube">{%artists_form_youtube_label%}</label>
         <input
             type="text"
-            class="form__group__input"
+            class="form__group__input url"
             id="youtube"
             name="youtube"
             placeholder="{%artists_form_youtube_placeholder%}"
@@ -78,7 +78,7 @@
         <label class="form__group__label" for="spotify">{%artists_form_spotify_label%}</label>
         <input
             type="text"
-            class="form__group__input"
+            class="form__group__input url"
             id="spotify"
             name="spotify"
             placeholder="{%artists_form_spotify_placeholder%}"
@@ -88,7 +88,7 @@
         <label class="form__group__label" for="tiktok">{%artists_form_tiktok_label%}</label>
         <input
             type="text"
-            class="form__group__input"
+            class="form__group__input url"
             id="tiktok"
             name="tiktok"
             placeholder="{%artists_form_tiktok_placeholder%}"
@@ -98,7 +98,7 @@
         <label class="form__group__label" for="website">{%artists_form_website_label%}</label>
         <input
             type="text"
-            class="form__group__input"
+            class="form__group__input url"
             id="website"
             name="website"
             placeholder="{%artists_form_website_placeholder%}"
