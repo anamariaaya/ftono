@@ -18,7 +18,7 @@ async function mostrarArtistas(datos){
 
     datos.forEach(artista => {
         //extract the type of contract from the name of the file nombre_doc
-        const{id, nombre, precio_show, nivel_en, nivel_es, instagram, facebook, twitter, youtube, spotify, tiktok, website} = artista;
+        const{id, nombre, precio_show, nivel_en, nivel_es, instagram, facebook, twitter, youtube, spotify, tiktok, website, banner} = artista;
 
         //Create the info section
         const cardArtista = document.createElement('div');
@@ -72,7 +72,6 @@ async function mostrarArtistas(datos){
         const instagramArtista = document.createElement('p');
         instagramArtista.textContent = instagram;
         instagramArtista.classList.add('cards__text');
-        instagramArtista.target = '_blank';
 
         instagramInfo.appendChild(titleInstagram);
         instagramInfo.appendChild(instagramArtista);
@@ -87,7 +86,6 @@ async function mostrarArtistas(datos){
         const facebookArtista = document.createElement('p');
         facebookArtista.textContent = facebook;
         facebookArtista.classList.add('cards__text');
-        facebookArtista.target = '_blank';
 
         facebookInfo.appendChild(titleFacebook);
         facebookInfo.appendChild(facebookArtista);
@@ -102,7 +100,6 @@ async function mostrarArtistas(datos){
         const twitterArtista = document.createElement('p');
         twitterArtista.textContent = twitter;
         twitterArtista.classList.add('cards__text');
-        twitterArtista.target = '_blank';
 
         twitterInfo.appendChild(titleTwitter);
         twitterInfo.appendChild(twitterArtista);
@@ -117,7 +114,6 @@ async function mostrarArtistas(datos){
         const youtubeArtista = document.createElement('p');
         youtubeArtista.textContent = youtube;
         youtubeArtista.classList.add('cards__text');
-        youtubeArtista.target = '_blank';
 
         youtubeInfo.appendChild(titleYoutube);
         youtubeInfo.appendChild(youtubeArtista);
@@ -132,7 +128,6 @@ async function mostrarArtistas(datos){
         const spotifyArtista = document.createElement('p');
         spotifyArtista.textContent = spotify;
         spotifyArtista.classList.add('cards__text');
-        spotifyArtista.target = '_blank';
 
         spotifyInfo.appendChild(titleSpotify);
         spotifyInfo.appendChild(spotifyArtista);
@@ -147,7 +142,6 @@ async function mostrarArtistas(datos){
         const tiktokArtista = document.createElement('p');
         tiktokArtista.textContent = tiktok;
         tiktokArtista.classList.add('cards__text');
-        tiktokArtista.target = '_blank';
 
         tiktokInfo.appendChild(titleTiktok);
         tiktokInfo.appendChild(tiktokArtista);
@@ -162,10 +156,23 @@ async function mostrarArtistas(datos){
         const websiteArtista = document.createElement('p');
         websiteArtista.textContent = website;
         websiteArtista.classList.add('cards__text');
-        websiteArtista.target = '_blank';
 
         websiteInfo.appendChild(titleWebsite);
         websiteInfo.appendChild(websiteArtista);
+
+        const bannerInfo = document.createElement('DIV');
+        bannerInfo.classList.add('cards__info--div');
+
+        const titleBanner = document.createElement('p');
+        titleBanner.textContent = alerts['banner-code'][lang]+':';
+        titleBanner.classList.add('cards__text', 'cards__text--span');
+
+        const bannerArtista = document.createElement('p');
+        bannerArtista.textContent = banner;
+        bannerArtista.classList.add('cards__text');
+
+        bannerInfo.appendChild(titleBanner);
+        bannerInfo.appendChild(bannerArtista);
 
         //Create the actions section
         const cardActions = document.createElement('div');
@@ -208,6 +215,7 @@ async function mostrarArtistas(datos){
         cardArtista.appendChild(spotifyInfo);
         cardArtista.appendChild(tiktokInfo);
         cardArtista.appendChild(websiteInfo);
+        cardArtista.appendChild(bannerInfo);
 
         cardArtista.appendChild(cardActions);
   

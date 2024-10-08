@@ -117,4 +117,57 @@
             pointer-events: none;
         }
     }
+    &__artists{
+        @include m.grid(1, 0);
+        row-gap: 2.5rem;
+        margin-top: 4rem;
+        place-items: center;
+        @include m.midscreen{
+            @include m.grid(2, 2rem);
+        }
+        @include m.desktop{
+            @include m.grid(4, 2rem);
+        }
+        &__card{
+            width: fit-content;
+            margin: auto;
+        }
+        &__item{
+            background-color: darken(v.$gray-dark, 10%);
+            padding: 1rem;
+            border-radius: v.$border-radius;
+            @include m.tablet{
+                padding: 1.5rem;
+            }
+            &:hover{
+                background-color: darken(v.$gray-dark, 20%);
+                transform: scale(1.05);
+            }
+        }
+        &__img, &__video{
+            width: 20rem;
+            height: 20rem;
+            border: none;
+            border-radius: v.$border-radius;
+            @include m.tablet{
+                width: 21.5rem;
+                height: 21.5rem;
+            }
+            @include m.desktop-large{
+                width: 24.5rem;
+                height: 24.5rem;
+            }
+            @include m.ultra-wide{
+                width: 32rem;
+                height: 32rem;
+            }
+        }
+        
+        &__nombre{
+            font-size: 2.2rem;
+            color: v.$yellow;
+            margin: 0.5rem;
+            pointer-events: none;
+        }
+    }
 }

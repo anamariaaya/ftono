@@ -210,5 +210,9 @@
     "url":{
       "es": "URL inválida",
       "en": "Invalid URL"
+    },
+    "banner-code":{
+      "es": "Código del banner",
+      "en": "Banner code"
     }
 }

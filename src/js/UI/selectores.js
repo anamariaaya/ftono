@@ -28,6 +28,10 @@ export const categoryInput = document.querySelector('#category-search-public');
 export const mensajeInput = document.querySelector('#mensaje');
 
 //Selectores para YouTube
-export const videoIds = ['duC60gX8OCU', 'CBwAMEqhvh8']; 
+export const videoIds = ['duC60gX8OCU', 'CBwAMEqhvh8', 'Q9FLGJgUbGM']; 
 export const player = document.querySelector('#player');
+
+//selectores para página de artistas
+export const gridArtistas = document.querySelector('#grid-artistas-public');
+export const artistasInput = document.querySelector('#artists-search-public');
 

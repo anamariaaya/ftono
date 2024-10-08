@@ -1,5 +1,5 @@
 import { categoriasInput, gridCategorias } from './selectores.js';
-import { readLang, readJSON, eliminarItem, normalizeText } from '../base/funciones.js';
+import { readLang, readJSON, normalizeText } from '../base/funciones.js';
 
 export async function consultaCategorias(){
     try{

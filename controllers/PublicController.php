@@ -5,6 +5,7 @@ namespace Controllers;
 use MVC\Router;
 use Model\Genres;
 use Model\Promos;
+use Model\Artistas;
 use Model\Keywords;
 use Model\Categorias;
 
@@ -14,11 +15,13 @@ class PublicController{
         $inicio = true;
         $titulo = 'home_title';
         $promos = Promos::AllOrderDesc('id');
+        $artists = Artistas::get('4');
 
         $router->render('/paginas/index',[
             'inicio' => $inicio,
             'titulo' => $titulo,
-            'promos' => $promos
+            'promos' => $promos,
+            'artists' => $artists
         ]);
     }
 
@@ -117,7 +120,21 @@ class PublicController{
 
     public static function artists(Router $router){
         $titulo = 'Artistas';
+        $artists = Artistas::all();
         $router->render('/paginas/artists',[
+            'titulo' => $titulo,
+            'artists' => $artists
+        ]);
+    }
+
+    public static function consultarArtistas(){
+        $artists = Artistas::all();
+        echo json_encode($artists);
+    }
+
+    public static function artist(Router $router){
+        $titulo = 'Artista';
+        $router->render('/paginas/artist',[
             'titulo' => $titulo
         ]);
     }

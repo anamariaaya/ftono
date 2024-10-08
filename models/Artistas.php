@@ -4,7 +4,7 @@ namespace Model;
 
 class Artistas extends ActiveRecord{
     protected static $tabla = 'artistas';
-    protected static $columnasDB = ['id', 'nombre', 'precio_show', 'id_nivel', 'id_usuario', 'instagram', 'facebook', 'twitter', 'youtube', 'spotify', 'tiktok', 'website'];
+    protected static $columnasDB = ['id', 'nombre', 'precio_show', 'id_nivel', 'id_usuario', 'instagram', 'facebook', 'twitter', 'youtube', 'spotify', 'tiktok', 'website', 'banner'];
 
     public function __construct($args = [])
     {
@@ -20,6 +20,7 @@ class Artistas extends ActiveRecord{
         $this->spotify = $args['spotify'] ?? '';
         $this->tiktok = $args['tiktok'] ?? '';
         $this->website = $args['website'] ?? '';
+        $this->banner = $args['banner'] ?? '';
     }
 
     public function validarArtista(){
@@ -52,6 +53,9 @@ class Artistas extends ActiveRecord{
             self::$alertas['error'][] = 'invalid_url';
         }
         if($this->website && !filter_var($this->website, FILTER_VALIDATE_URL)){
+            self::$alertas['error'][] = 'invalid_url';
+        }
+        if($this->banner && !filter_var($this->banner, FILTER_VALIDATE_URL)){
             self::$alertas['error'][] = 'invalid_url';
         }
         return self::$alertas;

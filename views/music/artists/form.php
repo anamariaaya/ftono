@@ -104,4 +104,15 @@
             placeholder="{%artists_form_website_placeholder%}"
             value="<?php echo s($artista->website);?>"/>
     </div>
+    <p class="texto--password">{%artists_form_banner_text%}</p>
+    <div class="form__group">
+        <label class="form__group__label" for="banner">{%artists_form_banner_label%}</label>
+        <input
+            type="text"
+            class="form__group__input url"
+            id="banner"
+            name="banner"
+            placeholder="{%artists_form_banner_placeholder%}"
+            value=""/>
+    </div>
 </fieldset>

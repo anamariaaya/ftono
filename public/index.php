@@ -48,10 +48,12 @@ $router->get('/category', [PublicController::class, 'category']);
 $router->get('/api/public/category', [PublicController::class, 'consultarCategory']);
 
 $router->get('/search', [PublicController::class, 'search']);
-$router->get('/cart', [PublicController::class, 'cart']);
 $router->get('/help', [PublicController::class, 'help']);
 $router->get('/faq', [PublicController::class, 'faq']);
+
+// Public artists
 $router->get('/artists', [PublicController::class, 'artists']);
+$router->get('/api/public/artists', [PublicController::class, 'consultarArtistas']);
 
 //Auth Usuarios
 $router->get('/login', [AuthController::class, 'login']);

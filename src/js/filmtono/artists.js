@@ -18,7 +18,7 @@ async function mostrarArtistas(datos){
 
     datos.forEach(artista => {
         //extract the type of contract from the name of the file nombre_doc
-        const{id, nombre, precio_show, nivel_en, nivel_es, empresa, instagram, facebook, twitter, youtube, spotify, tiktok, website} = artista;
+        const{id, nombre, precio_show, nivel_en, nivel_es, empresa, instagram, facebook, twitter, youtube, spotify, tiktok, website, banner} = artista;
 
         //Create the info section
         const cardArtista = document.createElement('div');
@@ -181,6 +181,20 @@ async function mostrarArtistas(datos){
         websiteInfo.appendChild(titleWebsite);
         websiteInfo.appendChild(websiteArtista);
 
+        const bannerInfo = document.createElement('DIV');
+        bannerInfo.classList.add('cards__info--div');
+
+        const titleBanner = document.createElement('p');
+        titleBanner.textContent = alerts['banner-code'][lang]+':';
+        titleBanner.classList.add('cards__text', 'cards__text--span');
+
+        const bannerArtista = document.createElement('p');
+        bannerArtista.textContent = banner;
+        bannerArtista.classList.add('cards__text');
+
+        bannerInfo.appendChild(titleBanner);
+        bannerInfo.appendChild(bannerArtista);
+
         //Create the actions section
         const cardActions = document.createElement('div');
         cardActions.classList.add('cards__actions');
@@ -223,9 +237,10 @@ async function mostrarArtistas(datos){
         cardArtista.appendChild(spotifyInfo);
         cardArtista.appendChild(tiktokInfo);
         cardArtista.appendChild(websiteInfo);
+        cardArtista.appendChild(bannerInfo);
+
         cardArtista.appendChild(cardActions);
 
-  
         gridArtistas.appendChild(cardArtista);
     });
     filtrarArtistas();

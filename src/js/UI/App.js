@@ -1,4 +1,4 @@
-import { dropdownDiv, passbtn, wrapper, gridCategorias, gridGeneros, gridCategory, mensajeInput, player } from "./selectores.js";
+import { dropdownDiv, passbtn, wrapper, gridCategorias, gridGeneros, gridCategory, mensajeInput, player, gridArtistas } from "./selectores.js";
 import { chooseLang } from "./language.js";
 import { UI, showPassword, mainSlider, mensaje } from "./UI.js";
 import { btnSubmitLoader } from "../base/funciones.js";
@@ -7,6 +7,7 @@ import { consultaCategorias } from "./categories.js";
 import { consultaGeneros } from "./generos.js";
 import { consultaCategory } from "./category.js";
 import { initializePlayer } from "./videos.js";
+import { consultaArtistas } from "./artists.js";
 
 class App{
     constructor(){
@@ -43,6 +44,9 @@ class App{
         }
         if(player){
             initializePlayer();
+        }
+        if(gridArtistas){
+            consultaArtistas();
         }
     }
 }

@@ -58,7 +58,7 @@
             <p class="main__grid__text">{%category-movies%}</p>
         </div>
     </div>
-    <a href="/categories" class="btn-view mTop-5 text-20">{%index_btn-categories%}</a>
+    <a href="/categories" class="btn-view--index mTop-5 text-24">{%index_btn-categories%}</a>
     <!-- End of categories grid -->
 </section>
 
@@ -68,15 +68,21 @@
     <div class="main__artists">
         <?php
             foreach($artists as $artist):?>
-                <div class="main__artists__item">
-                    <a href="/artist?id=<?php echo $artist->id?>">
-                        <img class="main__artists__img" src="/build/img/artists/<?php echo $artist->image?>" alt="<?php echo $artist->name?>">
-                    </a>
-                    <p class="main__artists__name"><?php echo $artist->name?></p>
-                </div>
+                <a class="main__artists__card" href="/artist?id=<?php echo $artist->id?>">
+                    <div class="main__artists__item">
+                        <!--video iframes-->
+                        <?php if($artist->banner):?>
+                            <iframe class="main__artists__video" src="https://www.youtube.com/embed/<?php echo $artist->banner?>?&autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <?php else:?>
+                            <img class="main__artists__img" src="/build/img/artist.webp" alt="{%category-movies%}">
+                        <?php endif;?>
+
+                        <p class="main__artists__nombre"><?php echo $artist->nombre?></p>
+                    </div>
+                </a>
             <?php endforeach; ?>
     </div>
-    <a href="/artists" class="btn-view mTop-5 text-20">{%index_btn-artists%}</a>
+    <a href="/artists" class="btn-view--index text-24">{%index_btn-artists%}</a>
 </section>
 
 <!-- Section with the artists -->

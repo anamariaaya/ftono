@@ -143,3 +143,17 @@ function tt($key) {
     }
     ob_clean();
 }
+
+function getYTVideoId($url) {
+    // Parse the URL and get the query parameters
+    $urlComponents = parse_url($url);
+    parse_str($urlComponents['query'], $queryParams);
+    
+    // Check if 'v' exists in the query parameters
+    if (isset($queryParams['v'])) {
+        return $queryParams['v'];
+    }
+    
+    // If the 'v' parameter is not found, return null
+    return null;
+}

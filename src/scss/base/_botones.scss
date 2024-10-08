@@ -85,6 +85,18 @@
     }
 }
 
+.btn-view--index{
+    @extend .btn-view;
+    margin: auto;
+    margin-top: 2rem;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    @include m.tablet{
+        padding: 0.5rem 1.5rem;
+        margin-top: 2.5rem
+    }
+}
+
 .btn-delete{
     @include m.boton(v.$red, block);
     width: 100%;

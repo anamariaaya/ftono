@@ -1303,6 +1303,18 @@
     "es": "Ejemplo: https://www.johndoe.com",
     "en": "Example: https://www.johndoe.com"
   },
+  "artists_form_banner_label":{
+    "es": "Banner para el perfil del artista",
+    "en": "Banner for the artist's profile"
+  },
+  "artists_form_banner_placeholder":{
+    "es": "Ejemplo: https://youtube.com/[videocode]",
+    "en": "Example: https://youtube.com/[videocode]"
+  },
+  "artists_form_banner_text":{
+    "es": "Pega aquí el enlace de youtube del video que quieres usar como banner para el perfil del artista. Si no pegas nada, se usará el banner existente o una imagen por defecto",
+    "en": "Paste here the youtube link of the video you want to use as a banner for the artist's profile. If you don't paste anything, the existing one or default banner image will be used"
+  },
   "admin_alert_mandatory-file":{
     "es": "Debes seleccionar un archivo",
     "en": "You must select a file"
@@ -1666,6 +1678,10 @@
   "index_subtitle-artists":{
     "es": "Artistas",
     "en": "Artists"
+  },
+  "index_btn-artists":{
+    "es": "Ver Artistas",
+    "en": "See Artists"
   },
   "category-genres":{
     "es": "Géneros",

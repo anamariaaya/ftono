@@ -80,6 +80,7 @@ class MusicArtistsController{
                     $alertas = Artistas::getAlertas();
                 }else{
                     $artista->id_usuario = $id;
+                    $artista->banner = getYTVideoId($artista->banner);
                     $resultado = $artista->guardar();
                     if($resultado){
                         header('Location: /music/artists');
@@ -110,7 +111,14 @@ class MusicArtistsController{
             $artista->nombre = sText($artista->nombre);
             $artista->precio_show = filter_var($artista->precio_show, FILTER_SANITIZE_NUMBER_INT);
             $alertas = $artista->validarArtista();
+
             if(empty($alertas)){
+                if($artista->banner == ''){
+                    $existeBanner = Artistas::where('id', $artista->id);
+                    $artista->banner = $existeBanner->banner;
+                }else{
+                    $artista->banner = getYTVideoId($artista->banner);
+                }
                 $resultado = $artista->guardar();
                 if($resultado){
                     header('Location: /music/artists');
