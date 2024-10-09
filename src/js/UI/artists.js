@@ -28,7 +28,7 @@ export async function mostrarArtistas(datos){
         if(banner){
             artistVideo = document.createElement('IFRAME');
             artistVideo.classList.add('main__artists__video');
-            artistVideo.src = 'https://www.youtube.com/embed/'+banner+'?controls=0&showinfo=0&rel=0&autoplay=1&mute=1';
+            artistVideo.src = 'https://www.youtube.com/embed/'+banner+'?controls=0&showinfo=0&rel=0&autoplay=1&mute=1&loop=1&playlist='+banner;
             artistVideo.frameborder = '0';
             artistVideo.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
             artistVideo.allowFullscreen = true;
@@ -65,7 +65,7 @@ function filtraArtistas(){
                 cards.forEach(card => {
                         const artista = normalizeText(card.textContent);
                         if(artista.indexOf(texto) !== -1){
-                                card.style.display = 'flex';
+                                card.style.display = 'block';
                                 card.style.marginRight = '2rem';
                                 gridArtistas.style.columnGap = '0';
                         }else{

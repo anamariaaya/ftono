@@ -54,6 +54,7 @@ $router->get('/faq', [PublicController::class, 'faq']);
 // Public artists
 $router->get('/artists', [PublicController::class, 'artists']);
 $router->get('/api/public/artists', [PublicController::class, 'consultarArtistas']);
+$router->get('/artist', [PublicController::class, 'artist']);
 
 //Auth Usuarios
 $router->get('/login', [AuthController::class, 'login']);

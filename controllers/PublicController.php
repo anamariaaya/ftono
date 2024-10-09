@@ -15,7 +15,7 @@ class PublicController{
         $inicio = true;
         $titulo = 'home_title';
         $promos = Promos::AllOrderDesc('id');
-        $artists = Artistas::get('4');
+        $artists = Artistas::getOrdered('4', 'id', 'DESC');
 
         $router->render('/paginas/index',[
             'inicio' => $inicio,
@@ -119,7 +119,7 @@ class PublicController{
     }
 
     public static function artists(Router $router){
-        $titulo = 'Artistas';
+        $titulo = 'artists_title';
         $artists = Artistas::all();
         $router->render('/paginas/artists',[
             'titulo' => $titulo,
@@ -133,9 +133,12 @@ class PublicController{
     }
 
     public static function artist(Router $router){
-        $titulo = 'Artista';
+        $id = redireccionar('/artists');
+        $artista = Artistas::find($id);
+        $titulo = 'artist_title';
         $router->render('/paginas/artist',[
-            'titulo' => $titulo
+            'titulo' => $titulo,
+            'artista' => $artista
         ]);
     }
 }

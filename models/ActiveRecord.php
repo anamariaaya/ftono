@@ -123,6 +123,12 @@ class ActiveRecord{
         return $resultado;
     }
 
+    public static function getOrdered($limite, $col, $sense) {
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY ${col} ${sense} LIMIT ${limite}" ;
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
     // Busqueda Where con Columna 
     public static function where($columna, $valor) {
         $query = "SELECT * FROM " . static::$tabla . " WHERE ${columna} = '${valor}'";

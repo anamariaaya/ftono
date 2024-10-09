@@ -195,6 +195,13 @@
     }
 }
 
+.mTop-10{
+    margin-top: 5rem;
+    @include m.tablet{
+        margin-top: 10rem;
+    }
+}
+
 .mBottom-5{
     margin-bottom: 5rem;
 }
@@ -202,6 +209,19 @@
 .mBottom-5--only-mobile{
     @include m.maxtablet{
         margin-bottom: 5rem;
+    }
+}
+
+.mBottom-10{
+    margin-bottom: 5rem;
+    @include m.tablet{
+        margin-bottom: 10rem;
+    }
+}
+
+.mBottom-10--only-mobile{
+    @include m.maxtablet{
+        margin-bottom: 10rem;
     }
 }
 .center{

@@ -28,7 +28,7 @@ export const categoryInput = document.querySelector('#category-search-public');
 export const mensajeInput = document.querySelector('#mensaje');
 
 //Selectores para YouTube
-export const videoIds = ['duC60gX8OCU', 'CBwAMEqhvh8', 'Q9FLGJgUbGM']; 
+export const videoIds = ['snYu2JUqSWs', 'xuP4g7IDgDM', 'VBKNoLcj8jA', 'BB49x_uMlGA', 'g4xs_5rZdos', 'GVuiftq3KsI']; 
 export const player = document.querySelector('#player');
 
 //selectores para página de artistas

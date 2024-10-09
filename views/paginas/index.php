@@ -63,7 +63,7 @@
 </section>
 
 <!-- Section with the artists -->
-<section class="container">
+<section class="container mTop-10">
     <h2 class="main__subtitle">{%index_subtitle-artists%}</h2>
     <div class="main__artists">
         <?php
@@ -87,12 +87,13 @@
 
 <!-- Section with the artists -->
 <section class="container">
-    <div class="video-container">
-        <div class="video-list">
-            <button id="playAll">Play All</button>
-            <div id="videoItems"></div>
+    <h2 class="main__subtitle">{%index_subtitle-featured%}</h2>
+    <div class="video__container">
+        <div class="video__list">
+            <button class="video__list__btn" id="playAll">{%btn_play-all%}</button>
+            <div class="video__items" id="videoItems"></div>
         </div>
-        <div class="video-player">
+        <div class="video__player">
             <div id="player"></div>
         </div>
     </div>

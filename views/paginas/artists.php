@@ -1,4 +1,4 @@
-<h1><?php echo $titulo; ?></h1>
+<h1>{%artists_title%}</h1>
 
 <main class="container">
     <div class="dashboard__search mBottom-5">

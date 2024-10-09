@@ -1163,6 +1163,14 @@
     "es": "Debes escribir el nombre de la palabra clave en español",
     "en": "You must write the keyword name in Spanish"
   },
+  "artists_title":{
+    "es": "Artistas",
+    "en": "Artists"
+  },
+  "artist_title":{
+    "es": "Artista",
+    "en": "Artist"
+  },
   "artists_main-title":{
     "es": "Tus Artistas",
     "en": "Your Artists"
@@ -1683,6 +1691,10 @@
     "es": "Ver Artistas",
     "en": "See Artists"
   },
+  "index_subtitle-featured":{
+    "es": "Destacados",
+    "en": "Featured"
+  },
   "category-genres":{
     "es": "Géneros",
     "en": "Genres"
@@ -2034,5 +2046,9 @@
   "invalid_url": {
     "es": "URL inválida",
     "en": "Invalid URL"
+  },
+  "btn_play-all": {
+    "es": "Reproducir todo",
+    "en": "Play all"
   }
 }
