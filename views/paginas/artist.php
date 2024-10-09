@@ -13,24 +13,36 @@
             <a class="artist__website" href="<?php echo $artista->website;?>" target="_blank"><?php echo $artista->website?></a>
         </div>
         <div class="artist__social">
-            <a class="artist__social__link" href="<?php echo $artista->facebook;?>" target="_blank">
-                <i class="fab fa-facebook"></i>
-            </a>
-            <a class="artist__social__link" href="<?php echo $artista->instagram;?>" target="_blank">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a class="artist__social__link" href="<?php echo $artista->twitter;?>" target="_blank">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a class="artist__social__link" href="<?php echo $artista->youtube;?>" target="_blank">
-                <i class="fab fa-youtube"></i>
-            </a>
-            <a class="artist__social__link" href="<?php echo $artista->spotify;?>" target="_blank">
-                <i class="fab fa-spotify"></i>
-            </a>
-            <a class="artist__social__link" href="<?php echo $artista->tiktok;?>" target="_blank">
-                <i class="fab fa-tiktok"></i>
-            </a>
+            <?php if($artista->facebook):?>
+                <a class="artist__social__link" href="<?php echo $artista->facebook;?>" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            <?php endif;?>
+            <?php if($artista->instagram):?>
+                <a class="artist__social__link" href="<?php echo $artista->instagram;?>" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            <?php endif;?>
+            <?php if($artista->twitter):?>
+                <a class="artist__social__link" href="<?php echo $artista->twitter;?>" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            <?php endif;?>
+            <?php if($artista->youtube):?>
+                <a class="artist__social__link" href="<?php echo $artista->youtube;?>" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            <?php endif;?>
+            <?php if($artista->spotify):?>
+                <a class="artist__social__link" href="<?php echo $artista->spotify;?>" target="_blank">
+                    <i class="fab fa-spotify"></i>
+                </a>
+            <?php endif;?>
+            <?php if($artista->tiktok):?>
+                <a class="artist__social__link" href="<?php echo $artista->tiktok;?>" target="_blank">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            <?php endif;?>
         </div>
     </section>
 </div>

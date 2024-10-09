@@ -157,19 +157,29 @@
         &__label{
             width: 100%;
             position: relative;
-            margin-top: 3rem;            
-            // @include m.maxtablet{
-            //     width: 90%;
-            //     left: 9%;
-            //     top: -50%;
-            // }
+            margin-top: 3rem;
+            background-color: v.$gray-light; 
+            height: 4rem;
+            border-radius: v.$border-radius;
+            display: flex;
+            align-items: center;
+            padding-left: 1rem;
+          
             @include m.maxtablet{
                 top: -35%;
-                left: 15%;
-                width: 85%;
+                left: 4%;
+                width: 55%;
+            }
+            @include m.maxmidscreen{
+                width: 90%;
+                & p{
+                    font-size: 1.4rem;
+                    line-height: 1.2;
+                }
             }
             @include m.tablet{
                 margin-top: 0;
+                width: 45rem;
             }
         }
     }

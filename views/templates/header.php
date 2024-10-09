@@ -8,10 +8,10 @@
                 <i class="fas fa-arrow-left header__left--arrow <?php echo $inicio ? 'no-display' : '' ;?>"></i>
             </a>
         
-            <label for="search" class="header__left__label">
+            <a href="/search" class="header__left__label">
+                <p><?php echo tt('nav_search'); ?></p>
                 <img class="btn-search" src="/build/img/search-bar.svg">
-                <input type= text class="header__left__search-bar"/>
-            </label>
+            </a>
         </div>
 
         <div class="header__lang">

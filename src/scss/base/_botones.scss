@@ -9,7 +9,7 @@
     width: 1.7rem;
     @include m.tablet{
         width: 2.5rem;       
-        right: 15%;        
+        right: 0;        
     }
     @include m.desktop{
         width: 3rem;       

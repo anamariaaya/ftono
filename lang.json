@@ -27,6 +27,10 @@
     "es": "Explora Música",
     "en": "Explore Music"      
   },
+  "nav_search":{
+    "es": "Buscar canciones, artistas, álbumes...",
+    "en": "Search songs, artists, albums..."      
+  },
   "sidebar_help":{
     "es": "Ayuda",
     "en": "Help"      
