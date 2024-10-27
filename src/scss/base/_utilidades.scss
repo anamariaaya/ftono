@@ -254,6 +254,16 @@
     }
 }
 
+.text-22{
+    font-size: 1.5rem !important;
+    @include m.tablet{
+        font-size: 2rem !important;
+    }
+    @include m.desktop{
+        font-size: 2.2rem !important;
+    }
+}
+
 .text-24{
     font-size: 1.6rem !important;
     @include m.tablet{
@@ -364,4 +374,19 @@
     @include m.tablet{
         display: block !important;
     }
+}
+
+.alert-style{
+    border: 0.2rem solid v.$red;
+    padding: 0 0.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.note-style{
+    border: 0.2rem solid v.$blue;
+    background-color: darken(v.$gray-dark, 5);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    line-height: 1.2;
 }

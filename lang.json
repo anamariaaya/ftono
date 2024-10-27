@@ -609,7 +609,7 @@
   },
   "profile_form_name_placeholder":{
     "es": "Escribe tu nombre",
-    "en": "Write your name"
+    "en": "Enter your name"
   },
   "profile_form_last_name_label":{
     "es": "Apellido",
@@ -617,7 +617,7 @@
   },
   "profile_form_last_name_placeholder":{
     "es": "Escribe tu apellido",
-    "en": "Write your last name"
+    "en": "Enter your last name"
   },
   "profile_form_email_label":{
     "es": "Email",
@@ -625,7 +625,7 @@
   },
   "profile_form_email_placeholder":{
     "es": "Escribe tu email",
-    "en": "Write your email"
+    "en": "Enter your email"
   },
   "profile_form_edit-password":{
     "es": "Cambiar tu contraseña",
@@ -637,7 +637,7 @@
   },
   "profile_form_new-password_placeholder":{
     "es": "Escribe tu nueva contraseña",
-    "en": "Write your new password"
+    "en": "Enter your new password"
   },
   "profile_form_new-password_confirmation_label":{
     "es": "Confirmar nueva contraseña",
@@ -645,7 +645,7 @@
   },
   "profile_form_new-password_confirmation_placeholder":{
     "es": "Escribe tu nueva contraseña",
-    "en": "Write your new password"
+    "en": "Enter your new password"
   },
   "profile_form_save-btn":{
     "es": "Actualizar perfil",
@@ -795,6 +795,34 @@
     "es": "Volver al álbum",
     "en": "Back to album"
   },
+  "music_albums_edit-title":{
+    "es": "Editar álbum",
+    "en": "Edit album"
+  },
+  "music_albums_edit-btn":{
+    "es": "Actualizar álbum",
+    "en": "Update album"
+  },
+  "music_albums_artist_required":{
+    "es": "Para crear un álbum, debes haber creado primero el artista",
+    "en": "To create an album, you must have created the artist first"
+  },
+  "music_albums_artist_label_required":{
+    "es": "Para crear un álbum, debes haber creado primero el artista y el sello discográfico",
+    "en": "To create an album, you must have created the artist and the record label first"
+  },
+  "music_albums_goto-artist-btn":{
+    "es": "Ir a crear el artista",
+    "en": "Go to create the artist"
+  },
+  "music_albums_goto-label-btn":{
+    "es": "Ir a crear el sello discográfico",
+    "en": "Go to create the record label"
+  },
+  "music_albums_legend":{
+    "es": "Los campos marcados con * son obligatorios",
+    "en": "Fields marked with * are required"
+  },
   "music_albums_cover_label":{
     "es": "Portada del álbum",
     "en": "Album cover"
@@ -824,12 +852,8 @@
     "en": "Secondary Artists"
   },
   "music_albums_artist-secondary_placeholder":{
-    "es": "Selecciona los artistas secundarios",
-    "en": "Select the secondary artists"
-  },
-  "music_albums_artist-secondary_btn":{
-    "es": "Agregar artista secundario",
-    "en": "Add secondary artist"
+    "es": "Ejemplo: John Doe, Jane Doe",
+    "en": "Example: John Doe, Jane Doe"
   },
   "music_albums_upc_label":{
     "es": "UPC",
@@ -838,6 +862,62 @@
   "music_albums_upc_placeholder":{
     "es": "Ejemplo: 123456789012",
     "en": "Example: 123456789012"
+  },
+  "music_albums_languages_label":{
+    "es": "Idiomas. Puedes seleccionar varios",
+    "en": "Languages. You can select more than one"
+  },
+  "music_albums_languages_placeholder":{
+    "es": "Selecciona los idiomas",
+    "en": "Select the languages"
+  },
+  "music_albums_no_label":{
+    "es": "Si el álbum no tiene un sello discográfico, marca esta casilla",
+    "en": "If the album does not have a record label, check this box"
+  },
+  "music_albums_label_label":{
+    "es": "Sello Discográfico",
+    "en": "Record Label"
+  },
+  "music_albums_label_placeholder":{
+    "es": "Selecciona el sello discográfico",
+    "en": "Select the record label"
+  },
+  "music_albums_record_date_label":{
+    "es": "Fecha de grabación",
+    "en": "Recording date"
+  },
+  "music_albums_publisher_label":{
+    "es": "Editora",
+    "en": "Publisher"
+  },
+  "music_albums_publisher_placeholder":{
+    "es": "Escribe la editora",
+    "en": "Enter the publisher"
+  },
+  "music_albums_upc_exists":{
+    "es": "El UPC ya existe",
+    "en": "The UPC already exists"
+  },
+  "music_albums_mandatory-title":{
+    "es": "El título del álbum es obligatorio",
+    "en": "The album title is required"
+  },
+  "music_albums_mandatory-upc":{
+    "es": "El UPC es obligatorio",
+    "en": "The UPC is required"
+  },
+  "music_albums_characters-upc":{
+    "es": "El UPC debe tener 12 o 13 caracteres",
+    "en": "The UPC must have 12 or 13 characters"
+  },
+  "music_albums_mandatory_publisher":{
+    "es": "La editora es obligatoria",
+    "en": "The publisher is required"
+  },
+  "music_albums_mandatory_record_date":{
+    "es": "La fecha de grabación es obligatoria",
+    "en": "The recording date is required"
   },
   "music_singles-title":{
     "es": "Tus sencillos",
@@ -862,6 +942,10 @@
   "music_singles-back_btn":{
     "es": "Volver a los sencillos",
     "en": "Back to singles"
+  },
+  "music_singles-empty":{
+    "es": "No hay sencillos en tu catálogo",
+    "en": "There are no singles in your catalogue"
   },
   "music_songs_add-title":{
     "es": "Añadir nueva canción",
@@ -1017,7 +1101,7 @@
   },
   "music_genres_form-new_placeholder-english":{
     "es": "Escribe un nuevo género en inglés",
-    "en": "Write a new genre in English"
+    "en": "Enter a new genre in English"
   },
   "music_genres_form-new_label-spanish":{
     "es": "Nuevo Género en español",
@@ -1025,7 +1109,7 @@
   },
   "music_genres_form-new_placeholder-spanish":{
     "es": "Escribe un nuevo género en español",
-    "en": "Write a new genre in Spanish"
+    "en": "Enter a new genre in Spanish"
   },
   "register-labels_total":{
     "es": "Total de Sellos registrados",
@@ -1557,7 +1641,7 @@
   },
   "company_form_company-name_placeholder":{
     "es": "Escribe el nombre de la empresa",
-    "en": "Write the company name"
+    "en": "Enter the company name"
   },
   "company_form_fiscal_id_label":{
     "es": "Identificación fiscal",
@@ -1565,7 +1649,7 @@
   },
   "company_form_fiscal_id_placeholder":{
     "es": "Escribe la identificación fiscal",
-    "en": "Write the tax ID"
+    "en": "Enter the tax ID"
   },
   "company_form_country_label":{
     "es": "País",
@@ -1581,7 +1665,7 @@
   },
   "company_form_address_placeholder":{
     "es": "Escribe la dirección",
-    "en": "Write the address"
+    "en": "Enter the address"
   },
   "company_form_position_label":{
     "es": "Tu cargo",
@@ -1589,7 +1673,7 @@
   },
   "company_form_position_placeholder":{
     "es": "Escribe tu cargo",
-    "en": "Write your position"
+    "en": "Enter your position"
   },
   "company_form_edit_purchase":{
     "es": "Editar datos de contacto para compras",

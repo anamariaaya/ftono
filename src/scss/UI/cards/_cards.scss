@@ -52,6 +52,10 @@
         border-radius: .5rem;
         max-width: 25rem;
     }
+    &__img--album{
+        height: 18rem;
+        width: 18rem;
+    }
     &__label, &__text{
         color: v.$white;
         margin: 0;

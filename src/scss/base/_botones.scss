@@ -211,3 +211,21 @@
         flex-direction: row;
     }
 }
+
+.btn-note{
+    @include m.boton(v.$blue, flex);
+    margin: 0;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    border-radius: 1rem;
+    color: v.$gray-dark;
+    width: fit-content;
+    font-size: 1.4rem !important;
+    @include m.tablet{
+        padding: 0.5rem 1rem;
+        font-size: 1.6rem !important;
+    }
+    &:hover{
+        cursor: pointer;
+    }
+}

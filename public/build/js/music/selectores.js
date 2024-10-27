@@ -38,7 +38,7 @@ export const hiddenArtistic = document.querySelector('#signatureOptional');
 export const countrySelected = document.querySelector('#current-pais');
 export const paisValue = document.querySelectorAll('.pais-value');
 
-//Albums admin block
+//Albums and single tabs admin block
 export const albumsBlock = document.querySelector('.tabs__music--albums');
 export const singlesBlock = document.querySelector('.tabs__music--singles');
 export const albumsBtn = document.querySelector('#btn-albums');
@@ -62,3 +62,7 @@ export const artistasInput = document.querySelector('#artistas-search');
 export const formArtist = document.querySelector('.form-artist');
 export const url = document.querySelectorAll('.url');
 export const artistFields = document.querySelectorAll('.form__group');
+
+//Selectores de la sección de álbumes
+export const gridAlbumes = document.querySelector('#grid-albumes');
+export const albumesInput = document.querySelector('#albumes-search');

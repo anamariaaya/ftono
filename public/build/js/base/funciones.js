@@ -1,6 +1,6 @@
 import {er, num, indicativo, formArtist, artistFields} from '../music/selectores.js';
 
-import {body, dashboardContenido, tabsBtns, tabsContent, tabsDiv, submitBtns} from './selectores.js';
+import {body, dashboardContenido, tabsBtns, tabsContent, tabsDiv, submitBtns, languageSelect, selectedLanguagesContainer, selectedLanguagesInput, selloInput, noLabelCheckbox, defaultLabelInput, fileInput, fileNameContainer} from './selectores.js';
 
 
 export async function readLang(){
@@ -248,3 +248,89 @@ export function validateUrl(e) {
         e.target.value = urlValue;
     }
 }
+
+// languageHandler.js
+
+// languageHandler.js
+
+export function handleLanguageSelection() {
+    languageSelect.addEventListener('change', () => {
+        // Check if the option is already selected
+        const selectedValue = languageSelect.value;
+        const existingTag = selectedLanguagesContainer.querySelector(`[data-value="${selectedValue}"]`);
+        if (existingTag) {
+            return; // Skip if already added
+        }
+
+        // Create a tag for the selected language
+        const option = languageSelect.options[languageSelect.selectedIndex];
+        const tag = document.createElement('div');
+        tag.classList.add('language-tag');
+        tag.textContent = option.text;
+        tag.setAttribute('data-value', selectedValue); // Store the value for reference
+
+        // Create the remove button
+        const removeButton = document.createElement('button');
+        removeButton.classList.add('remove-language');
+        removeButton.textContent = 'x';
+        removeButton.addEventListener('click', () => {
+            option.selected = false; // Unselect the language
+            tag.remove();
+            updateSelectedLanguagesInput(); // Update hidden input field
+        });
+
+        // Append button and tag to the container
+        tag.appendChild(removeButton);
+        selectedLanguagesContainer.appendChild(tag);
+
+        // Update the hidden input field with selected languages
+        updateSelectedLanguagesInput();
+    });
+
+    function updateSelectedLanguagesInput() {
+        // Get the selected values from the tags and set them in the hidden input
+        const selectedValues = [...selectedLanguagesContainer.querySelectorAll('.language-tag')]
+            .map(tag => tag.getAttribute('data-value'));
+        selectedLanguagesInput.value = selectedValues.join(',');
+    }
+}
+
+// labelCheckbox.js
+
+export function initializeLabelCheckbox() {
+    
+
+    if (selloInput && noLabelCheckbox && defaultLabelInput) {
+        noLabelCheckbox.addEventListener('change', () => {
+            if (noLabelCheckbox.checked) {
+                selloInput.disabled = true; // Disable the input field
+                selloInput.value = ""; // Clear any existing value
+                defaultLabelInput.disabled = false; // Enable the hidden input to be sent
+            } else {
+                selloInput.disabled = false; // Enable the input field
+                defaultLabelInput.disabled = true; // Disable the hidden input to prevent sending
+            }
+        });
+
+        // Ensure hidden input is not submitted by default
+        defaultLabelInput.disabled = true;
+    }
+}
+
+export function initializeFileNameDisplay() {
+     // Element to display the file name
+    fileNameContainer.classList.add('form__group--file-name', 'no-display');
+
+    if (fileInput) {
+        fileInput.insertAdjacentElement('afterend', fileNameContainer);
+
+        fileInput.addEventListener('change', () => {
+            const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : fileInput.getAttribute('data-text');
+            fileNameContainer.classList.remove('no-display');
+            fileNameContainer.textContent = fileName;
+        });
+    }
+}
+
+
+

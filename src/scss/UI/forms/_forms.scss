@@ -63,6 +63,11 @@
         &:not(last-child){
             margin-bottom: 1rem;
         }
+        &--inline{
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
         &__label{
             color: v.$white;
             font-size: 1.4rem;
@@ -107,6 +112,23 @@
             &::placeholder{
                 color: darken(v.$white, 25%);
             }
+            //style for checkbox
+            &--checkbox{
+                width: 1.4rem;
+                height: 1.4rem;
+                @include m.tablet{
+                    width: 1.6rem;
+                    height: 1.6rem;
+                }
+                @include m.desktop{
+                    width: 1.8rem;
+                    height: 1.8rem;
+                }
+                @include m.ultra-wide{
+                    width: 2rem;
+                    height: 2rem;
+                }
+            }
         }
         &__select{
             text-transform: capitalize;
@@ -116,29 +138,47 @@
             background-color: v.$gray-dark;
             text-transform: capitalize;
         }
+        &__languages{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        &--file-name{
+            background-color: v.$gray-dark;
+            margin: 0;
+            padding: 0.5rem;
+            font-size: 1.4rem;
+            margin-top: 0.25rem;
+            box-shadow: v.$shadow;
+            border: 0.1rem solid v.$gray-light;
+        }
     }
     &__custom{
         &__input{
         @extend .form__group__input;
         color: transparent;
         background-color: v.$yellow;
-        &::-webkit-file-upload-button {
+            &::-webkit-file-upload-button {
             visibility: hidden;
             opacity: 0;            
-          }
-          &::before {
-            width: 100%;
-            height: 100%;
-            display: inline-block;
-            outline: none;
-            content: attr(data-text);
-            white-space: nowrap;
-            color: v.$gray-dark;
-            font-weight: v.$bold;
-            -webkit-user-select: none;
-            user-select: none;
-            cursor: pointer;
-          }
+            }
+            &::before {
+                width: 100%;
+                height: 100%;
+                display: inline-block;
+                outline: none;
+                content: attr(data-text);
+                white-space: nowrap;
+                color: v.$gray-dark;
+                font-weight: v.$bold;
+                -webkit-user-select: none;
+                user-select: none;
+                cursor: pointer;
+            }
+            &::placeholder{
+                color: v.$gray-dark;
+            }
         }
         &__file-name{
             color: v.$white;
@@ -190,5 +230,33 @@
         &:hover{
             color: v.$yellow;
         }
+    }
+}
+
+.language-tag{
+    background-color: v.$yellow;
+    color: v.$gray-dark;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: v.$bold;
+    &:hover{
+        cursor: pointer;
+        background-color: v.$green;
+    }
+}
+
+.remove-language{
+    font-size: 1.4rem;
+    color: v.$gray-dark;
+    background-color: transparent;
+    font-weight: v.$bold;
+    margin-left: 1rem;
+    border: none;
+    &:hover{
+        cursor: pointer;
     }
 }

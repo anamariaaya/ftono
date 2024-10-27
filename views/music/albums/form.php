@@ -1,22 +1,29 @@
 <fieldset class="form__fieldset">
+    <legend class="form__legend">{%music_albums_legend%}</legend>
 
 <!--imagen de portada-->
     <div class="form__group">
-        <label class="form__group__label">{%music_albums_cover_label%}</label>
+        <label for="portada" class="form__group__label">
+            {%music_albums_cover_label%}
+        </label>
         <input
             type="file"
             class="form__custom__input"
-            id="portada"
+            id="imageFile"
             name="portada"
             placeholder="{%music_albums_cover_placeholder%}"
-            value="<?php echo s($album->portada);?>"
-            />
+            accept="image/png, image/jpeg, image/jpg, image/webp"
+            data-text="{%music_albums_cover_placeholder%}"
+        />
         <div class="form__group__image">
             <img src="/images/albums/<?php echo $album->portada; ?>" alt="<?php echo $album->titulo; ?>">
         </div>
     </div>
     <div class="form__group">
-        <label class="form__group__label">{%music_albums_title_label%}</label>
+        <label for="titulo" class="form__group__label">
+            {%music_albums_title_label%}
+            <span class="text-yellow">*</span>
+        </label>
         <input
             type="text"
             class="form__group__input"
@@ -27,36 +34,109 @@
             />
     </div>
     <div class="form__group">
-        <label class="form__group__label">{%music_albums_upc_label%}</label>
+        <label for='upc' class="form__group__label">
+            {%music_albums_upc_label%}
+            <span class="text-yellow">*</span>
+        </label>
         <input
             type="text"
             class="form__group__input"
-            id="album"
-            name="album"
+            id="upc"
+            name="upc"
             placeholder="{%music_albums_upc_placeholder%}"
             value="<?php echo s($album->upc);?>"
             />
     </div>
     <div class="form__group">
-        <label class="form__group__label">{%music_albums_artist_label%}</label>
-        <input type="text" list="artistas" name="artistas" id="artistas_input" class="form__group__input artistas_input" placeholder="{%music_albums_artist_placeholder%}"/>
-        <datalist class="artistas_datalist">
+        <label for="artistas" class="form__group__label">
+            {%music_albums_artist_label%}
+            <span class="text-yellow">*</span>
+        </label>
+        <select id="artistas" name="artistas" class="form__group__select">
+            <option selected disabled value="">{%music_albums_artist_placeholder%}</option>
             <?php foreach($artistas as $artista): ?>
-                <option value="<?php echo s($artista->nombre); ?>"><?php echo s($artista->nombre); ?></option>
+                <option value="<?php echo s($artista->id); ?>">
+                    <?php echo s($artista->nombre); ?>
+                </option>
             <?php endforeach; ?>
-        </datalist>
+        </select>
     </div>
     <div class="form__group">
         <label class="form__group__label">{%music_albums_artist-secondary_label%}</label>
-        <input type="text" list="art-secundarios" name="art-secundarios" id="artsecundarios_input" class="form__group__input artistas_input" placeholder="{%music_albums_artist-secondary_placeholder%}"/>
-        <datalist class="artistas_datalist" id="artsecundarios_datalist">
-            <?php foreach($artistas as $artista): ?>
-                <option value="<?php echo s($artista->id); ?>" data-name="<?php echo s($artista->nombre); ?>"><?php echo s($artista->nombre); ?></option>
-            <?php endforeach; ?>
-        </datalist>
-        <p>If the artist is not on the list, add a new one</p>
-        <button type="button" class="btn-back" id="btn-add-artist">{%music_albums_artist-secondary_btn%}</button>
-        <input type="hidden" name="art-secundarios" id="artsecundarios-hidden" value="">
+        <input
+            type="text"
+            list="artistas"
+            name="art-secundarios"
+            id="art-secundarios"
+            class="form__group__input artistas_input"
+            placeholder="{%music_albums_artist-secondary_placeholder%}"
+            value="<?php echo s($albumArtSecundarios->artistas);?>"
+        />
     </div>
-    
+
+    <div class="form__group">
+        <label for="idiomas" class="form__group__label">{%music_albums_languages_label%}</label>
+        <select id="idiomas" name="idiomas" class="form__group__select">
+            <option selected disabled value="">{%music_albums_languages_placeholder%}</option>
+            
+            <?php foreach($idiomas as $idioma){
+                if($lang === 'en'): ?>
+                    <option value="<?php echo $idioma->id; ?>">
+                        <?php echo $idioma->idioma_en; ?>
+                    </option>
+                <?php else: ?>
+                    <option value="<?php echo $idioma->id; ?>">
+                        <?php echo $idioma->idioma_es; ?>
+                    </option>
+                <?php endif;
+                }
+            ?>
+        </select>
+        <div id="selectedLanguages" class="form__group__languages"></div>
+        <input type="hidden" id="selectedLanguagesInput" name="selectedLanguages">
+    </div>
+
+    <?php
+        if($tipoUsuario->id_nivel != 3):?>
+            <div class="form__group">
+                <label class="form__group__label" for="sello">{%music_albums_label_label%}</label>
+                <select id="sello" name="sello" class="form__group__select">
+                    <option selected disabled value="">{%music_albums_label_placeholder%}</option>
+                    <?php foreach($sellos as $sello): ?>
+                        <option value="<?php echo s($sello->id); ?>"><?php echo s($sello->nombre); ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form__group--inline alert-style">
+                <input class="form__group__input--checkbox" type="checkbox" id="noLabel" name="noLabel">
+                <label for="noLabel" class="form__group__label">{%music_albums_no_label%}</label>
+            </div>
+    <?php endif;
+    ?>
+
+    <input type="hidden" id="defaultLabel" name="defaultLabel" value="No label">
+
+    <div class="form__group">
+        <label for="fecha_rec" class="form__group__label">{%music_albums_record_date_label%}</label>
+        <input
+            type="date"
+            class="form__group__input"
+            id="fecha_rec"
+            name="fecha_rec"
+            placeholder="{%music_albums_record_date_placeholder%}"
+            value="<?php echo s($album->fecha_rec);?>"
+        />
+    </div>
+
+    <div class="form__group">
+        <label for="publisher" class="form__group__label">{%music_albums_publisher_label%}</label>
+        <input
+            type="text"
+            class="form__group__input"
+            id="publisher"
+            name="publisher"
+            placeholder="{%music_albums_publisher_placeholder%}"
+            value= "<?php echo s($album->publisher);?>"
+        />
+    </div>
 </fieldset>

@@ -96,6 +96,7 @@ $router->get('/music/albums/new', [MusicAlbumsController::class, 'new']);
 $router->post('/music/albums/new', [MusicAlbumsController::class, 'new']);
 $router->post('/music/albums/edit', [MusicAlbumsController::class, 'update']);
 $router->get('/music/albums/song/new', [MusicAlbumsController::class, 'newSong']);
+$router->get('/api/music/albums/albums', [MusicAlbumsController::class, 'consultaAlbumes']);
 
 //Music Artists
 $router->get('/music/artists', [MusicArtistsController::class, 'index']);
@@ -165,6 +166,7 @@ $router->get('/filmtono/categories/delete', [CategoriesController::class, 'delet
 
 //Filmtono Albums
 $router->get('/filmtono/albums', [AlbumsController::class, 'index']);
+
 
 //Filmtono Artists
 $router->get('/filmtono/artists', [ArtistsController::class, 'index']);

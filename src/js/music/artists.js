@@ -6,7 +6,6 @@ export async function consultaArtistas(){
         const resultado = await fetch(window.location.origin+'/api/music/artists/artists');
         const datos = await resultado.json();
        mostrarArtistas(datos);
-       console.log(datos);
     }catch(error){
         console.log(error);
     }

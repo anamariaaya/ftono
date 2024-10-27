@@ -11,8 +11,9 @@ import { consultaLabels } from "./labels.js";
 import { consultaIdiomas } from "./idiomas.js";
 import { consultaMensajes } from "./mensajes.js";
 import { consultaArtistas } from "./artists.js";
-import { changeTabs, eliminarItem, btnSubmitLoader } from "../base/funciones.js";
-import {btnEliminar, submitBtns, tabsDiv} from '../base/selectores.js';
+import { changeTabs, eliminarItem, btnSubmitLoader, handleLanguageSelection
+    , initializeLabelCheckbox, initializeFileNameDisplay } from "../base/funciones.js";
+import {btnEliminar, submitBtns, tabsDiv, languageSelect, selloInput, fileInput} from '../base/selectores.js';
 import { countryValue } from "../music/APIPaises.js";
 import { btnSubmit, paisValue, formArtist } from "../music/selectores.js";
 import { passbtn } from "../UI/selectores.js";
@@ -27,9 +28,6 @@ class App{
     initApp(){
         if(chooseLang){
             chooseLang();
-        }
-        if(artistasInput){
-            styleDatalist();
         }
         if(portada){
             styleFileInput();
@@ -90,6 +88,14 @@ class App{
         }
         if(formArtist){
             validateArtistForm();
+        }
+        if(languageSelect){
+            handleLanguageSelection();
+        }if(selloInput){
+            initializeLabelCheckbox();
+        }
+        if(fileInput){
+            initializeFileNameDisplay();
         }
     }
 }

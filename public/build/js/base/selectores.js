@@ -8,3 +8,16 @@ export const tabsBtns = document.querySelectorAll('.tabs__lg--btn');
 export const tabsContent = document.querySelectorAll('.tabs__lg--tab');
 //select all submit buttons by type
 export const submitBtns = document.querySelectorAll('form input[type="submit"]');
+
+//selectores de CRUD álbum
+export const languageSelect = document.getElementById('idiomas');
+export const selectedLanguagesContainer = document.getElementById('selectedLanguages');
+export const selectedLanguagesInput = document.getElementById('selectedLanguagesInput'); 
+
+export const selloInput = document.getElementById('sello');
+export const noLabelCheckbox = document.getElementById('noLabel');
+export const defaultLabelInput = document.getElementById('defaultLabel');
+
+//Selectores de archivo tipo imagen
+export const fileInput = document.getElementById('imageFile');
+export const fileNameContainer = document.createElement('p');
