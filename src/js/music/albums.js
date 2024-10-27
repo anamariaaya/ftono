@@ -16,7 +16,7 @@ async function mostrarAlbumes(datos){
     const alerts = await readJSON();
 
     datos.forEach(album => {
-        const {id, titulo, portada, upc, sello} = album;
+        const {id, titulo, portada, upc, publisher} = album;
 
         const linkAlbum = document.createElement('A');
         linkAlbum.href = window.location.origin+'/music/albums/current?id='+id;
@@ -40,14 +40,14 @@ async function mostrarAlbumes(datos){
         cardUPC.textContent = 'UPC: '+upc;
         cardUPC.classList.add('cards__text');
 
-        const cardSello = document.createElement('P');
-        cardSello.textContent = 'Sello: '+sello;
-        cardSello.classList.add('cards__text');
+        const cardPublisher = document.createElement('P');
+        cardPublisher.textContent = alerts['publisher'][lang]+': '+publisher;
+        cardPublisher.classList.add('cards__text');
 
         cardInfo.appendChild(imgAlbum);
         cardInfo.appendChild(cardTitle);
         cardInfo.appendChild(cardUPC);
-        cardInfo.appendChild(cardSello);
+        cardInfo.appendChild(cardPublisher);
 
         const cardActions = document.createElement('DIV');
         cardActions.classList.add('cards__actions');

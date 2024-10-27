@@ -959,9 +959,21 @@
     "es": "Agregar canción",
     "en": "Add song"
   },
+  "music_songs_empty":{
+    "es": "No hay canciones en tu catálogo",
+    "en": "There are no songs in your catalogue"
+  },
+  "music_songs_total":{
+    "es": "Total de canciones",
+    "en": "Total songs"
+  },
   "music_songs_edit-title":{
     "es": "Editar canción",
     "en": "Edit song"
+  },
+  "music_songs_search-placeholder":{
+    "es": "Buscar canciones por nombre",
+    "en": "Search songs by name"
   },
   "music_songs_edit-btn":{
     "es": "Actualizar canción",
@@ -2118,6 +2130,34 @@
   "t-languages":{
     "es": "Idiomas",
     "en": "Languages"
+  },
+  "t-upc":{
+    "es": "UPC",
+    "en": "UPC"
+  },
+  "t-label":{
+    "es": "Sello",
+    "en": "Label"
+  },
+  "t-artist":{
+    "es": "Artista",
+    "en": "Artist"
+  },
+  "t-publisher":{
+    "es": "Editorial",
+    "en": "Publisher"
+  },
+  "t-aggregator":{
+    "es": "Agregador",
+    "en": "Aggregator"
+  },
+  "t-artist_level":{
+    "es": "Nivel del Artista",
+    "en": "Artist Level"
+  },
+  "t-rec-date":{
+    "es": "Fecha de grabación",
+    "en": "Recording date"
   },
   "alert-error": {
     "es": "Ha ocurrido un error. Por favor, intenta de nuevo",

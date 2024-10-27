@@ -37,13 +37,15 @@ class MusicAlbumsController{
         isMusico();
         $albumId = redireccionar('/music/albums');
         $album = Albums::find($albumId);
+        $songs = [];
         if(!$album){
             header('Location: /music/albums');
         }
         $titulo = $album->titulo;
         $router->render('music/albums/current',[
             'titulo' => $titulo,
-            'album' => $album
+            'album' => $album,
+            'songs' => $songs
         ]);
     }
 

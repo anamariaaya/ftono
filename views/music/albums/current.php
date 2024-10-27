@@ -3,25 +3,37 @@
     {%music_albums-back_btn%}
 </a>
 
-<h1><?php echo $titulo;?></h1>
+<h1><?php echo $album->titulo;?></h1>
 
 <div class="music__grid mTop-5">
     <img src="/portadas/<?php echo $album->portada;?>" alt="portada" class="" style="max-width:35rem;">
 
     <div class="music__info">
         <div class="music__detail">
-            <p><?php echo $album->artista;?></p>
-            <p><?php echo $album->genero;?></p>
-            <p><?php echo $album->fecha;?></p>
-            <p><?php echo $album->precio;?>€</p>
+            <p><span class="text-yellow">{%music_albums_upc_label%}: </span><?php echo $album->upc;?></p>
+            <p><span class="text-yellow">{%t-label%}: </span><?php echo $album->sello;?></p>
+            <p><span class="text-yellow">{%t-publisher%}: </span><?php echo $album->publisher;?></p>
+            <p><span class="text-yellow">{%t-rec-date%}: </span><?php echo $album->fecha_rec;?></p>
         </div>        
     </div>
 </div>
 
-<div class="music-table">
+<div class="music-table mTop-5">
+    <div class="dashboard__total">
+        <p><span>{% music_songs_total %}: <?php echo count($songs) ?></span> </p>    
+
+        <div class="dashboard__search">
+            <input class="dashboard__total__type-search" type="text" id="songs-search" placeholder="{% music_songs_search-placeholder %}"/>
+        </div>
+    </div>
+
     <a href="/music/albums/song/new?id=<?php echo $album->id;?>" class="btn-back">
-        <i class="fa-solid fa-arrow-left"></i>
         {%music_songs_add-btn%}
     </a>
-    <a>Aquí va la lista de canciones del álbum</a>
+    <?php if(count($songs) > 0): ?>
+        <div class="cards__container" id="grid-songs">
+        </div>
+    <?php else: ?>
+        <p>{%music_songs_empty%}</p>
+    <?php endif; ?>
 </div>
