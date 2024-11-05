@@ -14,6 +14,7 @@ use Model\AlbumIdiomas;
 use Model\PerfilUsuario;
 use Model\UsuarioSellos;
 use Model\AlbumArtSecundarios;
+use Model\UsuarioAlbumArtista;
 
 class MusicAlbumsController{
     public static function index(Router $router){
@@ -29,7 +30,22 @@ class MusicAlbumsController{
     public static function consultaAlbumes(){
         //isMusico();
         $id = $_SESSION['id'];
-        $albums = Albums::whereAll('id_usuario',$id);
+        $albums = 'SELECT 
+            al.*,
+            ar.id AS artista_id,
+            ar.nombre AS artista_name
+        FROM 
+            albums al
+        LEFT JOIN 
+            album_artistas aa ON al.id = aa.id_albums
+        LEFT JOIN 
+            artistas ar ON aa.id_artistas = ar.id
+        WHERE 
+            al.id_usuario = '.$id.'
+        ORDER BY 
+            al.id DESC;
+        ';
+        $albums = UsuarioAlbumArtista::consultarSQL($albums);
         echo json_encode($albums);
     }
 
@@ -37,6 +53,9 @@ class MusicAlbumsController{
         isMusico();
         $albumId = redireccionar('/music/albums');
         $album = Albums::find($albumId);
+        $artistaId = AlbumArtista::where('id_albums',$album->id);
+        $artista = Artistas::find($artistaId->id_artistas);
+        $art_secundarios = AlbumArtSecundarios::where('id_albums',$album->id);
         $songs = [];
         if(!$album){
             header('Location: /music/albums');
@@ -45,7 +64,9 @@ class MusicAlbumsController{
         $router->render('music/albums/current',[
             'titulo' => $titulo,
             'album' => $album,
-            'songs' => $songs
+            'songs' => $songs,
+            'artista' => $artista,
+            'art_secundarios' => $art_secundarios
         ]);
     }
 
@@ -167,7 +188,7 @@ class MusicAlbumsController{
         ]);
     }
 
-    public static function update(Router $router){
+    public static function edit(Router $router){
         isMusico();
         $titulo = tt('music_albums_edit');
         $router->render('music/albums/edit',[

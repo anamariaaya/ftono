@@ -94,7 +94,8 @@ $router->get('/music/albums', [MusicAlbumsController::class, 'index']);
 $router->get('/music/albums/current', [MusicAlbumsController::class, 'current']);
 $router->get('/music/albums/new', [MusicAlbumsController::class, 'new']);
 $router->post('/music/albums/new', [MusicAlbumsController::class, 'new']);
-$router->post('/music/albums/edit', [MusicAlbumsController::class, 'update']);
+$router->get('/music/albums/edit', [MusicAlbumsController::class, 'edit']);
+$router->post('/music/albums/edit', [MusicAlbumsController::class, 'edit']);
 $router->get('/music/albums/song/new', [MusicAlbumsController::class, 'newSong']);
 $router->get('/api/music/albums/albums', [MusicAlbumsController::class, 'consultaAlbumes']);
 
