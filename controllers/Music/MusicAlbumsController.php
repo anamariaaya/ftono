@@ -110,6 +110,8 @@ class MusicAlbumsController{
         $alertas = [];
         $albumArtSecundarios = new AlbumArtSecundarios;
         $perfilUsuario = PerfilUsuario::where('id_usuario', $id); 
+        $selectedLanguages = [];
+        $selectedArtistId = null;
 
         if($lang == 'en'){
             $idioma = Idiomas::AllOrderAsc('idioma_en');
@@ -205,7 +207,9 @@ class MusicAlbumsController{
             'tipoUsuario' => $tipoUsuario,
             'sellos' => $sellos,
             'alertas' => $alertas,
-            'albumArtSecundarios' => $albumArtSecundarios
+            'albumArtSecundarios' => $albumArtSecundarios,
+            'selectedLanguages' => $selectedLanguages,
+            'selectedArtistId' => $selectedArtistId
         ]);
     }
 

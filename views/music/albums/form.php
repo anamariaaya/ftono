@@ -15,9 +15,11 @@
             accept="image/png, image/jpeg, image/jpg, image/webp"
             data-text="{%music_albums_cover_placeholder%}"
         />
-        <div class="form__group__image">
-            <img class="cards__img cards__img--album mTop-1" src="/portadas/<?php echo $album->portada; ?>" alt="<?php echo $album->titulo; ?>">
-        </div>
+        <?php if($album->portada):?>
+            <div class="form__group__image">
+                <img class="cards__img cards__img--album mTop-1" src="/portadas/<?php echo $album->portada; ?>" alt="<?php echo $album->titulo; ?>">
+            </div>
+        <?php endif;?>
     </div>
     <div class="form__group">
         <label for="titulo" class="form__group__label">
