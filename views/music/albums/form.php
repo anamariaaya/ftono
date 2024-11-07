@@ -16,7 +16,7 @@
             data-text="{%music_albums_cover_placeholder%}"
         />
         <div class="form__group__image">
-            <img src="/images/albums/<?php echo $album->portada; ?>" alt="<?php echo $album->titulo; ?>">
+            <img class="cards__img cards__img--album mTop-1" src="/portadas/<?php echo $album->portada; ?>" alt="<?php echo $album->titulo; ?>">
         </div>
     </div>
     <div class="form__group">
@@ -55,7 +55,7 @@
         <select id="artistas" name="artistas" class="form__group__select">
             <option selected disabled value="">{%music_albums_artist_placeholder%}</option>
             <?php foreach($artistas as $artista): ?>
-                <option value="<?php echo s($artista->id); ?>">
+                <option value="<?php echo s($artista->id); ?>" <?php echo ($artista->id === $selectedArtistId) ? 'selected' : ''; ?>>
                     <?php echo s($artista->nombre); ?>
                 </option>
             <?php endforeach; ?>
@@ -76,25 +76,47 @@
 
     <div class="form__group">
         <label for="idiomas" class="form__group__label">{%music_albums_languages_label%}</label>
-        <select id="idiomas" name="idiomas" class="form__group__select">
-            <option selected disabled value="">{%music_albums_languages_placeholder%}</option>
+        <select id="idiomas" name="idiomas" class="form__group__select" multiple>
+            <option disabled value="">{%music_albums_languages_placeholder%}</option>
             
-            <?php foreach($idiomas as $idioma){
-                if($lang === 'en'): ?>
-                    <option value="<?php echo $idioma->id; ?>">
+            <?php foreach ($idiomas as $idioma): ?>
+                <?php if ($lang === 'en'): ?>
+                    <option value="<?php echo $idioma->id; ?>"
+                        <?php echo $idioma->id, $selectedLanguages ? 'selected' : ''; ?>>
                         <?php echo $idioma->idioma_en; ?>
                     </option>
                 <?php else: ?>
-                    <option value="<?php echo $idioma->id; ?>">
+                    <option value="<?php echo $idioma->id; ?>"
+                        <?php echo $idioma->id, $selectedLanguages ? 'selected' : ''; ?>>
                         <?php echo $idioma->idioma_es; ?>
                     </option>
-                <?php endif;
-                }
-            ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
         </select>
-        <div id="selectedLanguages" class="form__group__languages"></div>
-        <input type="hidden" id="selectedLanguagesInput" name="selectedLanguages">
+
+        <!-- Container to display the selected languages as tags -->
+        <div id="selectedLanguages" class="form__group__languages">
+            <?php foreach ($selectedLanguages as $selectedLanguageId): ?>
+                <?php 
+                // Get the language name based on the ID
+                $languageName = '';
+                foreach ($idiomas as $idioma) {
+                    if ($idioma->id == $selectedLanguageId) {
+                        $languageName = ($lang === 'en') ? $idioma->idioma_en : $idioma->idioma_es;
+                        break;
+                    }
+                }
+                ?>
+                <span class="language-tag" data-id="<?php echo $selectedLanguageId; ?>">
+                    <?php echo $languageName; ?> <button type="button" class="remove-language">&times;</button>
+                </span>
+            <?php endforeach; ?>
+        </div>
+        
+        <!-- Hidden input to hold the selected language IDs -->
+        <input type="hidden" id="selectedLanguagesInput" name="selectedLanguages" value="<?php echo implode(',', $selectedLanguages); ?>">
     </div>
+
 
     <?php
         if($tipoUsuario->id_nivel != 3):?>

@@ -2,12 +2,12 @@
 
 <a href="/music/albums" class="btn-back">
     <i class="fa-solid fa-arrow-left"></i>
-    {%admin_albums_back-btn%}
+    {%music_album-back_btn%}
 </a>
 
 <div class="form-div">
-    <form class="form" method="POST">
+    <form class="form" method="POST" enctype="multipart/form-data">
         <?php include_once __DIR__.'/form.php'?>
-        <input type="submit" id="btn-artista" value="{%admin_genres_edit-btn%}" class="btn-submit">
+        <input type="submit" id="btn-artista" value="{%music_albums_edit-btn%}" class="btn-submit">
     </form>
 </div>

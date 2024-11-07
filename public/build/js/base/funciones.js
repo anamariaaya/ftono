@@ -254,46 +254,65 @@ export function validateUrl(e) {
 // languageHandler.js
 
 export function handleLanguageSelection() {
-    languageSelect.addEventListener('change', () => {
-        // Check if the option is already selected
-        const selectedValue = languageSelect.value;
-        const existingTag = selectedLanguagesContainer.querySelector(`[data-value="${selectedValue}"]`);
-        if (existingTag) {
-            return; // Skip if already added
-        }
+    // Clear existing tags to prevent duplication
+    selectedLanguagesContainer.innerHTML = '';
 
-        // Create a tag for the selected language
-        const option = languageSelect.options[languageSelect.selectedIndex];
-        const tag = document.createElement('div');
-        tag.classList.add('language-tag');
-        tag.textContent = option.text;
-        tag.setAttribute('data-value', selectedValue); // Store the value for reference
-
-        // Create the remove button
-        const removeButton = document.createElement('button');
-        removeButton.classList.add('remove-language');
-        removeButton.textContent = 'x';
-        removeButton.addEventListener('click', () => {
-            option.selected = false; // Unselect the language
-            tag.remove();
-            updateSelectedLanguagesInput(); // Update hidden input field
+    // First, populate the selected languages if they exist in the input value
+    if (selectedLanguagesInput.value) {
+        const selectedValues = selectedLanguagesInput.value.split(',').filter(value => value !== '');
+        selectedValues.forEach(value => {
+            addLanguageTag(value);
         });
+    }
 
-        // Append button and tag to the container
-        tag.appendChild(removeButton);
-        selectedLanguagesContainer.appendChild(tag);
-
-        // Update the hidden input field with selected languages
-        updateSelectedLanguagesInput();
+    // Add event listener to select dropdown
+    languageSelect.addEventListener('change', () => {
+        const selectedValue = languageSelect.value;
+        
+        // Check if the option is already selected
+        const existingTag = selectedLanguagesContainer.querySelector(`[data-value="${selectedValue}"]`);
+        if (!existingTag) {
+            // Only add the tag if it doesn't already exist
+            addLanguageTag(selectedValue);
+        }
     });
+
+    function addLanguageTag(selectedValue) {
+        const option = languageSelect.querySelector(`option[value="${selectedValue}"]`);
+        if (option) {
+            const tag = document.createElement('div');
+            tag.classList.add('language-tag');
+            tag.textContent = option.text;
+            tag.setAttribute('data-value', selectedValue); // Store the value for reference
+
+            // Create the remove button
+            const removeButton = document.createElement('button');
+            removeButton.classList.add('remove-language');
+            removeButton.textContent = 'x';
+            removeButton.addEventListener('click', () => {
+                option.selected = false; // Unselect the language
+                tag.remove();
+                updateSelectedLanguagesInput(); // Update hidden input field
+            });
+
+            // Append button and tag to the container
+            tag.appendChild(removeButton);
+            selectedLanguagesContainer.appendChild(tag);
+
+            // Update the hidden input field with selected languages
+            updateSelectedLanguagesInput();
+        }
+    }
 
     function updateSelectedLanguagesInput() {
         // Get the selected values from the tags and set them in the hidden input
         const selectedValues = [...selectedLanguagesContainer.querySelectorAll('.language-tag')]
-            .map(tag => tag.getAttribute('data-value'));
+            .map(tag => tag.getAttribute('data-value'))
+            .filter(value => value !== '');
         selectedLanguagesInput.value = selectedValues.join(',');
     }
 }
+
 
 // labelCheckbox.js
 

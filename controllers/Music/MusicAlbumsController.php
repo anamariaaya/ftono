@@ -60,7 +60,7 @@ class MusicAlbumsController{
         if(!$album){
             header('Location: /music/albums');
         }
-        $titulo = $album->titulo;
+        $titulo = 'artist_title';
         $router->render('music/albums/current',[
             'titulo' => $titulo,
             'album' => $album,
@@ -82,7 +82,7 @@ class MusicAlbumsController{
             $sellos[] = $sello;
         }
 
-        $titulo = tt('music_albums_new');
+        $titulo = 'music_albums_new';
         $album = new Albums;
         $idiomas = Idiomas::AllOrderAsc('idioma_en');
         $tipoUsuario = NTMusica::where('id_usuario', $id);
@@ -190,9 +190,119 @@ class MusicAlbumsController{
 
     public static function edit(Router $router){
         isMusico();
-        $titulo = tt('music_albums_edit');
+        $id = $_SESSION['id'];
+        $lang = $_SESSION['lang'] ?? 'en';
+        $titulo = 'music_albums_edit-title';
+        $albumId = redireccionar('/music/albums');
+        $album = Albums::find($albumId);
+        $idiomas = Idiomas::AllOrderAsc('idioma_en');
+        $albumArtista = AlbumArtista::where('id_albums',$album->id);
+        $albumIdiomas = AlbumIdiomas::whereAll('id_album', $album->id);
+
+        $albumArtSecundarios = AlbumArtSecundarios::where('id_albums',$album->id);
+        $artistas = Artistas::whereOrdered('id_usuario', $id, 'nombre');
+        $selectedArtist = AlbumArtista::where('id_albums',$album->id);
+        $selectedArtistId = $selectedArtist->id_artistas;
+
+        $albumIdiomas = AlbumIdiomas::whereAll('id_album', $album->id);
+        $selectedLanguages = []; // This should be fetched based on the album ID
+        foreach ($albumIdiomas as $albumIdioma) {
+            $selectedLanguages[] = $albumIdioma->id_idioma; // Assuming $albumIdiomas contains records related to the current album
+        }
+
+        $usuariosellos = UsuarioSellos::whereAll('id_usuario', $id);
+        $sellos = array();
+        foreach($usuariosellos as $usuarioSello){
+            $sello = Sellos::find($usuarioSello->id_sellos);
+            $sellos[] = $sello;
+        }
+        $tipoUsuario = NTMusica::where('id_usuario', $id);
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $album ->sincronizar($_POST);
+            $albumArtSecundarios->artistas = $_POST['art-secundarios'];
+            $album->id_usuario = $_SESSION['id'];
+            $alertas = $album->validarAlbum();
+            $perfilUsuario = PerfilUsuario::where('id_usuario', $id); 
+
+            if(empty($alertas)){
+                if($tipoUsuario->id_nivel != 3){
+                    if(empty($_POST['sello'])){
+                        $empresa = Empresa::where('id', $perfilUsuario->id_empresa);
+                        $artista = Artistas::where('id', $_POST['artistas']);
+                        $album->sello = $empresa->empresa.' - '.$artista->nombre;
+                    }else{
+                        $sello = Sellos::where('id', $_POST['sello']);
+                        $album->sello = $sello->nombre;
+                    }
+                }else{
+                    $empresa = Empresa::where('id', $perfilUsuario->id_empresa);
+                    $album->sello = $empresa->empresa;
+                }
+
+                $directorio = __DIR__.'/../../public/portadas/';
+                if (!is_dir($directorio)) {
+                    mkdir($directorio, 0755, true);
+                }
+                
+                $albumOld = Albums::find($albumId);
+                $nombrePortada = null;
+
+                if (isset($_FILES['portada']) && $_FILES['portada']['error'] === UPLOAD_ERR_OK) {
+                    $nombrePortada = md5(uniqid(rand(), true)) . '.jpg';
+                    move_uploaded_file($_FILES['portada']['tmp_name'], $directorio . '/' . $nombrePortada);
+                    $album->portada = $nombrePortada;
+                    //Eliminar portada anterior
+                    if($albumOld->portada !== 'default-cover.webp'){
+                        unlink($directorio . '/' . $albumOld->portada);
+                    }
+                } else {
+                    $album->portada = $albumOld->portada;
+                }                    
+                
+                $album->guardar();
+
+                $albumArtista->id_artistas = $_POST['artistas'];
+                $albumArtista->guardar();
+
+                if(!empty($_POST['art-secundarios'])){
+                    //Asignar los artistas secundarios al album
+                    $albumArtSecundarios->artistas = $_POST['art-secundarios'];
+                    $albumArtSecundarios->guardar();
+                }
+                //debugging($_POST['selectedLanguages']);
+                //debugging($albumIdiomas);
+                //guardar los idiomas del album
+                foreach ($albumIdiomas as $albumIdioma) {
+                    $albumIdioma->eliminar();
+                }
+
+                $idIdiomas = explode(',', $_POST['selectedLanguages']);
+                foreach($idIdiomas as $idIdioma){
+                    if($buscarIdioma->id_idioma !== $idIdioma){
+                        $albumIdioma = new AlbumIdiomas;
+                        $albumIdioma->id_album = $album->id;
+                        $albumIdioma->id_idioma = $idIdioma;
+                        $albumIdioma->guardar();
+                    }
+                }
+
+                header('Location: /music/albums');
+            }
+        }
+
+
         $router->render('music/albums/edit',[
-            'titulo' => $titulo
+            'titulo' => $titulo,
+            'album' => $album,
+            'lang' => $lang,
+            'albumArtSecundarios' => $albumArtSecundarios,
+            'sellos' => $sellos,
+            'tipoUsuario' => $tipoUsuario,
+            'artistas' => $artistas,
+            'selectedArtistId' => $selectedArtistId,
+            'selectedLanguages' => $selectedLanguages,
+            'idiomas' => $idiomas
         ]);
     }
 

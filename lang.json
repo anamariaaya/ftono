@@ -783,6 +783,10 @@
     "es": "Añadir nuevo álbum",
     "en": "Add new album"
   },
+  "music_albums_new":{
+    "es": "Nuevo Álbum",
+    "en": "New Album"
+  },
   "music_albums_add-btn":{
     "es": "Añadir álbum",
     "en": "Add album"

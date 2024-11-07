@@ -9,7 +9,7 @@ class AlbumIdiomas extends ActiveRecord{
     public function __construct($args = [])
     {
         $this->id = $args['id'] ?? null;
-        $this->id_albums = $args['id_album'] ?? '';
+        $this->id_album = $args['id_album'] ?? '';
         $this->id_idioma = $args['id_idioma'] ?? '';
     }
 }
