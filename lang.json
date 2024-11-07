@@ -767,6 +767,10 @@
     "es": "Tus álbumes",
     "en": "Your albums"
   },
+  "music_albums-languages":{
+    "es": "Idiomas",
+    "en": "Languages"
+  },
   "music_albums-subtitle":{
     "es": "Agrega los álbumes que has lanzado",
     "en": "Add the albums you have released"

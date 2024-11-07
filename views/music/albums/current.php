@@ -18,6 +18,8 @@
             <p><span class="text-yellow">{%t-label%}: </span><?php echo $album->sello;?></p>
             <p><span class="text-yellow">{%t-publisher%}: </span><?php echo $album->publisher;?></p>
             <p><span class="text-yellow">{%t-rec-date%}: </span><?php echo $album->fecha_rec;?></p>
+            <p><span class="text-yellow">{%music_albums-languages%}: </span>
+            <?php echo $idiomas;?></p>
         </div>        
     </div>
 </div>

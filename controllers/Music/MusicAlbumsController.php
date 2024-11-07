@@ -56,6 +56,26 @@ class MusicAlbumsController{
         $artistaId = AlbumArtista::where('id_albums',$album->id);
         $artista = Artistas::find($artistaId->id_artistas);
         $art_secundarios = AlbumArtSecundarios::where('id_albums',$album->id);
+        $albumIdiomas = AlbumIdiomas::whereAll('id_album', $album->id);
+        $idiomas = [];
+        //debugging($albumIdiomas);
+        foreach($albumIdiomas as $albumIdioma){
+            $idioma = Idiomas::find($albumIdioma->id_idioma);
+            $idiomas[] = $idioma;
+            //convertir el array de idiomas en un string
+        }
+        //convertir el objeto de idiomas en array
+        $idiomas = array_map(function($idioma){
+            $lang = $_SESSION['lang'] ?? 'en';
+            if($lang === 'es'){
+                return $idioma->idioma_es;
+            }else{
+                return $idioma->idioma_en;
+            }
+        }, $idiomas);
+
+        $idiomas = implode(', ', $idiomas);
+
         $songs = [];
         if(!$album){
             header('Location: /music/albums');
@@ -66,7 +86,8 @@ class MusicAlbumsController{
             'album' => $album,
             'songs' => $songs,
             'artista' => $artista,
-            'art_secundarios' => $art_secundarios
+            'art_secundarios' => $art_secundarios,
+            'idiomas' => $idiomas
         ]);
     }
 
