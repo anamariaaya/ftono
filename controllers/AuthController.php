@@ -144,17 +144,17 @@ class AuthController {
         $userType = $_GET['type'] ?? null;
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!empty($_POST['honeypot'])) {
+                die(header('Location: /'));
+            }
             $usuario->sincronizar($_POST);
             $usuario->nombre = sText($usuario->nombre);
             $usuario->apellido = sText($usuario->apellido);
             $tipoMusico->sincronizar($_POST);
-            //debuguear($_POST);
             
             $alertas = $usuario->validar_cuenta();
             $alertas = $tipoMusico->validar_tipo();
             $alertas = $usuario->validarPassword();
-
-            //debuguear($tipoMusico);
 
             if($tipoMusico->id_musica === '1' || $tipoMusico->id_musica === '2'){
                 $tipoMusico->id_nivel = '2';
