@@ -2,7 +2,7 @@
     <div class="dashboard__header-grid">
         <div class="dashboard__saludo">
             <a href="/">
-                <img class="dashboard__logo" src="/build/img/logo.svg" loading="lazy" alt="logotipo Asignar">
+                <img class="dashboard__logo" src="/build/img/logo.svg" loading="lazy" alt="logo">
             </a>
 
             <h3 class="dashboard__titulo"><?php echo tt('nav_hello').' '.$_SESSION['nombre'].'!'; ?></h3>

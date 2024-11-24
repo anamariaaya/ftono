@@ -53,3 +53,14 @@ export const mensajesInput = document.querySelector('#mensajes-search');
 //selectores de artistas
 export const gridArtistas = document.querySelector('#grid-artistas');
 export const artistasSearchInput = document.querySelector('#artistas-search');
+
+//Albums and single tabs admin block
+export const albumsBlock = document.querySelector('.tabs__music--albums');
+export const singlesBlock = document.querySelector('.tabs__music--singles');
+export const albumsBtn = document.querySelector('#btn-albums');
+export const singlesBtn = document.querySelector('#btn-singles');
+export const musicBtn = document.querySelectorAll('.tabs__music__buttons--btn');
+
+//selectores de la sección de albums
+export const gridAlbumes = document.querySelector('#grid-albumes');
+export const albumesInput = document.querySelector('#albumes-search');

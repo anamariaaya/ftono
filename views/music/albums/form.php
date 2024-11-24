@@ -77,7 +77,9 @@
     </div>
 
     <div class="form__group">
-        <label for="idiomas" class="form__group__label">{%music_albums_languages_label%}</label>
+        <label for="idiomas" class="form__group__label">{%music_albums_languages_label%}
+            <span class="text-yellow">*</span>
+        </label>
         <select id="idiomas" name="idiomas" class="form__group__select" multiple>
             <option disabled value="">{%music_albums_languages_placeholder%}</option>
             

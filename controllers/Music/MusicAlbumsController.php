@@ -28,7 +28,7 @@ class MusicAlbumsController{
     }
 
     public static function consultaAlbumes(){
-        //isMusico();
+        isMusico();
         $id = $_SESSION['id'];
         $albums = 'SELECT 
             al.*,
@@ -124,6 +124,17 @@ class MusicAlbumsController{
             $albumArtSecundarios->artistas = $_POST['art-secundarios'];
             $album->id_usuario = $_SESSION['id'];
             $alertas = $album->validarAlbum();
+            //debugging($_POST);
+            if (!isset($_POST['artistas']) || $_POST['artistas'] === '0' || trim($_POST['artistas']) === '') {
+                $alertas = Artistas::setAlerta('error', 'music_albums_artist_alert-required');
+            }
+            $alertas = Artistas::getAlertas();
+            //debugging($alertas);
+
+            if(empty($_POST['selectedLanguages'])){
+                Idiomas::setAlerta('error','music_albums_languages_alert-required');
+            }
+            $alertas = Idiomas::getAlertas();
             
             if(empty($alertas)){
                 if($tipoUsuario->id_nivel != 3){
@@ -329,6 +340,17 @@ class MusicAlbumsController{
             'selectedLanguages' => $selectedLanguages,
             'idiomas' => $idiomas
         ]);
+    }
+
+    public static function delete(Router $router){
+        isMusico();
+        redireccionar('/music/albums');
+        $albumId = redireccionar('/music/albums');
+        $album = Albums::find($albumId);
+        $resultado = $album->eliminar();
+        if($resultado){
+            header('Location: /music/albums');
+        }
     }
 
     public static function newSong(Router $router){

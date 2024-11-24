@@ -203,6 +203,8 @@ export function cerrarAlerta(){
     const alerta = document.querySelector('.modal-alerta--activo');
     if(alerta){
         alerta.remove();
+        dashboardContenido.classList.remove('overlay');
+        
     }
 }
 

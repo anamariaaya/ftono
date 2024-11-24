@@ -855,6 +855,10 @@
     "es": "Selecciona el artista",
     "en": "Select the artist"
   },
+  "music_albums_artist_alert-required":{
+    "es": "El artista es obligatorio",
+    "en": "The artist is required"
+  },
   "music_albums_artist-secondary_label":{
     "es": "Artistas Secundarios",
     "en": "Secondary Artists"
@@ -870,6 +874,10 @@
   "music_albums_upc_placeholder":{
     "es": "Ejemplo: 123456789012",
     "en": "Example: 123456789012"
+  },
+  "music_albums_languages_alert-required":{
+    "es": "El idioma principal es obligatorio",
+    "en": "The main language is required"
   },
   "music_albums_languages_label":{
     "es": "Idiomas. Puedes seleccionar varios",

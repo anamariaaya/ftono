@@ -92,7 +92,7 @@ class MusicLabelsController{
 
     public static function delete(){
         isMusico();
-        redireccionar('/music/labels');;
+        $sellos = redireccionar('/music/labels');
         $sellos = Sellos::find($id);
         $resultado = $sellos->eliminar();
         if($resultado){

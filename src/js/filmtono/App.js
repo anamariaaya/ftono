@@ -1,4 +1,4 @@
-import { artistaSecundario, artistasInput, btnAgregar, contratosContainer, gridUsuarios, portada, promoInput, gridCategorias, gridGeneros, gridKeywords, gridLabels, gridIdiomas, gridMensajes, gridArtistas } from "./selectores.js";
+import { artistaSecundario, artistasInput, btnAgregar, contratosContainer, gridUsuarios, portada, promoInput, gridCategorias, gridGeneros, gridKeywords, gridLabels, gridIdiomas, gridMensajes, gridArtistas, albumsBlock, gridAlbumes } from "./selectores.js";
 import { chooseLang } from "../UI/language.js";
 import { styleDatalist, styleFileInput, artistasSecundarios, addArtist } from "./artistas.js";
 import { readFileName } from "./ux.js";
@@ -11,6 +11,7 @@ import { consultaLabels } from "./labels.js";
 import { consultaIdiomas } from "./idiomas.js";
 import { consultaMensajes } from "./mensajes.js";
 import { consultaArtistas } from "./artists.js";
+import { consultaAlbumes } from "./albums.js";
 import { changeTabs, eliminarItem, btnSubmitLoader, handleLanguageSelection
     , initializeLabelCheckbox, initializeFileNameDisplay } from "../base/funciones.js";
 import {btnEliminar, submitBtns, tabsDiv, languageSelect, selloInput, fileInput} from '../base/selectores.js';
@@ -19,6 +20,7 @@ import { btnSubmit, paisValue, formArtist } from "../music/selectores.js";
 import { passbtn } from "../UI/selectores.js";
 import { showPassword } from "../UI/UI.js";
 import { validateArtistForm } from "../music/artistValidation.js";
+import { musicTabs } from "../music/musicTabs.js";
 
 class App{
     constructor(){
@@ -96,6 +98,12 @@ class App{
         }
         if(fileInput){
             initializeFileNameDisplay();
+        }
+        if(albumsBlock){
+            musicTabs();
+        }
+        if(gridAlbumes){
+            consultaAlbumes();
         }
     }
 }
