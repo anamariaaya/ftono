@@ -91,15 +91,15 @@ $router->get('/music/labels/delete', [MusicLabelsController::class, 'delete']);
 
 //Music Albums
 $router->get('/music/albums', [MusicAlbumsController::class, 'index']);
+$router->get('/api/music/albums/albums', [MusicAlbumsController::class, 'consultaAlbumes']);
 $router->get('/music/albums/current', [MusicAlbumsController::class, 'current']);
 $router->get('/music/albums/new', [MusicAlbumsController::class, 'new']);
 $router->post('/music/albums/new', [MusicAlbumsController::class, 'new']);
 $router->get('/music/albums/edit', [MusicAlbumsController::class, 'edit']);
 $router->post('/music/albums/edit', [MusicAlbumsController::class, 'edit']);
 $router->get('/music/albums/delete', [MusicAlbumsController::class, 'delete']);
-$router->get('/music/albums/song/new', [MusicAlbumsController::class, 'newSong']);
-$router->post('/music/albums/song/new', [MusicAlbumsController::class, 'newSong']);
-$router->get('/api/music/albums/albums', [MusicAlbumsController::class, 'consultaAlbumes']);
+$router->get('/music/albums/singles/new', [MusicAlbumsController::class, 'newSingle']);
+
 
 //Music Artists
 $router->get('/music/artists', [MusicArtistsController::class, 'index']);

@@ -3,8 +3,8 @@ import {tabs, paginador, formularioReg} from "./perfiles.js";
 import { selectPais, afterNav, paisContacto, firmasDashboard, countrySelected, gridSellos, gridArtistas, formArtist, albumsBlock, gridAlbumes } from "./selectores.js";
 import { chooseLang } from "../UI/language.js";
 import { blockDashboard, signContract } from "./contracts.js";
-import { eliminarItem, btnSubmitLoader, changeTabs, handleLanguageSelection, initializeLabelCheckbox } from "../base/funciones.js";
-import { btnEliminar, submitBtns, tabsDiv, languageSelect, selloInput } from '../base/selectores.js';
+import { eliminarItem, btnSubmitLoader, changeTabs, handleLanguageSelection, initializeLabelCheckbox, handleGenreSelection } from "../base/funciones.js";
+import { btnEliminar, submitBtns, tabsDiv, languageSelect, selloInput, genreSelect } from '../base/selectores.js';
 import { passbtn } from "../UI/selectores.js";
 import { showPassword } from "../UI/UI.js";
 import {consultaSellos } from "./labels.js";
@@ -76,6 +76,9 @@ class App{
         }
         if(gridAlbumes){
             consultaAlbumes();
+        }
+        if(genreSelect){
+            handleGenreSelection();
         }
     }
 }

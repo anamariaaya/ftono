@@ -9,6 +9,7 @@ use Model\Empresa;
 use Model\Idiomas;
 use Model\Artistas;
 use Model\NTMusica;
+use Model\Canciones;
 use Model\AlbumArtista;
 use Model\AlbumIdiomas;
 use Model\PerfilUsuario;
@@ -353,21 +354,23 @@ class MusicAlbumsController{
         }
     }
 
-    public static function newSong(Router $router){
+    public static function newSingle(Router $router){
         isMusico();
+        $titulo = 'music_singles_new-title';
+        $single = new Canciones;
         $lang = $_SESSION['lang'] ?? 'en';
-        $generos = Genres::AllOrderAsc('genero_'.$_SESSION['lang']);
-        $titulo = tt('music_songs_new');
-        $albumId = redireccionar('/music/albums');
-        $album = Albums::find($albumId);
-        if(!$album){
-            header('Location: /music/albums');
+        $selectedGenres = [];
+        if($lang == 'en'){
+            $generos = Genres::AllOrderAsc('genero_en');
+        }else{
+            $generos = Genres::AllOrderAsc('genero_es');
         }
-        $router->render('music/albums/song/new',[
+        $router->render('music/albums/singles/new',[
             'titulo' => $titulo,
-            'album' => $album,
+            'single' => $single,
+            'lang' => $lang,
             'generos' => $generos,
-            'lang' => $lang
+            'selectedGenres' => $selectedGenres
         ]);
     }
 }

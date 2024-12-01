@@ -1,6 +1,6 @@
 import {er, num, indicativo, formArtist, artistFields} from '../music/selectores.js';
 
-import {body, dashboardContenido, tabsBtns, tabsContent, tabsDiv, submitBtns, languageSelect, selectedLanguagesContainer, selectedLanguagesInput, selloInput, noLabelCheckbox, defaultLabelInput, fileInput, fileNameContainer} from './selectores.js';
+import {body, dashboardContenido, tabsBtns, tabsContent, tabsDiv, submitBtns, languageSelect, selectedLanguagesContainer, selectedLanguagesInput, selloInput, noLabelCheckbox, defaultLabelInput, fileInput, fileNameContainer, selectedGenresContainer, selectedGenresInput, genreSelect} from './selectores.js';
 
 
 export async function readLang(){
@@ -315,6 +315,66 @@ export function handleLanguageSelection() {
     }
 }
 
+// Genre handler
+export function handleGenreSelection() {
+    // Clear existing tags to prevent duplication
+    selectedGenresContainer.innerHTML = '';
+
+    // First, populate the selected languages if they exist in the input value
+    if (selectedGenresInput.value) {
+        const selectedValues = selectedGenresInput.value.split(',').filter(value => value !== '');
+        selectedValues.forEach(value => {
+            addGenreTag(value);
+        });
+    }
+
+    // Add event listener to select dropdown
+    genreSelect.addEventListener('change', () => {
+        const selectedValue = genreSelect.value;
+        
+        // Check if the option is already selected
+        const existingTag = selectedGenresContainer.querySelector(`[data-value="${selectedValue}"]`);
+        if (!existingTag) {
+            // Only add the tag if it doesn't already exist
+            addGenreTag(selectedValue);
+        }
+    });
+
+    function addGenreTag(selectedValue) {
+        const option = genreSelect.querySelector(`option[value="${selectedValue}"]`);
+        if (option) {
+            const tag = document.createElement('div');
+            tag.classList.add('language-tag');
+            tag.textContent = option.text;
+            tag.setAttribute('data-value', selectedValue); // Store the value for reference
+
+            // Create the remove button
+            const removeButton = document.createElement('button');
+            removeButton.classList.add('remove-language');
+            removeButton.textContent = 'x';
+            removeButton.addEventListener('click', () => {
+                option.selected = false; // Unselect the language
+                tag.remove();
+                updateSelectedGenresInput(); // Update hidden input field
+            });
+
+            // Append button and tag to the container
+            tag.appendChild(removeButton);
+            selectedGenresContainer.appendChild(tag);
+
+            // Update the hidden input field with selected languages
+            updateSelectedGenresInput();
+        }
+    }
+
+    function updateSelectedGenresInput() {
+        // Get the selected values from the tags and set them in the hidden input
+        const selectedValues = [...selectedGenresContainer.querySelectorAll('.language-tag')]
+            .map(tag => tag.getAttribute('data-value'))
+            .filter(value => value !== '');
+        selectedGenresInput.value = selectedValues.join(',');
+    }
+}
 
 // labelCheckbox.js
 

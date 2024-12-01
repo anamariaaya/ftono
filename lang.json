@@ -963,6 +963,10 @@
     "es": "No hay sencillos en tu catálogo",
     "en": "There are no singles in your catalogue"
   },
+  "music_singles_new-title":{
+    "es": "Nuevo Sencillo",
+    "en": "New Single"
+  },
   "music_songs_add-title":{
     "es": "Añadir nueva canción",
     "en": "Add new song"
@@ -1024,8 +1028,8 @@
     "en": "Select the main genre"
   },
   "music_songs_form-subgenre_label":{
-    "es": "Subgénero",
-    "en": "Subgenre"
+    "es": "Subgéneros",
+    "en": "Subgenres"
   },
   "music_songs_form-subgenre_placeholder":{
     "es": "Selecciona los subgéneros",
@@ -1055,13 +1059,29 @@
     "es": "Ejemplo: John Doe, Jane Doe",
     "en": "Example: John Doe, Jane Doe"
   },
-  "music_songs-form-writers-percent_label":{
+  "music_songs_form-writers-percent_legend":{
+    "es": "Porcentaje de propiedad del compositor y la editorial",
+    "en": "Percentage of ownership of the composer and the publisher"
+  },
+  "music_songs_form-writers-percent_label":{
     "es": "Porcentaje de propiedad del compositor",
     "en": "Composer ownership percentage"
   },
-  "music_songs-form-writers-percent_placeholder":{
+  "music_songs_form-writers-percent_placeholder":{
     "es": "Ejemplo: 50%",
     "en": "Example: 50%"
+  },
+  "music_songs_form-publisher-percent_label":{
+    "es": "Porcentaje de propiedad de la editorial",
+    "en": "Publisher ownership percentage"
+  },
+  "music_songs_form-publisher-percent_placeholder":{
+    "es": "Ejemplo: 50%",
+    "en": "Example: 50%"
+  },
+  "music_songs-form-fonogram-percent_legend":{
+    "es": "Porcentaje de propiedad del fonograma",
+    "en": "Fonogram ownership percentage"
   },
   "music_songs-form-fonogram-percent_label":{
     "es": "Porcentaje del fonograma",
@@ -1116,6 +1136,14 @@
     "en": "Song level"
   },
   "music_songs_form-song-level_placeholder":{
+    "es": "Selecciona un nivel",
+    "en": "Select a level"
+  },
+  "music_songs_form-single-level_label":{
+    "es": "Nivel de la canción",
+    "en": "Song level"
+  },
+  "music_songs_form-single-level_placeholder":{
     "es": "Selecciona un nivel",
     "en": "Select a level"
   },

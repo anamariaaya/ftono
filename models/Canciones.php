@@ -4,14 +4,13 @@ namespace Model;
 
 class Canciones extends ActiveRecord{
     protected static $tabla = 'canciones';
-    protected static $columnasDB = ['id', 'titulo', 'version', 'letra', 'isrc', 'url'];
+    protected static $columnasDB = ['id', 'titulo', 'version', 'isrc', 'url'];
 
     public function __construct($args = [])
     {
         $this->id = $args['id'] ?? null;
         $this->titulo = $args['titulo'] ?? '';
         $this->version = $args['version'] ?? '';
-        $this->letra = $args['letra'] ?? '';
         $this->isrc = $args['isrc'] ?? '';
         $this->url = $args['url'] ?? '';
     }

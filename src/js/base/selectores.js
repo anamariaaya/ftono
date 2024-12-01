@@ -21,3 +21,8 @@ export const defaultLabelInput = document.getElementById('defaultLabel');
 //Selectores de archivo tipo imagen
 export const fileInput = document.getElementById('imageFile');
 export const fileNameContainer = document.createElement('p');
+
+//Selectores de slect genero en single and song
+export const genreSelect = document.getElementById('genero');
+export const selectedGenresContainer = document.getElementById('selectedGenres');
+export const selectedGenresInput = document.getElementById('selectedGenresInput');
