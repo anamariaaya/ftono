@@ -1028,20 +1028,20 @@
     "en": "Select the main genre"
   },
   "music_songs_form-subgenre_label":{
-    "es": "Subgéneros",
-    "en": "Subgenres"
+    "es": "Subgéneros (máximo 5)",
+    "en": "Subgenres (maximum 5)"
   },
   "music_songs_form-subgenre_placeholder":{
     "es": "Selecciona los subgéneros",
     "en": "Select the subgenres"
   },
-  "music_songs_form-category_label":{
-    "es": "Categoría",
-    "en": "Category"
+  "music_songs_form-instruments_label":{
+    "es": "Instrumentos (máximo 5)",
+    "en": "Instruments (maximum 5)"
   },
-  "music_songs_form-category_placeholder":{
-    "es": "Ejemplo: Canción",
-    "en": "Example: Song"
+  "music_songs_form-instruments_placeholder":{
+    "es": "Selecciona los instrumentos",
+    "en": "Select the instruments"
   },
   "music_song_form-colaborators_label":{
     "es": "Colaboradores",

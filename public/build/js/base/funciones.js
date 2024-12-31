@@ -1,6 +1,6 @@
 import {er, num, indicativo, formArtist, artistFields} from '../music/selectores.js';
 
-import {body, dashboardContenido, tabsBtns, tabsContent, tabsDiv, submitBtns, languageSelect, selectedLanguagesContainer, selectedLanguagesInput, selloInput, noLabelCheckbox, defaultLabelInput, fileInput, fileNameContainer, selectedGenresContainer, selectedGenresInput, genreSelect} from './selectores.js';
+import {body, dashboardContenido, tabsBtns, tabsContent, tabsDiv, submitBtns, languageSelect, selectedLanguagesContainer, selectedLanguagesInput, selloInput, noLabelCheckbox, defaultLabelInput, fileInput, fileNameContainer, selectedGenresContainer, selectedGenresInput, genreSelect, selectedInstrumentsContainer, selectedInstrumentsInput, instrumentSelect} from './selectores.js';
 
 
 export async function readLang(){
@@ -344,13 +344,13 @@ export function handleGenreSelection() {
         const option = genreSelect.querySelector(`option[value="${selectedValue}"]`);
         if (option) {
             const tag = document.createElement('div');
-            tag.classList.add('language-tag');
+            tag.classList.add('genero-tag');
             tag.textContent = option.text;
             tag.setAttribute('data-value', selectedValue); // Store the value for reference
 
             // Create the remove button
             const removeButton = document.createElement('button');
-            removeButton.classList.add('remove-language');
+            removeButton.classList.add('remove-genero');
             removeButton.textContent = 'x';
             removeButton.addEventListener('click', () => {
                 option.selected = false; // Unselect the language
@@ -369,10 +369,70 @@ export function handleGenreSelection() {
 
     function updateSelectedGenresInput() {
         // Get the selected values from the tags and set them in the hidden input
-        const selectedValues = [...selectedGenresContainer.querySelectorAll('.language-tag')]
+        const selectedValues = [...selectedGenresContainer.querySelectorAll('.genero-tag')]
             .map(tag => tag.getAttribute('data-value'))
             .filter(value => value !== '');
         selectedGenresInput.value = selectedValues.join(',');
+    }
+}
+
+export function handleInstrumentSelection() {
+    // Clear existing tags to prevent duplication
+    selectedInstrumentsContainer.innerHTML = '';
+
+    // First, populate the selected languages if they exist in the input value
+    if (selectedInstrumentsInput.value) {
+        const selectedValues = selectedInstrumentsInput.value.split(',').filter(value => value !== '');
+        selectedValues.forEach(value => {
+            addInstrumentTag(value);
+        });
+    }
+
+    // Add event listener to select dropdown
+    instrumentSelect.addEventListener('change', () => {
+        const selectedValue = instrumentSelect.value;
+        
+        // Check if the option is already selected
+        const existingTag = selectedInstrumentsContainer.querySelector(`[data-value="${selectedValue}"]`);
+        if (!existingTag) {
+            // Only add the tag if it doesn't already exist
+            addInstrumentTag(selectedValue);
+        }
+    });
+
+    function addInstrumentTag(selectedValue) {
+        const option = instrumentSelect.querySelector(`option[value="${selectedValue}"]`);
+        if (option) {
+            const tag = document.createElement('div');
+            tag.classList.add('instrumento-tag');
+            tag.textContent = option.text;
+            tag.setAttribute('data-value', selectedValue); // Store the value for reference
+
+            // Create the remove button
+            const removeButton = document.createElement('button');
+            removeButton.classList.add('remove-instrumento');
+            removeButton.textContent = 'x';
+            removeButton.addEventListener('click', () => {
+                option.selected = false; // Unselect the language
+                tag.remove();
+                updateSelectedInstrumentsInput(); // Update hidden input field
+            });
+
+            // Append button and tag to the container
+            tag.appendChild(removeButton);
+            selectedInstrumentsContainer.appendChild(tag);
+
+            // Update the hidden input field with selected languages
+            updateSelectedInstrumentsInput();
+        }
+    }
+
+    function updateSelectedInstrumentsInput() {
+        // Get the selected values from the tags and set them in the hidden input
+        const selectedValues = [...selectedInstrumentsContainer.querySelectorAll('.instrumento-tag')]
+            .map(tag => tag.getAttribute('data-value'))
+            .filter(value => value !== '');
+        selectedInstrumentsInput.value = selectedValues.join(',');
     }
 }
 

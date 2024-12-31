@@ -22,7 +22,12 @@ export const defaultLabelInput = document.getElementById('defaultLabel');
 export const fileInput = document.getElementById('imageFile');
 export const fileNameContainer = document.createElement('p');
 
-//Selectores de slect genero en single and song
-export const genreSelect = document.getElementById('genero');
+//Selectores de select genero en single and song
+export const genreSelect = document.getElementById('generos');
 export const selectedGenresContainer = document.getElementById('selectedGenres');
 export const selectedGenresInput = document.getElementById('selectedGenresInput');
+
+//selectores de select instrumento en song
+export const instrumentSelect = document.getElementById('instrumentos');
+export const selectedInstrumentsContainer = document.getElementById('selectedInstruments');
+export const selectedInstrumentsInput = document.getElementById('selectedInstrumentsInput');

@@ -1,6 +1,6 @@
 <fieldset class="form__fieldset">
     <div class="form__group">
-        <label class="form__group__label">{%music_songs_form-title_label%}</label>
+        <label class="form__group__label" for="titulo">{%music_songs_form-title_label%}</label>
         <input
             type="text"
             class="form__group__input"
@@ -10,7 +10,7 @@
             value="<?php echo s($single->titulo);?>"/>
     </div>
     <div class="form__group">
-        <label class="form__group__label">{%music_songs_form-version_label%}</label>
+        <label class="form__group__label" for="version">{%music_songs_form-version_label%}</label>
         <input
             type="text"
             class="form__group__input"
@@ -19,9 +19,11 @@
             placeholder="{%music_songs_form-version_placeholder%}"
             value="<?php echo s($single->version);?>"/>
     </div>
+
+    <!--Género principal-->
     <div class="form__group">
-        <label class="form__group__label" for="tipo">{%music_songs_form-genre_label%}</label>
-        <select class="form__group__select" name="id_musica" id="tipo">
+        <label class="form__group__label" for="genero">{%music_songs_form-genre_label%}</label>
+        <select class="form__group__select" name="genero" id="genero">
             <option selected disabled>
                 {%music_songs_form-genre_placeholder%}
             </option>
@@ -30,9 +32,11 @@
             <?php endforeach; ?>
         </select>
     </div>
+
+    <!-- Géneros secundarios-->
     <div class="form__group">
-        <label class="form__group__label" for="tipo">{%music_songs_form-subgenre_label%}</label>
-        <select class="form__group__select" name="id_musica" id="tipo" multiple>
+        <label class="form__group__label" for="generos">{%music_songs_form-subgenre_label%}</label>
+        <select class="form__group__select" name="generos" id="generos" multiple>
             <option disabled>
                 {%music_songs_form-subgenre_placeholder%}
             </option>
@@ -51,27 +55,59 @@
                         }
                     }
                 ?>
-                <span class="language--tag" data-id="<?php echo $selectedGenreId; ?>">
+                <span class="genero-tag" data-id="<?php echo $selectedGenreId; ?>">
                     <?php echo $genreName; ?>
-                    <button type="button" class="remove-language">&times;</button>
+                    <button type="button" class="remove-genero">&times;</button>
                 </span>
             <?php endforeach; ?>
-            <input type="hidden" id="selectedGenresInput" name="selectedGenres" value="<?php echo implode(',', $selectedGenres); ?>">
         </div>
+       <input type="hidden" id="selectedGenresInput" name="selectedGenres" value="<?php echo implode(',', $selectedGenres); ?>">
+    </div>
+
+    <!--Instrumentos-->
+    <div class="form__group">
+        <label class="form__group__label" for="instrumentos">{%music_songs_form-instruments_label%}</label>
+        <select class="form__group__select" name="instrumentos" id="instrumentos" multiple>
+            <option disabled>
+                {%music_songs_form-instruments_placeholder%}
+            </option>
+            <?php foreach($instrumentos as $instrumento): ?>
+                <option value="<?php echo $instrumento->id; ?>"><?php echo $lang =='en' ? $instrumento->keyword_en : $instrumento->keyword_es ?></option>
+            <?php endforeach; ?>
+        </select>
+
+        <div id="selectedInstruments" class="form__group__languages">
+            <?php foreach ($selectedInstruments as $selectedInstrumentId) :?>
+                <?php
+                    $instrumentName = '';
+                    foreach ($instrumentos as $instrumento) {
+                        if ($instrumento->id === $selectedInstrumentId) {
+                            $instrumentName = $lang === 'en' ? $instrumento->keyword_en : $instrumento->keyword_es;
+                        }
+                    }
+                ?>
+                <span class="instrumento-tag" data-id="<?php echo $selectedInstrumentId; ?>">
+                    <?php echo $instrumentName; ?>
+                    <button type="button" class="remove-instrumento">&times;</button>
+                </span>
+            <?php endforeach; ?>
+        </div>
+       <input type="hidden" id="selectedInstrumentsInput" name="selectedInstruments" value="<?php echo implode(',', $selectedInstruments); ?>">
     </div>
 
     
-    <div class="form__group">
-        <label class="form__group__label" for="tipo">{%music_songs_form-category_label%}</label>
+    <!-- <div class="form__group">
+        <label class="form__group__label" for="tipo">{%music_songs_form-instruments_label%}</label>
         <select class="form__group__select" name="id_musica" id="tipo">
             <option selected disabled>
-                {%music_songs_form-category_placeholder%}
+                {%music_songs_form-instruments_placeholder%}
             </option>
-            <?php foreach($generos as $genero): ?>
-                <option value="<?php echo $genero->id; ?>"><?php echo $lang =='en' ? $genero->genero_en : $genero->genero_es ?></option>
+            <?php foreach($instrumentos as $instrumento): ?>
+                <option value="<?php echo $instrumento->id; ?>"><?php echo $lang =='en' ? $instrumento->keyword_en : $instrumento->keyword_es ?></option>
             <?php endforeach; ?>
         </select>
-    </div>
+    </div> -->
+
     <div class="form__group">
         <label class="form__group__label">{%music_song_form-colaborators_label%}</label>
         <input

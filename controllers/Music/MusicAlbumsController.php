@@ -8,6 +8,7 @@ use Model\Sellos;
 use Model\Empresa;
 use Model\Idiomas;
 use Model\Artistas;
+use Model\Keywords;
 use Model\NTMusica;
 use Model\Canciones;
 use Model\AlbumArtista;
@@ -360,6 +361,10 @@ class MusicAlbumsController{
         $single = new Canciones;
         $lang = $_SESSION['lang'] ?? 'en';
         $selectedGenres = [];
+        $consultaInstrumentos= "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = 2;";
+        $instrumentos = Keywords::consultarSQL($consultaInstrumentos);
+        $selectedInstruments = [];
+
         if($lang == 'en'){
             $generos = Genres::AllOrderAsc('genero_en');
         }else{
@@ -370,7 +375,9 @@ class MusicAlbumsController{
             'single' => $single,
             'lang' => $lang,
             'generos' => $generos,
-            'selectedGenres' => $selectedGenres
+            'selectedGenres' => $selectedGenres,
+            'instrumentos' => $instrumentos,
+            'selectedInstruments' => $selectedInstruments
         ]);
     }
 }
