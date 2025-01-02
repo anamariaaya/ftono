@@ -98,7 +98,9 @@ $router->post('/music/albums/new', [MusicAlbumsController::class, 'new']);
 $router->get('/music/albums/edit', [MusicAlbumsController::class, 'edit']);
 $router->post('/music/albums/edit', [MusicAlbumsController::class, 'edit']);
 $router->get('/music/albums/delete', [MusicAlbumsController::class, 'delete']);
-$router->get('/music/albums/singles/new', [MusicAlbumsController::class, 'newSingle']);
+
+//Music Singles
+$router->get('/music/singles/new', [MusicAlbumsController::class, 'newSingle']);
 
 
 //Music Artists

@@ -11,8 +11,11 @@ use Model\Artistas;
 use Model\Keywords;
 use Model\NTMusica;
 use Model\Canciones;
+use Model\Categorias;
 use Model\AlbumArtista;
 use Model\AlbumIdiomas;
+use Model\CancionColab;
+use Model\NivelCancion;
 use Model\PerfilUsuario;
 use Model\UsuarioSellos;
 use Model\AlbumArtSecundarios;
@@ -358,26 +361,58 @@ class MusicAlbumsController{
     public static function newSingle(Router $router){
         isMusico();
         $titulo = 'music_singles_new-title';
-        $single = new Canciones;
+        $single = true;
+        $id = $_SESSION['id'];
+        $tipoUsuario = NTMusica::where('id_usuario', $id);
+        $song = new Canciones;
         $lang = $_SESSION['lang'] ?? 'en';
-        $selectedGenres = [];
-        $consultaInstrumentos= "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = 2;";
-        $instrumentos = Keywords::consultarSQL($consultaInstrumentos);
-        $selectedInstruments = [];
+        $songColab = new CancionColab;
+        
+        $selectedCategories = [];
+        $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2, 3);";
+        $categorias = Categorias::consultarSQL($consultaCategorias);
 
+        $niveles = NivelCancion::AllOrderAsc('nivel_en');
+        $artistas = Artistas::whereOrdered('id_usuario', $_SESSION['id'], 'nombre');
+        
         if($lang == 'en'){
             $generos = Genres::AllOrderAsc('genero_en');
         }else{
             $generos = Genres::AllOrderAsc('genero_es');
         }
+        $selectedGenres = [];
+
+        $consultaInstrumentos= "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = 2;";
+        $instrumentos = Keywords::consultarSQL($consultaInstrumentos);
+        $selectedInstruments = [];
+
+        $consultaKeywords = "SELECT k.* FROM keywords k INNER JOIN categ_keyword ck ON k.id = ck.id_keyword WHERE ck.id_categoria NOT IN (1, 2);";
+        $keywords = Keywords::consultarSQL($consultaKeywords);
+        $selectedKeywords = [];
+
+        $idiomas = Idiomas::AllOrderAsc('idioma_en');
+        $selectedLanguages = [];
+
         $router->render('music/albums/singles/new',[
             'titulo' => $titulo,
             'single' => $single,
+            'tipoUsuario' => $tipoUsuario,
+            'song' => $song,
+            'lang' => $lang,
+            'songColab' => $songColab,
+            'categorias' => $categorias,
+            'selectedCategories' => $selectedCategories,
+            'niveles' => $niveles,
+            'artistas' => $artistas,
             'lang' => $lang,
             'generos' => $generos,
             'selectedGenres' => $selectedGenres,
             'instrumentos' => $instrumentos,
-            'selectedInstruments' => $selectedInstruments
+            'selectedInstruments' => $selectedInstruments,
+            'keywords' => $keywords,
+            'selectedKeywords' => $selectedKeywords,
+            'idiomas' => $idiomas,
+            'selectedLanguages' => $selectedLanguages
         ]);
     }
 }

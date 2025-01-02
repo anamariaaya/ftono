@@ -3,8 +3,8 @@ import {tabs, paginador, formularioReg} from "./perfiles.js";
 import { selectPais, afterNav, paisContacto, firmasDashboard, countrySelected, gridSellos, gridArtistas, formArtist, albumsBlock, gridAlbumes } from "./selectores.js";
 import { chooseLang } from "../UI/language.js";
 import { blockDashboard, signContract } from "./contracts.js";
-import { eliminarItem, btnSubmitLoader, changeTabs, handleLanguageSelection, initializeLabelCheckbox, handleGenreSelection, handleInstrumentSelection } from "../base/funciones.js";
-import { btnEliminar, submitBtns, tabsDiv, languageSelect, selloInput, genreSelect, instrumentSelect } from '../base/selectores.js';
+import { eliminarItem, btnSubmitLoader, changeTabs, handleLanguageSelection, initializeLabelCheckbox, handleGenreSelection, handleInstrumentSelection, handleKeywordsSelection, handleCategorySelection } from "../base/funciones.js";
+import { btnEliminar, submitBtns, tabsDiv, languageSelect, selloInput, genreSelect, instrumentSelect, keywordSelect, categorySelect } from '../base/selectores.js';
 import { passbtn } from "../UI/selectores.js";
 import { showPassword } from "../UI/UI.js";
 import {consultaSellos } from "./labels.js";
@@ -82,6 +82,12 @@ class App{
         }
         if(instrumentSelect){
             handleInstrumentSelection();
+        }
+        if(keywordSelect){
+            handleKeywordsSelection();
+        }
+        if(categorySelect){
+            handleCategorySelection();
         }
     }
 }

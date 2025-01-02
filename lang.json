@@ -812,12 +812,12 @@
     "en": "Update album"
   },
   "music_albums_artist_required":{
-    "es": "Para crear un álbum, debes haber creado primero el artista",
-    "en": "To create an album, you must have created the artist first"
+    "es": "Para crear, debes haber creado primero el artista",
+    "en": "To create, you must have created the artist first"
   },
   "music_albums_artist_label_required":{
-    "es": "Para crear un álbum, debes haber creado primero el artista y el sello discográfico",
-    "en": "To create an album, you must have created the artist and the record label first"
+    "es": "Para crear, debes haber creado primero el artista y el sello discográfico",
+    "en": "To create, you must have created the artist and the record label first"
   },
   "music_albums_goto-artist-btn":{
     "es": "Ir a crear el artista",
@@ -1019,6 +1019,14 @@
     "es": "Ejemplo: Versión Acústica",
     "en": "Example: Acoustic Version"
   },
+  "music_songs_form-artist_label":{
+    "es": "Artista",
+    "en": "Artist"
+  },
+  "music_songs_form-artist_placeholder":{
+    "es": "Selecciona el artista",
+    "en": "Select the artist"
+  },
   "music_songs_form-genre_label":{
     "es": "Género principal",
     "en": "Main genre"
@@ -1034,6 +1042,14 @@
   "music_songs_form-subgenre_placeholder":{
     "es": "Selecciona los subgéneros",
     "en": "Select the subgenres"
+  },
+  "music_songs_form-categories_label":{
+    "es": "Categorías (máximo 5)",
+    "en": "Categories (maximum 5)"
+  },
+  "music_songs_form-categories_placeholder":{
+    "es": "Selecciona las categorías",
+    "en": "Select the categories"
   },
   "music_songs_form-instruments_label":{
     "es": "Instrumentos (máximo 5)",
@@ -1124,8 +1140,8 @@
     "en": "Example: https://www.youtube.com/watch?v=6JCLY0Rlx6Q"
   },
   "music_songs_form-keywords_label":{
-    "es": "Palabras clave",
-    "en": "Keywords"
+    "es": "Palabras clave (máximo 15)",
+    "en": "Keywords (maximum 15)"
   },
   "music_songs_form-keywords_placeholder":{
     "es": "Selecciona las palabras clave que describan tu canción",
@@ -1136,14 +1152,6 @@
     "en": "Song level"
   },
   "music_songs_form-song-level_placeholder":{
-    "es": "Selecciona un nivel",
-    "en": "Select a level"
-  },
-  "music_songs_form-single-level_label":{
-    "es": "Nivel de la canción",
-    "en": "Song level"
-  },
-  "music_songs_form-single-level_placeholder":{
     "es": "Selecciona un nivel",
     "en": "Select a level"
   },

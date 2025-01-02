@@ -233,7 +233,7 @@
     }
 }
 
-.language-tag, .genero-tag, .instrumento-tag{
+.language-tag, .genero-tag, .instrumento-tag, .keyword-tag, .categoria-tag{
     background-color: v.$yellow;
     color: v.$gray-dark;
     padding: 0.5rem 1rem;
@@ -249,7 +249,7 @@
     }
 }
 
-.remove-language, .remove-genero, .remove-instrumento{
+.remove-language, .remove-genero, .remove-instrumento, .remove-keyword, .remove-categoria{
     font-size: 1.4rem;
     color: v.$gray-dark;
     background-color: transparent;

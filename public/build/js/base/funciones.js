@@ -1,6 +1,6 @@
 import {er, num, indicativo, formArtist, artistFields} from '../music/selectores.js';
 
-import {body, dashboardContenido, tabsBtns, tabsContent, tabsDiv, submitBtns, languageSelect, selectedLanguagesContainer, selectedLanguagesInput, selloInput, noLabelCheckbox, defaultLabelInput, fileInput, fileNameContainer, selectedGenresContainer, selectedGenresInput, genreSelect, selectedInstrumentsContainer, selectedInstrumentsInput, instrumentSelect} from './selectores.js';
+import {body, dashboardContenido, tabsBtns, tabsContent, tabsDiv, submitBtns, languageSelect, selectedLanguagesContainer, selectedLanguagesInput, selloInput, noLabelCheckbox, defaultLabelInput, fileInput, fileNameContainer, selectedGenresContainer, selectedGenresInput, genreSelect, selectedInstrumentsContainer, selectedInstrumentsInput, instrumentSelect, selectedKeywordsContainer, selectedKeywordsInput, keywordSelect, selectedCategoriesContainer, selectedCategoriesInput, categorySelect} from './selectores.js';
 
 
 export async function readLang(){
@@ -376,6 +376,66 @@ export function handleGenreSelection() {
     }
 }
 
+export function handleCategorySelection() {
+    // Clear existing tags to prevent duplication
+    selectedCategoriesContainer.innerHTML = '';
+
+    // First, populate the selected languages if they exist in the input value
+    if (selectedCategoriesInput.value) {
+        const selectedValues = selectedCategoriesInput.value.split(',').filter(value => value !== '');
+        selectedValues.forEach(value => {
+            addCategoryTag(value);
+        });
+    }
+
+    // Add event listener to select dropdown
+    categorySelect.addEventListener('change', () => {
+        const selectedValue = categorySelect.value;
+        
+        // Check if the option is already selected
+        const existingTag = selectedCategoriesContainer.querySelector(`[data-value="${selectedValue}"]`);
+        if (!existingTag) {
+            // Only add the tag if it doesn't already exist
+            addCategoryTag(selectedValue);
+        }
+    });
+
+    function addCategoryTag(selectedValue) {
+        const option = categorySelect.querySelector(`option[value="${selectedValue}"]`);
+        if (option) {
+            const tag = document.createElement('div');
+            tag.classList.add('categoria-tag');
+            tag.textContent = option.text;
+            tag.setAttribute('data-value', selectedValue); // Store the value for reference
+
+            // Create the remove button
+            const removeButton = document.createElement('button');
+            removeButton.classList.add('remove-categoria');
+            removeButton.textContent = 'x';
+            removeButton.addEventListener('click', () => {
+                option.selected = false; // Unselect the language
+                tag.remove();
+                updateSelectedCategoriesInput(); // Update hidden input field
+            });
+
+            // Append button and tag to the container
+            tag.appendChild(removeButton);
+            selectedCategoriesContainer.appendChild(tag);
+
+            // Update the hidden input field with selected languages
+            updateSelectedCategoriesInput();
+        }
+    }
+
+    function updateSelectedCategoriesInput() {
+        // Get the selected values from the tags and set them in the hidden input
+        const selectedValues = [...selectedCategoriesContainer.querySelectorAll('.categoria-tag')]
+            .map(tag => tag.getAttribute('data-value'))
+            .filter(value => value !== '');
+        selectedCategoriesInput.value = selectedValues.join(',');
+    }
+}
+
 export function handleInstrumentSelection() {
     // Clear existing tags to prevent duplication
     selectedInstrumentsContainer.innerHTML = '';
@@ -433,6 +493,66 @@ export function handleInstrumentSelection() {
             .map(tag => tag.getAttribute('data-value'))
             .filter(value => value !== '');
         selectedInstrumentsInput.value = selectedValues.join(',');
+    }
+}
+
+export function handleKeywordsSelection() {
+    // Clear existing tags to prevent duplication
+    selectedKeywordsContainer.innerHTML = '';
+
+    // First, populate the selected languages if they exist in the input value
+    if (selectedKeywordsInput.value) {
+        const selectedValues = selectedKeywordsInput.value.split(',').filter(value => value !== '');
+        selectedValues.forEach(value => {
+            addKeywordTag(value);
+        });
+    }
+
+    // Add event listener to select dropdown
+    keywordSelect.addEventListener('change', () => {
+        const selectedValue = keywordSelect.value;
+        
+        // Check if the option is already selected
+        const existingTag = selectedKeywordsContainer.querySelector(`[data-value="${selectedValue}"]`);
+        if (!existingTag) {
+            // Only add the tag if it doesn't already exist
+            addKeywordTag(selectedValue);
+        }
+    });
+
+    function addKeywordTag(selectedValue) {
+        const option = keywordSelect.querySelector(`option[value="${selectedValue}"]`);
+        if (option) {
+            const tag = document.createElement('div');
+            tag.classList.add('keyword-tag');
+            tag.textContent = option.text;
+            tag.setAttribute('data-value', selectedValue); // Store the value for reference
+
+            // Create the remove button
+            const removeButton = document.createElement('button');
+            removeButton.classList.add('remove-keyword');
+            removeButton.textContent = 'x';
+            removeButton.addEventListener('click', () => {
+                option.selected = false; // Unselect the language
+                tag.remove();
+                updateSelectedKeywordsInput(); // Update hidden input field
+            });
+
+            // Append button and tag to the container
+            tag.appendChild(removeButton);
+            selectedKeywordsContainer.appendChild(tag);
+
+            // Update the hidden input field with selected languages
+            updateSelectedKeywordsInput();
+        }
+    }
+
+    function updateSelectedKeywordsInput() {
+        // Get the selected values from the tags and set them in the hidden input
+        const selectedValues = [...selectedKeywordsContainer.querySelectorAll('.keyword-tag')]
+            .map(tag => tag.getAttribute('data-value'))
+            .filter(value => value !== '');
+        selectedKeywordsInput.value = selectedValues.join(',');
     }
 }
 

@@ -37,7 +37,7 @@
 
         <p>{%music_singles-subtitle%}</p>
 
-        <a href="/music/albums/singles/new" class="btn-submit">
+        <a href="/music/singles/new" class="btn-submit">
             <i class="fa-solid fa-plus"></i>
             {% music_singles_add-btn %}
         </a>

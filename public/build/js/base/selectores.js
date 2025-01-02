@@ -27,7 +27,17 @@ export const genreSelect = document.getElementById('generos');
 export const selectedGenresContainer = document.getElementById('selectedGenres');
 export const selectedGenresInput = document.getElementById('selectedGenresInput');
 
-//selectores de select instrumento en song
+//selectores de categorias en single and song
+export const categorySelect = document.getElementById('categorias');
+export const selectedCategoriesContainer = document.getElementById('selectedCategories');
+export const selectedCategoriesInput = document.getElementById('selectedCategoriesInput');
+
+//selectores de select instrumento en single and song
 export const instrumentSelect = document.getElementById('instrumentos');
 export const selectedInstrumentsContainer = document.getElementById('selectedInstruments');
 export const selectedInstrumentsInput = document.getElementById('selectedInstrumentsInput');
+
+//Selectores de select keywords en single and song
+export const keywordSelect = document.getElementById('keywords');
+export const selectedKeywordsContainer = document.getElementById('selectedKeywords');
+export const selectedKeywordsInput = document.getElementById('selectedKeywordsInput');
