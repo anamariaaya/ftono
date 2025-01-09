@@ -1,4 +1,23 @@
 <fieldset class="form__fieldset">
+    <!--Sello discográfico-->
+    <?php
+        if($tipoUsuario->id_nivel != 3):?>
+            <div class="form__group">
+                <label class="form__group__label" for="sello">{%music_albums_label_label%}</label>
+                <select id="sello" name="sello" class="form__group__select">
+                    <option selected disabled value="">{%music_albums_label_placeholder%}</option>
+                    <?php foreach($sellos as $sello): ?>
+                        <option value="<?php echo s($sello->id); ?>"><?php echo s($sello->nombre); ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form__group--inline alert-style">
+                <input class="form__group__input--checkbox" type="checkbox" id="noLabel" name="noLabel">
+                <label for="noLabel" class="form__group__label">{%music_albums_no_label%}</label>
+            </div>
+    <?php endif;
+    ?>
+    
     <!--Título de la canción-->
     <div class="form__group">
         <label class="form__group__label" for="titulo">{%music_songs_form-title_label%}</label>

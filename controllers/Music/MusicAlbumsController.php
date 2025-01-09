@@ -393,6 +393,17 @@ class MusicAlbumsController{
         $idiomas = Idiomas::AllOrderAsc('idioma_en');
         $selectedLanguages = [];
 
+        $usuariosellos = UsuarioSellos::whereAll('id_usuario', $id);
+        $sellos = array();
+        foreach($usuariosellos as $usuarioSello){
+            $sello = Sellos::find($usuarioSello->id_sellos);
+            $sellos[] = $sello;
+        }
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            debugging($_POST);
+        }
+
         $router->render('music/albums/singles/new',[
             'titulo' => $titulo,
             'single' => $single,
@@ -412,7 +423,8 @@ class MusicAlbumsController{
             'keywords' => $keywords,
             'selectedKeywords' => $selectedKeywords,
             'idiomas' => $idiomas,
-            'selectedLanguages' => $selectedLanguages
+            'selectedLanguages' => $selectedLanguages,
+            'sellos' => $sellos
         ]);
     }
 }

@@ -101,6 +101,7 @@ $router->get('/music/albums/delete', [MusicAlbumsController::class, 'delete']);
 
 //Music Singles
 $router->get('/music/singles/new', [MusicAlbumsController::class, 'newSingle']);
+$router->post('/music/singles/new', [MusicAlbumsController::class, 'newSingle']);
 
 
 //Music Artists
