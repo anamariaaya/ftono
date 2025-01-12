@@ -245,6 +245,7 @@
     align-items: center;
     gap: 0.5rem;
     font-weight: v.$bold;
+    text-transform: capitalize;
     &:hover{
         cursor: pointer;
         background-color: v.$green;

@@ -10,15 +10,21 @@
 
     <div class="music__info">
         <div class="music__detail">
-            <p><span class="text-yellow">{%music_albums_artist_label%}: </span><?php echo $artista->nombre;?></p>
+            <p class="caps"><span class="text-yellow">{%music_albums_artist_label%}: </span><?php echo $artista->nombre;?></p>
+
             <?php if($art_secundarios): ?>
-                <p><span class="text-yellow">{%music_albums_artist-secondary_label%}: </span><?php echo $art_secundarios->artistas;?></p>
+                <p class="caps"><span class="text-yellow">{%music_albums_artist-secondary_label%}: </span><?php echo $art_secundarios->artistas;?></p>
             <?php endif; ?>
-            <p><span class="text-yellow">{%music_albums_upc_label%}: </span><?php echo $album->upc;?></p>
-            <p><span class="text-yellow">{%t-label%}: </span><?php echo $album->sello;?></p>
-            <p><span class="text-yellow">{%t-publisher%}: </span><?php echo $album->publisher;?></p>
-            <p><span class="text-yellow">{%t-rec-date%}: </span><?php echo $album->fecha_rec;?></p>
-            <p><span class="text-yellow">{%music_albums-languages%}: </span>
+
+            <p class="caps"><span class="text-yellow">{%music_albums_upc_label%}: </span><?php echo $album->upc;?></p>
+
+            <p class="caps"><span class="text-yellow">{%t-label%}: </span><?php echo $album->sello;?></p>
+
+            <p class="caps"><span class="text-yellow">{%t-publisher%}: </span><?php echo $album->publisher;?></p>
+
+            <p class="caps"><span class="text-yellow">{%t-rec-date%}: </span><?php echo $album->fecha_rec;?></p>
+            
+            <p class="caps"><span class="text-yellow">{%music_albums-languages%}: </span>
             <?php echo $idiomas;?></p>
         </div>        
     </div>

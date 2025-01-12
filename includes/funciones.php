@@ -145,15 +145,24 @@ function tt($key) {
 }
 
 function getYTVideoId($url) {
-    // Parse the URL and get the query parameters
+    // Parse the URL and get its components
     $urlComponents = parse_url($url);
-    parse_str($urlComponents['query'], $queryParams);
-    
-    // Check if 'v' exists in the query parameters
-    if (isset($queryParams['v'])) {
-        return $queryParams['v'];
+
+    // Handle long YouTube URLs with query parameters
+    if (isset($urlComponents['query'])) {
+        parse_str($urlComponents['query'], $queryParams);
+        
+        // Check if 'v' exists in the query parameters
+        if (isset($queryParams['v'])) {
+            return $queryParams['v'];
+        }
     }
-    
-    // If the 'v' parameter is not found, return null
+
+    // Handle short YouTube URLs (e.g., https://youtu.be/{videoId})
+    if (isset($urlComponents['host']) && $urlComponents['host'] === 'youtu.be') {
+        return trim($urlComponents['path'], '/');
+    }
+
+    // If no valid video ID is found, return null
     return null;
 }

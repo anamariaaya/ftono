@@ -15,11 +15,23 @@ use Model\Categorias;
 use Model\AlbumArtista;
 use Model\AlbumIdiomas;
 use Model\CancionColab;
+use Model\CancionLetra;
+use Model\CancionNivel;
 use Model\NivelCancion;
+use Model\CancionGenero;
 use Model\PerfilUsuario;
 use Model\UsuarioSellos;
+use Model\CancionArtista;
+use Model\CancionIdiomas;
+use Model\CancionKeywords;
+use Model\CancionCategorias;
+use Model\CancionEscritores;
+use Model\CancionInstrumento;
 use Model\AlbumArtSecundarios;
 use Model\UsuarioAlbumArtista;
+use Model\CancionGenSecundarios;
+use Model\CancionSelloPropiedad;
+use Model\CancionEscritorPropiedad;
 
 class MusicAlbumsController{
     public static function index(Router $router){
@@ -63,7 +75,7 @@ class MusicAlbumsController{
         $art_secundarios = AlbumArtSecundarios::where('id_albums',$album->id);
         $albumIdiomas = AlbumIdiomas::whereAll('id_album', $album->id);
         $idiomas = [];
-        //debugging($albumIdiomas);
+  
         foreach($albumIdiomas as $albumIdioma){
             $idioma = Idiomas::find($albumIdioma->id_idioma);
             $idiomas[] = $idioma;
@@ -129,12 +141,11 @@ class MusicAlbumsController{
             $albumArtSecundarios->artistas = $_POST['art-secundarios'];
             $album->id_usuario = $_SESSION['id'];
             $alertas = $album->validarAlbum();
-            //debugging($_POST);
+
             if (!isset($_POST['artistas']) || $_POST['artistas'] === '0' || trim($_POST['artistas']) === '') {
                 $alertas = Artistas::setAlerta('error', 'music_albums_artist_alert-required');
             }
             $alertas = Artistas::getAlertas();
-            //debugging($alertas);
 
             if(empty($_POST['selectedLanguages'])){
                 Idiomas::setAlerta('error','music_albums_languages_alert-required');
@@ -311,8 +322,7 @@ class MusicAlbumsController{
                     $albumArtSecundarios->artistas = $_POST['art-secundarios'];
                     $albumArtSecundarios->guardar();
                 }
-                //debugging($_POST['selectedLanguages']);
-                //debugging($albumIdiomas);
+
                 //guardar los idiomas del album
                 foreach ($albumIdiomas as $albumIdioma) {
                     $albumIdioma->eliminar();
@@ -364,9 +374,18 @@ class MusicAlbumsController{
         $single = true;
         $id = $_SESSION['id'];
         $tipoUsuario = NTMusica::where('id_usuario', $id);
+        $perfilUsuario = PerfilUsuario::where('id_usuario', $id); 
         $song = new Canciones;
         $lang = $_SESSION['lang'] ?? 'en';
         $songColab = new CancionColab;
+        $cancionEscritores = new CancionEscritores;
+        $cancionLetra = new CancionLetra;
+        $cancionNivel = new CancionNivel;
+        $cancionArtista = new CancionArtista;
+        $cancionGenero = new CancionGenero;
+        $cancionEscritorPropiedad = new CancionEscritorPropiedad;
+        $cancionSelloPropiedad = new CancionSelloPropiedad;
+        $alertas = [];
         
         $selectedCategories = [];
         $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2, 3);";
@@ -401,8 +420,196 @@ class MusicAlbumsController{
         }
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            debugging($_POST);
+            $song->sincronizar($_POST);
+            $alertas = $song->validarCancion();
+
+            if(!isset($_POST['nivel']) || $_POST['nivel'] === '0' || trim($_POST['nivel']) === ''){
+                $alertas = CancionNivel::setAlerta('error', 'music_songs_form-song-level_alert-required');
+            }
+            $alertas = CancionNivel::getAlertas();
+
+            if(!isset($_POST['artista']) || $_POST['artista'] === '0' || trim($_POST['artista']) === ''){
+                $alertas = CancionArtista::setAlerta('error', 'music_songs_form-artist_alert-required');
+            }
+            $alertas = CancionArtista::getAlertas();
+
+            if(!isset($_POST['genero']) || $_POST['genero'] === '0' || trim($_POST['genero']) === ''){
+                $alertas = CancionGenero::setAlerta('error', 'music_songs_form-genre_alert-required');
+            }
+            $alertas = CancionGenero::getAlertas();
+
+            if(!isset($_POST{'selectedLanguages'}) || $_POST['selectedLanguages'] === '0' || trim($_POST['selectedLanguages']) === ''){
+                $alertas = CancionIdiomas::setAlerta('error', 'music_songs-form-language_alert-required');
+            }
+            $alertas = CancionIdiomas::getAlertas();
+
+            if(!isset($_POST['escritores']) || $_POST['escritores'] === '0' || trim($_POST['escritores']) === ''){
+                $alertas = CancionEscritores::setAlerta('error', 'music_songs_form-writers_alert-required');
+            }
+            $alertas = CancionEscritores::getAlertas();
+
+            if(!isset($_POST['escritor_propiedad']) || $_POST['escritor_propiedad'] === '0' || trim($_POST['escritor_propiedad']) === ''){
+                $alertas = CancionEscritorPropiedad::setAlerta('error', 'music_songs_form-writers-percent_alert-required');
+            }
+
+            if(!isset($_POST['publisher_propiedad']) || $_POST['publisher_propiedad'] === '0' || trim($_POST['publisher_propiedad']) === ''){
+                $alertas = CancionEscritorPropiedad::setAlerta('error', 'music_songs_form-publisher-percent_alert-required');
+            }
+
+            $escritorPropiedad = isset($_POST['escritor_propiedad']) ? (int)$_POST['escritor_propiedad'] : 0;
+            $publisherPropiedad = isset($_POST['publisher_propiedad']) ? (int)$_POST['publisher_propiedad'] : 0;
+
+            if (($escritorPropiedad + $publisherPropiedad) > 100) {
+                $alertas = CancionEscritorPropiedad::setAlerta('error', 'music_songs_form-writers-percent_alert-total');
+            }
+
+            $alertas = CancionEscritorPropiedad::getAlertas();
+
+            if (!isset($_POST['sello_propiedad']) || $_POST['sello_propiedad'] === '0' || trim($_POST['sello_propiedad']) === '') {
+                $alertas = CancionSelloPropiedad::setAlerta('error', 'music_songs-form-fonogram_alert-required');
+            }
+            
+            // Check if sello_propiedad exceeds 100
+            $selloPropiedad = isset($_POST['sello_propiedad']) ? (int)$_POST['sello_propiedad'] : 0;
+            
+            if ($selloPropiedad > 100) {
+                $alertas = CancionSelloPropiedad::setAlerta('error', 'The phonogram percentage cannot exceed 100.');
+            }
+            $alertas = CancionSelloPropiedad::getAlertas();
+
+
+            $songColab->sincronizar($_POST);
+            
+
+            if(empty($alertas)){
+                if($tipoUsuario->id_nivel != 3){
+                    if(empty($_POST['sello'])){
+                        $empresa = Empresa::where('id', $perfilUsuario->id_empresa);
+                        $artista = Artistas::where('id', $_POST['artista']);
+                        $song->sello = $empresa->empresa.' - '.$artista->nombre;
+                    }else{
+                        $sello = Sellos::where('id', $_POST['sello']);
+                        $song->sello = $sello->nombre;
+                    }
+                }else{
+                    $empresa = Empresa::where('id', $perfilUsuario->id_empresa);
+                    $song->sello = $empresa->empresa;
+                }
+                $song->url = getYTVideoId($song->url);
+    
+                $song->guardar();
+
+                //Buscar la canción recién creada
+                $song = Canciones::where('isrc', $_POST['isrc']);
+    
+                //Guardad nivel de la canción
+                $cancionNivel->id_cancion = $song->id;
+                $cancionNivel->id_nivel = $_POST['nivel'];
+                $cancionNivel->guardar();
+    
+                //Guardar Artista de la canción
+                $cancionArtista->id_cancion = $song->id;
+                $cancionArtista->id_artista = $_POST['artista'];
+                $cancionArtista->guardar();
+    
+                //Guardar colaboradores de la canción
+                if(!empty($_POST['colaboradores'])){
+                    $colaboradores = $_POST['colaboradores'];
+                    $songColab->id_cancion = $song->id;
+                    $songColab->colaboradores = $colaboradores;
+                    $songColab->guardar();
+                }
+    
+                //Guardar género principal de la canción
+                $cancionGenero->id_cancion = $song->id;
+                $cancionGenero->id_genero = $_POST['genero'];
+                $cancionGenero->guardar();
+    
+                //Guardar géneros secundarios de la canción
+                if(!empty($_POST['selectedGenres'])){
+                    $generosSecundarios = explode(',', $_POST['selectedGenres']);
+                    foreach($generosSecundarios as $generoSecundario){
+                        $cancionGenero = new CancionGenSecundarios;
+                        $cancionGenero->id_cancion = $song->id;
+                        $cancionGenero->id_genero = $generoSecundario;
+                        $cancionGenero->guardar();
+                    }
+                }
+                
+                //Guardar las categorías de la canción
+                if(!empty($_POST['selectedCategories'])){
+                    $categorias = explode(',', $_POST['selectedCategories']);
+                    foreach($categorias as $categoria){
+                        $cancionCategoria = new CancionCategorias;
+                        $cancionCategoria->id_cancion = $song->id;
+                        $cancionCategoria->id_categoria = $categoria;
+                        $cancionCategoria->guardar();
+                    }
+                }
+                
+                //Guardar los instrumentos de la canción
+                if(!empty($_POST['selectedInstruments'])){
+                    $instrumentos = explode(',', $_POST['selectedInstruments']);
+                    foreach($instrumentos as $instrumento){
+                        $cancionInstrumento = new CancionInstrumento;
+                        $cancionInstrumento->id_cancion = $song->id;
+                        $cancionInstrumento->id_instrumento = $instrumento;
+                        $cancionInstrumento->guardar();
+                    }
+                }
+                
+                //Guardar las keywords de la canción
+                if(!empty($_POST['selectedKeywords'])){
+                    $keywords = explode(',', $_POST['selectedKeywords']);
+                    foreach($keywords as $keyword){
+                        $cancionKeyword = new CancionKeywords;
+                        $cancionKeyword->id_cancion = $song->id;
+                        $cancionKeyword->id_keywords = $keyword;
+                        $cancionKeyword->guardar();
+                    }
+                }
+                
+                //Guardar los idiomas de la canción
+                if(!empty($_POST['selectedLanguages'])){
+                    $idiomas = explode(',', $_POST['selectedLanguages']);
+                    foreach($idiomas as $idioma){
+                        $cancionIdioma = new CancionIdiomas;
+                        $cancionIdioma->id_cancion = $song->id;
+                        $cancionIdioma->id_idioma = $idioma;
+                        $cancionIdioma->guardar();
+                    }
+                }
+
+                $alertas = CancionIdiomas::getAlertas();
+                
+                //Guardar la letra de la canción
+                if(!empty($_POST['letra'])){
+                    $cancionLetra->id_cancion = $song->id;
+                    $cancionLetra->letra = $_POST['letra'];
+                    $cancionLetra->guardar();
+                }
+    
+                //Guardar los escritores de la canción
+                $cancionEscritores->id_cancion = $song->id;
+                $cancionEscritores->escritores = $_POST['escritores'];
+                $cancionEscritores->guardar();
+                
+                //Guardar la propiedad del escritor y publisher de la canción
+                $cancionEscritorPropiedad->id_cancion = $song->id;
+                $cancionEscritorPropiedad->escritor_propiedad = $_POST['escritor_propiedad'];
+                $cancionEscritorPropiedad->publisher_propiedad = $_POST['publisher_propiedad'];
+                $cancionEscritorPropiedad->guardar();
+                
+                //Guardar la propiedad del sello de la canción
+                $cancionSelloPropiedad->id_cancion = $song->id;
+                $cancionSelloPropiedad->sello_propiedad = $_POST['sello_propiedad'];
+                $cancionSelloPropiedad->guardar();
+                
+                header('Location: /music/albums');
+            }
         }
+
+        $alertas = Canciones::getAlertas();
 
         $router->render('music/albums/singles/new',[
             'titulo' => $titulo,
@@ -411,6 +618,13 @@ class MusicAlbumsController{
             'song' => $song,
             'lang' => $lang,
             'songColab' => $songColab,
+            'cancionEscritores' => $cancionEscritores,
+            'cancionLetra' => $cancionLetra,
+            'cancionNivel' => $cancionNivel,
+            'cancionArtista' => $cancionArtista,
+            'cancionGenero' => $cancionGenero,
+            'cancionEscritorPropiedad' => $cancionEscritorPropiedad,
+            'cancionSelloPropiedad' => $cancionSelloPropiedad,
             'categorias' => $categorias,
             'selectedCategories' => $selectedCategories,
             'niveles' => $niveles,
@@ -424,7 +638,8 @@ class MusicAlbumsController{
             'selectedKeywords' => $selectedKeywords,
             'idiomas' => $idiomas,
             'selectedLanguages' => $selectedLanguages,
-            'sellos' => $sellos
+            'sellos' => $sellos,
+            'alertas' => $alertas
         ]);
     }
 }

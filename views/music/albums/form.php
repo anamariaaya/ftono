@@ -76,25 +76,25 @@
         />
     </div>
 
+    <!--Idiomas-->
     <div class="form__group">
-        <label for="idiomas" class="form__group__label">{%music_albums_languages_label%}
+        <label for="idiomas" class="form__group__label">
+            {%music_albums_languages_label%}
             <span class="text-yellow">*</span>
         </label>
         <select id="idiomas" name="idiomas" class="form__group__select" multiple>
             <option disabled value="">{%music_albums_languages_placeholder%}</option>
-            
-            <?php foreach ($idiomas as $idioma): ?>
-                <?php if ($lang === 'en'): ?>
-                    <option value="<?php echo $idioma->id; ?>"
-                        <?php echo $idioma->id, $selectedLanguages ? 'selected' : ''; ?>>
-                        <?php echo $idioma->idioma_en; ?>
-                    </option>
-                <?php else: ?>
-                    <option value="<?php echo $idioma->id; ?>"
-                        <?php echo $idioma->id, $selectedLanguages ? 'selected' : ''; ?>>
-                        <?php echo $idioma->idioma_es; ?>
-                    </option>
-                <?php endif; ?>
+
+            <?php 
+            // Retrieve previously selected languages
+            $selectedLanguages = isset($_POST['selectedLanguages']) ? explode(',', $_POST['selectedLanguages']) : [];
+
+            foreach ($idiomas as $idioma): ?>
+                <option 
+                    value="<?php echo $idioma->id; ?>"
+                    <?php echo in_array($idioma->id, $selectedLanguages) ? 'selected' : ''; ?>>
+                    <?php echo ($lang === 'en') ? $idioma->idioma_en : $idioma->idioma_es; ?>
+                </option>
             <?php endforeach; ?>
         </select>
 
@@ -116,11 +116,10 @@
                 </span>
             <?php endforeach; ?>
         </div>
-        
+
         <!-- Hidden input to hold the selected language IDs -->
         <input type="hidden" id="selectedLanguagesInput" name="selectedLanguages" value="<?php echo implode(',', $selectedLanguages); ?>">
     </div>
-
 
     <?php
         if($tipoUsuario->id_nivel != 3):?>

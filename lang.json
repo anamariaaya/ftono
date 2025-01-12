@@ -1011,6 +1011,10 @@
     "es": "Ejemplo: La canción de mi vida",
     "en": "Example: The song of my life"
   },
+  "music_songs_form-title_alert-required":{
+    "es": "El título de la canción es obligatorio",
+    "en": "The song title is required"
+  },
   "music_songs_form-version_label":{
     "es": "Versión",
     "en": "Version"
@@ -1018,6 +1022,10 @@
   "music_songs_form-version_placeholder":{
     "es": "Ejemplo: Versión Acústica",
     "en": "Example: Acoustic Version"
+  },
+  "music_songs_form-version_alert-required":{
+    "es": "La versión de la canción es obligatoria",
+    "en": "The song version is required"
   },
   "music_songs_form-artist_label":{
     "es": "Artista",
@@ -1027,6 +1035,10 @@
     "es": "Selecciona el artista",
     "en": "Select the artist"
   },
+  "music_songs_form-artist_alert-required":{
+    "es": "El artista es obligatorio",
+    "en": "The artist is required"
+  },
   "music_songs_form-genre_label":{
     "es": "Género principal",
     "en": "Main genre"
@@ -1034,6 +1046,10 @@
   "music_songs_form-genre_placeholder":{
     "es": "Selecciona el género principal",
     "en": "Select the main genre"
+  },
+  "music_songs_form-genre_alert-required":{
+    "es": "El género principal es obligatorio",
+    "en": "The main genre is required"
   },
   "music_songs_form-subgenre_label":{
     "es": "Subgéneros (máximo 5)",
@@ -1075,37 +1091,57 @@
     "es": "Ejemplo: John Doe, Jane Doe",
     "en": "Example: John Doe, Jane Doe"
   },
+  "music_songs_form-writers_alert-required":{
+    "es": "Los escritores son obligatorios",
+    "en": "The writers are required"
+  },
   "music_songs_form-writers-percent_legend":{
-    "es": "Porcentaje de propiedad del compositor y la editorial",
-    "en": "Percentage of ownership of the composer and the publisher"
+    "es": "Porcentaje de propiedad del compositor y la editorial. Sólo números, sin signos. El porcentaje total para escritor y editorial no puede superar el 100",
+    "en": "Percentage of ownership of the composer and the publisher, only numbers, without signs. The total percentage for writer and publisher cannot exceed 100"
+  },
+  "music_songs_form-writers-percent_alert-total":{
+    "es": "El porcentaje total para escritor y editorial no puede superar el 100",
+    "en": "The total percentage for writer and publisher cannot exceed 100"
   },
   "music_songs_form-writers-percent_label":{
-    "es": "Porcentaje de propiedad del compositor",
-    "en": "Composer ownership percentage"
+    "es": "Porcentaje de propiedad del compositor. Sólo números, sin signos",
+    "en": "Composer ownership percentage. Only numbers, no signs"
   },
   "music_songs_form-writers-percent_placeholder":{
-    "es": "Ejemplo: 50%",
-    "en": "Example: 50%"
+    "es": "Ejemplo: 50",
+    "en": "Example: 50"
+  },
+  "music_songs_form-writers-percent_alert-required":{
+    "es": "El porcentaje de propiedad del compositor es obligatorio",
+    "en": "The composer ownership percentage is required"
   },
   "music_songs_form-publisher-percent_label":{
     "es": "Porcentaje de propiedad de la editorial",
     "en": "Publisher ownership percentage"
   },
   "music_songs_form-publisher-percent_placeholder":{
-    "es": "Ejemplo: 50%",
-    "en": "Example: 50%"
+    "es": "Ejemplo: 50",
+    "en": "Example: 50"
+  },
+  "music_songs_form-publisher-percent_alert-required":{
+    "es": "El porcentaje de propiedad de la editorial es obligatorio",
+    "en": "The publisher ownership percentage is required"
   },
   "music_songs-form-fonogram-percent_legend":{
     "es": "Porcentaje de propiedad del fonograma",
-    "en": "Fonogram ownership percentage"
+    "en": "Phonogram ownership percentage"
   },
   "music_songs-form-fonogram-percent_label":{
     "es": "Porcentaje del fonograma",
-    "en": "Fonogram percentage"
+    "en": "Phonogram percentage"
   },
   "music_songs-form-fonogram_placeholder":{
     "es": "Ejemplo: 100%",
     "en": "Ejemplo: 100%"
+  },
+  "music_songs-form-fonogram_alert-required":{
+    "es": "El porcentaje del fonograma es obligatorio",
+    "en": "The phonogram percentage is required"
   },
   "music_songs-form-language_label":{
     "es": "Idioma",
@@ -1114,6 +1150,10 @@
   "music_songs-form-language_placeholder":{
     "es": "Selecciona un idioma",
     "en": "Select a language"
+  },
+  "music_songs-form-language_alert-required":{
+    "es": "El idioma es obligatorio",
+    "en": "The language is required"
   },
   "music_songs-form-lyrics_label":{
     "es": "Letra",
@@ -1128,8 +1168,16 @@
     "en": "ISRC"
   },
   "music_songs_form-isrc_placeholder":{
-    "es": "Ejemplo: US-AT2-99-00001",
-    "en": "Example: US-AT2-99-00001"
+    "es": "Ejemplo: USAT29900001",
+    "en": "Example: USAT29900001"
+  },
+  "music_songs_form-isrc_alert-required":{
+    "es": "El ISRC es obligatorio",
+    "en": "The ISRC is required"
+  },
+  "music_songs_form-isrc_alert-max":{
+    "es": "El ISRC no puede tener más de 13 caracteres",
+    "en": "The ISRC cannot be more than 13 characters"
   },
   "music_songs_form-youtube_label":{
     "es": "Link de YouTube",
@@ -1138,6 +1186,10 @@
   "music_songs_form-youtube_placeholder":{
     "es": "Ejemplo: https://www.youtube.com/watch?v=6JCLY0Rlx6Q",
     "en": "Example: https://www.youtube.com/watch?v=6JCLY0Rlx6Q"
+  },
+  "music_songs_form-youtube_alert-required":{
+    "es": "El link de YouTube es obligatorio",
+    "en": "The YouTube link is required"
   },
   "music_songs_form-keywords_label":{
     "es": "Palabras clave (máximo 15)",
@@ -1154,6 +1206,10 @@
   "music_songs_form-song-level_placeholder":{
     "es": "Selecciona un nivel",
     "en": "Select a level"
+  },
+  "music_songs_form-song-level_alert-required":{
+    "es": "El nivel de la canción es obligatorio",
+    "en": "The song level is required"
   },
   "music_genres-title":{
     "es": "Géneros",

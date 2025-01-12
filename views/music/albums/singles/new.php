@@ -21,6 +21,9 @@
         <a href="/music/artists/new" class="btn-note">{%music_albums_goto-artist-btn%}</a>
     <?php endif;?>
     <form class="form" method="POST">
+        <?php
+            include_once __DIR__.'/../../../templates/alertas.php';
+        ?>
         <?php include_once __DIR__.'/form.php'?>
         <input type="submit" value="{%music_songs_new-btn%}" class="btn-submit">
     </form>

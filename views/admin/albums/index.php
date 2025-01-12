@@ -9,11 +9,11 @@
             <p><span>{% music_albums-total %}: <?php echo count($albums) ?></span> </p>    
 
             <div class="dashboard__search">
-                <input class="dashboard__total__type-search" type="text" id="albumes-search" placeholder="{% music_albums_search-placeholder %}"/>
+                <input class="dashboard__total__type-search" type="text" id="albumes-search-ft" placeholder="{% music_albums_search-placeholder %}"/>
             </div>
         </div>
 
-        <div class="cards__container mTop-5" id="grid-albumes">
+        <div class="cards__container mTop-5" id="grid-albumes-ft">
         </div>
     </div>
 

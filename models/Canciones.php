@@ -4,7 +4,7 @@ namespace Model;
 
 class Canciones extends ActiveRecord{
     protected static $tabla = 'canciones';
-    protected static $columnasDB = ['id', 'titulo', 'version', 'isrc', 'url'];
+    protected static $columnasDB = ['id', 'titulo', 'version', 'isrc', 'url', 'sello'];
 
     public function __construct($args = [])
     {
@@ -13,20 +13,24 @@ class Canciones extends ActiveRecord{
         $this->version = $args['version'] ?? '';
         $this->isrc = $args['isrc'] ?? '';
         $this->url = $args['url'] ?? '';
+        $this->sello = $args['sello'] ?? '';
     }
 
-    public function validar_tipo() {
+    public function validarCancion() {
         if(!$this->titulo) {
-            self::$alertas['error'][] = 'El Título de la Canción es Obligatorio';
+            self::$alertas['error'][] = 'music_songs_form-title_alert-required';
         }
         if(!$this->version) {
-            self::$alertas['error'][] = 'La Versión de la Canción es Obligatoria';
+            self::$alertas['error'][] = 'music_songs_form-version_alert-required';
         }
         if(!$this->isrc) {
-            self::$alertas['error'][] = 'El ISRC de la Canción es Obligatorio';
+            self::$alertas['error'][] = 'music_songs_form-isrc_alert-required';
+        }
+        if(strlen($this->isrc) > 13) {
+            self::$alertas['error'][] = 'music_songs_form-isrc_alert-max';
         }
         if(!$this->url) {
-            self::$alertas['error'][] = 'La URL de la Canción es Obligatoria';
+            self::$alertas['error'][] = 'music_songs_form-youtube_alert-required';
         }
         return self::$alertas;
     }
