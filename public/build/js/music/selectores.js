@@ -66,3 +66,7 @@ export const artistFields = document.querySelectorAll('.form__group');
 //Selectores de la sección de álbumes
 export const gridAlbumes = document.querySelector('#grid-albumes');
 export const albumesInput = document.querySelector('#albumes-search');
+
+//Selectores de la sección de singles
+export const gridSingles = document.querySelector('#grid-singles');
+export const singlesInput = document.querySelector('#singles-search');

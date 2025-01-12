@@ -214,5 +214,9 @@
     "banner-code":{
       "es": "Código del banner",
       "en": "Banner code"
+    },
+    "version":{
+      "es": "Versión",
+      "en": "Version"
     }
 }

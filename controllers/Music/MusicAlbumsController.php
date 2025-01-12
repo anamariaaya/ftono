@@ -36,11 +36,14 @@ use Model\CancionEscritorPropiedad;
 class MusicAlbumsController{
     public static function index(Router $router){
         isMusico();
-        $albums = Albums::whereAll('id_usuario',$_SESSION['id']);
+        $id = $_SESSION['id'];
+        $albums = Albums::whereAll('id_usuario', $id);
         $titulo = 'music_main_title';
+        $singles = Canciones::whereAll('id_usuario', $id);
         $router->render('music/albums/index',[
             'titulo' => $titulo,
-            'albums' => $albums
+            'albums' => $albums,
+            'singles' => $singles
         ]);
     }
 
@@ -421,6 +424,8 @@ class MusicAlbumsController{
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $song->sincronizar($_POST);
+            $song->id_usuario = $id;
+            debugging($song);
             $alertas = $song->validarCancion();
 
             if(!isset($_POST['nivel']) || $_POST['nivel'] === '0' || trim($_POST['nivel']) === ''){
@@ -641,5 +646,13 @@ class MusicAlbumsController{
             'sellos' => $sellos,
             'alertas' => $alertas
         ]);
+    }
+
+    public static function consultaSingles(){
+        isMusico();
+        $id = $_SESSION['id'];
+        $singles = 'SELECT * FROM canciones WHERE id_usuario = '.$id.' ORDER BY id DESC;';
+        $singles = Canciones::consultarSQL($singles);
+        echo json_encode($singles);
     }
 }

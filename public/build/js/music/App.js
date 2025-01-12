@@ -1,6 +1,6 @@
 import { consultaPaises, countryCurrentValue, indicativoTel, paisElegido } from "./APIPaises.js";
 import {tabs, paginador, formularioReg} from "./perfiles.js";
-import { selectPais, afterNav, paisContacto, firmasDashboard, countrySelected, gridSellos, gridArtistas, formArtist, albumsBlock, gridAlbumes } from "./selectores.js";
+import { selectPais, afterNav, paisContacto, firmasDashboard, countrySelected, gridSellos, gridArtistas, formArtist, albumsBlock, gridAlbumes, gridSingles } from "./selectores.js";
 import { chooseLang } from "../UI/language.js";
 import { blockDashboard, signContract } from "./contracts.js";
 import { eliminarItem, btnSubmitLoader, changeTabs, handleLanguageSelection, initializeLabelCheckbox, handleGenreSelection, handleInstrumentSelection, handleKeywordsSelection, handleCategorySelection } from "../base/funciones.js";
@@ -12,6 +12,7 @@ import {consultaArtistas} from "./artists.js";
 import {validateArtistForm} from "./artistValidation.js";
 import { musicTabs } from "./musicTabs.js";
 import { consultaAlbumes } from "./albums.js";
+import { consultaSingles } from "./singles.js";
 
 class App{
     constructor(){
@@ -88,6 +89,9 @@ class App{
         }
         if(categorySelect){
             handleCategorySelection();
+        }
+        if(gridSingles){
+            consultaSingles();
         }
     }
 }
