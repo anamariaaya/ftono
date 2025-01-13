@@ -31,7 +31,7 @@
     <div class="tabs__music--singles tabs__music--disabled">
         <h1>{% music_singles-title %}</h1>
         <div class="dashboard__total">
-            <p><span>{% music_singles-total %}: </span> </p>    
+            <p><span>{% music_singles-total %}: <?php echo count($singles) ?></span> </p>    
 
             <div class="dashboard__search">
                 <input class="dashboard__total__type-search" type="text" id="singles-search" placeholder="{% music_singles_search-placeholder %}"/>
