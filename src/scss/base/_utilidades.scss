@@ -41,6 +41,11 @@
     }
 }
 
+.margin-auto{
+    display: block;
+    margin: auto;
+}
+
 .wrapper{
     display: flex;
     gap: 2rem;
@@ -389,4 +394,24 @@
     padding: 1rem;
     border-radius: 0.5rem;
     line-height: 1.2;
+}
+
+.max-width-75{
+    max-width: 75% !important;
+}
+
+.min-height-100{
+    min-height: 100vh;
+}
+
+.min-height-50{
+    min-height: 50vh;
+}
+
+.min-height-45{
+    min-height: 45vh !important;
+}
+
+.capitalize-first-only::first-letter{
+    text-transform: capitalize;
 }

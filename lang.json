@@ -951,6 +951,10 @@
     "es": "Buscar sencillos por nombre, género, artista, etc.",
     "en": "Search singles by name, genre, artist, etc."
   },
+  "music_single_-title":{
+    "es": "Sencillo",
+    "en": "Single"
+  },
   "music_singles_add-btn":{
     "es": "Añadir sencillo",
     "en": "Add single"
@@ -2290,5 +2294,73 @@
   "btn_play-all": {
     "es": "Reproducir todo",
     "en": "Play all"
+  },
+  "artist": {
+    "es": "Artista",
+    "en": "Artist"
+  },
+  "version": {
+    "es": "Versión",
+    "en": "Version"
+  },
+  "isrc": {
+    "es": "ISRC",
+    "en": "ISRC"
+  },
+  "label": {
+    "es": "Sello",
+    "en": "Label"
+  },
+  "song_level": {
+    "es": "Nivel de la canción",
+    "en": "Song level"
+  },
+  "genre": {
+    "es": "Género",
+    "en": "Genre"
+  },
+  "categories": {
+    "es": "Categorías",
+    "en": "Categories"
+  },
+  "languages": {
+    "es": "Idiomas",
+    "en": "Languages"
+  },
+  "instruments": {
+    "es": "Instrumentos",
+    "en": "Instruments"
+  },
+  "keywords": {
+    "es": "Palabras clave",
+    "en": "Keywords"
+  },
+  "gensec":{
+    "es": "Géneros secundarios",
+    "en": "Secondary genres"
+  },
+  "lyrics": {
+    "es": "Letra",
+    "en": "Lyrics"
+  },
+  "writers": {
+    "es": "Escritores",
+    "en": "Writers"
+  },
+  "writers_property": {
+    "es": "Propiedad de los escritores",
+    "en": "Writers property"
+  },
+  "publishers_property": {
+    "es": "Propiedad de los editores",
+    "en": "Publishers property"
+  },
+  "phonogram_property": {
+    "es": "Propiedad del fonograma",
+    "en": "Phonogram property"
+  },
+  "collaborators": {
+    "es": "Colaboradores",
+    "en": "Collaborators"
   }
 }
