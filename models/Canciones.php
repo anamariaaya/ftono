@@ -4,7 +4,7 @@ namespace Model;
 
 class Canciones extends ActiveRecord{
     protected static $tabla = 'canciones';
-    protected static $columnasDB = ['id', 'titulo', 'version', 'isrc', 'url', 'sello'];
+    protected static $columnasDB = ['id', 'titulo', 'version', 'isrc', 'url', 'sello', 'id_usuario'];
 
     public function __construct($args = [])
     {
@@ -14,6 +14,7 @@ class Canciones extends ActiveRecord{
         $this->isrc = $args['isrc'] ?? '';
         $this->url = $args['url'] ?? '';
         $this->sello = $args['sello'] ?? '';
+        $this->id_usuario = $args['id_usuario'] ?? '';
     }
 
     public function validarCancion() {

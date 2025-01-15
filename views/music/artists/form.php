@@ -1,6 +1,10 @@
 <fieldset class="form__fieldset">
+    <legend class="form__legend">{%music_albums_legend%}</legend>
     <div class="form__group">
-        <label class="form__group__label" for="nombre">{%artists_form_name_label%}</label>
+        <label class="form__group__label" for="nombre">
+            {%artists_form_name_label%}
+            <span class="text-yellow">*</span>
+        </label>
         <input
             type="text"
             class="form__group__input"
@@ -10,7 +14,10 @@
             value="<?php echo s($artista->nombre);?>"/>
     </div>
     <div class="form__group">
-        <label class="form__group__label" for="precio_show">{%artists_form_show-price_label%}</label>
+        <label class="form__group__label" for="precio_show">
+            {%artists_form_show-price_label%}
+            <span class="text-yellow">*</span>
+        </label>
         <input
             type="text"
             class="form__group__input"
@@ -20,7 +27,10 @@
             value="<?php echo s($artista->precio_show);?>"/>
     </div>
     <div class="form__group">
-        <label class="form__group__label" for="id_nivel">{%artists_form-level_label%}</label>
+        <label class="form__group__label" for="id_nivel">
+            {%artists_form-level_label%}
+            <span class="text-yellow">*</span>
+        </label>
         <select
             class="form__group__select"
             id="id_nivel"

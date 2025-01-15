@@ -32,10 +32,16 @@
     }
 
     &__legend{
-        color: v.$yellow;
-        font-size: 2.2rem;
+        color: v.$green;
+        font-size: 1.6rem;
         text-decoration: 2px underline;
         text-underline-offset: 1rem;
+        @include m.tablet{
+            font-size: 1.8rem;
+        }
+        @include m.desktop{
+            font-size: 2rem;
+        }
     }
 
     &--max{
@@ -44,11 +50,6 @@
         @include m.tablet{
             width: 65%;
         }
-    }
-
-    &__legend{
-        color: v.$green;
-        font-size: 2.2rem;
     }
 
     &__fieldset{
@@ -190,8 +191,13 @@
 
 .texto--password{
     margin: 0;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     color: v.$green;
+    line-height: 1.4;
+    border: 0.1rem solid v.$green;
+    border-radius: 0.8rem;
+    padding: 0.5rem;
+    background-color: darken(v.$gray-dark, 8);
 }
 
 .passview{

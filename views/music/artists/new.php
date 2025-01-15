@@ -11,7 +11,6 @@
 
 <div class="form-div">
     <form class="form form-artist" method="POST" id="">
-        <legend class="form__legend">{%artists_new-legend%}</legend>
         <?php include_once __DIR__.'/form.php'?>
         <input type="submit" value="{%artists_new-submit-btn%}" class="btn-submit">
     </form>

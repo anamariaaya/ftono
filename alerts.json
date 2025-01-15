@@ -218,5 +218,25 @@
     "version":{
       "es": "Versión",
       "en": "Version"
+    },
+    "genre":{
+      "es": "Género",
+      "en": "Genre"
+    },
+    "genre-sec":{
+      "es": "Género secundario",
+      "en": "Secondary genre"
+    },
+    "categories":{
+      "es": "Categorías",
+      "en": "Categories"
+    },
+    "languages":{
+      "es": "Idiomas",
+      "en": "Languages"
+    },
+    "level":{
+      "es": "Nivel",
+      "en": "Level"
     }
 }

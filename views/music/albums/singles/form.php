@@ -15,7 +15,11 @@
                 </option>
                 <?php foreach($sellos as $sello): ?>
                     <option value="<?php echo s($sello->id); ?>"
-                        <?php echo isset($_POST['sello']) && $_POST['sello'] == $sello->id ? 'selected' : ''; ?>>
+                        <?php
+                            echo isset($_POST['sello']) && $_POST['sello'] == $sello->id ? 'selected'
+                            : (isset($cancionSello->id) && $cancionSello->id == $sello->id ? 'selected' :
+                             ''); 
+                        ?>>
                         <?php echo s($sello->nombre); ?>
                     </option>
                 <?php endforeach; ?>
@@ -70,7 +74,7 @@
             id="url"
             name="url"
             placeholder="{%music_songs_form-youtube_placeholder%}"
-            value="<?php echo s($song->url);?>"/>
+            value="<?php echo !empty($song->url) ? s(getYTVideoUrl($song->url)) : '';?>"/>
     </div>
 
     <!--ISRC de la canción-->
@@ -103,7 +107,7 @@
                     <?php 
                         echo isset($_POST['nivel']) && $_POST['nivel'] == $nivel->id 
                             ? 'selected' 
-                            : (isset($song->nivel) && $song->nivel == $nivel->id ? 'selected' : ''); 
+                            : (isset($cancionNivel->id_nivel) && $cancionNivel->id_nivel == $nivel->id ? 'selected' : ''); 
                     ?>>
                     
                     <?php echo $lang =='en' ? $nivel->nivel_en : $nivel->nivel_es ?>
@@ -125,7 +129,7 @@
                 </option>
                 <?php foreach($artistas as $artista): ?>
                 <option value="<?php echo s($artista->id); ?>"
-                    <?php echo isset($_POST['artista']) && $_POST['artista'] == $artista->id ? 'selected' : ''; ?>>
+                    <?php echo isset($_POST['artista']) && $_POST['artista'] == $artista->id ? 'selected' : (isset($cancionArtista->id_artista) && $cancionArtista->id_artista == $artista->id ? 'selected' : ''); ?>>
                     <?php echo $artista->nombre ?></option>
                 <?php endforeach; ?>
             <?php else: ?>
@@ -161,7 +165,8 @@
 
             <?php foreach($generos as $genero): ?>
                 <option value="<?php echo $genero->id; ?>"
-                    <?php echo isset($_POST['genero']) && $_POST['genero'] == $genero->id ? 'selected' : ''; ?>>
+                    <?php
+                        echo isset($_POST['genero']) && $_POST['genero'] == $genero->id ? 'selected' : (isset($cancionGenero->id_genero) && $cancionGenero->id_genero == $genero->id ? 'selected' : ''); ?>>
                     <?php echo $lang =='en' ? $genero->genero_en : $genero->genero_es ?>
                 </option>
             <?php endforeach; ?>
@@ -179,8 +184,10 @@
             </option>
             <?php 
             // Determine the selected genres
-            $selectedGenres = isset($_POST['selectedGenres']) ? explode(',', $_POST['selectedGenres']) : [];
-            
+            $selectedGenres = isset($_POST['selectedGenres']) ? explode(',', $_POST['selectedGenres']) :
+                // If not, check if we are editing and use the saved genres
+                (!empty($selectedGenres) ? $selectedGenres : []);
+
             foreach ($generos as $genero): ?>
                 <option 
                     value="<?php echo $genero->id; ?>" 
@@ -216,7 +223,7 @@
             value="<?php echo implode(',', $selectedGenres); ?>">
     </div>
 
-
+    <!--Categorías-->
     <div class="form__group">
         <label class="form__group__label" for="categorias">
             {%music_songs_form-categories_label%}
@@ -227,8 +234,11 @@
             </option>
             <?php 
             // Determine the selected categories
-            $selectedCategories = isset($_POST['selectedCategories']) ? explode(',', $_POST['selectedCategories']) : [];
-            
+            // If it's a POST request, take values from the POST data
+            $selectedCategories = isset($_POST['selectedCategories']) ? explode(',', $_POST['selectedCategories']) :
+                // If not, check if we are editing and use the saved categories
+                (!empty($selectedCategories) ? $selectedCategories : []);
+
             foreach ($categorias as $categoria): ?>
                 <option 
                     value="<?php echo $categoria->id; ?>" 
@@ -275,8 +285,10 @@
             </option>
             <?php 
             // Determine the selected instruments
-            $selectedInstruments = isset($_POST['selectedInstruments']) ? explode(',', $_POST['selectedInstruments']) : [];
-            
+            $selectedInstruments = isset($_POST['selectedInstruments']) ? explode(',', $_POST['selectedInstruments']) :
+                // If not, check if we are editing and use the saved instruments
+                (!empty($selectedInstruments) ? $selectedInstruments : []);
+
             foreach ($instrumentos as $instrumento): ?>
                 <option 
                     value="<?php echo $instrumento->id; ?>" 
@@ -312,6 +324,7 @@
             value="<?php echo implode(',', $selectedInstruments); ?>">
     </div>
 
+
     <!--Keywords-->
     <div class="form__group">
         <label class="form__group__label" for="keywords">
@@ -323,8 +336,10 @@
             </option>
             <?php 
             // Determine the selected keywords
-            $selectedKeywords = isset($_POST['selectedKeywords']) ? explode(',', $_POST['selectedKeywords']) : [];
-            
+            $selectedKeywords = isset($_POST['selectedKeywords']) ? explode(',', $_POST['selectedKeywords']) :
+                // If not, check if we are editing and use the saved keywords
+                (!empty($selectedKeywords) ? $selectedKeywords : []);
+
             foreach ($keywords as $keyword): ?>
                 <option 
                     value="<?php echo $keyword->id; ?>" 
@@ -360,6 +375,7 @@
             value="<?php echo implode(',', $selectedKeywords); ?>">
     </div>
 
+
     <!--Idiomas-->
     <div class="form__group">
         <label for="idiomas" class="form__group__label">
@@ -371,7 +387,9 @@
 
             <?php 
             // Retrieve previously selected languages
-            $selectedLanguages = isset($_POST['selectedLanguages']) ? explode(',', $_POST['selectedLanguages']) : [];
+            $selectedLanguages = isset($_POST['selectedLanguages']) ? explode(',', $_POST['selectedLanguages']) :
+                // If not, check if we are editing and use the saved languages
+                (!empty($selectedLanguages) ? $selectedLanguages : []);
 
             foreach ($idiomas as $idioma): ?>
                 <option 
@@ -404,6 +422,7 @@
         <!-- Hidden input to hold the selected language IDs -->
         <input type="hidden" id="selectedLanguagesInput" name="selectedLanguages" value="<?php echo implode(',', $selectedLanguages); ?>">
     </div>
+
 
     <!--textarea for lyrics-->
     <div class="form__group">
@@ -459,8 +478,8 @@
             value="<?php 
                 echo isset($_POST['escritor_propiedad']) 
                     ? htmlspecialchars(trim($_POST['escritor_propiedad']), ENT_QUOTES, 'UTF-8') 
-                    : (isset($song->escritor_propiedad) 
-                        ? htmlspecialchars(trim($song->escritor_propiedad), ENT_QUOTES, 'UTF-8') 
+                    : (isset($cancionEscritorPropiedad->escritor_propiedad) 
+                        ? htmlspecialchars(trim($cancionEscritorPropiedad->escritor_propiedad), ENT_QUOTES, 'UTF-8') 
                         : ''); 
             ?>"/>
     </div>
@@ -481,8 +500,8 @@
             value="<?php 
                 echo isset($_POST['publisher_propiedad']) 
                     ? htmlspecialchars(trim($_POST['publisher_propiedad']), ENT_QUOTES, 'UTF-8') 
-                    : (isset($song->publisher_propiedad) 
-                        ? htmlspecialchars(trim($song->publisher_propiedad), ENT_QUOTES, 'UTF-8') 
+                    : (isset($cancionEscritorPropiedad->publisher_propiedad) 
+                        ? htmlspecialchars(trim($cancionEscritorPropiedad->publisher_propiedad), ENT_QUOTES, 'UTF-8') 
                         : ''); 
             ?>"/>
     </div>
@@ -506,8 +525,8 @@
             value="<?php 
                 echo isset($_POST['sello_propiedad']) 
                     ? htmlspecialchars(trim($_POST['sello_propiedad']), ENT_QUOTES, 'UTF-8') 
-                    : (isset($song->sello_propiedad) 
-                        ? htmlspecialchars(trim($song->sello_propiedad), ENT_QUOTES, 'UTF-8') 
+                    : (isset($cancionSelloPropiedad->sello_propiedad) 
+                        ? htmlspecialchars(trim($cancionSelloPropiedad->sello_propiedad), ENT_QUOTES, 'UTF-8') 
                         : ''); 
             ?>"/>
     </div>

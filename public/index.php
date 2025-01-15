@@ -103,7 +103,9 @@ $router->get('/music/albums/delete', [MusicAlbumsController::class, 'delete']);
 $router->get('/music/singles/new', [MusicAlbumsController::class, 'newSingle']);
 $router->post('/music/singles/new', [MusicAlbumsController::class, 'newSingle']);
 $router->get('/api/music/singles', [MusicAlbumsController::class, 'consultaSingles']);
-
+$router->get('/music/singles/edit', [MusicAlbumsController::class, 'editSingle']);
+$router->post('/music/singles/edit', [MusicAlbumsController::class, 'editSingle']);
+$router->get('/music/singles/delete', [MusicAlbumsController::class, 'deleteSingle']);
 
 //Music Artists
 $router->get('/music/artists', [MusicArtistsController::class, 'index']);

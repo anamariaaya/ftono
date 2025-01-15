@@ -166,3 +166,8 @@ function getYTVideoId($url) {
     // If no valid video ID is found, return null
     return null;
 }
+
+//function to display the whole url when only the video ID is provided
+function getYTVideoUrl($videoId) {
+    return 'https://www.youtube.com/watch?v=' . $videoId;
+}

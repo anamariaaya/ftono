@@ -780,8 +780,8 @@
     "en": "Total Albums"
   },
   "music_albums_search-placeholder":{
-    "es": "Buscar álbumes por nombre",
-    "en": "Search albums by name"
+    "es": "Buscar álbumes por nombre, artista...",
+    "en": "Search albums by name, artist..."
   },
   "music_albums_add-title":{
     "es": "Añadir nuevo álbum",
@@ -948,8 +948,8 @@
     "en": "Total Singles"
   },
   "music_singles_search-placeholder":{
-    "es": "Buscar sencillos por nombre",
-    "en": "Search singles by name"
+    "es": "Buscar sencillos por nombre, género, artista, etc.",
+    "en": "Search singles by name, genre, artist, etc."
   },
   "music_singles_add-btn":{
     "es": "Añadir sencillo",
@@ -966,6 +966,10 @@
   "music_singles_new-title":{
     "es": "Nuevo Sencillo",
     "en": "New Single"
+  },
+  "music_singles_edit-title":{
+    "es": "Editar sencillo",
+    "en": "Edit single"
   },
   "music_songs_add-title":{
     "es": "Añadir nueva canción",

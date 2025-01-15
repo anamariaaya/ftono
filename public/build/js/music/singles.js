@@ -17,7 +17,7 @@ async function mostrarSingles(datos){
     console.log(datos);
 
     datos.forEach(single => {
-        const {id, titulo, version, isrc, url, sello} = single;
+        const {id, titulo, version, isrc, sello, artista_name, genero_en, genero_es, gensec_en, gensec_es, categorias_en, categorias_es, idioma_en, idioma_es, nivel_cancion_en, nivel_cancion_es} = single;
 
         const linkSingle = document.createElement('A');
         linkSingle.href = window.location.origin+'/music/singles/current?id='+id;
@@ -32,9 +32,9 @@ async function mostrarSingles(datos){
         cardTitle.textContent = titulo;
         cardTitle.classList.add('cards__text', 'cards__text--span', 'text-green', 'text-24');
 
-        // const cardArtista = document.createElement('P');
-        // cardArtista.textContent = artista_name;
-        // cardArtista.classList.add('cards__text', 'text-20', 'text-yellow');
+        const cardArtista = document.createElement('P');
+        cardArtista.textContent = artista_name;
+        cardArtista.classList.add('cards__text', 'text-20', 'text-yellow');
 
         const cardISRC = document.createElement('P');
         cardISRC.textContent = 'ISRC: '+isrc;
@@ -44,10 +44,60 @@ async function mostrarSingles(datos){
         cardVersion.textContent = alerts['version'][lang]+': '+version;
         cardVersion.classList.add('cards__text');
 
+        const cardGenre = document.createElement('P');
+        if(lang === 'en'){
+            cardGenre.textContent = alerts['genre'][lang]+': '+ genero_en;
+        }else{
+            cardGenre.textContent = alerts['genre'][lang]+': '+ genero_es;
+        }
+        cardGenre.classList.add('cards__text');
+
+        const cardGenreSec = document.createElement('P');
+        if(lang === 'en'){
+            cardGenreSec.textContent = alerts['genre-sec'][lang]+': '+ gensec_en;
+        }else{
+            cardGenreSec.textContent = alerts['genre-sec'][lang]+': '+ gensec_es;
+        }
+        cardGenreSec.classList.add('cards__text');
+
+        const cardCategories = document.createElement('P');
+        if(lang === 'en'){
+            cardCategories.textContent = alerts['categories'][lang]+': '+ categorias_en;
+        }else{
+            cardCategories.textContent = alerts['categories'][lang]+': '+ categorias_es;
+        }
+        cardCategories.classList.add('cards__text');
+
+        const cardIdiomas = document.createElement('P');
+        if(lang === 'en'){
+            cardIdiomas.textContent = alerts['languages'][lang]+': '+ idioma_en;
+        }else{
+            cardIdiomas.textContent = alerts['languages'][lang]+': '+ idioma_es;
+        }
+        cardIdiomas.classList.add('cards__text');
+
+        const cardLevel = document.createElement('P');
+        if(lang === 'en'){
+            cardLevel.textContent = alerts['level'][lang]+': '+ nivel_cancion_en;
+        }else{
+            cardLevel.textContent = alerts['level'][lang]+': '+ nivel_cancion_es;
+        }
+        cardLevel.classList.add('cards__text');
+
         cardInfo.appendChild(cardTitle);
-        // cardInfo.appendChild(cardArtista);
+        cardInfo.appendChild(cardArtista);
         cardInfo.appendChild(cardISRC);
         cardInfo.appendChild(cardVersion);
+        cardInfo.appendChild(cardGenre);
+        if(gensec_en !== null && gensec_es !== null){
+            cardInfo.appendChild(cardGenreSec);
+        }
+        if(categorias_en !== null && categorias_es !== null){
+            cardInfo.appendChild(cardCategories);
+        }
+        if(idioma_en !== null && idioma_es !== null){
+            cardInfo.appendChild(cardIdiomas);
+        }
 
         const cardActions = document.createElement('DIV');
         cardActions.classList.add('cards__actions');
