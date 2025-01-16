@@ -21,6 +21,8 @@
             </div>
         <?php endif;?>
     </div>
+
+    <!--Título-->
     <div class="form__group">
         <label for="titulo" class="form__group__label">
             {%music_albums_title_label%}
@@ -35,6 +37,8 @@
             value="<?php echo s($album->titulo);?>"
             />
     </div>
+
+    <!--UPC-->
     <div class="form__group">
         <label for='upc' class="form__group__label">
             {%music_albums_upc_label%}
@@ -49,6 +53,8 @@
             value="<?php echo s($album->upc);?>"
             />
     </div>
+
+    <!--Artista principal-->
     <div class="form__group">
         <label for="artistas" class="form__group__label">
             {%music_albums_artist_label%}
@@ -63,6 +69,8 @@
             <?php endforeach; ?>
         </select>
     </div>
+
+    <!--Artistas secundarios-->
     <div class="form__group">
         <label class="form__group__label">{%music_albums_artist-secondary_label%}</label>
         <input
@@ -72,7 +80,7 @@
             id="art-secundarios"
             class="form__group__input artistas_input"
             placeholder="{%music_albums_artist-secondary_placeholder%}"
-            value="<?php echo s($albumArtSecundarios->artistas);?>"
+            value="<?php echo isset($albumArtSecundarios)? ($albumArtSecundarios->artistas) : '';?>"
         />
     </div>
 
@@ -121,10 +129,14 @@
         <input type="hidden" id="selectedLanguagesInput" name="selectedLanguages" value="<?php echo implode(',', $selectedLanguages); ?>">
     </div>
 
+    <!--Sello discográfico-->
     <?php
         if($tipoUsuario->id_nivel != 3):?>
             <div class="form__group">
-                <label class="form__group__label" for="sello">{%music_albums_label_label%}</label>
+                <label class="form__group__label" for="sello">
+                    {%music_albums_label_label%}
+                    <span class="text-yellow">*</span>
+                </label>
                 <select id="sello" name="sello" class="form__group__select">
                     <option selected disabled value="">{%music_albums_label_placeholder%}</option>
                     <?php foreach($sellos as $sello): ?>
@@ -141,8 +153,12 @@
 
     <input type="hidden" id="defaultLabel" name="defaultLabel" value="No label">
 
+    <!--Fecha de lanzamiento-->
     <div class="form__group">
-        <label for="fecha_rec" class="form__group__label">{%music_albums_record_date_label%}</label>
+        <label for="fecha_rec" class="form__group__label">
+            {%music_albums_record_date_label%}
+            <span class="text-yellow">*</span>
+        </label>
         <input
             type="date"
             class="form__group__input"
@@ -154,7 +170,10 @@
     </div>
 
     <div class="form__group">
-        <label for="publisher" class="form__group__label">{%music_albums_publisher_label%}</label>
+        <label for="publisher" class="form__group__label">
+            {%music_albums_publisher_label%}
+            <span class="text-yellow">*</span>
+        </label>
         <input
             type="text"
             class="form__group__input"

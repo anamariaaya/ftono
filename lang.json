@@ -767,6 +767,10 @@
     "es": "Tus álbumes",
     "en": "Your albums"
   },
+  "music_album_title":{
+    "es": " Tú álbum",
+    "en": "Your album"
+  },
   "music_albums-languages":{
     "es": "Idiomas",
     "en": "Languages"
@@ -935,9 +939,13 @@
     "es": "La fecha de grabación es obligatoria",
     "en": "The recording date is required"
   },
-  "music_singles-title":{
+  "music_singles_title":{
     "es": "Tus sencillos",
     "en": "Your singles"
+  },
+  "music_single_title":{
+    "es": "Tu sencillos",
+    "en": "Your single"
   },
   "music_singles-subtitle":{
     "es": "Agrega los sencillos que has lanzado",
@@ -1108,8 +1116,8 @@
     "en": "Percentage of ownership of the composer and the publisher, only numbers, without signs. The total percentage for writer and publisher cannot exceed 100"
   },
   "music_songs_form-writers-percent_alert-total":{
-    "es": "El porcentaje total para escritor y editorial no puede superar el 100",
-    "en": "The total percentage for writer and publisher cannot exceed 100"
+    "es": "El porcentaje total para escritor y editorial no puede superar o ser menor que 100",
+    "en": "The total percentage for writer and publisher cannot exceed or be less than 100"
   },
   "music_songs_form-writers-percent_label":{
     "es": "Porcentaje de propiedad del compositor. Sólo números, sin signos",
@@ -2295,7 +2303,7 @@
     "es": "Reproducir todo",
     "en": "Play all"
   },
-  "artist": {
+  "artist-title": {
     "es": "Artista",
     "en": "Artist"
   },
@@ -2331,7 +2339,7 @@
     "es": "Instrumentos",
     "en": "Instruments"
   },
-  "keywords": {
+  "keywords-title": {
     "es": "Palabras clave",
     "en": "Keywords"
   },

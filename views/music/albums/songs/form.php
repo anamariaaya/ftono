@@ -1,37 +1,5 @@
 <fieldset class="form__fieldset">
     <legend class="form__legend">{%music_albums_legend%}</legend>
-    <!--Sello discográfico-->
-    <?php
-        if($tipoUsuario->id_nivel != 3):?>
-            <div class="form__group">
-                <label class="form__group__label" for="sello">
-                    {%music_albums_label_label%}
-                    <span class="text-yellow">*</span>
-                </label>
-                <select id="sello" name="sello" class="form__group__select">
-
-                <option selected disabled value="">
-                    {%music_albums_label_placeholder%}
-                </option>
-                <?php foreach($sellos as $sello): ?>
-                    <option value="<?php echo s($sello->id); ?>"
-                        <?php
-                            echo isset($_POST['sello']) && $_POST['sello'] == $sello->id ? 'selected'
-                            : (isset($cancionSello->id) && $cancionSello->id == $sello->id ? 'selected' :
-                             ''); 
-                        ?>>
-                        <?php echo s($sello->nombre); ?>
-                    </option>
-                <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="form__group--inline alert-style">
-                <input class="form__group__input--checkbox" type="checkbox" id="noLabel" name="noLabel">
-                <label for="noLabel" class="form__group__label">{%music_albums_no_label%}</label>
-            </div>
-    <?php endif;
-    ?>
-    
     <!--Título de la canción-->
     <div class="form__group">
         <label class="form__group__label" for="titulo">
@@ -116,29 +84,6 @@
         </select>
     </div>
 
-    <!--Artista principal-->
-    <div class="form__group">
-        <label class="form__group__label" for="artista">
-            {%music_songs_form-artist_label%}
-            <span class="text-yellow">*</span>
-        </label>
-        <select class="form__group__select" name="artista" id="artista">
-            <?php if(isset($single)): ?>
-                <option selected disabled>
-                    {%music_songs_form-artist_placeholder%}
-                </option>
-                <?php foreach($artistas as $artista): ?>
-                <option value="<?php echo s($artista->id); ?>"
-                    <?php echo isset($_POST['artista']) && $_POST['artista'] == $artista->id ? 'selected' : (isset($cancionArtista->id_artista) && $cancionArtista->id_artista == $artista->id ? 'selected' : ''); ?>>
-                    <?php echo $artista->nombre ?>
-                </option>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <option value="<?php echo s($artista->id); ?>" selected disabled><?php echo $artista->nombre ?></option>
-            <?php endif; ?>
-        </select>
-    </div>
-
     <!--Colaboradores-->
     <div class="form__group">
         <label class="form__group__label" for="colaboradores">
@@ -150,7 +95,7 @@
             id="colaboradores"
             name="colaboradores"
             placeholder="{%music_song_form-colaborators_placeholder%}"
-            value="<?php echo s($songColab->colaboradores);?>"/>
+            value="<?php echo !empty($songColab) ? s($songColab->colaboradores) : '';?>"/>
     </div>
 
     <!--Género principal-->
@@ -375,7 +320,6 @@
             name="selectedKeywords" 
             value="<?php echo implode(',', $selectedKeywords); ?>">
     </div>
-
 
     <!--Idiomas-->
     <div class="form__group">

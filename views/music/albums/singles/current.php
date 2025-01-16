@@ -10,7 +10,7 @@
 
     <div class="music__grid mTop-5">
         <div class="music__info">
-            <p class="caps"><span class="text-yellow">{%artist%}: </span><?php echo $song->artista_name;?></p>
+            <p class="caps"><span class="text-yellow">{%artist-title%}: </span><?php echo $song->artista_name;?></p>
 
             <p class="caps"><span class="text-yellow">{%version%}: </span><?php echo $song->version;?></p>
 
@@ -67,9 +67,9 @@
 
             <?php if(!empty($song->keywords_en)): ?>
                 <?php if($lang == '_en'): ?>
-                    <p class="caps"><span class="text-yellow">{%keywords%}: </span><?php echo $song->keywords_en;?></p>
+                    <p class="caps"><span class="text-yellow">{%keywords-title%}: </span><?php echo $song->keywords_en;?></p>
                 <?php else: ?>
-                    <p class="caps"><span class="text-yellow">{%keywords%}: </span><?php echo $song->keywords_es;?></p>
+                    <p class="caps"><span class="text-yellow">{%keywords-title%}: </span><?php echo $song->keywords_es;?></p>
                 <?php endif; ?>
             <?php endif; ?>
 

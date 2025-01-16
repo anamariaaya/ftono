@@ -27,7 +27,7 @@ class Canciones extends ActiveRecord{
         if(!$this->isrc) {
             self::$alertas['error'][] = 'music_songs_form-isrc_alert-required';
         }
-        if(strlen($this->isrc) > 13) {
+        if(strlen($this->isrc) > 16) {
             self::$alertas['error'][] = 'music_songs_form-isrc_alert-max';
         }
         if(!$this->url) {

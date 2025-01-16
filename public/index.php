@@ -108,6 +108,16 @@ $router->post('/music/singles/edit', [MusicAlbumsController::class, 'editSingle'
 $router->get('/music/singles/delete', [MusicAlbumsController::class, 'deleteSingle']);
 $router->get('/music/singles/current', [MusicAlbumsController::class, 'currentSingle']);
 
+//Music Songs
+$router->get('/music/albums/song/new', [MusicAlbumsController::class, 'newSong']);
+$router->post('/music/albums/song/new', [MusicAlbumsController::class, 'newSong']);
+$router->get('/api/music/albums/songs', [MusicAlbumsController::class, 'consultaSongs']);
+$router->get('/music/albums/song/current', [MusicAlbumsController::class, 'currentSong']);
+$router->get('/music/albums/song/edit', [MusicAlbumsController::class, 'editSong']);
+$router->post('/music/albums/song/edit', [MusicAlbumsController::class, 'editSong']);
+$router->get('/music/song/delete', [MusicAlbumsController::class, 'deleteSong']);
+
+
 //Music Artists
 $router->get('/music/artists', [MusicArtistsController::class, 'index']);
 $router->get('/music/artists/new', [MusicArtistsController::class, 'new']);

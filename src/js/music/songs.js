@@ -1,25 +1,29 @@
-import { gridSingles,singlesInput } from "./selectores.js";
+import { gridSongs,songsInput } from "./selectores.js";
 import { readLang, readJSON, eliminarItem, normalizeText, caps } from "../base/funciones.js";
 
-export async function consultaSingles(){
+export async function consultaSongs(){
+    //retrieve the URL of the current page with paarameters
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams(url.search);
+    const id = params.get('id');
     try{
-        const resultado = await fetch(window.location.origin+'/api/music/singles');
+        const resultado = await fetch(window.location.origin+'/api/music/albums/songs'+'?id='+id);
         const datos = await resultado.json();
-        mostrarSingles(datos);
+        mostrarSongs(datos);
     }catch(error){
         console.log(error);
     }
 }
 
-async function mostrarSingles(datos){
+async function mostrarSongs(datos){
     const lang = await readLang();
     const alerts = await readJSON();
 
-    datos.forEach(single => {
-        const {id, titulo, version, isrc, sello, artista_name, genero_en, genero_es, gensec_en, gensec_es, categorias_en, categorias_es, idioma_en, idioma_es, nivel_cancion_en, nivel_cancion_es} = single;
+    datos.forEach(song => {
+        const {id, titulo, version, isrc, sello, artista_name, genero_en, genero_es, gensec_en, gensec_es, categorias_en, categorias_es, idioma_en, idioma_es, nivel_cancion_en, nivel_cancion_es} = song;
 
         const linkSingle = document.createElement('A');
-        linkSingle.href = window.location.origin+'/music/singles/current?id='+id;
+        linkSingle.href = window.location.origin+'/music/album/songs/current?id='+id;
         linkSingle.classList.add('cards__card');
 
         const cardSingle = document.createElement('DIV');
@@ -103,7 +107,7 @@ async function mostrarSingles(datos){
 
         const btnEditar = document.createElement('A');
         btnEditar.classList.add('btn-update');
-        btnEditar.href = window.location.origin+'/music/singles/edit?id='+id;
+        btnEditar.href = window.location.origin+'/music/albums/song/edit?id='+id;
 
         const iconoLapiz = document.createElement('I');
         iconoLapiz.classList.add('fas', 'fa-pencil-alt', 'no-click');
@@ -114,7 +118,7 @@ async function mostrarSingles(datos){
         btnEliminar.classList.add('btn-delete');
         btnEliminar.id = 'eliminar';
         btnEliminar.value = id;
-        btnEliminar.dataset.item = 'singles';
+        btnEliminar.dataset.item = 'song';
         btnEliminar.dataset.role = 'music';
         btnEliminar.onclick = eliminarItem;
 
@@ -131,24 +135,24 @@ async function mostrarSingles(datos){
 
         linkSingle.appendChild(cardSingle);
 
-        gridSingles.appendChild(linkSingle);
+        gridSongs.appendChild(linkSingle);
     });
     filtrarSingles();
 }
 
 function filtrarSingles(){
-    singlesInput.addEventListener('input', (e) => {
+    songsInput.addEventListener('input', (e) => {
         const busqueda = normalizeText(e.target.value);
-        const singles = gridSingles.querySelectorAll('.cards__card');
+        const singles = gridSongs.querySelectorAll('.cards__card');
 
-        singles.forEach(single => {
-            const titulo = normalizeText(single.textContent);
+        singles.forEach(song => {
+            const titulo = normalizeText(song.textContent);
             if(titulo.indexOf(busqueda) !== -1){
-                single.style.display = 'flex';
-                single.style.marginRight = '2rem';
-                gridSingles.style.columnGap = '0';
+                song.style.display = 'flex';
+                song.style.marginRight = '2rem';
+                gridSongs.style.columnGap = '0';
             }else{
-                single.style.display = 'none';
+                song.style.display = 'none';
             }
         });
     });

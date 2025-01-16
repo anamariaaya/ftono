@@ -14,7 +14,6 @@ export async function consultaSingles(){
 async function mostrarSingles(datos){
     const lang = await readLang();
     const alerts = await readJSON();
-    console.log(datos);
 
     datos.forEach(single => {
         const {id, titulo, version, isrc, sello, artista_name, genero_en, genero_es, gensec_en, gensec_es, categorias_en, categorias_es, idioma_en, idioma_es, nivel_cancion_en, nivel_cancion_es} = single;

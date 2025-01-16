@@ -15,6 +15,7 @@ use Model\Categorias;
 use Model\CancionData;
 use Model\AlbumArtista;
 use Model\AlbumIdiomas;
+use Model\CancionAlbum;
 use Model\CancionColab;
 use Model\CancionLetra;
 use Model\CancionNivel;
@@ -75,6 +76,9 @@ class MusicAlbumsController{
         isMusico();
         $albumId = redireccionar('/music/albums');
         $album = Albums::find($albumId);
+        if(!$album){
+            header('Location: /music/albums');
+        }
         $artistaId = AlbumArtista::where('id_albums',$album->id);
         $artista = Artistas::find($artistaId->id_artistas);
         $art_secundarios = AlbumArtSecundarios::where('id_albums',$album->id);
@@ -98,11 +102,17 @@ class MusicAlbumsController{
 
         $idiomas = implode(', ', $idiomas);
 
-        $songs = [];
+        $songs = 'SELECT c.id FROM canciones c
+            LEFT JOIN 
+                canc_album cal ON c.id = cal.id_cancion 
+            WHERE
+                cal.id_cancion IS NOT NULL AND cal.id_album = '.$albumId.';
+            ';
+        $songs = Canciones::consultarSQL($songs);
         if(!$album){
             header('Location: /music/albums');
         }
-        $titulo = 'artist_title';
+        $titulo = 'music_album_title';
         $router->render('music/albums/current',[
             'titulo' => $titulo,
             'album' => $album,
@@ -277,7 +287,9 @@ class MusicAlbumsController{
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $album ->sincronizar($_POST);
-            $albumArtSecundarios->artistas = $_POST['art-secundarios'];
+            if(!empty($_POST['art-secundarios'])){
+                $albumArtSecundarios->artistas = $_POST['art-secundarios'];
+            }
             $album->id_usuario = $_SESSION['id'];
             $alertas = $album->validarAlbum();
             $perfilUsuario = PerfilUsuario::where('id_usuario', $id); 
@@ -661,7 +673,7 @@ class MusicAlbumsController{
     public static function consultaSingles(){
         isMusico();
         $id = $_SESSION['id'];
-        $singles = 'SELECT 
+        $consultaSingles = 'SELECT 
             c.*,
             ar.id AS artista_id,
             ar.nombre AS artista_name,
@@ -728,18 +740,20 @@ class MusicAlbumsController{
                 canc_escritor_propiedad cep ON c.id = cep.id_cancion
             LEFT JOIN 
                 canc_sello_propiedad csp ON c.id = csp.id_cancion
+            LEFT JOIN 
+                canc_album cal ON c.id = cal.id_cancion 
             WHERE
-                c.id_usuario = '.$id.'	
+                c.id_usuario = '.$id.' AND 	cal.id_cancion IS NULL
             GROUP BY 
                 c.id
             ORDER BY 
                 c.id DESC;
         ';
-        $singles = CancionData::consultarSQL($singles);
+        $singles = CancionData::consultarSQL($consultaSingles);
         echo json_encode($singles);
     }
 
-    public static function editSingle($router){
+    public static function editSingle(Router $router){
         isMusico();
         $id = $_SESSION['id'];
         $lang = $_SESSION['lang'] ?? 'en';
@@ -1057,7 +1071,7 @@ class MusicAlbumsController{
         ]);
     }
 
-    public static function deleteSingle($router){
+    public static function deleteSingle(Router $router){
         isMusico();
         $id = $_SESSION['id'];
         $singleId = redireccionar('/music/albums');
@@ -1068,7 +1082,7 @@ class MusicAlbumsController{
         }
     }
 
-    public static function currentSingle($router){
+    public static function currentSingle(Router $router){
         isMusico();
         $id = $_SESSION['id'];
         $lang = $_SESSION['lang'] ?? 'en';
@@ -1157,5 +1171,666 @@ class MusicAlbumsController{
             'lang' => $lang,
             'song' => $song
         ]);
+    }
+
+    public static function newSong(Router $router){
+        isMusico();
+        $lang = $_SESSION['lang'] ?? 'en';
+        $titulo = 'music_singles_new-title';
+        $single = true;
+        $id = $_SESSION['id'];
+        $idAlbum = redireccionar('/music/albums');
+        $album = Albums::find($idAlbum);
+        if($album->id_usuario != $id){
+            header('Location: /music/albums');
+        }
+        $albumArtista = AlbumArtista::where('id_albums', $album->id);
+        $artista = Artistas::find($albumArtista->id_artistas);
+        $tipoUsuario = NTMusica::where('id_usuario', $id);
+        $perfilUsuario = PerfilUsuario::where('id_usuario', $id); 
+        $song = new Canciones;
+        $lang = $_SESSION['lang'] ?? 'en';
+        $songColab = new CancionColab;
+        $cancionEscritores = new CancionEscritores;
+        $cancionLetra = new CancionLetra;
+        $cancionNivel = new CancionNivel;
+        $cancionArtista = new CancionArtista;
+        $cancionGenero = new CancionGenero;
+        $cancionEscritorPropiedad = new CancionEscritorPropiedad;
+        $cancionSelloPropiedad = new CancionSelloPropiedad;
+        $alertas = [];
+        
+        $selectedCategories = [];
+        if($lang == 'en'){
+            $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2, 3) ORDER BY categoria_en;";
+        }else{
+            $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2, 3) ORDER BY categoria_es;";
+        }
+        $categorias = Categorias::consultarSQL($consultaCategorias);
+
+        $niveles = NivelCancion::all();
+        
+  
+        $artistas = Artistas::whereOrdered('id_usuario', $_SESSION['id'], 'nombre');
+        
+        $generos = Genres::AllOrderAsc('genero_'.$lang);
+        
+        $selectedGenres = [];
+
+        if($lang == 'en'){
+            $consultaInstrumentos= "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = 2 ORDER BY keyword_en;";
+        }else{
+            $consultaInstrumentos= "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = 2 ORDER BY keyword_es;";
+        }
+        $instrumentos = Keywords::consultarSQL($consultaInstrumentos);
+        $selectedInstruments = [];
+
+        if($lang == 'en'){
+            $consultaKeywords = "SELECT k.* FROM keywords k INNER JOIN categ_keyword ck ON k.id = ck.id_keyword WHERE ck.id_categoria NOT IN (1, 2) ORDER BY keyword_en;";
+        }else{
+            $consultaKeywords = "SELECT k.* FROM keywords k INNER JOIN categ_keyword ck ON k.id = ck.id_keyword WHERE ck.id_categoria NOT IN (1, 2) ORDER BY keyword_es;";
+        }
+        
+        $keywords = Keywords::consultarSQL($consultaKeywords);
+
+        $selectedKeywords = [];
+
+        $idiomas = Idiomas::AllOrderAsc('idioma_en');
+        $selectedLanguages = [];
+
+        $usuariosellos = UsuarioSellos::whereAll('id_usuario', $id);
+        
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $song->sincronizar($_POST);
+            $song->id_usuario = $id;
+            $alertas = $song->validarCancion();
+
+            if(!isset($_POST['nivel']) || $_POST['nivel'] === '0' || trim($_POST['nivel']) === ''){
+                $alertas = CancionNivel::setAlerta('error', 'music_songs_form-song-level_alert-required');
+            }
+            $alertas = CancionNivel::getAlertas();
+
+            if(!isset($_POST['genero']) || $_POST['genero'] === '0' || trim($_POST['genero']) === ''){
+                $alertas = CancionGenero::setAlerta('error', 'music_songs_form-genre_alert-required');
+            }
+            $alertas = CancionGenero::getAlertas();
+
+            if(!isset($_POST{'selectedLanguages'}) || $_POST['selectedLanguages'] === '0' || trim($_POST['selectedLanguages']) === ''){
+                $alertas = CancionIdiomas::setAlerta('error', 'music_songs-form-language_alert-required');
+            }
+            $alertas = CancionIdiomas::getAlertas();
+
+            if(!isset($_POST['escritores']) || $_POST['escritores'] === '0' || trim($_POST['escritores']) === ''){
+                $alertas = CancionEscritores::setAlerta('error', 'music_songs_form-writers_alert-required');
+            }
+            $alertas = CancionEscritores::getAlertas();
+
+            if(!isset($_POST['escritor_propiedad']) || $_POST['escritor_propiedad'] === '0' || trim($_POST['escritor_propiedad']) === ''){
+                $alertas = CancionEscritorPropiedad::setAlerta('error', 'music_songs_form-writers-percent_alert-required');
+            }
+
+            if(!isset($_POST['publisher_propiedad']) || $_POST['publisher_propiedad'] === '0' || trim($_POST['publisher_propiedad']) === ''){
+                $alertas = CancionEscritorPropiedad::setAlerta('error', 'music_songs_form-publisher-percent_alert-required');
+            }
+
+            $escritorPropiedad = isset($_POST['escritor_propiedad']) ? (int)$_POST['escritor_propiedad'] : 0;
+            $publisherPropiedad = isset($_POST['publisher_propiedad']) ? (int)$_POST['publisher_propiedad'] : 0;
+
+            if (($escritorPropiedad + $publisherPropiedad) > 100) {
+                $alertas = CancionEscritorPropiedad::setAlerta('error', 'music_songs_form-writers-percent_alert-total');
+            }
+            $alertas = CancionEscritorPropiedad::getAlertas();
+
+            if (!isset($_POST['sello_propiedad']) || $_POST['sello_propiedad'] === '0' || trim($_POST['sello_propiedad']) === '') {
+                $alertas = CancionSelloPropiedad::setAlerta('error', 'music_songs-form-fonogram_alert-required');
+            }
+            
+            // Check if sello_propiedad exceeds 100
+            $selloPropiedad = isset($_POST['sello_propiedad']) ? (int)$_POST['sello_propiedad'] : 0;
+            
+            if ($selloPropiedad > 100) {
+                $alertas = CancionSelloPropiedad::setAlerta('error', 'The phonogram percentage cannot exceed 100.');
+            }
+            $alertas = CancionSelloPropiedad::getAlertas();
+
+            $songColab->sincronizar($_POST);  
+
+            if(empty($alertas)){
+                $song->sello = $album->sello;
+                $song->url = getYTVideoId($song->url);
+                $song->guardar();
+
+                //Buscar la canción recién creada
+                $song = Canciones::where('isrc', $_POST['isrc']);
+
+                $cancionAlbum = new CancionAlbum;
+                $cancionAlbum->id_cancion = $song->id;
+                $cancionAlbum->id_album = $idAlbum;
+                $cancionAlbum->guardar();
+    
+                //Guardad nivel de la canción
+                $cancionNivel->id_cancion = $song->id;
+                $cancionNivel->id_nivel = $_POST['nivel'];
+                $cancionNivel->guardar();
+    
+                //Guardar Artista de la canción
+                $cancionArtista->id_cancion = $song->id;
+                $cancionArtista->id_artista = $artista->id;
+                $cancionArtista->guardar();
+    
+                //Guardar colaboradores de la canción
+                if(!empty($_POST['colaboradores'])){
+                    $colaboradores = $_POST['colaboradores'];
+                    $songColab->id_cancion = $song->id;
+                    $songColab->colaboradores = $colaboradores;
+                    $songColab->guardar();
+                }
+    
+                //Guardar género principal de la canción
+                $cancionGenero->id_cancion = $song->id;
+                $cancionGenero->id_genero = $_POST['genero'];
+                $cancionGenero->guardar();
+    
+                //Guardar géneros secundarios de la canción
+                if(!empty($_POST['selectedGenres'])){
+                    $generosSecundarios = explode(',', $_POST['selectedGenres']);
+                    foreach($generosSecundarios as $generoSecundario){
+                        $cancionGenero = new CancionGenSecundarios;
+                        $cancionGenero->id_cancion = $song->id;
+                        $cancionGenero->id_genero = $generoSecundario;
+                        $cancionGenero->guardar();
+                    }
+                }
+                
+                //Guardar las categorías de la canción
+                if(!empty($_POST['selectedCategories'])){
+                    $categorias = explode(',', $_POST['selectedCategories']);
+                    foreach($categorias as $categoria){
+                        $cancionCategoria = new CancionCategorias;
+                        $cancionCategoria->id_cancion = $song->id;
+                        $cancionCategoria->id_categoria = $categoria;
+                        $cancionCategoria->guardar();
+                    }
+                }
+                
+                //Guardar los instrumentos de la canción
+                if(!empty($_POST['selectedInstruments'])){
+                    $instrumentos = explode(',', $_POST['selectedInstruments']);
+                    foreach($instrumentos as $instrumento){
+                        $cancionInstrumento = new CancionInstrumento;
+                        $cancionInstrumento->id_cancion = $song->id;
+                        $cancionInstrumento->id_instrumento = $instrumento;
+                        $cancionInstrumento->guardar();
+                    }
+                }
+                
+                //Guardar las keywords de la canción
+                if(!empty($_POST['selectedKeywords'])){
+                    $keywords = explode(',', $_POST['selectedKeywords']);
+                    foreach($keywords as $keyword){
+                        $cancionKeyword = new CancionKeywords;
+                        $cancionKeyword->id_cancion = $song->id;
+                        $cancionKeyword->id_keywords = $keyword;
+                        $cancionKeyword->guardar();
+                    }
+                }
+                
+                //Guardar los idiomas de la canción
+                if(!empty($_POST['selectedLanguages'])){
+                    $idiomas = explode(',', $_POST['selectedLanguages']);
+                    foreach($idiomas as $idioma){
+                        $cancionIdioma = new CancionIdiomas;
+                        $cancionIdioma->id_cancion = $song->id;
+                        $cancionIdioma->id_idioma = $idioma;
+                        $cancionIdioma->guardar();
+                    }
+                }
+
+                $alertas = CancionIdiomas::getAlertas();
+                
+                //Guardar la letra de la canción
+                if(!empty($_POST['letra'])){
+                    $cancionLetra->id_cancion = $song->id;
+                    $cancionLetra->letra = $_POST['letra'];
+                    $cancionLetra->guardar();
+                }
+    
+                //Guardar los escritores de la canción
+                $cancionEscritores->id_cancion = $song->id;
+                $cancionEscritores->escritores = $_POST['escritores'];
+                $cancionEscritores->guardar();
+                
+                //Guardar la propiedad del escritor y publisher de la canción
+                $cancionEscritorPropiedad->id_cancion = $song->id;
+                $cancionEscritorPropiedad->escritor_propiedad = $_POST['escritor_propiedad'];
+                $cancionEscritorPropiedad->publisher_propiedad = $_POST['publisher_propiedad'];
+                $cancionEscritorPropiedad->guardar();
+                
+                //Guardar la propiedad del sello de la canción
+                $cancionSelloPropiedad->id_cancion = $song->id;
+                $cancionSelloPropiedad->sello_propiedad = $_POST['sello_propiedad'];
+                $cancionSelloPropiedad->guardar();
+                
+                header('Location: /music/albums/current?id='.$album->id);
+            }
+        }
+
+        $alertas = Canciones::getAlertas();
+
+        $router->render('music/albums/songs/new',[
+            'titulo' => $titulo,
+            'single' => $single,
+            'album' => $album,
+            'tipoUsuario' => $tipoUsuario,
+            'song' => $song,
+            'lang' => $lang,
+            'songColab' => $songColab,
+            'cancionEscritores' => $cancionEscritores,
+            'cancionLetra' => $cancionLetra,
+            'cancionNivel' => $cancionNivel,
+            'cancionArtista' => $cancionArtista,
+            'cancionGenero' => $cancionGenero,
+            'cancionEscritorPropiedad' => $cancionEscritorPropiedad,
+            'cancionSelloPropiedad' => $cancionSelloPropiedad,
+            'categorias' => $categorias,
+            'selectedCategories' => $selectedCategories,
+            'niveles' => $niveles,
+            'artistas' => $artistas,
+            'lang' => $lang,
+            'generos' => $generos,
+            'selectedGenres' => $selectedGenres,
+            'instrumentos' => $instrumentos,
+            'selectedInstruments' => $selectedInstruments,
+            'keywords' => $keywords,
+            'selectedKeywords' => $selectedKeywords,
+            'idiomas' => $idiomas,
+            'selectedLanguages' => $selectedLanguages,
+            'alertas' => $alertas
+        ]);
+    }
+
+    public static function consultaSongs(){
+        isMusico();
+        $id = $_SESSION['id'];
+        $idAlbum = redireccionar('/music/albums');
+        $consultaSongs = 'SELECT 
+             c.*,
+             ar.id AS artista_id,
+             ar.nombre AS artista_name,
+             n.nivel_en AS nivel_cancion_es,
+             n.nivel_es AS nivel_cancion_en,
+             g.genero_es AS genero_es,
+             g.genero_en AS genero_en,
+             GROUP_CONCAT(DISTINCT cat.categoria_en SEPARATOR \', \') AS categorias_en,
+             GROUP_CONCAT(DISTINCT cat.categoria_es SEPARATOR \', \') AS categorias_es,
+             col.colaboradores,
+             GROUP_CONCAT(DISTINCT gs.genero_en SEPARATOR \', \') AS gensec_en,
+             GROUP_CONCAT(DISTINCT gs.genero_es SEPARATOR \', \') AS gensec_es,
+             GROUP_CONCAT(DISTINCT i.idioma_en SEPARATOR \', \') AS idioma_en,
+             GROUP_CONCAT(DISTINCT i.idioma_es SEPARATOR \', \') AS idioma_es,
+             GROUP_CONCAT(DISTINCT ins.keyword_en SEPARATOR \', \') AS instrumentos_en,
+             GROUP_CONCAT(DISTINCT ins.keyword_es SEPARATOR \', \') AS instrumentos_es,
+             GROUP_CONCAT(DISTINCT k.keyword_en SEPARATOR \', \') AS keywords_en,
+             GROUP_CONCAT(DISTINCT k.keyword_es SEPARATOR \', \') AS keywords_es,
+             l.letra,
+             e.escritores,
+             cep.escritor_propiedad,
+             cep.publisher_propiedad ,
+             csp.sello_propiedad
+             FROM canciones c
+             LEFT JOIN 
+                 canc_artista ca ON c.id = ca.id_cancion
+             LEFT JOIN
+                 artistas ar ON ca.id_artista = ar.id
+             LEFT JOIN
+                 canc_nivel cn ON c.id = cn.id_cancion
+             LEFT JOIN
+                 nivel_canc n ON cn.id_nivel = n.id
+             LEFT JOIN
+                 canc_genero cg ON c.id = cg.id_cancion
+             LEFT JOIN
+                 generos g ON cg.id_genero = g.id
+             LEFT JOIN
+                 canc_categorias cc ON c.id = cc.id_cancion
+             LEFT JOIN
+                 categorias cat ON cc.id_categoria = cat.id
+             LEFT JOIN 
+                 canc_colaboradores col ON c.id = col.id_cancion
+             LEFT JOIN
+                 canc_gensecundarios cgs ON c.id = cgs.id_cancion
+             left JOIN
+                 generos gs ON cgs.id_genero = gs.id
+             LEFT JOIN 
+                 canc_idiomas ci ON c.id = ci.id_cancion
+             LEFT JOIN 
+                 idiomas i ON ci.id_idioma = i.id
+             LEFT JOIN
+                 canc_instrumento cins ON c.id = cins.id_cancion
+             LEFT JOIN
+                 keywords ins ON cins.id_instrumento = ins.id
+             LEFT JOIN
+                 canc_keywords ck ON c.id = ck.id_cancion
+             LEFT JOIN
+                 keywords k ON ck.id_keywords = k.id
+             LEFT JOIN
+                 canc_letra l ON c.id = l.id_cancion
+             LEFT JOIN
+                 canc_escritores e ON c.id = e.id_cancion
+             LEFT JOIN 
+                 canc_escritor_propiedad cep ON c.id = cep.id_cancion
+             LEFT JOIN 
+                 canc_sello_propiedad csp ON c.id = csp.id_cancion
+             LEFT JOIN 
+                 canc_album cal ON c.id = cal.id_cancion 
+             WHERE
+                 cal.id_cancion IS NOT NULL AND cal.id_album = '.$idAlbum.'
+             GROUP BY 
+                 c.id
+             ORDER BY 
+                 c.id DESC;
+        ';
+        $songs = CancionData::consultarSQL($consultaSongs);
+        echo json_encode($songs);
+    }
+
+    public static function editSong(Router $router){
+        isMusico();
+        $id = $_SESSION['id'];
+        $lang = $_SESSION['lang'] ?? 'en';
+        $titulo = 'music_songs_edit-title';
+        $songId = redireccionar('/music/albums');
+        $alertas = [];
+        $cancionAlbum = CancionAlbum::where('id_cancion', $songId);
+        $album = Albums::find($cancionAlbum->id_album);
+        $tipoUsuario = NTMusica::where('id_usuario', $id);
+        $perfilUsuario = PerfilUsuario::where('id_usuario', $id);
+        $song = Canciones::find($songId);
+        $songColab = CancionColab::where('id_cancion', $song->id);
+        $cancionEscritores = CancionEscritores::where('id_cancion', $song->id);
+        $cancionLetra = CancionLetra::where('id_cancion', $song->id);
+        $cancionNivel = CancionNivel::where('id_cancion', $song->id);
+        $cancionGenero = CancionGenero::where('id_cancion', $song->id);
+        $cancionEscritorPropiedad = CancionEscritorPropiedad::where('id_cancion', $song->id);
+        $cancionSelloPropiedad = CancionSelloPropiedad::where('id_cancion', $song->id);
+
+        $niveles = NivelCancion::all();
+
+
+        $generos = Genres::AllOrderAsc('genero_'.$lang);
+
+        $selectedGenres = [];
+        $generosSecundarios = CancionGenSecundarios::whereAll('id_cancion', $song->id);
+        foreach ($generosSecundarios as $generoSecundario) {
+            $selectedGenres[] = $generoSecundario->id_genero;
+        }
+
+        $selectedCategories = [];
+        if($lang == 'en'){
+            $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2, 3) ORDER BY categoria_en;";
+        }else{
+            $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2, 3) ORDER BY categoria_es;";
+        }
+        $categorias = Categorias::consultarSQL($consultaCategorias);
+
+        $cancionCategorias = CancionCategorias::whereAll('id_cancion', $song->id);
+        foreach ($cancionCategorias as $cancionCategoria) {
+            $selectedCategories[] = $cancionCategoria->id_categoria;
+        }
+
+        $selectedInstruments = [];
+        if($lang == 'en'){
+            $consultaInstrumentos= "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = 2 ORDER BY keyword_en;";
+        }else{
+            $consultaInstrumentos= "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = 2 ORDER BY keyword_es;";
+        }
+        $instrumentos = Keywords::consultarSQL($consultaInstrumentos);
+
+        $cancionInstrumentos = CancionInstrumento::whereAll('id_cancion', $song->id);
+        foreach ($cancionInstrumentos as $cancionInstrumento) {
+            $selectedInstruments[] = $cancionInstrumento->id_instrumento;
+        }
+
+        $selectedKeywords = [];
+        if($lang == 'en'){
+            $consultaKeywords = "SELECT k.* FROM keywords k INNER JOIN categ_keyword ck ON k.id = ck.id_keyword WHERE ck.id_categoria NOT IN (1, 2) ORDER BY keyword_en;";
+        }else{
+            $consultaKeywords = "SELECT k.* FROM keywords k INNER JOIN categ_keyword ck ON k.id = ck.id_keyword WHERE ck.id_categoria NOT IN (1, 2) ORDER BY keyword_es;";
+        }
+        $keywords = Keywords::consultarSQL($consultaKeywords);
+
+        $cancionKeywords = CancionKeywords::whereAll('id_cancion', $song->id);
+        foreach ($cancionKeywords as $cancionKeyword) {
+            $selectedKeywords[] = $cancionKeyword->id_keywords;
+        }
+
+        $idiomas = Idiomas::AllOrderAsc('idioma_'.$lang);
+        $selectedLanguages = [];
+        
+        $cancionIdiomas = CancionIdiomas::whereAll('id_cancion', $song->id);
+        foreach ($cancionIdiomas as $cancionIdioma) {
+            $selectedLanguages[] = $cancionIdioma->id_idioma;
+        }
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $song->sincronizar($_POST);
+            $song->id_usuario = $id;
+            $alertas = $song->validarCancion();
+
+            if(!isset($_POST['nivel']) || $_POST['nivel'] === '0' || trim($_POST['nivel']) === ''){
+                $alertas = CancionNivel::setAlerta('error', 'music_songs_form-song-level_alert-required');
+            }
+            $alertas = CancionNivel::getAlertas();
+
+            if(!isset($_POST['genero']) || $_POST['genero'] === '0' || trim($_POST['genero']) === ''){
+                $alertas = CancionGenero::setAlerta('error', 'music_songs_form-genre_alert-required');
+            }
+            $alertas = CancionGenero::getAlertas();
+
+            if(!isset($_POST{'selectedLanguages'}) || $_POST['selectedLanguages'] === '0' || trim($_POST['selectedLanguages']) === ''){
+                $alertas = CancionIdiomas::setAlerta('error', 'music_songs-form-language_alert-required');
+            }
+            $alertas = CancionIdiomas::getAlertas();
+
+            if(!isset($_POST['escritores']) || $_POST['escritores'] === '0' || trim($_POST['escritores']) === ''){
+                $alertas = CancionEscritores::setAlerta('error', 'music_songs_form-writers_alert-required');
+            }
+            $alertas = CancionEscritores::getAlertas();
+
+            if(!isset($_POST['escritor_propiedad']) || trim($_POST['escritor_propiedad']) === ''){
+                $alertas = CancionEscritorPropiedad::setAlerta('error', 'music_songs_form-writers-percent_alert-required');
+            }
+
+            if(!isset($_POST['publisher_propiedad']) || trim($_POST['publisher_propiedad']) === ''){
+                $alertas = CancionEscritorPropiedad::setAlerta('error', 'music_songs_form-publisher-percent_alert-required');
+            }
+
+            $escritorPropiedad = isset($_POST['escritor_propiedad']) ? (int)$_POST['escritor_propiedad'] : 0;
+            $publisherPropiedad = isset($_POST['publisher_propiedad']) ? (int)$_POST['publisher_propiedad'] : 0;
+
+            if (($escritorPropiedad + $publisherPropiedad) > 100 || ($escritorPropiedad + $publisherPropiedad) < 100) {
+                $alertas = CancionEscritorPropiedad::setAlerta('error', 'music_songs_form-writers-percent_alert-total');
+            }
+            $alertas = CancionEscritorPropiedad::getAlertas();
+
+            if (!isset($_POST['sello_propiedad']) || trim($_POST['sello_propiedad']) === '') {
+                $alertas = CancionSelloPropiedad::setAlerta('error', 'music_songs-form-fonogram_alert-required');
+            }
+
+            // Check if sello_propiedad exceeds 100
+            $selloPropiedad = isset($_POST['sello_propiedad']) ? (int)$_POST['sello_propiedad'] : 0;
+
+            if ($selloPropiedad > 100) {
+                $alertas = CancionSelloPropiedad::setAlerta('error', 'The phonogram percentage cannot exceed 100.');
+            }
+            $alertas = CancionSelloPropiedad::getAlertas();
+
+            if(!empty($_POST['colaboradores'])){
+                $songColab->sincronizar($_POST);
+            }
+
+            if(empty($alertas)){
+                $song->sello = $album->sello;
+                $song->url = getYTVideoId($song->url);
+
+                $song->guardar();
+                
+                $cancionNivel->id_nivel = $_POST['nivel'];
+                $cancionNivel->guardar();
+
+
+                if(!empty($_POST['colaboradores'])){
+                    $colaboradores = $_POST['colaboradores'];
+                    $songColab->colaboradores = $colaboradores;
+                    $songColab->guardar();
+                }
+
+                $cancionGenero->id_genero = $_POST['genero'];
+                $cancionGenero->guardar();
+
+                $buscarGenerosSecundarios = CancionGenSecundarios::whereAll('id_cancion', $song->id);
+                foreach($buscarGenerosSecundarios as $generoSecundario){
+                    $generoSecundario->eliminar();
+                }
+
+                //Guardar géneros secundarios de la canción
+                if(!empty($_POST['selectedGenres'])){
+                    $generosSecundarios = explode(',', $_POST['selectedGenres']);
+                    foreach($generosSecundarios as $generoSecundario){
+                        $cancionGenero = new CancionGenSecundarios;
+                        $cancionGenero->id_cancion = $song->id;
+                        $cancionGenero->id_genero = $generoSecundario;
+                        $cancionGenero->guardar();
+                    }
+                }
+
+                $buscarCategorias = CancionCategorias::whereAll('id_cancion', $song->id);
+                foreach($buscarCategorias as $categoria){
+                    $categoria->eliminar();
+                }
+
+                //Guardar las categorías de la canción
+                if(!empty($_POST['selectedCategories'])){
+                    $categorias = explode(',', $_POST['selectedCategories']);
+                    foreach($categorias as $categoria){
+                        $cancionCategoria = new CancionCategorias;
+                        $cancionCategoria->id_cancion = $song->id;
+                        $cancionCategoria->id_categoria = $categoria;
+                        $cancionCategoria->guardar();
+                    }
+                }
+
+                $buscarInstrumentos = CancionInstrumento::whereAll('id_cancion', $song->id);
+                foreach($buscarInstrumentos as $instrumento){
+                    $instrumento->eliminar();
+                }
+
+                //Guardar los instrumentos de la canción
+                if(!empty($_POST['selectedInstruments'])){
+                    $instrumentos = explode(',', $_POST['selectedInstruments']);
+                    foreach($instrumentos as $instrumento){
+                        $cancionInstrumento = new CancionInstrumento;
+                        $cancionInstrumento->id_cancion = $song->id;
+                        $cancionInstrumento->id_instrumento = $instrumento;
+                        $cancionInstrumento->guardar();
+                    }
+                }
+
+                $buscarKeywords = CancionKeywords::whereAll('id_cancion', $song->id);
+                foreach($buscarKeywords as $keyword){
+                    $keyword->eliminar();
+                }
+
+                //Guardar las keywords de la canción
+                if(!empty($_POST['selectedKeywords'])){
+                    $keywords = explode(',', $_POST['selectedKeywords']);
+                    foreach($keywords as $keyword){
+                        $cancionKeyword = new CancionKeywords;
+                        $cancionKeyword->id_cancion = $song->id;
+                        $cancionKeyword->id_keywords = $keyword;
+                        $cancionKeyword->guardar();
+                    }
+                }
+
+                $buscarIdiomas = CancionIdiomas::whereAll('id_cancion', $song->id);
+                foreach($buscarIdiomas as $idioma){
+                    $idioma->eliminar();
+                }
+
+                //Guardar los idiomas de la canción
+                if(!empty($_POST['selectedLanguages'])){
+                    $idiomas = explode(',', $_POST['selectedLanguages']);
+                    foreach($idiomas as $idioma){
+                        $cancionIdioma = new CancionIdiomas;
+                        $cancionIdioma->id_cancion = $song->id;
+                        $cancionIdioma->id_idioma = $idioma;
+                        $cancionIdioma->guardar();
+                    }
+                }
+
+                $alertas = CancionIdiomas::getAlertas();
+
+                //Guardar la letra de la canción
+                if(!empty($_POST['letra'])){
+                    $cancionLetra->letra = $_POST['letra'];
+                    $cancionLetra->guardar();
+                }
+
+                //Guardar los escritores de la canción
+                $cancionEscritores->escritores = $_POST['escritores'];
+                $cancionEscritores->guardar();
+
+                //Guardar la propiedad del escritor y publisher de la canción
+                $cancionEscritorPropiedad->escritor_propiedad = $_POST['escritor_propiedad'];
+                $cancionEscritorPropiedad->publisher_propiedad = $_POST['publisher_propiedad'];
+                $cancionEscritorPropiedad->guardar();
+
+                //Guardar la propiedad del sello de la canción
+                $cancionSelloPropiedad->sello_propiedad = $_POST['sello_propiedad'];
+                $cancionSelloPropiedad->guardar();
+
+                header('Location: /music/albums/current?id='.$album->id);
+            }
+        }
+
+        $router->render('music/albums/songs/edit',[
+            'titulo' => $titulo,
+            'lang' => $lang,
+            'alertas' => $alertas,
+            'album' => $album,
+            'tipoUsuario' => $tipoUsuario,
+            'perfilUsuario' => $perfilUsuario,
+            'song' => $song,
+            'songColab' => $songColab,
+            'cancionEscritores' => $cancionEscritores,
+            'cancionLetra' => $cancionLetra,
+            'cancionNivel' => $cancionNivel,
+            'cancionGenero' => $cancionGenero,
+            'cancionEscritorPropiedad' => $cancionEscritorPropiedad,
+            'cancionSelloPropiedad' => $cancionSelloPropiedad,
+            'niveles' => $niveles,
+            'generos' => $generos,
+            'categorias' => $categorias,
+            'selectedCategories' => $selectedCategories,
+            'selectedGenres' => $selectedGenres,
+            'instrumentos' => $instrumentos,
+            'selectedInstruments' => $selectedInstruments,
+            'keywords' => $keywords,
+            'selectedKeywords' => $selectedKeywords,
+            'idiomas' => $idiomas,
+            'selectedLanguages' => $selectedLanguages
+        ]);
+    }
+
+    public static function deleteSong(Router $router){
+        isMusico();
+        $id = $_SESSION['id'];
+        $songId = redireccionar('/music/albums');
+        $album = CancionAlbum::where('id_cancion', $songId);
+        $albumId = $album->id_album;
+        $song = Canciones::find($songId);
+        $resultado = $song->eliminar();
+        if($resultado){
+            header('Location: /music/albums/current?id='.$albumId);
+        }
     }
 }
