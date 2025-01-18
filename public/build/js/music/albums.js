@@ -34,19 +34,39 @@ async function mostrarAlbumes(datos){
 
         const cardTitle = document.createElement('P');
         cardTitle.textContent = titulo;
-        cardTitle.classList.add('cards__text', 'cards__text--span', 'text-green', 'text-24');
+        cardTitle.classList.add('cards__text', 'cards__text--span', 'text-green', 'text-24', 'mBottom-1');
 
         const cardArtista = document.createElement('P');
         cardArtista.textContent = artista_name;
-        cardArtista.classList.add('cards__text', 'text-20', 'text-yellow');
+        cardArtista.classList.add('cards__text', 'text-24', 'text-yellow', 'mBottom-1');
 
-        const cardUPC = document.createElement('P');
-        cardUPC.textContent = 'UPC: '+upc;
-        cardUPC.classList.add('cards__text');
+        const cardUPC = document.createElement('DIV');
+        cardUPC.classList.add('cards__info--div');
 
-        const cardPublisher = document.createElement('P');
-        cardPublisher.textContent = alerts['publisher'][lang]+': '+publisher;
-        cardPublisher.classList.add('cards__text');
+        const cardUPCTitle = document.createElement('P');
+        cardUPCTitle.textContent = 'UPC: ';
+        cardUPCTitle.classList.add('cards__text', 'cards__text--span');
+
+        const cardUPCInfo = document.createElement('P');
+        cardUPCInfo.textContent = upc;
+        cardUPCInfo.classList.add('cards__text');
+
+        cardUPC.appendChild(cardUPCTitle);
+        cardUPC.appendChild(cardUPCInfo);
+
+        const cardPublisher = document.createElement('DIV');
+        cardPublisher.classList.add('cards__info--div');
+
+        const cardPublisherTitle = document.createElement('P');
+        cardPublisherTitle.textContent = alerts['publisher'][lang]+': ';
+        cardPublisherTitle.classList.add('cards__text', 'cards__text--span');
+
+        const cardPublisherInfo = document.createElement('P');
+        cardPublisherInfo.textContent = publisher;
+        cardPublisherInfo.classList.add('cards__text');
+
+        cardPublisher.appendChild(cardPublisherTitle);
+        cardPublisher.appendChild(cardPublisherInfo);
 
         cardInfo.appendChild(imgAlbum);
         cardInfo.appendChild(cardTitle);

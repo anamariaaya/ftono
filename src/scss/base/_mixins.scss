@@ -115,7 +115,10 @@
         background-color: v.$black;
         border-left: 1.5rem solid v.$green;
         transform: scale(1.02);
-    } 
+    }
+    &:hover .cards__text--span {
+        color: v.$blue;
+    }
 }
 
 @mixin modal($background-color, $padding, $width, $width-tablet, $border-width, $border-color, $border-style){

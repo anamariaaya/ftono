@@ -37,61 +37,138 @@ async function mostrarSongs(datos){
 
         const cardArtista = document.createElement('P');
         cardArtista.textContent = artista_name;
-        cardArtista.classList.add('cards__text', 'text-20', 'text-yellow');
+        cardArtista.classList.add('cards__text', 'text-24', 'text-yellow');
 
-        const cardISRC = document.createElement('P');
-        cardISRC.textContent = 'ISRC: '+isrc;
-        cardISRC.classList.add('cards__text');
+        const cardISRC = document.createElement('DIV');
+        cardISRC.classList.add('cards__info--div');
 
-        const cardVersion = document.createElement('P');
-        cardVersion.textContent = alerts['version'][lang]+': '+version;
-        cardVersion.classList.add('cards__text');
+        const cardISRCTitle = document.createElement('P');
+        cardISRCTitle.textContent = 'ISRC: ';
+        cardISRCTitle.classList.add('cards__text', 'cards__text--span');
 
-        const cardGenre = document.createElement('P');
+        const cardISRCInfo = document.createElement('P');
+        cardISRCInfo.textContent = isrc;
+        cardISRCInfo.classList.add('cards__text');
+
+        cardISRC.appendChild(cardISRCTitle);
+        cardISRC.appendChild(cardISRCInfo);
+
+        const cardVersion = document.createElement('DIV');
+        cardVersion.classList.add('cards__info--div');
+
+        const cardVersionTitle = document.createElement('P');
+        cardVersionTitle.textContent = alerts['version'][lang]+': ';
+        cardVersionTitle.classList.add('cards__text', 'cards__text--span');
+
+        const cardVersionInfo = document.createElement('P');
+        cardVersionInfo.textContent = version;
+        cardVersionInfo.classList.add('cards__text');
+
+        cardVersion.appendChild(cardVersionTitle);
+        cardVersion.appendChild(cardVersionInfo);
+
+        const cardGenre = document.createElement('DIV');
+        cardGenre.classList.add('cards__info--div');
+
+        const cardGenreTitle = document.createElement('P');
+        cardGenreTitle.classList.add('cards__text', 'cards__text--span');
+        const cardGenreInfo = document.createElement('P');
+        cardGenreInfo.classList.add('cards__text');
+
         if(lang === 'en'){
-            cardGenre.textContent = alerts['genre'][lang]+': '+ genero_en;
+            cardGenreTitle.textContent = alerts['genre'][lang]+': ';
+            cardGenreInfo.textContent = genero_en;
         }else{
-            cardGenre.textContent = alerts['genre'][lang]+': '+ genero_es;
+            cardGenreTitle.textContent = alerts['genre'][lang]+': ';
+            cardGenreInfo.textContent = genero_es;
         }
-        cardGenre.classList.add('cards__text');
 
-        const cardGenreSec = document.createElement('P');
-        if(lang === 'en'){
-            cardGenreSec.textContent = alerts['genre-sec'][lang]+': '+ gensec_en;
-        }else{
-            cardGenreSec.textContent = alerts['genre-sec'][lang]+': '+ gensec_es;
-        }
-        cardGenreSec.classList.add('cards__text');
+        cardGenre.appendChild(cardGenreTitle);
+        cardGenre.appendChild(cardGenreInfo);
 
-        const cardCategories = document.createElement('P');
-        if(lang === 'en'){
-            cardCategories.textContent = alerts['categories'][lang]+': '+ categorias_en;
-        }else{
-            cardCategories.textContent = alerts['categories'][lang]+': '+ categorias_es;
-        }
-        cardCategories.classList.add('cards__text');
+        const cardGenreSec = document.createElement('DIV');
+        cardGenreSec.classList.add('cards__info--div');
 
-        const cardIdiomas = document.createElement('P');
-        if(lang === 'en'){
-            cardIdiomas.textContent = alerts['languages'][lang]+': '+ idioma_en;
-        }else{
-            cardIdiomas.textContent = alerts['languages'][lang]+': '+ idioma_es;
-        }
-        cardIdiomas.classList.add('cards__text');
+        const cardGenreSecTitle = document.createElement('P');
+        cardGenreSecTitle.classList.add('cards__text', 'cards__text--span');
+        const cardGenreSecInfo = document.createElement('P');
+        cardGenreSecInfo.classList.add('cards__text');
 
-        const cardLevel = document.createElement('P');
         if(lang === 'en'){
-            cardLevel.textContent = alerts['level'][lang]+': '+ nivel_cancion_en;
+            cardGenreSecTitle.textContent = alerts['genre-sec'][lang]+': ';
+            cardGenreSecInfo.textContent = gensec_en;
         }else{
-            cardLevel.textContent = alerts['level'][lang]+': '+ nivel_cancion_es;
+            cardGenreSecTitle.textContent = alerts['genre-sec'][lang]+': ';
+            cardGenreSecInfo.textContent = gensec_es;
         }
-        cardLevel.classList.add('cards__text');
+        
+        cardGenreSec.appendChild(cardGenreSecTitle);
+        cardGenreSec.appendChild(cardGenreSecInfo);
+
+        const cardCategories = document.createElement('DIV');
+        cardCategories.classList.add('cards__info--div');
+
+        const cardCategoriesTitle = document.createElement('P');
+        cardCategoriesTitle.classList.add('cards__text', 'cards__text--span');
+        const cardCategoriesInfo = document.createElement('P');
+        cardCategoriesInfo.classList.add('cards__text');
+
+        if(lang === 'en'){
+            cardCategoriesTitle.textContent = alerts['categories'][lang]+': ';
+            cardCategoriesInfo.textContent = categorias_en;
+        }else{
+            cardCategoriesTitle.textContent = alerts['categories'][lang]+': ';
+            cardCategoriesInfo.textContent = categorias_es;
+        }
+        
+        cardCategories.appendChild(cardCategoriesTitle);
+        cardCategories.appendChild(cardCategoriesInfo);
+
+        const cardIdiomas = document.createElement('DIV');
+        cardIdiomas.classList.add('cards__info--div');
+
+        const cardIdiomasTitle = document.createElement('P');
+        cardIdiomasTitle.classList.add('cards__text', 'cards__text--span');
+        const cardIdiomasInfo = document.createElement('P');
+        cardIdiomasInfo.classList.add('cards__text');
+
+        if(lang === 'en'){
+            cardIdiomasTitle.textContent = alerts['languages'][lang]+': ';
+            cardIdiomasInfo.textContent = idioma_en;
+        }else{
+            cardIdiomasTitle.textContent = alerts['languages'][lang]+': ';
+            cardIdiomasInfo.textContent = idioma_es;
+        }
+        
+        cardIdiomas.appendChild(cardIdiomasTitle);
+        cardIdiomas.appendChild(cardIdiomasInfo);
+
+        const cardLevel = document.createElement('DIV');
+        cardLevel.classList.add('cards__info--div');
+
+        const cardLevelTitle = document.createElement('P');
+        cardLevelTitle.classList.add('cards__text', 'cards__text--span');
+        const cardLevelInfo = document.createElement('P');
+        cardLevelInfo.classList.add('cards__text');
+
+        if(lang === 'en'){
+            cardLevelTitle.textContent = alerts['level'][lang]+': ';
+            cardLevelInfo.textContent = nivel_cancion_en;
+        }else{
+            cardLevelTitle.textContent = alerts['level'][lang]+': ';
+            cardLevelInfo.textContent = nivel_cancion_es;
+        }
+        
+        cardLevel.appendChild(cardLevelTitle);
+        cardLevel.appendChild(cardLevelInfo);
 
         cardInfo.appendChild(cardTitle);
         cardInfo.appendChild(cardArtista);
         cardInfo.appendChild(cardISRC);
         cardInfo.appendChild(cardVersion);
         cardInfo.appendChild(cardGenre);
+        cardInfo.appendChild(cardLevel);
+
         if(gensec_en !== null && gensec_es !== null){
             cardInfo.appendChild(cardGenreSec);
         }

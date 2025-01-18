@@ -943,7 +943,7 @@
     "es": "Tus sencillos",
     "en": "Your singles"
   },
-  "music_single_title":{
+  "music_singles_title":{
     "es": "Tu sencillos",
     "en": "Your single"
   },
@@ -1536,8 +1536,8 @@
     "en": "Example: https://www.johndoe.com"
   },
   "artists_form_banner_label":{
-    "es": "Banner para el perfil del artista",
-    "en": "Banner for the artist's profile"
+    "es": "Video Banner para el perfil del artista",
+    "en": "Video Banner for the artist's profile"
   },
   "artists_form_banner_placeholder":{
     "es": "Ejemplo: https://youtube.com/[videocode]",
@@ -2370,5 +2370,9 @@
   "collaborators": {
     "es": "Colaboradores",
     "en": "Collaborators"
+  },
+  "album-title": {
+    "es": "Álbum",
+    "en": "Album"
   }
 }

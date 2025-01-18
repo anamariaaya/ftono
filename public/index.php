@@ -116,6 +116,7 @@ $router->get('/music/albums/song/current', [MusicAlbumsController::class, 'curre
 $router->get('/music/albums/song/edit', [MusicAlbumsController::class, 'editSong']);
 $router->post('/music/albums/song/edit', [MusicAlbumsController::class, 'editSong']);
 $router->get('/music/song/delete', [MusicAlbumsController::class, 'deleteSong']);
+$router->get('/music/album/songs/current', [MusicAlbumsController::class, 'currentSong']);
 
 
 //Music Artists

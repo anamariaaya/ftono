@@ -43,7 +43,9 @@
         &--div{
             display: flex;
             flex-wrap: wrap;
-            column-gap: 0.5rem;        }
+            column-gap: 0.5rem;
+            padding: 0.5rem 0;
+        }
     }
     &__img{
         width: 100%;
@@ -60,8 +62,13 @@
         color: v.$white;
         margin: 0;
         &--span{
-            font-weight: v.$bold;
+            font-weight: v.$regular;
+            color: v.$yellow;
         }
+    }
+    &__text{
+        word-break: break-word;
+        line-height: 1.4;
     }
     &__label{
         font-weight: v.$bold;
