@@ -28,10 +28,15 @@ export const categoryInput = document.querySelector('#category-search-public');
 export const mensajeInput = document.querySelector('#mensaje');
 
 //Selectores para YouTube
-export const videoIds = ['snYu2JUqSWs', 'xuP4g7IDgDM', 'VBKNoLcj8jA', 'BB49x_uMlGA', 'g4xs_5rZdos', 'GVuiftq3KsI']; 
 export const player = document.querySelector('#player');
 
 //selectores para página de artistas
 export const gridArtistas = document.querySelector('#grid-artistas-public');
 export const artistasInput = document.querySelector('#artists-search-public');
+
+//Selector playlist de artista
+export const artistPlaylist = document.querySelector('#artist-playlist');
+
+//selector de featured playlist
+export const featuredPlaylist = document.querySelector('#featured-playlist');
 

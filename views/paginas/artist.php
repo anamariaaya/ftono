@@ -45,4 +45,23 @@
             <?php endif;?>
         </div>
     </section>
+
+    <?php
+    if(!empty($songs)):?>
+    <!-- Section with the artist's playlist -->
+    <section class="container" id="artist-playlist">
+        <h2 class="main__subtitle">{%index_subtitle-featured%}</h2>
+        <div class="video__container">
+            <div class="video__list">
+                <button class="video__list__btn" id="playAll">{%btn_play-all%}</button>
+                <div class="video__items" id="videoItems"></div>
+            </div>
+            <div class="video__player">
+                <div id="player"></div>
+            </div>
+        </div>
+    </section>
+    <?php else:?>
+        <p class="artist__no-songs">{%artist_no-songs%}</p>
+    <?php endif;?>
 </div>

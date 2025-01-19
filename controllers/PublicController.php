@@ -6,8 +6,10 @@ use MVC\Router;
 use Model\Genres;
 use Model\Promos;
 use Model\Artistas;
+use Model\Featured;
 use Model\Keywords;
 use Model\Categorias;
+use Model\ArtistSongsPlayer;
 
 class PublicController{
 
@@ -135,10 +137,35 @@ class PublicController{
     public static function artist(Router $router){
         $id = redireccionar('/artists');
         $artista = Artistas::find($id);
+        $consultaCanciones = 'SELECT c.titulo AS title,
+            c.url AS videoId
+            FROM canciones c
+            INNER JOIN canc_artista ca ON ca.id_artista = '.$id.'
+            WHERE c.id = ca.id_cancion AND c.url IS NOT NULL;';
+            
+        $songs = ArtistSongsPlayer::consultarSQL($consultaCanciones);
         $titulo = 'artist_title';
         $router->render('/paginas/artist',[
             'titulo' => $titulo,
-            'artista' => $artista
+            'artista' => $artista,
+            'songs' => $songs
         ]);
+    }
+
+    public static function consultarArtista(){
+        $id = redireccionar('/artists');
+        $consultaCanciones = 'SELECT c.titulo AS title,
+            c.url AS videoId
+            FROM canciones c
+            INNER JOIN canc_artista ca ON ca.id_artista = '.$id.'
+            WHERE c.id = ca.id_cancion AND c.url IS NOT NULL;';
+            
+        $canciones = ArtistSongsPlayer::consultarSQL($consultaCanciones);
+        echo json_encode($canciones);
+    }
+
+    public static function consultarFeaturedPlaylist(){
+        $playlist = Featured::allOrderBy('id','DESC');
+        echo json_encode($playlist);
     }
 }

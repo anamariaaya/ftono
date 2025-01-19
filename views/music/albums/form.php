@@ -95,7 +95,9 @@
 
             <?php 
             // Retrieve previously selected languages
-            $selectedLanguages = isset($_POST['selectedLanguages']) ? explode(',', $_POST['selectedLanguages']) : [];
+            $selectedLanguages = isset($_POST['selectedLanguages']) ? explode(',', $_POST['selectedLanguages']) :
+                // If not, check if we are editing and use the saved languages
+                (!empty($selectedLanguages) ? $selectedLanguages : []);
 
             foreach ($idiomas as $idioma): ?>
                 <option 
@@ -138,9 +140,18 @@
                     <span class="text-yellow">*</span>
                 </label>
                 <select id="sello" name="sello" class="form__group__select">
-                    <option selected disabled value="">{%music_albums_label_placeholder%}</option>
+                    <option selected disabled value="">
+                        {%music_albums_label_placeholder%}
+                    </option>
                     <?php foreach($sellos as $sello): ?>
-                        <option value="<?php echo s($sello->id); ?>"><?php echo s($sello->nombre); ?></option>
+                        <option value="<?php echo s($sello->id); ?>"
+                            <?php
+                                echo isset($_POST['sello']) && $_POST['sello'] == $sello->id ? 'selected'
+                                : (isset($albumSello->id) && $albumSello->id == $sello->id ? 'selected' :
+                                ''); 
+                            ?>>
+                            <?php echo s($sello->nombre); ?>
+                        </option>
                     <?php endforeach; ?>
                 </select>
             </div>

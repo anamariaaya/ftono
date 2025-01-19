@@ -1,42 +1,39 @@
 import { loadYouTubeIframeAPI } from './youtube-api.js';
-import { videoIds } from './selectores.js';
 
 let player;
 let currentVideoIndex = 0;
 let playAll = false;
 
-export async function initializePlayer() {
+export async function initializePlayer(videoData) {
     try {
         const YT = await loadYouTubeIframeAPI();
         player = new YT.Player('player', {
             height: '360',
             width: '100%',
-            videoId: videoIds[0],
+            videoId: videoData[0].videoId, // Set the first video initially
             events: {
                 'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
+                'onStateChange': (event) => onPlayerStateChange(event, videoData)
             }
         });
 
-        createVideoList();
+        createVideoList(videoData);
 
         function onPlayerReady(event) {
             // No need to play the video immediately when the player is ready.
             // Just wait for user interaction (click or playAll button)
         }
-        
-        function onPlayerStateChange(event) {
+
+        function onPlayerStateChange(event, videoData) {
             if (event.data === YT.PlayerState.PLAYING) {
-                // Add 'video__current' class when a video starts playing
                 updateCurrentVideoClass();
             } else if (event.data === YT.PlayerState.ENDED) {
-                if (playAll && currentVideoIndex < videoIds.length - 1) {
-                    // Move to the next video
+                if (playAll && currentVideoIndex < videoData.length - 1) {
+                    // Move to the next video in the playlist
                     currentVideoIndex++;
-                    player.loadVideoById(videoIds[currentVideoIndex]);
+                    player.loadVideoById(videoData[currentVideoIndex].videoId);
                 }
             } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.CUED) {
-                // Remove 'video__current' class when the video is paused or cued
                 clearCurrentVideoClass();
             }
         }
@@ -46,44 +43,44 @@ export async function initializePlayer() {
     }
 }
 
-function createVideoList() {
+function createVideoList(videoData) {
     const videoItemsContainer = document.getElementById('videoItems');
-    videoItemsContainer.innerHTML = '';
+    videoItemsContainer.innerHTML = ''; // Clear any existing video list
 
-    videoIds.forEach((videoId, index) => {
+    videoData.forEach((video, index) => {
         const videoItem = document.createElement('div');
         videoItem.className = 'video__items__item';
         videoItem.dataset.index = index;
-        videoItem.addEventListener('click', () => playVideo(index));
+        videoItem.addEventListener('click', () => playVideo(index, videoData));
 
         const playButton = document.createElement('button');
-
         const playIcon = document.createElement('i');
         playIcon.className = 'fas fa-play';
 
         playButton.appendChild(playIcon);
 
         const videoTitle = document.createElement('span');
-        videoTitle.textContent = `Video ${index + 1}`; // Fetch and use actual video title if needed
+        videoTitle.textContent = video.title; // Use actual video title from the database
 
         videoItem.appendChild(videoTitle);
         videoItem.appendChild(playButton);
         videoItemsContainer.appendChild(videoItem);
     });
 
-    document.getElementById('playAll').addEventListener('click', playAllVideos);
+    // Attach the event listener for the "Play All" button
+    document.getElementById('playAll').addEventListener('click', () => playAllVideos(videoData));
 }
 
-function playVideo(index) {
+function playVideo(index, videoData) {
     currentVideoIndex = index;
     playAll = false; // Disable playAll mode when clicking on a single video
-    player.loadVideoById(videoIds[index]);
+    player.loadVideoById(videoData[index].videoId);
 }
 
-function playAllVideos() {
+function playAllVideos(videoData) {
     currentVideoIndex = 0;
-    playAll = true; // Set playAll mode to true
-    player.loadVideoById(videoIds[currentVideoIndex]);
+    playAll = true; // Enable playAll mode
+    player.loadVideoById(videoData[currentVideoIndex].videoId);
 }
 
 function updateCurrentVideoClass() {

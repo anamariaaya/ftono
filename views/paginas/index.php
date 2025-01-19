@@ -85,8 +85,8 @@
     <a href="/artists" class="btn-view--index text-24">{%index_btn-artists%}</a>
 </section>
 
-<!-- Section with the artists -->
-<section class="container">
+<!-- Section with the featured playlist -->
+<section class="container" id="featured-playlist">
     <h2 class="main__subtitle">{%index_subtitle-featured%}</h2>
     <div class="video__container">
         <div class="video__list">

@@ -276,6 +276,7 @@ class MusicAlbumsController{
         foreach ($albumIdiomas as $albumIdioma) {
             $selectedLanguages[] = $albumIdioma->id_idioma; // Assuming $albumIdiomas contains records related to the current album
         }
+        $albumSello = Sellos::where('nombre', $album->sello);
 
         $usuariosellos = UsuarioSellos::whereAll('id_usuario', $id);
         $sellos = array();
@@ -370,7 +371,8 @@ class MusicAlbumsController{
             'artistas' => $artistas,
             'selectedArtistId' => $selectedArtistId,
             'selectedLanguages' => $selectedLanguages,
-            'idiomas' => $idiomas
+            'idiomas' => $idiomas,
+            'albumSello' => $albumSello
         ]);
     }
 
@@ -755,6 +757,7 @@ class MusicAlbumsController{
 
     public static function editSingle(Router $router){
         isMusico();
+        $edit = true;
         $id = $_SESSION['id'];
         $lang = $_SESSION['lang'] ?? 'en';
         $titulo = 'music_singles_edit-title';
@@ -1040,6 +1043,7 @@ class MusicAlbumsController{
 
         $router->render('music/albums/singles/edit',[
             'titulo' => $titulo,
+            'edit' => $edit,
             'lang' => $lang,
             'alertas' => $alertas,
             'single' => $single,

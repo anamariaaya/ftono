@@ -236,22 +236,50 @@ export function caps(text) {
 //social media url validation
 export function validateUrl(e) {
     let urlValue = e.target.value.trim(); // Get the current value of the input and trim spaces
-    const re = /^(https?:\/\/)?([a-zA-Z0-9-]+)\.[a-zA-Z]{2,}(\/\S*)?$/; // Flexible URL validation
+
+    // Debugging: Log the URL value before validating
+    console.log('Original URL:', urlValue);
+
+    // Pre-validation: If the URL doesn't have "http://" or "https://", we will add "https://"
+    if (!urlValue.match(/^https?:\/\//)) {
+        urlValue = 'https://' + urlValue;
+    }
+
+    // Log the modified URL for debugging
+    console.log('Modified URL for validation:', urlValue);
+
+    const re = /^(https?:\/\/)?(www\.)?([a-zA-Z0-9-]+\.[a-zA-Z]{2,})(\/[a-zA-Z0-9-._~:/?#[\]@!$&'()*+,;=]*)?$/; // Updated regex
+
+    // Remove previous timeout if any (this is for debouncing)
+    clearTimeout(e.target.dataset.timer);
+
+    // If the input is from paste, delay validation
+    if (e.type === 'paste') {
+        // Delay for paste action to ensure the full URL is inserted
+        setTimeout(() => validateUrlInternal(e, re), 500);
+    } else {
+        // Otherwise, just validate after a short delay
+        e.target.dataset.timer = setTimeout(() => {
+            validateUrlInternal(e, re);
+        }, 500); // Delay the validation after typing stops (500ms)
+    }
+}
+
+// Internal function that validates URL and shows the alert
+function validateUrlInternal(e, re) {
+    let urlValue = e.target.value.trim(); // Get the current value of the input and trim spaces
+
+    // Debugging: Log the URL value after modification and validation
+    console.log('Final URL for validation:', urlValue);
 
     if (re.test(urlValue) === false) {
         imprimirAlerta('url', 'error', e.target.closest('.form__group'), e.target);
     } else {
-        // If no http/https, prepend 'https://'
-        if (!urlValue.match(/^https?:\/\//)) {
-            urlValue = 'https://' + urlValue;
-        }
-        
-        // Set the corrected value back into the input
+        // If the URL is valid, set the corrected value back into the input
         e.target.value = urlValue;
     }
 }
 
-// languageHandler.js
 
 // languageHandler.js
 

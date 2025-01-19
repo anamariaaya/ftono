@@ -943,8 +943,8 @@
     "es": "Tus sencillos",
     "en": "Your singles"
   },
-  "music_singles_title":{
-    "es": "Tu sencillos",
+  "music_single_title":{
+    "es": "Tu sencillo",
     "en": "Your single"
   },
   "music_singles-subtitle":{
@@ -2306,6 +2306,10 @@
   "artist-title": {
     "es": "Artista",
     "en": "Artist"
+  },
+  "artist_no-songs": {
+    "es": "Este artista no tiene canciones aún",
+    "en": "This artist has no songs yet"
   },
   "version": {
     "es": "Versión",

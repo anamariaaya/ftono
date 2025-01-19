@@ -9,24 +9,23 @@
                     <span class="text-yellow">*</span>
                 </label>
                 <select id="sello" name="sello" class="form__group__select">
-
-                <option selected disabled value="">
-                    {%music_albums_label_placeholder%}
-                </option>
-                <?php foreach($sellos as $sello): ?>
-                    <option value="<?php echo s($sello->id); ?>"
-                        <?php
-                            echo isset($_POST['sello']) && $_POST['sello'] == $sello->id ? 'selected'
-                            : (isset($cancionSello->id) && $cancionSello->id == $sello->id ? 'selected' :
-                             ''); 
-                        ?>>
-                        <?php echo s($sello->nombre); ?>
+                    <option selected disabled value="">
+                        {%music_albums_label_placeholder%}
                     </option>
-                <?php endforeach; ?>
+                    <?php foreach($sellos as $sello): ?>
+                        <option value="<?php echo s($sello->id); ?>"
+                            <?php
+                                echo isset($_POST['sello']) && $_POST['sello'] == $sello->id ? 'selected'
+                                : (isset($cancionSello->id) && $cancionSello->id == $sello->id ? 'selected' :
+                                ''); 
+                            ?>>
+                            <?php echo s($sello->nombre); ?>
+                        </option>
+                    <?php endforeach; ?>
                 </select>
             </div>
             <div class="form__group--inline alert-style">
-                <input class="form__group__input--checkbox" type="checkbox" id="noLabel" name="noLabel">
+                <input class="form__group__input--checkbox" type="checkbox" id="noLabel" name="noLabel" <?php echo isset($_POST['sello']) && $_POST['sello'] !== $sello->id ? 'checked' : (isset($cancionSello->id) && $cancionSello->id !== $sello->id ? 'checked' : (!isset($cancionSello) ? 'checked' : '')); ?>>
                 <label for="noLabel" class="form__group__label">{%music_albums_no_label%}</label>
             </div>
     <?php endif;
@@ -74,7 +73,7 @@
             id="url"
             name="url"
             placeholder="{%music_songs_form-youtube_placeholder%}"
-            value="<?php echo !empty($song->url) ? s(getYTVideoUrl($song->url)) : '';?>"/>
+            value="<?php echo !empty($song->url) && !isset($edit) ? s(getYTVideoUrl($song->url)) : (isset($edit) && empty($_POST['url'])  ? getYTVideoUrl($song->url) : (!empty($_POST['url'])  ? $song->url : ''));?>"/>
     </div>
 
     <!--ISRC de la canción-->
@@ -150,7 +149,7 @@
             id="colaboradores"
             name="colaboradores"
             placeholder="{%music_song_form-colaborators_placeholder%}"
-            value="<?php echo s($songColab->colaboradores);?>"/>
+            value="<?php echo !empty($songColab) ? s($songColab->colaboradores) : '';?>"/>
     </div>
 
     <!--Género principal-->
