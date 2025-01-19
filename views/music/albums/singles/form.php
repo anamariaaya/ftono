@@ -44,7 +44,7 @@
                         }
                     }
                 ?>>
-            <label for="noLabel" class="form__group__label">{%music_albums_no_label%}</label>
+            <label for="noLabel" class="form__group__label" id="noLabelText">{%music_albums_no_label%}</label>
         </div>
     <?php endif; ?>
 

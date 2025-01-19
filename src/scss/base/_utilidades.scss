@@ -121,6 +121,10 @@
     }
 }
 
+.disabled-text{
+    color: v.$gray-light !important;
+}
+
 .mensaje-max{
     color: v.$green;
     font-weight: v.$bold;

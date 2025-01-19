@@ -1,4 +1,4 @@
-import { gridSingles,singlesInput } from "./selectores.js";
+import { gridSingles,noLabelCheckbox,noLabelText,selloSelect,singlesInput } from "./selectores.js";
 import { readLang, readJSON, eliminarItem, normalizeText, caps } from "../base/funciones.js";
 
 export async function consultaSingles(){
@@ -233,4 +233,39 @@ function filtrarSingles(){
             }
         });
     });
+}
+
+export function singleLabelInput(){
+    console.log(noLabelText);
+    selloSelect.addEventListener('change', function() {
+        if (this.value) {
+            // Disable the checkbox when a label is selected
+            noLabelCheckbox.disabled = true;
+            noLabelText.classList.add('disabled-text');
+        } else {
+            // Enable the checkbox if no label is selected
+            noLabelCheckbox.disabled = false;
+        }
+    });
+
+    // To handle pre-filled forms where a label might already be selected
+    if (selloSelect.value) {
+        noLabelCheckbox.disabled = true;
+        noLabelText.classList.add('disabled-text');
+    }
+
+    noLabelCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            // Disable the label select when the checkbox is checked
+            selloSelect.disabled = true;
+        } else {
+            // Enable the label select when the checkbox is unchecked
+            selloSelect.disabled = false;
+        }
+    });
+
+    // To handle pre-filled forms where the "No Label" checkbox might already be checked
+    if (noLabelCheckbox.checked) {
+        selloSelect.disabled = true;  // Disable label select if checkbox is checked on page load
+    }
 }

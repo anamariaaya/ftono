@@ -70,7 +70,9 @@ export const albumesInput = document.querySelector('#albumes-search');
 //Selectores de la sección de singles
 export const gridSingles = document.querySelector('#grid-singles');
 export const singlesInput = document.querySelector('#singles-search');
-
+export const selloSelect = document.querySelector('#sello');
+export const noLabelCheckbox = document.querySelector('#noLabel');
+export const noLabelText = document.querySelector('#noLabelText');
 
 //Selectores de la sección de songs
 export const gridSongs = document.querySelector('#grid-songs');
