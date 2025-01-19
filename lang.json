@@ -1923,6 +1923,10 @@
     "es": "Géneros",
     "en": "Genres"
   },
+  "genres_back-btn":{
+    "es": "Volver a Géneros",
+    "en": "Back to Genres"
+  },
   "category-feelings":{
     "es": "Sentimientos",
     "en": "Feelings"
@@ -2251,6 +2255,10 @@
     "es": "Géneros",
     "en": "Genres"
   },
+  "t-genre":{
+    "es": "Género",
+    "en": "Genre"
+  },
   "t-languages":{
     "es": "Idiomas",
     "en": "Languages"
@@ -2378,5 +2386,9 @@
   "album-title": {
     "es": "Álbum",
     "en": "Album"
+  },
+  "artist_subtitle-songs": {
+    "es": "Canciones",
+    "en": "Songs"
   }
 }

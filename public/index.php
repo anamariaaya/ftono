@@ -51,6 +51,12 @@ $router->get('/search', [PublicController::class, 'search']);
 $router->get('/help', [PublicController::class, 'help']);
 $router->get('/faq', [PublicController::class, 'faq']);
 
+//Public songs in categories
+$router->get('/category/genre', [PublicController::class, 'songsGenre']);
+$router->get('/category/songs', [PublicController::class, 'songsCategory']);
+$router->get('/api/public/category/genre', [PublicController::class, 'consultarSongsGenre']);
+$router->get('/api/public/category/songs', [PublicController::class, 'consultarSongsCategory']);
+
 // Public artists
 $router->get('/artists', [PublicController::class, 'artists']);
 $router->get('/api/public/artists', [PublicController::class, 'consultarArtistas']);

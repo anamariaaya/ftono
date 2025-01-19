@@ -58,12 +58,11 @@ function filtraCategorias(){
                 cards.forEach(card => {
                         const categoriaTitle = normalizeText(card.textContent);
                         if(categoriaTitle.indexOf(texto) !== -1){
-                                card.style.display = 'flex';
-                                card.style.marginRight = '2rem';
-                                gridCategorias.style.columnGap = '0';
+                                card.style.display = 'block';
                         }else{
                                 card.style.display = 'none';
                         }
                 });
-        }); 
+        });
+        
 }

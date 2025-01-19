@@ -236,7 +236,6 @@ function filtrarSingles(){
 }
 
 export function singleLabelInput(){
-    console.log(noLabelText);
     selloSelect.addEventListener('change', function() {
         if (this.value) {
             // Disable the checkbox when a label is selected

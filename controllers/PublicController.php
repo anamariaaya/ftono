@@ -8,8 +8,14 @@ use Model\Promos;
 use Model\Artistas;
 use Model\Featured;
 use Model\Keywords;
+use Model\Canciones;
 use Model\Categorias;
+use Model\CancionGenero;
+use Model\CancionKeywords;
 use Model\ArtistSongsPlayer;
+use Model\CancionCategorias;
+use Model\CancionInstrumento;
+use Model\CancionGenSecundarios;
 
 class PublicController{
 
@@ -167,5 +173,78 @@ class PublicController{
     public static function consultarFeaturedPlaylist(){
         $playlist = Featured::allOrderBy('id','DESC');
         echo json_encode($playlist);
+    }
+
+    public static function songsGenre(Router $router){
+        $titulo = 'songs_genre_title';
+        $lang = $_SESSION['lang'];
+        $id = redireccionar('/genres');
+        $genero = Genres::find($id);
+        $router->render('/paginas/category-songs',[
+            'titulo' => $titulo,
+            'lang' => $lang,
+            'genero' => $genero
+        ]);
+    }
+
+    public static function consultarSongsGenre(){
+        $id = redireccionar('/genres');
+        $generos = CancionGenero::whereAll('id_genero',$id);
+        $generosSec = CancionGenSecundarios::whereAll('id_genero',$id);
+        $songs=[];
+        //agregar al array de songs los generos y generos secundarios
+        foreach($generos as $genero){
+            $song = Canciones::find($genero->id_cancion);
+            $songs[] = $song;
+        }
+        foreach($generosSec as $genero){
+            $song = Canciones::find($genero->id_cancion);
+            $songs[] = $song;
+        }
+        echo json_encode($songs);
+    }
+
+    public static function songsCategory(Router $router){
+        $titulo = 'songs_category_title';
+        $lang = $_SESSION['lang'];
+        $id = redireccionar('/categories');
+        $categoria = keywords::find($id);
+        $name = $_GET['name'] ?? null;
+        $cid = $_GET['cid'] ?? $id;
+        //debugging($categoria);
+        $router->render('/paginas/category-songs',[
+            'titulo' => $titulo,
+            'lang' => $lang,
+            'categoria' => $categoria,
+            'cid' => $cid,
+            'name' => $name
+        ]);
+    }
+
+    public static function consultarSongsCategory(){
+        $id = redireccionar('/categories');
+        $cid = $_GET['cid'] ?? $id;
+        $category = Categorias::find($cid);
+        $songs=[];
+        if($category->categoria_en == 'instruments'){
+            $keyword = CancionInstrumento::whereAll('id_instrumento',$id);
+            foreach($keyword as $key){
+                $song = Canciones::find($key->id_cancion);
+                $songs[] = $song;
+            }
+        }elseif($category->categoria_en == 'keywords'){
+            $keyword = CancionKeywords::whereAll('id_keywords',$id);
+            foreach($keyword as $key){
+                $song = Canciones::find($key->id_cancion);
+                $songs[] = $song;
+            }
+        }else{
+            $keyword = CancionKeywords::whereAll('id_keywords',$id);
+            foreach($keyword as $key){
+                $song = Canciones::find($key->id_cancion);
+                $songs[] = $song;
+            }
+        }
+        echo json_encode($songs);
     }
 }

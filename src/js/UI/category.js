@@ -57,10 +57,15 @@ export async function mostrarCategory(datos){
         datos.forEach(keyword => {
                 const {id, keyword_en, keyword_es} = keyword;
 
+                const url = new URL(window.location.href);
+                const params = new URLSearchParams(url.search);
+                const name = params.get('name');
+                const cid = params.get('id');
+
                 //generar el link para la keyword
                 const keywordLink = document.createElement('A');
                 keywordLink.classList.add('p-cards__grid__link');
-                keywordLink.href = '#';
+                keywordLink.href = '/category/songs?cid='+cid+'&name='+name+'&id='+id;
                 
 
                 //generar la etiqueta para el tipo de usuario
@@ -95,12 +100,10 @@ function filtraCategory(){
                 cards.forEach(card => {
                         const keywordTitle = normalizeText(card.textContent);
                         if(keywordTitle.indexOf(texto) !== -1){
-                                card.style.display = 'flex';
-                                card.style.marginRight = '2rem';
-                                gridCategory.style.columnGap = '0';
+                                card.style.display = 'block';
                         }else{
                                 card.style.display = 'none';
                         }
                 });
-        }); 
+        });
 }

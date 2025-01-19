@@ -40,3 +40,7 @@ export const artistPlaylist = document.querySelector('#artist-playlist');
 //selector de featured playlist
 export const featuredPlaylist = document.querySelector('#featured-playlist');
 
+//selector de canciones en categorías
+export const gridCategorySongs = document.querySelector('#grid-category-songs');
+export const categorySongsInput = document.querySelector('#category-songs-search');
+

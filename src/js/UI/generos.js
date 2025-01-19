@@ -20,7 +20,8 @@ export async function mostrarGeneros(datos){
                 //generar el link para la genero
                 const generoLink = document.createElement('A');
                 generoLink.classList.add('p-cards__grid__link');
-                generoLink.href = '#';
+                generoLink.href = '/category/genre?&id='+id;
+                
                 
 
                 //generar la etiqueta para el tipo de usuario
@@ -55,12 +56,10 @@ function filtrageneros(){
                 cards.forEach(card => {
                         const generoTitle = normalizeText(card.textContent);
                         if(generoTitle.indexOf(texto) !== -1){
-                                card.style.display = 'flex';
-                                card.style.marginRight = '2rem';
-                                gridGeneros.style.columnGap = '0';
+                                card.style.display = 'block';
                         }else{
                                 card.style.display = 'none';
                         }
                 });
-        }); 
+        });
 }

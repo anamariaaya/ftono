@@ -54,12 +54,15 @@
             margin: 0;
             text-align: center;
             line-height: 1.4;
-            top: 35%;
             height: 100%;
             font-size: clamp(1.6rem, 2vw, 2.5rem);
             width: 100%;
             text-shadow: 1px 1px 5px v.$black;
             pointer-events: none;
+            padding: 0.5rem;
+            display: grid;
+            place-items: center;
+            text-transform: capitalize;
         }
     }
 }

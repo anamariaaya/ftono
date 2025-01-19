@@ -50,7 +50,7 @@
     if(!empty($songs)):?>
     <!-- Section with the artist's playlist -->
     <section class="container" id="artist-playlist">
-        <h2 class="main__subtitle">{%index_subtitle-featured%}</h2>
+        <h2 class="main__subtitle">{%artist_subtitle-songs%}</h2>
         <div class="video__container">
             <div class="video__list">
                 <button class="video__list__btn" id="playAll">{%btn_play-all%}</button>
