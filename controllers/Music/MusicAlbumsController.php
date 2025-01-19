@@ -453,6 +453,7 @@ class MusicAlbumsController{
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $song->sincronizar($_POST);
+            $song->url = getYTVideoId($song->url);
             $song->id_usuario = $id;
             $alertas = $song->validarCancion();
 
@@ -525,7 +526,6 @@ class MusicAlbumsController{
                     $empresa = Empresa::where('id', $perfilUsuario->id_empresa);
                     $song->sello = $empresa->empresa;
                 }
-                $song->url = getYTVideoId($song->url);
                 $song->guardar();
 
                 //Buscar la canción recién creada
@@ -901,7 +901,9 @@ class MusicAlbumsController{
             }
             $alertas = CancionSelloPropiedad::getAlertas();
 
-            $songColab->sincronizar($_POST);
+            if($_POST['colaboradores']){
+                $songColab->sincronizar($_POST);
+            }
 
             if(empty($alertas)){
                 if($tipoUsuario->id_nivel != 3){
@@ -1178,7 +1180,7 @@ class MusicAlbumsController{
     public static function newSong(Router $router){
         isMusico();
         $lang = $_SESSION['lang'] ?? 'en';
-        $titulo = 'music_singles_new-title';
+        $titulo = 'music_songs_add-title';
         $single = true;
         $id = $_SESSION['id'];
         $idAlbum = redireccionar('/music/albums');
@@ -1244,6 +1246,7 @@ class MusicAlbumsController{
         
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $song->sincronizar($_POST);
+            $song->url = getYTVideoId($song->url);
             $song->id_usuario = $id;
             $alertas = $song->validarCancion();
 
@@ -1299,7 +1302,6 @@ class MusicAlbumsController{
 
             if(empty($alertas)){
                 $song->sello = $album->sello;
-                $song->url = getYTVideoId($song->url);
                 $song->guardar();
 
                 //Buscar la canción recién creada
@@ -1538,6 +1540,7 @@ class MusicAlbumsController{
     public static function editSong(Router $router){
         isMusico();
         $id = $_SESSION['id'];
+        $edit = true;
         $lang = $_SESSION['lang'] ?? 'en';
         $titulo = 'music_songs_edit-title';
         $songId = redireccionar('/music/albums');
@@ -1796,6 +1799,7 @@ class MusicAlbumsController{
 
         $router->render('music/albums/songs/edit',[
             'titulo' => $titulo,
+            'edit' => $edit,
             'lang' => $lang,
             'alertas' => $alertas,
             'album' => $album,

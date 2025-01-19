@@ -42,7 +42,7 @@
             id="url"
             name="url"
             placeholder="{%music_songs_form-youtube_placeholder%}"
-            value="<?php echo !empty($song->url) ? s(getYTVideoUrl($song->url)) : '';?>"/>
+            value="<?php echo !empty($song->url) && !isset($edit) ? s(getYTVideoUrl($song->url)) : (isset($edit) && empty($_POST['url'])  ? getYTVideoUrl($song->url) : (!empty($_POST['url'])  ? $song->url : ''));?>"/>
     </div>
 
     <!--ISRC de la canción-->

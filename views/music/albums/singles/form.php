@@ -2,34 +2,53 @@
     <legend class="form__legend">{%music_albums_legend%}</legend>
     <!--Sello discográfico-->
     <?php
-        if($tipoUsuario->id_nivel != 3):?>
-            <div class="form__group">
-                <label class="form__group__label" for="sello">
-                    {%music_albums_label_label%}
-                    <span class="text-yellow">*</span>
-                </label>
-                <select id="sello" name="sello" class="form__group__select">
-                    <option selected disabled value="">
-                        {%music_albums_label_placeholder%}
+    if($tipoUsuario->id_nivel != 3): ?>
+        <div class="form__group">
+            <label class="form__group__label" for="sello">
+                {%music_albums_label_label%}
+                <span class="text-yellow">*</span>
+            </label>
+            <select id="sello" name="sello" class="form__group__select">
+                <option selected disabled value="">
+                    {%music_albums_label_placeholder%}
+                </option>
+                <?php foreach($sellos as $sello): ?>
+                    <option value="<?php echo s($sello->id); ?>"
+                        <?php 
+                            // Select the label if the record label is set (either from POST or from the song record)
+                            echo (isset($_POST['sello']) && $_POST['sello'] == $sello->id) || (isset($cancionSello->id) && $cancionSello->id == $sello->id) ? 'selected' : '';
+                        ?>>
+                        <?php echo s($sello->nombre); ?>
                     </option>
-                    <?php foreach($sellos as $sello): ?>
-                        <option value="<?php echo s($sello->id); ?>"
-                            <?php
-                                echo isset($_POST['sello']) && $_POST['sello'] == $sello->id ? 'selected'
-                                : (isset($cancionSello->id) && $cancionSello->id == $sello->id ? 'selected' :
-                                ''); 
-                            ?>>
-                            <?php echo s($sello->nombre); ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="form__group--inline alert-style">
-                <input class="form__group__input--checkbox" type="checkbox" id="noLabel" name="noLabel" <?php echo isset($_POST['sello']) && $_POST['sello'] !== $sello->id ? 'checked' : (isset($cancionSello->id) && $cancionSello->id !== $sello->id ? 'checked' : (!isset($cancionSello) ? 'checked' : '')); ?>>
-                <label for="noLabel" class="form__group__label">{%music_albums_no_label%}</label>
-            </div>
-    <?php endif;
-    ?>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div class="form__group--inline alert-style">
+            <input class="form__group__input--checkbox" type="checkbox" id="noLabel" name="noLabel" 
+                <?php 
+                    // Logic for the checkbox:
+                    // For new songs, it should not be checked by default unless user explicitly checks it.
+                    // For editing, it will be checked if no label is selected.
+                    if (isset($cancionSello) && empty($cancionSello->id)) {
+                        // Song has no label assigned (editing)
+                        echo 'checked';
+                    } elseif (isset($_POST['noLabel']) && $_POST['noLabel'] == 'on') {
+                        // User explicitly checked it (new or after form validation)
+                        echo 'checked';
+                    } elseif(!isset($cancionSello) && empty($cancionSello) && isset($edit) && !isset($_POST['sello'])) {
+                        echo 'checked';
+                    }else {
+                        // For new songs, if no label is selected, don't check it by default
+                        if (!isset($_POST['sello']) || $_POST['sello'] == '') {
+                            echo '';  // Do not check by default for new songs without label
+                        }
+                    }
+                ?>>
+            <label for="noLabel" class="form__group__label">{%music_albums_no_label%}</label>
+        </div>
+    <?php endif; ?>
+
+
     
     <!--Título de la canción-->
     <div class="form__group">
