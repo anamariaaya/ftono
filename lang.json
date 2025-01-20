@@ -51,6 +51,10 @@
     "es": "Promos",
     "en": "Promos"
   },
+  "sidebar_featured":{
+    "es": "Destacados",
+    "en": "Featured"
+  },
   "sidebar_users":{
     "es": "Usuarios",
     "en": "Users"
@@ -1574,6 +1578,58 @@
   "admin_promos_btn-back":{
     "es": "Volver a Promos",
     "en": "Back to Promos"
+  },
+  "admin_featured_title":{
+    "es": "Destacados",
+    "en": "Featured"
+  },
+  "admin_featured_total":{
+    "es": "Total de Destacados",
+    "en": "Total Featured"
+  },
+  "admin_featured_new-title":{
+    "es": "Nuevo Destacado",
+    "en": "New Featured"
+  },
+  "admin_featured_new-btn":{
+    "es": "Crear Destacado",
+    "en": "Create Featured"
+  },
+  "admin_featured_edit-title":{
+    "es": "Editar Destacado",
+    "en": "Edit Featured"
+  },
+  "admin_featured_edit-btn":{
+    "es": "Actualizar Destacado",
+    "en": "Update Featured"
+  },
+  "admin_featured_btn-back":{
+    "es": "Volver a Destacados",
+    "en": "Back to Featured"
+  },
+  "admin_featured_form-title_label":{
+    "es": "Título del Destacado",
+    "en": "Featured Title"
+  },
+  "admin_featured_form-title_placeholder":{
+    "es": "Ejemplo: Nuevo sencillo de John Doe",
+    "en": "Example: New single by John Doe"
+  },
+  "admin_featured_form-title_alert-required":{
+    "es": "El título del Destacado es obligatorio",
+    "en": "The Featured Title is required"
+  },
+  "admin_featured_form-url_label":{
+    "es": "URL del Destacado",
+    "en": "Featured Link"
+  },
+  "admin_featured_form-url_placeholder":{
+    "es": "Ejemplo: https://www.youtube.com/watch?v=6JCLY0Rlx6Q",
+    "en": "Example: https://www.youtube.com/watch?v=6JCLY0Rlx6Q"
+  },
+  "admin_featured_form-url_alert-required":{
+    "es": "La URL del Destacado es obligatoria",
+    "en": "The Featured URL is required"
   },
   "admin_genres_title":{
     "es": "Géneros",

@@ -110,6 +110,5 @@ class PromosController{
                 header('Location: /filmtono/promos');
             }
         }
-        
     }
 }

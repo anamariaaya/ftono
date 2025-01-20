@@ -22,6 +22,6 @@
 </div>
 
 <div class="cards">
-    <div class="cards__container" id="cards-container">
+    <div class="cards__container" id="contracts-container">
     </div>
 </div>

@@ -23,6 +23,13 @@
             </span>
         </a>
 
+        <a href="/filmtono/featured" class="dashboard__enlace <?php pagina_admin('featured');?>">
+            <i class="fa-solid fa-radio dashboard__icono"></i>
+            <span class="dashboard__menu-texto">
+                <?php echo tt('sidebar_featured');?>
+            </span>
+        </a>
+
         <a href="/filmtono/users" class="dashboard__enlace <?php pagina_admin('users');?>">
             <i class="fa-solid fa-users dashboard__icono"></i>
             <span class="dashboard__menu-texto">

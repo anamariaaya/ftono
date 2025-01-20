@@ -23,7 +23,7 @@ export const contratos ={
     nombre_doc: ''
 };
 
-export const contratosContainer = document.querySelector('#cards-container');
+export const contratosContainer = document.querySelector('#contracts-container');
 export const contratosSearch = document.querySelector('#contratos-search');
 
 //Selectores de la sección de categorías

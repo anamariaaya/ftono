@@ -19,15 +19,16 @@ use Controllers\Music\APIArtistController;
 use Controllers\Filmtono\ArtistsController;
 use Controllers\Filmtono\ProfileController;
 use Controllers\Filmtono\APIUsersController;
-use Controllers\Filmtono\KeywordsController;
+use Controllers\Filmtono\FeaturedController;
 
+use Controllers\Filmtono\KeywordsController;
 use Controllers\Filmtono\MessagesController;
 use Controllers\Music\MusicAlbumsController;
 use Controllers\Music\MusicLabelsController;
 use Controllers\Filmtono\ContractsController;
+
+
 use Controllers\Filmtono\LanguagesController;
-
-
 use Controllers\Music\MusicArtistsController;
 use Controllers\Music\MusicProfileController;
 use Controllers\Filmtono\CategoriesController;
@@ -170,6 +171,14 @@ $router->post('/filmtono/promos/new', [PromosController::class, 'new']);
 $router->get('/filmtono/promos/edit', [PromosController::class, 'edit']);
 $router->post('/filmtono/promos/edit', [PromosController::class, 'edit']);
 $router->get('/filmtono/promos/delete', [PromosController::class, 'delete']);
+
+//Filmtono Featured
+$router->get('/filmtono/featured', [FeaturedController::class, 'index']);
+$router->get('/filmtono/featured/new', [FeaturedController::class, 'new']);
+$router->post('/filmtono/featured/new', [FeaturedController::class, 'new']);
+$router->get('/filmtono/featured/edit', [FeaturedController::class, 'edit']);
+$router->post('/filmtono/featured/edit', [FeaturedController::class, 'edit']);
+$router->get('/filmtono/featured/delete', [FeaturedController::class, 'delete']);
 
 //Filmtono Users
 $router->get('/filmtono/users', [UsersController::class, 'index']);
