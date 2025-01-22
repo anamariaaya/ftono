@@ -37,7 +37,7 @@
         {%music_songs_add-btn%}
     </a>
     <?php if(count($songs) > 0): ?>
-        <div class="cards__container" id="grid-songs">
+        <div class="cards__container mTop-5" id="grid-songs">
         </div>
     <?php else: ?>
         <p>{%music_songs_empty%}</p>

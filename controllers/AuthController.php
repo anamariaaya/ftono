@@ -242,14 +242,13 @@ class AuthController {
 
                     // Imprimir la alerta
                     // Usuario::setAlerta('exito', 'Hemos enviado las instrucciones a tu email');
-
-                    $alertas['exito'][] = 'auth_forgot-password_alert-success';
+                    $alertas = Usuario::setAlerta('exito', 'auth_forgot-password_alert-success');
                 } else {
                  
                     // Usuario::setAlerta('error', 'El Usuario no existe o no esta confirmado');
-
-                    $alertas['error'][] = 'auth_forgot-password_alert-error';
+                    $alertas = Usuario::setAlerta('error', 'auth_forgot-password_alert-error');
                 }
+                $alertas = Usuario::getAlertas();
             }
         }
 

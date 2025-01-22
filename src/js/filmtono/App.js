@@ -1,4 +1,4 @@
-import { artistaSecundario, artistasInput, btnAgregar, contratosContainer, gridUsuarios, portada, promoInput, gridCategorias, gridGeneros, gridKeywords, gridLabels, gridIdiomas, gridMensajes, gridArtistas, albumsBlock, gridAlbumes } from "./selectores.js";
+import { artistaSecundario, artistasInput, btnAgregar, contratosContainer, gridUsuarios, portada, promoInput, gridCategorias, gridGeneros, gridKeywords, gridLabels, gridIdiomas, gridMensajes, gridArtistas, albumsBlock, gridAlbumes, gridSongs, gridSingles } from "./selectores.js";
 import { chooseLang } from "../UI/language.js";
 import { styleDatalist, styleFileInput, artistasSecundarios, addArtist } from "./artistas.js";
 import { readFileName } from "./ux.js";
@@ -12,6 +12,8 @@ import { consultaIdiomas } from "./idiomas.js";
 import { consultaMensajes } from "./mensajes.js";
 import { consultaArtistas } from "./artists.js";
 import { consultaAlbumes } from "./albums.js";
+import { consultaSongs } from "./songs.js";
+import { consultaSingles } from "./singles.js";
 import { changeTabs, eliminarItem, btnSubmitLoader, handleLanguageSelection
     , initializeLabelCheckbox, initializeFileNameDisplay } from "../base/funciones.js";
 import {btnEliminar, submitBtns, tabsDiv, languageSelect, selloInput, fileInput} from '../base/selectores.js';
@@ -104,6 +106,12 @@ class App{
         }
         if(gridAlbumes){
             consultaAlbumes();
+        }
+        if(gridSongs){
+            consultaSongs();
+        }
+        if(gridSingles){
+            consultaSingles();
         }
     }
 }

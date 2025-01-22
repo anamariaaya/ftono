@@ -83,16 +83,14 @@ async function mostrarAlbumes(datos){
 }
 
 function filtrarAlbumes(){
-    albumesInput.addEventListener('input', (e) => {
+    albumesInput.addEventListener('input', e => {
         const busqueda = normalizeText(e.target.value);
-        const albumes = gridAlbumes.querySelectorAll('.cards__card');
+        const albums = document.querySelectorAll('.cards__card');
 
-        albumes.forEach(album => {
-            const titulo = normalizeText(album.textContent);
+        albums.forEach(album => {
+            const titulo = normalizeText(album.querySelector('.cards__text--span').textContent);
             if(titulo.indexOf(busqueda) !== -1){
-                album.style.display = 'flex';
-                album.style.marginRight = '2rem';
-                gridAlbumes.style.columnGap = '0';
+                album.style.display = 'block';
             }else{
                 album.style.display = 'none';
             }

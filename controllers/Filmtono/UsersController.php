@@ -61,7 +61,7 @@ class UsersController{
         isAdmin();
         $lang = $_SESSION['lang'] ?? 'en';
         $alertas = [];
-        $titulo = 'users_new-title"';
+        $titulo = 'users_new_title';
         $usuario = new Usuario();
         $tipoAdmin = new NTAdmin();
         $musico = TipoMusica::allOrderBy('tipo_'.$lang);

@@ -139,7 +139,7 @@
 }
 
 .text-green{
-    color: v.$green;
+    color: v.$green !important;
 }
 
 .tel-form{
@@ -422,4 +422,18 @@
 
 .capitalize-first-only::first-letter{
     text-transform: capitalize;
+}
+
+.margin-auto{
+    margin: auto;
+}
+
+.top-line::before{
+    content: "";
+    display: block;
+    width: 50%;
+    height: 0.2rem;
+    background-color: v.$green;
+    margin: auto;
+    margin-bottom: 1.5rem;
 }

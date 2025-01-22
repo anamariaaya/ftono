@@ -41,7 +41,10 @@ class MusicAlbumsController{
         $id = $_SESSION['id'];
         $albums = Albums::whereAll('id_usuario', $id);
         $titulo = 'music_main_title';
-        $singles = 'SELECT id FROM canciones WHERE id_usuario = '.$id.'';
+        $singles = 'SELECT c.id FROM canciones c LEFT JOIN 
+                canc_album cal ON c.id = cal.id_cancion 
+            WHERE
+                c.id_usuario = '.$id.' AND 	cal.id_cancion IS NULL;';
         $singles = Canciones::consultarSQL($singles);
         $router->render('music/albums/index',[
             'titulo' => $titulo,
@@ -499,19 +502,19 @@ class MusicAlbumsController{
             $alertas = CancionEscritorPropiedad::getAlertas();
 
             if (!isset($_POST['sello_propiedad']) || $_POST['sello_propiedad'] === '0' || trim($_POST['sello_propiedad']) === '') {
-                $alertas = CancionSelloPropiedad::setAlerta('error', 'music_songs-form-fonogram_alert-required');
+                $alertas = CancionSelloPropiedad::setAlerta('error', 'music_songs-form-phonogram_alert-required');
             }
             
             // Check if sello_propiedad exceeds 100
             $selloPropiedad = isset($_POST['sello_propiedad']) ? (int)$_POST['sello_propiedad'] : 0;
             
             if ($selloPropiedad > 100) {
-                $alertas = CancionSelloPropiedad::setAlerta('error', 'The phonogram percentage cannot exceed 100.');
+                $alertas = CancionSelloPropiedad::setAlerta('error', 'music_songs-form-phonogram_alert-total');
             }
             $alertas = CancionSelloPropiedad::getAlertas();
 
-            $songColab->sincronizar($_POST);            
-
+            $songColab->sincronizar($_POST);
+      
             if(empty($alertas)){
                 if($tipoUsuario->id_nivel != 3){
                     if(empty($_POST['sello'])){
@@ -890,14 +893,14 @@ class MusicAlbumsController{
             $alertas = CancionEscritorPropiedad::getAlertas();
 
             if (!isset($_POST['sello_propiedad']) || $_POST['sello_propiedad'] === '0' || trim($_POST['sello_propiedad']) === '') {
-                $alertas = CancionSelloPropiedad::setAlerta('error', 'music_songs-form-fonogram_alert-required');
+                $alertas = CancionSelloPropiedad::setAlerta('error', 'music_songs-form-phonogram_alert-required');
             }
 
             // Check if sello_propiedad exceeds 100
             $selloPropiedad = isset($_POST['sello_propiedad']) ? (int)$_POST['sello_propiedad'] : 0;
 
             if ($selloPropiedad > 100) {
-                $alertas = CancionSelloPropiedad::setAlerta('error', 'The phonogram percentage cannot exceed 100.');
+                $alertas = CancionSelloPropiedad::setAlerta('error', 'music_songs-form-phonogram_alert-total');
             }
             $alertas = CancionSelloPropiedad::getAlertas();
 
@@ -1164,7 +1167,7 @@ class MusicAlbumsController{
             WHERE
                 c.id = '.$singleId.' AND c.id_usuario = '.$id.'	
             GROUP BY 
-                c.id
+                c.id;
         ';
         $song = CancionData::consultarSQL($consultaSong);
         //convertir el array a objeto
@@ -1287,14 +1290,14 @@ class MusicAlbumsController{
             $alertas = CancionEscritorPropiedad::getAlertas();
 
             if (!isset($_POST['sello_propiedad']) || $_POST['sello_propiedad'] === '0' || trim($_POST['sello_propiedad']) === '') {
-                $alertas = CancionSelloPropiedad::setAlerta('error', 'music_songs-form-fonogram_alert-required');
+                $alertas = CancionSelloPropiedad::setAlerta('error', 'music_songs-form-phonogram_alert-required');
             }
             
             // Check if sello_propiedad exceeds 100
             $selloPropiedad = isset($_POST['sello_propiedad']) ? (int)$_POST['sello_propiedad'] : 0;
             
             if ($selloPropiedad > 100) {
-                $alertas = CancionSelloPropiedad::setAlerta('error', 'The phonogram percentage cannot exceed 100.');
+                $alertas = CancionSelloPropiedad::setAlerta('error', 'music_songs-form-phonogram_alert-total');
             }
             $alertas = CancionSelloPropiedad::getAlertas();
 
@@ -1658,14 +1661,14 @@ class MusicAlbumsController{
             $alertas = CancionEscritorPropiedad::getAlertas();
 
             if (!isset($_POST['sello_propiedad']) || trim($_POST['sello_propiedad']) === '') {
-                $alertas = CancionSelloPropiedad::setAlerta('error', 'music_songs-form-fonogram_alert-required');
+                $alertas = CancionSelloPropiedad::setAlerta('error', 'music_songs-form-phonogram_alert-required');
             }
 
             // Check if sello_propiedad exceeds 100
             $selloPropiedad = isset($_POST['sello_propiedad']) ? (int)$_POST['sello_propiedad'] : 0;
 
             if ($selloPropiedad > 100) {
-                $alertas = CancionSelloPropiedad::setAlerta('error', 'The phonogram percentage cannot exceed 100.');
+                $alertas = CancionSelloPropiedad::setAlerta('error', 'music_songs-form-phonogram_alert-total');
             }
             $alertas = CancionSelloPropiedad::getAlertas();
 
@@ -1844,7 +1847,7 @@ class MusicAlbumsController{
         isMusico();
         $id = $_SESSION['id'];
         $lang = $_SESSION['lang'] ?? 'en';
-        $titulo = 'music_songs_current-title';
+        $titulo = 'music_songs_current_title';
         $songId = redireccionar('/music/albums');
         $consultaSongs = 'SELECT 
              c.*,
@@ -1918,7 +1921,7 @@ class MusicAlbumsController{
              WHERE
                  c.id = '.$songId.'
              GROUP BY 
-                 c.id
+                 c.id;
         ';
         $song = CancionData::consultarSQL($consultaSongs);
         $song = (object)$song[0];

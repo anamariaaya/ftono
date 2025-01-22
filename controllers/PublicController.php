@@ -105,23 +105,44 @@ class PublicController{
         ]);
     }
 
-    public static function cart(Router $router){
-        $titulo = 'Carrito';
-        $router->render('/paginas/cart',[
-            'titulo' => 'home_title'
+    public static function about(Router $router){
+        $titulo = 't-about';
+        $router->render('/paginas/about',[
+            'titulo' => $titulo
         ]);
     }
 
     public static function help(Router $router){
-        $titulo = 'Ayuda';
+        $titulo = 't-help';
         $router->render('/paginas/help',[
             'titulo' => $titulo
         ]);
     }
 
     public static function faq(Router $router){
-        $titulo = 'FAQ';
+        $titulo = 't-faq';
         $router->render('/paginas/faq',[
+            'titulo' => $titulo
+        ]);
+    }
+
+    public static function terms(Router $router){
+        $titulo = 't-terms-conditions';
+        $router->render('/paginas/terms-conditions',[
+            'titulo' => $titulo
+        ]);
+    }
+
+    public static function privacy(Router $router){
+        $titulo = 't-privacy';
+        $router->render('/paginas/privacy',[
+            'titulo' => $titulo
+        ]);
+    }
+
+    public static function songLicensing(Router $router){
+        $titulo = 't-song-licensing';
+        $router->render('/paginas/song-licensing',[
             'titulo' => $titulo
         ]);
     }

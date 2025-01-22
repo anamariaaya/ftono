@@ -1,29 +1,25 @@
-import { gridSongs,songsInput } from "./selectores.js";
+import { gridSingles,noLabelCheckbox,noLabelText,selloSelect,singlesInput } from "./selectores.js";
 import { readLang, readJSON, eliminarItem, normalizeText, caps } from "../base/funciones.js";
 
-export async function consultaSongs(){
-    //retrieve the URL of the current page with paarameters
-    const url = new URL(window.location.href);
-    const params = new URLSearchParams(url.search);
-    const id = params.get('id');
+export async function consultaSingles(){
     try{
-        const resultado = await fetch(window.location.origin+'/api/music/albums/songs'+'?id='+id);
+        const resultado = await fetch(window.location.origin+'/api/filmtono/singles');
         const datos = await resultado.json();
-        mostrarSongs(datos);
+        mostrarSingles(datos);
     }catch(error){
         console.log(error);
     }
 }
 
-async function mostrarSongs(datos){
+async function mostrarSingles(datos){
     const lang = await readLang();
     const alerts = await readJSON();
 
-    datos.forEach(song => {
-        const {id, titulo, version, isrc, sello, artista_name, genero_en, genero_es, gensec_en, gensec_es, categorias_en, categorias_es, idioma_en, idioma_es, nivel_cancion_en, nivel_cancion_es} = song;
+    datos.forEach(single => {
+        const {id, titulo, version, isrc, sello, artista_name, genero_en, genero_es, gensec_en, gensec_es, categorias_en, categorias_es, idioma_en, idioma_es, nivel_cancion_en, nivel_cancion_es} = single;
 
         const linkSingle = document.createElement('A');
-        linkSingle.href = window.location.origin+'/music/album/songs/current?id='+id;
+        linkSingle.href = window.location.origin+'/filmtono/singles/current?id='+id;
         linkSingle.classList.add('cards__card');
 
         const cardSingle = document.createElement('DIV');
@@ -33,11 +29,11 @@ async function mostrarSongs(datos){
 
         const cardTitle = document.createElement('P');
         cardTitle.textContent = titulo;
-        cardTitle.classList.add('cards__text', 'cards__text--span', 'text-green', 'text-24');
+        cardTitle.classList.add('cards__text', 'cards__text--span', 'text-green', 'text-24', 'mBottom-1');
 
         const cardArtista = document.createElement('P');
         cardArtista.textContent = artista_name;
-        cardArtista.classList.add('cards__text', 'text-24', 'text-yellow');
+        cardArtista.classList.add('cards__text', 'text-24', 'text-yellow', 'mBottom-1');
 
         const cardISRC = document.createElement('DIV');
         cardISRC.classList.add('cards__info--div');
@@ -94,14 +90,16 @@ async function mostrarSongs(datos){
         const cardGenreSecInfo = document.createElement('P');
         cardGenreSecInfo.classList.add('cards__text');
 
-        if(lang === 'en'){
-            cardGenreSecTitle.textContent = alerts['genre-sec'][lang]+': ';
-            cardGenreSecInfo.textContent = gensec_en;
-        }else{
-            cardGenreSecTitle.textContent = alerts['genre-sec'][lang]+': ';
-            cardGenreSecInfo.textContent = gensec_es;
+        if(gensec_en !== null && gensec_es !== null){
+            if(lang === 'en'){
+                cardGenreSecTitle.textContent = alerts['genre-sec'][lang]+': ';
+                cardGenreSecInfo.textContent = gensec_en;
+            }else{
+                cardGenreSecTitle.textContent = alerts['genre-sec'][lang]+': ';
+                cardGenreSecInfo.textContent = gensec_es;
+            }
         }
-        
+
         cardGenreSec.appendChild(cardGenreSecTitle);
         cardGenreSec.appendChild(cardGenreSecInfo);
 
@@ -113,14 +111,16 @@ async function mostrarSongs(datos){
         const cardCategoriesInfo = document.createElement('P');
         cardCategoriesInfo.classList.add('cards__text');
 
-        if(lang === 'en'){
-            cardCategoriesTitle.textContent = alerts['categories'][lang]+': ';
-            cardCategoriesInfo.textContent = categorias_en;
-        }else{
-            cardCategoriesTitle.textContent = alerts['categories'][lang]+': ';
-            cardCategoriesInfo.textContent = categorias_es;
+        if(categorias_en !== null && categorias_es !== null){
+            if(lang === 'en'){
+                cardCategoriesTitle.textContent = alerts['categories'][lang]+': ';
+                cardCategoriesInfo.textContent = categorias_en;
+            }else{
+                cardCategoriesTitle.textContent = alerts['categories'][lang]+': ';
+                cardCategoriesInfo.textContent = categorias_es;
+            }
         }
-        
+
         cardCategories.appendChild(cardCategoriesTitle);
         cardCategories.appendChild(cardCategoriesInfo);
 
@@ -132,17 +132,19 @@ async function mostrarSongs(datos){
         const cardIdiomasInfo = document.createElement('P');
         cardIdiomasInfo.classList.add('cards__text');
 
-        if(lang === 'en'){
-            cardIdiomasTitle.textContent = alerts['languages'][lang]+': ';
-            cardIdiomasInfo.textContent = idioma_en;
-        }else{
-            cardIdiomasTitle.textContent = alerts['languages'][lang]+': ';
-            cardIdiomasInfo.textContent = idioma_es;
+        if(idioma_en !== null && idioma_es !== null){
+            if(lang === 'en'){
+                cardIdiomasTitle.textContent = alerts['languages'][lang]+': ';
+                cardIdiomasInfo.textContent = idioma_en;
+            }else{
+                cardIdiomasTitle.textContent = alerts['languages'][lang]+': ';
+                cardIdiomasInfo.textContent = idioma_es;
+            }
         }
-        
+
         cardIdiomas.appendChild(cardIdiomasTitle);
         cardIdiomas.appendChild(cardIdiomasInfo);
-
+        
         const cardLevel = document.createElement('DIV');
         cardLevel.classList.add('cards__info--div');
 
@@ -158,7 +160,7 @@ async function mostrarSongs(datos){
             cardLevelTitle.textContent = alerts['level'][lang]+': ';
             cardLevelInfo.textContent = nivel_cancion_es;
         }
-        
+
         cardLevel.appendChild(cardLevelTitle);
         cardLevel.appendChild(cardLevelInfo);
 
@@ -167,8 +169,6 @@ async function mostrarSongs(datos){
         cardInfo.appendChild(cardISRC);
         cardInfo.appendChild(cardVersion);
         cardInfo.appendChild(cardGenre);
-        cardInfo.appendChild(cardLevel);
-
         if(gensec_en !== null && gensec_es !== null){
             cardInfo.appendChild(cardGenreSec);
         }
@@ -182,21 +182,12 @@ async function mostrarSongs(datos){
         const cardActions = document.createElement('DIV');
         cardActions.classList.add('cards__actions');
 
-        const btnEditar = document.createElement('A');
-        btnEditar.classList.add('btn-update');
-        btnEditar.href = window.location.origin+'/music/albums/song/edit?id='+id;
-
-        const iconoLapiz = document.createElement('I');
-        iconoLapiz.classList.add('fas', 'fa-pencil-alt', 'no-click');
-
-        btnEditar.appendChild(iconoLapiz);
-
         const btnEliminar = document.createElement('BUTTON');
         btnEliminar.classList.add('btn-delete');
         btnEliminar.id = 'eliminar';
         btnEliminar.value = id;
-        btnEliminar.dataset.item = 'song';
-        btnEliminar.dataset.role = 'music';
+        btnEliminar.dataset.item = 'singles';
+        btnEliminar.dataset.role = 'filmtono';
         btnEliminar.onclick = eliminarItem;
 
         const iconEliminar = document.createElement('I');
@@ -204,7 +195,6 @@ async function mostrarSongs(datos){
 
         btnEliminar.appendChild(iconEliminar);
 
-        cardActions.appendChild(btnEditar);
         cardActions.appendChild(btnEliminar);
 
         cardSingle.appendChild(cardInfo);
@@ -212,24 +202,24 @@ async function mostrarSongs(datos){
 
         linkSingle.appendChild(cardSingle);
 
-        gridSongs.appendChild(linkSingle);
+        gridSingles.appendChild(linkSingle);
     });
-    filtrarSongs();
+    filtrarSingles();
 }
 
-function filtrarSongs(){
-    songsInput.addEventListener('input', (e) => {
+function filtrarSingles(){
+    singlesInput.addEventListener('input', (e) => {
         const busqueda = normalizeText(e.target.value);
-        const singles = gridSongs.querySelectorAll('.cards__card');
+        const singles = gridSingles.querySelectorAll('.cards__card');
 
-        singles.forEach(song => {
-            const titulo = normalizeText(song.textContent);
+        singles.forEach(single => {
+            const titulo = normalizeText(single.textContent);
             if(titulo.indexOf(busqueda) !== -1){
-                song.style.display = 'flex';
-                song.style.marginRight = '2rem';
-                gridSongs.style.columnGap = '0';
+                single.style.display = 'flex';
+                single.style.marginRight = '2rem';
+                gridSingles.style.columnGap = '0';
             }else{
-                song.style.display = 'none';
+                single.style.display = 'none';
             }
         });
     });

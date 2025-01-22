@@ -76,12 +76,13 @@ class LabelsController{
         //convert to object
         $sello = (object)$sello[0];
 
-        //debugging($sello);
+        $usuario = Usuario::find($sello->userId);
 
         $router->render('/admin/labels/current',[
             'titulo' => $titulo,
             'ntmusica' => $ntmusica,
-            'sello' => $sello
+            'sello' => $sello,
+            'usuario' => $usuario
         ]);
     }
 

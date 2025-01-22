@@ -147,41 +147,13 @@
     "es": "Industria Audiovisual",
     "en": "Audiovisual industry"
   },
-  "footer_aud_ind-1":{
-    "es": "Supervisor musical",
-    "en": "Music supervisor"
-  },
-  "footer_aud_ind-2":{
-    "es": "Productor de video",
-    "en": "Video producer"
-  },
-  "footer_aud_ind-3":{
-    "es": "Agencia publicitaria",
-    "en": "Advertising agency"
-  },
-  "footer_aud_ind-4":{
-    "es": "Medio de comunicación",
-    "en": "Broadcasting and TV"
-  },
-  "footer_aud_ind-5":{
-    "es": "Desarrollador digital",
-    "en": "Digital developer"
-  },
-  "footer_aud_ind-6":{
-    "es": "Influencer",
-    "en": "Influencer"
-  },
-  "footer_aud_ind-7":{
-    "es": "Podcaster",
-    "en": "Podcaster"
-  },
   "footer_resources":{
     "es": "Recursos",
     "en": "Resources"      
   },
   "footer_resources-1":{
-    "es": "Noticias y Blog",
-    "en": "News and Blog"
+    "es": "Sobre Filmtono",
+    "en": "About Filmtono"
   },
   "footer_resources-2":{
     "es": "Preguntas frecuentes",
@@ -202,14 +174,6 @@
   "footer_legal-2":{
     "es": "Política de privacidad",
     "en": "Privacy policy"
-  },
-  "footer_legal-3":{
-    "es": "Propiedad intelectual",
-    "en": "Intellectual property"
-  },
-  "footer_legal-4":{
-    "es": "Política de cookies",
-    "en": "Cookies policy"
   },
   "footer_rights":{
     "es": "Todos los derechos reservados",
@@ -955,7 +919,7 @@
     "es": "Agrega los sencillos que has lanzado",
     "en": "Add the singles you have released"
   },
-  "music_singles-total":{
+  "music_singles_total":{
     "es": "Total de sencillos",
     "en": "Total Singles"
   },
@@ -986,6 +950,10 @@
   "music_singles_edit-title":{
     "es": "Editar sencillo",
     "en": "Edit single"
+  },
+  "music_songs_current_title":{
+    "es": "Canción del álbum",
+    "en": "Album song"
   },
   "music_songs_add-title":{
     "es": "Añadir nueva canción",
@@ -1046,6 +1014,10 @@
   "music_songs_form-version_alert-required":{
     "es": "La versión de la canción es obligatoria",
     "en": "The song version is required"
+  },
+  "music_songs_form-version_alert-maxlength":{
+    "es": "La versión de la canción no puede tener más de 50 caracteres",
+    "en": "The song version cannot be more than 50 characters"
   },
   "music_songs_form-artist_label":{
     "es": "Artista",
@@ -1147,21 +1119,25 @@
     "es": "El porcentaje de propiedad de la editorial es obligatorio",
     "en": "The publisher ownership percentage is required"
   },
-  "music_songs-form-fonogram-percent_legend":{
+  "music_songs-form-phonogram-percent_legend":{
     "es": "Porcentaje de propiedad del fonograma",
     "en": "Phonogram ownership percentage"
   },
-  "music_songs-form-fonogram-percent_label":{
+  "music_songs-form-phonogram-percent_label":{
     "es": "Porcentaje del fonograma",
     "en": "Phonogram percentage"
   },
-  "music_songs-form-fonogram_placeholder":{
+  "music_songs-form-phonogram_placeholder":{
     "es": "Ejemplo: 100%",
     "en": "Ejemplo: 100%"
   },
-  "music_songs-form-fonogram_alert-required":{
+  "music_songs-form-phonogram_alert-required":{
     "es": "El porcentaje del fonograma es obligatorio",
     "en": "The phonogram percentage is required"
+  },
+  "music_songs-form-phonogram_alert-total":{
+    "es": "El porcentaje total del fonograma no puede superar 100",
+    "en": "The total phonogram percentage cannot exceed 100"
   },
   "music_songs-form-language_label":{
     "es": "Idioma",
@@ -1715,6 +1691,14 @@
     "es": "Empresa",
     "en": "Company"
   },
+  "admin_labels_user-data_title":{
+    "es": "Datos del usuario",
+    "en": "User data"
+  },
+  "admin_labels_link-user":{
+    "es": "Ver usuario",
+    "en": "See user"
+  },
   "languages_main-title":{
     "es": "Idiomas",
     "en": "Languages"
@@ -1919,7 +1903,7 @@
     "es": "Usuarios",
     "en": "Users"
   },
-  "users_new-title":{
+  "users_new_title":{
     "es": "Nuevo Usuario",
     "en": "New User"
   },
@@ -2079,6 +2063,442 @@
     "es": "Si deseas comprar licencias de música para tus proyectos audiovisuales, contacta con nosotros y nos pondremos en contacto",
     "en": "If you want to buy music licenses for your audiovisual projects, contact us and we will get in touch"
   },
+  "about_subtitle-1":{
+    "es": "¿Qué es Filmtono?",
+    "en": "What is Filmtono?"
+  },
+  "about_text-1":{
+    "es": "Es un servicio B2B para conectar la industria del cine y creadores audiovisuales con los artistas de la industria musical, hacer la sinergia y motivando el mercado de licenciamiento de canciones originales, velando por que estos artistas sean remunerados por su trabajo creativo.",
+    "en": "It is a B2B service to connect the film industry and audiovisual creators with the artists of the music industry, making the synergy and motivating the original song licensing market, ensuring that these artists are paid for their creative work."
+  },
+  "about_subtitle-2":{
+    "es": "Sobre la plataforma",
+    "en": "About the platform"
+  },
+  "about_text-2":{
+    "es": "FILMTONO es un One Stop Shop que reúne, selecciona y filtra catálogos de música de fácil licenciamiento para Music Supervisors o cualquiera que desee un permiso de canciones originales.",
+    "en": "FILMTONO is a One Stop Shop that brings together, selects and filters music catalogs for easy licensing for Music Supervisors or anyone who wants a permission for original songs."
+  },
+  "about_text-3":{
+    "es": "Ofrece la conexión más cercana posible o incluso directa, con los autores y/o propietarios de las canciones, acortando el tiempo de descubrimiento e investigación de canciones aptas para licencias de fijación o sincronización audiovisual, procurando el pago de derechos de copyrigth y publishing e incentivando a los jóvenes y a las personas de todas las edades a invertir su tiempo en la creación artística como modo de vida.",
+    "en": "It offers the closest possible connection or even direct, with the authors and/or owners of the songs, shortening the time of discovery and research of songs suitable for licensing for audiovisual fixation or synchronization, ensuring the payment of copyrigth and publishing rights and encouraging young people and people of all ages to invest their time in artistic creation as a way of life."
+  },
+  "about_text-4":{
+    "es": "Por medio de este servicio los productores de contenidos de video: productores de cine, TV, radio, publicistas, desarrolladores de videojuegos y aplicaciones, productores de contenidos para Youtube, Tik Tok, Facebook, Tidal, Yandex entre otros; tienen la posibilidad de hacer partícipe a un artista musical, difundiendo su canción dentro de una película, serie, comercial publicitario, aplicación u otro para que otras personas también lo descubran.",
+    "en": "Through this service, video content producers: film producers, TV, radio, advertisers, video game and application developers, content producers for Youtube, Tik Tok, Facebook, Tidal, Yandex among others; have the possibility of involving a music artist, spreading his song within a movie, series, commercial, application or other so that other people also discover it."
+  },
+  "about_subtitle-3":{
+    "es": "¿Cómo lo hace?",
+    "en": "How does it do it?"
+  },
+  "about_text-5":{
+    "es": "FILMTONO selecciona únicamente las canciones aptas para licenciamiento ágil, es decir, canciones con características particulares para poder ofrecer una buena experiencia al comprador y al creador original de la canción, logrando que los permisos y la comunicación sea rápida.",
+    "en": "FILMTONO selects only songs suitable for agile licensing, that is, songs with particular characteristics to offer a good experience to the buyer and the original creator of the song, ensuring that permissions and communication are quick."
+  },
+  "about_text-6":{
+    "es": "Por lo general se seleccionan canciones “all in one” en donde el permiso de copyrigth y publishing le pertenecen al 100% a un único propietario, o que tiene varios creadores, pero la gestión de licenciamiento y contacto con ellos se puede realizar rápidamente gracias a que cuentan con un buen administrador.",
+    "en": "In general, “all in one” songs are selected where the copyrigth and publishing permission belong 100% to a single owner, or that has several creators, but the licensing management and contact with them can be done quickly thanks to having a good administrator."
+  },
+  "about_text-7":{
+    "es": "Hace una investigación rigurosa para asegurarse sobre quienes ostentan la propiedad antes de publicarse en FILMTONO.",
+    "en": "It does a thorough investigation to make sure who owns the property before being published in FILMTONO."
+  },
+  "about_subtitle-4":{
+    "es": "¿¿Cuál es el objetivo de FILMTONO con las personas?",
+    "en": "What is FILMTONO's goal with people?"
+  },
+  "about_text-8":{
+    "es": "FILMTONO se enfoca en crear conexión entre personas que exploran nuevos conceptos e ideas artísticas para la industria audiovisual y musical.",
+    "en": "FILMTONO focuses on creating connection between people who explore new concepts and artistic ideas for the audiovisual and music industry."
+  },
+  "about_text-9":{
+    "es": "Facilita el descubrimiento de canciones de personas que están produciéndolas en distintas ubicaciones geográficas, con conceptos de música tradicional o novedades que pueden aportar una sensación de fresca a la industria del cine.",
+    "en": "It facilitates the discovery of songs by people who are producing them in different geographical locations, with concepts of traditional music or novelties that can bring a fresh sensation to the film industry."
+  },
+  "about_text-10":{
+    "es": "Así mismo, incentiva el uso de las canciones de catálogo en Redes Sociales en streaming, videos corporativos, nuevos proyectos digitales, aplicaciones, videojuegos, podcasts, anuncios publicitarios entre otros.",
+    "en": "Likewise, it encourages the use of catalog songs on Social Networks in streaming, corporate videos, new digital projects, applications, video games, podcasts, advertising among others."
+  },
+  "about_subtitle-5":{
+    "es": "¿Cómo ser embajador de FILMTONO?",
+    "en": "How to be an ambassador of FILMTONO?"
+  },
+  "about_text-11":{
+    "es": "Si eres una persona con muchas conexiones en la industria audiovisual o creadores de contenido, agencias publicitarias; te gusta el arte y además tienes actitud para lograr que los nuevos proyectos usen nuestra plataforma tendrás éxito usando FILMTONO como embajador, ganando puntos por la suscripción de proyectos que finalicen su proceso de compra.",
+    "en": "If you are a person with many connections in the audiovisual industry or content creators, advertising agencies; you like art and you also have the attitude to make new projects use our platform you will be successful using FILMTONO as an ambassador, earning points for the subscription of projects that complete their purchase process."
+  },
+  "terms_subtitle-1":{
+    "es": "Datos de indentificación",
+    "en": "Identification data"
+  },
+  "terms_text-1":{
+    "es": "In Empresarios S.A.S con número de identificación fiscal 900697978-3 registrado en la dirección cra 28b# 36-54 La Soledad - Bogotá Colombia el cual representa a la marca “FILMTONO” y por otro lado, la compañía que firma este contrato como Proveedor Musical al final del documento.",
+    "en": "In Empresarios S.A.S with tax identification number 900697978-3 registered at the address cra 28b# 36-54 La Soledad - Bogotá Colombia which represents the brand “FILMTONO” and on the other hand, the company that signs this contract as a Music Provider at the end of the document."
+  },
+  "terms_subtitle-2":{
+    "es": "Objeto",
+    "en": "Object"
+  },
+  "terms_text-2":{
+    "es": "Las presentes condiciones generales se aplicarán a todos los servicios de FILMTONO en su sitio web y otros medios de los que disponga. Al hacer click en aceptar las condiciones de suscripción a la plataforma, el usuario manifiesta conocerlas y aceptarlas plenamente sin restricciones ni condiciones.",
+    "en": "These general conditions will apply to all FILMTONO services on its website and other media available. By clicking on accept the subscription conditions to the platform, the user declares to know them and fully accept them without restrictions or conditions."
+  },
+  "terms_text-3":{
+    "es": "Las presentes Condiciones Generales de suscripción a FILMTONO, junto con las condiciones particulares del usuario Proveedor Musical o comprador, forman el contrato de suscripción a FILMTONO entre IN EMPRESARIOS S.A.S. y el Suscriptor (en adelante, el “Contrato”).",
+    "en": "These General Conditions of subscription to FILMTONO, together with the particular conditions of the Music Provider or buyer user, form the subscription contract to FILMTONO between IN EMPRESARIOS S.A.S. and the Subscriber (hereinafter, the “Contract”)."
+  },
+  "terms_subtitle-3":{
+    "es": "Suscripción",
+    "en": "Subscription"
+  },
+  "terms_text-4":{
+    "es": "El usuario que desea comprar una licencia musical o el Proveedor musical, podrá suscribirse a FILMTONO en las modalidades de suscripción digital ofertadas en cada momento. En función de la modalidad de suscripción contratada, la suscripción podría ir acompañada de una serie de servicios adicionales, en función de las ofertas en vigor en el momento de su contratación.",
+    "en": "The user who wants to buy a music license or the Music Provider, may subscribe to FILMTONO in the digital subscription modalities offered at all times. Depending on the subscription modality contracted, the subscription could be accompanied by a series of additional services, depending on the offers in force at the time of contracting."
+  },
+  "terms_text-5":{
+    "es": "En el supuesto de que FILMTONO decidiera dar de baja alguno de estos servicios, deberá notificarlo a los Suscriptores afectados, con una antelación mínima razonable, dándoles la oportunidad de cancelar o cambiar su suscripción a partir de ese momento sin coste alguno para ellos. Para proceder a formalizar la suscripción, el Suscriptor deberá completar un formulario de suscripción para lo cual deberá proporcionar una serie de datos de carácter personal. Con carácter previo a la finalización del proceso de suscripción, se informará al Suscriptor acerca del importe total por la suscripción, incluidos los impuestos o tasas aplicables.",
+    "en": "In the event that FILMTONO decided to unsubscribe any of these services, it must notify the affected Subscribers, with a reasonable minimum notice, giving them the opportunity to cancel or change their subscription from that moment without cost to them. To proceed to formalize the subscription, the Subscriber must complete a subscription form for which he must provide a series of personal data. Prior to the completion of the subscription process, the Subscriber will be informed about the total amount for the subscription, including applicable taxes or fees."
+  },
+  "terms_text-6":{
+    "es": "La formalización de la aceptación de la suscripción debe hacerse a través de la activación del botón “Suscribirse” que aparece a pie de página de la solicitud de suscripción, aceptando así las presentes Condiciones Generales de Suscripción.",
+    "en": "The formalization of the acceptance of the subscription must be done through the activation of the “Subscribe” button that appears at the bottom of the subscription request, thus accepting these General Subscription Conditions."
+  },
+  "terms_text-7":{
+    "es": "Sólo podrán tramitar pedidos personas mayores de edad, actuando en su propio nombre y representación o en el de una persona jurídica a la que representen con poder bastante. A estos efectos, el Suscriptor, que acepte las presentes Condiciones Generales de Suscripción, manifiesta ser mayor de edad y garantiza la veracidad del conjunto de los datos de registro facilitados a FILMTONO, siendo el único responsable de las manifestaciones falsas o inexactas que realice y de los perjuicios que dicha circunstancia pueda causar a FILMTONO o a terceros. FILMTONO se reserva la facultad de cancelar la suscripción de aquellos Suscriptores que hubieran proporcionado datos falsos.",
+    "en": "Only persons of legal age may process orders, acting on their own behalf and representation or on behalf of a legal entity they represent with sufficient power. For these purposes, the Subscriber, who accepts these General Subscription Conditions, declares to be of legal age and guarantees the veracity of all the registration data provided to FILMTONO, being solely responsible for the false or inaccurate statements made and the damages that this circumstance may cause to FILMTONO or third parties. FILMTONO reserves the right to cancel the subscription of those Subscribers who have provided false data."
+  },
+  "terms_subtitle-4":{
+    "es": "Prueba de la aceptación",
+    "en": "Proof of acceptance"
+  },
+  "terms_text-8":{
+    "es": "Una vez aceptadas las presentes Condiciones Generales de Suscripción, mediante la activación del botón “Suscribirse”, FILMTONO remitirá al Suscriptor justificación de la contratación efectuada, con todos sus términos, a través de correo electrónico tras la finalización del proceso de suscripción, junto con la justificación documental del pago en caso de haberse ejecutado un pago.",
+    "en": "Once these General Subscription Conditions have been accepted, by activating the “Subscribe” button, FILMTONO will send the Subscriber proof of the contract made, with all its terms, by email after the completion of the subscription process, together with the documentary proof of payment in case of having executed a payment."
+  },
+  "terms_subtitle-5":{
+    "es": "Precio",
+    "en": "Price"
+  },
+  "terms_text-9":{
+    "es": "El precio a satisfacer por la suscripción en la modalidad contratada, incluidos los impuestos y tasas que, en su caso, resulten de aplicación, será el comunicado al Suscriptor de forma clara e inequívoca antes de finalizar el proceso de contratación de la suscripción.",
+    "en": "The price to be paid for the subscription in the contracted modality, including taxes and fees that, where applicable, are applicable, will be communicated to the Subscriber clearly and unequivocally before finalizing the subscription contracting process."
+  },
+  "terms_text-10":{
+    "es": "FILMTONO podrá, siempre que lo considere oportuno, modificar las tarifas de la suscripción y/o de los servicios adicionales asociados a la misma. Las modificaciones en las tarifas afectarán a los nuevos Suscriptores a partir del momento de su contratación y a los Suscriptores activos desde la fecha de renovación de la suscripción.",
+    "en": "FILMTONO may, whenever it deems appropriate, modify the subscription rates and/or the additional services associated with it. Changes in rates will affect new Subscribers from the moment of their contracting and active Subscribers from the subscription renewal date."
+  },
+  "terms_subtitle-6":{
+    "es": "Medios de pago",
+    "en": "Payment methods"
+  },
+  "terms_text-11":{
+    "es": "El Suscriptor que desee contratar una suscripción deberá abonar el importe correspondiente a través de los medios de pago que a tal efecto seleccione (pago mediante tarjeta de crédito o débito), siendo las tarjetas de crédito o débito aceptadas las siguientes: Visa y Mastercard. Con carácter general, los cargos se realizarán de forma automática a la finalización del proceso de suscripción a través de la pasarela de pago codificando la conexión e introduciéndose los datos en el servidor seguro de la entidad.",
+    "en": "The Subscriber who wishes to contract a subscription must pay the corresponding amount through the payment methods that he selects for this purpose (payment by credit or debit card), the credit or debit cards accepted being the following: Visa and Mastercard. In general, the charges will be made automatically at the end of the subscription process through the payment gateway by encoding the connection and entering the data on the secure server of the entity."
+  },
+  "terms_text-12":{
+    "es": "El sistema solamente admite tarjetas seguras, por lo que, si tiene problemas para finalizar el pago, FILMTONO le recomienda acudir a su entidad bancaria para comprobar que su tarjeta está habilitada para realizar compras en comercios electrónicos. En el supuesto de que FILMTONO no pueda efectuar el cobro por cualquier motivo, la contratación se considerará no finalizada y la suscripción no formalizada. Asimismo, si durante la ejecución del Contrato no fuese posible algún cobro de la suscripción por parte de FILMTONO, el Suscriptor acepta que FILMTONO quedará facultado para deducirlo de su saldo o cancelar la suscripción.",
+    "en": "The system only accepts secure cards, so if you have problems finalizing the payment, FILMTONO recommends that you go to your bank to check that your card is enabled to make purchases in electronic stores. In the event that FILMTONO cannot make the charge for any reason, the contract will be considered not finalized and the subscription not formalized. Likewise, if during the execution of the Contract it is not possible to charge any subscription by FILMTONO, the Subscriber accepts that FILMTONO will be empowered to deduct it from his balance or cancel the subscription."
+  },
+  "terms_text-13":{
+    "es": "Sin perjuicio de lo anterior, en caso de impago, FILMTONO se reserva el derecho a adoptar las medidas que legalmente le asistan a fin de lograr la satisfacción de sus derechos de cobro derivados de la contratación de la suscripción correspondiente.",
+    "en": "Without prejudice to the foregoing, in case of non-payment, FILMTONO reserves the right to take the measures that legally assist it in order to achieve the satisfaction of its collection rights derived from the contracting of the corresponding subscription."
+  },
+  "terms_subtitle-7":{
+    "es": "Duración",
+    "en": "Duration"
+  },
+  "terms_text-14":{
+    "es": "La suscripción contratada tendrá la duración indicada en el momento de su contratación y la misma se prorrogará automáticamente por períodos de igual duración.",
+    "en": "The contracted subscription will have the duration indicated at the time of its contracting and it will be automatically extended for periods of equal duration."
+  },
+  "terms_subtitle-8":{
+    "es": "Cancelación de la suscripción",
+    "en": "Cancellation of the subscription"
+  },
+  "terms_text-15":{
+    "es": "El Suscriptor podrá proceder a cancelar unilateralmente la contratación que hubiera realizado en cualquier momento durante la vigencia del Contrato a través de su Area Privada mediante la activación de la casilla “Cancelar suscripción”.",
+    "en": "The Subscriber may proceed to unilaterally cancel the contracting that he has made at any time during the validity of the Contract through his Private Area by activating the “Cancel subscription” box."
+  },
+  "terms_text-16":{
+    "es": "Dicha cancelación no supondrá el reembolso de los importes abonados por el suscriptor como contraprestación a la suscripción a FILMTONO. Dichos importes tienen carácter no reembolsable.",
+    "en": "This cancellation will not result in the refund of the amounts paid by the subscriber as consideration for the subscription to FILMTONO. These amounts are non-refundable."
+  },
+  "terms_subtitle-9":{
+    "es": "Derecho de desestimiento",
+    "en": "Right of withdrawal"
+  },
+  "terms_text-17":{
+    "es": "El Suscriptor cuenta con la posibilidad de desistir de la suscripción sin necesidad de justificación en el plazo máximo de catorce (15) días naturales a partir de la fecha de contratación. Para cumplir el plazo de desistimiento, bastará con que la comunicación relativa a su ejercicio sea enviada antes de que finalice el plazo indicado anteriormente.",
+    "en": "The Subscriber has the possibility of withdrawing from the subscription without the need for justification within a maximum period of fourteen (15) calendar days from the date of contracting. To meet the withdrawal period, it will be sufficient for the communication regarding its exercise to be sent before the aforementioned period ends."
+  },
+  "terms_text-18":{
+    "es": "Para su ejercicio, el Suscriptor comunicará a FILMTONO su decisión de desistir del Contrato, mediante correo electrónico a la dirección: support@filmtono.com, en cuyo caso FILMTONO le comunicará sin demora en un soporte duradero (por ejemplo, por correo electrónico) la recepción de dicho desistimiento, o bien mediante cualquier tipo de comunicación de tal decisión que permita acreditar el contenido y recepción de la misma por parte de FILMTONO.",
+    "en": "For its exercise, the Subscriber will communicate to FILMTONO his decision to withdraw from the Contract, by email to the address: support@filmtono.com, in which case FILMTONO will immediately communicate in a durable medium (for example, by email) the receipt of said withdrawal, or by any type of communication of such decision that allows to prove the content and receipt of it by FILMTONO."
+  },
+  "terms_text-19":{
+    "es": "FILMTONO devolverá al Suscriptor el importe proporcional, en su caso, el tiempo transcurrido satisfecho por éste por la suscripción antes del transcurso de catorce (15) días naturales a contar desde la fecha en que FILMTONO haya sido informada de la decisión de desistimiento por parte del Suscriptor, utilizando para ello el mismo medio de pago empleado por el Suscriptor para la suscripción.",
+    "en": "FILMTONO will return to the Subscriber the proportional amount, if applicable, the time elapsed satisfied by the latter for the subscription before the expiration of fourteen (15) calendar days from the date on which FILMTONO has been informed of the decision to withdraw by the Subscriber, using for this the same payment method used by the Subscriber for the subscription."
+  },
+  "terms_subtitle-10":{
+    "es": "Soporte de suscripción",
+    "en": "Subscription support"
+  },
+  "terms_text-20":{
+    "es": "Para cualquier consulta, incidencia, queja o reclamación sobre la suscripción, FILMTONO pone a disposición de los Suscriptores un Servicio de soporte al Suscriptor en el correo electrónico support@filmtono.com.",
+    "en": "For any query, incident, complaint or claim about the subscription, FILMTONO makes available to Subscribers a Subscriber Support Service at the email address support@filmtono.com."
+  },
+  "privacy_text-1":{
+    "es": "Los datos personales facilitados ahora o en el futuro, en el marco de la compra de una suscripción a FILTMONO serán tratados de conformidad con las disposiciones de:",
+    "en": "The personal data provided now or in the future, in the context of the purchase of a subscription to FILTMONO will be treated in accordance with the provisions of:"
+  },
+  "privacy_subtitle-1":{
+    "es": "América",
+    "en": "America"
+  },
+  "privacy_text-2":{
+    "es": "Cumplimiento de las disposiciones de LA SUPERINTENDENCIA DE INDUSTRIA Y COMERCIO, consciente de la responsabilidad que les asiste en materia de Tratamiento de Datos. Mediante la Ley 1581 del 17 de octubre de 2012, el Congreso de la República reglamentó el ya mencionado derecho al establecer las Disposiciones Generales para la Protección de Datos Personales en Colombia, igualmente reglamentada por los Decretos 1377 de 2013 y 886 de 2014 (hoy incorporados en el Decreto único 1074 de 2015), entre otros. De la constitución política de Colombia.",
+    "en": "Compliance with the provisions of THE SUPERINTENDENCY OF INDUSTRY AND COMMERCE, aware of the responsibility that they have in the matter of Data Processing. Through Law 1581 of October 17, 2012, the Congress of the Republic regulated the aforementioned right by establishing the General Provisions for the Protection of Personal Data in Colombia, also regulated by Decrees 1377 of 2013 and 886 of 2014 (now incorporated in the single Decree 1074 of 2015), among others. Of the political constitution of Colombia."
+  },
+  "privacy_subtitle-2":{
+    "es": "Europa",
+    "en": "Europe"
+  },
+  "privacy_text-3":{
+    "es": "Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo de 27 de abril de 2016, relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de estos datos y por el que se deroga la Directiva 95/46/CE (“RGPD”) y de la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales (“LOPDGDD”).",
+    "en": "Regulation (EU) 2016/679 of the European Parliament and of the Council of April 27, 2016, regarding the protection of individuals with regard to the processing of personal data and the free movement of this data and repealing Directive 95/46/EC (“GDPR”) and of Organic Law 3/2018, of December 5, on the Protection of Personal Data and guarantee of digital rights (“LOPDGDD”)."
+  },
+  "privacy_text-4":{
+    "es":"Los datos personales facilitados serán tratados por parte de IN EMPRESARIOS S.A.S, con domicilio social en Cra 28b #36-54, Bogotá – Colombia y NIT número 900797978-3 quien representa legalmente a la marca FILMTONO y cuyo delegado de protección de datos puede ser contactado a través del siguiente correo electrónico: support@filmtono.com",
+    "en":"The personal data provided will be processed by IN EMPRESARIOS S.A.S, with registered office at Cra 28b #36-54, Bogotá - Colombia and NIT number 900797978-3 who legally represents the FILMTONO brand and whose data protection delegate can be contacted through the following email: support@filmtono.com"
+  },
+  "privacy_text-5":{
+    "es":"Para poder adquirir una suscripción es necesario ser usuario registrado de FILMTONO. Le rogamos que lea atentamente la Política de Privacidad del Registro de Usuario antes de registrarse.",
+    "en":"To be able to acquire a subscription it is necessary to be a registered user of FILMTONO. We ask you to read carefully the Privacy Policy of the User Registry before registering."
+  },
+  "privacy_text-6":{
+    "es":"Si Usted ya es usuario registrado o acaba de completar el registro, le informamos de los tratamientos de sus datos personales que realizamos cuando adquiere una suscripción digital de FILMTONO.",
+    "en":"If you are already a registered user or have just completed the registration, we inform you of the processing of your personal data that we carry out when you purchase a digital subscription from FILMTONO."
+  },
+  "privacy_subtitle-3":{
+    "es": "Uso de tus datos personales",
+    "en": "Use of your personal data"
+  },
+  "privacy_text-7":{
+    "es":"Sus datos serán tratados por FILMTONO con las siguientes finalidades:",
+    "en":"Your data will be processed by FILMTONO for the following purposes:"
+  },
+  "privacy_list-1":{
+    "es":"Gestión de pagos y facturación de la suscripción.",
+    "en":"Management of payments and billing of the subscription."
+  },
+  "privacy_list-2":{
+    "es":"Gestionar el acceso digital asociado a su suscripción.",
+    "en":"Manage digital access associated with your subscription."
+  },
+  "privacy_list-3":{
+    "es":"Enviarle comunicaciones comerciales (a) y (b) otros servicios de FILMTONO. Podremos contactar con Usted por teléfono o medios electrónicos como el correo electrónico o mensajes SMS. Usted puede oponerse a estos envíos en cualquier momento, indicando sus preferencias en el apartado Notificaciones de su registro de usuario.",
+    "en":"Send you commercial communications (a) and (b) other FILMTONO services. We may contact you by phone or electronic means such as email or SMS messages. You can object to these shipments at any time, indicating your preferences in the Notifications section of your user registration."
+  },
+  "privacy_subtitle-4":{
+    "es": "Bases legales para el tratamiento de sus datos",
+    "en": "Legal bases for the processing of your data"
+  },
+  "privacy_text-8":{
+    "es":"Las bases legales para el tratamiento de sus datos son las siguientes:",
+    "en":"The legal bases for the processing of your data are as follows:"
+  },
+  "privacy_list-4":{
+    "es":"Respecto a la gestión de pagos, facturación y acceso digital a la suscripción, la relación contractual. Los datos personales vinculados a dicho fin son los estrictamente necesarios.",
+    "en":"Regarding payment management, billing and digital access to the subscription, the contractual relationship. The personal data linked to this purpose are strictly necessary."
+  },
+  "privacy_list-5":{
+    "es":"Respecto a su alta como suscriptor el cumplimiento del servicio solicitado.",
+    "en":"Regarding your subscription as a subscriber, compliance with the requested service."
+  },
+  "privacy_list-6":{
+    "es":"Respecto a la gestión de su historial de suscripciones y uso del programa mientras la suscripción esté activa y nuestro interés legítimo en ofrecerle esta información y conocer su actividad una vez la suscripción haya expirado, y para poder ofrecerle nuevas ofertas de suscripción adaptadas a sus preferencias, siempre que nos haya autorizado a seguir enviándole notificaciones comerciales. Usted podrá solicitar la cancelación del historial en cualquier momento.",
+    "en":"Regarding the management of your subscription history and use of the program while the subscription is active and our legitimate interest in offering you this information and knowing your activity once the subscription has expired, and to be able to offer you new subscription offers adapted to your preferences, as long as you have authorized us to continue sending you commercial notifications. You can request the cancellation of the history at any time."
+  },
+  "privacy_list-7":{
+    "es":"Respecto al envío de comunicaciones comerciales, el artículo 21.2 de la LSSI, que permite el envío de comunicaciones comerciales, incluso por medios electrónicos, de productos y servicios similares a los contratados. Usted puede oponerse a estos envíos en cualquier momento, indicando sus preferencias en el apartado Notificaciones de su registro de usuario.",
+    "en":"Regarding the sending of commercial communications, article 21.2 of the LSSI, which allows the sending of commercial communications, even by electronic means, of products and services similar to those contracted. You can object to these shipments at any time, indicating your preferences in the Notifications section of your user registration."
+  },
+  "privacy_subtitle-5":{
+    "es": "Naturaleza de los datos",
+    "en": "Nature of the data"
+  },
+  "privacy_text-9":{
+    "es":"Para adquirir una suscripción es necesario ser usuario registrado. Los datos que tratamos, además de los que Usted haya dado en el registro, incluyen:",
+    "en":"To acquire a subscription it is necessary to be a registered user. The data we process, in addition to those you have given in the registration, include:"
+  },
+  "privacy_list-8":{
+    "es":"Datos necesarios para la gestión de pagos: datos de pago (tarjeta de crédito, cuenta PayPal)",
+    "en":"Data necessary for payment management: payment data (credit card, PayPal account)"
+  },
+  "privacy_list-9":{
+    "es":"Datos necesarios para la facturación: Datos identificativos (NIF/NIE, nombre y apellidos)",
+    "en":"Data necessary for billing: Identifying data (NIF/NIE, name and surname)"
+  },
+  "privacy_list-10":{
+    "es":"Datos necesarios para el acceso ilimitado a La Vanguardia digital: email.",
+    "en":"Data necessary for unlimited access to La Vanguardia digital: email."
+  },
+  "privacy_list-11":{
+    "es":"Respecto a su historial de suscripciones, adquiridas en FILMTONO.",
+    "en":"Regarding your subscription history, acquired in FILMTONO."
+  },
+  "privacy_list-12":{
+    "es":"Respecto al envío de comunicaciones comerciales, su número de teléfono, si nos lo ha informado en su registro de usuario, y su email.",
+    "en":"Regarding the sending of commercial communications, your phone number, if you have informed us in your user registration, and your email."
+  },
+  "privacy_list-13":{
+    "es":"Metadata de canciones que incluyen los datos personales de los propietarios de copyrigth y publishing con el fin de ser reconocidos en caso de darse una licencia.",
+    "en":"Metadata of songs that include the personal data of the copyrigth and publishing owners in order to be recognized in case of a license."
+  },
+  "privacy_text-10":{
+    "es":"El Cliente se responsabiliza de la veracidad y exactitud de los datos personales comunicados, reservándose FILMTONO el derecho a excluir a todo Cliente que haya facilitado datos falsos, sin perjuicio de las demás acciones que procedan en Derecho.",
+    "en":"The Client is responsible for the truthfulness and accuracy of the personal data communicated, reserving FILMTONO the right to exclude any Client who has provided false data, without prejudice to the other actions that may be taken in Law."
+  },
+  "privacy_text-11":{
+    "es":"En el supuesto de producirse alguna modificación en sus datos, FILMTONO ruega a los usuarios que lo comuniquen con el fin de mantenerlos actualizados. En este sentido, el Cliente se compromete a proporcionar información cierta en relación con sus datos personales, y mantener los datos facilitados a FILMTONO puestos al día.",
+    "en":"In the event of any modification in your data, FILMTONO asks users to communicate it in order to keep them updated. In this sense, the Client undertakes to provide true information regarding their personal data, and keep the data provided to FILMTONO up to date."
+  },
+  "privacy_text-12":{
+    "es":"En el caso de que nos facilite datos de terceros, el Cliente garantiza haber recabado el consentimiento expreso de dichos terceros para la comunicación de sus datos a FILMTONO con las finalidades de tratamiento indicadas en las presentes Condiciones Generales de suscripción.",
+    "en":"In the event that you provide us with data from third parties, the Client guarantees that they have obtained the express consent of said third parties for the communication of their data to FILMTONO for the purposes of treatment indicated in these General Subscription Conditions."
+  },
+  "privacy_subtitle-6":{
+    "es": "Plazo de conservación de los datos",
+    "en": "Data retention period"
+  },
+  "privacy_text-13":{
+    "es":"Conservaremos los datos que nos ha proporcionado, según:",
+    "en":"We will keep the data you have provided us, according to:"
+  },
+  "privacy_list-14":{
+    "es":"Los datos para la gestión de los pagos. Mientras esté activa la suscripción y, posteriormente, mientras exista una obligación legal.",
+    "en":"The data for payment management. While the subscription is active and, subsequently, while there is a legal obligation."
+  },
+  "privacy_list-15":{
+    "es":"Los datos de facturación y contacto. Mientras exista una obligación legal y, posteriormente, mientras no solicite su cancelación como parte de su historial de suscripciones.",
+    "en":"Billing and contact data. While there is a legal obligation and, subsequently, while you do not request its cancellation as part of your subscription history."
+  },
+  "privacy_list-16":{
+    "es":"Su historial de compras y promociones, mientras no solicite su cancelación.",
+    "en":"Your purchase and promotion history, until you request its cancellation."
+  },
+  "privacy_list-17":{
+    "es":"Su email, mientras mantenga su registro de usuario. La cancelación de la suscripción no implica la cancelación del registro de usuario ni la modificación de las preferencias allí expresadas.",
+    "en":"Your email, as long as you maintain your user registration. The cancellation of the subscription does not imply the cancellation of the user registration or the modification of the preferences expressed there."
+  },
+  "privacy_list-18":{
+    "es":"Su número de suscriptor, mientras mantenga una suscripción activa y, posteriormente, como dato asociado a su historial.",
+    "en":"Your subscriber number, as long as you maintain an active subscription and, subsequently, as a data associated with your history."
+  },
+  "privacy_list-19":{
+    "es":"Datos de los propietarios de las canciones, mientras estén disponibles para licenciarse en la plataforma y no se hayan dado de baja.",
+    "en":"Data of the owners of the songs, while they are available to be licensed on the platform and have not been deregistered."
+  },
+  "privacy_subtitle-7":{
+    "es": "Destinatarios de los datos",
+    "en": "Data recipients"
+  },
+  "privacy_text-14":{
+    "es":"Sólo comunicaremos los datos necesarios a aquellos terceros a los que FILMTONO representado por IN EMPRESARIOS S.A.S. esté legalmente obligada a facilitarlos, por ejemplo, la autoridad tributaria en cada país, las Autoridades de Consumo, bancos o entidades financieras y específicamente a quienes gestionarán una licencia en proceso.",
+    "en":"We will only communicate the necessary data to those third parties to which FILMTONO represented by IN EMPRESARIOS S.A.S. is legally obliged to provide them, for example, the tax authority in each country, Consumer Authorities, banks or financial entities and specifically to those who will manage a license in process."
+  },
+  "privacy_text-15":{
+    "es":"Estas cesiones se realizan bien por obligación legal, bien para dar cumplimiento al servicio contratado, por lo que no requieren de consentimiento excepto en el caso de solicitudes de licencias de canciones, para las cuales se notificará al proveedor musical registrado para que gestione los permisos necesarios.",
+    "en":"These assignments are made either by legal obligation or to comply with the contracted service, so they do not require consent except in the case of requests for song licenses, for which the registered music provider will be notified to manage the necessary permissions."
+  },
+  "privacy_subtitle-8":{
+    "es": "Lugar de tratamiento de Datos",
+    "en": "Place of Data Processing"
+  },
+  "privacy_text-16":{
+    "es":"FILMTONO y nuestros proveedores de servicio tratamos sus datos dentro de Colombia, cumpliendo normas internacionales.",
+    "en":"FILMTONO and our service providers process your data within Colombia, complying with international standards."
+  },
+  "privacy_subtitle-9":{
+    "es": "Derechos como titular de los datos",
+    "en": "Rights as the data owner"
+  },
+  "privacy_text-17":{
+    "es":"Le informamos que en caso de que desee ejercitar sus derechos de acceso, rectificación y supresión de datos, así como solicitar que se limite el tratamiento de los datos personales, oponerse al mismo, solicitar la portabilidad de los datos, o revocar el consentimiento que nos haya  restado, podrá hacerlo comunicándolo a FILMTONO mediante la remisión de un correo electrónico a Support@filmotno.com indicando claramente el derecho que desea ejercitar y acompañando su Documento Nacional de Identidad o cualquier documento similar que acredite su identidad. Finalmente, le informamos que para cualquier aclaración respecto al tratamiento de datos personales se puede  ontactar con nuestro delegado de Protección de Datos mandando un mensaje de correo electrónico a support@filmtono.com.",
+    "en":"We inform you that in case you wish to exercise your rights of access, rectification and deletion of data, as well as request that the processing of personal data be limited, oppose it, request the portability of data, or revoke the consent that you have subtracted, you can do so by communicating it to FILMTONO by sending an email to support@filmtono.com clearly indicating the right you wish to exercise and accompanying your National Identity Document or any similar document that proves your identity. Finally, we inform you that for any clarification regarding the processing of personal data you can contact our Data Protection delegate by sending an email message to support@filmtono.com"
+  },
+  "privacy_subtitle-10":{
+    "es": "Propiedad intelectual e industrial",
+    "en": "Intellectual and industrial property"
+  },
+  "privacy_text-18":{
+    "es":"Todos los derechos reservados de Propiedad Industrial e Intelectual sobre el KNOW HOW y funcionamiento de la plataforma digital FILMTONO, pertenecen a IN EMPRESARIOS S.A.S. o, Y sus contenidos información de canciones, tracks de audio, videos, fotografías de artistas pertenecen a los proveedores musicales de FILMTONO bajo licencia. Por lo tanto, quedan expresamente prohibidas la reproducción, la distribución y la comunicación pública, incluida su modalidad de puesta a disposición, de la totalidad o parte de los contenidos publicados en FILMTONO, en cualquier soporte y por cualquier medio técnico, sin autorización de FILMTONO o sus propietarios. Mediante la aceptación de las presentes Condiciones Generales de Suscripción, el Suscriptor y, en particular, el Suscriptor con acceso a la plataforma FILMTONO se compromete a respetar los derechos de Propiedad Industrial e Intelectual titularidad de FILMTONO, de sus PROVEEDORES MUSICALES y/o de terceros.",
+    "en":"All rights reserved for Industrial and Intellectual Property on the KNOW HOW and operation of the FILMTONO digital platform belong to IN EMPRESARIOS S.A.S. or, and its content information of songs, audio tracks, videos, photographs of artists belong to the musical providers of FILMTONO under license. Therefore, the reproduction, distribution and public communication, including its provision modality, of all or part of the contents published in FILMTONO, on any medium and by any technical means, without authorization from FILMTONO or its owners. By accepting these General Subscription Conditions, the Subscriber and, in particular, the Subscriber with access to the FILMTONO platform undertakes to respect the Industrial and Intellectual Property rights owned by FILMTONO, its MUSICAL PROVIDERS and/or third parties."
+  },
+  "privacy_subtitle-11":{
+    "es": "Legislación aplicable y jurisdicción",
+    "en": "Applicable legislation and jurisdiction"
+  },
+  "privacy_text-19":{
+    "es":"El presente Contrato se interpretará y regirá conforme a ley Colombiana. FILMTONO y el Suscriptor se comprometen a intentar resolver de manera amistosa cualquier desacuerdo que pudiera surgir en el desarrollo del presente Contrato, previamente a acudir a la jurisdicción contemplada. En el supuesto de que surja cualquier conflicto o discrepancia en la interpretación o aplicación de las presentes condiciones contractuales, los Juzgados y Tribunales que, en su caso, conocerán del asunto, serán los que disponga la normativa legal aplicable en materia de jurisdicción competente, en la que se atiende, tratándose de consumidores finales, al lugar del cumplimiento de la obligación o al del domicilio de la parte compradora. En el caso de que se trate de una compraventa realizada por una empresa, ambas partes se someten, con renuncia expresa a cualquier otro fuero, a los Juzgados y Tribunales de Bogotá (Colombia).",
+    "en":"This Contract will be interpreted and governed in accordance with Colombian law. FILMTONO and the Subscriber undertake to try to resolve amicably any disagreement that may arise in the development of this Contract, prior to resorting to the contemplated jurisdiction. In the event that any conflict or discrepancy arises in the interpretation or application of these contractual conditions, the Courts and Tribunals that, where appropriate, will know the matter, will be those provided by the applicable legal regulations in terms of competent jurisdiction, in which case, in the case of final consumers, the place of compliance with the obligation or the domicile of the purchasing party. In the case of a sale made by a company, both parties submit, with express waiver of any other jurisdiction, to the Courts and Tribunals of Bogotá (Colombia)."
+  },
+  "privacy_subtitle-12":{
+    "es": "Modificación de las condiciones generales de suscripción",
+    "en": "Modification of the general subscription conditions"
+  },
+  "privacy_text-20":{
+    "es":"FILMTONO informará a los Suscriptores mediante correo electrónico o avisos en www.filmtono.com de cualquier cambio realizado en las Condiciones Generales de Suscripción. Dichas modificaciones se reflejarán en este documento, al que el usuario podrá acceder en cualquier momento desde la zona de Registro de Usuarios. En el momento de la renovación de la suscripción, se entenderán aceptadas las Condiciones Generales de Suscripción vigentes en dicho momento, pasando el Suscriptor a estar vinculado por las nuevas.",
+    "en":"FILMTONO will inform Subscribers by email or notices on www.filmtono.com of any changes made to the General Subscription Conditions. These modifications will be reflected in this document, which the user can access at any time from the User Registration area. At the time of the renewal of the subscription, the General Subscription Conditions in force at that time will be understood to be accepted, the Subscriber being bound by the new ones."
+  },
+  "privacy_subtitle-13":{
+    "es": "Cláusula de salvaguarda",
+    "en": "Safeguard clause"
+  },
+  "privacy_text-21":{
+    "es":"La ineficacia de alguna de estas cláusulas no afectará a las demás. Las cláusulas ineficaces se sustituirán, en su caso, por otras cuyo contenido permita alcanzar la finalidad perseguida por las declaradas ineficaces.",
+    "en":"The ineffectiveness of any of these clauses will not affect the others. The ineffective clauses will be replaced, if applicable, by others whose content allows the purpose pursued by the declared ineffective to be achieved."
+  },
+  "privacy_subtitle-14":{
+    "es": "Política de cookies",
+    "en": "Cookies policy"
+  },
+  "privacy_text-22":{
+    "es":"Este portal, al igual que la mayoría de portales en Internet, usa cookies para mejorar la experiencia del usuario. A continuación, encontrará información sobre qué son las cookies, qué tipo de cookies utiliza este portal, cómo puede desactivar las cookies en su navegador y cómo desactivar específicamente la instalación de cookies de terceros. Si no encuentra la información específica que usted está buscando, por favor  escriba a support@filmtono.com.",
+    "en":"This portal, like most portals on the Internet, uses cookies to improve the user experience. Below, you will find information about what cookies are, what type of cookies this portal uses, how you can disable cookies in your browser and how to specifically disable the installation of third-party cookies. If you do not find the specific information you are looking for, please write to support@filmtono.com."
+  },
+  "privacy_subtitle-15":{
+    "es": "¿Qué son las cookies?",
+    "en": "What are cookies?"
+  },
+  "privacy_text-23":{
+    "es":"Las cookies son pequeños archivos que algunas plataformas, como las páginas web, pueden instalar en el navegador de su ordenador, smartphone, tableta o televisión conectada. Sus funciones pueden ser muy variadas: almacenar sus preferencias de navegación, recopilar información  estadística, permitir ciertas funcionalidades técnicas, etcétera. En ocasiones, las cookies se utilizan para almacenar información básica sobre los hábitos de navegación del usuario, hasta el punto, según los casos, de poder reconocerlo.",
+    "en":"Cookies are small files that some platforms, such as web pages, can install in the browser of your computer, smartphone, tablet or connected television. Their functions can be very varied: store your browsing preferences, collect statistical information, allow certain technical functionalities, etc. Sometimes, cookies are used to store basic information about the user's browsing habits, to the point, in some cases, of being able to recognize it."
+  },
+  "privacy_subtitle-16":{
+    "es": "Cookies que usa Filmtono",
+    "en": "Cookies used by Filmtono"
+  },
+  "privacy_text-24":{
+    "es":"Este portal utiliza cookies funcionales y analíticas. Las cookies funcionales son necesarias para el correcto funcionamiento de la web. Por su parte, las cookies analíticas nos permiten conocer el comportamiento de los usuarios en la web y realizar análisis estadísticos. Para más información sobre las cookies que utilizamos, por favor escriba a support@filmtono.com",
+    "en":"This portal uses functional and analytical cookies. Functional cookies are necessary for the correct functioning of the website. Analytical cookies, on the other hand, allow us to know the behavior of users on the web and carry out statistical analyzes. For more information about the cookies we use, please write to support@filmtono.com"
+  },
+  "licensing_text-1":{
+    "es": "Usar la canción de tu artista favorito en tu video ahora es más fácil, solicitando el permiso de uso exclusivamente para ese proyecto que notifiques y pagando a los autores o propietarios por esta licencia.",
+    "en": "Using your favorite artist's song in your video is now easier, requesting permission to use exclusively for that project you notify and paying the authors or owners for this license."
+  },
+  "licensing_text-2":{
+    "es": "FILMTONO da la facilidad para buscar entre varios artistas y sus canciones, encontrar su propietario de forma rápida, saber si se puede licenciar fácilmente “licencias ágiles” y hacer la solicitud.",
+    "en": "FILMTONO makes it easy to search among various artists and their songs, find their owner quickly, know if it can be easily licensed “agile licenses” and make the request."
+  },
+  "licensing_text-3":{
+    "es": "Reduce el tiempo de investigación sobre una canción ya que contamos con toda la información necesaria para lograr la licencia: desde quien es su compositor original, sus intérpretes y propietarios, los créditos, porcentajes de sus propietarios y datos de registros en PRO´s y si está disponible para ciertos tipos de proyectos.",
+    "en": "Reduce the research time on a song since we have all the necessary information to achieve the license: from who is its original composer, its performers and owners, the credits, percentages of its owners and PRO´s registration data and if it is available for certain types of projects."
+  },
+  "licensing_text-4":{
+    "es": "FILMTONO Hace soporte en el proceso de licenciamiento, negociación en varios idiomas, resolviendo requisitos legales para la venta internacional y gestiones de publishing.",
+    "en": "FILMTONO Supports in the licensing process, negotiation in several languages, solving legal requirements for international sales and publishing management."
+  },
   "t-inempresarios":{
     "es": "In Empresarios",
     "en": "In Empresarios"
@@ -2146,6 +2566,30 @@
   "t-contact_country":{
     "es": "País de contacto",
     "en": "Contact country"
+  },
+  "t-about":{
+    "es": "Sobre Filmtono",
+    "en": "About Filmtono"
+  },
+  "t-help":{
+    "es": "Ayuda",
+    "en": "Help"
+  },
+  "t-faq":{
+    "es": "Preguntas Frecuentes",
+    "en": "Frequently Asked Questions"
+  },
+  "t-terms-conditions":{
+    "es": "Términos y Condiciones",
+    "en": "Terms and Conditions"
+  },
+  "t-privacy":{
+    "es": "Política de Privacidad y Proteccoón de Datos",	
+    "en": "Privacy Policy and Data Protection"
+  },
+  "t-song-licensing":{
+    "es": "Licenciamiento de Canciones",
+    "en": "Song Licensing"
   },
   "i-name":{
     "es": "Nombre",

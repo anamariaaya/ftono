@@ -95,16 +95,6 @@ async function mostrarLabels(datos){
         userNameInfo.textContent = userName;
         userNameInfo.classList.add('cards__text');
 
-        const userLink = document.createElement('a');
-        userLink.classList.add('btn-view');
-        userLink.textContent = alerts['see-user'][lang];
-        userLink.href = `/filmtono/users/current?id=${userId}`;
-
-        const iconUser = document.createElement('i');
-        iconUser.classList.add('fa-solid', 'fa-person');
-
-        userLink.appendChild(iconUser);
-
         userInfo.appendChild(userTitle);
         userInfo.appendChild(userNameInfo);
 
@@ -131,7 +121,6 @@ async function mostrarLabels(datos){
         cardInfo.appendChild(dateInfo);
         cardInfo.appendChild(companyInfo);
         cardInfo.appendChild(userInfo);
-        cardInfo.appendChild(userLink);
 
         cardLink.appendChild(cardInfo);
         cardLink.appendChild(cardActions);

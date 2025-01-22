@@ -2,12 +2,13 @@ import { gridSongs,songsInput } from "./selectores.js";
 import { readLang, readJSON, eliminarItem, normalizeText, caps } from "../base/funciones.js";
 
 export async function consultaSongs(){
+    console.log('hola');
     //retrieve the URL of the current page with paarameters
     const url = new URL(window.location.href);
     const params = new URLSearchParams(url.search);
     const id = params.get('id');
     try{
-        const resultado = await fetch(window.location.origin+'/api/music/albums/songs'+'?id='+id);
+        const resultado = await fetch(window.location.origin+'/api/filmtono/albums/songs'+'?id='+id);
         const datos = await resultado.json();
         mostrarSongs(datos);
     }catch(error){
@@ -23,7 +24,7 @@ async function mostrarSongs(datos){
         const {id, titulo, version, isrc, sello, artista_name, genero_en, genero_es, gensec_en, gensec_es, categorias_en, categorias_es, idioma_en, idioma_es, nivel_cancion_en, nivel_cancion_es} = song;
 
         const linkSingle = document.createElement('A');
-        linkSingle.href = window.location.origin+'/music/album/songs/current?id='+id;
+        linkSingle.href = window.location.origin+'/filmtono/album/songs/current?id='+id;
         linkSingle.classList.add('cards__card');
 
         const cardSingle = document.createElement('DIV');
@@ -182,21 +183,12 @@ async function mostrarSongs(datos){
         const cardActions = document.createElement('DIV');
         cardActions.classList.add('cards__actions');
 
-        const btnEditar = document.createElement('A');
-        btnEditar.classList.add('btn-update');
-        btnEditar.href = window.location.origin+'/music/albums/song/edit?id='+id;
-
-        const iconoLapiz = document.createElement('I');
-        iconoLapiz.classList.add('fas', 'fa-pencil-alt', 'no-click');
-
-        btnEditar.appendChild(iconoLapiz);
-
         const btnEliminar = document.createElement('BUTTON');
         btnEliminar.classList.add('btn-delete');
         btnEliminar.id = 'eliminar';
         btnEliminar.value = id;
         btnEliminar.dataset.item = 'song';
-        btnEliminar.dataset.role = 'music';
+        btnEliminar.dataset.role = 'filmtono';
         btnEliminar.onclick = eliminarItem;
 
         const iconEliminar = document.createElement('I');
@@ -204,7 +196,6 @@ async function mostrarSongs(datos){
 
         btnEliminar.appendChild(iconEliminar);
 
-        cardActions.appendChild(btnEditar);
         cardActions.appendChild(btnEliminar);
 
         cardSingle.appendChild(cardInfo);

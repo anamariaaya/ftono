@@ -1,4 +1,4 @@
-<h1>{%users_new-title%}</h1>
+<h1>{%users_new_title%}</h1>
 
 <a href="/filmtono/users" class="btn-back">
     <i class="fa-solid fa-arrow-left"></i>

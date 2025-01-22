@@ -52,6 +52,12 @@ $router->get('/search', [PublicController::class, 'search']);
 $router->get('/help', [PublicController::class, 'help']);
 $router->get('/faq', [PublicController::class, 'faq']);
 
+//Public pages from footer
+$router->get('/about', [PublicController::class, 'about']);
+$router->get('/terms-conditions', [PublicController::class, 'terms']);
+$router->get('/privacy', [PublicController::class, 'privacy']);
+$router->get('/song-licensing', [PublicController::class, 'songLicensing']);
+
 //Public songs in categories
 $router->get('/category/genre', [PublicController::class, 'songsGenre']);
 $router->get('/category/songs', [PublicController::class, 'songsCategory']);
@@ -157,6 +163,8 @@ $router->get('/api/filmtono/c-artistico', [APIProfileController::class, 'contrat
 $router->post('/api/albums/artistasNew', [APIArtistController::class, 'artistaNuevo']);
 $router->get('/api/filmtono/messages', [MessagesController::class, 'consultarMensajes']);
 $router->get('/api/filmtono/countries', [APIProfileController::class, 'getCountries']);
+$router->get('/api/filmtono/albums/songs', [AlbumsController::class, 'consultaSongs']);
+$router->get('/api/filmtono/singles', [AlbumsController::class, 'consultaSingles']);
 
 
 //Filmtono Profile
@@ -207,6 +215,12 @@ $router->get('/filmtono/albums', [AlbumsController::class, 'index']);
 $router->get('/api/filmtono/albums/albums', [AlbumsController::class, 'consultaAlbumes']);
 $router->get('/filmtono/albums/delete', [AlbumsController::class, 'delete']);
 $router->get('/filmtono/albums/current', [AlbumsController::class, 'current']);
+
+//Filmtono songs and singles
+$router->get('/filmtono/album/songs/current', [AlbumsController::class, 'currentSong']);
+$router->get('/filmtono/singles/current', [AlbumsController::class, 'currentSingle']);
+$router->get('/filmtono/singles/delete', [AlbumsController::class, 'deleteSingle']);
+$router->get('/filmtono/song/delete', [AlbumsController::class, 'deleteSong']);
 
 
 //Filmtono Artists

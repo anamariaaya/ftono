@@ -214,10 +214,10 @@ async function mostrarSongs(datos){
 
         gridSongs.appendChild(linkSingle);
     });
-    filtrarSingles();
+    filtrarSongs();
 }
 
-function filtrarSingles(){
+function filtrarSongs(){
     songsInput.addEventListener('input', (e) => {
         const busqueda = normalizeText(e.target.value);
         const singles = gridSongs.querySelectorAll('.cards__card');

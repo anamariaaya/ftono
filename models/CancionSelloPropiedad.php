@@ -15,7 +15,7 @@ class CancionSelloPropiedad extends ActiveRecord{
 
     public function validarCancionSelloPropiedad(){
         if (!$this->sello_propiedad) {
-            self::$alertas['error'][] = "music_songs-form-fonogram_alert-required";
+            self::$alertas['error'][] = "music_songs-form-phonogram_alert-required";
         }
         return self::$alertas;
     }

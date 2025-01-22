@@ -72,7 +72,7 @@ export async function mostrarCategorias(datos){
 
                 //agregar los botones al contenedor
                 contenedorBotones.appendChild(btnEditar);
-                if(categoria.categoria_en !== 'genres'){
+                if(categoria.categoria_en !== 'genres' && categoria.categoria_en !== 'instruments' && categoria.categoria_en !== 'keywords'){
                         contenedorBotones.appendChild(btnEliminar);
                 }
                 

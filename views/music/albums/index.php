@@ -8,7 +8,10 @@
     <div class="tabs__music--albums">
         <h1>{% music_albums-title %}</h1>
         <div class="dashboard__total">
-            <p><span>{% music_albums-total %}: <?php echo count($albums) ?></span> </p>    
+            <p>
+                <span>{% music_albums-total %}:</span>
+                <?php echo count($albums) ?>
+            </p>    
 
             <div class="dashboard__search">
                 <input class="dashboard__total__type-search" type="text" id="albumes-search" placeholder="{% music_albums_search-placeholder %}"/>
@@ -29,9 +32,12 @@
 
     <!--Section of singles-->
     <div class="tabs__music--singles tabs__music--disabled">
-        <h1>{% music_singles-title %}</h1>
+        <h1>{% music_singles_title %}</h1>
         <div class="dashboard__total">
-            <p><span>{% music_singles-total %}: <?php echo count($singles) ?></span> </p>    
+            <p>
+                <span>{% music_singles_total %}:</span>
+                <?php echo count($singles) ?>
+            </p> 
 
             <div class="dashboard__search">
                 <input class="dashboard__total__type-search" type="text" id="singles-search" placeholder="{% music_singles_search-placeholder %}"/>

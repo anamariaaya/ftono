@@ -7,7 +7,7 @@
 
         <div class="footer__links">
             <h4><?php echo tt('footer_services'); ?></h4>
-            <a href="#" class="footer__link">
+            <a href="song-licensing" class="footer__link">
                 <?php echo tt('footer_services-1'); ?>
             </a>
             <a href="" class="footer__link footer__link--disabled">
@@ -38,56 +38,25 @@
         </div>
 
         <div class="footer__links">
-            <h4><?php echo tt('footer_aud_ind'); ?></h4>
-            <a href="#" class="footer__link">
-                <?php echo tt('footer_aud_ind-1'); ?>
-            </a>
-            <a href="#" class="footer__link">
-                <?php echo tt('footer_aud_ind-2'); ?>
-            </a>
-            <a href="#" class="footer__link">
-                <?php echo tt('footer_aud_ind-3'); ?>
-            </a>
-            <a href="#" class="footer__link">
-                <?php echo tt('footer_aud_ind-4'); ?>
-            </a>
-            <a href="#" class="footer__link">
-                <?php echo tt('footer_aud_ind-5'); ?>
-            </a>
-            <a href="#" class="footer__link">
-                <?php echo tt('footer_aud_ind-6'); ?>
-            </a>
-            <a href="#" class="footer__link">
-                <?php echo tt('footer_aud_ind-7'); ?>
-            </a>
-        </div>
-
-        <div class="footer__links">
             <h4><?php echo tt('footer_resources'); ?></h4>
-            <a href="#" class="footer__link">
+            <a href="/about" class="footer__link">
                 <?php echo tt('footer_resources-1'); ?>
             </a>
-            <a href="#" class="footer__link">
+            <a href="/faq" class="footer__link">
                 <?php echo tt('footer_resources-2'); ?>
             </a>
-            <a href="#" class="footer__link">
+            <a href="contact" class="footer__link">
                 <?php echo tt('footer_resources-3'); ?>
             </a>
         </div>
 
         <div class="footer__links">
             <h4><?php echo tt('footer_legal'); ?></h4>
-            <a href="#" class="footer__link">
+            <a href="/terms-conditions" class="footer__link">
                 <?php echo tt('footer_legal-1'); ?>
             </a>
-            <a href="#" class="footer__link">
+            <a href="/privacy" class="footer__link">
                 <?php echo tt('footer_legal-2'); ?>
-            </a>
-            <a href="#" class="footer__link">
-                <?php echo tt('footer_legal-3'); ?>
-            </a>
-            <a href="#" class="footer__link">
-                <?php echo tt('footer_legal-4'); ?>
             </a>
         </div>
 

@@ -452,11 +452,11 @@
     </div>
 
     <!--Porcentaje de fonograma-->
-    <p class="text-blue">{%music_songs-form-fonogram-percent_legend%}:</p>
+    <p class="text-blue">{%music_songs-form-phonogram-percent_legend%}:</p>
 
     <div class="form__group">
         <label class="form__group__label" for="sello_propiedad">
-            {%music_songs-form-fonogram-percent_label%}
+            {%music_songs-form-phonogram-percent_label%}
             <span class="text-yellow">*</span>
         </label>
         <input
@@ -466,7 +466,7 @@
             name="sello_propiedad"
             min="0"
             max="100"
-            placeholder="{%music_songs-form-fonogram_placeholder%}"
+            placeholder="{%music_songs-form-phonogram_placeholder%}"
             value="<?php 
                 echo isset($_POST['sello_propiedad']) 
                     ? htmlspecialchars(trim($_POST['sello_propiedad']), ENT_QUOTES, 'UTF-8') 
