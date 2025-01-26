@@ -9,8 +9,10 @@ use Model\Artistas;
 use Model\Featured;
 use Model\Keywords;
 use Model\Canciones;
+use Classes\Contacto;
 use Model\Categorias;
 use Model\CancionGenero;
+use Model\ContactoCompra;
 use Model\CancionKeywords;
 use Model\ArtistSongsPlayer;
 use Model\CancionCategorias;
@@ -112,10 +114,37 @@ class PublicController{
         ]);
     }
 
-    public static function help(Router $router){
-        $titulo = 't-help';
-        $router->render('/paginas/help',[
-            'titulo' => $titulo
+    public static function contact(Router $router){
+        $titulo = 't-contact';
+        $lang = $_SESSION['lang'];
+        $alertas = [];
+        $contacto = new ContactoCompra;
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $contacto->sincronizar($_POST);
+            $recaptchaSecret = '6LdErd0pAAAAAPHTvAFVSJCWoyznzgaDUFqtvhb7';
+            $recaptchaResponse = $_POST['g-recaptcha-response'];
+
+            $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$recaptchaSecret}&response={$recaptchaResponse}");
+            $responseKeys = json_decode($response, true);
+            if (intval($responseKeys["success"]) !== 1) {
+                echo 'Please complete the CAPTCHA';
+            } else {
+                $alertas = $contacto->validar();
+                if(empty($alertas)){
+                    $email = new Contacto($contacto->nombre, $contacto->apellido, $contacto->email, $contacto->pais, $contacto->telefono, $contacto->mensaje);
+                    $email->enviarMensaje();
+                    $contacto = [];
+                    ContactoCompra::setAlerta('exito','Mensaje enviado correctamente');
+                }
+
+            }
+        }
+        $alertas = ContactoCompra::getAlertas();
+        $router->render('/paginas/contact',[
+            'titulo' => $titulo,
+            'lang' => $lang,
+            'alertas' => $alertas,
+            'contacto' => $contacto
         ]);
     }
 

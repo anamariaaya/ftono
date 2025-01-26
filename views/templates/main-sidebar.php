@@ -17,7 +17,7 @@
         <div>
         
         <div class="menu__dropdown no-display">
-            <a href="/help"><?php echo tt('sidebar_help'); ?></a>
+            <a href="/contact"><?php echo tt('sidebar_help'); ?></a>
             <a href="/faq"><?php echo tt('sidebar_faq'); ?></a>
         </div>
     </nav>

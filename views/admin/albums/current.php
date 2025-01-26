@@ -33,9 +33,6 @@
         </div>
     </div>
 
-    <a href="/music/albums/song/new?id=<?php echo $album->id;?>" class="btn-back">
-        {%music_songs_add-btn%}
-    </a>
     <?php if(count($songs) > 0): ?>
         <div class="cards__container mTop-5" id="grid-songs">
         </div>

@@ -31,9 +31,9 @@
     "es": "Buscar canciones, artistas, álbumes...",
     "en": "Search songs, artists, albums..."      
   },
-  "sidebar_help":{
-    "es": "Ayuda",
-    "en": "Help"      
+  "sidebar_contact":{
+    "es": "Contacto",
+    "en": "Contact"      
   },
   "sidebar_faq":{
     "es": "FAQ",
@@ -2499,6 +2499,10 @@
     "es": "FILMTONO Hace soporte en el proceso de licenciamiento, negociación en varios idiomas, resolviendo requisitos legales para la venta internacional y gestiones de publishing.",
     "en": "FILMTONO Supports in the licensing process, negotiation in several languages, solving legal requirements for international sales and publishing management."
   },
+  "contact_text-1":{
+    "es": "Si tienes alguna duda o necesitas ayuda, por favor, no dudes en contactarnos. Estamos aquí para ayudarte.",
+    "en": "If you have any questions or need help, please do not hesitate to contact us. We are here to help you."
+  },
   "t-inempresarios":{
     "es": "In Empresarios",
     "en": "In Empresarios"
@@ -2571,13 +2575,13 @@
     "es": "Sobre Filmtono",
     "en": "About Filmtono"
   },
-  "t-help":{
-    "es": "Ayuda",
-    "en": "Help"
-  },
   "t-faq":{
     "es": "Preguntas Frecuentes",
     "en": "Frequently Asked Questions"
+  },
+  "t-contact":{
+    "es": "Contacto",
+    "en": "Contact"
   },
   "t-terms-conditions":{
     "es": "Términos y Condiciones",

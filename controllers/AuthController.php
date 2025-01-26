@@ -97,6 +97,7 @@ class AuthController {
         $contacto = new ContactoCompra;
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $contacto->sincronizar($_POST);
             $recaptchaSecret = '6LdErd0pAAAAAPHTvAFVSJCWoyznzgaDUFqtvhb7';
             $recaptchaResponse = $_POST['g-recaptcha-response'];
 
@@ -106,8 +107,6 @@ class AuthController {
             if (intval($responseKeys["success"]) !== 1) {
                 echo 'Please complete the CAPTCHA';
             } else {
-                $contacto->sincronizar($_POST);
-                //debugging($contacto);
                 $alertas = $contacto->validar();
 
                 if(empty($alertas)) {

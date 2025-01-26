@@ -4,24 +4,22 @@ namespace Classes;
 
 use PHPMailer\PHPMailer\PHPMailer;
 
-class Comprador {
+class Contacto {
 
     public $nombre;
     public $apellido;
     public $email;
     public $pais;
     public $telefono;
-    public $presupuesto;
     public $mensaje;
     
-    public function __construct($nombre, $apellido, $email, $pais, $telefono, $presupuesto, $mensaje)
+    public function __construct($nombre, $apellido, $email, $pais, $telefono, $mensaje)
     {
         $this->nombre = $nombre;
         $this->apellido = $apellido;
         $this->email = $email;
         $this->pais = $pais;
         $this->telefono = $telefono;
-        $this->presupuesto = $presupuesto;
         $this->mensaje = $mensaje;
     }
 
@@ -38,7 +36,7 @@ class Comprador {
      
          $mail->setFrom('no-reply@filmtono.com');
          $mail->addAddress('isainsuasty@gmail.com');
-         $mail->Subject = 'Contacto de comprador Filmtono';
+         $mail->Subject = 'Mensaje desde Filmtono';
 
          // Set HTML
          $mail->isHTML(TRUE);
@@ -99,9 +97,9 @@ class Comprador {
 
          $contenido .= "<div class='background' style='max-width:400px; background-color: #dedede; padding: 20px 20px 10px 20px;'>";
 
-         $contenido .= "<div class='content' style='background-color: #fff;      padding: 20px; margin: auto auto;'>";
+         $contenido .= "<div class='content' style='background-color: #fff;      padding: 20px;'>";
 
-         $contenido .= "<h1 style='color: #FD9526; font-weight: 900;             text-align: center; margin-top: 5px;'>¡Nuevo contacto de comprador!</h1>";
+         $contenido .= "<h1 style='color: #FD9526; font-weight: 900;             text-align: center; margin-top: 5px;'>¡Nuevo Mensaje Filmtono!</h1>";
 
          $contenido .= "<h2 style='color:black; font-weight:bold;'>Nombre: " . $this->nombre .' '.$this->apellido.  "</h2>";
 
@@ -111,13 +109,11 @@ class Comprador {
 
          $contenido .= "<p style='color:black;'>Teléfono: ".$this->telefono."</p>";
 
-         $contenido .= "<p style='color:black;'>Presupuesto: ".$this->presupuesto."</p>";
-
          $contenido .= "<p style='color:black;'>Mensaje: ".$this->mensaje."</p>";
 
          $contenido .= "</div>";
 
-         $contenido .= "<div class='footer' style='margin: auto auto';>";       
+         $contenido .= "<div class='footer' style='margin: -40px auto auto auto';>";       
 
          $contenido .= "<p style='color:black;'><span style='margin-top:25px; font-weight: bold; display:block; text-align:center;'>Filmtono © ".date("Y"). "</span></p>";
 

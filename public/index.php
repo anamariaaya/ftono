@@ -49,7 +49,8 @@ $router->get('/category', [PublicController::class, 'category']);
 $router->get('/api/public/category', [PublicController::class, 'consultarCategory']);
 
 $router->get('/search', [PublicController::class, 'search']);
-$router->get('/help', [PublicController::class, 'help']);
+$router->get('/contact', [PublicController::class, 'contact']);
+$router->post('/contact', [PublicController::class, 'contact']);
 $router->get('/faq', [PublicController::class, 'faq']);
 
 //Public pages from footer
