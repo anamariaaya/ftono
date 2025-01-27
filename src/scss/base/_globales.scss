@@ -47,6 +47,7 @@ ul li{
     @include m.tablet{
         margin: 5rem auto;
         width: 70%;
+        min-height: 32vh;
     }
 }
 

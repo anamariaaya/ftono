@@ -72,6 +72,10 @@ $router->get('/artist', [PublicController::class, 'artist']);
 $router->get('/api/public/artist/', [PublicController::class, 'consultarArtista']);
 $router->get('/api/public/featured-playlist', [PublicController::class, 'consultarFeaturedPlaylist']);
 
+//Public songs with search bar
+$router->get('/api/public/songs', [PublicController::class, 'allSongs']);
+$router->get('/api/public/songs/search', [PublicController::class, 'filterSongs']);
+
 //Auth Usuarios
 $router->get('/login', [AuthController::class, 'login']);
 $router->post('/login', [AuthController::class, 'login']);

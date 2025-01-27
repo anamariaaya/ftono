@@ -16,7 +16,7 @@
             <a href="" class="footer__link footer__link--disabled">
                 <?php echo tt('footer_services-3'); ?>
             </a>
-            <a href="" class="footer__link">
+            <a href="/prices" class="footer__link">
                 <?php echo tt('footer_services-4'); ?>
             </a>
         </div>

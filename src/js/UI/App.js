@@ -11,6 +11,7 @@ import { consultaArtistas } from "./artists.js";
 import { consultaCancionesArtista } from "./artist-playlist.js";
 import { consultaFeatured } from "./featured-playlist.js";
 import { consultaCategorySongs } from "./categorySongs.js";
+import { consultaCanciones } from "./canciones.js";
 
 class App{
     constructor(){
@@ -57,6 +58,7 @@ class App{
         if(gridCategorySongs){
             consultaCategorySongs();
         }
+        consultaCanciones();
     }
 }
 

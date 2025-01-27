@@ -11,6 +11,9 @@ use Model\Keywords;
 use Model\Canciones;
 use Classes\Contacto;
 use Model\Categorias;
+use Model\CancionData;
+use Model\CancionNivel;
+use Model\NivelCancion;
 use Model\CancionGenero;
 use Model\ContactoCompra;
 use Model\CancionKeywords;
@@ -98,13 +101,6 @@ class PublicController{
             $keywords = Keywords::consultarSQL($consulta);
         }
         echo json_encode($keywords);
-    }
-
-    public static function search(Router $router){
-        $titulo = 'Buscar';
-        $router->render('/paginas/search',[
-            'titulo' => $titulo
-        ]);
     }
 
     public static function about(Router $router){
@@ -296,5 +292,71 @@ class PublicController{
             }
         }
         echo json_encode($songs);
+    }
+
+    public static function search(Router $router){
+        $titulo = 't-search-songs';
+        $lang = $_SESSION['lang'];
+        $artistas = Artistas::all();
+        $niveles = NivelCancion::all();
+
+        $router->render('/paginas/search',[
+            'titulo' => $titulo,
+            'lang' => $lang,
+            'artistas' => $artistas,
+            'niveles' => $niveles
+        ]);
+    }
+
+    public static function allSongs(){
+        $consultaSongs = 'SELECT c.id,
+                c.titulo,
+                c.url,
+                ar.nombre AS artista_name
+            FROM canciones c
+            LEFT JOIN 
+                canc_artista ca ON c.id = ca.id_cancion
+            LEFT JOIN
+                artistas ar ON ca.id_artista = ar.id
+            WHERE c.url IS NOT NULL;'
+        ;
+        $songs = CancionData::consultarSQL($consultaSongs);
+        echo json_encode($songs);
+    }
+
+    public static function filterSongs() {
+        $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';  // Get search query from request
+        if($searchTerm == '') {
+            echo json_encode([]);  // Return empty array if search query is empty
+            return;
+        }else{
+            $searchTerm = s(filter_var($searchTerm, FILTER_SANITIZE_STRING));
+            $consultaTerm = "SELECT c.id,
+                c.titulo,
+                c.url,
+                ar.nombre AS artista_name,
+                l.letra,
+                k.keyword_en AS keywords_en,
+                k.keyword_es AS keywords_es
+            FROM canciones c
+            LEFT JOIN 
+                canc_artista ca ON c.id = ca.id_cancion
+            LEFT JOIN
+                artistas ar ON ca.id_artista = ar.id
+            LEFT JOIN
+                canc_letra l ON c.id = l.id_cancion
+            LEFT JOIN
+                canc_keywords ck ON c.id = ck.id_cancion
+            LEFT JOIN
+                keywords k ON ck.id_keywords = k.id
+            WHERE c.url IS NOT NULL 
+            AND (c.titulo LIKE '%".$searchTerm."%' OR l.letra LIKE '%" . $searchTerm . "%' OR k.keyword_en LIKE '%" . $searchTerm . "%' OR k.keyword_es LIKE '%" . $searchTerm . "%')
+            GROUP BY c.id;" 
+            ;
+
+            $songs = CancionData::consultarSQL($consultaTerm);
+        }
+    
+       echo json_encode($songs);  // Return matching songs as JSON
     }
 }

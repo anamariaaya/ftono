@@ -2683,6 +2683,30 @@
     "es": "Firmas y Autorizaciones",
     "en": "Signs and Authorizations"
   },
+  "t-search-songs":{
+    "es": "Buscar Canciones",
+    "en": "Search Songs"
+  },
+  "t-search-songs_placeholder":{
+    "es": "Buscar por nombre, letra o palabra clave",
+    "en": "Search by name, lyrics or keyword"
+  },
+  "t-search-songs_artist":{
+    "es": "Buscar por Artista",
+    "en": "Search by Artist"
+  },
+  "t-search-songs_artist_placeholder":{
+    "es": "Buscar por artista",
+    "en": "Search by artist"
+  },
+  "t-search-songs_level":{
+    "es": "Buscar por Nivel",
+    "en": "Search by Level"
+  },
+  "t-search-songs_level_placeholder":{
+    "es": "Buscar por nivel",
+    "en": "Search by level"
+  },
   "p-sign_music_contract":{
     "es": "Firma el contrato de proveedor musical",
     "en": "Sign the music supplier contract"

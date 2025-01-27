@@ -44,3 +44,8 @@ export const featuredPlaylist = document.querySelector('#featured-playlist');
 export const gridCategorySongs = document.querySelector('#grid-category-songs');
 export const categorySongsInput = document.querySelector('#category-songs-search');
 
+//Selector de canciones en la página principal
+export const gridCanciones = document.querySelector('#grid-songs');
+export const cancionesInput = document.querySelector('#songs-search');
+export const artistaSelect = document.querySelector('#songs-artistas');
+export const nivelSelect = document.querySelector('#songs-niveles');

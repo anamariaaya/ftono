@@ -40,19 +40,19 @@
             <p class="main__grid__text">{%category-genres%}</p>
         </div>
         <div class="main__grid__item">
-            <a href="/category?name=feelings">
+            <a href="/category?id=4&name=feelings">
                 <img class="main__grid__img" src="/build/img/categories/thumb--sensations.jpeg" alt="{%category-feelings%}">
             </a>
             <p class="main__grid__text">{%category-feelings%}</p>
         </div>
         <div class="main__grid__item">
-            <a href="/category?name=instruments">
+            <a href="/category?id=2&name=instruments">
                 <img class="main__grid__img" src="/build/img/categories/thumb--instruments.jpeg" alt="{%category-instruments%}">
             </a>
             <p class="main__grid__text">{%category-instruments%}</p>
         </div>
         <div class="main__grid__item">
-            <a href="/category?name=movies and tv">
+            <a href="/category?id=5&name=movies and tv">
                 <img class="main__grid__img" src="/build/img/categories/thumb--movies.jpeg" alt="{%category-movies%}">
             </a>
             <p class="main__grid__text">{%category-movies%}</p>
