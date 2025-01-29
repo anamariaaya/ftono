@@ -9,7 +9,8 @@
                     {%clear-filters%}
                 </button>
             </div>
-            <div class="grid form">
+            <!--artistas-->
+            <div class="grid-2 form">
                 <div class="form__group">
                     <label class="form__group__label" for="artistas">{%t-search-songs_artist%}</label>
                     <select class="form__group__select" name="artistas" id="songs-artistas">
@@ -21,10 +22,11 @@
                         <?php } ?>
                     </select>
                 </div>
+                <!--Niveles-->
                 <div class="form__group">
                     <label class="form__group__label" for="nivel">{%t-search-songs_level%}</label>
                     <select class="form__group__select" name="nivel" id="songs-niveles">
-                        <option value="0" selected disabled>
+                        <option value="" selected disabled>
                             {%t-search-songs_level_placeholder%}
                         </option>
                         <?php foreach ($niveles as $nivel) : ?>
@@ -34,7 +36,62 @@
                         <?php endforeach ?>
                     </select>
                 </div>
-                
+                <!--generos-->
+                <div class="form__group">
+                    <label class="form__group__label" for="genero">{%t-search-songs_genre%}</label>
+                    <select class="form__group__select" name="genero" id="songs-generos">
+                        <option value="" selected disabled>
+                            {%t-search-songs_genre_placeholder%}
+                        </option>
+                        <?php foreach ($generos as $genero) : ?>
+                            <option value="<?php echo $genero->id; ?>">
+                                <?php echo $lang =='en' ? $genero->genero_en : $genero->genero_es; ?>
+                            </option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
+                <!--instrumentos-->
+                <div class="form__group">
+                    <label class="form__group__label" for="instrumento">{%t-search-songs-instrument%}</label>
+                    <select class="form__group__select" name="instrumento" id="songs-instrumentos">
+                        <option value="" selected disabled>
+                            {%t-search-songs-instrument_placeholder%}
+                        </option>
+                        <?php foreach ($instrumentos as $instrumento) : ?>
+                            <option value="<?php echo $instrumento->id; ?>">
+                                <?php echo $lang =='en' ? $instrumento->keyword_en : $instrumento->keyword_es; ?>
+                            </option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
+                <!--Categorias-->
+                <div class="form__group">
+                    <label class="form__group__label" for="categoria">{%t-search-songs_category%}</label>
+                    <select class="form__group__select" name="categoria" id="songs-categorias">
+                        <option value="" selected disabled>
+                            {%t-search-songs_category_placeholder%}
+                        </option>
+                        <?php foreach ($categorias as $categoria) : ?>
+                            <option value="<?php echo $categoria->id; ?>">
+                                <?php echo $lang =='en' ? $categoria->categoria_en : $categoria->categoria_es; ?>
+                            </option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
+                <!--Idiomas-->
+                <div class="form__group">
+                    <label class="form__group__label" for="idioma">{%t-search-songs_language%}</label>
+                    <select class="form__group__select" name="idioma" id="songs-idiomas">
+                        <option value="" selected disabled>
+                            {%t-search-songs_language_placeholder%}
+                        </option>
+                        <?php foreach ($idiomas as $idioma) : ?>
+                            <option value="<?php echo $idioma->id; ?>">
+                                <?php echo $lang =='en' ? $idioma->idioma_en : $idioma->idioma_es; ?>
+                            </option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
             </div>
         </div>
     </div>

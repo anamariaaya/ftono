@@ -5,6 +5,7 @@ namespace Controllers;
 use MVC\Router;
 use Model\Genres;
 use Model\Promos;
+use Model\Idiomas;
 use Model\Artistas;
 use Model\Featured;
 use Model\Keywords;
@@ -299,12 +300,33 @@ class PublicController{
         $lang = $_SESSION['lang'];
         $artistas = Artistas::all();
         $niveles = NivelCancion::all();
+        $generos = Genres::allOrderAsc('genero_'.$lang);
+
+        if($lang == 'en'){
+            $consultaInstrumentos= "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = 2 ORDER BY keyword_en;";
+        }else{
+            $consultaInstrumentos= "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = 2 ORDER BY keyword_es;";
+        }
+        $instrumentos = Keywords::consultarSQL($consultaInstrumentos);
+
+        if($lang == 'en'){
+            $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2, 3) ORDER BY categoria_en;";
+        }else{
+            $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2, 3) ORDER BY categoria_es;";
+        }
+        $categorias = Categorias::consultarSQL($consultaCategorias);
+
+        $idiomas = Idiomas::AllOrderAsc('idioma_'.$lang);
 
         $router->render('/paginas/search',[
             'titulo' => $titulo,
             'lang' => $lang,
             'artistas' => $artistas,
-            'niveles' => $niveles
+            'niveles' => $niveles,
+            'generos' => $generos,
+            'instrumentos' => $instrumentos,
+            'idiomas' => $idiomas,
+            'categorias' => $categorias
         ]);
     }
 
@@ -328,9 +350,12 @@ class PublicController{
         $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
         $searchArtista = isset($_GET['artist']) ? $_GET['artist'] : '';
         $searchLevel = isset($_GET['level']) ? $_GET['level'] : '';
-        //$searchLevel = 1;
+        $searchGenre = isset($_GET['genre']) ? $_GET['genre'] : '';
+        $searchInstrument = isset($_GET['instrument']) ? $_GET['instrument'] : '';
+        $searchCategory = isset($_GET['category']) ? $_GET['category'] : '';
+        $searchLanguage = isset($_GET['language']) ? $_GET['language'] : '';
 
-        if($searchTerm !== '' || $searchArtista !== '' || $searchLevel !== ''){
+        if($searchTerm !== '' || $searchArtista !== '' || $searchLevel !== '' || $searchGenre !== '' || $searchInstrument !== '' || $searchCategory !== '' || $searchLanguage !== ''){
             $searchTerm = s(filter_var($searchTerm, FILTER_SANITIZE_STRING));
             $consultaTerm = "SELECT DISTINCT c.id,
                 c.titulo,
@@ -340,7 +365,9 @@ class PublicController{
                 k.keyword_en AS keywords_en,
                 k.keyword_es AS keywords_es,
                 n.nivel_en AS nivel_cancion_es,
-                n.nivel_es AS nivel_cancion_en
+                n.nivel_es AS nivel_cancion_en,
+                g.genero_es AS genero_es,
+                g.genero_en AS genero_en
             FROM canciones c
             LEFT JOIN 
                 canc_artista ca ON c.id = ca.id_cancion
@@ -356,6 +383,22 @@ class PublicController{
                 canc_nivel cn ON c.id = cn.id_cancion
             LEFT JOIN
                 nivel_canc n ON cn.id_nivel = n.id
+            LEFT JOIN
+                canc_genero cg ON c.id = cg.id_cancion
+            LEFT JOIN
+                generos g ON cg.id_genero = g.id
+            LEFT JOIN
+                canc_instrumento cins ON c.id = cins.id_cancion
+            LEFT JOIN
+                keywords ins ON cins.id_instrumento = ins.id
+            LEFT JOIN
+                canc_categorias cc ON c.id = cc.id_cancion
+            LEFT JOIN
+                categorias cat ON cc.id_categoria = cat.id
+            LEFT JOIN 
+                canc_idiomas ci ON c.id = ci.id_cancion
+            LEFT JOIN 
+                idiomas i ON ci.id_idioma = i.id
             WHERE c.url IS NOT NULL";
 
             if($searchTerm !== ''){
@@ -369,6 +412,22 @@ class PublicController{
 
             if($searchLevel != ''){
                 $consultaTerm .= " AND n.id = " . (int)$searchLevel;
+            }
+
+            if($searchGenre != ''){
+                $consultaTerm .= " AND g.id = " . (int)$searchGenre;
+            }
+
+            if($searchInstrument != ''){
+                $consultaTerm .= " AND ins.id = " . (int)$searchInstrument;
+            }
+
+            if($searchCategory != ''){
+                $consultaTerm .= " AND cat.id = " . (int)$searchCategory;
+            }
+
+            if($searchLanguage != ''){
+                $consultaTerm .= " AND i.id = " . (int)$searchLanguage;
             }
 
             $consultaTerm .= " GROUP BY c.id;";

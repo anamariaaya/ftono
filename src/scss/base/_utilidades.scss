@@ -363,7 +363,7 @@
 }
 
 .grid-2{
-    display: grid;
+    display: grid !important;
     grid-template-columns: 1fr;
     gap: 2rem;
     @include m.tablet{

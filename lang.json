@@ -2707,6 +2707,38 @@
     "es": "Buscar por nivel",
     "en": "Search by level"
   },
+  "t-search-songs_genre":{
+    "es": "Buscar por Género",
+    "en": "Search by Genre"
+  },
+  "t-search-songs_genre_placeholder":{
+    "es": "Buscar por género",
+    "en": "Search by genre"
+  },
+  "t-search-songs_category":{
+    "es": "Buscar por Categoría",
+    "en": "Search by Category"
+  },
+  "t-search-songs_category_placeholder":{
+    "es": "Buscar por categoría",
+    "en": "Search by category"
+  },
+  "t-search-songs_language":{
+    "es": "Buscar por Idioma",
+    "en": "Search by Language"
+  },
+  "t-search-songs_language_placeholder":{
+    "es": "Buscar por idioma",
+    "en": "Search by language"
+  },
+  "t-search-songs-instrument":{
+    "es": "Buscar por Instrumento",
+    "en": "Search by Instrument"
+  },
+  "t-search-songs-instrument_placeholder":{
+    "es": "Buscar por instrumento",
+    "en": "Search by instrument"
+  },
   "p-sign_music_contract":{
     "es": "Firma el contrato de proveedor musical",
     "en": "Sign the music supplier contract"

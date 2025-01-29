@@ -444,7 +444,7 @@ class MusicAlbumsController{
         $keywords = Keywords::consultarSQL($consultaKeywords);
         $selectedKeywords = [];
 
-        $idiomas = Idiomas::AllOrderAsc('idioma_en');
+        $idiomas = Idiomas::AllOrderAsc('idioma_'.$lang);
         $selectedLanguages = [];
 
         $usuariosellos = UsuarioSellos::whereAll('id_usuario', $id);
