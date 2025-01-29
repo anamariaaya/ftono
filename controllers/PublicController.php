@@ -427,6 +427,10 @@ class PublicController{
                 canc_idiomas ci ON c.id = ci.id_cancion
             LEFT JOIN 
                 idiomas i ON ci.id_idioma = i.id
+            LEFT JOIN
+                canc_gensecundarios cgs ON c.id = cgs.id_cancion
+            left JOIN
+                generos gs ON cgs.id_genero = gs.id
             WHERE c.url IS NOT NULL";
 
             if($searchTerm !== ''){
@@ -443,7 +447,7 @@ class PublicController{
             }
 
             if($searchGenre != ''){
-                $consultaTerm .= " AND g.id = " . (int)$searchGenre;
+                $consultaTerm .= " AND (g.id = " . (int)$searchGenre. " OR gs.id = " . (int)$searchGenre.")";
             }
 
             if($searchInstrument != ''){
