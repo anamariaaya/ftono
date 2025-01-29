@@ -1,4 +1,4 @@
-import { dropdownDiv, passbtn, wrapper, gridCategorias, gridGeneros, gridCategory, mensajeInput, player, gridArtistas, artistPlaylist, featuredPlaylist, gridCategorySongs} from "./selectores.js";
+import { dropdownDiv, passbtn, wrapper, gridCategorias, gridGeneros, gridCategory, mensajeInput, player, gridArtistas, artistPlaylist, featuredPlaylist, gridCategorySongs, gridCanciones} from "./selectores.js";
 import { chooseLang } from "./language.js";
 import { UI, showPassword, mainSlider, mensaje } from "./UI.js";
 import { btnSubmitLoader } from "../base/funciones.js";
@@ -11,7 +11,7 @@ import { consultaArtistas } from "./artists.js";
 import { consultaCancionesArtista } from "./artist-playlist.js";
 import { consultaFeatured } from "./featured-playlist.js";
 import { consultaCategorySongs } from "./categorySongs.js";
-import { consultaCanciones } from "./canciones.js";
+import { consultaCanciones } from "./canciones-search.js";
 
 class App{
     constructor(){
@@ -58,7 +58,9 @@ class App{
         if(gridCategorySongs){
             consultaCategorySongs();
         }
-        consultaCanciones();
+        if(gridCanciones){
+            consultaCanciones();
+        }
     }
 }
 

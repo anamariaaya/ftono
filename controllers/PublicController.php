@@ -325,13 +325,13 @@ class PublicController{
     }
 
     public static function filterSongs() {
-        $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';  // Get search query from request
-        if($searchTerm == '') {
-            echo json_encode([]);  // Return empty array if search query is empty
-            return;
-        }else{
+        $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
+        $searchArtista = isset($_GET['artist']) ? $_GET['artist'] : '';
+        //$searchArtista = 59;
+
+        if($searchTerm !== '' || $searchArtista !== ''){
             $searchTerm = s(filter_var($searchTerm, FILTER_SANITIZE_STRING));
-            $consultaTerm = "SELECT c.id,
+            $consultaTerm = "SELECT DISTINCT c.id,
                 c.titulo,
                 c.url,
                 ar.nombre AS artista_name,
@@ -349,14 +349,23 @@ class PublicController{
                 canc_keywords ck ON c.id = ck.id_cancion
             LEFT JOIN
                 keywords k ON ck.id_keywords = k.id
-            WHERE c.url IS NOT NULL 
-            AND (c.titulo LIKE '%".$searchTerm."%' OR l.letra LIKE '%" . $searchTerm . "%' OR k.keyword_en LIKE '%" . $searchTerm . "%' OR k.keyword_es LIKE '%" . $searchTerm . "%')
-            GROUP BY c.id;" 
-            ;
+            WHERE c.url IS NOT NULL";
+
+            if($searchTerm !== ''){
+                $consultaTerm .= " AND (c.titulo LIKE '%".$searchTerm."%' OR l.letra LIKE '%" . $searchTerm . "%' OR k.keyword_en LIKE '%" . $searchTerm . "%' OR k.keyword_es LIKE '%" . $searchTerm . "%')";
+            }           
+            
+            // Apply the artist filter if specified
+            if ($searchArtista != '') {
+                $consultaTerm .= " AND ar.id = " . (int)$searchArtista;
+            }
+
+            $consultaTerm .= " GROUP BY c.id;";
 
             $songs = CancionData::consultarSQL($consultaTerm);
+        }else{
+            $songs = [];
         }
-    
-       echo json_encode($songs);  // Return matching songs as JSON
+        echo json_encode($songs);  // Return matching songs as JSON
     }
 }

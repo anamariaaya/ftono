@@ -1,13 +1,19 @@
 <div class="container">
     <h1>{%<?php echo $titulo; ?>%}</h1>
     <div class="dashboard__total">
-        <div class="dashboard__search">
-            <input class="dashboard__total__type-search" type="text" id="songs-search" placeholder="{%t-search-songs_placeholder%}"/>
+        <div class="dashboard__search" id="search-songs-dashboard">
+            <div class="flex align-items-center">
+                <input class="dashboard__total__type-search" type="text" id="songs-search" placeholder="{%t-search-songs_placeholder%}"/>
+                <button class="btn-delete" id="clear-search">
+                    <i class="fas fa-broom"></i>
+                    {%clear-filters%}
+                </button>
+            </div>
             <div class="grid form">
                 <div class="form__group">
                     <label class="form__group__label" for="artistas">{%t-search-songs_artist%}</label>
                     <select class="form__group__select" name="artistas" id="songs-artistas">
-                        <option selected disabled>
+                        <option value="" selected disabled>
                             {%t-search-songs_artist_placeholder%}
                         </option>
                         <?php foreach ($artistas as $artista) { ?>
@@ -18,7 +24,7 @@
                 <div class="form__group">
                     <label class="form__group__label" for="nivel">{%t-search-songs_level%}</label>
                     <select class="form__group__select" name="nivel" id="songs-niveles">
-                        <option selected disabled>
+                        <option value="0" selected disabled>
                             {%t-search-songs_level_placeholder%}
                         </option>
                         <?php foreach ($niveles as $nivel) : ?>
@@ -28,10 +34,11 @@
                         <?php endforeach ?>
                     </select>
                 </div>
+                
             </div>
         </div>
     </div>
 
-    <div class="cards__container" id="grid-songs">
+    <div class="cards__container" id="grid-songs-search">
     </div>
 </div>

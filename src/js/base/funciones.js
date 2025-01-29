@@ -139,7 +139,7 @@ export async function eliminarItem(e){
 
         const alertaContenedor = document.createElement('div');
         alertaContenedor.classList.add('modal-alerta--activo');
-        // alertaContenedor.onclick = cerrarAlerta;
+        
 
         const alertaDiv = document.createElement('DIV');
         alertaDiv.classList.add('modal-alerta');

@@ -34,48 +34,21 @@ class ActiveRecord{
     }
 
     // Consulta SQL para crear un objeto en Memoria (Active Record)
-    public static function consultarSQL($query, $params = []) {
-        // Prepare the query
-        $stmt = self::$db->prepare($query);
-    
-        // Bind parameters (if any)
-        if ($params) {
-            // Assuming parameters are provided in an array
-            $types = ''; // Will store the types of the parameters
-            foreach ($params as $param) {
-                // Determine the type of each parameter and add it to $types
-                if (is_int($param)) {
-                    $types .= 'i'; // Integer type
-                } elseif (is_double($param)) {
-                    $types .= 'd'; // Double type
-                } elseif (is_string($param)) {
-                    $types .= 's'; // String type
-                } else {
-                    $types .= 'b'; // Blob type (binary data)
-                }
-            }
-            
-            // Bind the parameters
-            $stmt->bind_param($types, ...$params);
-        }
-    
-        // Execute the query
-        $stmt->execute();
-    
-        // Fetch the results
-        $result = $stmt->get_result();
+    public static function consultarSQL($query) {
+        // Consultar la base de datos
+        //debugging($query);
+        $resultado = self::$db->query($query);
+        // Iterar los resultados
         $array = [];
-        while ($row = $result->fetch_assoc()) {
-            $array[] = static::crearObjeto($row);
+        while($registro = $resultado->fetch_assoc()) {
+            $array[] = static::crearObjeto($registro);
         }
-    
-        // Free the memory
-        $stmt->free_result();
-    
-        // Return the results
+        // liberar la memoria
+        $resultado->free();
+
+        // retornar los resultados
         return $array;
     }
-    
 
     // Crea el objeto en memoria que es igual al de la BD
     protected static function crearObjeto($registro) {
