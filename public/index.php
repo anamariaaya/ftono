@@ -52,6 +52,10 @@ $router->get('/search', [PublicController::class, 'search']);
 $router->get('/contact', [PublicController::class, 'contact']);
 $router->post('/contact', [PublicController::class, 'contact']);
 $router->get('/faq', [PublicController::class, 'faq']);
+$router->get('/film-director', [PublicController::class, 'filmDirector']);
+$router->get('/music-supervisor', [PublicController::class, 'musicSupervisor']);
+$router->get('/audiovisual-producer', [PublicController::class, 'audiovisualProducer']);
+$router->get('/content-creator', [PublicController::class, 'contentCreator']);
 
 //Public pages from footer
 $router->get('/about', [PublicController::class, 'about']);

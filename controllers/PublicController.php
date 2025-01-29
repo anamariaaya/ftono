@@ -39,6 +39,34 @@ class PublicController{
         ]);
     }
 
+    public static function filmDirector(Router $router){
+        $titulo = 't-film-director';
+        $router->render('/paginas/film-director',[
+            'titulo' => $titulo
+        ]);
+    }
+
+    public static function audiovisualProducer(Router $router){
+        $titulo = 't-audiovisual-producer';
+        $router->render('/paginas/audiovisual-producer',[
+            'titulo' => $titulo
+        ]);
+    }
+
+    public static function musicSupervisor(Router $router){
+        $titulo = 't-music-supervisor';
+        $router->render('/paginas/music-supervisor',[
+            'titulo' => $titulo
+        ]);
+    }
+
+    public static function contentCreator(Router $router){
+        $titulo = 't-content-creator';
+        $router->render('/paginas/content-creator',[
+            'titulo' => $titulo
+        ]);
+    }
+
     public static function categories(Router $router){
         $titulo = 't-categories';
         $router->render('/paginas/categories',[

@@ -147,6 +147,22 @@
     "es": "Industria Audiovisual",
     "en": "Audiovisual industry"
   },
+  "footer_aud_ind-1":{
+    "es": "Director de Cine",
+    "en": "Film director"
+  },
+  "footer_aud_ind-2":{
+    "en": "Music Supervisor",
+    "es": "Supervisor Musical"
+  },
+  "footer_aud_ind-3":{
+    "es": "Productora audiovisual",
+    "en": "Audiovisual producer"
+  },
+  "footer_aud_ind-4":{
+    "es": "Creador de Contenido",
+    "en": "Content Creator"
+  },
   "footer_resources":{
     "es": "Recursos",
     "en": "Resources"      
@@ -2503,6 +2519,78 @@
     "es": "Si tienes alguna duda o necesitas ayuda, por favor, no dudes en contactarnos. Estamos aquí para ayudarte.",
     "en": "If you have any questions or need help, please do not hesitate to contact us. We are here to help you."
   },
+  "film-director_main_title":{
+    "es": "¿Soy Director de Cine, qué puede aportar FILMTONO a mi trabajo?",
+    "en": "I am a Film Director, what can FILMTONO bring to my work?"
+  },
+  "film-director_text-1":{
+    "es": "Sabemos que cada producción audiovisual es un caso creativo muy distinto del siguiente con sus particularidades.",
+    "en": "We know that each audiovisual production is a very different creative case from the next with its particularities."
+  },
+  "film-director_text-2":{
+    "es": "FILMTONO es una herramienta que te puede aportar más opciones para trabajar profesionalmente el área musical.",
+    "en": "FILMTONO is a tool that can provide you with more options to work professionally in the musical area."
+  },
+  "film-director_text-3":{
+    "es": "Encuentra Music Supervisors, Productores musicales especializados en los géneros Fantasía, Drama, terror, documentales entre otros. Descubre nuevos artistas del sector musical y sobre todo un catálogo de canciones originales con una producción de altísima calidad que ha sido seleccionado exhaustivamente y para el cual se ha realizado una investigación previa en materia de derechos autorales y de propiedad del máster de audio, con el fin de que puedas licenciar cualquiera de las canciones con mayor brevedad.",
+    "en": "Find Music Supervisors, Music Producers specialized in genres such as Fantasy, Drama, horror, documentaries among others. Discover new artists in the music sector and above all a catalog of original songs with a production of the highest quality that has been exhaustively selected and for which a previous investigation has been carried out on copyright and property rights of the audio master, so that you can license any of the songs as quickly as possible."
+  },
+  "film-director_text-4":{
+    "es": "Puedes solicitar la creación de una canción a medida o toda la producción musical para tu próximo proyecto.",
+    "en": "You can request the creation of a tailor-made song or the entire musical production for your next project."
+  },
+  "film-director_text-5":{
+    "es": "Escríbenos a soundtracks@filmtono.com y nos pondremos en contacto directo para poder acompañarte en este proceso.",
+    "en": "Write to us at soundtracks@filmtono.com and we will contact you directly to accompany you in this process."
+  },
+  "music-supervisor_main_title":{
+    "es": "¿Soy Music Supervisor, cómo trabajo con FILMTONO para encontrar música?",
+    "en": "I am a Music Supervisor, how do I work with FILMTONO to find music?"
+  },
+  "music-supervisor_text-1":{
+    "es": "Como Music Supervisor, FILMTONO te da otras opciones para avanzar en la investigación de catálogos y artistas independientes dentro de la industria musical. De tal manera que al registrarte puedas tener información muy completa y verificada sobre las canciones que encuentras  en este sitio web.",
+    "en": "As a Music Supervisor, FILMTONO gives you other options to advance in the research of catalogs and independent artists within the music industry. In such a way that when you register you can have very complete and verified information about the songs you find on this website."
+  },
+  "music-supervisor_text-2":{
+    "es": "Navega por los catálogos de canciones originales independientes, selecciona las canciones que se ajusten a tu proyecto, crea las características de tu proyecto y listas de reproducción con las canciones que más te gusten. Puedes compartir tus listas de reproducción con tu equipo de trabajo y finalmente solicitar las licencias oficiales cuando lo requieras.",
+    "en": "Browse through the catalogs of independent original songs, select the songs that fit your project, create the characteristics of your project and playlists with the songs you like the most. You can share your playlists with your work team and finally request the official licenses when you require them."
+  },
+  "music-audiovisual_main_title":{
+    "es": "Trabajo en una productora audiovisual o agencia publicitaria, qué me ofrece FILMTONO?",
+    "en": "I work in an audiovisual production company or advertising agency, what does FILMTONO offer me?"
+  },
+  "music-audiovisual_text-1":{
+    "es": "En una compañía de producción audiovisual, medio de comunicación o agencia publicitaria se tienen varios proyectos en simultáneo o muy recurrentes.",
+    "en": "In an audiovisual production company, media or advertising agency, there are several projects simultaneously or very recurrent."
+  },
+  "music-audiovisual_text-2":{
+    "es": "En FILMTONO encuentras catálogos de canciones originales de sellos discográficos y artistas independientes que previamente han sido seleccionados por su gran calidad de producción de audio y su claridad en cuanto los registros autorales y propietarios. Con lo cual te garantizamos el apoyo en el proceso de licenciamientos oficiales de forma segura para los proyectos que lo ameriten.",
+    "en": "In FILMTONO you find catalogs of original songs from record labels and independent artists that have previously been selected for their great quality of audio production and their clarity regarding copyright and ownership records. With which we guarantee you support in the process of official licensing safely for projects that merit it."
+  },
+  "music-audiovisual_text-3":{
+    "es": "También puedes encontrar más productores musicales que pueden elaborar audios a tu medida, puedes verificar su trabajo previo en su perfil y verificar si es el personaje idóneo.",
+    "en": "You can also find more music producers who can create audio to your measure, you can verify their previous work on their profile and verify if they are the right person."
+  },
+  "content-creator_main_title":{
+    "es": "Soy creador de contenido, influencer, youtuber, podcaster. ¿Cómo puedo usar canciones de FILMTONO?",
+    "en": "I am a content creator, influencer, youtuber, podcaster. How can I use FILMTONO songs?"
+  },
+  "content-creator_text-1":{
+    "es": "Si tus contenidos multimedia están siendo cada vez mas profesionales, es seguro que buscas subir la calidad de la producción de tus audios.",
+    "en": "If your multimedia content is becoming more and more professional, you are surely looking to increase the quality of the production of your audios."
+  },
+  "content-creator_text-2":{
+    "es": "Es por esto que a través de FILMTONO podrás licencias canciones originales de artistas independientes. Audios y canciones que han pasado por un proceso de producción y masterización muy completo, para obtener audios que le darán un plus a tu video frente al resultado que puedes obtener usando cualquier audio gratuito disponible en las librerías.",
+    "en": "This is why through FILMTONO you can license original songs from independent artists. Audios and songs that have gone through a very complete production and mastering process, to obtain audios that will give a plus to your video compared to the result you can obtain using any free audio available in the libraries."
+  },
+  "content-creator_text-3":{
+    "es": "Las redes sociales como Youtube, Tik Tok entre otras plataformas, te premian cuando subes contenidos de mayor calidad.",
+    "en": "Social networks like Youtube, Tik Tok among other platforms, reward you when you upload higher quality content."
+  },
+  "content-creator_text-4":{
+    "es": "Por esta razón comprar una licencia de canciones originales de forma oficial directamente a sus propietarios, además de aportar a los artistas de la industria musical, hace que tu producción audiovisual tenga mas relevancia en términos de posicionamiento SEO en las diferentes plataformas streaming, podcaster, broadcast y redes sociales.",
+    "en": "For this reason, buying an official license for original songs directly from their owners, in addition to contributing to the artists in the music industry, makes your audiovisual production more relevant in terms of SEO positioning on the different streaming platforms, podcaster, broadcast and social networks."
+  },
   "t-inempresarios":{
     "es": "In Empresarios",
     "en": "In Empresarios"
@@ -2762,6 +2850,22 @@
   "t-terms_acceptance":{
     "es": "Aceptación de términos, privacidad y confirmación de comunicaciones",
     "en": "Acceptance of terms, privacy and confirmation of communications"
+  },
+  "t-film-director":{
+    "es": "Director de Cine",
+    "en": "Film Director"
+  },
+  "t-audiovisual-producer":{
+    "es": "Productor Audiovisual",
+    "en": "Audiovisual Producer"
+  },
+  "t-music-supervisor":{
+    "es": "Supervisor Musical",
+    "en": "Music Supervisor"
+  },
+  "t-content-creator":{
+    "es": "Creador de Contenido",
+    "en": "Content Creator"
   },
   "l-i_accept_terms":{
     "es": "Acepto los",

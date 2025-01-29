@@ -38,6 +38,22 @@
         </div>
 
         <div class="footer__links">
+            <h4><?php echo tt('footer_aud_ind'); ?></h4>
+            <a href="/film-director" class="footer__link">
+                <?php echo tt('footer_aud_ind-1'); ?>
+            </a>
+            <a href="/music-supervisor" class="footer__link">
+                <?php echo tt('footer_aud_ind-2'); ?>
+            </a>
+            <a href="/audiovisual-producer" class="footer__link">
+                <?php echo tt('footer_aud_ind-3'); ?>
+            </a>
+            <a href="content-creator" class="footer__link">
+                <?php echo tt('footer_aud_ind-4'); ?>
+            </a>
+        </div>
+
+        <div class="footer__links">
             <h4><?php echo tt('footer_resources'); ?></h4>
             <a href="/about" class="footer__link">
                 <?php echo tt('footer_resources-1'); ?>

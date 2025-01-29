@@ -69,9 +69,9 @@ class Router
         
         $url_actual = $_SERVER['PATH_INFO'] ?? '/';
 
-        if(str_contains($url_actual, '/filmtono')) {
+        if(str_contains($url_actual, '/filmtono/')) {
             include_once __DIR__ . "/views/layouts/admin-layout.php";
-        } elseif(str_contains($url_actual, '/music') || (isset($_SESSION['nivel_musica'])&& str_contains($url_actual, '/complete-register'))) {
+        } elseif(str_contains($url_actual, '/music/') || (isset($_SESSION['nivel_musica'])&& str_contains($url_actual, '/complete-register'))) {
             include_once __DIR__ . "/views/layouts/musica-layout.php";
         } else {
             include_once __DIR__ . "/views/layouts/main-layout.php";
