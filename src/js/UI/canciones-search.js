@@ -53,46 +53,60 @@ async function mostrarCanciones(datos) {
 
 let currentQuery = '';
 let currentArtist = '';
+let currentNivel = '';
 
 async function filtraCanciones() {
-    if(gridCanciones){
-        // Listen for input changes in the search field
-        cancionesInput.addEventListener('input', async (e) => {
-            currentQuery = e.target.value.toLowerCase().trim();  // Update the query
-            fetchQuery(currentQuery, currentArtist);  // Pass the updated query and current artist
-        });
+    // Listen for changes in the search input field
+    cancionesInput.addEventListener('input', async (e) => {
+        currentQuery = e.target.value.toLowerCase().trim();  // Update the query
+        fetchQuery(currentQuery, currentArtist, currentNivel);  // Pass the updated query and current artist
+    });
 
-        // Listen for changes in the artist select dropdown
-        artistaSelect.addEventListener('change', async (e) => {
-            currentArtist = e.target.value;  // Update the artist filter
-            fetchQuery(currentQuery, currentArtist);  // Pass the updated artist and current query
-        });
+    // Listen for changes in the artist select dropdown
+    artistaSelect.addEventListener('change', async (e) => {
+        currentArtist = e.target.value;  // Update the artist filter
+        fetchQuery(currentQuery, currentArtist, currentNivel);  // Pass the updated artist and current query
+    });
 
-        // Function to send the request to the backend with both search and artist filters
-        async function fetchQuery(query, artist) {
-            let url = `/api/public/songs/search?`;
+    // Listen for changes in the nivel select dropdown
+    nivelSelect.addEventListener('change', async (e) => {
+        currentNivel = e.target.value;  // Update the nivel filter
+        fetchQuery(currentQuery, currentArtist, currentNivel);  // Pass the updated nivel and current query
+    });
 
-            if (query.length > 0) {
-                url += `search=${query}`;
-            }
+    // Function to send the request to the backend with both search and artist filters
+    async function fetchQuery(query, artist, nivel) {
+        let url = `/api/public/songs/search?`;
 
-            if (artist.length > 0) {
-                if (query.length > 0) {
-                    url += `&`;
-                }
-                url += `artist=${artist}`;
-            }
-
-            if (url === '/api/public/songs/search?') {
-                return;  // Don't fetch if no filters are applied
-            }
-
-            // Send the request to the backend
-            const response = await fetch(url);
-            const filteredSongs = await response.json();  // Get filtered songs
-            mostrarCanciones(filteredSongs);  // Display filtered songs
+        if (query.length > 0) {
+            url += `search=${query}`;
         }
+
+        if (artist.length > 0) {
+            if (query.length > 0) {
+                url += `&`;
+            }
+            url += `artist=${artist}`;
+        }
+
+        if (nivel.length > 0) {
+            if (query.length > 0 || artist.length > 0) {
+                url += `&`;
+            }
+            url += `level=${nivel}`;
+        }
+
+        if (url === '/api/public/songs/search?') {
+            return;  // Don't fetch if no filters are applied
+        }
+
+        // Send the request to the backend
+        const response = await fetch(url);
+        console.log(response);
+        const filteredSongs = await response.json();  // Get filtered songs
+        mostrarCanciones(filteredSongs);  // Display filtered songs
     }
+    
 }
 
 // Function to delete the filters and reset everything
@@ -100,6 +114,8 @@ if(clearSearch){
     function deleteFilter() {
         // Reset the artist select filter to the default state (empty or first option)
         artistaSelect.value = '';  // Set select input back to default (empty string)
+
+        nivelSelect.value = '';  // Set select input back to default (empty string)
     
         // Clear the search input field
         cancionesInput.value = '';

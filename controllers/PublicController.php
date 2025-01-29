@@ -327,9 +327,10 @@ class PublicController{
     public static function filterSongs() {
         $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
         $searchArtista = isset($_GET['artist']) ? $_GET['artist'] : '';
-        //$searchArtista = 59;
+        $searchLevel = isset($_GET['level']) ? $_GET['level'] : '';
+        //$searchLevel = 1;
 
-        if($searchTerm !== '' || $searchArtista !== ''){
+        if($searchTerm !== '' || $searchArtista !== '' || $searchLevel !== ''){
             $searchTerm = s(filter_var($searchTerm, FILTER_SANITIZE_STRING));
             $consultaTerm = "SELECT DISTINCT c.id,
                 c.titulo,
@@ -337,7 +338,9 @@ class PublicController{
                 ar.nombre AS artista_name,
                 l.letra,
                 k.keyword_en AS keywords_en,
-                k.keyword_es AS keywords_es
+                k.keyword_es AS keywords_es,
+                n.nivel_en AS nivel_cancion_es,
+                n.nivel_es AS nivel_cancion_en
             FROM canciones c
             LEFT JOIN 
                 canc_artista ca ON c.id = ca.id_cancion
@@ -349,6 +352,10 @@ class PublicController{
                 canc_keywords ck ON c.id = ck.id_cancion
             LEFT JOIN
                 keywords k ON ck.id_keywords = k.id
+            LEFT JOIN
+                canc_nivel cn ON c.id = cn.id_cancion
+            LEFT JOIN
+                nivel_canc n ON cn.id_nivel = n.id
             WHERE c.url IS NOT NULL";
 
             if($searchTerm !== ''){
@@ -358,6 +365,10 @@ class PublicController{
             // Apply the artist filter if specified
             if ($searchArtista != '') {
                 $consultaTerm .= " AND ar.id = " . (int)$searchArtista;
+            }
+
+            if($searchLevel != ''){
+                $consultaTerm .= " AND n.id = " . (int)$searchLevel;
             }
 
             $consultaTerm .= " GROUP BY c.id;";
