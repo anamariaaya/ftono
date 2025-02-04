@@ -35,6 +35,10 @@
     "es": "Contacto",
     "en": "Contact"      
   },
+  "sidebar_help":{
+    "es": "Ayuda",
+    "en": "Help"      
+  },
   "sidebar_faq":{
     "es": "FAQ",
     "en": "FAQ"      
@@ -2591,6 +2595,346 @@
     "es": "Por esta razón comprar una licencia de canciones originales de forma oficial directamente a sus propietarios, además de aportar a los artistas de la industria musical, hace que tu producción audiovisual tenga mas relevancia en términos de posicionamiento SEO en las diferentes plataformas streaming, podcaster, broadcast y redes sociales.",
     "en": "For this reason, buying an official license for original songs directly from their owners, in addition to contributing to the artists in the music industry, makes your audiovisual production more relevant in terms of SEO positioning on the different streaming platforms, podcaster, broadcast and social networks."
   },
+  "faq_section-1":{
+    "es": "Funcionamiento de filmtono",
+    "en": "Operation of filmtono"
+  },
+  "faq_question-1-1":{
+    "es": "¿Qué significa que FILMTONO es un DSP?",
+    "en": "What does it mean that FILMTONO is a DSP?"
+  },
+  "faq_answer-1-1":{
+    "es": "FILMTONO es una plataforma web service, un DIGITAL SERVICE PROVIDER creado para ayudar a quienes necesitan investigar y actualizarse en cuanto a catálogos independientes dentro de la industria musical, además de conectar directamente con los propietarios de las canciones, agregadores, editoriales, autores, compositores, productores y proveedores musicales independientes en varios países.",
+    "en": "FILMTONO is a web service platform, a DIGITAL SERVICE PROVIDER created to help those who need to research and update themselves in terms of independent catalogs within the music industry, in addition to connecting directly with the owners of the songs, aggregators, publishers, authors, composers, producers and independent music providers in several countries."
+  },
+  "faq_question-1-2":{
+    "es": "¿FILMTONO me ayuda en la investigación musical?",
+    "en": "Does FILMTONO help me in musical research?"
+  },
+  "faq_answer-1-2-1":{
+    "es": "Si deseas hacer una investigación entre los catálogos independientes de FILMTONO podrás encontrar canciones que cuentan con una información muy completa acerca de sus propietarios.",
+    "en": "If you want to do research among the independent catalogs of FILMTONO you will find songs that have very complete information about their owners."
+  },
+  "faq_answer-1-2-2":{
+    "es": "Hacemos una selección exhaustiva de canciones, de proveedores musicales que nos certifican la totalidad de los datos y la veracidad por cada canción, además de un compromiso social al reconocer el trabajo de los creadores a través del pago de licencias al 100% de sus propietarios. Logrando la data más fiel, más completa y verificada lo más directamente posible con sus propietarios.",
+    "en": "We make an exhaustive selection of songs, from music providers who certify us the totality of the data and the veracity for each song, in addition to a social commitment to recognize the work of the creators through the payment of licenses to 100% of their owners. Achieving the most faithful, most complete and verified data as directly as possible with its owners."
+  },
+  "faq_question-1-3":{
+    "es": "¿Qué proyectos puedo encargar a FILMTONO?",
+    "en": "What projects can I commission to FILMTONO?"
+  },
+  "faq_answer-1-3":{
+    "es": "Si tienes proyectos audiovisuales para los que deseas contratar la creación de música profesional o usar canciones originales, ejemplo: series, películas, documentales, cortos, podcast, broadcast, youtube, anuncios publicitarios, redes sociales para los cuales necesitas una licencia oficial firmada y verificada por sus propietarios, cuenta con FILMTONO para que tu proyecto tenga el aval y siga su curso de distribución, exhibición en el mercado y plataformas sin ningún problema.",
+    "en": "If you have audiovisual projects for which you want to hire the creation of professional music or use original songs, for example: series, films, documentaries, shorts, podcasts, broadcast, youtube, advertising, social networks for which you need an official license signed and verified by its owners, count on FILMTONO so that your project has the endorsement and follows its course of distribution, exhibition in the market and platforms without any problem."
+  },
+  "faq_question-1-4":{
+    "es": "¿A quienes me ayuda a conectar FILMTONO?",
+    "en": "Who does FILMTONO help me connect with?"
+  },
+  "faq_answer-1-4-1":{
+    "es": "FILMTONO te conecta con todas las entidades musicales necesarias y todos los propietarios de la canción que deseas usar en tu proyecto audiovisual, para que puedas obtener una licencia 100% legal y verificada.",
+    "en": "FILMTONO connects you with all the necessary music entities and all the owners of the song you want to use in your audiovisual project, so that you can obtain a 100% legal and verified license."
+  },
+  "faq_answer-1-4-2":{
+    "es": "Si es necesario directamente con su autor original, intérprete, productor musical, editorial, sello discográfico, agregador musical o sistema de monitoreo digital.",
+    "en": "If necessary directly with its original author, performer, music producer, publisher, record label, music aggregator or digital monitoring system."
+  },
+  "faq_section-2":{
+    "es": "Filmtono para proyectos audiovisuales",
+    "en": "Filmtono for audiovisual projects"
+  },
+  "faq_question-2-1":{
+    "es": "¿Cómo me registro para obtener ofertas de canciones?",
+    "en": "How do I register to get song offers?"
+  },
+  "faq_answer-2-1-1":{
+    "es": "Suscríbete como comprador de FILMTONO en la sección “Soy Music Supervisor” para obtener acceso a todas las canciones originales y la información sobre cómo obtener las licencias ágiles a través de la plataforma.",
+    "en": "Subscribe as a FILMTONO buyer in the “I am a Music Supervisor” section to get access to all original songs and information on how to obtain agile licenses through the platform."
+  },
+  "faq_answer-2-1-2":{
+    "es": "Descubre todas las canciones que consideramos Joyas Musicales y logra que otros también las descubran a través tuyo.",
+    "en": "Discover all the songs that we consider Musical Jewels and get others to discover them through you."
+  },
+  "faq_answer-2-1-3":{
+    "es": "Precio de la suscripción 25€ el mes, el año 300€ con los que recibirás notificaciones de música nueva, playlists musicales, puedes enviar solicitudes especiales y recibir soporte en línea para el proceso de licenciamiento.",
+    "en": "Subscription price 25€ per month, 300€ per year with which you will receive notifications of new music, music playlists, you can send special requests and receive online support for the licensing process."
+  },
+  "faq_section-3":{
+    "es": "Filmtono para directores de cine",
+    "en": "Filmtono for film directors"
+  },
+  "faq_question-3-1":{
+    "es": "¿FILMTONO me ayuda con la búsqueda de músico adecuado para mi filme?",
+    "en": "Does FILMTONO help me with the search for the right musician for my film?"
+  },
+  "faq_answer-3-1":{
+    "es": "Encuentra soporte con FILMTONO para investigar productores musicales especialistas en los diferentes géneros cinematográficos, músico experto en drama, músico experto en fantasía, músico experto en suspenso, músico experto en videojuegos, músico experto en podcast, entre otros.",
+    "en": "Find support with FILMTONO to investigate music producers specializing in different film genres, music expert in drama, music expert in fantasy, music expert in suspense, music expert in video games, music expert in podcast, among others."
+  },
+  "faq_question-3-2":{
+    "es": "¿Qué tipos de artistas se pueden encontrar en FILMTONO?",
+    "en": "What types of artists can be found in FILMTONO?"
+  },
+  "faq_answer-3-2-1":{
+    "es": "Los artistas que encontrarás en FILMTONO son artistas independientes, de sellos independientes en todas sus fases de carrera artística.",
+    "en": "The artists you will find in FILMTONO are independent artists, from independent labels in all phases of their artistic career."
+  },
+  "faq_answer-3-2-2":{
+    "es": "Para facilidad de administración hemos creado internamente estos tipos de artista según su reconocimiento:",
+    "en": "For ease of administration we have created these types of artists internally according to their recognition:"
+  },
+  "faq_answer-3-2-3":{
+    "es": "Artista Leyenda: Un artista leyenda según FILMTONO es aquel que ha marcado un hito en la historia musical de la gente a nivel mundial y el cual, a pesar de haber fallecido, sus canciones y su imagen sigue siendo muy valorada.",
+    "en": "Legend Artist: A legend artist according to FILMTONO is one who has marked a milestone in people's musical history worldwide and who, despite having died, his songs and his image are still highly valued."
+  },
+  "faq_answer-3-2-4":{
+    "es": "Artista Super-estrella: Un artista superstar según FILMTONO es un artista que ha logrado posicionarse a nivel internacional, con seguridad ha sido ganador de premios Grammy, Billboard, tiene audiencia fuerte en diferentes países, fans asiduos en diferentes mercados y muy probablemente alguno de sus videoclips o canciones son HITS en escuchas en la actualidad. Es un artista referenciado en diferentes idiomas por personas en distintos países.",
+    "en": "Superstar Artist: A superstar artist according to FILMTONO is an artist who has managed to position himself internationally, has surely won Grammy, Billboard awards, has a strong audience in different countries, regular fans in different markets and very likely some of his music videos or songs are HITS in listening today. It is an artist referenced in different languages by people in different countries."
+  },
+  "faq_answer-3-2-5":{
+    "es": "Artista Estrella: Un artista Estrella tiene un alto reconocimiento en su país de origen, una gran base de oyentes, seguidores, premios, canciones muy escuchadas, además está en plan de desarrollo a nivel internacional. Busca oportunidades para posicionarse en nuevos mercados diferentes a su mercado natural.",
+    "en": "Star Artist: A Star Artist has high recognition in his country of origin, a large listener base, followers, awards, very listened songs, and is in the process of development internationally. Seeks opportunities to position itself in new markets different from its natural market."
+  },
+  "faq_answer-3-2-6":{
+    "es": "Artista Alto Nivel: Un artista de alto nivel según FILMTONO es el que ha logrado posicionarse a nivel nacional en su país de origen, tiene una gran base de oyentes y seguidores en todo el territorio que lo reconocen y al menos una de sus canciones es un HIT nacional o tiene un alto nivel de escuchas. Tiene referencias en la mayoría de las regiones de su país. Busca oportunidades nacionales o internacionales similares a la de su mercado natural para seguir fortaleciendo su proceso de crecimiento.",
+    "en": "High Level Artist: A high-level artist according to FILMTONO is one who has managed to position himself nationally in his country of origin, has a large listener and follower base throughout the territory that recognizes him and at least one of his songs is a national HIT or has a high level of listening. It has references in most regions of its country. Seeks national or international opportunities similar to that of its natural market to continue strengthening its growth process."
+  },
+  "faq_answer-3-2-7":{
+    "es": "Artista de Crrecimiento Nacional: Un artista nacional en crecimiento según FILMTONO es el que está logrando tener una base de oyentes y seguidores fuerte en varias regiones, referencias de youtubers, blogs, expertos musicales, curadores y está en búsqueda de fortalecerse nacionalmente. Probablemente tenga premios nacionales y visibilidad en medios nacionales, así como videoclips y escuchas muy buenas.",
+    "en": "National Growth Artist: A national growth artist according to FILMTONO is one who is managing to have a strong listener and follower base in several regions, references from youtubers, blogs, music experts, curators and is looking to strengthen nationally. It probably has national awards and visibility in national media, as well as very good music videos and listens."
+  },
+  "faq_answer-3-2-8":{
+    "es": "Artista en Desarrollo: Un artista en desarrollo nacional según FILMTONO, es aquel que ya se ha logrado posicionar en algún mercado, tiene una base fuerte de oyentes y seguidores en la zona, pero además se encuentra en proceso de abrir nuevos mercados en el país para posicionarse, se encuentra haciendo esfuerzos para darse a conocer y busca oportunidades de visibilidad nacional o en regiones que sean su objetivo para fortalecer.",
+    "en": "Artist in Development: An artist in national development according to FILMTONO, is one who has already managed to position himself in some market, has a strong listener and follower base in the area, but is also in the process of opening new markets in the country to position himself, is making efforts to make himself known and seeks opportunities for national visibility or in regions that are his objective to strengthen."
+  },
+  "faq_answer-3-2-9":{
+    "es": "Artista Emergente: Un artista emergente según FILMTONO, va desde aquel que está iniciando con su primer lanzamiento hasta uno que tiene un nivel de alto reconocimiento en su mercado natural o en su región o zona. Está construyendo una base de oyentes o seguidores, su red de curadores musicales, críticos musicales, periodistas, influencers, líderes en su región para que hagan parte de su crecimiento. Están en búsqueda de oportunidades que les de visibilidad regional, nacional o en una región que sea de su objetivo de fortalecimiento en la actualidad. Probablemente tengan premios en su ciudad o no, han ganado convocatorias e incentivos a talentos.",
+    "en": "Emerging Artist: An emerging artist according to FILMTONO, ranges from one who is starting with his first release to one who has a high level of recognition in his natural market or in his region or area. He is building a listener or follower base, his network of music curators, music critics, journalists, influencers, leaders in his region to be part of his growth. They are looking for opportunities that give them regional, national visibility or in a region that is their current strengthening objective. They probably have awards in their city or not, they have won calls and talent incentives."
+  },
+  "faq_question-3-3":{
+    "es": "¿Qué canciones puedo licenciar a través de FILMTONO?",
+    "en": "What songs can I license through FILMTONO?"
+  },
+  "faq_answer-3-3-1":{
+    "es": "PEn FILMTONO podrás encontrar canciones que están por descubrir hasta canciones posicionadas internacionalmente.",
+    "en": "In FILMTONO you can find songs that are yet to be discovered to internationally positioned songs."
+  },
+  "faq_answer-3-3-2":{
+    "es": "Para poder valorar cada canción de acuerdo a su nivel de reconocimiento, hemos creado una tabla de niveles con un indicador. A continuación, explicamos los valores:",
+    "en": "In order to assess each song according to its level of recognition, we have created a table of levels with an indicator. Below, we explain the values:"
+  },
+  "faq_section-4":{
+    "es": "Sobre las licencias",
+    "en": "About licenses"
+  },
+  "faq_question-4-1":{
+    "es": "Quiero usar una canción en mi película, en una serie de TV ¿Cómo se licencia a través de FILMTONO?",
+    "en": "I want to use a song in my movie, in a TV series. How is it licensed through FILMTONO?"
+  },
+  "faq_answer-4-1-1":{
+    "es": "Para licenciar canciones originales a través de FILMTONO, primero debes estar inscrito como comprador de licencias en cualquier categoría: Productor o Director de cine, Musicalizador, Music Supervisor etc.",
+    "en": "To license original songs through FILMTONO, you must first be registered as a license buyer in any category: Film Producer or Director, Musician, Music Supervisor etc."
+  },
+  "faq_answer-4-1-2":{
+    "es": "Sube la información de tu proyecto audiovisual, si es un nombre provisional o el definitivo está bien. Sinopsis, episodio y sobre todo las características, referentes o ideas de lo que buscas para este capítulo.",
+    "en": "Upload the information of your audiovisual project, if it is a provisional name or the final one is fine. Synopsis, episode and above all the characteristics, references or ideas of what you are looking for for this chapter."
+  },
+  "faq_answer-4-1-3":{
+    "es": "También puedes crear tus propias playlist con canciones preferidas que vayas encontrando en nuestra plataforma y apoyarte de los filtros y el buscador para hacer una búsqueda específica.",
+    "en": "You can also create your own playlists with favorite songs that you find on our platform and use the filters and the search engine to make a specific search."
+  },
+  "faq_answer-4-1-4":{
+    "es": "Haz la solicitud de la licencia cuando estés listo(a) y solicita el material que sea necesario. Y a partir de aquí debemos esperar la aprobación de los propietarios, si todo sale bien, obtendrás inmediatamente su respuesta.",
+    "en": "Make the license request when you are ready and request the material that is necessary. And from here we must wait for the approval of the owners, if everything goes well, you will immediately get their response."
+  },
+  "faq_answer-4-1-5":{
+    "es": "Para facilidad FILMTONO te presta un servicio de seguimiento para que todo el proceso de licenciamiento sea fidedigno, hasta que la licencia esté pagada y firmada por las partes.",
+    "en": "For ease FILMTONO provides you with a tracking service so that the entire licensing process is reliable, until the license is paid and signed by the parties."
+  },
+  "faq_question-4-2":{
+    "es": "¿Qué es una licencia de fijación o sincronización musical?",
+    "en": "What is a music fixing or synchronization license?"
+  },
+  "faq_answer-4-2":{
+    "es": "Una licencia es un documento legal en el cual el propietario o propietarios de la canción dejan expresa y claramente que otorgan un permiso para que puedas usarla como fondo musical o banda sonora de una producción audiovisual, sincronizarla o fijarla en una película, un documental, un video para youtube un comercial publicitario para televisión, distribución en plataformas y promoción.",
+    "en": "A license is a legal document in which the owner or owners of the song expressly and clearly grant permission for you to use it as background music or soundtrack for an audiovisual production, synchronize it or fix it in a film, a documentary, a video for youtube, a commercial for television, distribution on platforms and promotion."
+  },
+  "faq_question-4-3":{
+    "es": "¿Qué son las licencias ágiles?",
+    "en": "What are agile licenses?"
+  },
+  "faq_answer-4-3-1":{
+    "es": "Hemos llamado licencias ágiles a los permisos de uso de una canción, que puedes obtener a través de un trámite fácil.",
+    "en": "We have called agile licenses the permissions to use a song, which you can obtain through an easy process."
+  },
+  "faq_answer-4-3-2":{
+    "es": "FILMTONO facilita el proceso de licenciamiento gracias a su selección exahustiva de proveedores y canciones que contienen metadata completa. Es decir, se cuenta con todo un proceso de investigación previa de cada una de las canciones, verificando que esté la información de sus propietarios completa.",
+    "en": "FILMTONO facilitates the licensing process thanks to its exhaustive selection of providers and songs that contain complete metadata. That is, there is a whole process of previous investigation of each of the songs, verifying that the information of its owners is complete."
+  },
+  "faq_answer-4-3-3":{
+    "es": "En algunos casos solo se necesita de una autorización para las canciones “all in one”, las cuales suelen ser canciones originales de cantautores o dj´s, solistas pero también suelen ser producciones orquestales grandes con un solo propietario.",
+    "en": "In some cases, only an authorization is needed for the “all in one” songs, which are usually original songs by singer-songwriters or dj´s, soloists but they are also usually large orchestral productions with a single owner."
+  },
+  "faq_question-4-4":{
+    "es": "¿Puedo monetizar mis videos con una licencia de FILMTONO?",
+    "en": "Can I monetize my videos with a FILMTONO license?"
+  },
+  "faq_answer-4-4":{
+    "es": "Sí, el permiso de uso de una canción te permite publicar tu video con la canción de fondo y monetizarla, siempre y cuando el tipo de uso y en qué plataforma lo vas a realizar esté descrito en la licencia. Para el caso de Youtube y redes sociales, es importante que sepas que monetizas las reproducciones de tu video, mas no las de la canción.",
+    "en": "Yes, the permission to use a song allows you to publish your video with the background song and monetize it, as long as the type of use and on which platform you are going to perform it is described in the license. For the case of Youtube and social networks, it is important that you know that you monetize the views of your video, but not those of the song."
+  },
+  "faq_question-4-5":{
+    "es": "¿Cómo funcionan las Licencias Blockchain Vsus Licencias Tradicionales?",
+    "en": "How do Blockchain Licenses Vs Traditional Licenses work?"
+  },
+  "faq_answer-4-5-1":{
+    "es": "Los proyectos blockchain son independientes de la licencia tradicional. Es un extra que puede ayudar a que el proyecto audiovisual sea más interesante, abriendo la participación de la comunidad.",
+    "en": "Blockchain projects are independent of the traditional license. It is an extra that can help make the audiovisual project more interesting, opening up community participation."
+  },
+  "faq_answer-4-5-2":{
+    "es": "Para este primero debemos realizar la solicitud especial a través de correo electrónico a soundtracks@filmtono.com enviando los detalles del proyecto y la canción para la que deseamos crear una colección.",
+    "en": "For the first one, we must make the special request through email to soundtracks@filmtono.com sending the details of the project and the song for which we want to create a collection."
+  },
+  "faq_section-5":{
+    "es": "Sobre los precios de las licencias",
+    "en": "About license prices"
+  },
+  "faq_question-5-1":{
+    "es": "¿Cuánto cuesta una licencia de uso de una canción?",
+    "en": "How much does a song use license cost?"
+  },
+  "faq_answer-5-1":{
+    "es": "En cuanto al precio de un permiso de uso de una canción puede ser muy variable, pues es el propietario de la canción, el autor, propietario del máster o su representante editor o sello quien define el precio que puede tener una licencia, respecto al valor que tiene el trabajo realizado tanto por su autor e intérpretes como la producción del máster de audio. Son ellos quienes tienen la palabra definitiva y pueden calcular el costo en base a diferentes variables.",
+    "en": "As for the price of a song use permit, it can be very variable, since it is the owner of the song, the author, owner of the master or his representative editor or label who defines the price that a license may have, regarding the value that the work done by both its author and performers and the audio master production. They are the ones who have the final word and can calculate the cost based on different variables."
+  },
+  "faq_question-5-2":{
+    "es": "¿De qué depende el precio de una licencia musical?",
+    "en": "What does the price of a music license depend on?"
+  },
+  "faq_answer-5-2-1":{
+    "es": "Las variables que pueden afectar el precio de una licencia musical son en la mayor parte de los casos:",
+    "en": "The variables that can affect the price of a music license are in most cases:"
+  },
+  "faq_answer-5-2-2":{
+    "es": "El tipo de artista",
+    "en": "The type of artist"
+  },
+  "faq_answer-5-2-3":{
+    "es": "Si quieres ayudar a descubrir un nuevo artista es una gran idea ya que puedes obtener el máximo creativo y hasta verdaderas joyas a un precio justo por su trabajo. Si deseas tener una canción de un intérprete que está posicionado y sobre todo si es alguien muy reconocido en el medio musical entenderás que sus precios estarán a su nivel.",
+    "en": "If you want to help discover a new artist it is a great idea since you can get the maximum creative and even true jewels at a fair price for their work. If you want to have a song from an interpreter who is positioned and especially if he is someone very recognized in the music industry you will understand that their prices will be at their level."
+  },
+  "faq_answer-5-2-4":{
+    "es": "El nivel de reconocimiento de la canción",
+    "en": "The level of recognition of the song"
+  },
+  "faq_answer-5-2-5":{
+    "es": "La canción que eliges para sincronizar también es analizada dependiendo de su reconocimiento, pues como puede que sea una joya por descubrir, como también una canción que es muy conocida en una zona o segmento o tiene un reconocimiento internacional.",
+    "en": "The song you choose to synchronize is also analyzed depending on its recognition, as it may be a jewel to discover, as well as a song that is well known in an area or segment or has international recognition."
+  },
+  "faq_answer-5-2-6":{
+    "es": "El uso que se le dará a la canción dentro del proyecto",
+    "en": "The use that will be given to the song within the project"
+  },
+  "faq_answer-5-2-7":{
+    "es": "El precio de una licencia de uso de una canción depende si la vas a usar como cabezote, será una canción muy especial en un momento determinado, es la canción para los anuncios publicitarios, la editaras para la escena principal o si es una canción que se usa de ambientación.",
+    "en": "The price of a song use license depends on whether you are going to use it as a header, it will be a very special song at a certain moment, it is the song for advertising, you will edit it for the main scene or if it is a song that is used for setting."
+  },
+  "faq_question-5-3":{
+    "es": "¿Cuánto tiempo dura una licencia de FILMTONO?",
+    "en": "How long does a FILMTONO license last?"
+  },
+  "faq_answer-5-3":{
+    "es": "Las licencias son personalizadas, dependiendo de la duración del proyecto. A no ser de que se requiera una licencia indefinida se podrá solicitar a sus propietarios, para aprobación.",
+    "en": "Licenses are personalized, depending on the duration of the project. Unless an indefinite license is required, it can be requested from its owners, for approval."
+  },
+  "faq_question-5-4":{
+    "es": "¿Qué pasa si uso alguna de estas canciones sin solicitar la licencia?",
+    "en": "What happens if I use any of these songs without requesting the license?"
+  },
+  "faq_answer-5-4":{
+    "es": "Si usas canciones originales que están protegidas por la ley del derecho de autor sin el consentimiento oficial de sus propietarios, podrías obtener una demanda muy costosa por infringir una de las leyes mas importantes y protegidas universalmente como es la propiedad intelectual. Los autores, compositores, artistas y productores tienen además de entidades que gestionan sus derechos como lo son las PRO´S, editoriales que a su vez usan sistemas de monitoreo digital.",
+    "en": "If you use original songs that are protected by copyright law without the official consent of their owners, you could get a very expensive lawsuit for infringing one of the most important and universally protected laws such as intellectual property. Authors, composers, artists and producers have in addition to entities that manage their rights such as PRO´S, publishers that in turn use digital monitoring systems."
+  },
+  "faq_section-6":{
+    "es": "Para productores musicales y autores",
+    "en": "For music producers and authors"
+  },
+  "faq_question-6-1":{
+    "es": "¿Cómo puedo subir mis canciones a FILMTONO?",
+    "en": "How can I upload my songs to FILMTONO?"
+  },
+  "faq_answer-6-1":{
+    "es": "Debes realizar el registro como proveedor musical, leer el contrato con la plataforma y firmarlo si estás conforme. Posteriormente, enviaremos un correo electrónico para solicitar una videollamada para una verificación personalizada en la que te solicitaremos tu catálogo musical con toda la información de sus propietarios, registros autorales oficiales completa. Después de una revisión de cada una de tus canciones, devolveremos un correo con tu aceptación y podrás cargar directamente la información y data de las licencias que deseas ofrecer.",
+    "en": "You must register as a music provider, read the contract with the platform and sign it if you agree. Subsequently, we will send an email to request a video call for a personalized verification in which we will request your music catalog with all the information of its owners, complete official authorial records. After a review of each of your songs, we will return an email with your acceptance and you can directly upload the information and data of the licenses you want to offer."
+  },
+  "faq_question-6-2":{
+    "es": "¿Cómo me registro como proveedor musical?",
+    "en": "How do I register as a music provider?"
+  },
+  "faq_answer-6-2":{
+    "es": "Por favor ingresa a la sección “soy artista”, “soy sello discográfico” “soy agregador” o “soy productor musical” y regístrate en el formulario. Posteriormente, lee atentamente el contrato con nuestra plataforma y fírmalo para enviar una solicitud.",
+    "en": "Please enter the “I am an artist”, “I am a record label” “I am an aggregator” or “I am a music producer” section and register in the form. Subsequently, read the contract with our platform carefully and sign it to send a request."
+  },
+  "faq_question-6-3":{
+    "es": "¿Cuáles son las canciones que mas funcionan para licenciar?",
+    "en": "What are the songs that work best for licensing?"
+  },
+  "faq_answer-6-3":{
+    "es": "En general todos los estilos de canciones pueden ser funcionales dependiendo del tipo de proyecto y necesidades. Existen necesidades comunes en el cine como canciones que rememoran puntos específicos en la historia, canciones que pueden reforzar sentimientos, canciones que te ubican en una situación geográfica o en un escenario puntual, o simplemente canciones populares actuales que complementan una escena contemporánea. Canciones con gran producción musical, con videoclip o canciones con letras que describen, cuentan historias o son amplias en su mensaje.",
+    "en": "In general, all styles of songs can be functional depending on the type of project and needs. There are common needs in cinema such as songs that recall specific points in history, songs that can reinforce feelings, songs that place you in a geographical situation or in a specific scenario, or simply current popular songs that complement a contemporary scene. Songs with great musical production, with music video or songs with lyrics that describe, tell stories or are broad in their message."
+  },
+  "faq_question-6-4":{
+    "es": "¿Cómo apruebo las licencias que me han solicitado?",
+    "en": "How do I approve the licenses that have been requested of me?"
+  },
+  "faq_answer-6-4":{
+    "es": "Cuando hay interés por parte de una productora, verás una notificación en tu perfil como proveedor musical, así como te llegará un correo electrónico de notificación. En esta sección de notificaciones dentro de tu perfil podrías ver la información sobre el proyecto audiovisual y los detalles que ha comentado el interesado. Deberás leerlos al detalle y aprobarlo dentro de la plataforma, si ves que todo está bien. De lo contrario podrás enviar tus comentarios.",
+    "en": "When there is interest on the part of a production company, you will see a notification in your profile as a music provider, as well as you will receive an email notification. In this notifications section within your profile you could see the information about the audiovisual project and the details that the interested party has commented. You must read them in detail and approve it within the platform, if you see that everything is fine. Otherwise you can send your comments."
+  },
+  "faq_question-6-5":{
+    "es": "¿Cómo recibiré el pago de mis licencias?",
+    "en": "How will I receive payment for my licenses?"
+  },
+  "faq_answer-6-5":{
+    "es": "Configura todos los datos de pago a través de FILMTONO. Haremos un monitoreo y soporte para los pagos desde países con regulaciones especiales como lo es Estados Unidos.",
+    "en": "Set up all payment data through FILMTONO. We will monitor and support payments from countries with special regulations such as the United States."
+  },
+  "faq_section-7":{
+    "es": "Servicios adicionales",
+    "en": "Additional services"
+  },
+  "faq_question-7-1":{
+    "es": "¿Puedo comprar canciones a medida realizadas con IA?",
+    "en": "Can I buy tailor-made songs made with AI?"
+  },
+  "faq_answer-7-1-1":{
+    "es": "Las canciones creadas con inteligencia artificial pueden funcionar en algunos casos y puedes crear algunas en FILMTONO, de tal manera que puedas comprarlas y darle uso comercial. En este caso no se licencia porque no son creaciones protegidas.",
+    "en": "Songs created with artificial intelligence can work in some cases and you can create some in FILMTONO, so that you can buy them and give them commercial use. In this case it is not licensed because they are not protected creations."
+  },
+  "faq_answer-7-1-2":{
+    "es": "Sin embargo, advertimos que la calidad de producción de una creación con IA no es comparable a la calidad de una producción de alta calidad.",
+    "en": "However, we warn that the production quality of an AI creation is not comparable to the quality of a high-quality production."
+  },
+  "faq_question-7-2":{
+    "es": "¿Puedo solicitar formatos musicales 3D y otros archivos de audio?",
+    "en": "Can I request 3D music formats and other audio files?"
+  },
+  "faq_answer-7-2-1":{
+    "es": "Si requieres solicitar formatos de sonido más envolventes para los sistemas de sonido para cine en 3D, solicita los archivos de audio de alta calidad en formatos WAV y Mezclas 3D para Atmos, con el fin de que tengas acceso a archivos de altísima calidad sonora. Para las canciones que cuentan con producción 3D estarán marcadas con la etiqueta ADM.",
+    "en": "If you require requesting more immersive sound formats for 3D cinema sound systems, request high-quality audio files in WAV formats and 3D mixes for Atmos, so that you have access to very high-quality sound files. For songs that have 3D production will be marked with the ADM label."
+  },
+  "faq_answer-7-2-2":{
+    "es": "Para cada una de las canciones también puedes solicitar los stems para hacer uso de la canción sin voz o solo el sonido de la voz sin música. Los stems irán en conjunto con el archivo del máster oficial.",
+    "en": "For each of the songs you can also request the stems to use the song without voice or only the sound of the voice without music. The stems will go together with the official master file."
+  },
+  "faq_question-7-3":{
+    "es": "¿Puedo solicitar el cameo de un artista por medio de FILMTONO?",
+    "en": "Can I request a cameo from an artist through FILMTONO?"
+  },
+  "faq_answer-7-3":{
+    "es": "Sí en algunos casos, para esto fíjate en el perfil del artista. Si está marcado para cameos con una etiqueta podrás enviarnos una solicitud con la información del proyecto. De esta manera podremos mediar para proponer el proyecto al artista y darte respuesta.",
+    "en": "Yes in some cases, for this look at the artist's profile. If it is marked for cameos with a label you can send us a request with the project information. In this way we can mediate to propose the project to the artist and give you an answer."
+  },
   "t-inempresarios":{
     "es": "In Empresarios",
     "en": "In Empresarios"
@@ -3058,5 +3402,161 @@
   "clear-filters": {
     "es": "Limpiar filtros",
     "en": "Clear filters"
+  },
+  "t-status":{
+    "es": "Estado",
+    "en": "Status"
+  },
+  "t-reconocimiento":{
+    "es": "Reconocimiento",
+    "en": "Recognition"
+  },
+  "t-song-level":{
+    "es": "Nivel de la canción",
+    "en": "Song level"
+  },
+  "t-legend": {
+    "es": "Leyenda",
+    "en": "Legend"
+  },
+  "t-value": {
+    "es": "Valor",
+    "en": "Value"
+  },
+  "t-superstar": {
+    "es": "Superestrella",
+    "en": "Superstar"
+  },
+  "t-star": {
+    "es": "Estrella",
+    "en": "Star"
+  },
+  "t-high-level": {
+    "es": "Alto nivel",
+    "en": "High level"
+  },
+  "t-national-growth": {
+    "es": "Crecimiento nacional",
+    "en": "National growth"
+  },
+  "t-development": {
+    "es": "Desarrollo",
+    "en": "Development"
+  },
+  "t-emerging": {
+    "es": "Emergente",
+    "en": "Emerging"
+  },
+  "t-legend-text":{
+    "es": "Su imagen es historia y sus hits siguen activos.",
+    "en": "His image is history and his hits are still active."
+  },
+  "t-superstar-text":{
+    "es": "Posicionado Internacionalmente.",
+    "en": "Internationally positioned."
+  },
+  "t-star-text":{
+    "es": "Posicionado nacionalmente y en desarrollo internacional.",
+    "en": "Positioned nationally and internationally in development."
+  },
+  "t-high-level-text":{
+    "es": "Posicionado nacionalmente, tiene hits nivel nacional actualmente.",
+    "en": "Positioned nationally, has national level hits currently."
+  },
+  "t-national-growth-text":{
+    "es": "Reconocimiento nacional.",
+    "en": "National recognition."
+  },
+  "t-development-text":{
+    "es": "Reconocimiento regional y en desarrollo nacional.",
+    "en": "Regional recognition and national development."
+  },
+  "t-emerging-text":{
+    "es": "Reconocimiento básico.",
+    "en": "Basic recognition."
+  },
+  "t-international-standard":{
+    "es": "Estándar Internacional",
+    "en": "International Standard"
+  },
+  "t-international-standard-level":{
+    "es": "Sigue estando en tops internacionales el último año, la interpretan estrellas internacionales.",
+    "en": "It is still in international tops the last year, it is interpreted by international stars."
+  },
+  "t-international-standard-value":{
+    "es": "A",
+    "en": "A"
+  },
+  "t-hit-internacional-novedad":{
+    "es": "Hit Internacional Novedad",
+    "en": "International Hit News"
+  },
+  "t-hit-internacional-novedad-level":{
+    "es": "Es un hit internacional de novedad, interpretado por estrellas internaTiene reconocimiento, oyentes fuertes a nivel internacional. Ha estado en top 20 en rankings internacionales el último año, tiene participación de estrellas internacionales.",
+    "en": "It is an international novelty hit, interpreted by international stars. It has recognition, strong listeners internationally. It has been in the top 20 in international rankings the last year, it has the participation of international stars."
+  },
+  "t-hit-internacional-novedad-value":{
+    "es": "B",
+    "en": "B"
+  },
+  "t-top-internacional":{
+    "es": "Top Internacional",
+    "en": "International Top"
+  },
+  "t-top-internacional-level":{
+    "es": "Tiene reconocimiento en otros países, ha sido top 20 en rankings internacionales, es colaboración con una estrella internacional, ha ganado premios, pero no necesariamente es hit del momento.",
+    "en": "It has recognition in other countries, has been top 20 in international rankings, is a collaboration with an international star, has won awards, but is not necessarily a hit of the moment."
+  },
+  "t-top-internacional-value":{
+    "es": "C",
+    "en": "C"
+  },
+  "t-estandar-nacional":{
+    "es": "Estándar Nacional",
+    "en": "National Standard"
+  },
+  "t-estandar-nacional-level":{
+    "es": "Tiene reconocimiento de una base de oyentes y seguidores fuerte a nivel nacional. Ha sido o es top 5 en listas nacionales, tiene participación con artistas de mayor nivel, ha ganado premios nacionales.",
+    "en": "It has recognition of a strong listener and follower base nationally. It has been or is top 5 in national lists, has participation with higher level artists, has won national awards."
+  },
+  "t-estandar-nacional-value":{
+    "es": "D",
+    "en": "D"
+  },
+  "t-top-nacional":{
+    "es": "Top Nacional",
+    "en": "National Top"
+  },
+  "t-top-nacional-level":{
+    "es": "Reconocimiento nacional, puede ser participación con un artista de mayor nivel.",
+    "en": "National recognition, may be participation with a higher level artist."
+  },
+  "t-top-nacional-value":{
+    "es": "E",
+    "en": "E"
+  },
+  "t-regional":{
+    "es": "Regional",
+    "en": "Regional"
+  },
+  "t-regional-level":{
+    "es": "Reconocimiento en un segmento regional.",
+    "en": "Recognition in a regional segment."
+  },
+  "t-regional-value":{
+    "es": "F",
+    "en": "F"
+  },
+  "t-por-descubrir":{
+    "es": "Por Descubrir",
+    "en": "To Discover"
+  },
+  "t-por-descubrir-level":{
+    "es": "Reconocimiento básico",
+    "en": "Basic recognition"
+  },
+  "t-por-descubrir-value":{
+    "es": "G",
+    "en": "G"
   }
 }
