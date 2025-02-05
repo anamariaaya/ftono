@@ -238,5 +238,13 @@
     "level":{
       "es": "Nivel",
       "en": "Level"
+    },
+    "approved":{
+      "es": "Aprobado",
+      "en": "Approved"
+    },
+    "pending-approval":{
+      "es": "Pendiente de aprobar",
+      "en": "Pending approval"
     }
 }

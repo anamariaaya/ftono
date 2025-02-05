@@ -15,7 +15,7 @@ export async function mostrarUsuarios(datos){
         const lang = await readLang();
         const alerts = await readJSON();
         datos.forEach(usuario => {
-                const {id, nombre, apellido, email, confirmado, perfil, nivel, tipo_es, tipo_en, empresa} = usuario;
+                const {id, nombre, apellido, email, confirmado, perfil, nivel, tipo_es, tipo_en, empresa, aprobado} = usuario;
 
                 //generar la etiqueta para el tipo de usuario
                 const tipoUsuario = document.createElement('H3');
@@ -63,18 +63,37 @@ export async function mostrarUsuarios(datos){
                         estadoPerfil.textContent = alerts['profile-incomplete'][lang];
                 }
 
-                //generar el botón para abir el modal con la información del usuario
-                const btnInfo = document.createElement('A');
-                btnInfo.classList.add('btn-view');
-                btnInfo.textContent = alerts['see-more'][lang];
-                btnInfo.href = `/filmtono/users/current?id=${id}`;
+                const estadoAprobado = document.createElement('P');
+                estadoAprobado.classList.add('card__info', 'text-green');
+                if(aprobado==='1'){
+                        estadoAprobado.textContent = alerts['approved'][lang];
+                } else {
+                        estadoAprobado.textContent = alerts['pending-approval'][lang];
+                }
 
-                //general ícono de ojo para el botón de ver más
-                const iconoOjo = document.createElement('I');
-                iconoOjo.classList.add('fa-solid', 'fa-eye');
+                //generar el botón para aprobar el usuario
+                
+                const btnAprobar = document.createElement('BUTTON');
+                btnAprobar.classList.add('btn-back');
+                btnAprobar.value = id;
+                btnAprobar.dataset.role = 'filmtono';
+                btnAprobar.dataset.item = 'users';
+                btnAprobar.onclick = aprobarUsuario;
+
+                //generar ícono de check para el botón de aprobar
+                const iconoCheck = document.createElement('I');
+                iconoCheck.classList.add('fa-solid', 'fa-check', 'no-click');
 
                 //Agregar el ícono al botón
-                btnInfo.appendChild(iconoOjo);
+                
+                btnAprobar.appendChild(iconoCheck);
+
+                //generar el botón para abir el modal con la información del usuario
+                const btnInfo = document.createElement('A');
+                btnInfo.classList.add('btn-view', 'mBottom-1');
+                btnInfo.textContent = alerts['see-more'][lang];
+                btnInfo.href = `/filmtono/users/current?id=${id}`;
+                
 
                 //generar el botón para eliminar el usuario
                 const btnEliminar = document.createElement('BUTTON');
@@ -97,6 +116,10 @@ export async function mostrarUsuarios(datos){
                 contenedorBotones.classList.add('card__acciones');
 
                 //agregar los botones al contenedor
+                if(aprobado !=='1'){
+                        contenedorBotones.appendChild(btnAprobar);
+                }
+                contenedorBotones.appendChild(btnInfo);
                 contenedorBotones.appendChild(btnEliminar);
 
                 //Generar el contenedor de la información del usuario
@@ -114,8 +137,8 @@ export async function mostrarUsuarios(datos){
                 if(nivel != null){
                         card.appendChild(estadoPerfil);
                 }
+                card.appendChild(estadoAprobado);
                 card.appendChild(empresaUsuario);
-                card.appendChild(btnInfo);
                 card.appendChild(contenedorBotones);
 
                 //agregar el contenedor de la información al grid
@@ -141,4 +164,26 @@ function filtrarUsuarios(){
                         }
                 });
         }); 
+}
+
+function aprobarUsuario(){
+        //Enviar el post para aprobar el usuario
+        const id = this.value;
+        const role = this.dataset.role;
+        const item = this.dataset.item;
+        const data = new FormData();
+        data.append('id', id);
+        data.append('role', role);
+        data.append('item', item);
+        fetch(window.location.origin+'/api/filmtono/aprobar-usuario', {
+                method: 'POST',
+                body: data
+        })
+        .then(response => response.json())
+        .then(data => {
+                if(data.resultado){
+                        window.location.reload();
+                }
+        })
+        .catch(error => console.log(error));
 }

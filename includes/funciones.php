@@ -86,7 +86,7 @@ function sesionActiva() : void {
 
 //bloquea ciertos botondes del dashboard si el usuario no está registrado por completo
 function regBtn(){
-    if($_SESSION['perfil'] === '0'){
+    if($_SESSION['perfil'] === '0' || $_SESSION['aprobado'] === '0' || $_SESSION['aprobado'] === NULL){
         echo 'dashboard__enlace--disabled';
     }
 }
@@ -94,7 +94,14 @@ function regBtn(){
 //Comprueba si el usuario está registrado completando su perfil 
 function isRegistered($mensaje, $contenido){
     $url = $_SERVER['REQUEST_URI'];
-    if($_SESSION['perfil'] === '0' && !(strpos($url, '/complete-register') !== false && strpos($url, '/complete-register?'.$_SESSION['lang']) === false)):?>
+    if($_SESSION['aprobado'] === '0' || $_SESSION['aprobado'] === NULL): ?>
+        <p class="auth__text--post">
+            <?php echo tt('profile_pending')?>
+        </p>
+    <?php endif;?>
+    
+
+    <?php if($_SESSION['perfil'] === '0' && !(strpos($url, '/complete-register') !== false && strpos($url, '/complete-register?'.$_SESSION['lang']) === false)):?>
         <p class="auth__text--post">
             <?php echo tt($mensaje); ?>
             <a href="/complete-register" class="btn-submit--post only--desktop" href="">

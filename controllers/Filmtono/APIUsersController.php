@@ -15,7 +15,8 @@ class APIUsersController{
         u.apellido, 
         u.email,
         u.confirmado,
-        u.perfil,        
+        u.perfil,
+        u.aprobado,        
         nu.nivel,
         tm.tipo_es,
         tm.tipo_en,
@@ -37,5 +38,15 @@ class APIUsersController{
         $usuarios = ConsultaUsuarios::consultarSQL($consulta);
         
         echo json_encode($usuarios);
+    }
+
+    public static function aprobarUsuario(){
+        $respuesta = $_POST['id'];
+        //debugging($_POST);
+        $usuario = Usuario::find($respuesta);
+        $usuario->aprobado = 1;
+        $resultado = $usuario->guardar();
+
+        echo json_encode(['resultado' => $resultado]);
     }
 }

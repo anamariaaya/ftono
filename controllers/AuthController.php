@@ -53,6 +53,7 @@ class AuthController {
                         $_SESSION['apellido'] = $usuario->apellido;
                         $_SESSION['email'] = $usuario->email;
                         $_SESSION['perfil'] = $usuario->perfil;
+                        $_SESSION['aprobado'] = $usuario->aprobado;
 
                         // Verificar el nivel de acceso y redireccionar
                         if($nivel_musica) {

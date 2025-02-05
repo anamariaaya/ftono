@@ -174,6 +174,7 @@ $router->get('/api/filmtono/messages', [MessagesController::class, 'consultarMen
 $router->get('/api/filmtono/countries', [APIProfileController::class, 'getCountries']);
 $router->get('/api/filmtono/albums/songs', [AlbumsController::class, 'consultaSongs']);
 $router->get('/api/filmtono/singles', [AlbumsController::class, 'consultaSingles']);
+$router->post('/api/filmtono/aprobar-usuario', [APIUsersController::class, 'aprobarUsuario']);
 
 
 //Filmtono Profile

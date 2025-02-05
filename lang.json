@@ -210,7 +210,11 @@
   "complete_register_mobile":{
     "es": "Por favor accede desde un ordenador para completar tu registro",
     "en": "Please access from a computer to complete your registration"
-  }, 
+  },
+  "profile_pending":{
+    "es": "Tu perfil está pendiente de aprobación por parte de Filmtono",
+    "en": "Your profile is pending approval by Filmtono"     
+  },
   "dashboard_sign_music-p":{
     "es": "Debes firmar este contrato para poder acceder a todas las funciones de tu dashboard",
     "en": "You must sign this contract to be able to access all the functions of your dashboard"

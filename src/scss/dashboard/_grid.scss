@@ -8,6 +8,7 @@
     grid-auto-flow: dense;
     grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
     gap: v.$separate;
+
     @include m.desktop{
         grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
         gap: v.$separate * 2;
@@ -15,11 +16,13 @@
     @include m.ultra-wide{
         grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
     }
+
+    
 }
 
 .card{
     border-radius: 0.5rem;
-    background-color: v.$gray-light;
+    background-color: darken(v.$gray-dark, 9);
     border-left: 1.5rem solid v.$yellow;
     box-shadow: v.$shadow;
     padding: 1rem 1.5rem;
@@ -30,7 +33,22 @@
     width: 100%;
     height: 100%;
     &:hover{
-        background-color: darken(v.$gray-dark, 9);
+        background-color: v.$black;
+        border-left: 1.5rem solid v.$green;
+        transform: scale(1.02);
+    }
+    .btn-view{
+        width: 100% !important;
+        @include m.desktop{
+            width: auto !important;
+        }
+    }
+    .btn-back{
+        width: 100% !important;
+        margin: 0;
+        @include m.desktop{
+            width: auto !important;
+        }
     }
     @include m.tablet{
         width: auto;

@@ -4,7 +4,7 @@ namespace Model;
 
 class ConsultaUsuarios extends ActiveRecord{
     protected static $tabla = 'usuarios';
-    protected static $columnasDB = ['id', 'nombre', 'apellido', 'email', 'confirmado', 'perfil', 'nivel', 'tipo_es', 'tipo_en', 'empresa', 'pais', 'cargo', 'tel_contacto', 'pais_contacto'];
+    protected static $columnasDB = ['id', 'nombre', 'apellido', 'email', 'confirmado', 'perfil', 'nivel', 'tipo_es', 'tipo_en', 'empresa', 'pais', 'cargo', 'tel_contacto', 'pais_contacto', 'aprobado'];
 
     public $id;
     public $nombre;
@@ -20,6 +20,7 @@ class ConsultaUsuarios extends ActiveRecord{
     public $cargo;
     public $tel_contacto;
     public $pais_contacto;
+    public $aprobado;
    
     public function __construct($args = []){
         $this->id = $args['id'] ?? null;
@@ -36,5 +37,6 @@ class ConsultaUsuarios extends ActiveRecord{
         $this->cargo = $args['cargo'] ?? '';
         $this->tel_contacto = $args['tel_contacto'] ?? '';
         $this->pais_contacto = $args['pais_contacto'] ?? '';
+        $this->aprobado = $args['aprobado'] ?? '';
     }
 }
