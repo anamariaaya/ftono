@@ -6,6 +6,7 @@
     &__main{
         background-color: darken(v.$gray-dark, 9);
         border: 0.2rem solid v.$yellow;
+        border-radius: 1rem;
         color: v.$yellow;
         cursor: pointer;
         padding: 1rem 2rem;
@@ -19,6 +20,7 @@
     &__sub{
         background-color: darken(v.$gray-dark, 9);
         border: 0.2rem solid v.$green;
+        border-radius: 1rem;
         color: v.$white;
         padding: 1rem 2rem;
         font-size: 1.6rem;

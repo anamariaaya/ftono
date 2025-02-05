@@ -63,13 +63,20 @@
                 <p class="grid--faq__text">{%t-emerging-text%}</p>
 
             </div>
-            <p class="summary__answer">{%faq_answer-3-2-3%}</p>
+            <p class="summary__answer text-yellow">{%faq_answer-3-2-3%}</p>
             <p class="summary__answer">{%faq_answer-3-2-4%}</p>
-            <p class="summary__answer">{%faq_answer-3-2-5%}</p>
+            <p class="summary__answer text-yellow">{%faq_answer-3-2-5%}</p>
             <p class="summary__answer">{%faq_answer-3-2-6%}</p>
-            <p class="summary__answer">{%faq_answer-3-2-7%}</p>
+            <p class="summary__answer text-yellow">{%faq_answer-3-2-7%}</p>
             <p class="summary__answer">{%faq_answer-3-2-8%}</p>
-            <p class="summary__answer">{%faq_answer-3-2-9%}</p>
+            <p class="summary__answer text-yellow">{%faq_answer-3-2-9%}</p>
+            <p class="summary__answer">{%faq_answer-3-2-10%}</p>
+            <p class="summary__answer text-yellow">{%faq_answer-3-2-11%}</p>
+            <p class="summary__answer">{%faq_answer-3-2-12%}</p>
+            <p class="summary__answer text-yellow">{%faq_answer-3-2-13%}</p>
+            <p class="summary__answer">{%faq_answer-3-2-14%}</p>
+            <p class="summary__answer text-yellow">{%faq_answer-3-2-15%}</p>
+            <p class="summary__answer">{%faq_answer-3-2-16%}</p>
         </details>
         <details>
             <summary class="summary__sub">{%faq_question-3-3%}</summary>
