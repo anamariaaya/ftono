@@ -85,8 +85,16 @@ class PublicController{
 
     public static function genres(Router $router){
         $titulo = 't-genres';
+        $lang = $_SESSION['lang'];
+        $categoria = Categorias::find(1);
+        if($lang == 'es'){
+            $categoria = $categoria->categoria_es;
+        } else {
+            $categoria = $categoria->categoria_en;
+        }
         $router->render('/paginas/genres',[
-            'titulo' => $titulo
+            'titulo' => $titulo,
+            'categoria' => $categoria
         ]);
     }
 

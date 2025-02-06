@@ -1,4 +1,4 @@
-<h1>{%t-genres%}</h1>
+<h1>{%t-category%}: <span class="text-green caps"><?php echo $categoria; ?></span></h1>
 
 <main class="container">
 <a href="/categories" class="btn-back">{%categories_back-btn%}</a>
