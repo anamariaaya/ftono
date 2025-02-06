@@ -67,6 +67,7 @@
       <div id="playerCategory"></div>
     </div>
   </div>
+  <a href="/categories" class="btn-view--index mTop-5 text-24">{%index_btn-categories%}</a>
 </section>
 
 

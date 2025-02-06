@@ -20,8 +20,8 @@ export async function mostrarCategorias(datos){
                 //generar el link para la categoria
                 const categoriaLink = document.createElement('A');
                 categoriaLink.classList.add('p-cards__grid__link');
-                if(categoria.categoria_en === 'genres'){
-                    categoriaLink.href = '/category/genres';
+                if(categoria.id === '1'){
+                    categoriaLink.href = '/category/genres?id='+id+'&name='+categoria_en;
                 } else{
                     categoriaLink.href = '/category?id='+id+'&name='+categoria_en;
                 }

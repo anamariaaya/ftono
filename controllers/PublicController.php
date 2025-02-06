@@ -30,7 +30,7 @@ class PublicController{
         $titulo = 'home_title';
         $promos = Promos::AllOrderDesc('id');
         $artists = Artistas::getOrdered('4', 'id', 'DESC');
-        $categorias = Categorias::all();
+        $categorias = Categorias::whereAll('activo', '1');
         $lang = $_SESSION['lang'];
 
         $router->render('/paginas/index',[
@@ -84,7 +84,7 @@ class PublicController{
     }
 
     public static function genres(Router $router){
-        $titulo = 'Géneros';
+        $titulo = 't-genres';
         $router->render('/paginas/genres',[
             'titulo' => $titulo
         ]);
