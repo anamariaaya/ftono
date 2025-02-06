@@ -75,6 +75,7 @@ $router->get('/api/public/artists', [PublicController::class, 'consultarArtistas
 $router->get('/artist', [PublicController::class, 'artist']);
 $router->get('/api/public/artist/', [PublicController::class, 'consultarArtista']);
 $router->get('/api/public/featured-playlist', [PublicController::class, 'consultarFeaturedPlaylist']);
+$router->get('/api/public/playlist-category', [PublicController::class, 'consultarPlaylistCategoria']);
 
 //Public songs with search bar
 $router->get('/api/public/songs', [PublicController::class, 'allSongs']);

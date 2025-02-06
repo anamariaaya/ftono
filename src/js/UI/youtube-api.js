@@ -1,21 +1,24 @@
 // youtube-api.js
+let apiPromise = null;
+
 export function loadYouTubeIframeAPI() {
-    return new Promise((resolve, reject) => {
-        if (window.YT && window.YT.Player) {
-            resolve(window.YT);
-            return;
-        }
+  if (apiPromise) return apiPromise;
 
-        const tag = document.createElement('script');
-        tag.src = 'https://www.youtube.com/iframe_api';
-        tag.onload = () => {
-            window.onYouTubeIframeAPIReady = () => {
-                resolve(window.YT);
-            };
-        };
-        tag.onerror = (error) => reject(error);
+  apiPromise = new Promise((resolve, reject) => {
+    // Create script tag
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-        const firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    });
+    // This function gets called when the API is ready.
+    window.onYouTubeIframeAPIReady = () => {
+      resolve(window.YT);
+    };
+
+    // Optionally, handle errors:
+    tag.onerror = reject;
+  });
+
+  return apiPromise;
 }

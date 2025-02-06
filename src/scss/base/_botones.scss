@@ -229,3 +229,26 @@
         cursor: pointer;
     }
 }
+
+.btn-filter{
+    background-color: darken(v.$gray-dark, 9);
+    outline: none;
+    border: none;
+    margin: 0;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    border-radius: 1rem;
+    border: 0.1rem solid v.$white;
+    color: v.$white;
+    width: fit-content;
+    font-size: 1.4rem !important;
+    @include m.tablet{
+        padding: 0.5rem 1rem;
+        font-size: 1.6rem !important;
+    }
+    &:hover{
+        cursor: pointer;
+        background-color: v.$blue;
+        color: v.$black;
+    }
+}

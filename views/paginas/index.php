@@ -29,8 +29,49 @@
     </div>
 </main>
 
-<section class="container">
-    <!-- Section with categories grid -->
+<!-- Section with the featured playlist -->
+<section class="container" id="featured-playlist">
+    <h2 class="main__subtitle">{%index_subtitle-featured%}</h2>
+    <div class="video__container">
+        <div class="video__list">
+            <button class="video__list__btn" id="playAll">{%btn_play-all%}</button>
+            <div class="video__items" id="videoItems"></div>
+        </div>
+        <div class="video__player">
+            <div id="player"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Sección de Playlist por Categoría -->
+<section class="container" id="category-playlist">
+  <h2 class="main__subtitle">Categorías</h2>
+  <div class="category-buttons">
+    <?php foreach ($categorias as $categoria): ?>
+      <button class="category-btn btn-filter" data-category-id="<?php echo $categoria->id ?>">
+      <?php if($lang == 'es'){
+          echo $categoria->categoria_es;
+        }else{
+            echo $categoria->categoria_en;
+            }
+        ?>
+      </button>
+    <?php endforeach; ?>
+  </div>
+  <div class="video__container">
+    <div class="video__list">
+      <button class="video__list__btn" id="playAllCategory">{%btn_play-all%}</button>
+      <div class="video__items" id="videoItemsCategory"></div>
+    </div>
+    <div class="video__player">
+      <div id="playerCategory"></div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- <section class="container">
     <h2 class="main__subtitle">{%index_subtitle-categories%}</h2>
     <div class="main__grid">
         <div class="main__grid__item">
@@ -57,10 +98,10 @@
             </a>
             <p class="main__grid__text">{%category-movies%}</p>
         </div>
+        
     </div>
     <a href="/categories" class="btn-view--index mTop-5 text-24">{%index_btn-categories%}</a>
-    <!-- End of categories grid -->
-</section>
+</section> -->
 
 <!-- Section with the artists -->
 <section class="container mTop-10">
@@ -83,18 +124,4 @@
             <?php endforeach; ?>
     </div>
     <a href="/artists" class="btn-view--index text-24">{%index_btn-artists%}</a>
-</section>
-
-<!-- Section with the featured playlist -->
-<section class="container" id="featured-playlist">
-    <h2 class="main__subtitle">{%index_subtitle-featured%}</h2>
-    <div class="video__container">
-        <div class="video__list">
-            <button class="video__list__btn" id="playAll">{%btn_play-all%}</button>
-            <div class="video__items" id="videoItems"></div>
-        </div>
-        <div class="video__player">
-            <div id="player"></div>
-        </div>
-    </div>
 </section>

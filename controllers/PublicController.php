@@ -30,12 +30,16 @@ class PublicController{
         $titulo = 'home_title';
         $promos = Promos::AllOrderDesc('id');
         $artists = Artistas::getOrdered('4', 'id', 'DESC');
+        $categorias = Categorias::all();
+        $lang = $_SESSION['lang'];
 
         $router->render('/paginas/index',[
             'inicio' => $inicio,
             'titulo' => $titulo,
             'promos' => $promos,
-            'artists' => $artists
+            'artists' => $artists,
+            'categorias' => $categorias,
+            'lang' => $lang
         ]);
     }
 
@@ -249,6 +253,33 @@ class PublicController{
         $playlist = Featured::allOrderBy('id','DESC');
         echo json_encode($playlist);
     }
+
+    public static function consultarPlaylistCategoria() {
+        $categoryId = $_GET['categoryId'] ?? $categoryId;
+        $category = Categorias::find($categoryId);
+        $playlist = [];
+        $canciones = 'SELECT c.url,
+                c.titulo,
+		        GROUP_CONCAT(DISTINCT cat.categoria_en SEPARATOR \', \') AS categorias_en,
+                GROUP_CONCAT(DISTINCT cat.categoria_es SEPARATOR \', \') AS categorias_es
+            FROM canciones c
+            LEFT JOIN
+                canc_categorias cc ON c.id = cc.id_cancion
+            LEFT JOIN
+                categorias cat ON cc.id_categoria = cat.id
+            WHERE c.url IS NOT NULL AND cat.id = '.$categoryId.'
+            GROUP BY c.id
+        ;';
+        $canciones = CancionData::consultarSQL($canciones);
+        foreach ($canciones as $c) {
+            $playlist[] = [
+                'videoId' => $c->url,      // Asegúrate de que este valor sea compatible con YouTube o el reproductor
+                'title'   => $c->titulo    // O cualquier otro campo que quieras mostrar
+            ];
+        }
+        echo json_encode($playlist);
+    }    
+    
 
     public static function songsGenre(Router $router){
         $titulo = 'songs_genre_title';
