@@ -11,7 +11,7 @@
     import { consultaCancionesArtista } from "./artist-playlist.js";
     import { consultaFeatured } from "./featured-playlist.js";
     import { consultaCategorySongs } from "./categorySongs.js";
-    import { consultaCanciones } from "./canciones-search.js";
+    import { consultaCanciones, tagsFilters } from "./canciones-search.js";
     import { setupCategoryButtons } from "./categorias-playlist.js";
 
     class App{
@@ -63,13 +63,13 @@
             }
             if(gridCanciones){
                 consultaCanciones();
+                tagsFilters();
             }
             if(categoryButtons){
                 document.addEventListener('DOMContentLoaded', () => {
                      setupCategoryButtons();
                 });
             }
-            
         }
     }
 

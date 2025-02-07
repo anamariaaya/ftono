@@ -45,7 +45,7 @@
 
 <!-- Sección de Playlist por Categoría -->
 <section class="container" id="category-playlist">
-  <h2 class="main__subtitle">Categorías</h2>
+  <h2 class="main__subtitle">{%t-categories%}</h2>
   <div class="category-buttons">
     <?php foreach ($categorias as $categoria): ?>
       <button class="category-btn btn-filter" data-category-id="<?php echo $categoria->id ?>">

@@ -22,6 +22,7 @@ use Model\ArtistSongsPlayer;
 use Model\CancionCategorias;
 use Model\CancionInstrumento;
 use Model\CancionGenSecundarios;
+use Model\NivelArtistas;
 
 class PublicController{
 
@@ -368,6 +369,7 @@ class PublicController{
         $artistas = Artistas::all();
         $niveles = NivelCancion::all();
         $generos = Genres::allOrderAsc('genero_'.$lang);
+        $nivelArtistas = NivelArtistas::all();
 
         if($lang == 'en'){
             $consultaInstrumentos= "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = 2 ORDER BY keyword_en;";
@@ -393,7 +395,8 @@ class PublicController{
             'generos' => $generos,
             'instrumentos' => $instrumentos,
             'idiomas' => $idiomas,
-            'categorias' => $categorias
+            'categorias' => $categorias,
+            'nivelArtistas' => $nivelArtistas
         ]);
     }
 

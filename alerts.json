@@ -246,5 +246,21 @@
     "pending-approval":{
       "es": "Pendiente de aprobar",
       "en": "Pending approval"
+    },
+    "active":{
+      "es": "Activo",
+      "en": "Active"
+    },
+    "inactive":{
+      "es": "Inactivo",
+      "en": "Inactive"
+    },
+    "activate":{
+      "es": "Activar",
+      "en": "Activate"
+    },
+    "deactivate":{
+      "es": "Desactivar",
+      "en": "Deactivate"
     }
 }

@@ -122,7 +122,6 @@
     @include m.boton(darken(v.$green, 17%), flex);
     width: 100%;
     margin-top: 0;
-    margin-bottom: 1rem;
     border-radius: 1rem;
     color: v.$white;
     justify-content: center;
@@ -177,6 +176,50 @@
         cursor: pointer;
     }
 }
+
+.btn-green{
+    @include m.boton(v.$green, block);
+    margin: 0;
+    margin-top: 1rem;
+    border-radius: 1rem;
+    color: v.$gray-dark;
+    width: 100%;
+    &:hover{
+        cursor: pointer;
+    }
+    @include m.tablet{
+        width: fit-content;
+        margin-top: 0;
+    }
+}
+
+.btn-yellow{
+    @include m.boton(v.$yellow, block);
+    margin: 0;
+    border-radius: 1rem;
+    color: v.$gray-dark;
+    width: 100%;
+    &:hover{
+        cursor: pointer;
+    }
+    @include m.tablet{
+        width: fit-content;
+    }
+}
+
+.btn-clear{
+    @include m.boton(v.$red, block);
+    margin: 0;
+    border-radius: 1rem;
+    color: v.$white;
+    width: 100%;
+    width: fit-content;
+    flex: none;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
 
 .btn-disabled{
     background-color: v.$gray-light;
@@ -238,7 +281,7 @@
     margin-bottom: 2rem;
     margin-top: 1rem;
     border-radius: 1rem;
-    border: 0.1rem solid v.$white;
+    border: 0.1rem solid v.$yellow;
     color: v.$white;
     width: fit-content;
     font-size: 1.4rem !important;
@@ -246,9 +289,11 @@
         padding: 0.5rem 1rem;
         font-size: 1.6rem !important;
     }
-    &:hover{
+    &:hover, &.active{
         cursor: pointer;
         background-color: v.$blue;
         color: v.$black;
+        border: 0.1rem solid v.$blue;
+        font-weight: v.$bold;
     }
 }

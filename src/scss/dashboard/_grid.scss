@@ -16,8 +16,6 @@
     @include m.ultra-wide{
         grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
     }
-
-    
 }
 
 .card{
@@ -26,7 +24,6 @@
     border-left: 1.5rem solid v.$yellow;
     box-shadow: v.$shadow;
     padding: 1rem 1.5rem;
-    border-bottom: 3px solid v.$yellow;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -106,9 +103,11 @@
         align-items: center;            
         flex: 1;
         margin-top: 1rem;
-        @include m.desktop{
+        row-gap: 1rem;
+        @include m.tablet{
             padding: .5rem;
             flex-direction: row;
+            column-gap: 0.2rem;
         }
     }
 }

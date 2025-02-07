@@ -2,7 +2,7 @@
         <p class="auth__text">{%auth_alert_user-already-exist%}</p>
         <div class="auth">
             <i class="auth__icon--fail fa-regular fa-circle-xmark"></i>
-            <a class="btn-submit" href="<?php sesionActiva()?>">Volver al Admin</a>
+            <a class="btn-submit" href="<?php sesionActiva()?>">{%auth_back_admin_btn%}</a>
     </div>
 <?php else: ?>
 

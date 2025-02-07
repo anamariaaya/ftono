@@ -1,4 +1,4 @@
-import { gridCanciones, cancionesInput, artistaSelect, clearSearch, nivelSelect, generoSelect, instrumentoSelect, categoriasSelect, idiomasSelect } from './selectores.js';
+import { gridCanciones, cancionesInput, artistaSelect, clearSearch, generoSelect, instrumentoSelect, categoriasSelect, idiomasSelect } from './selectores.js';
 import { readLang, readJSON } from '../base/funciones.js';
 
 
@@ -70,12 +70,6 @@ async function filtraCanciones() {
     artistaSelect.addEventListener('change', async (e) => {
         currentArtist = e.target.value;  // Update the artist filter
         fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma);  // Pass the updated artist and current query
-    });
-
-    // Listen for changes in the nivel select dropdown
-    nivelSelect.addEventListener('change', async (e) => {
-        currentNivel = e.target.value;  // Update the nivel filter
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma);  // Pass the updated nivel and current query
     });
 
     // Listen for changes in the genero select dropdown
@@ -172,8 +166,6 @@ if(clearSearch){
 
         // Reset the artist select filter to the default state (empty or first option)
         artistaSelect.value = '';  // Set select input back to default (empty string)
-
-        nivelSelect.value = '';  // Set select input back to default (empty string)
     
         // Clear the search input field
         cancionesInput.value = '';
@@ -208,4 +200,102 @@ if(clearSearch){
     
     // Ensure clear button works
     clearSearch.addEventListener('click', deleteFilter);
+}
+
+
+export function tagsFilters(){
+    document.addEventListener('DOMContentLoaded', () => {
+        // Selecciona todos los contenedores de select customizados
+        const allContainers = document.querySelectorAll('.custom-select-container');
+      
+        allContainers.forEach(container => {
+          // Dentro de cada contenedor, buscamos sus elementos
+          const headerEl = container.querySelector('.custom-select-header');
+          const optionsContainer = container.querySelector('.custom-select-options');
+          const hiddenSelect = container.querySelector('select'); // El select oculto dentro del contenedor
+      
+          // Convertir las opciones del select en un array de objetos con propiedad 'selected'
+          const options = Array.from(hiddenSelect.options).map(opt => ({
+            value: opt.value,
+            text: opt.text,
+            selected: false
+          }));
+      
+          // Función para renderizar las opciones en el dropdown
+          function renderOptions() {
+            optionsContainer.innerHTML = ''; // Limpiar opciones previas
+      
+            options.forEach((opt, index) => {
+              const optionEl = document.createElement('span');
+              optionEl.classList.add('custom-select-option');
+              optionEl.textContent = opt.text;
+              optionEl.dataset.value = opt.value;
+      
+              // Si la opción está seleccionada, marcarla y agregar botón "x"
+              if (opt.selected) {
+                optionEl.classList.add('selected');
+                const removeBtn = document.createElement('span');
+                removeBtn.classList.add('remove');
+                removeBtn.textContent = ' x';
+                removeBtn.addEventListener('click', (e) => {
+                  e.stopPropagation();
+                  toggleOption(index);
+                });
+                optionEl.appendChild(removeBtn);
+              }
+      
+              // Al hacer click en la opción, alternar su selección
+              optionEl.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleOption(index);
+              });
+      
+              optionsContainer.appendChild(optionEl);
+            });
+          }
+      
+          // Función para alternar la selección de una opción
+          function toggleOption(index) {
+            options[index].selected = !options[index].selected;
+            updateHiddenSelect();
+            renderOptions();
+          }
+      
+          // Actualiza el select oculto según las opciones seleccionadas
+          function updateHiddenSelect() {
+            const selectedValues = options.filter(opt => opt.selected).map(opt => opt.value);
+            Array.from(hiddenSelect.options).forEach(option => {
+              option.selected = selectedValues.includes(option.value);
+            });
+          }
+      
+          // Al hacer click en el header se alterna la visibilidad del dropdown
+          headerEl.addEventListener('click', (e) => {
+            e.stopPropagation();
+            // Antes de abrir este select, cerramos los demás
+            allContainers.forEach(c => {
+              if (c !== container) {
+                c.classList.remove('active');
+              }
+            });
+            // Alterna la clase "active" en este contenedor
+            container.classList.toggle('active');
+          });
+      
+          // Evitar que clicks dentro del contenedor cierren el dropdown
+          container.addEventListener('click', (e) => {
+            e.stopPropagation();
+          });
+      
+          // Inicializar: renderizar las opciones y los tags
+          renderOptions();
+        });
+      
+        // Evento global para cerrar todos los dropdown al hacer click fuera
+        document.addEventListener('click', () => {
+          allContainers.forEach(c => c.classList.remove('active'));
+        });
+      });
+      
+      
 }

@@ -41,6 +41,7 @@ class APIUsersController{
     }
 
     public static function aprobarUsuario(){
+        isAdmin();
         $respuesta = $_POST['id'];
         //debugging($_POST);
         $usuario = Usuario::find($respuesta);

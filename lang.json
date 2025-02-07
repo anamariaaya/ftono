@@ -3156,24 +3156,28 @@
     "en": "Search by name, lyrics or keyword"
   },
   "t-search-songs_artist":{
-    "es": "Buscar por Artista",
-    "en": "Search by Artist"
+    "es": "Artista",
+    "en": "Artist"
   },
   "t-search-songs_artist_placeholder":{
     "es": "Buscar por artista",
     "en": "Search by artist"
   },
   "t-search-songs_level":{
-    "es": "Buscar por Nivel",
-    "en": "Search by Level"
+    "es": "Nivel de la canción",
+    "en": "Song level"
   },
   "t-search-songs_level_placeholder":{
-    "es": "Buscar por nivel",
-    "en": "Search by level"
+    "es": "Buscar por nivel de la canción",
+    "en": "Search by song level"
+  },
+  "t-search-artist_level_placeholder":{
+    "es": "Nivel del artista",
+    "en": "Artist level"
   },
   "t-search-songs_genre":{
-    "es": "Buscar por Género",
-    "en": "Search by Genre"
+    "es": "Géneros musicales",
+    "en": "Music genres"
   },
   "t-search-songs_genre_placeholder":{
     "es": "Buscar por género",
@@ -3184,20 +3188,20 @@
     "en": "Search by Category"
   },
   "t-search-songs_category_placeholder":{
-    "es": "Buscar por categoría",
-    "en": "Search by category"
+    "es": "Categorías",
+    "en": "Categories"
   },
   "t-search-songs_language":{
-    "es": "Buscar por Idioma",
-    "en": "Search by Language"
+    "es": "Idiomas",
+    "en": "Languages"
   },
   "t-search-songs_language_placeholder":{
     "es": "Buscar por idioma",
     "en": "Search by language"
   },
   "t-search-songs-instrument":{
-    "es": "Buscar por Instrumento",
-    "en": "Search by Instrument"
+    "es": "Instrumentos",
+    "en": "Instrument"
   },
   "t-search-songs-instrument_placeholder":{
     "es": "Buscar por instrumento",

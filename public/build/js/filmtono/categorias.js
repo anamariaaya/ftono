@@ -15,12 +15,11 @@ export async function mostrarCategorias(datos){
         const lang = await readLang();
         const alerts = await readJSON();
         datos.forEach(categoria => {
-                const {id, categoria_en, categoria_es} = categoria;
-
+                const {id, categoria_en, categoria_es, activo} = categoria;
                 //generar el link para la categoria
                 const categoriaLink = document.createElement('A');
                 categoriaLink.classList.add('cards__link');
-                if(categoria.categoria_en === 'genres'){
+                if(categoria.id === '1'){
                     categoriaLink.href = '/filmtono/genres';
                 } else{
                     categoriaLink.href = '/filmtono/categories/keywords?id='+id+'&category='+categoria_en;
@@ -34,6 +33,29 @@ export async function mostrarCategorias(datos){
                 }else{
                         categoriaTitle.textContent = categoria_en;
                 }
+
+                const categoriaActivo = document.createElement('P');
+                categoriaActivo.classList.add('card__info', 'text-20');
+                if(activo == 1){
+                        categoriaActivo.textContent = alerts['active'][lang];
+                        categoriaActivo.classList.add('text-green');
+                }else{
+                        categoriaActivo.textContent = alerts['inactive'][lang];
+                        categoriaActivo.classList.add('text-pink');
+                }
+
+                const btnActivar = document.createElement('BUTTON');
+                if(activo == 1){
+                        btnActivar.textContent = alerts['deactivate'][lang];
+                        btnActivar.classList.add('btn-yellow');
+                }else{
+                        btnActivar.textContent = alerts['activate'][lang];
+                        btnActivar.classList.add('btn-green');
+                }
+                btnActivar.value = id;
+                btnActivar.dataset.role = 'filmtono';
+                btnActivar.dataset.item = 'categories';
+                btnActivar.onclick = activarItem;
 
                 const btnEditar = document.createElement('A');
                 btnEditar.classList.add('btn-update');
@@ -71,8 +93,9 @@ export async function mostrarCategorias(datos){
                 contenedorBotones.classList.add('card__acciones');
 
                 //agregar los botones al contenedor
-                contenedorBotones.appendChild(btnEditar);
-                if(categoria.categoria_en !== 'genres' && categoria.categoria_en !== 'instruments' && categoria.categoria_en !== 'keywords'){
+                if(categoria.id !== '1' && categoria.id !== '2'){
+                        contenedorBotones.appendChild(btnActivar);
+                        contenedorBotones.appendChild(btnEditar);
                         contenedorBotones.appendChild(btnEliminar);
                 }
                 
@@ -83,6 +106,7 @@ export async function mostrarCategorias(datos){
 
                 //agregar la información al contenedor
                 categoriaLink.appendChild(categoriaTitle);
+                categoriaLink.appendChild(categoriaActivo);
                 categoriaLink.appendChild(contenedorBotones);
                 //agregar el link contenedor a la tarjeta
                 card.appendChild(categoriaLink);
@@ -102,10 +126,33 @@ function filtraCategorias(){
                         if(categoriaTitle.indexOf(texto) !== -1){
                                 card.style.display = 'flex';
                                 card.style.marginRight = '2rem';
-                                gridCategorias.style.columnGap = '0';
+                                gridCategorias.style.columnGap = '1rem';
                         }else{
                                 card.style.display = 'none';
                         }
                 });
         }); 
+}
+
+function activarItem(e){
+        e.preventDefault();
+        const id = e.target.value;
+        const role = e.target.dataset.role;
+        const item = e.target.dataset.item;
+        const formData = new FormData();
+        formData.append('id', id);
+        formData.append('role', role);
+        formData.append('item', item);
+        console.log(formData);
+        fetch(window.location.origin+'/api/filmtono/category/activate', {
+                method: 'POST',
+                body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+                if(data.resultado){
+                        window.location.reload();
+                }
+        })
+        .catch(error => console.log(error));
 }

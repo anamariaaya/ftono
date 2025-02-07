@@ -68,14 +68,14 @@
     &__subtitle{
         text-align: left;
         font-size: clamp(3rem, 2.5vw, 3.8rem);
-        color: v.$green;
+        color: v.$blue;
         margin-bottom: 4rem;
         &::after{
             content: '';
             display: block;
             width: 7rem;
             height: 0.3rem;
-            background-color: v.$green;
+            background-color: v.$blue;
         }
     }
     &__grid{

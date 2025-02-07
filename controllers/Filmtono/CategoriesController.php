@@ -112,4 +112,20 @@ class CategoriesController{
             }
         }
     }
+
+    public static function activateCategory(){
+        //isAdmin();
+        $id = $_POST['id'];
+        $id = filter_var($id,FILTER_VALIDATE_INT);
+        if($id){
+            $categoria = Categorias::find($id);
+            if($categoria->activo == 1){
+                $categoria->activo = 0;
+            }else{
+                $categoria->activo = 1;
+            }
+            $resultado = $categoria->guardar();
+            echo json_encode(['resultado' => $resultado]);
+        }
+    }
 }

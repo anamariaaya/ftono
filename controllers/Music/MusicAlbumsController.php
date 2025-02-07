@@ -412,9 +412,9 @@ class MusicAlbumsController{
         
         $selectedCategories = [];
         if($lang == 'en'){
-            $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2, 3) ORDER BY categoria_en;";
+            $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2) ORDER BY categoria_en;";
         }else{
-            $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2, 3) ORDER BY categoria_es;";
+            $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2) ORDER BY categoria_es;";
         }
         $categorias = Categorias::consultarSQL($consultaCategorias);
 
