@@ -439,13 +439,14 @@ class PublicController{
     public static function filterSongs() {
         $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
         $searchArtista = isset($_GET['artist']) ? $_GET['artist'] : '';
-        $searchLevel = isset($_GET['level']) ? $_GET['level'] : '';
         $searchGenre = isset($_GET['genre']) ? $_GET['genre'] : '';
         $searchInstrument = isset($_GET['instrument']) ? $_GET['instrument'] : '';
         $searchCategory = isset($_GET['category']) ? $_GET['category'] : '';
         $searchLanguage = isset($_GET['language']) ? $_GET['language'] : '';
+        $selectSongLevel = isset($_GET['songlevel']) ? $_GET['songlevel'] : '';
+        $selectArtistaLevel = isset($_GET['artistlevel']) ? $_GET['artistlevel'] : '';
 
-        if($searchTerm !== '' || $searchArtista !== '' || $searchLevel !== '' || $searchGenre !== '' || $searchInstrument !== '' || $searchCategory !== '' || $searchLanguage !== ''){
+        if($searchTerm !== '' || $searchArtista !== '' || $selectSongLevel !== '' || $selectArtistaLevel!== '' || $searchGenre !== '' || $searchInstrument !== '' || $searchCategory !== '' || $searchLanguage !== ''){
             $searchTerm = s(filter_var($searchTerm, FILTER_SANITIZE_STRING));
             $consultaTerm = "SELECT DISTINCT c.id,
                 c.titulo,
@@ -491,8 +492,10 @@ class PublicController{
                 idiomas i ON ci.id_idioma = i.id
             LEFT JOIN
                 canc_gensecundarios cgs ON c.id = cgs.id_cancion
-            left JOIN
+            LEFT JOIN
                 generos gs ON cgs.id_genero = gs.id
+            LEFT JOIN
+            	nivel_artistas nar ON ar.id_nivel = nar.id
             WHERE c.url IS NOT NULL";
 
             if($searchTerm !== ''){
@@ -504,8 +507,28 @@ class PublicController{
                 $consultaTerm .= " AND ar.id = " . (int)$searchArtista;
             }
 
-            if($searchLevel != ''){
-                $consultaTerm .= " AND n.id = " . (int)$searchLevel;
+            if($selectSongLevel != ''){
+                $consultaTerm .= " AND";
+                //convertir a array
+                $selectSongLevel = explode(",",$selectSongLevel);
+                //recorrer array y agregar a la consulta mediante OR menos el ultimo
+                for($i = 0; $i < count($selectSongLevel)-1; $i++){
+                    $consultaTerm .= " n.id = " . (int)$selectSongLevel[$i] . " OR";
+                }
+                //agregar el ultimo
+                $consultaTerm .= " n.id = " . (int)$selectSongLevel[count($selectSongLevel)-1];
+            }
+
+            if($selectArtistaLevel != ''){
+                $consultaTerm .= " AND";
+                //convertir a array
+                $selectArtistaLevel = explode(",",$selectArtistaLevel);
+                //recorrer array y agregar a la consulta mediante OR menos el ultimo
+                for($i = 0; $i < count($selectArtistaLevel)-1; $i++){
+                    $consultaTerm .= " nar.id = " . (int)$selectArtistaLevel[$i] . " OR";
+                }
+                //agregar el ultimo
+                $consultaTerm .= " nar.id = " . (int)$selectArtistaLevel[count($selectArtistaLevel)-1];
             }
 
             if($searchGenre != ''){

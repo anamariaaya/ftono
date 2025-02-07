@@ -91,7 +91,7 @@
 
 
                 <!--Niveles de canción-->
-                <div class="custom-select-container">
+                <div class="custom-select-container" id="niveles-cancion">
                 <!-- Header fijo -->
                     <div class="custom-select-header">{%t-search-songs_level%}</div>
                     
@@ -100,7 +100,6 @@
                     <!-- Las opciones se generarán dinámicamente con JS -->
                     </div>
 
-                    <!-- Select oculto para el envío del formulario (modo multiple) -->
                     <select id="hidden-select" name="filtro[]" multiple style="display: none;">
                         <?php foreach ($niveles as $nivel) : ?>
                             <option value="<?php echo $nivel->id; ?>">
@@ -108,10 +107,19 @@
                             </option>
                         <?php endforeach ?>
                     </select>
+
+                    <input
+                        type="hidden"
+                        name="searchSongsLevel"
+                        id="searchSongsLevel"
+                        value=""
+                    />
                 </div>
 
+                
+
                 <!--Nivel Artista-->
-                <div class="custom-select-container">
+                <div class="custom-select-container" id="niveles-artista">
                 <!-- Header fijo -->
                     <div class="custom-select-header">{%t-search-artist_level_placeholder%}</div>
                     <!-- Contenedor donde se mostrarán los tags seleccionados -->
@@ -128,6 +136,13 @@
                         <?php endforeach ?>
                     <!-- Agrega más opciones según corresponda -->
                     </select>
+
+                    <input
+                        type="hidden"
+                        name="searchArtistLevel"
+                        id="searchArtistLevel"
+                        value=""
+                    />
                 </div>
             </div>
         </div>

@@ -222,7 +222,6 @@ async function filtraCanciones() {
 
     // Inicializamos el componente: renderizamos opciones y tags
     renderOptions();
-    updateSelectedTags();
   }
 
   /***************** Función para cargar subcategorías *****************/
@@ -330,50 +329,6 @@ async function filtraCanciones() {
     
 }
 
-// Function to delete the filters and reset everything
-if(clearSearch){
-    function deleteFilter() {
-        // Trigger the input event manually to ensure the filter resets
-        cancionesInput.dispatchEvent(new Event('input'));
-
-        // Reset the artist select filter to the default state (empty or first option)
-        artistaSelect.value = '';  // Set select input back to default (empty string)
-    
-        // Clear the search input field
-        cancionesInput.value = '';
-
-        // Reset the genero select filter to the default state (empty or first option)
-        generoSelect.value = '';  // Set select input back to default (empty string)
-
-        // Reset the instrumento select filter to the default state (empty or first option)
-        instrumentoSelect.value = '';  // Set select input back to default (empty string)
-
-        // Reset the categorias select filter to the default state (empty or first option)
-        categoriasSelect.value = '';  // Set select input back to default (empty string)
-
-        // Reset the idiomas select filter to the default state (empty or first option)
-        idiomasSelect.value = '';  // Set select input back to default (empty string)
-    
-        // Clear the state variables and remove previous event listeners
-        currentQuery = '';
-        currentArtist = '';
-        currentNivel = '';
-        currentGenero = '';
-        currentInstrumento = '';
-        currentCategoria = '';
-        currentIdioma = '';
-    
-        //reload the whole page
-        location.reload();
-    }
-    
-    // Call the search and filter function when the page loads
-    filtraCanciones();
-    
-    // Ensure clear button works
-    clearSearch.addEventListener('click', deleteFilter);
-}
-
 
 export function tagsFilters(){
     document.addEventListener('DOMContentLoaded', () => {
@@ -429,17 +384,52 @@ export function tagsFilters(){
           // Función para alternar la selección de una opción
           function toggleOption(index) {
             options[index].selected = !options[index].selected;
-            updateHiddenSelect();
             renderOptions();
+            const hiddenInput = document.querySelector('#searchSongsLevel');
+            const hiddenInput2 = document.querySelector('#searchArtistLevel');
+            //llenar el input hidden con los valores seleccionados
+            if(container.id === 'niveles-cancion'){
+                hiddenInput.value = options.filter(opt => opt.selected).map(opt => opt.value);
+            }else{
+                hiddenInput2.value = options.filter(opt => opt.selected).map(opt => opt.value);
+            }
+            const selectedCancion = hiddenInput.value;
+            const selectedArtista = hiddenInput2.value;
+
+            fetchToggleOptions(selectedCancion, selectedArtista);
           }
+
+            // Función para enviar la petición al backend con los filtros seleccionados
+            async function fetchToggleOptions(selectedCancion, selectedArtista) {
+                console.log(selectedCancion, selectedArtista);
+                let url = `/api/public/songs/search?`;
+
+                if (selectedCancion.length > 0) {
+                    url += `songlevel=${selectedCancion}`;
+                }
+
+                if (selectedArtista.length > 0) {
+                    if (selectedCancion.length > 0) {
+                        url += `&`;
+                    }
+                    url += `artistlevel=${selectedArtista}`;
+                }
+
+                if (url === '/api/public/songs/search?') {
+                    return;  // No fetch if no filters are applied
+                }
+
+                console.log(url);
+
+                // Send the request to the backend
+                const response = await fetch(url);
+                const filteredSongs = await response.json();  // Get filtered songs
+                mostrarCanciones(filteredSongs);  // Display filtered songs
+            }
+
+          
       
           // Actualiza el select oculto según las opciones seleccionadas
-          function updateHiddenSelect() {
-            const selectedValues = options.filter(opt => opt.selected).map(opt => opt.value);
-            Array.from(hiddenSelect.options).forEach(option => {
-              option.selected = selectedValues.includes(option.value);
-            });
-          }
       
           // Al hacer click en el header se alterna la visibilidad del dropdown
           headerEl.addEventListener('click', (e) => {
@@ -473,4 +463,52 @@ export function tagsFilters(){
       });
       
       
+}
+
+// Function to delete the filters and reset everything
+if(clearSearch){
+    function deleteFilter() {
+        // Trigger the input event manually to ensure the filter resets
+        cancionesInput.dispatchEvent(new Event('input'));
+
+        // Reset the artist select filter to the default state (empty or first option)
+        artistaSelect.value = '';  // Set select input back to default (empty string)
+    
+        // Clear the search input field
+        cancionesInput.value = '';
+
+        // Reset the genero select filter to the default state (empty or first option)
+        generoSelect.value = '';  // Set select input back to default (empty string)
+
+        // Reset the instrumento select filter to the default state (empty or first option)
+        instrumentoSelect.value = '';  // Set select input back to default (empty string)
+
+        // Reset the categorias select filter to the default state (empty or first option)
+        categoriasSelect.value = '';  // Set select input back to default (empty string)
+
+        // Reset the idiomas select filter to the default state (empty or first option)
+        idiomasSelect.value = '';  // Set select input back to default (empty string)
+    
+        // Clear the state variables and remove previous event listeners
+        currentQuery = '';
+        currentArtist = '';
+        currentNivel = '';
+        currentGenero = '';
+        currentInstrumento = '';
+        currentCategoria = '';
+        currentIdioma = '';
+
+        document.querySelectorAll('.custom-select-container.active').forEach(container => {
+            container.classList.remove('active');
+        });
+    
+        //reload the whole page
+        location.reload();
+    }
+    
+    // Call the search and filter function when the page loads
+    filtraCanciones();
+    
+    // Ensure clear button works
+    clearSearch.addEventListener('click', deleteFilter);
 }
