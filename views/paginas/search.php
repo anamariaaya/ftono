@@ -84,6 +84,11 @@
                     </select>
                 </div>
 
+                <!-- Contenedor para el select customizado de subcategorías -->
+                <div id="subcategories-wrapper">
+                <!-- Aquí se inyectará el custom select de subcategorías cuando se seleccione una categoría -->
+                </div>
+
 
                 <!--Niveles de canción-->
                 <div class="custom-select-container">

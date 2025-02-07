@@ -60,6 +60,7 @@ let currentCategoria = '';
 let currentIdioma = '';
 
 async function filtraCanciones() {
+    // Call the search and filter function when the page loads      
     // Listen for changes in the search input field
     cancionesInput.addEventListener('input', async (e) => {
         currentQuery = e.target.value.toLowerCase().trim();  // Update the query
@@ -87,14 +88,185 @@ async function filtraCanciones() {
     // Listen for changes in the categorias select dropdown
     categoriasSelect.addEventListener('change', async (e) => {
         currentCategoria = e.target.value;  // Update the categoria filter
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma);  // Pass the updated categoria and current query
+        loadSubcategories(currentCategoria);  // Pass the updated categoria and current query
     });
+      
 
     // Listen for changes in the idiomas select dropdown
     idiomasSelect.addEventListener('change', async (e) => {
         currentIdioma = e.target.value;  // Update the idioma filter
         fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma);  // Pass the updated idioma and current query
     });
+
+    async function loadSubcategories(categoryId) {
+        const lang = await readLang();
+        try {
+          // Realiza la petición para obtener las subcategorías de la categoría seleccionada
+          const response = await fetch(`${window.location.origin}/api/public/subcategories?categoryId=${categoryId}`);
+          const subcategories = await response.json(); // Se espera un array de objetos { id, keyword_en, keyword_es, ... }
+          console.log(subcategories);
+        
+          // Obtenemos el wrapper donde se insertará el custom select de subcategorías
+          const wrapper = document.getElementById('subcategories-wrapper');
+          // Vacía el contenido del wrapper para eliminar cualquier componente anterior
+          wrapper.innerHTML = '';
+        
+          // Creamos un nuevo contenedor
+          let container = document.createElement('div');
+          container.classList.add('custom-select-container');
+          container.innerHTML = `
+            <div class="custom-select-header">Seleccione subcategorías</div>
+            <div class="custom-select-options"></div>
+            <select name="subcategoria[]" multiple style="display: none;"></select>
+          `;
+          wrapper.appendChild(container);
+        
+          // Llenamos el select oculto con las opciones de subcategorías
+          const hiddenSelect = container.querySelector('select');
+          hiddenSelect.innerHTML = ''; // Limpiar opciones previas
+          subcategories.forEach(subcat => {
+            const option = document.createElement('option');
+            option.value = subcat.id;
+            option.text = lang === 'en' ? subcat.keyword_en : subcat.keyword_es;
+            hiddenSelect.appendChild(option);
+          });
+        
+          // Inicializamos el custom select para este contenedor
+          initializeCustomSelect(container);
+        
+        } catch (error) {
+          console.error('Error al cargar las subcategorías:', error);
+        }
+    }
+      
+    // Función para inicializar un custom select en un contenedor dado
+    function initializeCustomSelect(container) {
+        const headerEl = container.querySelector('.custom-select-header');
+        const optionsContainer = container.querySelector('.custom-select-options');
+        const hiddenSelect = container.querySelector('select');
+
+        // Convertir las opciones del select oculto en un array de objetos
+        const options = Array.from(hiddenSelect.options).map(opt => ({
+        value: opt.value,
+        text: opt.text,
+        selected: false
+    }));
+
+    // Función para renderizar el dropdown de opciones
+    function renderOptions() {
+      optionsContainer.innerHTML = ''; // Limpiar opciones previas
+      options.forEach((opt, index) => {
+        const optionEl = document.createElement('span');
+        optionEl.classList.add('custom-select-option');
+        optionEl.textContent = opt.text;
+        optionEl.dataset.value = opt.value;
+
+        // Si la opción está seleccionada, se marca y se le agrega un botón "x"
+        if (opt.selected) {
+          optionEl.classList.add('selected');
+          const removeBtn = document.createElement('span');
+          removeBtn.classList.add('remove');
+          removeBtn.textContent = ' x';
+          removeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleOption(index);
+          });
+          optionEl.appendChild(removeBtn);
+        }
+
+        // Al hacer click en la opción, se alterna su selección
+        optionEl.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleOption(index);
+        });
+
+        optionsContainer.appendChild(optionEl);
+      });
+    }
+
+
+    // Función para alternar la selección de una opción
+    function toggleOption(index) {
+      options[index].selected = !options[index].selected;
+      updateHiddenSelect();
+      renderOptions();
+    }
+
+    // Actualiza el <select> oculto en función de las opciones seleccionadas
+    function updateHiddenSelect() {
+      const selectedValues = options.filter(opt => opt.selected).map(opt => opt.value);
+      Array.from(hiddenSelect.options).forEach(option => {
+        option.selected = selectedValues.includes(option.value);
+      });
+    }
+
+    /********** Eventos en el Componente **********/
+    // Al hacer click en el header: 
+    // - Se cierran todos los custom selects (los que tengan la clase "active") excepto el actual
+    // - Se alterna la clase "active" en el contenedor actual
+
+    headerEl.addEventListener('click', (e) => {
+      e.stopPropagation();
+      document.querySelectorAll('.custom-select-container').forEach(c => {
+        if (c !== container) {
+          c.classList.remove('active');
+        }
+      });
+      container.classList.toggle('active');
+    });
+
+    // Evita que clicks dentro del contenedor se propaguen (para no cerrar el dropdown)
+    container.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    // Inicializamos el componente: renderizamos opciones y tags
+    renderOptions();
+    updateSelectedTags();
+  }
+
+  /***************** Función para cargar subcategorías *****************/
+  // Se llama cuando se selecciona una categoría (el select normal de categorías)
+  async function loadSubcategories(categoryId) {
+    // Se asume que readLang() está definida y devuelve una promesa con el idioma ("en" o "es")
+    const lang = await readLang();
+    try {
+      // Se realiza la petición para obtener las subcategorías de la categoría seleccionada
+      const response = await fetch(`${window.location.origin}/api/public/subcategories?categoryId=${categoryId}`);
+      const subcategories = await response.json();
+
+      // Obtenemos el wrapper donde se insertará el custom select de subcategorías
+      const wrapper = document.getElementById('subcategories-wrapper');
+      // Vaciamos completamente el contenido para eliminar cualquier componente anterior
+      wrapper.innerHTML = '';
+
+      // Creamos un nuevo contenedor para el custom select
+      let container = document.createElement('div');
+      container.classList.add('custom-select-container');
+      container.innerHTML = `
+        <div class="custom-select-header">Seleccione subcategorías</div>
+        <div class="custom-select-options"></div>
+        <select name="subcategoria[]" multiple style="display: none;"></select>
+      `;
+      wrapper.appendChild(container);
+
+      // Llenamos el select oculto con las opciones de subcategorías
+      const hiddenSelect = container.querySelector('select');
+      hiddenSelect.innerHTML = '';
+      subcategories.forEach(subcat => {
+        const option = document.createElement('option');
+        option.value = subcat.id;
+        option.text = lang === 'en' ? subcat.keyword_en : subcat.keyword_es;
+        hiddenSelect.appendChild(option);
+      });
+
+      // Inicializamos el custom select para este contenedor
+      initializeCustomSelect(container);
+
+    } catch (error) {
+      console.error('Error al cargar subcategorías:', error);
+    }
+  }
 
     // Function to send the request to the backend with both search and artist filters
     async function fetchQuery(query, artist, nivel, genero, instrumento, categoria, idioma) {
@@ -272,6 +444,9 @@ export function tagsFilters(){
           // Al hacer click en el header se alterna la visibilidad del dropdown
           headerEl.addEventListener('click', (e) => {
             e.stopPropagation();
+            document.querySelectorAll('.custom-select-container.active').forEach(container => {
+                container.classList.remove('active');
+              });
             // Antes de abrir este select, cerramos los demás
             allContainers.forEach(c => {
               if (c !== container) {

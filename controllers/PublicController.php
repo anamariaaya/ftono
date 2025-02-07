@@ -363,6 +363,23 @@ class PublicController{
         echo json_encode($songs);
     }
 
+    public static function consultarSubcategorias(){
+        $categoryId = isset($_GET['categoryId']) ? $_GET['categoryId'] : null;
+        $subcategorias = [];
+        $lang = $_SESSION['lang'];
+
+        $consulta = 'SELECT k.*
+                FROM keywords k
+                LEFT JOIN
+                    categ_keyword ck ON k.id = ck.id_keyword
+                WHERE ck.id_categoria = '.$categoryId.'
+                GROUP BY k.id
+        ;';
+        $subcategorias = Keywords::consultarSQL($consulta);
+
+        echo json_encode($subcategorias);
+    }
+
     public static function search(Router $router){
         $titulo = 't-search-songs';
         $lang = $_SESSION['lang'];
@@ -378,11 +395,14 @@ class PublicController{
         }
         $instrumentos = Keywords::consultarSQL($consultaInstrumentos);
 
-        if($lang == 'en'){
-            $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2, 3) ORDER BY categoria_en;";
-        }else{
-            $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2, 3) ORDER BY categoria_es;";
-        }
+        
+            $consultaCategorias = "SELECT cat.*
+                FROM categorias cat
+                RIGHT JOIN categ_keyword ck ON cat.id = ck.id_categoria
+                WHERE cat.id != 2
+                GROUP BY cat.id 
+                ORDER BY categoria_".$lang.";";
+        
         $categorias = Categorias::consultarSQL($consultaCategorias);
 
         $idiomas = Idiomas::AllOrderAsc('idioma_'.$lang);
