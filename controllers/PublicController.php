@@ -508,7 +508,7 @@ class PublicController{
             }
 
             if($selectSongLevel != ''){
-                $consultaTerm .= " AND";
+                $consultaTerm .= " AND (";
                 //convertir a array
                 $selectSongLevel = explode(",",$selectSongLevel);
                 //recorrer array y agregar a la consulta mediante OR menos el ultimo
@@ -516,11 +516,11 @@ class PublicController{
                     $consultaTerm .= " n.id = " . (int)$selectSongLevel[$i] . " OR";
                 }
                 //agregar el ultimo
-                $consultaTerm .= " n.id = " . (int)$selectSongLevel[count($selectSongLevel)-1];
+                $consultaTerm .= " n.id = " . (int)$selectSongLevel[count($selectSongLevel)-1].")";
             }
 
             if($selectArtistaLevel != ''){
-                $consultaTerm .= " AND";
+                $consultaTerm .= " AND (";
                 //convertir a array
                 $selectArtistaLevel = explode(",",$selectArtistaLevel);
                 //recorrer array y agregar a la consulta mediante OR menos el ultimo
@@ -528,7 +528,7 @@ class PublicController{
                     $consultaTerm .= " nar.id = " . (int)$selectArtistaLevel[$i] . " OR";
                 }
                 //agregar el ultimo
-                $consultaTerm .= " nar.id = " . (int)$selectArtistaLevel[count($selectArtistaLevel)-1];
+                $consultaTerm .= " nar.id = " . (int)$selectArtistaLevel[count($selectArtistaLevel)-1].")";
             }
 
             if($searchGenre != ''){

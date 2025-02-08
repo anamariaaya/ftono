@@ -58,31 +58,33 @@ let currentGenero = '';
 let currentInstrumento = '';
 let currentCategoria = '';
 let currentIdioma = '';
+let selectedCancion = '';
+let selectedArtista = '';
 
 async function filtraCanciones() {
     // Call the search and filter function when the page loads      
     // Listen for changes in the search input field
     cancionesInput.addEventListener('input', async (e) => {
         currentQuery = e.target.value.toLowerCase().trim();  // Update the query
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma);  // Pass the updated query and current artist
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista);  // Pass the updated query and current artist
     });
 
     // Listen for changes in the artist select dropdown
     artistaSelect.addEventListener('change', async (e) => {
         currentArtist = e.target.value;  // Update the artist filter
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma);  // Pass the updated artist and current query
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista);  // Pass the updated artist and current query
     });
 
     // Listen for changes in the genero select dropdown
     generoSelect.addEventListener('change', async (e) => {
         currentGenero = e.target.value;  // Update the genero filter
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma);  // Pass the updated genero and current query
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista);  // Pass the updated genero and current query
     });
 
     // Listen for changes in the instrumento select dropdown
     instrumentoSelect.addEventListener('change', async (e) => {
         currentInstrumento = e.target.value;  // Update the instrumento filter
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma);  // Pass the updated instrumento and current query
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista);  // Pass the updated instrumento and current query
     });
 
     // Listen for changes in the categorias select dropdown
@@ -95,7 +97,7 @@ async function filtraCanciones() {
     // Listen for changes in the idiomas select dropdown
     idiomasSelect.addEventListener('change', async (e) => {
         currentIdioma = e.target.value;  // Update the idioma filter
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma);  // Pass the updated idioma and current query
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista);  // Pass the updated idioma and current query
     });
 
     async function loadSubcategories(categoryId) {
@@ -266,67 +268,6 @@ async function filtraCanciones() {
       console.error('Error al cargar subcategorías:', error);
     }
   }
-
-    // Function to send the request to the backend with both search and artist filters
-    async function fetchQuery(query, artist, nivel, genero, instrumento, categoria, idioma) {
-        let url = `/api/public/songs/search?`;
-
-        if (query.length > 0) {
-            url += `search=${query}`;
-        }
-
-        if (artist.length > 0) {
-            if (query.length > 0) {
-                url += `&`;
-            }
-            url += `artist=${artist}`;
-        }
-
-        if (nivel.length > 0) {
-            if (query.length > 0 || artist.length > 0) {
-                url += `&`;
-            }
-            url += `level=${nivel}`;
-        }
-
-        if (genero.length > 0) {
-            if (query.length > 0 || artist.length > 0 || nivel.length > 0) {
-                url += `&`;
-            }
-            url += `genre=${genero}`;
-        }
-
-        if (instrumento.length > 0) {
-            if (query.length > 0 || artist.length > 0 || nivel.length > 0 || genero.length > 0) {
-                url += `&`;
-            }
-            url += `instrument=${instrumento}`;
-        }
-
-        if (categoria.length > 0) {
-            if (query.length > 0 || artist.length > 0 || nivel.length > 0 || genero.length > 0 || instrumento.length > 0) {
-                url += `&`;
-            }
-            url += `category=${categoria}`;
-        }
-
-        if (idioma.length > 0) {
-            if (query.length > 0 || artist.length > 0 || nivel.length > 0 || genero.length > 0 || instrumento.length > 0 || categoria.length > 0) {
-                url += `&`;
-            }
-            url += `language=${idioma}`;
-        }
-
-        if (url === '/api/public/songs/search?') {
-            return;  // Don't fetch if no filters are applied
-        }
-
-        // Send the request to the backend
-        const response = await fetch(url);
-        const filteredSongs = await response.json();  // Get filtered songs
-        mostrarCanciones(filteredSongs);  // Display filtered songs
-    }
-    
 }
 
 
@@ -393,42 +334,13 @@ export function tagsFilters(){
             }else{
                 hiddenInput2.value = options.filter(opt => opt.selected).map(opt => opt.value);
             }
-            const selectedCancion = hiddenInput.value;
-            const selectedArtista = hiddenInput2.value;
+            selectedCancion = hiddenInput.value;
+            selectedArtista = hiddenInput2.value;
 
-            fetchToggleOptions(selectedCancion, selectedArtista);
+            fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista);
           }
 
-            // Función para enviar la petición al backend con los filtros seleccionados
-            async function fetchToggleOptions(selectedCancion, selectedArtista) {
-                console.log(selectedCancion, selectedArtista);
-                let url = `/api/public/songs/search?`;
 
-                if (selectedCancion.length > 0) {
-                    url += `songlevel=${selectedCancion}`;
-                }
-
-                if (selectedArtista.length > 0) {
-                    if (selectedCancion.length > 0) {
-                        url += `&`;
-                    }
-                    url += `artistlevel=${selectedArtista}`;
-                }
-
-                if (url === '/api/public/songs/search?') {
-                    return;  // No fetch if no filters are applied
-                }
-
-                console.log(url);
-
-                // Send the request to the backend
-                const response = await fetch(url);
-                const filteredSongs = await response.json();  // Get filtered songs
-                mostrarCanciones(filteredSongs);  // Display filtered songs
-            }
-
-          
-      
           // Actualiza el select oculto según las opciones seleccionadas
       
           // Al hacer click en el header se alterna la visibilidad del dropdown
@@ -463,6 +375,80 @@ export function tagsFilters(){
       });
       
       
+}
+
+async function fetchQuery(query, artist, nivel, genero, instrumento, categoria, idioma, selectedCancion, selectedArtista) {
+    let url = `/api/public/songs/search?`;
+
+    if (query.length > 0) {
+        url += `search=${query}`;
+    }
+
+    if (artist.length > 0) {
+        if (query.length > 0) {
+            url += `&`;
+        }
+        url += `artist=${artist}`;
+    }
+
+    if (nivel.length > 0) {
+        if (query.length > 0 || artist.length > 0) {
+            url += `&`;
+        }
+        url += `level=${nivel}`;
+    }
+
+    if (genero.length > 0) {
+        if (query.length > 0 || artist.length > 0 || nivel.length > 0) {
+            url += `&`;
+        }
+        url += `genre=${genero}`;
+    }
+
+    if (instrumento.length > 0) {
+        if (query.length > 0 || artist.length > 0 || nivel.length > 0 || genero.length > 0) {
+            url += `&`;
+        }
+        url += `instrument=${instrumento}`;
+    }
+
+    if (categoria.length > 0) {
+        if (query.length > 0 || artist.length > 0 || nivel.length > 0 || genero.length > 0 || instrumento.length > 0) {
+            url += `&`;
+        }
+        url += `category=${categoria}`;
+    }
+
+    if (idioma.length > 0) {
+        if (query.length > 0 || artist.length > 0 || nivel.length > 0 || genero.length > 0 || instrumento.length > 0 || categoria.length > 0) {
+            url += `&`;
+        }
+        url += `language=${idioma}`;
+    }
+
+    if(selectedCancion.length > 0){
+        if (query.length > 0 || artist.length > 0 || nivel.length > 0 || genero.length > 0 || instrumento.length > 0 || categoria.length > 0 || idioma.length > 0) {
+            url += `&`;
+        }
+        url += `songlevel=${selectedCancion}`;
+    }
+
+    if(selectedArtista.length > 0){
+        if (query.length > 0 || artist.length > 0 || nivel.length > 0 || genero.length > 0 || instrumento.length > 0 || categoria.length > 0 || idioma.length > 0 || selectedCancion.length > 0) {
+            url += `&`;
+        }
+        url += `artistlevel=${selectedArtista}`;
+    }
+
+    if (url === '/api/public/songs/search?') {
+        return;  // Don't fetch if no filters are applied
+    }
+
+    console.log(url);
+    // Send the request to the backend
+    const response = await fetch(url);
+    const filteredSongs = await response.json();  // Get filtered songs
+    mostrarCanciones(filteredSongs);  // Display filtered songs
 }
 
 // Function to delete the filters and reset everything
