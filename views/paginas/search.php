@@ -85,7 +85,8 @@
                 </div>
 
                 <!-- Contenedor para el select customizado de subcategorías -->
-                <div id="subcategories-wrapper">
+                <div class="subcategories-wrapper" id="subcategories-wrapper">
+                    <p>{%t-search-songs_subcategory%}</p>
                 <!-- Aquí se inyectará el custom select de subcategorías cuando se seleccione una categoría -->
                 </div>
                 <input

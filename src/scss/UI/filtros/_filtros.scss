@@ -170,4 +170,19 @@
     margin-left: 0.3rem;
     font-weight: bold;
     cursor: pointer;
-}  
+}
+
+.subcategories-wrapper{
+    display: grid;
+    place-items: center;
+    border: 0.1rem solid lighten(v.$gray-light, 15%);
+    border-radius: v.$border-radius;
+    padding: 0.5rem;
+    min-height: 3rem;
+    & p{
+        margin: 0;
+        font-size: 1.4rem;
+        line-height: 1.2;
+        color: lighten(v.$gray-light, 15%);
+    }
+}

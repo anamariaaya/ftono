@@ -3594,5 +3594,9 @@
   "t-por-descubrir-value":{
     "es": "G",
     "en": "G"
+  },
+  "t-search-songs_subcategory":{
+    "es": "Selecciona una categoría para ver las subcategorias",
+    "en": "Select a category to see the subcategories"
   }
 }

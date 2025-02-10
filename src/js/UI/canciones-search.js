@@ -1,5 +1,5 @@
 import { gridCanciones, cancionesInput, artistaSelect, clearSearch, generoSelect, instrumentoSelect, categoriasSelect, idiomasSelect } from './selectores.js';
-import { readLang, readJSON } from '../base/funciones.js';
+import { readLang, readJSON, loader } from '../base/funciones.js';
 
 
 export async function consultaCanciones() {
@@ -205,6 +205,7 @@ async function filtraCanciones() {
 
       // Obtenemos el wrapper donde se insertará el custom select de subcategorías
       const wrapper = document.getElementById('subcategories-wrapper');
+      wrapper.classList.remove('subcategories-wrapper');
       // Vaciamos completamente el contenido para eliminar cualquier componente anterior
       wrapper.innerHTML = '';
 
@@ -427,6 +428,7 @@ async function fetchQuery(query, artist, nivel, genero, instrumento, categoria, 
 
 // Function to delete the filters and reset everything
 if(clearSearch){
+    loader(clearSearch);
     function deleteFilter() {
         // Trigger the input event manually to ensure the filter resets
         cancionesInput.dispatchEvent(new Event('input'));
