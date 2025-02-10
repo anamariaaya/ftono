@@ -441,12 +441,12 @@ class PublicController{
         $searchArtista = isset($_GET['artist']) ? $_GET['artist'] : '';
         $searchGenre = isset($_GET['genre']) ? $_GET['genre'] : '';
         $searchInstrument = isset($_GET['instrument']) ? $_GET['instrument'] : '';
-        $searchCategory = isset($_GET['category']) ? $_GET['category'] : '';
+        $selectSubcategory = isset($_GET['subcategory']) ? $_GET['subcategory'] : '';
         $searchLanguage = isset($_GET['language']) ? $_GET['language'] : '';
         $selectSongLevel = isset($_GET['songlevel']) ? $_GET['songlevel'] : '';
         $selectArtistaLevel = isset($_GET['artistlevel']) ? $_GET['artistlevel'] : '';
 
-        if($searchTerm !== '' || $searchArtista !== '' || $selectSongLevel !== '' || $selectArtistaLevel!== '' || $searchGenre !== '' || $searchInstrument !== '' || $searchCategory !== '' || $searchLanguage !== ''){
+        if($searchTerm !== '' || $searchArtista !== '' || $selectSongLevel !== '' || $selectArtistaLevel!== '' || $searchGenre !== '' || $searchInstrument !== '' || $searchLanguage !== '' || $selectSubcategory !== ''){
             $searchTerm = s(filter_var($searchTerm, FILTER_SANITIZE_STRING));
             $consultaTerm = "SELECT DISTINCT c.id,
                 c.titulo,
@@ -539,8 +539,16 @@ class PublicController{
                 $consultaTerm .= " AND ins.id = " . (int)$searchInstrument;
             }
 
-            if($searchCategory != ''){
-                $consultaTerm .= " AND cat.id = " . (int)$searchCategory;
+            if($selectSubcategory != ''){
+                $consultaTerm .= " AND (";
+                //convertir a array
+                $selectSubcategory = explode(",",$selectSubcategory);
+                //recorrer array y agregar a la consulta mediante OR menos el ultimo
+                for($i = 0; $i < count($selectSubcategory)-1; $i++){
+                    $consultaTerm .= " k.id = " . (int)$selectSubcategory[$i] . " OR";
+                }
+                //agregar el ultimo
+                $consultaTerm .= " k.id = " . (int)$selectSubcategory[count($selectSubcategory)-1].")";
             }
 
             if($searchLanguage != ''){

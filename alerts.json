@@ -262,5 +262,13 @@
     "deactivate":{
       "es": "Desactivar",
       "en": "Deactivate"
+    },
+    "selectSubcategory":{
+      "es": "Selecciona una subcategoría",
+      "en": "Select a subcategory"
+    },
+    "error":{
+      "es": "Error",
+      "en": "Error"
     }
 }

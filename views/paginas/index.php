@@ -45,7 +45,7 @@
 
 <!-- Sección de Playlist por Categoría -->
 <section class="container" id="category-playlist">
-  <h2 class="main__subtitle">{%t-categories%}</h2>
+  <h2 class="main__subtitle">{%index_subtitle-categories%}</h2>
   <div class="category-buttons">
     <?php foreach ($categorias as $categoria): ?>
       <button class="category-btn btn-filter" data-category-id="<?php echo $categoria->id ?>">
@@ -69,40 +69,6 @@
   </div>
   <a href="/categories" class="btn-view--index mTop-5 text-24">{%index_btn-categories%}</a>
 </section>
-
-
-
-<!-- <section class="container">
-    <h2 class="main__subtitle">{%index_subtitle-categories%}</h2>
-    <div class="main__grid">
-        <div class="main__grid__item">
-            <a href="/category/genres">
-                <img class="main__grid__img" src="/build/img/categories/thumb--genres.jpeg" alt="{%category-genres%}">
-            </a>
-            <p class="main__grid__text">{%category-genres%}</p>
-        </div>
-        <div class="main__grid__item">
-            <a href="/category?id=4&name=feelings">
-                <img class="main__grid__img" src="/build/img/categories/thumb--sensations.jpeg" alt="{%category-feelings%}">
-            </a>
-            <p class="main__grid__text">{%category-feelings%}</p>
-        </div>
-        <div class="main__grid__item">
-            <a href="/category?id=2&name=instruments">
-                <img class="main__grid__img" src="/build/img/categories/thumb--instruments.jpeg" alt="{%category-instruments%}">
-            </a>
-            <p class="main__grid__text">{%category-instruments%}</p>
-        </div>
-        <div class="main__grid__item">
-            <a href="/category?id=5&name=movies and tv">
-                <img class="main__grid__img" src="/build/img/categories/thumb--movies.jpeg" alt="{%category-movies%}">
-            </a>
-            <p class="main__grid__text">{%category-movies%}</p>
-        </div>
-        
-    </div>
-    <a href="/categories" class="btn-view--index mTop-5 text-24">{%index_btn-categories%}</a>
-</section> -->
 
 <!-- Section with the artists -->
 <section class="container mTop-10">

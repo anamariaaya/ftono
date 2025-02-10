@@ -60,31 +60,32 @@ let currentCategoria = '';
 let currentIdioma = '';
 let selectedCancion = '';
 let selectedArtista = '';
+let selectedSubcategory = '';
 
 async function filtraCanciones() {
     // Call the search and filter function when the page loads      
     // Listen for changes in the search input field
     cancionesInput.addEventListener('input', async (e) => {
         currentQuery = e.target.value.toLowerCase().trim();  // Update the query
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista);  // Pass the updated query and current artist
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated query and current artist
     });
 
     // Listen for changes in the artist select dropdown
     artistaSelect.addEventListener('change', async (e) => {
         currentArtist = e.target.value;  // Update the artist filter
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista);  // Pass the updated artist and current query
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated artist and current query
     });
 
     // Listen for changes in the genero select dropdown
     generoSelect.addEventListener('change', async (e) => {
         currentGenero = e.target.value;  // Update the genero filter
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista);  // Pass the updated genero and current query
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated genero and current query
     });
 
     // Listen for changes in the instrumento select dropdown
     instrumentoSelect.addEventListener('change', async (e) => {
         currentInstrumento = e.target.value;  // Update the instrumento filter
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista);  // Pass the updated instrumento and current query
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated instrumento and current query
     });
 
     // Listen for changes in the categorias select dropdown
@@ -97,50 +98,9 @@ async function filtraCanciones() {
     // Listen for changes in the idiomas select dropdown
     idiomasSelect.addEventListener('change', async (e) => {
         currentIdioma = e.target.value;  // Update the idioma filter
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista);  // Pass the updated idioma and current query
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated idioma and current query
     });
 
-    async function loadSubcategories(categoryId) {
-        const lang = await readLang();
-        try {
-          // Realiza la petición para obtener las subcategorías de la categoría seleccionada
-          const response = await fetch(`${window.location.origin}/api/public/subcategories?categoryId=${categoryId}`);
-          const subcategories = await response.json(); // Se espera un array de objetos { id, keyword_en, keyword_es, ... }
-          console.log(subcategories);
-        
-          // Obtenemos el wrapper donde se insertará el custom select de subcategorías
-          const wrapper = document.getElementById('subcategories-wrapper');
-          // Vacía el contenido del wrapper para eliminar cualquier componente anterior
-          wrapper.innerHTML = '';
-        
-          // Creamos un nuevo contenedor
-          let container = document.createElement('div');
-          container.classList.add('custom-select-container');
-          container.innerHTML = `
-            <div class="custom-select-header">Seleccione subcategorías</div>
-            <div class="custom-select-options"></div>
-            <select name="subcategoria[]" multiple style="display: none;"></select>
-          `;
-          wrapper.appendChild(container);
-        
-          // Llenamos el select oculto con las opciones de subcategorías
-          const hiddenSelect = container.querySelector('select');
-          hiddenSelect.innerHTML = ''; // Limpiar opciones previas
-          subcategories.forEach(subcat => {
-            const option = document.createElement('option');
-            option.value = subcat.id;
-            option.text = lang === 'en' ? subcat.keyword_en : subcat.keyword_es;
-            hiddenSelect.appendChild(option);
-          });
-        
-          // Inicializamos el custom select para este contenedor
-          initializeCustomSelect(container);
-        
-        } catch (error) {
-          console.error('Error al cargar las subcategorías:', error);
-        }
-    }
-      
     // Función para inicializar un custom select en un contenedor dado
     function initializeCustomSelect(container) {
         const headerEl = container.querySelector('.custom-select-header');
@@ -196,10 +156,16 @@ async function filtraCanciones() {
 
     // Actualiza el <select> oculto en función de las opciones seleccionadas
     function updateHiddenSelect() {
-      const selectedValues = options.filter(opt => opt.selected).map(opt => opt.value);
-      Array.from(hiddenSelect.options).forEach(option => {
-        option.selected = selectedValues.includes(option.value);
-      });
+        const selectedValues = options.filter(opt => opt.selected).map(opt => opt.value);
+        Array.from(hiddenSelect.options).forEach(option => {
+            option.selected = selectedValues.includes(option.value);
+        });
+        const hiddenInput = document.querySelector('#searchSongsSubcategory');
+        console.log(hiddenInput);
+        hiddenInput.value = selectedValues;
+        selectedSubcategory = hiddenInput.value;
+
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);
     }
 
     /********** Eventos en el Componente **********/
@@ -231,6 +197,7 @@ async function filtraCanciones() {
   async function loadSubcategories(categoryId) {
     // Se asume que readLang() está definida y devuelve una promesa con el idioma ("en" o "es")
     const lang = await readLang();
+    const alerts = await readJSON();
     try {
       // Se realiza la petición para obtener las subcategorías de la categoría seleccionada
       const response = await fetch(`${window.location.origin}/api/public/subcategories?categoryId=${categoryId}`);
@@ -245,7 +212,7 @@ async function filtraCanciones() {
       let container = document.createElement('div');
       container.classList.add('custom-select-container');
       container.innerHTML = `
-        <div class="custom-select-header">Seleccione subcategorías</div>
+        <div class="custom-select-header">`+alerts['selectSubcategory'][lang]+`</div>
         <div class="custom-select-options"></div>
         <select name="subcategoria[]" multiple style="display: none;"></select>
       `;
@@ -265,7 +232,7 @@ async function filtraCanciones() {
       initializeCustomSelect(container);
 
     } catch (error) {
-      console.error('Error al cargar subcategorías:', error);
+      console.error(alerts['error'][lang]+':', error);
     }
   }
 }
@@ -337,7 +304,7 @@ export function tagsFilters(){
             selectedCancion = hiddenInput.value;
             selectedArtista = hiddenInput2.value;
 
-            fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista);
+            fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);
           }
 
 
@@ -377,7 +344,7 @@ export function tagsFilters(){
       
 }
 
-async function fetchQuery(query, artist, nivel, genero, instrumento, categoria, idioma, selectedCancion, selectedArtista) {
+async function fetchQuery(query, artist, nivel, genero, instrumento, categoria, idioma, selectedCancion, selectedArtista, selectedSubcategory) {
     let url = `/api/public/songs/search?`;
 
     if (query.length > 0) {
@@ -438,6 +405,13 @@ async function fetchQuery(query, artist, nivel, genero, instrumento, categoria, 
             url += `&`;
         }
         url += `artistlevel=${selectedArtista}`;
+    }
+
+    if(selectedSubcategory.length > 0){
+        if (query.length > 0 || artist.length > 0 || nivel.length > 0 || genero.length > 0 || instrumento.length > 0 || categoria.length > 0 || idioma.length > 0 || selectedCancion.length > 0 || selectedArtista.length > 0) {
+            url += `&`;
+        }
+        url += `category=${currentCategoria}&subcategory=${selectedSubcategory}`;
     }
 
     if (url === '/api/public/songs/search?') {

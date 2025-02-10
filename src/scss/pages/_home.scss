@@ -67,9 +67,10 @@
     }
     &__subtitle{
         text-align: left;
-        font-size: clamp(3rem, 2.5vw, 3.8rem);
+        font-size: clamp(2.6rem, 2.5vw, 3.8rem);
         color: v.$blue;
         margin-bottom: 4rem;
+        line-height: 1.4;
         &::after{
             content: '';
             display: block;

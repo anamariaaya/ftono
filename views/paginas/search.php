@@ -88,6 +88,12 @@
                 <div id="subcategories-wrapper">
                 <!-- Aquí se inyectará el custom select de subcategorías cuando se seleccione una categoría -->
                 </div>
+                <input
+                    type="hidden"
+                    name="searchSongsSubcategory"
+                    id="searchSongsSubcategory"
+                    value=""
+                />
 
 
                 <!--Niveles de canción-->
