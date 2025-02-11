@@ -25,6 +25,14 @@ export async function initializePlayer(videoData, config = {}) {
       height: '360',
       width: '100%',
       videoId: videoData[0].videoId,
+      playerVars: {
+        origin: window.location.origin, // Ensure this is dynamically set
+        autoplay: 1,
+        controls: 1,
+        rel: 0,
+        showinfo: 0,
+        modestbranding: 1
+      },
       events: {
         onReady: onReady,
         onStateChange: (event) => onStateChange(event, videoData, player)

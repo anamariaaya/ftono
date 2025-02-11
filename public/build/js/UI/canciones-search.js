@@ -106,7 +106,7 @@ async function filtraCanciones() {
         const headerEl = container.querySelector('.custom-select-header');
         const optionsContainer = container.querySelector('.custom-select-options');
         const hiddenSelect = container.querySelector('select');
-
+        
         // Convertir las opciones del select oculto en un array de objetos
         const options = Array.from(hiddenSelect.options).map(opt => ({
         value: opt.value,
@@ -161,7 +161,6 @@ async function filtraCanciones() {
             option.selected = selectedValues.includes(option.value);
         });
         const hiddenInput = document.querySelector('#searchSongsSubcategory');
-        console.log(hiddenInput);
         hiddenInput.value = selectedValues;
         selectedSubcategory = hiddenInput.value;
 
@@ -211,7 +210,7 @@ async function filtraCanciones() {
 
       // Creamos un nuevo contenedor para el custom select
       let container = document.createElement('div');
-      container.classList.add('custom-select-container');
+      container.classList.add('custom-select-container' , 'active');
       container.innerHTML = `
         <div class="custom-select-header">`+alerts['selectSubcategory'][lang]+`</div>
         <div class="custom-select-options"></div>

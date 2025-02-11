@@ -120,7 +120,6 @@ export async function mensaje(){
         }
         mensajeInput.parentElement.appendChild(mensajeMax);
 
-        console.log(mensajeInput.value.length);
         if(mensajeInput.value.length > 200){
             mensajeInput.style.color = '#ff3939';
             mensajeMax.style.color = '#770505';

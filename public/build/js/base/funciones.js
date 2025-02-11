@@ -237,16 +237,12 @@ export function caps(text) {
 export function validateUrl(e) {
     let urlValue = e.target.value.trim(); // Get the current value of the input and trim spaces
 
-    // Debugging: Log the URL value before validating
-    console.log('Original URL:', urlValue);
 
     // Pre-validation: If the URL doesn't have "http://" or "https://", we will add "https://"
     if (!urlValue.match(/^https?:\/\//)) {
         urlValue = 'https://' + urlValue;
     }
 
-    // Log the modified URL for debugging
-    console.log('Modified URL for validation:', urlValue);
 
     const re = /^(https?:\/\/)?(www\.)?([a-zA-Z0-9-]+\.[a-zA-Z]{2,})(\/[a-zA-Z0-9-._~:/?#[\]@!$&'()*+,;=]*)?$/; // Updated regex
 
@@ -268,9 +264,6 @@ export function validateUrl(e) {
 // Internal function that validates URL and shows the alert
 function validateUrlInternal(e, re) {
     let urlValue = e.target.value.trim(); // Get the current value of the input and trim spaces
-
-    // Debugging: Log the URL value after modification and validation
-    console.log('Final URL for validation:', urlValue);
 
     if (re.test(urlValue) === false) {
         imprimirAlerta('url', 'error', e.target.closest('.form__group'), e.target);
