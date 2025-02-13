@@ -6,6 +6,7 @@
         <label for="portada" class="form__group__label">
             {%music_albums_cover_label%}
         </label>
+        <p class="text-blue mTop-0 mBottom-0">{%music_albums_cover_help%}</p>
         <input
             type="file"
             class="form__custom__input"

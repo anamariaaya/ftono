@@ -1,7 +1,7 @@
 
 import { dropdownDiv, dropdownMenu, dropdownBtn, passbtn, mensajeInput} from "./selectores.js";
 import { nextBtn, prevBtn, wrapper } from "./selectores.js";
-import { readLang, readJSON} from '../base/funciones.js';
+import { readLang, readJSON, loaderPage, stopLoader} from '../base/funciones.js';
 
 export function UI(){
     dropdownDiv.onmouseover = function(){
@@ -137,6 +137,19 @@ export async function mensaje(){
             btnSubmit.classList.remove('disabled-btn');
         }
     });
+}
+
+//cargar el loader al entrar al sitio web
+export function loaderBody(){
+    const body = document.querySelector('body');
+    if(body){
+        loaderPage();
+        console.log('loader');
+        window.addEventListener('load', () => {
+            stopLoader();
+            console.log('stop loader');
+        });
+    }
 }
 
 

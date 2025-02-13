@@ -69,34 +69,6 @@
                     </select>
                 </div>
 
-                <!--Categorias-->
-                <div class="filtros__group">
-                    <label class="filtros__group__label" for="categoria">{%t-search-songs_category%}</label>
-                    <select class="filtros__group__select" name="categoria" id="songs-categorias">
-                        <option value="" selected disabled>
-                            {%t-search-songs_category_placeholder%}
-                        </option>
-                        <?php foreach ($categorias as $categoria) : ?>
-                            <option value="<?php echo $categoria->id; ?>">
-                                <?php echo $lang =='en' ? $categoria->categoria_en : $categoria->categoria_es; ?>
-                            </option>
-                        <?php endforeach ?>
-                    </select>
-                </div>
-
-                <!-- Contenedor para el select customizado de subcategorías -->
-                <div class="subcategories-wrapper" id="subcategories-wrapper">
-                    <p>{%t-search-songs_subcategory%}</p>
-                <!-- Aquí se inyectará el custom select de subcategorías cuando se seleccione una categoría -->
-                </div>
-                <input
-                    type="hidden"
-                    name="searchSongsSubcategory"
-                    id="searchSongsSubcategory"
-                    value=""
-                />
-
-
                 <!--Niveles de canción-->
                 <div class="custom-select-container" id="niveles-cancion">
                 <!-- Header fijo -->
@@ -151,6 +123,33 @@
                         value=""
                     />
                 </div>
+
+                <!--Categorias-->
+                <div class="filtros__group">
+                    <label class="filtros__group__label" for="categoria">{%t-search-songs_category%}</label>
+                    <select class="filtros__group__select" name="categoria" id="songs-categorias">
+                        <option value="" selected disabled>
+                            {%t-search-songs_category_placeholder%}
+                        </option>
+                        <?php foreach ($categorias as $categoria) : ?>
+                            <option value="<?php echo $categoria->id; ?>">
+                                <?php echo $lang =='en' ? $categoria->categoria_en : $categoria->categoria_es; ?>
+                            </option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
+
+                <!-- Contenedor para el select customizado de subcategorías -->
+                <div class="subcategories-wrapper" id="subcategories-wrapper">
+                    <p>{%t-search-songs_subcategory%}</p>
+                <!-- Aquí se inyectará el custom select de subcategorías cuando se seleccione una categoría -->
+                </div>
+                <input
+                    type="hidden"
+                    name="searchSongsSubcategory"
+                    id="searchSongsSubcategory"
+                    value=""
+                />
             </div>
         </div>
     </div>

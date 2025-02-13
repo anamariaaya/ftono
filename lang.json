@@ -835,6 +835,10 @@
     "es": "Selecciona una imagen",
     "en": "Select an image"
   },
+  "music_albums_cover_help":{
+    "es": "La imagen debe ser cuadrada y tener un tamaño de 400x400px",
+    "en": "The image must be square and have a size of 400x400px"
+  },
   "music_albums_title_label":{
     "es": "Título del álbum",
     "en": "Album title"

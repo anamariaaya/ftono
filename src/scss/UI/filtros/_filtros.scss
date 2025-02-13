@@ -50,9 +50,6 @@
             @include m.desktop{
                 grid-template-columns: repeat(3, 1fr);
             }
-            @include m.desktop-large{
-                grid-template-columns: repeat(4, 1fr);
-            }
         }
     }
     &__group{
