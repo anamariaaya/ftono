@@ -139,18 +139,6 @@ export async function mensaje(){
     });
 }
 
-//cargar el loader al entrar al sitio web
-export function loaderBody(){
-    const body = document.querySelector('body');
-    if(body){
-        loaderPage();
-        console.log('loader');
-        window.addEventListener('load', () => {
-            stopLoader();
-            console.log('stop loader');
-        });
-    }
-}
 
 
 

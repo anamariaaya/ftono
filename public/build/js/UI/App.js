@@ -1,6 +1,6 @@
 import { dropdownDiv, passbtn, wrapper, gridCategorias, gridGeneros, gridCategory, mensajeInput, player, gridArtistas, artistPlaylist, featuredPlaylist, gridCategorySongs, gridCanciones, categoryButtons} from "./selectores.js";
 import { chooseLang } from "./language.js";
-import { UI, showPassword, mainSlider, mensaje, loaderBody } from "./UI.js";
+import { UI, showPassword, mainSlider, mensaje } from "./UI.js";
 import { btnSubmitLoader } from "../base/funciones.js";
 import { submitBtns } from '../base/selectores.js';
 import { consultaCategorias } from "./categories.js";
@@ -20,7 +20,6 @@ class App{
     }
 
     initApp(){
-        loaderBody();
         if(dropdownDiv){
             UI();
         }
