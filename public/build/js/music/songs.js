@@ -1,4 +1,4 @@
-import { gridSongs,songsInput } from "./selectores.js";
+import { gridSongs,songsInput, writers, writersInput, publisher, publisherInput, selloSelect2, phonogram, artistaSelect } from "./selectores.js";
 import { readLang, readJSON, eliminarItem, normalizeText, caps } from "../base/funciones.js";
 
 export async function consultaSongs(){
@@ -233,4 +233,42 @@ function filtrarSongs(){
             }
         });
     });
+}
+
+export function songProperty(){
+    console.log('songProperty');
+    
+    writersInput.addEventListener('input', (e) => {
+        const escritores = e.target.value;
+        writers.textContent = escritores;
+    });
+
+    publisherInput.addEventListener('input', (e) => {
+        const editorial = e.target.value;
+        publisher.textContent = editorial;
+    });
+
+
+    let sello;
+    let artista;
+    if(selloSelect2){
+        sello = selloSelect2.options[selloSelect2.selectedIndex].text;
+    }
+    if(artistaSelect){
+        artista = artistaSelect.options[artistaSelect.selectedIndex].text;
+    }
+
+    if(selloSelect2 && artistaSelect){
+         //Agregar sello y artista a la propiedad de la canción
+        selloSelect2.addEventListener('change', (e) => {
+            sello = selloSelect2.options[selloSelect2.selectedIndex].text;
+            phonogram.textContent = sello+' - '+artista;
+
+        });
+
+        artistaSelect.addEventListener('change', (e) => {
+            artista = artistaSelect.options[artistaSelect.selectedIndex].text;
+            phonogram.textContent = sello+' - '+artista;
+        });
+    }
 }

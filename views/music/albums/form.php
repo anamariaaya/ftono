@@ -6,7 +6,7 @@
         <label for="portada" class="form__group__label">
             {%music_albums_cover_label%}
         </label>
-        <p class="text-blue mTop-0 mBottom-0">{%music_albums_cover_help%}</p>
+        <p class="texto--password">{%music_albums_cover_help%}</p>
         <input
             type="file"
             class="form__custom__input"
@@ -45,6 +45,7 @@
             {%music_albums_upc_label%}
             <span class="text-yellow">*</span>
         </label>
+        <p class="texto--password">{%music_albums_upc_help%}</p>
         <input
             type="text"
             class="form__group__input"
@@ -178,21 +179,6 @@
             name="fecha_rec"
             placeholder="{%music_albums_record_date_placeholder%}"
             value="<?php echo s($album->fecha_rec);?>"
-        />
-    </div>
-
-    <div class="form__group">
-        <label for="publisher" class="form__group__label">
-            {%music_albums_publisher_label%}
-            <span class="text-yellow">*</span>
-        </label>
-        <input
-            type="text"
-            class="form__group__input"
-            id="publisher"
-            name="publisher"
-            placeholder="{%music_albums_publisher_placeholder%}"
-            value= "<?php echo s($album->publisher);?>"
         />
     </div>
 </fieldset>

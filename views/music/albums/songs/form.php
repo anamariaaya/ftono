@@ -50,6 +50,7 @@
         <label class="form__group__label" for="isrc">
             {%music_songs_form-isrc_label%}
             <span class="text-yellow">*</span>
+            <p class="texto--password">{%music_songs_form-isrc_help%}</p>
         </label>
         <input
             type="text"
@@ -393,7 +394,7 @@
         <input
             type="text"
             class="form__group__input"
-            id="escritores"
+            id="escritores-song"
             name="escritores"
             placeholder="{%music_songs_form-writers_placeholder%}"
             value="<?php 
@@ -405,13 +406,44 @@
             ?>"/>
     </div>
 
+    <!--Publisher-->
+    <div class="form__group">
+        <label for="publisher" class="form__group__label">
+            {%music_albums_publisher_label%}
+            <span class="text-yellow">*</span>
+        </label>
+        <input
+            type="text"
+            class="form__group__input"
+            id="publisher-song"
+            name="publisher"
+            placeholder="{%music_albums_publisher_placeholder%}"
+            value= "<?php echo s($song->publisher);?>"
+        />
+    </div>
+
     <!--Porcentaje de escritor: publisher + escritores-->
-    <p class="text-blue">{%music_songs_form-writers-percent_legend%}:</p>
+    <h2 class="text-blue">{%music_songs_form-writers-percent_legend%}</h2>
+    <p class="texto--password">{%music_songs_form-writers-percent_help%}:</p>
     <div class="form__group">
         <label class="form__group__label" for="escritor_propiedad">
             {%music_songs_form-writers-percent_label%}
             <span class="text-yellow">*</span>
         </label>
+            <?php if(isset($_POST['escritores']) || isset($cancionEscritores->escritores)): ?>
+                    <div class="form__group--info">
+                        <p class="text-yellow mBottom-0 mTop-0">{%t-property-of%}: 
+                            <span class="text-white caps" id="writers-property">
+                                <?php 
+                                if(isset($_POST['escritores'])):?>
+                                    <?php echo $_POST['escritores'];?>
+                                <?php elseif(isset($cancionEscritores->escritores)):?>
+                                    <?php echo $cancionEscritores->escritores;?>
+                                <?php endif;?>
+                            </span>
+                        </p>
+                    </div>
+            <?php endif;?>
         <input
             type="number"
             class="form__group__input"
@@ -434,6 +466,20 @@
             {%music_songs_form-publisher-percent_label%}
             <span class="text-yellow">*</span>
         </label>
+            <?php if(isset($_POST['publisher']) || isset($song->publisher)): ?>
+                    <div class="form__group--info">
+                        <p class="text-yellow mBottom-0 mTop-0">{%t-property-of%}: 
+                            <span class="text-white caps" id="publisher-property">
+                                <?php 
+                                if(isset($_POST['publisher'])):?>
+                                    <?php echo $_POST['publisher'];?>
+                                <?php elseif(isset($song->publisher)):?>
+                                    <?php echo $song->publisher;?>
+                                <?php endif;?>
+                            </span>
+                        </p>
+                    </div>
+            <?php endif;?>
         <input
             type="number"
             class="form__group__input"
@@ -452,13 +498,25 @@
     </div>
 
     <!--Porcentaje de fonograma-->
-    <p class="text-blue">{%music_songs-form-phonogram-percent_legend%}:</p>
+    <h2 class="text-blue">{%music_songs-form-phonogram-percent_legend%}</h2>
+    <p class="texto--password">{%music_songs-form-phonogram-percent_help%}:</p>
 
     <div class="form__group">
         <label class="form__group__label" for="sello_propiedad">
             {%music_songs-form-phonogram-percent_label%}
             <span class="text-yellow">*</span>
         </label>
+            <?php if(isset($albumSello) || isset($artista)): ?>
+                    <div class="form__group--info">
+                        <p class="text-yellow mBottom-0 mTop-0">{%t-property-of%}: 
+                            <span class="caps text-white" id="phonogram-property">
+                                <?php 
+                                    echo $albumSello.' + '.$artista;
+                                ?>
+                            </span>
+                        </p>
+                    </div>
+            <?php endif;?>
         <input
             type="number"
             class="form__group__input"

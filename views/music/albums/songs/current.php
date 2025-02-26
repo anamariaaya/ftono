@@ -79,6 +79,8 @@
                 <p class="caps"><span class="text-yellow">{%writers%}: </span><?php echo $song->escritores;?></p>
             <?php endif; ?>
 
+            <p class="caps"><span class="text-yellow">{%t-publisher%}: </span><?php echo $song->publisher;?></p>
+
             <?php if(!empty($song->escritor_propiedad)): ?>
                 <p class="caps"><span class="text-yellow">{%writers_property%}: </span><?php echo $song->escritor_propiedad;?></p>
             <?php endif; ?>

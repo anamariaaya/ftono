@@ -269,6 +269,10 @@
     color: v.$red !important;
 }
 
+.text-white{
+    color: v.$white !important;
+}
+
 .text-20{
     font-size: 1.4rem !important;
     @include m.tablet{

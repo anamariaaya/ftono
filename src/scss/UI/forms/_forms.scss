@@ -156,6 +156,11 @@
             box-shadow: v.$shadow;
             border: 0.1rem solid v.$gray-light;
         }
+        &--info{
+            display: flex;
+            column-gap: 0.7rem;
+            align-items: baseline;
+        }
     }
     &__custom{
         &__input{

@@ -27,7 +27,7 @@
             <?php endif;
         ?>
 
-        <a href="/music/albums" id="music" class="dashboard__enlace <?php pagina_admin('albums'); regBtn();?>">
+        <a href="/music/albums" id="music" class="dashboard__enlace <?php pagina_admin('albums'); pagina_admin('singles'); regBtn();?>">
             <i class="fa-solid fa-compact-disc dashboard__icono"></i>
             <span class="dashboard__menu-texto">
                 <?php echo tt('sidebar_music');?>

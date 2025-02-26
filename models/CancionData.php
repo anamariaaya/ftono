@@ -4,7 +4,7 @@ namespace Model;
 
 class CancionData extends ActiveRecord{
     protected static $tabla = 'canciones';
-    protected static $columnasDB = ['id', 'titulo', 'version', 'isrc', 'url', 'sello', 'id_usuario', 'id_album', 'album', 'album_upc', 'album_publisher', 'album_fecha_record', 'artista_id', 'artista_name', 'nivel_cancion_en', 'nivel_cancion_es', 'genero_es', 'genero_en', 'categorias_en', 'categorias_es', 'colaboradores', 'gensec_en', 'gensec_es', 'idioma_en', 'idioma_es', 'instrumentos_en', 'instrumentos_es', 'keywords_en', 'keywords_es', 'letra', 'escritores', 'escritor_propiedad', 'publisher_propiedad', 'sello_propiedad'];
+    protected static $columnasDB = ['id', 'titulo', 'version', 'isrc', 'url', 'sello', 'id_usuario', 'publisher', 'id_album', 'album', 'album_upc', 'album_publisher', 'album_fecha_record', 'artista_id', 'artista_name', 'nivel_cancion_en', 'nivel_cancion_es', 'genero_es', 'genero_en', 'categorias_en', 'categorias_es', 'colaboradores', 'gensec_en', 'gensec_es', 'idioma_en', 'idioma_es', 'instrumentos_en', 'instrumentos_es', 'keywords_en', 'keywords_es', 'letra', 'escritores', 'escritor_propiedad', 'publisher_propiedad', 'sello_propiedad'];
 
     public function __construct($args = [])
     {
@@ -15,6 +15,7 @@ class CancionData extends ActiveRecord{
         $this->url = $args['url'] ?? '';
         $this->sello = $args['sello'] ?? '';
         $this->id_usuario = $args['id_usuario'] ?? '';
+        $this->publisher = $args['publisher'] ?? '';
         $this->id_album = $args['id_album'] ?? '';
         $this->album = $args['album'] ?? '';
         $this->album_upc = $args['album_upc'] ?? '';

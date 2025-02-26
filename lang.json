@@ -755,6 +755,10 @@
     "es": "Sencillos",
     "en": "Singles"
   },
+  "music-title":{
+    "es": "Tu Música",
+    "en": "Your Music"
+  },
   "music_albums-title":{
     "es": "Tus álbumes",
     "en": "Your albums"
@@ -875,6 +879,10 @@
     "es": "Ejemplo: 123456789012",
     "en": "Example: 123456789012"
   },
+  "music_albums_upc_help":{
+    "es": "El UPC sólo puede contener letras y números, no símbolos",
+    "en": "The UPC can only contain letters and numbers, no symbols"
+  },
   "music_albums_languages_alert-required":{
     "es": "El idioma principal es obligatorio",
     "en": "The main language is required"
@@ -926,6 +934,10 @@
   "music_albums_characters-upc":{
     "es": "El UPC debe tener 12 o 13 caracteres",
     "en": "The UPC must have 12 or 13 characters"
+  },
+  "music_albums_symbols-upc":{
+    "es": "El UPC sólo puede contener letras y números, no símbolos",
+    "en": "The UPC can only contain letters and numbers, no symbols"
   },
   "music_albums_mandatory_publisher":{
     "es": "La editora es obligatoria",
@@ -1116,6 +1128,10 @@
     "en": "The writers are required"
   },
   "music_songs_form-writers-percent_legend":{
+    "es": "Propiedad de letra y composición",
+    "en": "Lyrics and composition ownership"
+  },
+  "music_songs_form-writers-percent_help":{
     "es": "Porcentaje de propiedad del compositor y la editorial. Sólo números, sin signos. El porcentaje total para escritor y editorial no puede superar el 100",
     "en": "Percentage of ownership of the composer and the publisher, only numbers, without signs. The total percentage for writer and publisher cannot exceed 100"
   },
@@ -1148,8 +1164,12 @@
     "en": "The publisher ownership percentage is required"
   },
   "music_songs-form-phonogram-percent_legend":{
-    "es": "Porcentaje de propiedad del fonograma",
-    "en": "Phonogram ownership percentage"
+    "es": "Propiedad del máster de audio",
+    "en": "Audio master ownership"
+  },
+  "music_songs-form-phonogram-percent_help":{
+    "es": "Porcentaje de propiedad del sello entre 0 y 100",
+    "en": "Percentage of ownership of the label between 0 and 100"
   },
   "music_songs-form-phonogram-percent_label":{
     "es": "Porcentaje del fonograma",
@@ -1195,13 +1215,21 @@
     "es": "Ejemplo: USAT29900001",
     "en": "Example: USAT29900001"
   },
+  "music_songs_form-isrc_help":{
+    "es": "El ISRC sólo puede contener letras y números, no símbolos",
+    "en": "The ISRC can only contain letters and numbers, no symbols"
+  },
+  "music_songs_form-isrc_alert-symbols":{
+    "es": "El ISRC sólo puede contener letras y números, no símbolos",
+    "en": "The ISRC can only contain letters and numbers, no symbols"
+  },
   "music_songs_form-isrc_alert-required":{
     "es": "El ISRC es obligatorio",
     "en": "The ISRC is required"
   },
   "music_songs_form-isrc_alert-max":{
-    "es": "El ISRC no puede tener más de 13 caracteres",
-    "en": "The ISRC cannot be more than 13 characters"
+    "es": "El ISRC debe tener entre 12 y 13 caracteres",
+    "en": "The ISRC must have between 12 and 13 characters"
   },
   "music_songs_form-youtube_label":{
     "es": "Link de YouTube",
@@ -3602,5 +3630,9 @@
   "t-search-songs_subcategory":{
     "es": "Selecciona una categoría para ver las subcategorias",
     "en": "Select a category to see the subcategories"
+  },
+  "t-property-of":{
+    "es": "Propiedad de",
+    "en": "Property of"
   }
 }

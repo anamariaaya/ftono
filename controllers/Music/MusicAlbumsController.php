@@ -1201,7 +1201,6 @@ class MusicAlbumsController{
         $cancionEscritores = new CancionEscritores;
         $cancionLetra = new CancionLetra;
         $cancionNivel = new CancionNivel;
-        $cancionArtista = new CancionArtista;
         $cancionGenero = new CancionGenero;
         $cancionEscritorPropiedad = new CancionEscritorPropiedad;
         $cancionSelloPropiedad = new CancionSelloPropiedad;
@@ -1246,7 +1245,13 @@ class MusicAlbumsController{
         $selectedLanguages = [];
 
         $usuariosellos = UsuarioSellos::whereAll('id_usuario', $id);
+        $albumArtista = AlbumArtista::where('id_albums', $idAlbum);
+        $artista = Artistas::find($albumArtista->id_artistas);
+        $artista = $artista->nombre;
         
+        $album = Albums::find($idAlbum);
+        $albumSello = $album->sello;
+
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $song->sincronizar($_POST);
             $song->url = getYTVideoId($song->url);
@@ -1319,11 +1324,6 @@ class MusicAlbumsController{
                 $cancionNivel->id_cancion = $song->id;
                 $cancionNivel->id_nivel = $_POST['nivel'];
                 $cancionNivel->guardar();
-    
-                //Guardar Artista de la canción
-                $cancionArtista->id_cancion = $song->id;
-                $cancionArtista->id_artista = $artista->id;
-                $cancionArtista->guardar();
     
                 //Guardar colaboradores de la canción
                 if(!empty($_POST['colaboradores'])){
@@ -1435,7 +1435,6 @@ class MusicAlbumsController{
             'cancionEscritores' => $cancionEscritores,
             'cancionLetra' => $cancionLetra,
             'cancionNivel' => $cancionNivel,
-            'cancionArtista' => $cancionArtista,
             'cancionGenero' => $cancionGenero,
             'cancionEscritorPropiedad' => $cancionEscritorPropiedad,
             'cancionSelloPropiedad' => $cancionSelloPropiedad,
@@ -1452,7 +1451,9 @@ class MusicAlbumsController{
             'selectedKeywords' => $selectedKeywords,
             'idiomas' => $idiomas,
             'selectedLanguages' => $selectedLanguages,
-            'alertas' => $alertas
+            'alertas' => $alertas,
+            'artista' => $artista,
+            'albumSello' => $albumSello
         ]);
     }
 
@@ -1618,6 +1619,15 @@ class MusicAlbumsController{
         foreach ($cancionIdiomas as $cancionIdioma) {
             $selectedLanguages[] = $cancionIdioma->id_idioma;
         }
+
+        $idAlbum = cancionAlbum::where('id_cancion', $song->id);
+        $idAlbum = $idAlbum->id_album;
+        $albumArtista = AlbumArtista::where('id_albums', $idAlbum);
+        $artista = Artistas::find($albumArtista->id_artistas);
+        $artista = $artista->nombre;
+        
+        $album = Albums::find($idAlbum);
+        $albumSello = $album->sello;
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $song->sincronizar($_POST);
@@ -1826,7 +1836,9 @@ class MusicAlbumsController{
             'keywords' => $keywords,
             'selectedKeywords' => $selectedKeywords,
             'idiomas' => $idiomas,
-            'selectedLanguages' => $selectedLanguages
+            'selectedLanguages' => $selectedLanguages,
+            'artista' => $artista,
+            'albumSello' => $albumSello
         ]);
     }
 

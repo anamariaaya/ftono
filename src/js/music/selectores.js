@@ -77,3 +77,10 @@ export const noLabelText = document.querySelector('#noLabelText');
 //Selectores de la sección de songs
 export const gridSongs = document.querySelector('#grid-songs');
 export const songsInput = document.querySelector('#songs-search');
+export const writers = document.querySelector('#writers-property');
+export const writersInput = document.querySelector('#escritores-song');
+export const publisher = document.querySelector('#publisher-property');
+export const publisherInput = document.querySelector('#publisher-song');
+export const phonogram = document.querySelector('#phonogram-property');
+export const selloSelect2 = document.querySelector('#sello-song');
+export const artistaSelect = document.querySelector('#artista-song');
