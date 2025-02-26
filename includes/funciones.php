@@ -155,24 +155,33 @@ function getYTVideoId($url) {
     // Parse the URL and get its components
     $urlComponents = parse_url($url);
 
-    // Handle long YouTube URLs with query parameters
-    if (isset($urlComponents['query'])) {
-        parse_str($urlComponents['query'], $queryParams);
+    // Check for YouTube standard video URL (e.g., https://www.youtube.com/watch?v=videoId)
+    if (isset($urlComponents['host']) && $urlComponents['host'] === 'www.youtube.com') {
+        // If the URL contains '/watch' and query contains 'v'
+        if (strpos($urlComponents['path'], '/watch') !== false && isset($urlComponents['query'])) {
+            parse_str($urlComponents['query'], $queryParams);
+            if (isset($queryParams['v'])) {
+                return $queryParams['v']; // Return the video ID
+            }
+        }
         
-        // Check if 'v' exists in the query parameters
-        if (isset($queryParams['v'])) {
-            return $queryParams['v'];
+        // Check for YouTube Shorts URL (e.g., https://www.youtube.com/shorts/videoId)
+        if (strpos($urlComponents['path'], '/shorts/') !== false) {
+            // Extract the video ID after '/shorts/'
+            $path = explode('/', $urlComponents['path']);
+            return end($path); // Return the video ID
         }
     }
 
-    // Handle short YouTube URLs (e.g., https://youtu.be/{videoId})
+    // Check for YouTube shortened URL (e.g., https://youtu.be/videoId)
     if (isset($urlComponents['host']) && $urlComponents['host'] === 'youtu.be') {
-        return trim($urlComponents['path'], '/');
+        return trim($urlComponents['path'], '/'); // Return the video ID from shortened URL
     }
 
     // If no valid video ID is found, return null
     return null;
 }
+
 
 //function to display the whole url when only the video ID is provided
 function getYTVideoUrl($videoId) {
