@@ -80,7 +80,19 @@ class PublicController{
     }
 
     public static function consultarCategorias(){
-        $categorias = Categorias::allOrderAsc('id');
+        $categoriasConsulta = 'SELECT c.*
+            FROM categorias c
+            WHERE c.id = 1
+
+            UNION
+
+            SELECT c.*
+            FROM categorias c
+            LEFT JOIN categ_keyword ck ON c.id = ck.id_categoria
+            INNER JOIN canc_keywords can ON ck.id_keyword = can.id_keywords
+            GROUP BY c.id
+            ORDER BY categoria_en;';
+        $categorias = Categorias::consultarSQL($categoriasConsulta);
         echo json_encode($categorias);
     }
 
@@ -100,7 +112,15 @@ class PublicController{
     }
 
     public static function consultarGeneros(){
-        $generos = Genres::allOrderAsc('id');
+        $generosConsulta = 'SELECT g.*,
+                cg.id_genero
+            FROM
+                generos g
+            RIGHT JOIN
+                canc_genero cg ON g.id = cg.id_genero
+            GROUP BY g.id
+        ;';
+        $generos = Genres::consultarSQL($generosConsulta);
         echo json_encode($generos);
     }
 
@@ -139,7 +159,16 @@ class PublicController{
         if(!$name && !$id){
             header('Location: /categories');
         }else{
-            $consulta = "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = ".$id.";";
+            $consulta = "SELECT k.id AS id,
+                    k.keyword_en,
+                    k.keyword_es,
+                    c.id AS id_categoria
+                FROM keywords AS k
+                LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword
+                LEFT JOIN categorias AS c ON w.id_categoria = c.id
+                RIGHT JOIN canc_keywords ck ON k.id = ck.id_keywords
+                WHERE c.id = ".$id."
+                GROUP BY id";
             $keywords = Keywords::consultarSQL($consulta);
         }
         echo json_encode($keywords);
@@ -341,25 +370,12 @@ class PublicController{
         $cid = $_GET['cid'] ?? $id;
         $category = Categorias::find($cid);
         $songs=[];
-        if($category->categoria_en == 'instruments'){
-            $keyword = CancionInstrumento::whereAll('id_instrumento',$id);
+        $keyword = CancionKeywords::whereAll('id_keywords',$id);
             foreach($keyword as $key){
                 $song = Canciones::find($key->id_cancion);
                 $songs[] = $song;
-            }
-        }elseif($category->categoria_en == 'keywords'){
-            $keyword = CancionKeywords::whereAll('id_keywords',$id);
-            foreach($keyword as $key){
-                $song = Canciones::find($key->id_cancion);
-                $songs[] = $song;
-            }
-        }else{
-            $keyword = CancionKeywords::whereAll('id_keywords',$id);
-            foreach($keyword as $key){
-                $song = Canciones::find($key->id_cancion);
-                $songs[] = $song;
-            }
         }
+        
         echo json_encode($songs);
     }
 

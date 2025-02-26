@@ -236,8 +236,6 @@ function filtrarSongs(){
 }
 
 export function songProperty(){
-    console.log('songProperty');
-    
     writersInput.addEventListener('input', (e) => {
         const escritores = e.target.value;
         writers.textContent = escritores;

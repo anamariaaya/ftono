@@ -6,6 +6,7 @@ export async function consultaGeneros(){
         const resultado = await fetch(window.location.origin+'/api/public/genres');
         const datos = await resultado.json();
         mostrarGeneros(datos);
+        console.log(datos);
 
     }catch(error){
         console.log(error);
