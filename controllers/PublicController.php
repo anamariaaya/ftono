@@ -534,7 +534,7 @@ class PublicController{
             }
 
             if($searchInstrument != ''){
-                $consultaTerm .= " AND ins.id = " . (int)$searchInstrument;
+                $consultaTerm .= " AND ck.id_keywords = " . (int)$searchInstrument;
             }
 
             if($selectSubcategory != ''){
