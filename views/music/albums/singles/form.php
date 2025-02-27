@@ -294,56 +294,6 @@
             value="<?php echo implode(',', $selectedCategories); ?>">
     </div>
 
-    <!--Instrumentos-->
-    <div class="form__group">
-        <label class="form__group__label" for="instrumentos">
-            {%music_songs_form-instruments_label%}
-        </label>
-        <select class="form__group__select" id="instrumentos" multiple>
-            <option disabled>
-                {%music_songs_form-instruments_placeholder%}
-            </option>
-            <?php 
-            // Determine the selected instruments
-            $selectedInstruments = isset($_POST['selectedInstruments']) ? explode(',', $_POST['selectedInstruments']) :
-                // If not, check if we are editing and use the saved instruments
-                (!empty($selectedInstruments) ? $selectedInstruments : []);
-
-            foreach ($instrumentos as $instrumento): ?>
-                <option 
-                    value="<?php echo $instrumento->id; ?>" 
-                    <?php echo in_array($instrumento->id, $selectedInstruments) ? 'selected' : ''; ?>>
-                    <?php echo $lang === 'en' ? $instrumento->keyword_en : $instrumento->keyword_es; ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-
-        <!-- Tags for selected instruments -->
-        <div id="selectedInstruments" class="form__group__languages">
-            <?php foreach ($selectedInstruments as $selectedInstrumentId): ?>
-                <?php
-                    $instrumentName = '';
-                    foreach ($instrumentos as $instrumento) {
-                        if ($instrumento->id == $selectedInstrumentId) {
-                            $instrumentName = $lang === 'en' ? $instrumento->keyword_en : $instrumento->keyword_es;
-                        }
-                    }
-                ?>
-                <span class="instrumento-tag" data-id="<?php echo $selectedInstrumentId; ?>">
-                    <?php echo $instrumentName; ?>
-                    <button type="button" class="remove-instrumento">&times;</button>
-                </span>
-            <?php endforeach; ?>
-        </div>
-
-        <!-- Hidden input to store selected instruments -->
-        <input 
-            type="hidden" 
-            id="selectedInstrumentsInput" 
-            name="selectedInstruments" 
-            value="<?php echo implode(',', $selectedInstruments); ?>">
-    </div>
-
 
     <!--Keywords-->
     <div class="form__group">
@@ -586,8 +536,8 @@
                         <p class="text-yellow mBottom-0 mTop-0">{%t-property-of%}: 
                             <span class="caps text-white" id="phonogram-property">
                                 <?php 
-                                if(isset($_POST['label']) || isset($_POST['artista'])){
-                                    echo $_POST['label'].' + '. $_POST['artista'];;
+                                if(isset($_POST['sello']) || isset($_POST['artista'])){
+                                    echo $_POST['sello'].' + '. $_POST['artista'];;
                                 }elseif(isset($song->sello)){
                                     echo $song->sello;
                                 }elseif(isset($song->artista)){

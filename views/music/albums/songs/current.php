@@ -58,15 +58,6 @@
                 <p class="caps"><span class="text-yellow">{%languages%}: </span><?php echo $song->idioma_es;?></p>
             <?php endif; ?>
 
-
-            <?php if(!empty($song->instrumentos_en)): ?>
-                <?php if($lang == '_en'): ?>
-                    <p class="caps"><span class="text-yellow">{%instruments%}: </span><?php echo $song->instrumentos_en;?></p>
-                <?php else: ?>
-                    <p class="caps"><span class="text-yellow">{%instruments%}: </span><?php echo $song->instrumentos_es;?></p>
-                <?php endif; ?>
-            <?php endif; ?>
-
             <?php if(!empty($song->keywords_en)): ?>
                 <?php if($lang == '_en'): ?>
                     <p class="caps"><span class="text-yellow">{%keywords-title%}: </span><?php echo $song->keywords_en;?></p>

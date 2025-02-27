@@ -28,7 +28,6 @@ use Model\CancionIdiomas;
 use Model\CancionKeywords;
 use Model\CancionCategorias;
 use Model\CancionEscritores;
-use Model\CancionInstrumento;
 use Model\AlbumArtSecundarios;
 use Model\UsuarioAlbumArtista;
 use Model\CancionGenSecundarios;
@@ -427,13 +426,6 @@ class MusicAlbumsController{
         
         $selectedGenres = [];
 
-        if($lang == 'en'){
-            $consultaInstrumentos= "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = 2 ORDER BY keyword_en;";
-        }else{
-            $consultaInstrumentos= "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = 2 ORDER BY keyword_es;";
-        }
-        $instrumentos = Keywords::consultarSQL($consultaInstrumentos);
-        $selectedInstruments = [];
 
         if($lang == 'en'){
             $consultaKeywords = "SELECT k.* FROM keywords k INNER JOIN categ_keyword ck ON k.id = ck.id_keyword WHERE ck.id_categoria NOT IN (1, 2) ORDER BY keyword_en;";
@@ -455,6 +447,7 @@ class MusicAlbumsController{
         }
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            //debugging($_POST);
             $song->sincronizar($_POST);
             $song->url = getYTVideoId($song->url);
             $song->id_usuario = $id;
@@ -579,17 +572,6 @@ class MusicAlbumsController{
                     }
                 }
                 
-                //Guardar los instrumentos de la canción
-                if(!empty($_POST['selectedInstruments'])){
-                    $instrumentos = explode(',', $_POST['selectedInstruments']);
-                    foreach($instrumentos as $instrumento){
-                        $cancionInstrumento = new CancionInstrumento;
-                        $cancionInstrumento->id_cancion = $song->id;
-                        $cancionInstrumento->id_instrumento = $instrumento;
-                        $cancionInstrumento->guardar();
-                    }
-                }
-                
                 //Guardar las keywords de la canción
                 if(!empty($_POST['selectedKeywords'])){
                     $keywords = explode(',', $_POST['selectedKeywords']);
@@ -664,8 +646,6 @@ class MusicAlbumsController{
             'lang' => $lang,
             'generos' => $generos,
             'selectedGenres' => $selectedGenres,
-            'instrumentos' => $instrumentos,
-            'selectedInstruments' => $selectedInstruments,
             'keywords' => $keywords,
             'selectedKeywords' => $selectedKeywords,
             'idiomas' => $idiomas,
@@ -693,8 +673,6 @@ class MusicAlbumsController{
             GROUP_CONCAT(DISTINCT gs.genero_es SEPARATOR \', \') AS gensec_es,
             GROUP_CONCAT(DISTINCT i.idioma_en SEPARATOR \', \') AS idioma_en,
             GROUP_CONCAT(DISTINCT i.idioma_es SEPARATOR \', \') AS idioma_es,
-            GROUP_CONCAT(DISTINCT ins.keyword_en SEPARATOR \', \') AS instrumentos_en,
-            GROUP_CONCAT(DISTINCT ins.keyword_es SEPARATOR \', \') AS instrumentos_es,
             GROUP_CONCAT(DISTINCT k.keyword_en SEPARATOR \', \') AS keywords_en,
             GROUP_CONCAT(DISTINCT k.keyword_es SEPARATOR \', \') AS keywords_es,
             l.letra,
@@ -729,10 +707,6 @@ class MusicAlbumsController{
                 canc_idiomas ci ON c.id = ci.id_cancion
             LEFT JOIN 
                 idiomas i ON ci.id_idioma = i.id
-            LEFT JOIN
-                canc_instrumento cins ON c.id = cins.id_cancion
-            LEFT JOIN
-                keywords ins ON cins.id_instrumento = ins.id
             LEFT JOIN
                 canc_keywords ck ON c.id = ck.id_cancion
             LEFT JOIN
@@ -802,19 +776,6 @@ class MusicAlbumsController{
         $cancionCategorias = CancionCategorias::whereAll('id_cancion', $song->id);
         foreach ($cancionCategorias as $cancionCategoria) {
             $selectedCategories[] = $cancionCategoria->id_categoria;
-        }
-
-        $selectedInstruments = [];
-        if($lang == 'en'){
-            $consultaInstrumentos= "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = 2 ORDER BY keyword_en;";
-        }else{
-            $consultaInstrumentos= "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = 2 ORDER BY keyword_es;";
-        }
-        $instrumentos = Keywords::consultarSQL($consultaInstrumentos);
-
-        $cancionInstrumentos = CancionInstrumento::whereAll('id_cancion', $song->id);
-        foreach ($cancionInstrumentos as $cancionInstrumento) {
-            $selectedInstruments[] = $cancionInstrumento->id_instrumento;
         }
 
         $selectedKeywords = [];
@@ -973,21 +934,6 @@ class MusicAlbumsController{
                     }
                 }
 
-                $buscarInstrumentos = CancionInstrumento::whereAll('id_cancion', $song->id);
-                foreach($buscarInstrumentos as $instrumento){
-                    $instrumento->eliminar();
-                }
-
-                //Guardar los instrumentos de la canción
-                if(!empty($_POST['selectedInstruments'])){
-                    $instrumentos = explode(',', $_POST['selectedInstruments']);
-                    foreach($instrumentos as $instrumento){
-                        $cancionInstrumento = new CancionInstrumento;
-                        $cancionInstrumento->id_cancion = $song->id;
-                        $cancionInstrumento->id_instrumento = $instrumento;
-                        $cancionInstrumento->guardar();
-                    }
-                }
 
                 $buscarKeywords = CancionKeywords::whereAll('id_cancion', $song->id);
                 foreach($buscarKeywords as $keyword){
@@ -1069,8 +1015,6 @@ class MusicAlbumsController{
             'categorias' => $categorias,
             'selectedCategories' => $selectedCategories,
             'selectedGenres' => $selectedGenres,
-            'instrumentos' => $instrumentos,
-            'selectedInstruments' => $selectedInstruments,
             'keywords' => $keywords,
             'selectedKeywords' => $selectedKeywords,
             'idiomas' => $idiomas,
@@ -1112,8 +1056,6 @@ class MusicAlbumsController{
             GROUP_CONCAT(DISTINCT gs.genero_es SEPARATOR \', \') AS gensec_es,
             GROUP_CONCAT(DISTINCT i.idioma_en SEPARATOR \', \') AS idioma_en,
             GROUP_CONCAT(DISTINCT i.idioma_es SEPARATOR \', \') AS idioma_es,
-            GROUP_CONCAT(DISTINCT ins.keyword_en SEPARATOR \', \') AS instrumentos_en,
-            GROUP_CONCAT(DISTINCT ins.keyword_es SEPARATOR \', \') AS instrumentos_es,
             GROUP_CONCAT(DISTINCT k.keyword_en SEPARATOR \', \') AS keywords_en,
             GROUP_CONCAT(DISTINCT k.keyword_es SEPARATOR \', \') AS keywords_es,
             l.letra,
@@ -1148,10 +1090,6 @@ class MusicAlbumsController{
                 canc_idiomas ci ON c.id = ci.id_cancion
             LEFT JOIN 
                 idiomas i ON ci.id_idioma = i.id
-            LEFT JOIN
-                canc_instrumento cins ON c.id = cins.id_cancion
-            LEFT JOIN
-                keywords ins ON cins.id_instrumento = ins.id
             LEFT JOIN
                 canc_keywords ck ON c.id = ck.id_cancion
             LEFT JOIN
@@ -1222,14 +1160,6 @@ class MusicAlbumsController{
         $generos = Genres::AllOrderAsc('genero_'.$lang);
         
         $selectedGenres = [];
-
-        if($lang == 'en'){
-            $consultaInstrumentos= "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = 2 ORDER BY keyword_en;";
-        }else{
-            $consultaInstrumentos= "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = 2 ORDER BY keyword_es;";
-        }
-        $instrumentos = Keywords::consultarSQL($consultaInstrumentos);
-        $selectedInstruments = [];
 
         if($lang == 'en'){
             $consultaKeywords = "SELECT k.* FROM keywords k INNER JOIN categ_keyword ck ON k.id = ck.id_keyword WHERE ck.id_categoria NOT IN (1, 2) ORDER BY keyword_en;";
@@ -1359,17 +1289,7 @@ class MusicAlbumsController{
                         $cancionCategoria->guardar();
                     }
                 }
-                
-                //Guardar los instrumentos de la canción
-                if(!empty($_POST['selectedInstruments'])){
-                    $instrumentos = explode(',', $_POST['selectedInstruments']);
-                    foreach($instrumentos as $instrumento){
-                        $cancionInstrumento = new CancionInstrumento;
-                        $cancionInstrumento->id_cancion = $song->id;
-                        $cancionInstrumento->id_instrumento = $instrumento;
-                        $cancionInstrumento->guardar();
-                    }
-                }
+
                 
                 //Guardar las keywords de la canción
                 if(!empty($_POST['selectedKeywords'])){
@@ -1445,8 +1365,6 @@ class MusicAlbumsController{
             'lang' => $lang,
             'generos' => $generos,
             'selectedGenres' => $selectedGenres,
-            'instrumentos' => $instrumentos,
-            'selectedInstruments' => $selectedInstruments,
             'keywords' => $keywords,
             'selectedKeywords' => $selectedKeywords,
             'idiomas' => $idiomas,
@@ -1476,8 +1394,6 @@ class MusicAlbumsController{
              GROUP_CONCAT(DISTINCT gs.genero_es SEPARATOR \', \') AS gensec_es,
              GROUP_CONCAT(DISTINCT i.idioma_en SEPARATOR \', \') AS idioma_en,
              GROUP_CONCAT(DISTINCT i.idioma_es SEPARATOR \', \') AS idioma_es,
-             GROUP_CONCAT(DISTINCT ins.keyword_en SEPARATOR \', \') AS instrumentos_en,
-             GROUP_CONCAT(DISTINCT ins.keyword_es SEPARATOR \', \') AS instrumentos_es,
              GROUP_CONCAT(DISTINCT k.keyword_en SEPARATOR \', \') AS keywords_en,
              GROUP_CONCAT(DISTINCT k.keyword_es SEPARATOR \', \') AS keywords_es,
              l.letra,
@@ -1512,10 +1428,6 @@ class MusicAlbumsController{
                  canc_idiomas ci ON c.id = ci.id_cancion
              LEFT JOIN 
                  idiomas i ON ci.id_idioma = i.id
-             LEFT JOIN
-                 canc_instrumento cins ON c.id = cins.id_cancion
-             LEFT JOIN
-                 keywords ins ON cins.id_instrumento = ins.id
              LEFT JOIN
                  canc_keywords ck ON c.id = ck.id_cancion
              LEFT JOIN
@@ -1584,19 +1496,6 @@ class MusicAlbumsController{
         $cancionCategorias = CancionCategorias::whereAll('id_cancion', $song->id);
         foreach ($cancionCategorias as $cancionCategoria) {
             $selectedCategories[] = $cancionCategoria->id_categoria;
-        }
-
-        $selectedInstruments = [];
-        if($lang == 'en'){
-            $consultaInstrumentos= "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = 2 ORDER BY keyword_en;";
-        }else{
-            $consultaInstrumentos= "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = 2 ORDER BY keyword_es;";
-        }
-        $instrumentos = Keywords::consultarSQL($consultaInstrumentos);
-
-        $cancionInstrumentos = CancionInstrumento::whereAll('id_cancion', $song->id);
-        foreach ($cancionInstrumentos as $cancionInstrumento) {
-            $selectedInstruments[] = $cancionInstrumento->id_instrumento;
         }
 
         $selectedKeywords = [];
@@ -1737,21 +1636,6 @@ class MusicAlbumsController{
                     }
                 }
 
-                $buscarInstrumentos = CancionInstrumento::whereAll('id_cancion', $song->id);
-                foreach($buscarInstrumentos as $instrumento){
-                    $instrumento->eliminar();
-                }
-
-                //Guardar los instrumentos de la canción
-                if(!empty($_POST['selectedInstruments'])){
-                    $instrumentos = explode(',', $_POST['selectedInstruments']);
-                    foreach($instrumentos as $instrumento){
-                        $cancionInstrumento = new CancionInstrumento;
-                        $cancionInstrumento->id_cancion = $song->id;
-                        $cancionInstrumento->id_instrumento = $instrumento;
-                        $cancionInstrumento->guardar();
-                    }
-                }
 
                 $buscarKeywords = CancionKeywords::whereAll('id_cancion', $song->id);
                 foreach($buscarKeywords as $keyword){
@@ -1831,8 +1715,6 @@ class MusicAlbumsController{
             'categorias' => $categorias,
             'selectedCategories' => $selectedCategories,
             'selectedGenres' => $selectedGenres,
-            'instrumentos' => $instrumentos,
-            'selectedInstruments' => $selectedInstruments,
             'keywords' => $keywords,
             'selectedKeywords' => $selectedKeywords,
             'idiomas' => $idiomas,
@@ -1876,8 +1758,6 @@ class MusicAlbumsController{
              GROUP_CONCAT(DISTINCT gs.genero_es SEPARATOR \', \') AS gensec_es,
              GROUP_CONCAT(DISTINCT i.idioma_en SEPARATOR \', \') AS idioma_en,
              GROUP_CONCAT(DISTINCT i.idioma_es SEPARATOR \', \') AS idioma_es,
-             GROUP_CONCAT(DISTINCT ins.keyword_en SEPARATOR \', \') AS instrumentos_en,
-             GROUP_CONCAT(DISTINCT ins.keyword_es SEPARATOR \', \') AS instrumentos_es,
              GROUP_CONCAT(DISTINCT k.keyword_en SEPARATOR \', \') AS keywords_en,
              GROUP_CONCAT(DISTINCT k.keyword_es SEPARATOR \', \') AS keywords_es,
              l.letra,
@@ -1912,10 +1792,6 @@ class MusicAlbumsController{
                  canc_idiomas ci ON c.id = ci.id_cancion
              LEFT JOIN 
                  idiomas i ON ci.id_idioma = i.id
-             LEFT JOIN
-                 canc_instrumento cins ON c.id = cins.id_cancion
-             LEFT JOIN
-                 keywords ins ON cins.id_instrumento = ins.id
              LEFT JOIN
                  canc_keywords ck ON c.id = ck.id_cancion
              LEFT JOIN
