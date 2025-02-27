@@ -137,6 +137,9 @@
             background-color: darken(v.$gray-dark, 10%);
             padding: 1rem;
             border-radius: v.$border-radius;
+            max-width: 50rem;
+            width: -webkit-fill-available;
+            margin: auto;
             @include m.tablet{
                 padding: 1.5rem;
             }

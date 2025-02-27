@@ -400,29 +400,78 @@ class PublicController{
     public static function search(Router $router){
         $titulo = 't-search-songs';
         $lang = $_SESSION['lang'];
-        $artistas = Artistas::all();
-        $niveles = NivelCancion::all();
-        $generos = Genres::allOrderAsc('genero_'.$lang);
-        $nivelArtistas = NivelArtistas::all();
+        $consultarArtista ='SELECT a.*
+            FROM artistas a
+            RIGHT JOIN 
+                canc_artista ca ON a.id = ca.id_artista
+            GROUP BY a.id;'
+        ;
+        $artistas = Artistas::consultarSQL($consultarArtista);
 
-        if($lang == 'en'){
-            $consultaInstrumentos= "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = 2 ORDER BY keyword_en;";
-        }else{
-            $consultaInstrumentos= "SELECT k.id AS id, k.keyword_en, k.keyword_es, c.id AS id_categoria FROM keywords AS k LEFT JOIN categ_keyword AS w ON k.id = w.id_keyword LEFT JOIN categorias AS c ON w.id_categoria = c.id WHERE c.id = 2 ORDER BY keyword_es;";
-        }
+        $consultaGeneros = 'SELECT g.*
+            FROM generos g
+            RIGHT JOIN 
+                canc_genero cg ON g.id = cg.id_genero
+            GROUP BY g.id;'
+        ;
+        $generos = Genres::consultarSQL($consultaGeneros);
+        
+        $consultaInstrumentos= "SELECT k.id AS id,
+            k.keyword_en,
+            k.keyword_es,
+            c.id AS id_categoria
+            FROM
+                keywords AS k
+            LEFT JOIN
+                categ_keyword AS w ON k.id = w.id_keyword
+            LEFT JOIN
+                categorias AS c ON w.id_categoria = c.id
+            RIGHT JOIN
+                canc_keywords ck ON k.id = ck.id_keywords
+            WHERE c.id = 2
+            ORDER BY keyword_".$lang.";"
+        ;
         $instrumentos = Keywords::consultarSQL($consultaInstrumentos);
 
+        $consultaIdiomas = "SELECT i.*
+            FROM idiomas i
+            RIGHT JOIN
+                canc_idiomas ci ON i.id = ci.id_idioma
+            GROUP BY i.id
+            ORDER BY idioma_".$lang.";";
+        $idiomas = Idiomas::consultarSQL($consultaIdiomas);
         
-            $consultaCategorias = "SELECT cat.*
-                FROM categorias cat
-                RIGHT JOIN categ_keyword ck ON cat.id = ck.id_categoria
-                WHERE cat.id != 2
-                GROUP BY cat.id 
-                ORDER BY categoria_".$lang.";";
-        
+        $consultaCategorias = "SELECT cat.*
+            FROM categorias cat
+            RIGHT JOIN
+                categ_keyword ck ON cat.id = ck.id_categoria
+            WHERE cat.id != 2
+            GROUP BY cat.id 
+            ORDER BY categoria_".$lang.";"
+        ;
         $categorias = Categorias::consultarSQL($consultaCategorias);
 
-        $idiomas = Idiomas::AllOrderAsc('idioma_'.$lang);
+        $consultaNiveles = 'SELECT n.*
+            FROM nivel_canc n
+            RIGHT JOIN
+                canc_nivel cn ON n.id = cn.id_nivel
+            GROUP BY n.id
+            ORDER BY id;'
+        ;
+        $niveles = NivelCancion::consultarSQL($consultaNiveles);
+
+        $consultaNivelesArtistas = 'SELECT n.*
+            FROM nivel_artistas n
+            RIGHT JOIN
+                artistas a ON n.id = a.id_nivel
+            RIGHT JOIN
+            	canc_artista ca ON a.id = ca.id_artista
+            GROUP BY n.id
+            ORDER BY id
+        ;'
+        ;
+        $nivelArtistas = NivelArtistas::consultarSQL($consultaNivelesArtistas);
+
 
         $router->render('/paginas/search',[
             'titulo' => $titulo,
