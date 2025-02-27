@@ -1,5 +1,5 @@
 import { gridCanciones, cancionesInput, artistaSelect, clearSearch, generoSelect, instrumentoSelect, categoriasSelect, idiomasSelect, nivelSelect, nivelArtistaSelect } from './selectores.js';
-import { readLang, readJSON, loader } from '../base/funciones.js';
+import { readLang, readJSON, loader, loaderPage, stopLoader } from '../base/funciones.js';
 
 
 export async function consultaCanciones() {
@@ -59,44 +59,43 @@ let currentGenero = '';
 let currentInstrumento = '';
 let currentCategoria = '';
 let currentIdioma = '';
-let selectedCancion = '';
-let selectedArtista = '';
 let selectedSubcategory = '';
 
 async function filtraCanciones() {
+
     // Call the search and filter function when the page loads      
     // Listen for changes in the search input field
     cancionesInput.addEventListener('input', async (e) => {
         currentQuery = e.target.value.toLowerCase().trim();  // Update the query
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated query and current artist
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedSubcategory);  // Pass the updated query and current artist
     });
 
     // Listen for changes in the artist select dropdown
     artistaSelect.addEventListener('change', async (e) => {
         currentArtist = e.target.value;  // Update the artist filter
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated artist and current query
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedSubcategory);  // Pass the updated artist and current query
     });
 
     nivelSelect.addEventListener('change', async (e) => {
         currentNivel = e.target.value;  // Update the nivel filter
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated nivel and current query
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedSubcategory);  // Pass the updated nivel and current query
     });
 
     nivelArtistaSelect.addEventListener('change', async (e) => {
         currentNivelArtista = e.target.value;  // Update the nivel filter
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated nivel and current query
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedSubcategory);  // Pass the updated nivel and current query
     });
 
     // Listen for changes in the genero select dropdown
     generoSelect.addEventListener('change', async (e) => {
         currentGenero = e.target.value;  // Update the genero filter
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated genero and current query
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedSubcategory);  // Pass the updated genero and current query
     });
 
     // Listen for changes in the instrumento select dropdown
     instrumentoSelect.addEventListener('change', async (e) => {
         currentInstrumento = e.target.value;  // Update the instrumento filter
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated instrumento and current query
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedSubcategory);  // Pass the updated instrumento and current query
     });
 
     // Listen for changes in the categorias select dropdown
@@ -109,7 +108,7 @@ async function filtraCanciones() {
     // Listen for changes in the idiomas select dropdown
     idiomasSelect.addEventListener('change', async (e) => {
         currentIdioma = e.target.value;  // Update the idioma filter
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated idioma and current query
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedSubcategory);  // Pass the updated idioma and current query
     });
 
     // Función para inicializar un custom select en un contenedor dado
@@ -168,15 +167,13 @@ async function filtraCanciones() {
     // Actualiza el <select> oculto en función de las opciones seleccionadas
     function updateHiddenSelect() {
         const selectedValues = options.filter(opt => opt.selected).map(opt => opt.value);
-        Array.from(hiddenSelect.options).forEach(option => {
-            option.selected = selectedValues.includes(option.value);
-        });
         const hiddenInput = document.querySelector('#searchSongsSubcategory');
-        hiddenInput.value = selectedValues;
-        selectedSubcategory = hiddenInput.value;
-
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);
+        hiddenInput.value = selectedValues.join(',');  // Convert array to a string if multiple selected
+        selectedSubcategory = hiddenInput.value;  // Update the selectedSubcategory variable
+    
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedSubcategory);
     }
+  
 
     /********** Eventos en el Componente **********/
     // Al hacer click en el header: 
@@ -312,10 +309,9 @@ export function tagsFilters(){
             }else{
                 hiddenInput2.value = options.filter(opt => opt.selected).map(opt => opt.value);
             }
-            selectedCancion = hiddenInput.value;
-            selectedArtista = hiddenInput2.value;
 
-            fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);
+
+            fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedSubcategory);
           }
 
 
@@ -355,7 +351,7 @@ export function tagsFilters(){
       
 }
 
-async function fetchQuery(query, artist, nivel, nivelArtista, genero, instrumento, categoria, idioma, selectedCancion, selectedArtista, selectedSubcategory) {
+async function fetchQuery(query, artist, nivel, nivelArtista, genero, instrumento, categoria, idioma, subcategory) {
     let url = `/api/public/songs/search?`;
 
     if (query.length > 0) {
@@ -411,32 +407,18 @@ async function fetchQuery(query, artist, nivel, nivelArtista, genero, instrument
         url += `artistlevel=${nivelArtista}`;
     }
 
-    if(selectedCancion.length > 0){
-        if (query.length > 0 || artist.length > 0 || nivel.length > 0 || genero.length > 0 || instrumento.length > 0 || categoria.length > 0 || idioma.length > 0) {
-            url += `&`;
-        }
-        url += `songlevel=${selectedCancion}`;
-    }
-
-    if(selectedArtista.length > 0){
-        if (query.length > 0 || artist.length > 0 || nivel.length > 0 || genero.length > 0 || instrumento.length > 0 || categoria.length > 0 || idioma.length > 0 || selectedCancion.length > 0) {
-            url += `&`;
-        }
-        url += `artistlevel=${selectedArtista}`;
-    }
-
-    if(selectedSubcategory.length > 0){
-        if (query.length > 0 || artist.length > 0 || nivel.length > 0 || genero.length > 0 || instrumento.length > 0 || categoria.length > 0 || idioma.length > 0 || selectedCancion.length > 0 || selectedArtista.length > 0) {
+    if(subcategory && subcategory.length > 0){
+        if (query.length > 0 || artist.length > 0 || nivel.length > 0 || genero.length > 0 || instrumento.length > 0 || categoria.length > 0 || idioma.length > 0 || nivelArtista.length > 0) {
             url += `&`;
         }
         url += `category=${currentCategoria}&subcategory=${selectedSubcategory}`;
     }
 
+
     if (url === '/api/public/songs/search?') {
         return;  // Don't fetch if no filters are applied
     }
 
-    console.log(url);
     // Send the request to the backend
     const response = await fetch(url);
     const filteredSongs = await response.json();  // Get filtered songs
