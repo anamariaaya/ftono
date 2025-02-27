@@ -80,6 +80,7 @@ class PublicController{
     }
 
     public static function consultarCategorias(){
+        $lang = $_SESSION['lang'];
         $categoriasConsulta = 'SELECT c.*
             FROM categorias c
             WHERE c.id = 1
@@ -91,7 +92,7 @@ class PublicController{
             LEFT JOIN categ_keyword ck ON c.id = ck.id_categoria
             INNER JOIN canc_keywords can ON ck.id_keyword = can.id_keywords
             GROUP BY c.id
-            ORDER BY categoria_en;';
+            ORDER BY categoria_'.$lang.';';
         $categorias = Categorias::consultarSQL($categoriasConsulta);
         echo json_encode($categorias);
     }

@@ -93,7 +93,7 @@ export async function mostrarCategorias(datos){
                 contenedorBotones.classList.add('card__acciones');
 
                 //agregar los botones al contenedor
-                if(categoria.id !== '1' && categoria.id !== '2'){
+                if(categoria.id !== '1'){
                         contenedorBotones.appendChild(btnActivar);
                         contenedorBotones.appendChild(btnEditar);
                         contenedorBotones.appendChild(btnEliminar);
