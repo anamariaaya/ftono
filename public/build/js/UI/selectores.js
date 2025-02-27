@@ -53,6 +53,7 @@ export const gridCanciones = document.querySelector('#grid-songs-search');
 export const cancionesInput = document.querySelector('#songs-search');
 export const artistaSelect = document.querySelector('#songs-artistas');
 export const nivelSelect = document.querySelector('#songs-niveles');
+export const nivelArtistaSelect = document.querySelector('#songs-artista-nivel');
 export const generoSelect = document.querySelector('#songs-generos');
 export const instrumentoSelect = document.querySelector('#songs-instrumentos');
 export const categoriasSelect = document.querySelector('#songs-categorias');

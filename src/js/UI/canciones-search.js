@@ -1,4 +1,4 @@
-import { gridCanciones, cancionesInput, artistaSelect, clearSearch, generoSelect, instrumentoSelect, categoriasSelect, idiomasSelect } from './selectores.js';
+import { gridCanciones, cancionesInput, artistaSelect, clearSearch, generoSelect, instrumentoSelect, categoriasSelect, idiomasSelect, nivelSelect, nivelArtistaSelect } from './selectores.js';
 import { readLang, readJSON, loader } from '../base/funciones.js';
 
 
@@ -54,6 +54,7 @@ async function mostrarCanciones(datos) {
 let currentQuery = '';
 let currentArtist = '';
 let currentNivel = '';
+let currentNivelArtista = '';
 let currentGenero = '';
 let currentInstrumento = '';
 let currentCategoria = '';
@@ -67,25 +68,35 @@ async function filtraCanciones() {
     // Listen for changes in the search input field
     cancionesInput.addEventListener('input', async (e) => {
         currentQuery = e.target.value.toLowerCase().trim();  // Update the query
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated query and current artist
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated query and current artist
     });
 
     // Listen for changes in the artist select dropdown
     artistaSelect.addEventListener('change', async (e) => {
         currentArtist = e.target.value;  // Update the artist filter
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated artist and current query
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated artist and current query
+    });
+
+    nivelSelect.addEventListener('change', async (e) => {
+        currentNivel = e.target.value;  // Update the nivel filter
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated nivel and current query
+    });
+
+    nivelArtistaSelect.addEventListener('change', async (e) => {
+        currentNivelArtista = e.target.value;  // Update the nivel filter
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated nivel and current query
     });
 
     // Listen for changes in the genero select dropdown
     generoSelect.addEventListener('change', async (e) => {
         currentGenero = e.target.value;  // Update the genero filter
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated genero and current query
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated genero and current query
     });
 
     // Listen for changes in the instrumento select dropdown
     instrumentoSelect.addEventListener('change', async (e) => {
         currentInstrumento = e.target.value;  // Update the instrumento filter
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated instrumento and current query
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated instrumento and current query
     });
 
     // Listen for changes in the categorias select dropdown
@@ -98,7 +109,7 @@ async function filtraCanciones() {
     // Listen for changes in the idiomas select dropdown
     idiomasSelect.addEventListener('change', async (e) => {
         currentIdioma = e.target.value;  // Update the idioma filter
-        fetchQuery(currentQuery, currentArtist, currentNivel, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated idioma and current query
+        fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedCancion, selectedArtista, selectedSubcategory);  // Pass the updated idioma and current query
     });
 
     // Función para inicializar un custom select en un contenedor dado
@@ -344,7 +355,7 @@ export function tagsFilters(){
       
 }
 
-async function fetchQuery(query, artist, nivel, genero, instrumento, categoria, idioma, selectedCancion, selectedArtista, selectedSubcategory) {
+async function fetchQuery(query, artist, nivel, nivelArtista, genero, instrumento, categoria, idioma, selectedCancion, selectedArtista, selectedSubcategory) {
     let url = `/api/public/songs/search?`;
 
     if (query.length > 0) {
@@ -391,6 +402,13 @@ async function fetchQuery(query, artist, nivel, genero, instrumento, categoria, 
             url += `&`;
         }
         url += `language=${idioma}`;
+    }
+
+    if(nivelArtista.length > 0){
+        if (query.length > 0 || artist.length > 0 || nivel.length > 0 || genero.length > 0 || instrumento.length > 0 || categoria.length > 0 || idioma.length > 0) {
+            url += `&`;
+        }
+        url += `artistlevel=${nivelArtista}`;
     }
 
     if(selectedCancion.length > 0){

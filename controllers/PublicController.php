@@ -460,8 +460,9 @@ class PublicController{
         $searchInstrument = isset($_GET['instrument']) ? $_GET['instrument'] : '';
         $selectSubcategory = isset($_GET['subcategory']) ? $_GET['subcategory'] : '';
         $searchLanguage = isset($_GET['language']) ? $_GET['language'] : '';
-        $selectSongLevel = isset($_GET['songlevel']) ? $_GET['songlevel'] : '';
+        $selectSongLevel = isset($_GET['level']) ? $_GET['level'] : '';
         $selectArtistaLevel = isset($_GET['artistlevel']) ? $_GET['artistlevel'] : '';
+
 
         if($searchTerm !== '' || $searchArtista !== '' || $selectSongLevel !== '' || $selectArtistaLevel!== '' || $searchGenre !== '' || $searchInstrument !== '' || $searchLanguage !== '' || $selectSubcategory !== ''){
             $searchTerm = s(filter_var($searchTerm, FILTER_SANITIZE_STRING));
@@ -496,10 +497,6 @@ class PublicController{
             LEFT JOIN
                 generos g ON cg.id_genero = g.id
             LEFT JOIN
-                canc_instrumento cins ON c.id = cins.id_cancion
-            LEFT JOIN
-                keywords ins ON cins.id_instrumento = ins.id
-            LEFT JOIN
                 canc_categorias cc ON c.id = cc.id_cancion
             LEFT JOIN
                 categorias cat ON cc.id_categoria = cat.id
@@ -525,27 +522,11 @@ class PublicController{
             }
 
             if($selectSongLevel != ''){
-                $consultaTerm .= " AND (";
-                //convertir a array
-                $selectSongLevel = explode(",",$selectSongLevel);
-                //recorrer array y agregar a la consulta mediante OR menos el ultimo
-                for($i = 0; $i < count($selectSongLevel)-1; $i++){
-                    $consultaTerm .= " n.id = " . (int)$selectSongLevel[$i] . " OR";
-                }
-                //agregar el ultimo
-                $consultaTerm .= " n.id = " . (int)$selectSongLevel[count($selectSongLevel)-1].")";
+                $consultaTerm .= " AND n.id = " . (int)$selectSongLevel;
             }
 
             if($selectArtistaLevel != ''){
-                $consultaTerm .= " AND (";
-                //convertir a array
-                $selectArtistaLevel = explode(",",$selectArtistaLevel);
-                //recorrer array y agregar a la consulta mediante OR menos el ultimo
-                for($i = 0; $i < count($selectArtistaLevel)-1; $i++){
-                    $consultaTerm .= " nar.id = " . (int)$selectArtistaLevel[$i] . " OR";
-                }
-                //agregar el ultimo
-                $consultaTerm .= " nar.id = " . (int)$selectArtistaLevel[count($selectArtistaLevel)-1].")";
+                $consultaTerm .= " AND nar.id = " . (int)$selectArtistaLevel;
             }
 
             if($searchGenre != ''){

@@ -3203,9 +3203,13 @@
     "es": "Buscar por nivel de la canción",
     "en": "Search by song level"
   },
-  "t-search-artist_level_placeholder":{
+  "t-search-artist_level":{
     "es": "Nivel del artista",
     "en": "Artist level"
+  },
+  "t-search-artist_level_placeholder":{
+    "es": "Buscar por nivel del artista",
+    "en": "Search by artist level"
   },
   "t-search-songs_genre":{
     "es": "Géneros musicales",
