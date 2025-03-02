@@ -536,12 +536,13 @@
                         <p class="text-yellow mBottom-0 mTop-0">{%t-property-of%}: 
                             <span class="caps text-white" id="phonogram-property">
                                 <?php 
-                                if(isset($_POST['sello']) || isset($_POST['artista'])){
-                                    echo $_POST['sello'].' + '. $_POST['artista'];;
+                                if(isset($_POST['sello']) || isset($_POST['artista']) ){
+                                    echo $temporarySello.' + '. $temporaryArtista;
                                 }elseif(isset($song->sello)){
                                     echo $song->sello;
-                                }elseif(isset($song->artista)){
-                                    echo ' + '.$song->artista;
+                                    if(isset($artistaEdit)){
+                                        echo ' + '.$artistaEdit;
+                                    }
                                 }?>
                             </span>
                         </p>

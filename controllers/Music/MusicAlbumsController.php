@@ -446,12 +446,25 @@ class MusicAlbumsController{
             $sellos[] = $sello;
         }
 
+        $temporarySello = '';
+        $temporaryArtista = '';
+
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             //debugging($_POST);
             $song->sincronizar($_POST);
             $song->url = getYTVideoId($song->url);
             $song->id_usuario = $id;
             $alertas = $song->validarCancion();
+
+            if($_POST['sello']){
+                $temporarySello = Sellos::where('id', $_POST['sello']);
+                $temporarySello = $temporarySello->nombre;
+            }
+
+            if($_POST['artista']){
+                $temporaryArtista = Artistas::where('id', $_POST['artista']);
+                $temporaryArtista = $temporaryArtista->nombre;
+            }
 
             if(!isset($_POST['nivel']) || $_POST['nivel'] === '0' || trim($_POST['nivel']) === ''){
                 $alertas = CancionNivel::setAlerta('error', 'music_songs_form-song-level_alert-required');
@@ -651,7 +664,9 @@ class MusicAlbumsController{
             'idiomas' => $idiomas,
             'selectedLanguages' => $selectedLanguages,
             'sellos' => $sellos,
-            'alertas' => $alertas
+            'alertas' => $alertas,
+            'temporarySello' => $temporarySello,
+            'temporaryArtista' => $temporaryArtista
         ]);
     }
 
@@ -806,6 +821,10 @@ class MusicAlbumsController{
             $sello = Sellos::find($usuarioSello->id_sellos);
             $sellos[] = $sello;
         }
+
+        $artistaEdit = Artistas::where('id', $cancionArtista->id_artista);
+        $artistaEdit = $artistaEdit->nombre;
+        //debugging($artista);
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $song->sincronizar($_POST);
@@ -1020,7 +1039,8 @@ class MusicAlbumsController{
             'idiomas' => $idiomas,
             'selectedLanguages' => $selectedLanguages,
             'sellos' => $sellos,
-            'cancionSello' => $cancionSello
+            'cancionSello' => $cancionSello,
+            'artistaEdit' => $artistaEdit
         ]);
     }
 
