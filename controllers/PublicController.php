@@ -389,6 +389,8 @@ class PublicController{
                 FROM keywords k
                 LEFT JOIN
                     categ_keyword ck ON k.id = ck.id_keyword
+                RIGHT JOIN
+                	canc_keywords cak ON k.id = cak.id_keywords
                 WHERE ck.id_categoria = '.$categoryId.'
                 GROUP BY k.id
         ;';
@@ -445,6 +447,8 @@ class PublicController{
             FROM categorias cat
             RIGHT JOIN
                 categ_keyword ck ON cat.id = ck.id_categoria
+            RIGHT JOIN
+                canc_keywords cak ON ck.id_keyword = cak.id_keywords
             WHERE cat.id != 2
             GROUP BY cat.id 
             ORDER BY categoria_".$lang.";"
