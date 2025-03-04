@@ -26,13 +26,13 @@
                 <p class="caps"><span class="text-yellow">{%song_level%}: </span><?php echo $song->nivel_cancion_es;?></p>
             <?php endif; ?>
 
-            <?php if($lang == '_en'): ?>
+            <?php if($lang == 'en'): ?>
                 <p class="caps"><span class="text-yellow">{%genre%}: </span><?php echo $song->genero_en;?></p>
             <?php else: ?>
                 <p class="caps"><span class="text-yellow">{%genre%}: </span><?php echo $song->genero_es;?></p>
             <?php endif; ?>
             <?php if (!empty($song->categorias_en)): ?>
-                <?php if($lang == '_en'): ?>
+                <?php if($lang == 'en'): ?>
                     <p class="caps"><span class="text-yellow">{%categories%}: </span><?php echo $song->categorias_en;?></p>
                 <?php else: ?>
                     <p class="caps"><span class="text-yellow">{%categories%}: </span><?php echo $song->categorias_es;?></p>
@@ -45,21 +45,21 @@
         </div>
         <div class="music__detail">
             <?php if(!empty($song->gensec_en)): ?>
-                <?php if($lang == '_en'): ?>
+                <?php if($lang == 'en'): ?>
                     <p class="caps"><span class="text-yellow">{%gensec%}: </span><?php echo $song->gensec_en;?></p>
                 <?php else: ?>
                     <p class="caps"><span class="text-yellow">{%gensec%}: </span><?php echo $song->gensec_es;?></p>
                 <?php endif; ?>
             <?php endif; ?>
 
-            <?php if($lang == '_en'): ?>
+            <?php if($lang == 'en'): ?>
                 <p class="caps"><span class="text-yellow">{%languages%}: </span><?php echo $song->idioma_en;?></p>
             <?php else: ?>
                 <p class="caps"><span class="text-yellow">{%languages%}: </span><?php echo $song->idioma_es;?></p>
             <?php endif; ?>
 
             <?php if(!empty($song->keywords_en)): ?>
-                <?php if($lang == '_en'): ?>
+                <?php if($lang == 'en'): ?>
                     <p class="caps"><span class="text-yellow">{%keywords-title%}: </span><?php echo $song->keywords_en;?></p>
                 <?php else: ?>
                     <p class="caps"><span class="text-yellow">{%keywords-title%}: </span><?php echo $song->keywords_es;?></p>

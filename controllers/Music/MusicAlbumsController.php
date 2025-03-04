@@ -1916,6 +1916,7 @@ class MusicAlbumsController{
              GROUP BY 
                  c.id;
         ';
+
         $song = CancionData::consultarSQL($consultaSongs);
         $song = (object)$song[0];
         $albumID = CancionAlbum::where('id_cancion', $song->id);
