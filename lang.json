@@ -1007,6 +1007,10 @@
     "es": "Agregar canción",
     "en": "Add song"
   },
+  "music_songs-back_btn":{
+    "es": "Volver a las canciones",
+    "en": "Back to songs"
+  },
   "music_songs_empty":{
     "es": "No hay canciones en tu catálogo",
     "en": "There are no songs in your catalogue"
@@ -1092,12 +1096,16 @@
     "en": "Select the subgenres"
   },
   "music_songs_form-categories_label":{
-    "es": "Categorías (máximo 5)",
-    "en": "Categories (maximum 5)"
+    "es": "Categorías",
+    "en": "Categories"
   },
   "music_songs_form-categories_placeholder":{
     "es": "Selecciona las categorías",
     "en": "Select the categories"
+  },
+  "music_songs-form-categories_help":{
+    "es": "Selecciona varias de las categorías y subcategorías que mejor describan tu canción. Elige al menos una",
+    "en": "Select several of the categories and subcategories that best describe your song. Choose at least one"
   },
   "music_songs_form-instruments_label":{
     "es": "Instrumentos (máximo 5)",
@@ -1172,12 +1180,12 @@
     "en": "Percentage of ownership of the label between 0 and 100"
   },
   "music_songs-form-phonogram-percent_label":{
-    "es": "Porcentaje del fonograma",
-    "en": "Phonogram percentage"
+    "es": "Porcentaje de propiedad del intérprete",
+    "en": "Performer ownership percentage"
   },
   "music_songs-form-phonogram_placeholder":{
-    "es": "Ejemplo: 100%",
-    "en": "Ejemplo: 100%"
+    "es": "Ejemplo: 70%",
+    "en": "Ejemplo: 70%"
   },
   "music_songs-form-phonogram_alert-required":{
     "es": "El porcentaje del fonograma es obligatorio",

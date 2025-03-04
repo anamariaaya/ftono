@@ -132,6 +132,7 @@ $router->get('/music/singles/edit', [MusicAlbumsController::class, 'editSingle']
 $router->post('/music/singles/edit', [MusicAlbumsController::class, 'editSingle']);
 $router->get('/music/singles/delete', [MusicAlbumsController::class, 'deleteSingle']);
 $router->get('/music/singles/current', [MusicAlbumsController::class, 'currentSingle']);
+$router->get('/api/music/categoriesForm', [MusicAlbumsController::class, 'loadSubcategories']);
 
 //Music Songs
 $router->get('/music/albums/song/new', [MusicAlbumsController::class, 'newSong']);

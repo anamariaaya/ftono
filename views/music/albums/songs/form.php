@@ -171,105 +171,88 @@
     </div>
 
     <!--Categorías-->
-    <div class="form__group">
-        <label class="form__group__label" for="categorias">
-            {%music_songs_form-categories_label%}
-        </label>
-        <select class="form__group__select" id="categorias" multiple>
-            <option disabled>
-                {%music_songs_form-categories_placeholder%}
-            </option>
-            <?php 
-            // Determine the selected categories
-            // If it's a POST request, take values from the POST data
-            $selectedCategories = isset($_POST['selectedCategories']) ? explode(',', $_POST['selectedCategories']) :
-                // If not, check if we are editing and use the saved categories
-                (!empty($selectedCategories) ? $selectedCategories : []);
-
-            foreach ($categorias as $categoria): ?>
-                <option 
-                    value="<?php echo $categoria->id; ?>" 
-                    <?php echo in_array($categoria->id, $selectedCategories) ? 'selected' : ''; ?>>
-                    <?php echo $lang === 'en' ? $categoria->categoria_en : $categoria->categoria_es; ?>
+    <div class="section-bg">
+        <div class="form__group">
+            <label class="form__group__label" for="categorias">
+                {%music_songs_form-categories_label%}
+                <span class="text-yellow">*</span>
+            </label>
+            <p class="texto--password">{%music_songs-form-categories_help%}:</p>
+            <select class="form__group__select" id="categorias">
+                <option selected disabled>
+                    {%music_songs_form-categories_placeholder%}
                 </option>
-            <?php endforeach; ?>
-        </select>
+                <?php 
+                // Determine the selected categories
+                // If it's a POST request, take values from the POST data
+                $selectedSubcategories = isset($_POST['selectedSubcategories']) ? explode(',', $_POST['selectedSubcategories']) :
+                    // If not, check if we are editing and use the saved categories
+                    (!empty($selectedSubcategories) ? $selectedSubcategories : []);
 
-        <!-- Tags for selected categories -->
-        <div id="selectedCategories" class="form__group__languages">
-            <?php foreach ($selectedCategories as $selectedCategoryId): ?>
-                <?php
-                    $categoryName = '';
-                    foreach ($categorias as $categoria) {
-                        if ($categoria->id == $selectedCategoryId) {
-                            $categoryName = $lang === 'en' ? $categoria->categoria_en : $categoria->categoria_es;
-                        }
-                    }
+                foreach ($categorias as $categoria): ?>
+                    <option 
+                        value="<?php echo $categoria->id; ?>" 
+                        <?php echo in_array($categoria->id, $selectedSubcategories) ? 'selected' : ''; ?>>
+                        <?php echo $lang === 'en' ? $categoria->categoria_en : $categoria->categoria_es; ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+
+
+            <select class="form__group__select mTop-1" id="subcategorias" name="subcategorias" multiple>
+                <option selected disabled>
+                    {%music_songs_form-keywords_placeholder%}
+                </option>
+                <?php 
+                // Determine the selected categories
+                // If it's a POST request, take values from the POST data
+                $selectedSubcategories = isset($_POST['selectedSubcategories']) ? explode(',', $_POST['selectedSubcategories']) :
+                    // If not, check if we are editing and use the saved categories
+                    (!empty($selectedSubcategories) ? $selectedSubcategories : []);
+
+                if(!empty($selectedSubcategories)){
+                    foreach ($subcategorias as $subcategoria): ?>
+                        <option 
+                            value="<?php echo $subcategoria->id; ?>" 
+                            <?php echo in_array($subcategoria->id, $selectedSubcategories) ? 'selected' : ''; ?>>
+                            <?php echo $lang === 'en' ? $subcategoria->keyword_en : $subcategoria->keyword_es; ?>
+                        </option>
+                    <?php endforeach;
+                }
                 ?>
-                <span class="categoria-tag" data-id="<?php echo $selectedCategoryId; ?>">
-                    <?php echo $categoryName; ?>
-                    <button type="button" class="remove-categoria">&times;</button>
-                </span>
-            <?php endforeach; ?>
+            </select>
         </div>
-
         <!-- Hidden input to store selected categories -->
+        <input 
+            type="hidden" 
+            id="selectedSubcategoriesInput" 
+            name="selectedSubcategories" 
+            value="<?php echo implode(',', $selectedSubcategories); ?>"/>
+
+             <!-- Tags for selected categories -->
+            <div id="selectedSubcategories" class="form__group__languages">
+                <?php foreach ($selectedSubcategories as $selectedSubcategoryId): ?>
+                    <?php
+                        $subcategoryName = '';
+                        foreach ($subcategorias as $categoria) {
+                            if ($categoria->id == $selectedCategoryId) {
+                                $categoryName = $lang === 'en' ? $categoria->categoria_en : $categoria->categoria_es;
+                            }
+                        }
+                ?>
+                <span class="categoria-tag" data-id="<?php echo $selectedSubcategoryId; ?>">
+                    <?php echo $categoryName; ?>
+                    <button type="button" class="remove-subcategoria">&times;</button>
+                </span>
+                <?php endforeach; ?>
+            </div>
+
+            <!-- Hidden input to store selected categories -->
         <input 
             type="hidden" 
             id="selectedCategoriesInput" 
             name="selectedCategories" 
-            value="<?php echo implode(',', $selectedCategories); ?>">
-    </div>
-
-    
-    <!--Keywords-->
-    <div class="form__group">
-        <label class="form__group__label" for="keywords">
-            {%music_songs_form-keywords_label%}
-        </label>
-        <select class="form__group__select" id="keywords" multiple>
-            <option disabled>
-                {%music_songs_form-keywords_placeholder%}
-            </option>
-            <?php 
-            // Determine the selected keywords
-            $selectedKeywords = isset($_POST['selectedKeywords']) ? explode(',', $_POST['selectedKeywords']) :
-                // If not, check if we are editing and use the saved keywords
-                (!empty($selectedKeywords) ? $selectedKeywords : []);
-
-            foreach ($keywords as $keyword): ?>
-                <option 
-                    value="<?php echo $keyword->id; ?>" 
-                    <?php echo in_array($keyword->id, $selectedKeywords) ? 'selected' : ''; ?>>
-                    <?php echo $lang === 'en' ? $keyword->keyword_en : $keyword->keyword_es; ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-
-        <!-- Tags for selected keywords -->
-        <div id="selectedKeywords" class="form__group__languages">
-            <?php foreach ($selectedKeywords as $selectedKeywordId): ?>
-                <?php
-                    $keywordName = '';
-                    foreach ($keywords as $keyword) {
-                        if ($keyword->id == $selectedKeywordId) {
-                            $keywordName = $lang === 'en' ? $keyword->keyword_en : $keyword->keyword_es;
-                        }
-                    }
-                ?>
-                <span class="keyword-tag" data-id="<?php echo $selectedKeywordId; ?>">
-                    <?php echo $keywordName; ?>
-                    <button type="button" class="remove-keyword">&times;</button>
-                </span>
-            <?php endforeach; ?>
-        </div>
-
-        <!-- Hidden input to store selected keywords -->
-        <input 
-            type="hidden" 
-            id="selectedKeywordsInput" 
-            name="selectedKeywords" 
-            value="<?php echo implode(',', $selectedKeywords); ?>">
+            value="<?php echo implode(',', $selectedCategories); ?>"/>
     </div>
 
     <!--Idiomas-->
@@ -318,7 +301,6 @@
         <!-- Hidden input to hold the selected language IDs -->
         <input type="hidden" id="selectedLanguagesInput" name="selectedLanguages" value="<?php echo implode(',', $selectedLanguages); ?>">
     </div>
-
 
     <!--textarea for lyrics-->
     <div class="form__group">
@@ -452,21 +434,22 @@
     <p class="texto--password">{%music_songs-form-phonogram-percent_help%}:</p>
 
     <div class="form__group">
+         <?php if(isset($albumSello) || isset($artista)): ?>
+                <div class="form__group--info">
+                    <p class="text-yellow mBottom-0 mTop-0">{%t-property-of%}: 
+                        <span class="caps text-white" id="phonogram-property">
+                            <?php 
+                                echo $albumSello.' + '.$artista;
+                            ?>
+                        </span>
+                    </p>
+                </div>
+        <?php endif;?>
         <label class="form__group__label" for="sello_propiedad">
             {%music_songs-form-phonogram-percent_label%}
             <span class="text-yellow">*</span>
         </label>
-            <?php if(isset($albumSello) || isset($artista)): ?>
-                    <div class="form__group--info">
-                        <p class="text-yellow mBottom-0 mTop-0">{%t-property-of%}: 
-                            <span class="caps text-white" id="phonogram-property">
-                                <?php 
-                                    echo $albumSello.' + '.$artista;
-                                ?>
-                            </span>
-                        </p>
-                    </div>
-            <?php endif;?>
+           
         <input
             type="number"
             class="form__group__input"

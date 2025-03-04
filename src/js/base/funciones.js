@@ -1,6 +1,6 @@
-import {er, num, indicativo, formArtist, artistFields} from '../music/selectores.js';
+import {er, num} from '../music/selectores.js';
 
-import {body, dashboardContenido, tabsBtns, tabsContent, tabsDiv, submitBtns, languageSelect, selectedLanguagesContainer, selectedLanguagesInput, selloInput, noLabelCheckbox, defaultLabelInput, fileInput, fileNameContainer, selectedGenresContainer, selectedGenresInput, genreSelect, selectedInstrumentsContainer, selectedInstrumentsInput, instrumentSelect, selectedKeywordsContainer, selectedKeywordsInput, keywordSelect, selectedCategoriesContainer, selectedCategoriesInput, categorySelect} from './selectores.js';
+import {body, dashboardContenido, tabsBtns, tabsContent, tabsDiv, submitBtns, languageSelect, selectedLanguagesContainer, selectedLanguagesInput, selloInput, noLabelCheckbox, defaultLabelInput, fileInput, fileNameContainer, selectedGenresContainer, selectedGenresInput, genreSelect, selectedKeywordsContainer, selectedKeywordsInput, keywordSelect, selectedSubcategoriesContainer, selectedSubcategoriesInput, selectedCategoriesInput, categorySelect, subcategorySelect} from './selectores.js';
 
 
 export async function readLang(){
@@ -116,6 +116,21 @@ export function loader(button){
         document.getElementById('loadingScreen').style.display = 'flex';
     }
 }
+
+export function loaderTimer(){
+    document.getElementById('loadingScreen').style.display = 'flex';
+    setTimeout(() => {
+        document.getElementById('loadingScreen').style.display = 'none';
+    }, 1500);
+}
+
+export function loaderTimerExtra(){
+    document.getElementById('loadingScreen').style.display = 'flex';
+    setTimeout(() => {
+        document.getElementById('loadingScreen').style.display = 'none';
+    }, 2500);
+}
+    
 
 export function loaderPage(){
     document.getElementById('loadingScreen').style.display = 'none';
@@ -398,122 +413,138 @@ export function handleGenreSelection() {
 }
 
 export function handleCategorySelection() {
-    // Clear existing tags to prevent duplication
-    selectedCategoriesContainer.innerHTML = '';
+    // Ensure the subcategory container is empty
+    selectedSubcategoriesContainer.innerHTML = '';
 
-    // First, populate the selected languages if they exist in the input value
-    if (selectedCategoriesInput.value) {
-        const selectedValues = selectedCategoriesInput.value.split(',').filter(value => value !== '');
+    // Pre-populate the tags for the selected subcategories if any
+    if (selectedSubcategoriesInput.value) {
+        const selectedValues = selectedSubcategoriesInput.value.split(',').filter(value => value !== '');
         selectedValues.forEach(value => {
-            addCategoryTag(value);
+            addSubcategoryTag(value);
         });
     }
 
-    // Add event listener to select dropdown
+    // Add event listener for category select change
     categorySelect.addEventListener('change', () => {
         const selectedValue = categorySelect.value;
+        selectedCategoriesInput.value = selectedValue;  // Update the hidden input with the selected category
+
+        async function loadSubcategories() {
+            loaderTimer();
+            try {
+                const url = window.location.origin + '/api/music/categoriesForm?idCategoria=' + selectedValue;
+                const response = await fetch(url);
+                const data = await response.json();
+                createSubcategories(data);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        loadSubcategories();
         
-        // Check if the option is already selected
-        const existingTag = selectedCategoriesContainer.querySelector(`[data-value="${selectedValue}"]`);
-        if (!existingTag) {
-            // Only add the tag if it doesn't already exist
-            addCategoryTag(selectedValue);
+
+        async function createSubcategories(data) {
+            const lang = await readLang();
+
+            // Remove existing subcategories select if present
+            const existingSubcat = document.querySelector('#subcategorias');
+            if (existingSubcat) {
+                existingSubcat.remove();
+            }
+
+            // Create a new multiple select for subcategories
+            const subcategoriesSelect = document.createElement('select');
+            subcategoriesSelect.id = 'subcategorias';
+            subcategoriesSelect.name = 'subcategorias';
+            subcategoriesSelect.classList.add('form__group__select', 'mTop-1');
+            subcategoriesSelect.multiple = true;
+
+
+            const subcatLabel = document.querySelector('#subcatLabel');
+
+            // Populate the subcategories select
+            data.forEach(subcat => {
+                const option = document.createElement('option');
+                option.value = subcat.id;
+                option.text = lang === 'en' ? subcat.keyword_en : subcat.keyword_es;
+                subcategoriesSelect.appendChild(option);
+            });
+
+            // Insert subcategories select into the DOM
+            categorySelect.insertAdjacentElement('afterend', subcategoriesSelect);
+
+            // Create a hidden input for subcategories
+            const hiddenSubcatInput = document.querySelector('#selectedSubcategoriesInput');
+           
+
+            // Update the hidden input when subcategories are selected
+            subcategoriesSelect.addEventListener('change', () => {
+                const selectedValues = [...subcategoriesSelect.selectedOptions].map(option => option.value);
+
+                // Remove duplicates and update the hidden input with comma-separated values
+                const currentValues = hiddenSubcatInput.value ? hiddenSubcatInput.value.split(',') : [];
+                const newSelectedValues = [...new Set([...currentValues, ...selectedValues])]; // Remove duplicates
+                hiddenSubcatInput.value = newSelectedValues.join(',');
+
+                // Add tags for the newly selected values
+                selectedValues.forEach(value => {
+                    if (!currentValues.includes(value)) {
+                        addSubcategoryTag(value);
+                    }
+                });
+            });
         }
     });
 
-    function addCategoryTag(selectedValue) {
-        const option = categorySelect.querySelector(`option[value="${selectedValue}"]`);
-        if (option) {
+    // Function to add a subcategory tag
+    function addSubcategoryTag(value) {
+        const subcategoryOption = document.querySelector(`#subcategorias option[value="${value}"]`);
+        if (subcategoryOption) {
             const tag = document.createElement('div');
             tag.classList.add('categoria-tag');
-            tag.textContent = option.text;
-            tag.setAttribute('data-value', selectedValue); // Store the value for reference
+            tag.textContent = subcategoryOption.text;
+            tag.setAttribute('data-value', value);
 
-            // Create the remove button
+            // Create the remove button for the tag
             const removeButton = document.createElement('button');
             removeButton.classList.add('remove-categoria');
             removeButton.textContent = 'x';
             removeButton.addEventListener('click', () => {
-                option.selected = false; // Unselect the language
                 tag.remove();
-                updateSelectedCategoriesInput(); // Update hidden input field
+                removeSubcategory(value);
             });
 
-            // Append button and tag to the container
+            // Append the tag and remove button to the container
             tag.appendChild(removeButton);
-            selectedCategoriesContainer.appendChild(tag);
+            selectedSubcategoriesContainer.appendChild(tag);
 
-            // Update the hidden input field with selected languages
-            updateSelectedCategoriesInput();
+            // Update the hidden input field with the current subcategories
+            updateSelectedSubcategoriesInput();
         }
     }
 
-    function updateSelectedCategoriesInput() {
-        // Get the selected values from the tags and set them in the hidden input
-        const selectedValues = [...selectedCategoriesContainer.querySelectorAll('.categoria-tag')]
-            .map(tag => tag.getAttribute('data-value'))
-            .filter(value => value !== '');
-        selectedCategoriesInput.value = selectedValues.join(',');
-    }
-}
-
-export function handleInstrumentSelection() {
-    // Clear existing tags to prevent duplication
-    selectedInstrumentsContainer.innerHTML = '';
-
-    // First, populate the selected languages if they exist in the input value
-    if (selectedInstrumentsInput.value) {
-        const selectedValues = selectedInstrumentsInput.value.split(',').filter(value => value !== '');
-        selectedValues.forEach(value => {
-            addInstrumentTag(value);
-        });
-    }
-
-    // Add event listener to select dropdown
-    instrumentSelect.addEventListener('change', () => {
-        const selectedValue = instrumentSelect.value;
-        
-        // Check if the option is already selected
-        const existingTag = selectedInstrumentsContainer.querySelector(`[data-value="${selectedValue}"]`);
-        if (!existingTag) {
-            // Only add the tag if it doesn't already exist
-            addInstrumentTag(selectedValue);
-        }
-    });
-
-    function addInstrumentTag(selectedValue) {
-        const option = instrumentSelect.querySelector(`option[value="${selectedValue}"]`);
+    // Function to remove a subcategory
+    function removeSubcategory(value) {
+        const subcategoriesSelect = document.querySelector('#subcategorias');
+        const option = subcategoriesSelect.querySelector(`option[value="${value}"]`);
         if (option) {
-            const tag = document.createElement('div');
-            tag.classList.add('instrumento-tag');
-            tag.textContent = option.text;
-            tag.setAttribute('data-value', selectedValue); // Store the value for reference
-
-            // Create the remove button
-            const removeButton = document.createElement('button');
-            removeButton.classList.add('remove-instrumento');
-            removeButton.textContent = 'x';
-            removeButton.addEventListener('click', () => {
-                option.selected = false; // Unselect the language
-                tag.remove();
-                updateSelectedInstrumentsInput(); // Update hidden input field
-            });
-
-            // Append button and tag to the container
-            tag.appendChild(removeButton);
-            selectedInstrumentsContainer.appendChild(tag);
-
-            // Update the hidden input field with selected languages
-            updateSelectedInstrumentsInput();
+            option.selected = false;
         }
+
+        // Remove the value from the hidden input and update it
+        const currentValues = selectedSubcategoriesInput.value.split(',').filter(val => val !== value);
+        selectedSubcategoriesInput.value = currentValues.join(',');
+
+        // Remove the tag from the container
+        updateSelectedSubcategoriesInput();
     }
 
-    function updateSelectedInstrumentsInput() {
-        // Get the selected values from the tags and set them in the hidden input
-        const selectedValues = [...selectedInstrumentsContainer.querySelectorAll('.instrumento-tag')]
+    // Function to update the hidden subcategories input with the selected values
+    function updateSelectedSubcategoriesInput() {
+        const selectedValues = [...selectedSubcategoriesContainer.querySelectorAll('.categoria-tag')]
             .map(tag => tag.getAttribute('data-value'))
             .filter(value => value !== '');
-        selectedInstrumentsInput.value = selectedValues.join(',');
+        selectedSubcategoriesInput.value = selectedValues.join(',');
     }
 }
 
@@ -577,7 +608,6 @@ export function handleKeywordsSelection() {
     }
 }
 
-// labelCheckbox.js
 
 export function initializeLabelCheckbox() {
     

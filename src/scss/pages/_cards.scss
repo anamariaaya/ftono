@@ -27,10 +27,10 @@
             position: relative;
             border: v.$border-tabs;
             border-radius: v.$border-radius;      
-            height: 7rem;
+            height: 22rem;
             background-image: linear-gradient(v.$gray-dark, v.$gray-light);
             @include m.tablet{
-                height: 12rem;
+                height: 32rem;
             }
             &:hover .p-cards__grid__text{
                 transform: translateY(-3%);

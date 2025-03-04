@@ -410,11 +410,16 @@ class MusicAlbumsController{
         $alertas = [];
         
         $selectedCategories = [];
-        if($lang == 'en'){
-            $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2) ORDER BY categoria_en;";
-        }else{
-            $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2) ORDER BY categoria_es;";
-        }
+        
+        $consultaCategorias = "SELECT c.*,
+            ck.id as idcatKey
+            FROM categorias c
+            INNER JOIN categ_keyword ck ON ck.id_categoria = c.id
+            WHERE c.id NOT IN (1)
+            GROUP BY c.id
+            ORDER BY c.categoria_".$lang.";"
+        ;
+        
         $categorias = Categorias::consultarSQL($consultaCategorias);
 
         $niveles = NivelCancion::all();
@@ -427,14 +432,10 @@ class MusicAlbumsController{
         $selectedGenres = [];
 
 
-        if($lang == 'en'){
-            $consultaKeywords = "SELECT k.* FROM keywords k INNER JOIN categ_keyword ck ON k.id = ck.id_keyword WHERE ck.id_categoria NOT IN (1, 2) ORDER BY keyword_en;";
-        }else{
-            $consultaKeywords = "SELECT k.* FROM keywords k INNER JOIN categ_keyword ck ON k.id = ck.id_keyword WHERE ck.id_categoria NOT IN (1, 2) ORDER BY keyword_es;";
-        }
+        $consultaKeywords = "SELECT k.* FROM keywords k INNER JOIN categ_keyword ck ON k.id = ck.id_keyword WHERE ck.id_categoria NOT IN (1) ORDER BY keyword_".$lang.";";
         
-        $keywords = Keywords::consultarSQL($consultaKeywords);
-        $selectedKeywords = [];
+        $subcategorias = Keywords::consultarSQL($consultaKeywords);
+        $selectedSubcategories = [];
 
         $idiomas = Idiomas::AllOrderAsc('idioma_'.$lang);
         $selectedLanguages = [];
@@ -456,12 +457,12 @@ class MusicAlbumsController{
             $song->id_usuario = $id;
             $alertas = $song->validarCancion();
 
-            if($_POST['sello']){
+            if(!empty($_POST['sello'])){
                 $temporarySello = Sellos::where('id', $_POST['sello']);
                 $temporarySello = $temporarySello->nombre;
             }
 
-            if($_POST['artista']){
+            if(!empty($_POST['artista'])){
                 $temporaryArtista = Artistas::where('id', $_POST['artista']);
                 $temporaryArtista = $temporaryArtista->nombre;
             }
@@ -502,7 +503,7 @@ class MusicAlbumsController{
             $escritorPropiedad = isset($_POST['escritor_propiedad']) ? (int)$_POST['escritor_propiedad'] : 0;
             $publisherPropiedad = isset($_POST['publisher_propiedad']) ? (int)$_POST['publisher_propiedad'] : 0;
 
-            if (($escritorPropiedad + $publisherPropiedad) > 100) {
+            if (($escritorPropiedad + $publisherPropiedad) > 100 || ($escritorPropiedad + $publisherPropiedad) < 100) {
                 $alertas = CancionEscritorPropiedad::setAlerta('error', 'music_songs_form-writers-percent_alert-total');
             }
             $alertas = CancionEscritorPropiedad::getAlertas();
@@ -575,19 +576,37 @@ class MusicAlbumsController{
                 }
                 
                 //Guardar las categorías de la canción
-                if(!empty($_POST['selectedCategories'])){
-                    $categorias = explode(',', $_POST['selectedCategories']);
+                if(!empty($_POST['selectedSubcategories'])){
+                    $categorias = explode(',', $_POST['selectedSubcategories']);
+                    
                     foreach($categorias as $categoria){
-                        $cancionCategoria = new CancionCategorias;
-                        $cancionCategoria->id_cancion = $song->id;
-                        $cancionCategoria->id_categoria = $categoria;
-                        $cancionCategoria->guardar();
+                        // Get the category related to the subcategory
+                        $consultaCategorias = 'SELECT c.* 
+                                            FROM categorias c 
+                                            INNER JOIN categ_keyword ck ON ck.id_categoria = c.id 
+                                            WHERE ck.id_keyword = '.$categoria.' 
+                                            GROUP BY c.id';
+                        $categorias = Categorias::consultarSQL($consultaCategorias);
+                        // Convert array to object (assuming only one result)
+                        $categorias = (object)$categorias[0];
+
+                        // Manually check if the combination of id_cancion and id_categoria already exists in canc_categoria table
+                        $checkExistenceQuery = 'SELECT * FROM canc_categorias WHERE id_cancion = '.$song->id.' AND id_categoria = '.$categorias->id;
+                        $existingCategory = CancionCategorias::consultarSQL($checkExistenceQuery);
+
+                        // If no record is found, proceed with the insertion
+                        if (empty($existingCategory)) {
+                            $cancionCategoria = new CancionCategorias;
+                            $cancionCategoria->id_cancion = $song->id;
+                            $cancionCategoria->id_categoria = $categorias->id;
+                            $cancionCategoria->guardar();
+                        }
                     }
                 }
                 
                 //Guardar las keywords de la canción
-                if(!empty($_POST['selectedKeywords'])){
-                    $keywords = explode(',', $_POST['selectedKeywords']);
+                if(!empty($_POST['selectedSubcategories'])){
+                    $keywords = explode(',', $_POST['selectedSubcategories']);
                     foreach($keywords as $keyword){
                         $cancionKeyword = new CancionKeywords;
                         $cancionKeyword->id_cancion = $song->id;
@@ -659,8 +678,8 @@ class MusicAlbumsController{
             'lang' => $lang,
             'generos' => $generos,
             'selectedGenres' => $selectedGenres,
-            'keywords' => $keywords,
-            'selectedKeywords' => $selectedKeywords,
+            'subcategorias' => $subcategorias,
+            'selectedSubcategories' => $selectedSubcategories,
             'idiomas' => $idiomas,
             'selectedLanguages' => $selectedLanguages,
             'sellos' => $sellos,
@@ -781,11 +800,14 @@ class MusicAlbumsController{
         }
 
         $selectedCategories = [];
-        if($lang == 'en'){
-            $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2, 3) ORDER BY categoria_en;";
-        }else{
-            $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2, 3) ORDER BY categoria_es;";
-        }
+        $consultaCategorias = "SELECT c.*,
+            ck.id as idcatKey
+            FROM categorias c
+            INNER JOIN categ_keyword ck ON ck.id_categoria = c.id
+            WHERE c.id NOT IN (1)
+            GROUP BY c.id
+            ORDER BY c.categoria_".$lang.";"
+        ;
         $categorias = Categorias::consultarSQL($consultaCategorias);
 
         $cancionCategorias = CancionCategorias::whereAll('id_cancion', $song->id);
@@ -793,17 +815,15 @@ class MusicAlbumsController{
             $selectedCategories[] = $cancionCategoria->id_categoria;
         }
 
-        $selectedKeywords = [];
-        if($lang == 'en'){
-            $consultaKeywords = "SELECT k.* FROM keywords k INNER JOIN categ_keyword ck ON k.id = ck.id_keyword WHERE ck.id_categoria NOT IN (1, 2) ORDER BY keyword_en;";
-        }else{
-            $consultaKeywords = "SELECT k.* FROM keywords k INNER JOIN categ_keyword ck ON k.id = ck.id_keyword WHERE ck.id_categoria NOT IN (1, 2) ORDER BY keyword_es;";
-        }
-        $keywords = Keywords::consultarSQL($consultaKeywords);
+        $selectedSubcategories = [];
+        
+        $consultaKeywords = "SELECT k.* FROM keywords k INNER JOIN categ_keyword ck ON k.id = ck.id_keyword WHERE ck.id_categoria NOT IN (1) ORDER BY keyword_".$lang.";";
+        
+        $subcategorias = Keywords::consultarSQL($consultaKeywords);
 
         $cancionKeywords = CancionKeywords::whereAll('id_cancion', $song->id);
         foreach ($cancionKeywords as $cancionKeyword) {
-            $selectedKeywords[] = $cancionKeyword->id_keywords;
+            $selectedSubcategories[] = $cancionKeyword->id_keywords;
         }
 
         $idiomas = Idiomas::AllOrderAsc('idioma_'.$lang);
@@ -943,13 +963,31 @@ class MusicAlbumsController{
                 }
 
                 //Guardar las categorías de la canción
-                if(!empty($_POST['selectedCategories'])){
-                    $categorias = explode(',', $_POST['selectedCategories']);
+                if(!empty($_POST['selectedSubcategories'])){
+                    $categorias = explode(',', $_POST['selectedSubcategories']);
+                    
                     foreach($categorias as $categoria){
-                        $cancionCategoria = new CancionCategorias;
-                        $cancionCategoria->id_cancion = $song->id;
-                        $cancionCategoria->id_categoria = $categoria;
-                        $cancionCategoria->guardar();
+                        // Get the category related to the subcategory
+                        $consultaCategorias = 'SELECT c.* 
+                                            FROM categorias c 
+                                            INNER JOIN categ_keyword ck ON ck.id_categoria = c.id 
+                                            WHERE ck.id_keyword = '.$categoria.' 
+                                            GROUP BY c.id';
+                        $categorias = Categorias::consultarSQL($consultaCategorias);
+                        // Convert array to object (assuming only one result)
+                        $categorias = (object)$categorias[0];
+
+                        // Manually check if the combination of id_cancion and id_categoria already exists in canc_categoria table
+                        $checkExistenceQuery = 'SELECT * FROM canc_categorias WHERE id_cancion = '.$song->id.' AND id_categoria = '.$categorias->id;
+                        $existingCategory = CancionCategorias::consultarSQL($checkExistenceQuery);
+
+                        // If no record is found, proceed with the insertion
+                        if (empty($existingCategory)) {
+                            $cancionCategoria = new CancionCategorias;
+                            $cancionCategoria->id_cancion = $song->id;
+                            $cancionCategoria->id_categoria = $categorias->id;
+                            $cancionCategoria->guardar();
+                        }
                     }
                 }
 
@@ -960,8 +998,8 @@ class MusicAlbumsController{
                 }
 
                 //Guardar las keywords de la canción
-                if(!empty($_POST['selectedKeywords'])){
-                    $keywords = explode(',', $_POST['selectedKeywords']);
+                if(!empty($_POST['selectedSubcategories'])){
+                    $keywords = explode(',', $_POST['selectedSubcategories']);
                     foreach($keywords as $keyword){
                         $cancionKeyword = new CancionKeywords;
                         $cancionKeyword->id_cancion = $song->id;
@@ -1010,6 +1048,7 @@ class MusicAlbumsController{
                 header('Location: /music/albums');
             }
         }
+        $alertas = Canciones::getAlertas();
 
         $router->render('music/albums/singles/edit',[
             'titulo' => $titulo,
@@ -1034,8 +1073,8 @@ class MusicAlbumsController{
             'categorias' => $categorias,
             'selectedCategories' => $selectedCategories,
             'selectedGenres' => $selectedGenres,
-            'keywords' => $keywords,
-            'selectedKeywords' => $selectedKeywords,
+            'subcategorias' => $subcategorias,
+            'selectedSubcategories' => $selectedSubcategories,
             'idiomas' => $idiomas,
             'selectedLanguages' => $selectedLanguages,
             'sellos' => $sellos,
@@ -1165,11 +1204,14 @@ class MusicAlbumsController{
         $alertas = [];
         
         $selectedCategories = [];
-        if($lang == 'en'){
-            $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2, 3) ORDER BY categoria_en;";
-        }else{
-            $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2, 3) ORDER BY categoria_es;";
-        }
+        $consultaCategorias = "SELECT c.*,
+            ck.id as idcatKey
+            FROM categorias c
+            INNER JOIN categ_keyword ck ON ck.id_categoria = c.id
+            WHERE c.id NOT IN (1)
+            GROUP BY c.id
+            ORDER BY c.categoria_".$lang.";"
+        ;
         $categorias = Categorias::consultarSQL($consultaCategorias);
 
         $niveles = NivelCancion::all();
@@ -1181,15 +1223,12 @@ class MusicAlbumsController{
         
         $selectedGenres = [];
 
-        if($lang == 'en'){
-            $consultaKeywords = "SELECT k.* FROM keywords k INNER JOIN categ_keyword ck ON k.id = ck.id_keyword WHERE ck.id_categoria NOT IN (1, 2) ORDER BY keyword_en;";
-        }else{
-            $consultaKeywords = "SELECT k.* FROM keywords k INNER JOIN categ_keyword ck ON k.id = ck.id_keyword WHERE ck.id_categoria NOT IN (1, 2) ORDER BY keyword_es;";
-        }
         
-        $keywords = Keywords::consultarSQL($consultaKeywords);
-
-        $selectedKeywords = [];
+        $consultaKeywords = "SELECT k.* FROM keywords k INNER JOIN categ_keyword ck ON k.id = ck.id_keyword WHERE ck.id_categoria NOT IN (1) ORDER BY keyword_".$lang.";";
+        
+        
+        $subcategorias = Keywords::consultarSQL($consultaKeywords);
+        $selectedSubcategories = [];
 
         $idiomas = Idiomas::AllOrderAsc('idioma_en');
         $selectedLanguages = [];
@@ -1239,7 +1278,7 @@ class MusicAlbumsController{
             $escritorPropiedad = isset($_POST['escritor_propiedad']) ? (int)$_POST['escritor_propiedad'] : 0;
             $publisherPropiedad = isset($_POST['publisher_propiedad']) ? (int)$_POST['publisher_propiedad'] : 0;
 
-            if (($escritorPropiedad + $publisherPropiedad) > 100) {
+            if (($escritorPropiedad + $publisherPropiedad) > 100 || ($escritorPropiedad + $publisherPropiedad) < 100) {
                 $alertas = CancionEscritorPropiedad::setAlerta('error', 'music_songs_form-writers-percent_alert-total');
             }
             $alertas = CancionEscritorPropiedad::getAlertas();
@@ -1259,11 +1298,18 @@ class MusicAlbumsController{
             $songColab->sincronizar($_POST);  
 
             if(empty($alertas)){
+                //debugging($_POST);
                 $song->sello = $album->sello;
                 $song->guardar();
 
                 //Buscar la canción recién creada
                 $song = Canciones::where('isrc', $_POST['isrc']);
+
+                $artista = Artistas::find($albumArtista->id_artistas);
+                $cancionArtista = new CancionArtista;
+                $cancionArtista->id_cancion = $song->id;
+                $cancionArtista->id_artista = $artista->id;
+                $cancionArtista->guardar();
 
                 $cancionAlbum = new CancionAlbum;
                 $cancionAlbum->id_cancion = $song->id;
@@ -1300,20 +1346,38 @@ class MusicAlbumsController{
                 }
                 
                 //Guardar las categorías de la canción
-                if(!empty($_POST['selectedCategories'])){
-                    $categorias = explode(',', $_POST['selectedCategories']);
+                if(!empty($_POST['selectedSubcategories'])){
+                    $categorias = explode(',', $_POST['selectedSubcategories']);
+                    
                     foreach($categorias as $categoria){
-                        $cancionCategoria = new CancionCategorias;
-                        $cancionCategoria->id_cancion = $song->id;
-                        $cancionCategoria->id_categoria = $categoria;
-                        $cancionCategoria->guardar();
+                        // Get the category related to the subcategory
+                        $consultaCategorias = 'SELECT c.* 
+                                            FROM categorias c 
+                                            INNER JOIN categ_keyword ck ON ck.id_categoria = c.id 
+                                            WHERE ck.id_keyword = '.$categoria.' 
+                                            GROUP BY c.id';
+                        $categorias = Categorias::consultarSQL($consultaCategorias);
+                        // Convert array to object (assuming only one result)
+                        $categorias = (object)$categorias[0];
+
+                        // Manually check if the combination of id_cancion and id_categoria already exists in canc_categoria table
+                        $checkExistenceQuery = 'SELECT * FROM canc_categorias WHERE id_cancion = '.$song->id.' AND id_categoria = '.$categorias->id;
+                        $existingCategory = CancionCategorias::consultarSQL($checkExistenceQuery);
+
+                        // If no record is found, proceed with the insertion
+                        if (empty($existingCategory)) {
+                            $cancionCategoria = new CancionCategorias;
+                            $cancionCategoria->id_cancion = $song->id;
+                            $cancionCategoria->id_categoria = $categorias->id;
+                            $cancionCategoria->guardar();
+                        }
                     }
                 }
 
-                
+
                 //Guardar las keywords de la canción
-                if(!empty($_POST['selectedKeywords'])){
-                    $keywords = explode(',', $_POST['selectedKeywords']);
+                if(!empty($_POST['selectedSubcategories'])){
+                    $keywords = explode(',', $_POST['selectedSubcategories']);
                     foreach($keywords as $keyword){
                         $cancionKeyword = new CancionKeywords;
                         $cancionKeyword->id_cancion = $song->id;
@@ -1385,8 +1449,8 @@ class MusicAlbumsController{
             'lang' => $lang,
             'generos' => $generos,
             'selectedGenres' => $selectedGenres,
-            'keywords' => $keywords,
-            'selectedKeywords' => $selectedKeywords,
+            'subcategorias' => $subcategorias,
+            'selectedSubcategories' => $selectedSubcategories,
             'idiomas' => $idiomas,
             'selectedLanguages' => $selectedLanguages,
             'alertas' => $alertas,
@@ -1496,7 +1560,6 @@ class MusicAlbumsController{
 
         $niveles = NivelCancion::all();
 
-
         $generos = Genres::AllOrderAsc('genero_'.$lang);
 
         $selectedGenres = [];
@@ -1506,11 +1569,15 @@ class MusicAlbumsController{
         }
 
         $selectedCategories = [];
-        if($lang == 'en'){
-            $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2, 3) ORDER BY categoria_en;";
-        }else{
-            $consultaCategorias = "SELECT * FROM categorias WHERE id NOT IN (1, 2, 3) ORDER BY categoria_es;";
-        }
+        
+        $consultaCategorias = "SELECT c.*,
+            ck.id as idcatKey
+            FROM categorias c
+            INNER JOIN categ_keyword ck ON ck.id_categoria = c.id
+            WHERE c.id NOT IN (1)
+            GROUP BY c.id
+            ORDER BY c.categoria_".$lang.";"
+        ;
         $categorias = Categorias::consultarSQL($consultaCategorias);
 
         $cancionCategorias = CancionCategorias::whereAll('id_cancion', $song->id);
@@ -1518,17 +1585,15 @@ class MusicAlbumsController{
             $selectedCategories[] = $cancionCategoria->id_categoria;
         }
 
-        $selectedKeywords = [];
-        if($lang == 'en'){
-            $consultaKeywords = "SELECT k.* FROM keywords k INNER JOIN categ_keyword ck ON k.id = ck.id_keyword WHERE ck.id_categoria NOT IN (1, 2) ORDER BY keyword_en;";
-        }else{
-            $consultaKeywords = "SELECT k.* FROM keywords k INNER JOIN categ_keyword ck ON k.id = ck.id_keyword WHERE ck.id_categoria NOT IN (1, 2) ORDER BY keyword_es;";
-        }
-        $keywords = Keywords::consultarSQL($consultaKeywords);
+        $selectedSubcategories = [];
+        
+        $consultaKeywords = "SELECT k.* FROM keywords k INNER JOIN categ_keyword ck ON k.id = ck.id_keyword WHERE ck.id_categoria NOT IN (1) ORDER BY keyword_".$lang.";";
+        
+        $subcategorias = Keywords::consultarSQL($consultaKeywords);
 
         $cancionKeywords = CancionKeywords::whereAll('id_cancion', $song->id);
         foreach ($cancionKeywords as $cancionKeyword) {
-            $selectedKeywords[] = $cancionKeyword->id_keywords;
+            $selectedSubcategories[] = $cancionKeyword->id_keywords;
         }
 
         $idiomas = Idiomas::AllOrderAsc('idioma_'.$lang);
@@ -1646,13 +1711,31 @@ class MusicAlbumsController{
                 }
 
                 //Guardar las categorías de la canción
-                if(!empty($_POST['selectedCategories'])){
-                    $categorias = explode(',', $_POST['selectedCategories']);
+                if(!empty($_POST['selectedSubcategories'])){
+                    $categorias = explode(',', $_POST['selectedSubcategories']);
+                    
                     foreach($categorias as $categoria){
-                        $cancionCategoria = new CancionCategorias;
-                        $cancionCategoria->id_cancion = $song->id;
-                        $cancionCategoria->id_categoria = $categoria;
-                        $cancionCategoria->guardar();
+                        // Get the category related to the subcategory
+                        $consultaCategorias = 'SELECT c.* 
+                                            FROM categorias c 
+                                            INNER JOIN categ_keyword ck ON ck.id_categoria = c.id 
+                                            WHERE ck.id_keyword = '.$categoria.' 
+                                            GROUP BY c.id';
+                        $categorias = Categorias::consultarSQL($consultaCategorias);
+                        // Convert array to object (assuming only one result)
+                        $categorias = (object)$categorias[0];
+
+                        // Manually check if the combination of id_cancion and id_categoria already exists in canc_categoria table
+                        $checkExistenceQuery = 'SELECT * FROM canc_categorias WHERE id_cancion = '.$song->id.' AND id_categoria = '.$categorias->id;
+                        $existingCategory = CancionCategorias::consultarSQL($checkExistenceQuery);
+
+                        // If no record is found, proceed with the insertion
+                        if (empty($existingCategory)) {
+                            $cancionCategoria = new CancionCategorias;
+                            $cancionCategoria->id_cancion = $song->id;
+                            $cancionCategoria->id_categoria = $categorias->id;
+                            $cancionCategoria->guardar();
+                        }
                     }
                 }
 
@@ -1663,8 +1746,8 @@ class MusicAlbumsController{
                 }
 
                 //Guardar las keywords de la canción
-                if(!empty($_POST['selectedKeywords'])){
-                    $keywords = explode(',', $_POST['selectedKeywords']);
+                if(!empty($_POST['selectedSubcategories'])){
+                    $keywords = explode(',', $_POST['selectedSubcategories']);
                     foreach($keywords as $keyword){
                         $cancionKeyword = new CancionKeywords;
                         $cancionKeyword->id_cancion = $song->id;
@@ -1714,6 +1797,8 @@ class MusicAlbumsController{
             }
         }
 
+        $alertas = Canciones::getAlertas();
+
         $router->render('music/albums/songs/edit',[
             'titulo' => $titulo,
             'edit' => $edit,
@@ -1735,8 +1820,8 @@ class MusicAlbumsController{
             'categorias' => $categorias,
             'selectedCategories' => $selectedCategories,
             'selectedGenres' => $selectedGenres,
-            'keywords' => $keywords,
-            'selectedKeywords' => $selectedKeywords,
+            'subcategorias' => $subcategorias,
+            'selectedSubcategories' => $selectedSubcategories,
             'idiomas' => $idiomas,
             'selectedLanguages' => $selectedLanguages,
             'artista' => $artista,
@@ -1842,5 +1927,19 @@ class MusicAlbumsController{
             'song' => $song,
             'album' => $album
         ]);
+    }
+
+    public static function loadSubcategories(){
+        //isMusico();
+        $idCategoria = $_GET['idCategoria'];
+        $lang = $_SESSION['lang'] ?? 'en';
+        $consultaSubcategorias = 'SELECT k.*
+            FROM keywords k
+            INNER JOIN categ_keyword ck ON ck.id_keyword = k.id
+            WHERE ck.id_categoria = '.$idCategoria.'
+            ORDER BY k.keyword_'.$lang.'
+        ;';
+        $subcategorias = Keywords::consultarSQL($consultaSubcategorias);
+        echo json_encode($subcategorias);
     }
 }

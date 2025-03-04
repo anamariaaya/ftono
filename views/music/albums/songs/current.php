@@ -1,6 +1,6 @@
 <a href="/music/albums" class="btn-back">
     <i class="fa-solid fa-arrow-left"></i>
-    {%music_singles-back_btn%}
+    {%music_songs-back_btn%}
 </a>
 
 <h1><?php echo $song->titulo;?></h1>

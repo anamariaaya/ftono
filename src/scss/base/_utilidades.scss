@@ -18,6 +18,12 @@
     border-radius: 2rem;
 }
 
+.section-bg{
+    background-color: lighten(v.$gray, 9);
+    padding: 2rem;
+    border-radius: 2rem;
+}
+
 .div-bg{
     background-color: v.$gray;
     margin-top: 4rem;
