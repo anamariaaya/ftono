@@ -1,4 +1,4 @@
-<a href="/music/albums" class="btn-back">
+<a href="/music/albums/current?id=<?php echo $albumId;?>" class="btn-back">
     <i class="fa-solid fa-arrow-left"></i>
     {%music_songs-back_btn%}
 </a>

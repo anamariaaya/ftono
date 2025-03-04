@@ -1848,6 +1848,7 @@ class MusicAlbumsController{
         $lang = $_SESSION['lang'] ?? 'en';
         $titulo = 'music_songs_current_title';
         $songId = redireccionar('/music/albums');
+
         $consultaSongs = 'SELECT 
              c.*,
              ar.id AS artista_id,
@@ -1921,12 +1922,14 @@ class MusicAlbumsController{
         $song = (object)$song[0];
         $albumID = CancionAlbum::where('id_cancion', $song->id);
         $album = Albums::find($albumID->id_album);
+        $albumId = $album->id;
 
         $router->render('music/albums/songs/current',[
             'titulo' => $titulo,
             'lang' => $lang,
             'song' => $song,
-            'album' => $album
+            'album' => $album,
+            'albumId' => $albumId
         ]);
     }
 
