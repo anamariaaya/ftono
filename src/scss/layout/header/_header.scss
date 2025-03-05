@@ -97,7 +97,7 @@
         }
         &--logo{
             width: 12rem;
-            margin-top: 2rem;
+            margin-top: .5rem;
             @include m.maxtablet{
                 transform: translateY(-165%);
                 width: 16rem;
