@@ -1,5 +1,5 @@
 import { gridCanciones, cancionesInput, artistaSelect, clearSearch, generoSelect, instrumentoSelect, categoriasSelect, idiomasSelect, nivelSelect, nivelArtistaSelect } from './selectores.js';
-import { readLang, readJSON, loader, loaderPage, stopLoader } from '../base/funciones.js';
+import { readLang, readJSON, loader, loaderPage, stopLoader, loaderTimer } from '../base/funciones.js';
 
 
 export async function consultaCanciones() {
@@ -74,34 +74,40 @@ async function filtraCanciones() {
     artistaSelect.addEventListener('change', async (e) => {
         currentArtist = e.target.value;  // Update the artist filter
         fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedSubcategory);  // Pass the updated artist and current query
+        loaderTimer();
     });
 
     nivelSelect.addEventListener('change', async (e) => {
         currentNivel = e.target.value;  // Update the nivel filter
         fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedSubcategory);  // Pass the updated nivel and current query
+        loaderTimer();
     });
 
     nivelArtistaSelect.addEventListener('change', async (e) => {
         currentNivelArtista = e.target.value;  // Update the nivel filter
         fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedSubcategory);  // Pass the updated nivel and current query
+        loaderTimer();
     });
 
     // Listen for changes in the genero select dropdown
     generoSelect.addEventListener('change', async (e) => {
         currentGenero = e.target.value;  // Update the genero filter
         fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedSubcategory);  // Pass the updated genero and current query
+        loaderTimer();
     });
 
     // Listen for changes in the instrumento select dropdown
     instrumentoSelect.addEventListener('change', async (e) => {
         currentInstrumento = e.target.value;  // Update the instrumento filter
         fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedSubcategory);  // Pass the updated instrumento and current query
+        loaderTimer();
     });
 
     // Listen for changes in the categorias select dropdown
     categoriasSelect.addEventListener('change', async (e) => {
         currentCategoria = e.target.value;  // Update the categoria filter
         loadSubcategories(currentCategoria);  // Pass the updated categoria and current query
+        loaderTimer();
     });
       
 
@@ -109,6 +115,7 @@ async function filtraCanciones() {
     idiomasSelect.addEventListener('change', async (e) => {
         currentIdioma = e.target.value;  // Update the idioma filter
         fetchQuery(currentQuery, currentArtist, currentNivel, currentNivelArtista, currentGenero, currentInstrumento, currentCategoria, currentIdioma, selectedSubcategory);  // Pass the updated idioma and current query
+        loaderTimer();
     });
 
     // Función para inicializar un custom select en un contenedor dado
@@ -162,6 +169,7 @@ async function filtraCanciones() {
       options[index].selected = !options[index].selected;
       updateHiddenSelect();
       renderOptions();
+      loaderTimer();
     }
 
     // Actualiza el <select> oculto en función de las opciones seleccionadas

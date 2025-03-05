@@ -59,3 +59,6 @@ export const instrumentoSelect = document.querySelector('#songs-instrumentos');
 export const categoriasSelect = document.querySelector('#songs-categorias');
 export const idiomasSelect = document.querySelector('#songs-idiomas');
 export const clearSearch = document.querySelector('#clear-search');
+
+//Selectores para el body público
+export const bodyPublic = document.querySelector('.body--main');

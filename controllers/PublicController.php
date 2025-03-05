@@ -431,6 +431,7 @@ class PublicController{
             RIGHT JOIN
                 canc_keywords ck ON k.id = ck.id_keywords
             WHERE c.id = 2
+            GROUP BY k.id
             ORDER BY keyword_".$lang.";"
         ;
         $instrumentos = Keywords::consultarSQL($consultaInstrumentos);
