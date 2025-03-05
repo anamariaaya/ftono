@@ -463,3 +463,10 @@
 .no-border{
     border: none !important;
 }
+
+.video-current{
+   @include m.maxtablet{
+       min-height: auto;
+       max-width: 28rem !important;
+   }
+}

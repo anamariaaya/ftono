@@ -143,6 +143,9 @@
             max-width: 50rem;
             width: -webkit-fill-available;
             margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             @include m.tablet{
                 padding: 1.5rem;
             }
@@ -152,13 +155,13 @@
             }
         }
         &__img, &__video{
-            width: 20rem;
+            width: 23rem;
             height: 20rem;
             border: none;
             border-radius: v.$border-radius;
             @include m.tablet{
-                width: 21.5rem;
-                height: 21.5rem;
+                width: 23rem;
+                height: 21rem;
             }
             @include m.desktop-large{
                 width: 24.5rem;
@@ -171,10 +174,13 @@
         }
         
         &__nombre{
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             color: v.$yellow;
             margin: 0.5rem;
             pointer-events: none;
+            @include m.tablet{
+                font-size: 2.2rem;
+            }
         }
     }
 }

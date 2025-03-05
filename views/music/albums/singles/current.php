@@ -3,10 +3,10 @@
     {%music_singles-back_btn%}
 </a>
 
-<h1><?php echo $song->titulo;?></h1>
+<h1 class="mTop-5"><?php echo $song->titulo;?></h1>
 
 <div class="mTop-5">
-    <iframe class="margin-auto min-height-45" width="560" height="315" src="https://www.youtube.com/embed/<?php echo $song->url?>?si=pyomjURm8bMhB1-j" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe class="margin-auto min-height-45 video-current" width="560" height="315" src="https://www.youtube.com/embed/<?php echo $song->url?>?si=pyomjURm8bMhB1-j" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
     <div class="music__grid mTop-5">
         <div class="music__info">

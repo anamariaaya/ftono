@@ -187,6 +187,7 @@ class PublicController{
         $lang = $_SESSION['lang'];
         $alertas = [];
         $contacto = new ContactoCompra;
+        
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $contacto->sincronizar($_POST);
            
@@ -195,7 +196,7 @@ class PublicController{
                 $email = new Contacto($contacto->nombre, $contacto->apellido, $contacto->email, $contacto->pais, $contacto->telefono, $contacto->mensaje);
                 $email->enviarMensaje();
                 $contacto = [];
-                ContactoCompra::setAlerta('exito','Mensaje enviado correctamente');
+                ContactoCompra::setAlerta('exito','t-message-sent');
             }
         }
         $alertas = ContactoCompra::getAlertas();

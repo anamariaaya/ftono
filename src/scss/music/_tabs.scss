@@ -7,19 +7,26 @@
         display: flex;
         justify-content: space-between;
         gap: 1rem;
-        margin: calc(v.$separate / 2) auto calc(v.$separate * 2) auto;
+        margin: calc(v.$separate / 2) auto calc(v.$separate / 2) auto;
+        @include m.tablet{
+            margin: calc(v.$separate / 2) auto calc(v.$separate * 2) auto;
+        }
         &--btn{
             width: 100%;
             border-radius: 0.5rem;
-            padding: 2rem;
+            padding: 1rem;
             background-color: v.$gray-light;
             border: none;
             color: v.$white;
-            font-size: 2rem;
+            font-size: 1.6rem;
             &:hover{
                 cursor: pointer;
                 background-color: v.$green;
                 color: v.$black;
+            }
+            @include m.tablet{
+                font-size: 2rem;
+                padding: 2rem;
             }
 
             &--active{

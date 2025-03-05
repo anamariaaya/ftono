@@ -3227,6 +3227,10 @@
     "es": "Buscar por género",
     "en": "Search by genre"
   },
+  "songs_category_title":{
+    "es": "Categorías",
+    "en": "Categories"
+  },
   "t-search-songs_category":{
     "es": "Buscar por Categoría",
     "en": "Search by Category"
@@ -3646,5 +3650,9 @@
   "t-property-of":{
     "es": "Propiedad de",
     "en": "Property of"
+  },
+  "t-message-sent":{
+    "es": "Mensaje enviado correctamente",
+    "en": "Message sent successfully"
   }
 }

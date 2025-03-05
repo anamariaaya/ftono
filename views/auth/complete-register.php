@@ -227,7 +227,7 @@
                     >
                     <label class="form--registro__checkbox__label" for="privacy">
                         <i class="fa-regular fa-file-lines form--registro__group__icon"></i>
-                        {%l-i_accept_privacy%} <a href="/privacy-policy" target="_blank">{%l-privacy_policy%} *</a>
+                        {%l-i_accept_privacy%} <a href="/privacy" target="_blank">{%l-privacy_policy%} *</a>
                     </label>
                 </div>
                 <div class="form--registro__checkbox">
