@@ -99,29 +99,19 @@ class AuthController {
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $contacto->sincronizar($_POST);
-            $recaptchaSecret = '6LdErd0pAAAAAPHTvAFVSJCWoyznzgaDUFqtvhb7';
-            $recaptchaResponse = $_POST['g-recaptcha-response'];
 
-            $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$recaptchaSecret}&response={$recaptchaResponse}");
-            $responseKeys = json_decode($response, true);
+            $alertas = $contacto->validar();
 
-            if (intval($responseKeys["success"]) !== 1) {
-                echo 'Please complete the CAPTCHA';
-            } else {
-                $alertas = $contacto->validar();
-
-                if(empty($alertas)) {
-                        // Crear un nuevo contacto
-                    $resultado =  $contacto->guardar();
-                        
-                    // Enviar email
-                    $email = new Comprador($contacto->nombre, $contacto->apellido, $contacto->email, $contacto->pais, $contacto->telefono, $contacto->presupuesto, $contacto->mensaje);
-                    $email->enviarMensaje();
-
+            if(empty($alertas)) {
+                    // Crear un nuevo contacto
+                $resultado =  $contacto->guardar();
                     
-                        if($resultado) {
-                        header('Location: /');
-                    }
+                // Enviar email
+                $email = new Comprador($contacto->nombre, $contacto->apellido, $contacto->email, $contacto->pais, $contacto->telefono, $contacto->presupuesto, $contacto->mensaje);
+                $email->enviarMensaje();
+
+                if($resultado) {
+                    header('Location: /');
                 }
             }
         }

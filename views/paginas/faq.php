@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="mBottom-10">{%<?php echo $titulo; ?>%}</h1>
+    <h1 class="mBottom-5">{%<?php echo $titulo; ?>%}</h1>
 
     <details>
         <summary class="summary__main">{%faq_section-1%}</summary>

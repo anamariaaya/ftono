@@ -96,8 +96,8 @@
             column-gap: 2rem;
         }
         &--logo{
-            width: 12rem;
-            margin-top: .5rem;
+            width: 15rem;
+            margin-top: 2.2rem;
             @include m.maxtablet{
                 transform: translateY(-165%);
                 width: 16rem;
@@ -167,7 +167,7 @@
           
             @include m.maxtablet{
                 top: -35%;
-                left: 4%;
+                left: 10%;
                 width: 55%;
             }
             @include m.maxmidscreen{

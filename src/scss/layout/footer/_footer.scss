@@ -8,17 +8,19 @@
     place-items: center;
     margin-top: 4rem;
     @include m.grid(1, 0);
+    @include m.maxtablet{
+        padding-bottom: 4rem;
+    }
     @include m.tablet{
         margin-top: 8rem;
     }
 
     &__logo{
         width: 20rem;
-        @include m.phone{
-            width: 24rem;            
-        }
+        margin: auto;
         @include m.tablet{
             width: 30rem;
+            margin: 0;
         }      
     } 
 

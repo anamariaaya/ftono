@@ -10,10 +10,13 @@
         color: v.$yellow;
         cursor: pointer;
         padding: 1rem 2rem;
-        font-size: 2rem;
+        font-size: 1.6rem;
         font-weight: v.$bold;
         &::hover{
             background-color: darken(v.$yellow, 5);
+        }
+        @include m.tablet{
+            font-size: 2rem;
         }
     }
 

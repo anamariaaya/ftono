@@ -278,8 +278,8 @@
     outline: none;
     border: none;
     margin: 0;
-    margin-bottom: 2rem;
-    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
     border-radius: 1rem;
     border: 0.1rem solid v.$yellow;
     color: v.$white;
@@ -288,6 +288,8 @@
     @include m.tablet{
         padding: 0.5rem 1rem;
         font-size: 1.6rem !important;
+        margin-bottom: 2rem;
+        margin-top: 1rem;
     }
     &:hover, &.active{
         cursor: pointer;

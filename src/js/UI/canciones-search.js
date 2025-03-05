@@ -160,6 +160,9 @@ async function filtraCanciones() {
         });
 
         optionsContainer.appendChild(optionEl);
+        const optionsContainerHeight = optionsContainer.clientHeight;
+        const songsDashboard = document.querySelector('#search-songs-dashboard');
+        songsDashboard.style.paddingBottom = optionsContainerHeight + 'px';
       });
     }
 

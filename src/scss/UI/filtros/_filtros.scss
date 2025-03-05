@@ -4,7 +4,6 @@
 
 .filtros{
     margin-top: v.$separate;
-    margin-bottom: calc(v.$separate * 2);
     &__search{
         margin-bottom: v.$separate;
         &__input{
@@ -132,7 +131,7 @@
   
 .custom-select-options {
     position: absolute;
-    top: 110%;
+    top: 102%;
     left: 0;
     right: 0;
     max-height: 200px;
@@ -142,6 +141,9 @@
     width: max-content;
     display: block;
     max-width: 75vw;
+    @include m.tablet{
+        top: 105%;
+    }
 }
   
 .custom-select-option {

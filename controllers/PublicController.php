@@ -189,22 +189,13 @@ class PublicController{
         $contacto = new ContactoCompra;
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $contacto->sincronizar($_POST);
-            $recaptchaSecret = '6LdErd0pAAAAAPHTvAFVSJCWoyznzgaDUFqtvhb7';
-            $recaptchaResponse = $_POST['g-recaptcha-response'];
-
-            $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$recaptchaSecret}&response={$recaptchaResponse}");
-            $responseKeys = json_decode($response, true);
-            if (intval($responseKeys["success"]) !== 1) {
-                echo 'Please complete the CAPTCHA';
-            } else {
-                $alertas = $contacto->validar();
-                if(empty($alertas)){
-                    $email = new Contacto($contacto->nombre, $contacto->apellido, $contacto->email, $contacto->pais, $contacto->telefono, $contacto->mensaje);
-                    $email->enviarMensaje();
-                    $contacto = [];
-                    ContactoCompra::setAlerta('exito','Mensaje enviado correctamente');
-                }
-
+           
+            $alertas = $contacto->validar();
+            if(empty($alertas)){
+                $email = new Contacto($contacto->nombre, $contacto->apellido, $contacto->email, $contacto->pais, $contacto->telefono, $contacto->mensaje);
+                $email->enviarMensaje();
+                $contacto = [];
+                ContactoCompra::setAlerta('exito','Mensaje enviado correctamente');
             }
         }
         $alertas = ContactoCompra::getAlertas();
