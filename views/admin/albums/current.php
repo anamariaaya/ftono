@@ -6,7 +6,7 @@
 <h1><?php echo $album->titulo;?></h1>
 
 <div class="music__grid mTop-5">
-    <img src="/portadas/<?php echo $album->portada;?>" alt="portada" class="" style="max-width:35rem;">
+    <img src="/portadas/<?php echo $album->portada;?>" alt="portada" class="" style="max-width:35rem;" loading="lazy">
 
     <div class="music__info">
         <div class="music__detail">

@@ -18,7 +18,7 @@
         />
         <?php if($album->portada):?>
             <div class="form__group__image">
-                <img class="cards__img cards__img--album mTop-1" src="/portadas/<?php echo $album->portada; ?>" alt="<?php echo $album->titulo; ?>">
+                <img class="cards__img cards__img--album mTop-1" src="/portadas/<?php echo $album->portada; ?>" alt="<?php echo $album->titulo; ?>" loading="lazy">
             </div>
         <?php endif;?>
     </div>

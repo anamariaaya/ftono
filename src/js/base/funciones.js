@@ -128,7 +128,7 @@ export function loaderTimerExtra(){
     document.getElementById('loadingScreen').style.display = 'flex';
     setTimeout(() => {
         document.getElementById('loadingScreen').style.display = 'none';
-    }, 2500);
+    }, 3500);
 }
     
 

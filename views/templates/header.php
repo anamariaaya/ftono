@@ -2,7 +2,7 @@
     <div class="header__bar">
         <div class="header__left">
             <a class="header__link--logo" href="/">
-                <img class="header__left--logo" src="/build/img/logo.svg" alt="Logo Filmtono">
+                <img class="header__left--logo" src="/build/img/logo.svg" alt="Logo Filmtono" loading="lazy">
             </a>
             <a class="header__link--back" href="javascript: history.go(-1)">
                 <i class="fas fa-arrow-left header__left--arrow <?php echo $inicio ? 'no-display' : '' ;?>"></i>
@@ -10,7 +10,7 @@
         
             <a href="/search" class="header__left__label">
                 <p><?php echo tt('nav_search'); ?></p>
-                <img class="btn-search" src="/build/img/search-bar.svg">
+                <img class="btn-search" src="/build/img/search-bar.svg" loading="lazy">
             </a>
         </div>
 

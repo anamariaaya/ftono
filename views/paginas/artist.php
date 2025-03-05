@@ -3,7 +3,7 @@
         <?php if($artista->banner):?>
             <iframe class="artist__banner__video" src="https://www.youtube.com/embed/<?php echo $artista->banner;?>?&autoplay=1&mute=1&loop=1&playlist=<?php echo $artista->banner;?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <?php else:?>
-            <img class="artist__banner__img" src="/build/img/artist.webp" alt="{%category-movies%}">
+            <img class="artist__banner__img" src="/build/img/artist.webp" alt="{%category-movies%}" loading="lazy">
         <?php endif;?>
     </div>
 

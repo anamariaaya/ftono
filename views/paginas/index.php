@@ -15,7 +15,7 @@
                     <?php if($f == 'mp4' || $f == 'avi' || $f == 'mov'):?>
                         <video class="main__slider__video" src="/build/img/promos/<?php echo $promo->promos?>" autoplay loop muted></video>
                     <?php else:?>
-                        <img class="main__slider__img" src="/build/img/promos/<?php echo $promo->promos?>" alt="">
+                        <img class="main__slider__img" src="/build/img/promos/<?php echo $promo->promos?>" alt="" loading="lazy">
                     <?php endif;?>
                     </div>
                 <?php endforeach; ?>
@@ -82,7 +82,7 @@
                         <?php if($artist->banner):?>
                             <iframe class="main__artists__video" src="https://www.youtube.com/embed/<?php echo $artist->banner?>?&autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <?php else:?>
-                            <img class="main__artists__img" src="/build/img/artist.webp" alt="{%category-movies%}">
+                            <img class="main__artists__img" src="/build/img/artist.webp" alt="{%category-movies%}" loading="lazy">
                         <?php endif;?>
 
                         <p class="main__artists__nombre"><?php echo $artist->nombre?></p>

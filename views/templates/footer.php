@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="footer__grid">
         <div class="footer__content">
-            <img class="footer__logo" src="/build/img/logo.svg" alt="logo">
+            <img class="footer__logo" src="/build/img/logo.svg" alt="logo" loading="lazy">
             <p><?php echo tt('footer_description'); ?></p>
         </div>
 

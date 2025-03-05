@@ -24,7 +24,7 @@
             <?php if($f == 'mp4' || $f == 'avi' || $f == 'mov'):?>
                 <video class="card__video" src="/build/img/promos/<?php echo $promo->promos ?>" autoplay loop muted></video>
             <?php else:?>
-                <img class="card__img" src="/build/img/promos/<?php echo $promo->promos ?>" alt="">
+                <img class="card__img" src="/build/img/promos/<?php echo $promo->promos ?>" alt="" loading="lazy">
             <?php endif;?>    
 
             <div class="card__acciones">
