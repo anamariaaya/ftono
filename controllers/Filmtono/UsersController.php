@@ -4,17 +4,22 @@ namespace Controllers\Filmtono;
 
 use MVC\Router;
 use Model\Terms;
+use Model\Albums;
+use Model\Sellos;
 use Classes\Email;
 use Model\Empresa;
 use Model\NTAdmin;
 use Model\Privacy;
 use Model\Usuario;
 use Model\NTMusica;
+use Model\Canciones;
 use Model\CTRMusical;
 use Model\TipoMusica;
 use Model\Comunicados;
+use Model\CancionAlbum;
 use Model\CTRArtistico;
 use Model\PerfilUsuario;
+use Model\UsuarioSellos;
 
 class UsersController{
     public static function index(Router $router){
@@ -133,6 +138,11 @@ class UsersController{
         $usuario = Usuario::find($id);
         $ntadmin = NTAdmin::where('id_usuario', $id);
         $ntmusica = NTMusica::where('id_usuario', $id);
+        $album = Albums::where('id_usuario', $id);
+        $songs = Canciones::whereAll('id_usuario', $id);
+        if($album){
+            $albumSongs = CancionAlbum::whereAll('id_album', $album->id);
+        }
         if($ntadmin){
             $resultado = $ntadmin->eliminar();
             $resultado = $usuario->eliminar();
@@ -142,19 +152,38 @@ class UsersController{
         }elseif($ntmusica){
             $perfilUsuario = PerfilUsuario::where('id_usuario', $id);
             if($perfilUsuario){
+                if($albumSongs){
+                    foreach($albumSongs as $albumSong){
+                        //search songs by each id
+                        $song = Canciones::find($albumSong->id_cancion);
+                        //delete the song
+                        $song->eliminar();
+                    }
+                    //delete the album
+                    $album->eliminar();
+                }
+
+                if($songs){
+                    foreach($songs as $song){
+                        $song->eliminar();
+                    }
+                }
+
+                $usuarioSellos = UsuarioSellos::whereAll('id_usuario', $id);
                 $consulta='SELECT sellos.* FROM sellos
                 INNER JOIN usuario_sellos ON sellos.id = usuario_sellos.id_sellos
-                WHERE usuario_sellos.id_usuario = 26;';
+                WHERE usuario_sellos.id_usuario ='.$id.';';
                 $consulta = Sellos::consultarSQL($consulta);
                 if($consulta){
+                    foreach($usuarioSellos as $usuarioSello){
+                        $usuarioSello->eliminar();
+                    }
+                    
                     foreach ($consulta as $sello) {
                         $sello->eliminar();
                     }
-                    foreach ($UsuarioSellos as $us){
-                        $us->eliminar();
-                    }
                 }
-                $empresa = Empresa::find($perfilUsuario->id_empresa);
+                $empresa = Empresa::where('id', $perfilUsuario->id_empresa);
                 $ctr_music = CTRMusical::where('id_empresa', $empresa->id);
                 $ctr_artistico = CTRArtistico::where('id_empresa', $empresa->id);
                 $terms = Terms::where('id_usuario', $usuario->id);
@@ -174,8 +203,12 @@ class UsersController{
                     unlink($file_route2);
                     $ctr_artistico->eliminar();
                 }
-                $terms->eliminar();
-                $privacy->eliminar();
+                if($terms){
+                    $terms->eliminar();
+                }
+                if($privacy){
+                    $privacy->eliminar();
+                }
                 if($comunicados){
                     $comunicados->eliminar();
                 }
@@ -185,6 +218,7 @@ class UsersController{
             $ntmusica->eliminar();
             $usuario->eliminar();
             header('Location: /filmtono/users');
+
         }else{
             $usuario->eliminar();
             header('Location: /filmtono/users');

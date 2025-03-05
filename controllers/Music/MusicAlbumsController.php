@@ -383,6 +383,13 @@ class MusicAlbumsController{
         redireccionar('/music/albums');
         $albumId = redireccionar('/music/albums');
         $album = Albums::find($albumId);
+        $albumSongs = CancionAlbum::whereAll('id_album', $album->id);
+        foreach($albumSongs as $albumSong){
+            //search songs by each id
+            $song = Canciones::find($albumSong->id_cancion);
+            //delete the song
+            $song->eliminar();
+        }
         $resultado = $album->eliminar();
         if($resultado){
             header('Location: /music/albums');
