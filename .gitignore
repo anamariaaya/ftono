@@ -77,3 +77,4 @@ typings/
 
 #contracts
 /public/contracts
+.qodo

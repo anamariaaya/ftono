@@ -189,6 +189,9 @@ class PublicController{
         $contacto = new ContactoCompra;
         
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            if (!empty($_POST['honeypot'])) {
+                die(header('Location: /'));
+            }
             $contacto->sincronizar($_POST);
            
             $alertas = $contacto->validar();

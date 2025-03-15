@@ -60,6 +60,7 @@
                 </div>
 
                 <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+                <input type="text" name="honeypot" style="display:none;">
                 <input class="btn-submit" type="submit" value="{%auth_register_message_btn%}">
             </fieldset>
         </form>
